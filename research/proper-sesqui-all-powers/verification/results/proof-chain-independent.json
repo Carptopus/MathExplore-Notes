@@ -1,0 +1,97 @@
+{
+  "research_id": "RESEARCH-HSF-0001",
+  "experiment_id": "HSF-E0517-E0516-PROOF-CHAIN-REDTEAM",
+  "independence": "standard-library-only; imports no E0516 or project algebra code",
+  "local_algebra": {
+    "K_total_degree": 11,
+    "L_total_degree": 12,
+    "Q_smooth": true,
+    "degree_ten_specialization_irreducible": true,
+    "degree_ten_closed_point_smooth": true,
+    "cubic_closed_point": [
+      2,
+      3,
+      1
+    ],
+    "cubic_gradients": [
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        6,
+        0,
+        4
+      ]
+    ],
+    "cubic_closed_point_smooth": true,
+    "closed_point_degree_gcd": 1,
+    "base_local_initial_form": "a^2(s+a)",
+    "incidence_simple_lift_derivative": 2,
+    "inverse_a_pole_order_on_incidence_curve": 1,
+    "dL_dp_equals_D": true,
+    "L_degree_in_p_on_admissible_locus": 10
+  },
+  "counting_arithmetic": {
+    "genus_C_upper": 45,
+    "degree_a_on_C_upper": 9,
+    "genus_trace_cover_C_upper": 98,
+    "degree_X_upper": 132,
+    "genus_X_upper": 8515,
+    "degree_a_on_X_upper": 90,
+    "genus_trace_cover_X_upper": 17119,
+    "boundary_C_upper": 36,
+    "boundary_X_upper": 360,
+    "boundary_trace_cover_X_upper": 720,
+    "admissible_error_coefficient": 188,
+    "bad_triple_error_coefficient": 34149,
+    "admissible_constant_loss": 36,
+    "bad_triple_constant_gain": 360,
+    "base_singular_point_upper": 45,
+    "base_total_delta_upper": 45,
+    "base_normalization_collision_loss": 45,
+    "incidence_degree_over_base": 10,
+    "incidence_rational_singular_point_upper": 450,
+    "good_parameter_error_coefficient": 17262.5,
+    "good_parameter_constant_loss": 486.0,
+    "good_parameter_lower_bound": "(q+1)/4 - 17262.5*sqrt(q) - 486",
+    "four_times_lower_bound_d32": -230295447,
+    "four_times_lower_bound_d34": 8129345641,
+    "trace_count_identity": "N_trace1(Z_open)=#Z_open-#Y_Z_open/2",
+    "first_even_degree_closed_by_bound": 34,
+    "tail_monotonicity_checked_through": 128
+  },
+  "finite_basis_boundary": {
+    "degrees": [
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18,
+      20,
+      22,
+      24,
+      26,
+      28,
+      30,
+      32
+    ],
+    "count": 15,
+    "maximum_parameter_trials": 25,
+    "source_sha256": "69066f872045d6d12ed769405711312280fd030c00f876b736fb674397a7efe1",
+    "exact_complement_of_general_tail": true
+  },
+  "proof_logic_not_mechanically_decided": [
+    "monic specialization over a DVR implies generic irreducibility",
+    "coprime smooth closed-point degrees force exact constant field F_2",
+    "simple odd pole excludes an Artin-Schreier coboundary after base change",
+    "the universal genus-versus-projective-degree bound uses Castelnuovo's bound only through the weaker plane-form estimate",
+    "normalization is an isomorphism over the smooth locus and the total branch-collision loss is bounded by the plane-curve delta sum",
+    "on the admissible rational locus dL/dp=D(a,p) is nonzero, so singular incidence triples can lie only above singular base pairs"
+  ],
+  "status": "PASS_E0517_INDEPENDENT_ALGEBRA_AND_COUNTING_REDTEAM"
+}

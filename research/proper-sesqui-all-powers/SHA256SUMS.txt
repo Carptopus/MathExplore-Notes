@@ -1,0 +1,4 @@
+03a30b136747673b481a496ecc8a5bc7ea141c8a998d3e47177b44f5912a5ecc  proper-sesqui-all-powers.pdf
+180a42cf0bdeb4659a3956311a5e5706d3db79057b65193204dc88375a41bb18  proper-sesqui-all-powers.tex
+72bb1dbd1df78ba75eb2ade29c0b8be829585197615734e07a7280aeb017863b  verification/MANIFEST.json
+4e40fb17c4f4d019a9fa847ad139bda1d4eba318459edc13c45c4e7de9f8fbe2  verification/results/reproduction.json

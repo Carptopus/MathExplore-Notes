@@ -1,0 +1,209 @@
+{
+  "research_id": "RESEARCH-HSF-0001",
+  "experiment_id": "HSF-E0513-ZERO-ANCHOR-CURVE-NORMAL-FORM",
+  "finite_field_samples_used": false,
+  "direct_subiaco_numerator_identity": true,
+  "dimension_free_change_of_variables": true,
+  "denominator_square_identity": true,
+  "denominator_nonzero_reason": "D(a,p)=(p^4+a*p^2+1)^2; a zero would give y^2+y=a^-2 for y=p^2/a, contradicting Tr(a^-2)=Tr(a^-1)=1 for admissible a",
+  "image_membership_cross_multiplication": true,
+  "K_a_t": {
+    "variables": [
+      "a",
+      "t"
+    ],
+    "term_count": 12,
+    "terms": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        9
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        3,
+        3
+      ],
+      [
+        4,
+        3
+      ]
+    ],
+    "sha256": "5947df6983875ea59c7d68618f994ff3ef6864c0a41d9900a9200bfe5d3e21b5"
+  },
+  "D_a_p": {
+    "variables": [
+      "a",
+      "p"
+    ],
+    "term_count": 3,
+    "terms": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        2,
+        4
+      ]
+    ],
+    "sha256": "c43b21366e4efed97bc7e78a0d1cfd57ecaa4b700f60e05e9307dce1233bc7c1"
+  },
+  "L_a_t_p": {
+    "variables": [
+      "a",
+      "t",
+      "p"
+    ],
+    "term_count": 21,
+    "terms": [
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        2
+      ],
+      [
+        0,
+        0,
+        9
+      ],
+      [
+        0,
+        0,
+        10
+      ],
+      [
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        8
+      ],
+      [
+        1,
+        0,
+        2
+      ],
+      [
+        1,
+        0,
+        10
+      ],
+      [
+        1,
+        2,
+        0
+      ],
+      [
+        1,
+        2,
+        8
+      ],
+      [
+        2,
+        0,
+        4
+      ],
+      [
+        2,
+        0,
+        5
+      ],
+      [
+        2,
+        0,
+        8
+      ],
+      [
+        2,
+        0,
+        10
+      ],
+      [
+        2,
+        2,
+        0
+      ],
+      [
+        2,
+        2,
+        4
+      ],
+      [
+        2,
+        2,
+        8
+      ],
+      [
+        3,
+        0,
+        4
+      ],
+      [
+        3,
+        2,
+        4
+      ],
+      [
+        4,
+        0,
+        4
+      ],
+      [
+        4,
+        2,
+        4
+      ]
+    ],
+    "sha256": "f6526ba34234639f0e9c95f3f37c857f6941f6ede5ad8801778a714bb21a0bcf"
+  },
+  "exact_equivalence": "For admissible a and the unique t with K(a,t)=0, the zero-anchor cross intercept is external iff L(a,t,p)=0 has no field root p; the denominator is nonzero for every field element p.",
+  "remaining_general_target": "prove that every even extension field contains an admissible a whose associated L-polynomial is root-free",
+  "status": "PASS_EXACT_CURVE_NORMAL_FORM"
+}

@@ -1,0 +1,175 @@
+{
+  "title": "Proper transposed sesqui arrays at all Sylvester--Hadamard powers",
+  "release": "v0.1-beta",
+  "author": "Carptopus",
+  "contact": "carptopus@163.com",
+  "mathematical_status": "INTERNAL_CANDIDATE_EXTERNAL_REVIEW_PENDING",
+  "licenses": {
+    "documentation": "CC BY 4.0",
+    "python_code": "MIT",
+    "json_data_certificates_and_manifests": "CC0 1.0"
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 1887,
+      "sha256": "5c400572f5d09d0fd72931bf209d8dbeef42c81533757cef288bd388ef39cce9"
+    },
+    {
+      "path": "LICENSE-DOCS-CC-BY-4.0.md",
+      "bytes": 679,
+      "sha256": "e74ebce9e715e83d36da7d383c7fb0a3ad00588a41110ed345a32298c3bb3239"
+    },
+    {
+      "path": "LICENSE-CODE-MIT.txt",
+      "bytes": 1066,
+      "sha256": "535b1049da73b324b9d66542748aed39df637337cc775fbbe3f9e4dd1d9598f2"
+    },
+    {
+      "path": "LICENSE-DATA-CC0.md",
+      "bytes": 516,
+      "sha256": "568d897e76e8435c60e665b7c5860c85f9e458d8177acd46ef3fa59138fc00a8"
+    },
+    {
+      "path": "run_reproduction.py",
+      "bytes": 7703,
+      "sha256": "1f639059ab01ff260a5f96ff9db5152c456eac7e5e5a4659b65d7bc9f407c4d7"
+    },
+    {
+      "path": "src/analyze_subiaco_hyperoval_bridge.py",
+      "bytes": 11617,
+      "sha256": "7a6ffe1775bba62ab5b729df694e8227c08eb69f12f64083ee42be5b9a255b7c"
+    },
+    {
+      "path": "src/construct_e0516_zero_anchor_finite_basis.py",
+      "bytes": 8854,
+      "sha256": "82a8ee9232caeaed0a118cf9a5ad81f1e8a979f8706e8cc3b72c6759c98cd343"
+    },
+    {
+      "path": "src/construct_inverse_pair_hsf_family.py",
+      "bytes": 8507,
+      "sha256": "e4754837b70ef971df80133773d49920cfbdad0bd9a5f0d6721e1a6aa0bfcc45"
+    },
+    {
+      "path": "src/hsf_core.py",
+      "bytes": 13473,
+      "sha256": "59f81b5956402389988bf1dae81aa4ce9c1c661bb689c8f3dea67cd82d90c0d7"
+    },
+    {
+      "path": "src/verify_e0513_zero_anchor_curve_normal_form.py",
+      "bytes": 7887,
+      "sha256": "43cc410d3678fbd96a6ad7ebe1a63110e52dbe9cf19a037f8c17ee5ebda0c315"
+    },
+    {
+      "path": "src/verify_e0514_parameter_curve_and_linearization.py",
+      "bytes": 8702,
+      "sha256": "a41f2fd4c842170e0a38e4f4715630403aecabf048dc13a9378ddea20008aeac"
+    },
+    {
+      "path": "src/verify_e0516_bad_incidence_geometry.py",
+      "bytes": 15958,
+      "sha256": "165480fdca07222a4f1b5788a63d808158ad36abc96e3b4034e411a859e255dd"
+    },
+    {
+      "path": "src/verify_e0517_e0516_proof_chain_independent.py",
+      "bytes": 15037,
+      "sha256": "eb08f9dc7ac84ddaa57adae4b9cc31b48d59368484101d754e1a9af41f7bed9e"
+    },
+    {
+      "path": "src/verify_e0521_zero_anchor_resultants_independent.py",
+      "bytes": 14187,
+      "sha256": "308b7d2af1ab9a998926df87c526dbdf9ee41e8f3ccea02b685837d27887b0f8"
+    },
+    {
+      "path": "src/verify_inverse_pair_hsf_family.py",
+      "bytes": 6309,
+      "sha256": "974e77d477755f336faf01690b5b84c8d4d06fcbaa456ce3824f23c72312da7c"
+    },
+    {
+      "path": "src/verify_parameter_regression.py",
+      "bytes": 3543,
+      "sha256": "89a651c8ea578489fe989156c9148cef99267f6bf2f7718a6202111fc8f929d1"
+    },
+    {
+      "path": "src/verify_subiaco_bridge_reductions.py",
+      "bytes": 11902,
+      "sha256": "2c76df60073f4e64ed4969c002a70f5b87ff8357e1491eaef4481dbee0eb8595"
+    },
+    {
+      "path": "src/verify_subiaco_cubic_image_sum.py",
+      "bytes": 12651,
+      "sha256": "042201c5fedca6b4555ed90b7567c638cb71408338762d05e3002734b3e16848"
+    },
+    {
+      "path": "src/verify_subiaco_symbolic_identities.py",
+      "bytes": 9413,
+      "sha256": "b075ced1d4c02ff148e58d544e97874cfcd8fb1352e8deefcbc6f711ee94f105"
+    },
+    {
+      "path": "src/verify_zero_anchor_multiplier_resultants.py",
+      "bytes": 13454,
+      "sha256": "06be27ee022964de3280452a16046986c67400c7b12e22b88baa1f32ed638741"
+    },
+    {
+      "path": "data/inverse-pair-direct-family.json",
+      "bytes": 260237,
+      "sha256": "c5c11b062e1a21c75045c87e00f8d2359b10a5018e53cc943975ee58d6da5e20"
+    },
+    {
+      "path": "data/parameter-regression-t4-t5.json",
+      "bytes": 31145,
+      "sha256": "c89f28509e7f9d157a00b483790ca8a304593b781dd6292f43c750bf838d43ca"
+    },
+    {
+      "path": "results/inverse-pair-independent.json",
+      "bytes": 1848,
+      "sha256": "9db0a8506595ae611de4fab15c6efe5c70100120dee6618fc095b2ca06799572"
+    },
+    {
+      "path": "results/subiaco-bridge.json",
+      "bytes": 4985,
+      "sha256": "308280acababc69890c9a6a1ad8b0a6b5012e8bbfcb5a8d105726a5414a3171b"
+    },
+    {
+      "path": "results/subiaco-cubic-sum.json",
+      "bytes": 448,
+      "sha256": "8246cd176c07ae0247c16834ee46d388cdfdfb63e2363792c8fb19204c44577d"
+    },
+    {
+      "path": "results/zero-anchor-resultants.json",
+      "bytes": 2256,
+      "sha256": "3d43b92e10c3c9726bd9e1cfe3e43ab4a9aa7609d0e7f013a17ec5b783b89c3c"
+    },
+    {
+      "path": "results/zero-anchor-curve-normal-form.json",
+      "bytes": 3045,
+      "sha256": "74b481a6c06248d6575fc0b91a8880e4039a612ea1fb50b386d2ac5da0bdff7b"
+    },
+    {
+      "path": "results/parameter-curve.json",
+      "bytes": 1733,
+      "sha256": "9a2c12d40b883ed04fccc8c128aaad58e934ea5b879e29ebc800a5b2a5b18368"
+    },
+    {
+      "path": "results/finite-basis.json",
+      "bytes": 2415,
+      "sha256": "69066f872045d6d12ed769405711312280fd030c00f876b736fb674397a7efe1"
+    },
+    {
+      "path": "results/bad-incidence-geometry.json",
+      "bytes": 4821,
+      "sha256": "40427c74aefd946f355a1e354287c9f5a2fb27282df4ef9988f4ecb1afac8c5b"
+    },
+    {
+      "path": "results/proof-chain-independent.json",
+      "bytes": 3098,
+      "sha256": "fe6ca2e7399d86aece67f517518ac94b1efdc333342ec586e9b0401c606a3e9b"
+    },
+    {
+      "path": "results/zero-anchor-resultants-independent.json",
+      "bytes": 1394,
+      "sha256": "9bcf5cc55ff978d6d4f708d26345a217f48a078c53538c40846b4e2c2ce3575d"
+    }
+  ],
+  "status": "PASS_PUBLIC_VERIFICATION_MANIFEST_NO_PRIVATE_PATHS"
+}

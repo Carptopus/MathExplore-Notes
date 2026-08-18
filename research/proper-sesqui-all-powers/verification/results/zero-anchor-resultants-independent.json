@@ -1,0 +1,49 @@
+{
+  "research_id": "RESEARCH-HSF-0001",
+  "experiment_id": "HSF-E0521-ZERO-ANCHOR-RESULTANTS-INDEPENDENT",
+  "independence": "No import from the E0500 verifier; GF(256) evaluation plus Gaussian Sylvester determinants and all-point interpolation; Berlekamp nullity instead of Rabin irreducibility; inverse-square traces from coefficients.",
+  "evaluation_field": "GF(2^8), modulus x^8+x^4+x^3+x+1",
+  "evaluation_points": 256,
+  "evaluation_field_self_check": {
+    "all_nonzero_inverses": true,
+    "frobenius_fixed_all_256_elements": true
+  },
+  "independent_degree_bounds": {
+    "zero": 240,
+    "one": 214
+  },
+  "reconstructed_degrees": {
+    "zero": 214,
+    "one": 214
+  },
+  "coefficient_sha256": {
+    "zero": "258eeeeca81b726d3bc13d4ab37edfdc0c118ec5b0e813c7dec46ef9ecf7f241",
+    "one": "212ed4eed451dbc3f7d078b3a61ffdbf51bceb117f548f3febfa68866d032e59"
+  },
+  "factor_degrees": {
+    "R21": 21,
+    "R109": 109,
+    "R26": 26,
+    "R29": 29,
+    "R75": 75
+  },
+  "berlekamp_nullities": {
+    "R21": 1,
+    "R109": 1,
+    "R26": 1,
+    "R29": 1,
+    "R75": 1
+  },
+  "inverse_square_trace_from_x_coefficient": {
+    "R21": 0,
+    "R109": 0,
+    "R26": 0,
+    "R29": 1,
+    "R75": 0
+  },
+  "negative_controls": {
+    "single_coefficient_product_corruption_detected": true,
+    "unique_trace_one_factor_detected": true
+  },
+  "status": "PASS_E0521_INDEPENDENT_ZERO_ANCHOR_RESULTANTS"
+}

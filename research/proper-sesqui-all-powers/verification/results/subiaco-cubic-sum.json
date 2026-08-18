@@ -1,0 +1,9 @@
+{
+  "research_id": "RESEARCH-HSF-0001",
+  "experiment_id": "HSF-E0497-SUBIACO-CUBIC-IMAGE-SUM",
+  "method": "Exact characteristic-two Laurent-polynomial calculation over F_2(h), quadratic-pole pairing, and trace-hyperplane reciprocal sums",
+  "finite_field_samples_used": false,
+  "identity": "sum_I_y3=h^3+h^7+h^9+h^10+h^11+h^12+h^16",
+  "factorization": "h^3*(h^2+h+1)*(h^3+h+1)^2*(h^5+h^4+h^2+h+1)",
+  "status": "PASS_SUBIACO_CUBIC_IMAGE_SUM"
+}

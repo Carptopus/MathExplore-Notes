@@ -1,0 +1,195 @@
+{
+  "research_id": "RESEARCH-HSF-0001",
+  "experiment_id": "HSF-E0516-BAD-INCIDENCE-GEOMETRY",
+  "degree_ten_specialization": {
+    "point": [
+      1,
+      1
+    ],
+    "polynomial_exponents": [
+      0,
+      1,
+      5,
+      9,
+      10
+    ],
+    "rabin_irreducible": true
+  },
+  "smooth_cubic_point": {
+    "modulus": 11,
+    "point": [
+      2,
+      3,
+      1
+    ],
+    "gradient_K": [
+      0,
+      1,
+      0
+    ],
+    "gradient_L": [
+      6,
+      0,
+      4
+    ],
+    "closed_point_degree": 3,
+    "smooth": true
+  },
+  "simple_pole_branch": {
+    "base_branch": "a=0,t=1 with v(a)=1",
+    "simple_roots": "P^2+P+1",
+    "derivative_at_omega": 2,
+    "inverse_a_pole_order": 1,
+    "artin_schreier_cover_geometrically_irreducible": true
+  },
+  "relative_smoothness_identity": {
+    "dL_dp": "1+a^2*p^4+p^8=D(a,p)",
+    "D_nonzero_condition": "Tr(a^-1)=1 implies D(a,p)!=0 for p in F_q",
+    "L_degree_in_p_on_admissible_locus": 10,
+    "L_leading_coefficient_support_in_a": [
+      0,
+      1,
+      2
+    ],
+    "smooth_incidence_point_if_base_point_smooth": true
+  },
+  "weil_bound": {
+    "genus_C_upper": 45,
+    "genus_C_trace_upper": 98,
+    "projective_degree_D_upper": 132,
+    "genus_D_upper": 8515,
+    "genus_D_trace_upper": 17119,
+    "base_trace_error_coefficient": 188,
+    "incidence_trace_error_coefficient": 34149,
+    "admissible_constant_loss": 36,
+    "bad_triple_constant_gain": 360,
+    "base_singular_point_upper": 45,
+    "base_total_delta_upper": 45,
+    "base_normalization_collision_loss": 45,
+    "incidence_degree_over_base": 10,
+    "incidence_rational_singular_point_upper": 450,
+    "good_parameter_constant_loss": 486,
+    "good_parameter_lower_bound": "(q+1)/4 - 17262.5*sqrt(q) - 486",
+    "four_times_lower_bound_d32": -230295447,
+    "four_times_lower_bound_d34": 8129345641,
+    "first_even_degree_certified_by_bound": 34
+  },
+  "finite_basis": {
+    "basis_degrees": [
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18,
+      20,
+      22,
+      24,
+      26,
+      28,
+      30,
+      32
+    ],
+    "checks": [
+      {
+        "degree": 4,
+        "inverse_trace": 1,
+        "K_field_root_gcd_degree": 1,
+        "L_field_root_gcd_degree": 0
+      },
+      {
+        "degree": 6,
+        "inverse_trace": 1,
+        "K_field_root_gcd_degree": 1,
+        "L_field_root_gcd_degree": 0
+      },
+      {
+        "degree": 8,
+        "inverse_trace": 1,
+        "K_field_root_gcd_degree": 1,
+        "L_field_root_gcd_degree": 0
+      },
+      {
+        "degree": 10,
+        "inverse_trace": 1,
+        "K_field_root_gcd_degree": 1,
+        "L_field_root_gcd_degree": 0
+      },
+      {
+        "degree": 12,
+        "inverse_trace": 1,
+        "K_field_root_gcd_degree": 1,
+        "L_field_root_gcd_degree": 0
+      },
+      {
+        "degree": 14,
+        "inverse_trace": 1,
+        "K_field_root_gcd_degree": 1,
+        "L_field_root_gcd_degree": 0
+      },
+      {
+        "degree": 16,
+        "inverse_trace": 1,
+        "K_field_root_gcd_degree": 1,
+        "L_field_root_gcd_degree": 0
+      },
+      {
+        "degree": 18,
+        "inverse_trace": 1,
+        "K_field_root_gcd_degree": 1,
+        "L_field_root_gcd_degree": 0
+      },
+      {
+        "degree": 20,
+        "inverse_trace": 1,
+        "K_field_root_gcd_degree": 1,
+        "L_field_root_gcd_degree": 0
+      },
+      {
+        "degree": 22,
+        "inverse_trace": 1,
+        "K_field_root_gcd_degree": 1,
+        "L_field_root_gcd_degree": 0
+      },
+      {
+        "degree": 24,
+        "inverse_trace": 1,
+        "K_field_root_gcd_degree": 1,
+        "L_field_root_gcd_degree": 0
+      },
+      {
+        "degree": 26,
+        "inverse_trace": 1,
+        "K_field_root_gcd_degree": 1,
+        "L_field_root_gcd_degree": 0
+      },
+      {
+        "degree": 28,
+        "inverse_trace": 1,
+        "K_field_root_gcd_degree": 1,
+        "L_field_root_gcd_degree": 0
+      },
+      {
+        "degree": 30,
+        "inverse_trace": 1,
+        "K_field_root_gcd_degree": 1,
+        "L_field_root_gcd_degree": 0
+      },
+      {
+        "degree": 32,
+        "inverse_trace": 1,
+        "K_field_root_gcd_degree": 1,
+        "L_field_root_gcd_degree": 0
+      }
+    ],
+    "source_sha256": "69066f872045d6d12ed769405711312280fd030c00f876b736fb674397a7efe1",
+    "all_witnesses_pass": true
+  },
+  "general_conclusion": "The bad-incidence curve is geometrically irreducible, its inverse-a Artin--Schreier cover is geometrically irreducible, the Weil bound gives a good zero-anchor parameter for every even d>=34, and the independent finite basis closes every even 4<=d<=32.",
+  "parameter_search_used_by_generator": true,
+  "exhaustive_field_enumeration_used": false,
+  "array_enumeration_used": false,
+  "status": "PASS_GENERAL_ALL_EVEN_ZERO_ANCHOR_EXISTENCE"
+}

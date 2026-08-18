@@ -1,0 +1,134 @@
+{
+  "research_id": "RESEARCH-HSF-0001",
+  "experiment_id": "HSF-E0516-ZERO-ANCHOR-FINITE-BASIS",
+  "basis_degrees": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18,
+    20,
+    22,
+    24,
+    26,
+    28,
+    30,
+    32
+  ],
+  "method": "fixed-degree polynomial gcd with X^(2^d)-X",
+  "parameter_search_used": true,
+  "maximum_parameter_trials": 25,
+  "array_enumeration_used": false,
+  "exhaustive_field_enumeration_used": false,
+  "witnesses": [
+    {
+      "degree": 4,
+      "modulus": 19,
+      "parameter_a": 2,
+      "partner_t": 9,
+      "trials": 1
+    },
+    {
+      "degree": 6,
+      "modulus": 97,
+      "parameter_a": 6,
+      "partner_t": 58,
+      "trials": 5
+    },
+    {
+      "degree": 8,
+      "modulus": 501,
+      "parameter_a": 15,
+      "partner_t": 250,
+      "trials": 14
+    },
+    {
+      "degree": 10,
+      "modulus": 1627,
+      "parameter_a": 3,
+      "partner_t": 65,
+      "trials": 2
+    },
+    {
+      "degree": 12,
+      "modulus": 7993,
+      "parameter_a": 26,
+      "partner_t": 3012,
+      "trials": 25
+    },
+    {
+      "degree": 14,
+      "modulus": 30279,
+      "parameter_a": 3,
+      "partner_t": 6853,
+      "trials": 2
+    },
+    {
+      "degree": 16,
+      "modulus": 124427,
+      "parameter_a": 3,
+      "partner_t": 49789,
+      "trials": 2
+    },
+    {
+      "degree": 18,
+      "modulus": 320757,
+      "parameter_a": 26,
+      "partner_t": 159424,
+      "trials": 25
+    },
+    {
+      "degree": 20,
+      "modulus": 1706235,
+      "parameter_a": 9,
+      "partner_t": 1018552,
+      "trials": 8
+    },
+    {
+      "degree": 22,
+      "modulus": 5740747,
+      "parameter_a": 6,
+      "partner_t": 1921895,
+      "trials": 5
+    },
+    {
+      "degree": 24,
+      "modulus": 33394861,
+      "parameter_a": 6,
+      "partner_t": 9911191,
+      "trials": 5
+    },
+    {
+      "degree": 26,
+      "modulus": 99611673,
+      "parameter_a": 3,
+      "partner_t": 53205065,
+      "trials": 2
+    },
+    {
+      "degree": 28,
+      "modulus": 336533213,
+      "parameter_a": 3,
+      "partner_t": 177941084,
+      "trials": 2
+    },
+    {
+      "degree": 30,
+      "modulus": 1179354645,
+      "parameter_a": 3,
+      "partner_t": 252669766,
+      "trials": 2
+    },
+    {
+      "degree": 32,
+      "modulus": 7185006415,
+      "parameter_a": 8,
+      "partner_t": 164093156,
+      "trials": 7
+    }
+  ],
+  "status": "PASS_FINITE_BASIS_CONSTRUCTION"
+}

@@ -1,0 +1,80 @@
+{
+  "research_id": "RESEARCH-HSF-0001",
+  "experiment_id": "HSF-E0488-INVERSE-PAIR-DIRECT-FAMILY-INDEPENDENT",
+  "source": "inverse-pair-direct-family.json",
+  "cases": [
+    {
+      "dimension": 3,
+      "t": 4,
+      "formula_mismatches": 0,
+      "cc_histogram": {
+        "3": 28
+      },
+      "rc_histogram": {
+        "4": 56
+      },
+      "rr_histogram": {
+        "4": 21
+      },
+      "binary_kloosterman_sum": -5,
+      "kloosterman_rr_histogram": {
+        "4": 21
+      },
+      "expected_proper": false,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "dimension": 5,
+      "t": 16,
+      "formula_mismatches": 0,
+      "cc_histogram": {
+        "15": 496
+      },
+      "rc_histogram": {
+        "16": 992
+      },
+      "rr_histogram": {
+        "14": 155,
+        "16": 155,
+        "18": 155
+      },
+      "binary_kloosterman_sum": 11,
+      "kloosterman_rr_histogram": {
+        "14": 155,
+        "16": 155,
+        "18": 155
+      },
+      "expected_proper": true,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "dimension": 7,
+      "t": 64,
+      "formula_mismatches": 0,
+      "cc_histogram": {
+        "63": 8128
+      },
+      "rc_histogram": {
+        "64": 16256
+      },
+      "rr_histogram": {
+        "62": 1778,
+        "64": 4445,
+        "66": 1778
+      },
+      "binary_kloosterman_sum": -13,
+      "kloosterman_rr_histogram": {
+        "62": 1778,
+        "64": 4445,
+        "66": 1778
+      },
+      "expected_proper": true,
+      "valid": true,
+      "errors": []
+    }
+  ],
+  "status": "PASS",
+  "independence": "Reimplements polynomial reduction, multiplication, reciprocal lookup, trace, the closed formula, all array margins, the binary Kloosterman count, its exact RR histogram, and the properness boundary without importing the constructor or project verification helpers."
+}

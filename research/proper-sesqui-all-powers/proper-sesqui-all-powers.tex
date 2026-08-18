@@ -1,0 +1,882 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{xurl}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!55!black,
+  citecolor=blue!55!black,
+  urlcolor=blue!55!black,
+  pdftitle={Proper transposed sesqui arrays at all Sylvester--Hadamard powers},
+  pdfauthor={Carptopus}
+}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\GF}{GF}
+\newcommand{\F}{\mathbb F}
+\newcommand{\SA}{SA^{\mathsf T}}
+\newcommand{\ind}{\mathbf 1}
+\title{Proper transposed sesqui arrays at all Sylvester--Hadamard powers}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{\texttt{carptopus@163.com}}}
+\date{18 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For every power of two \(t=2^k\), \(k\geq2\), we construct a proper
+transposed sesqui array
+\[
+ \SA(4t-2,t,-,t-1,t:(2t-1)\times2t).
+\]
+The columns form the classical Sylvester--Hadamard trace design.  We reduce
+the cell-ordering problem to a two-to-one finite-field map.  Odd field
+dimensions are handled by an explicit inverse-pair map.  In even dimension a
+Subiaco map and its zero fibre reduce the problem to two fixed algebraic
+curves.  Geometric irreducibility, Artin--Schreier trace covers, and a
+Hasse--Weil estimate cover all even dimensions at least \(34\); fifteen exact
+polynomial-gcd certificates close the remaining even dimensions.  A fixed
+resultant certificate proves properness, and an explicit array closes \(t=4\).
+\end{abstract}
+
+\paragraph{Status.}
+The proof and its exact computations have passed implementation-separated
+internal checks.  External mathematical review and an author-level priority
+inquiry remain pending, so all priority claims are qualified.
+
+\section{Introduction}
+A binary equireplicate row--column array is a transposed sesqui array when
+column--column and row--column concurrences are constant.  It is proper when
+row--row concurrence is nonconstant.  We study
+\begin{equation}
+ (v,e,\lambda_{CC},\lambda_{RC};r,c)
+ =(2q-2,q/2,q/2-1,q/2;q-1,q),\qquad q=2^d,
+ \label{eq:qparams}
+\end{equation}
+or, with \(q=2t\),
+\begin{equation}
+ \SA(4t-2,t,-,t-1,t:(2t-1)\times2t).
+ \label{eq:tparams}
+\end{equation}
+
+The columns below are classical affine trace hyperplanes.  In the Sylvester
+case they agree block by block with the column incidence in the resolvable
+unordered triple-array construction of Gordeev and Öhman
+\cite[Theorem~5.13]{gordeev-ohman}.  That prior construction has constant
+row concurrence.  The issue addressed here is the compatible ordered
+\emph{proper} array.
+
+The proof has five parts: a general two-fibre ordering theorem; an explicit
+odd-dimensional family; a Subiaco zero-fibre bridge in even dimension; a
+fixed-curve Hasse--Weil argument for all large even dimensions; and exact
+certificates for the finite complement.  The computation is fixed and finite:
+two resultants, five irreducibility and trace checks, fifteen finite-field
+witnesses, and one boundary array.  It contains no array classification or
+extrapolation from sampled dimensions.
+
+To the best of our knowledge, \eqref{eq:tparams} is the first proper
+construction for every power of two \(t\).  The \(t=8\) instance fills the
+proper entry marked \(?,T\) by Jäger et al.~\cite[Table~2]{jager}; \(T\)
+records a triple array rather than a proper one.
+
+\section{Trace columns and a two-fibre ordering theorem}
+Let \(F=\GF(q)\), \(q=2^d\), and let \(\Tr:F\to\F_2\) be the absolute
+trace.  Index symbols by \((h,b)\in F^*\times\F_2\).  For \(c\in F\), set
+\begin{equation}
+ \mathcal B_c=\{(h,\Tr(ch)):h\in F^*\}.
+ \label{eq:columns}
+\end{equation}
+
+\begin{lemma}
+For \(c\neq c'\), \(|\mathcal B_c\cap\mathcal B_{c'}|=q/2-1\).
+\end{lemma}
+\begin{proof}
+A common symbol satisfies \(\Tr((c+c')h)=0\).  The nondegenerate trace
+pairing gives a hyperplane of size \(q/2\); remove \(h=0\).
+\end{proof}
+
+\begin{theorem}[Two-fibre ordering]
+\label{thm:twofibre}
+Suppose \(f:F\to F^*\) is exactly two-to-one with image \(Y\), the map
+\(x\mapsto xf(x)\) permutes \(F^*\), and every fibre \(\{x,x'\}\) satisfies
+\begin{equation}
+ \Tr((x+x')f(x))=1.
+ \label{eq:fibretrace}
+\end{equation}
+For rows \(r\in F^*\), columns \(c\in F\), define
+\begin{equation}
+ A(r,c)=\bigl(rf(cr),\Tr(crf(cr))\bigr).
+ \label{eq:cells}
+\end{equation}
+Then \(A\) is a binary equireplicate transposed sesqui array with
+\eqref{eq:qparams}, and for distinct rows
+\begin{equation}
+ |A_r\cap A_s|=2|Y\cap(s/r)Y|.
+ \label{eq:rr}
+\end{equation}
+\end{theorem}
+\begin{proof}
+For \(c=0\), the first coordinate \(rf(0)\) runs through \(F^*\).  For
+\(c\neq0\), putting \(x=cr\) gives first coordinate \(xf(x)/c\), which also
+runs through \(F^*\).  Thus column \(c\) is \(\mathcal B_c\).
+
+In a fixed row, the two inputs in a fibre of value \(y\) give first coordinate
+\(ry\).  Condition \eqref{eq:fibretrace} gives opposite binary coordinates,
+so the row contains both symbols over every member of \(rY\), with no
+repetition.  A fixed first coordinate \(h\) is supported by the \(q/2\) rows
+\(r=h/y\), \(y\in Y\); hence each symbol has replication \(q/2\).  A row
+and column share one symbol over each member of \(rY\), so their intersection
+is \(q/2\).  Two rows share both symbols exactly over \(rY\cap sY\), proving
+\eqref{eq:rr}.
+\end{proof}
+
+\section{Odd field dimension}
+Assume \(d\) is odd and define
+\begin{equation}
+ f(0)=f(1)=1,\qquad
+ f(x)=\frac1{x+x^{-1}}=\frac{x}{x^2+1}
+ \quad(x\notin\{0,1\}).
+ \label{eq:inverse}
+\end{equation}
+If \(H=\ker\Tr\), then
+\begin{equation}
+ Y=(H\setminus\{0\})\cup\{1\}.
+ \label{eq:Yodd}
+\end{equation}
+Indeed, \(f(x)=y\) reduces through \(u=xy\) to
+\(u^2+u=y^2\).  It has two roots precisely for nonzero \(y\in H\), and the
+roots in \(x\) are mutual inverses.  The special fibre \(\{0,1\}\) has image
+one and is disjoint from the ordinary images because \(\Tr(1)=1\).  Every
+fibre satisfies \eqref{eq:fibretrace}.  Moreover,
+\[
+ xf(x)=\left(\frac{x}{x+1}\right)^2
+\]
+on \(F^*\setminus\{1\}\), so the required permutation follows from a Möbius
+map and Frobenius.
+
+For \(a\in F^*\setminus\{1\}\),
+\begin{equation}
+ |Y\cap aY|
+ =q/4-1+\ind_{\Tr(a)=0}+\ind_{\Tr(a^{-1})=0}.
+ \label{eq:oddintersection}
+\end{equation}
+Writing
+\[
+ K_q=\sum_{a\in F^*}(-1)^{\Tr(a+a^{-1})},
+\]
+elementary character sums give
+\[
+ N_{00}=(q-3+K_q)/4,\qquad N_{11}=(q+1+K_q)/4.
+\]
+The binary Kloosterman bound \(|K_q|\leq2\sqrt q\)
+\cite{conrad-kloosterman} gives \(N_{00}>0\) and
+\(N_{11}>1\) for \(q\geq32\).  Thus
+\eqref{eq:oddintersection} assumes at least two values.
+
+\begin{theorem}
+\label{thm:odd}
+For every odd \(d\geq5\), \eqref{eq:cells} and \eqref{eq:inverse} give a
+proper array with \eqref{eq:qparams}.
+\end{theorem}
+
+\section{The Subiaco bridge in even dimension}
+Let \(d\geq4\) be even.  Call \(c\in F\) admissible when
+\begin{equation}
+ c\neq0,\qquad c^2+c+1\neq0,\qquad \Tr(c^{-1})=1.
+ \label{eq:admissible}
+\end{equation}
+Put
+\[
+ u=1+c+c^2,\qquad D(x)=x^2+cx+1,
+\]
+\[
+ N_F(x)=c^2(x^4+x)+c^2u(x^3+x^2),
+\]
+and take the normalized Subiaco o-polynomial
+\begin{equation}
+ F_c(x)=\frac{N_F(x)}{D(x)^2}+x^{1/2},
+ \qquad B_c(x)=F_c(x)+ux.
+ \label{eq:subiaco}
+\end{equation}
+The denominator has no field root under \eqref{eq:admissible}: if \(D(x)=0\),
+then \(y=x/c\) would satisfy \(y^2+y=c^{-2}\), whereas
+\(\Tr(c^{-2})=\Tr(c^{-1})=1\).  We make the finite-geometric input and the
+additional algebra explicit.  Put
+\[
+ \eta=c^2+c^5+c^{1/2},\qquad \kappa=\frac{\eta}{cu},
+\]
+Here \(u\ne0\), and also \(\eta\ne0\).  For the latter claim, suppose
+\(\eta=0\) and put \(w=c^{-1/2}\).  Then
+\[
+ w^9+w^6+1=(w^3+w+1)(w^6+w^4+w^2+w+1)=0.
+\]
+The two displayed factors are irreducible over \(\mathbb F_2\), of degrees
+three and six.  In the cubic case, \(3\mid d\); since \(d\) is even, the
+extension multiplier \(d/3\) is even, so \(\Tr_F(w^2)=0\).  In the sextic
+case, \(6\mid d\), and the zero \(w^5\)-coefficient gives
+\(\Tr_{\mathbb F_{64}/\mathbb F_2}(w)=0\), hence again
+\(\Tr_F(w^2)=0\).  Both cases contradict
+\(\Tr(c^{-1})=\Tr(w^2)=1\).
+
+The exact coordinate formulas below are recorded by O'Keefe--Thas
+\cite[pp.~178--179]{okeefe-thas}, with their \(d\) equal to our \(c\) and their scalar
+\(a\) equal to our \(\kappa\):
+\[
+ N_G(x)=c^4x^4+c^3(1+c^2+c^4)x^3+c^3(1+c^2)x,
+\]
+and
+\begin{equation}
+ G_c(x)=\frac{N_G(x)}{\eta D(x)^2}
+       +\frac{c^{1/2}x^{1/2}}{\eta}.
+ \label{eq:subiacocompanion}
+\end{equation}
+The Subiaco construction \cite{flocks-ovals} supplies that \(F_c\) is an
+o-polynomial and that, in the normalized \(q\)-clan convention
+\cite[Eq.~(19)]{bader-qclan}, the matrices
+\[
+ A_x=\begin{pmatrix}F_c(x)&x^{1/2}\\0&\kappa G_c(x)\end{pmatrix}
+ \qquad(x\in F)
+\]
+form a \(q\)-clan.  Thus for \(s\ne t\) the binary quadratic form attached
+to \(A_s+A_t\) is anisotropic.  Its cross coefficient has square \(s+t\),
+so the characteristic-two anisotropy criterion gives exactly
+\begin{equation}
+ \Tr\left(
+   \kappa\frac{(F_c(s)+F_c(t))(G_c(s)+G_c(t))}{s+t}
+ \right)=1.
+ \label{eq:qclan}
+\end{equation}
+Here \(F_c(0)=0\) and \(F_c(1)=1\), so the first fact and the
+o-polynomial/two-to-one criterion \cite[Theorem~2.2]{kolsch} imply that
+\(B_c(x)=F_c(x)+ux\) is exactly two-to-one.
+
+\begin{lemma}[Subiaco fibres]
+\label{lem:subfibres}
+Every fibre \(\{s,t\}\) of \(B_c\) satisfies
+\begin{equation}
+ \Tr((s+t)/c)=1.
+ \label{eq:subtrace}
+\end{equation}
+\end{lemma}
+\begin{proof}
+Define
+\[
+ P(x)=c^2x(x+c),\qquad
+ H(x)=\frac{P(x)}{D(x)}+(u+c^{-1/2})x^{1/2}.
+\]
+Direct expansion in characteristic two gives
+\[
+ N_G(x)/c+uN_F(x)=P(x)^2+P(x)D(x),
+\]
+and hence
+\begin{equation}
+ \kappa uG_c(x)+x/c+uF_c(x)+u^2x=H(x)^2+H(x).
+ \label{eq:artinschreierbridge}
+\end{equation}
+Taking absolute traces in \eqref{eq:artinschreierbridge} yields
+\[
+ \Tr(\kappa uG_c(x)+x/c)=\Tr(uB_c(x)).
+\]
+If \(B_c(s)=B_c(t)\), addition at \(s,t\) gives
+\[
+ \Tr\bigl(\kappa u(G_c(s)+G_c(t))+(s+t)/c\bigr)=0.
+\]
+But \(F_c(s)+F_c(t)=u(s+t)\), so \eqref{eq:qclan} gives
+\(\Tr(\kappa u(G_c(s)+G_c(t)))=1\).  The last two identities prove
+\eqref{eq:subtrace}.
+\end{proof}
+
+\begin{lemma}[Exterior-line bridge]
+\label{lem:bridge}
+Let \(I=B_c(F)\).  For a fibre \(\{a,a'\}\), put
+\(b=B_c(a)\), \(\delta=a+a'\).  If
+\begin{equation}
+ u\delta\notin I+b,
+ \label{eq:exterior}
+\end{equation}
+then Theorem~\ref{thm:twofibre} applies to
+\begin{equation}
+ x_z=\frac{z+a}{B_c(z)+b},\qquad
+ f(x_z)=c^{-1}(B_c(z)+b)
+ \label{eq:change}
+\end{equation}
+for \(z\notin\{a,a'\}\), completed by
+\(f(0)=f(u^{-1})=c^{-1}u\delta\).
+\end{lemma}
+\begin{proof}
+Set
+\[
+ r_a(z)=\frac{F_c(z)+F_c(a)}{z+a},\qquad r_a(a)=0.
+\]
+The secant-slope property of an o-polynomial says that \(r_a\) permutes
+\(F\), and
+\[
+ B_c(z)+b=(z+a)(r_a(z)+u).
+\]
+The partner \(a'\) is the unique point with \(r_a(a')=u\).  Hence the
+\(x_z\) in \eqref{eq:change} run through
+\(F\setminus\{0,u^{-1}\}\).  Every nonzero member of \(I+b\) gives one
+ordinary two-element label fibre, while \eqref{eq:exterior} prevents the
+special label from colliding with an ordinary one.  Thus \(f\) is exactly
+two-to-one.
+
+For ordinary inputs,
+\[
+ x_zf(x_z)=c^{-1}(z+a).
+\]
+These products cover \(F\setminus\{0,c^{-1}\delta\}\); the two special
+inputs give the missing products \(0,c^{-1}\delta\).  Thus \(xf(x)\)
+permutes \(F\).  Finally, an ordinary fibre coming from
+\(B_c(s)=B_c(t)\) satisfies \eqref{eq:fibretrace} by
+Lemma~\ref{lem:subfibres}, while the special fibre satisfies it because
+\(\Tr(\delta/c)=1\) for the anchor pair \(a,a'\).
+\end{proof}
+
+\section{The zero fibre and a fixed properness certificate}
+Write \(c=h^2\).  The fibre of \(B_c\) containing zero is
+\begin{equation}
+ \{0,cr^2\},\qquad \Tr(r)=1,
+ \label{eq:zerofibre}
+\end{equation}
+where the nonzero partner satisfies
+\begin{align}
+K_h(R)={}&1+(h+h^3)R+(h^7+h^9+h^{11})R^3+h^8R^4\notag\\
+&+h^{11}R^7+h^8R^8+(h^9+h^{11}+h^{13})R^9=0.
+\label{eq:Kh}
+\end{align}
+The exterior condition becomes
+\begin{equation}
+ ucr^2\notin I.
+ \label{eq:zeroexterior}
+\end{equation}
+
+For \(Y\subset F^*\), put \(S_j(Y)=\sum_{y\in Y}y^j\).  If
+\(|Y|=q/2\) and every nontrivial \(|Y\cap aY|\) equals \(q/4\), then \(Y\)
+is a cyclic \((v,k,\lambda)=(q-1,q/2,q/4)\) difference set.  Its order is
+\(n=k-\lambda=q/4\), a power of the prime \(2\), and
+\(\gcd(2,v)=\gcd(2,q-1)=1\).  The prime-power case of the Second Multiplier
+Theorem \cite[Section~4]{xiang} therefore makes \(2\) a numerical multiplier,
+so \(Y^2=\alpha Y\) for some \(\alpha\in F^*\).
+When \(S_1(Y)\neq0\), summing and normalizing gives
+\begin{equation}
+ S_j(Y)\in\{0,S_1(Y)^j\}\qquad\text{for all }j.
+ \label{eq:powerobstruction}
+\end{equation}
+
+Direct trace-hyperplane summation gives, for \(I=B_c(F)\),
+\begin{align}
+ A:=\sum_{v\in I}v&=cu,\label{eq:S1}\\
+ C:=\sum_{v\in I}v^3
+ &=h^3+h^7+h^9+h^{10}+h^{11}+h^{12}+h^{16}\notag\\
+ &=h^3(h^2+h+1)(h^3+h+1)^2(h^5+h^4+h^2+h+1).
+ \label{eq:S3}
+\end{align}
+Here every factor is nonzero under \eqref{eq:admissible}.  Indeed \(h\ne0\),
+\((h^2+h+1)^2=c^2+c+1=u\ne0\), and the remaining cubic and quintic factors
+are irreducible over \(\F_2\).  If either vanished in \(F=\F_{2^d}\), then its
+degree \(m\in\{3,5\}\) would divide \(d\).  Since \(d\) is even, \(d/m\) would
+be even, and every element of \(\F_{2^m}\) would have absolute trace zero in
+\(F\); applied to \(h^{-2}=c^{-1}\), this contradicts
+\eqref{eq:admissible}.  For the zero fibre the unscaled label set is
+\[
+ X=(I\setminus\{0\})\cup\{ucr^2\}.
+\]
+Since \(d\) is even and \(\Tr(r)=1\), one has \(r\ne1\); hence
+\(S_1(X)=cu(1+r^2)\ne0\), as required when applying
+\eqref{eq:powerobstruction} below.
+
+\begin{lemma}[Computer-assisted fixed resultant]
+\label{lem:resultant}
+For every even \(d\geq4\) and admissible \(c=h^2\), the zero fibre cannot
+satisfy \(S_3(X)=0\) or \(S_3(X)=S_1(X)^3\).
+\end{lemma}
+\begin{proof}
+Eliminating \(R\) between \eqref{eq:Kh} and the two degeneracy equations gives
+\begin{equation}
+ h^{54}(h+1)^2(h^2+h+1)^{14}R_{21}(h)R_{109}(h)
+ \label{eq:res0}
+\end{equation}
+and
+\begin{equation}
+ h^{54}(h+1)^2(h^2+h+1)^{14}
+ R_{26}(h)R_{29}(h)R_{75}(h).
+ \label{eq:res1}
+\end{equation}
+The five \(R_m\) are monic irreducible polynomials over \(\F_2\).  Their
+degrees and inverse-square root traces are
+\begin{center}
+\begin{tabular}{c@{\quad}ccccc}
+\toprule
+factor & \(R_{21}\) & \(R_{109}\) & \(R_{26}\) & \(R_{29}\) & \(R_{75}\)\\
+\midrule
+degree & 21 & 109 & 26 & 29 & 75\\
+\(\Tr(\alpha^{-2})\) & 0 & 0 & 0 & 1 & 0\\
+\bottomrule
+\end{tabular}
+\end{center}
+The low-degree factors contradict admissibility.  Each trace-zero factor does
+so in every ambient extension.  If \(R_{29}(h)=0\) in \(F_{2^d}\), then
+\(29\mid d\); because \(d\) is even, the extension degree \(d/29\) is even,
+so its minimal trace one becomes ambient trace zero.
+\end{proof}
+
+The supplement gives the complete exponent lists.  One verifier uses symbolic
+Bareiss resultants, Rabin tests, and quotient-field traces.  A code-independent
+verifier reconstructs both resultants from all \(256\) evaluations in an AES
+model of \(\GF(256)\), using Gaussian Sylvester determinants, interpolation,
+Berlekamp nullities, and coefficient traces.  Independent degree bounds
+\(240\) and \(214\) are below \(256\); both reconstructed resultants have
+degree \(214\).
+
+\begin{corollary}
+\label{cor:proper}
+An admissible zero fibre satisfying \eqref{eq:zeroexterior} gives a proper
+array with \eqref{eq:qparams}.
+\end{corollary}
+\begin{proof}
+The exterior bridge gives Theorem~\ref{thm:twofibre}.  Equation
+\eqref{eq:S1}, \eqref{eq:S3}, Lemma~\ref{lem:resultant}, and
+\eqref{eq:powerobstruction} force nonconstant multiplicative intersections.
+\end{proof}
+
+\section{Fixed curves for the exterior condition}
+Put
+\[
+ a=c=h^2,\qquad t=hr,\qquad U(a)=1+a+a^2,
+\]
+and define
+\begin{align}
+K(a,T)={}&1+(1+a)T+a^2U(a)T^3+a^2T^4+a^2T^7\notag\\
+&+T^8+U(a)T^9,\label{eq:K}\\
+D(a,P)={}&P^8+a^2P^4+1,\label{eq:D}\\
+L(a,T,P)={}&P K(a,P)+U(a)T^2D(a,P).\label{eq:L}
+\end{align}
+For admissible \(a\), the denominator in \eqref{eq:normal} below never
+vanishes on \(F\).  In fact
+\[
+ D(a,p)=(p^4+ap^2+1)^2.
+\]
+If the factor on the right vanished, then \(a\ne0\) and \(y=p^2/a\) would
+satisfy \(y^2+y=a^{-2}\), impossible because
+\(\Tr(a^{-2})=\Tr(a^{-1})=1\).
+Direct substitution gives
+\begin{equation}
+ B_a(aw^2)=\frac{pK(a,p)}{D(a,p)},\qquad p=hw.
+ \label{eq:normal}
+\end{equation}
+For admissible \(a\), \(K(a,T)\) has a unique field root \(t\), the nonzero
+partner of the zero fibre.
+
+\begin{lemma}
+\label{lem:criterion}
+The zero fibre is exterior if and only if \(L(a,t,P)\) has no root in \(F\).
+\end{lemma}
+\begin{proof}
+By \eqref{eq:normal}, the forbidden membership \(U(a)t^2\in B_a(F)\) is
+equivalent to a field root \(p\) of \(L(a,t,P)\).
+\end{proof}
+
+Let \(C\) normalize the projective closure of \(K(a,t)=0\), and let \(X\)
+normalize that of \(K(a,t)=L(a,t,p)=0\).
+
+\begin{proposition}
+\label{prop:geometry}
+The curves \(C\) and \(X\) are geometrically integral over \(\F_2\), and so
+are the Artin--Schreier covers
+\begin{equation}
+ y^2+y=1/a
+ \label{eq:AS}
+\end{equation}
+on both curves.
+\end{proposition}
+\begin{proof}
+The Newton polygon of \(K\), as a polynomial in \(a\) over
+\(\F_2((t))\), has coefficient valuations \(0,1,3,3,3\) and one lower
+edge from \((0,0)\) to \((4,3)\).  In a factorization, lower Newton polygons
+add.  Every nonzero lower edge would therefore have slope \(3/4\), hence
+horizontal length divisible by \(4\); the total horizontal length is \(4\).
+Thus no two positive-degree factors exist, over any algebraic extension of
+the constant field, and \(C\) is geometrically integral.
+
+Put \(t=1+s\).  The lowest homogeneous part at \((a,s)=(0,0)\) is
+\(a^2(s+a)\).  The tangent \(s+a=0\) occurs with multiplicity one and gives a
+branch on the normalization with \(v(a)=1\).  After base change to
+\(\overline{\F}_2\), the function \(1/a\) has an odd pole and cannot be of the
+form \(g^2+g\).  Hence the Artin--Schreier cover of \(C\) is geometrically
+integral.
+
+At the smooth rational point \(Q=(1,1)\), one has \(U(1)=1\), and the monic
+polynomial \(L/U\)
+specializes to
+\begin{equation}
+ P^{10}+P^9+P^5+P+1,
+ \label{eq:f10}
+\end{equation}
+which is irreducible and separable over \(\F_2\).  If \(L/U\) factored over
+\(\F_2(C)\), choose monic factors.  Their coefficients are integral over the
+DVR \(\mathcal O_{C,Q}\) and lie in its fraction field, hence belong to the
+DVR because it is integrally closed.  Reduction at \(Q\) would give a
+nontrivial monic factorization of \eqref{eq:f10}.  Hence the fibre product is
+integral and degree ten over \(C\).
+
+The irreducible specialization gives a smooth closed point of degree ten.
+A second smooth closed point has degree three:
+\[
+ (a,t,p)=(\alpha,\alpha+1,1),\qquad \alpha^3+\alpha+1=0,
+\]
+as the two gradients are independent.  For the proper normalization \(X\),
+the degree of its full constant field divides every closed-point degree.  It
+therefore divides both \(10\) and \(3\), hence equals one.  Since \(\F_2\) is
+perfect and the function-field extension is separable, \(X\) is smooth with
+exact constant field \(\F_2\), and therefore geometrically integral.
+
+Finally,
+\[
+ L(0,1,P)=(P+1)^8(P^2+P+1).
+\]
+At a root \(\omega^2+\omega+1=0\), one has
+\(\partial L/\partial P=\omega\neq0\).  It lifts unramified above the branch
+with \(v(a)=1\), so \(1/a\) again has an odd pole.  This proves the assertion
+for the cover of \(X\).
+\end{proof}
+
+\section{Hasse--Weil existence for large even dimension}
+We first make the ramification estimate explicit.  For \(Z=C\) or \(X\), let
+\(n_Q>0\) be the order of a zero of \(a\) at a geometric point \(Q\).  In the
+local Artin--Schreier class, successive replacements by \(g^2+g\) either
+remove the pole or reduce it to an odd order \(m_Q\leq n_Q\).  Such a pole has
+different exponent \(m_Q+1\leq2n_Q\)
+\cite[Corollary~2.3]{anbar-ramification}.  Thus the total different has degree
+at most \(2\deg(a:Z\to\mathbf P^1)\), and Riemann--Hurwitz
+\cite[Theorem~3.4.13]{stichtenoth} gives
+\[
+ g(Y_Z)\leq2g(Z)-1+\deg(a:Z\to\mathbf P^1).
+\]
+
+The plane degree bound for \(C\) and the preceding inequality give
+\begin{equation}
+ g(C)\leq45,\qquad g(Y_C)\leq98,
+ \label{eq:genusC}
+\end{equation}
+because \(K\) has total degree at most \(11\) and
+\(\deg(a:C\to\mathbf P^1)\leq9\).  The fibre product has projective degree
+at most \(11\cdot12=132\).  Castelnuovo's genus bound
+\cite[Ch.~IV, Theorem~6.4]{hartshorne}, used here only in the deliberately
+weaker plane-form estimate \(g\leq(D-1)(D-2)/2\), gives
+\begin{equation}
+ g(X)\leq8515,\qquad g(Y_X)\leq17119,
+ \label{eq:genusX}
+\end{equation}
+using \(\deg(a:X\to\mathbf P^1)\leq90\).
+
+Remove \(a=0\), poles of \(a\), and \(U(a)=0\), and denote the resulting open
+curves by \(C^\circ\) and \(X^\circ\).  The deleted divisors have total degree
+at most \(36\) on \(C\), \(360\) on \(X\), \(72\) on \(Y_C\), and \(720\) on
+\(Y_X\).  For either open curve \(Z^\circ\), let \(N_0(Z^\circ)\) count points
+with \(\Tr(1/a)=0\).  The equation \(y^2+y=1/a\) has exactly two rational
+solutions over such a point and none when the trace is one.  Consequently
+\[
+ \#Y_Z^\circ(\F_q)=2N_0(Z^\circ),\qquad
+ N_1(Z^\circ)=\#Z^\circ(\F_q)-\tfrac12\#Y_Z^\circ(\F_q).
+\]
+
+Let \(\widetilde A_q=N_1(C^\circ)\) and
+\(\widetilde T_q=N_1(X^\circ)\) be the corresponding counts on the
+normalizations.  Applying Hasse--Weil
+\cite[Theorem~5.2.3]{stichtenoth} to the four smooth projective curves
+gives
+\begin{align}
+ \widetilde A_q&\geq(q+1)/2-188\sqrt q-36,\label{eq:Aq}\\
+ \widetilde T_q&\leq(q+1)/2+34149\sqrt q+360.\label{eq:Tq}
+\end{align}
+We now account explicitly for the fact that these are normalization-point
+counts.  For any set \(S\) of rational
+points, put \(m_P=\#\nu^{-1}(P)(\F_q)\), where \(\nu\) is the normalization.
+Then \(\#\nu^{-1}(S)(\F_q)=\sum_{P\in S}m_P\).  At a smooth point \(m_P=1\);
+at a singular point \(0\leq m_P\leq r_P\), where \(r_P\) is the number of
+geometric branches.  Hence
+\[
+ \#\nu^{-1}(S)(\F_q)-\#S
+ \leq\sum_{P\in\operatorname{Sing}}(r_P-1).
+\]
+For the degree-at-most-\(11\) geometrically integral plane curve, the
+normalization exact sequence
+\[
+ 0\longrightarrow\mathcal O_{\overline C}
+ \longrightarrow\nu_*\mathcal O_C\longrightarrow\mathcal Q\longrightarrow0
+\]
+gives
+\(\sum_P\delta_P=\operatorname{length}\mathcal Q
+=p_a(\overline C)-g(C)\leq45\).
+At a point with \(r_P\) geometric branches, reduction of the semilocal
+normalization modulo its maximal ideals induces a surjection
+\((\nu_*\mathcal O_C/\mathcal O_{\overline C})_P
+\twoheadrightarrow\overline{\F}_2^{r_P}/\overline{\F}_2\); hence
+\(r_P-1\leq\delta_P\).  Applying the displayed inequality to the admissible
+trace-one affine pairs gives
+\[
+ A_q\geq\widetilde A_q-45.
+\]
+The same fibre identity in the reverse direction gives
+\(\#S-\#\nu^{-1}(S)(\F_q)\leq\#(S\cap\operatorname{Sing})\), because only a
+singular rational point can have no rational point above it.  For an
+admissible rational triple, direct differentiation gives
+\(\partial L/\partial p=D(a,p)\neq0\).  If its base pair is smooth on
+\(K=0\), then \(\nabla K=(K_a,K_t,0)\) and
+\(\nabla L=(L_a,L_t,D)\) are independent, so the triple is smooth and lifts
+uniquely to a rational normalization point.  Hence a rational bad triple
+with no rational lift can occur only above a singular base pair.  There are
+at most \(45\) such pairs, and the admissible polynomial \(L(a,t,p)\) has
+degree ten in \(p\), so allowing all of them separately gives
+\[
+ T_q\leq\widetilde T_q+10\cdot45=\widetilde T_q+450,
+\]
+where \(T_q\) is now the number of distinct admissible bad affine triples.
+
+By the exact two-to-one parameterization, the nonvanishing of \(D(a,p)\), and
+the bijection \(p=hw\), every bad parameter contributes exactly two
+\(p\)-values and every good one contributes none.  Therefore
+\begin{equation}
+ G_q\geq A_q-T_q/2
+ \geq(q+1)/4-17262.5\sqrt q-486.
+ \label{eq:Gq}
+\end{equation}
+This is positive at \(q=2^{34}\) and remains positive thereafter.
+
+\begin{theorem}
+\label{thm:largeeven}
+For every even \(d\geq34\), a proper array with \eqref{eq:qparams} exists.
+\end{theorem}
+
+\section{The finite even basis}
+For each remaining even \(d\), represent \(F_{2^d}=\F_2[X]/(m_d)\).
+Integers encode binary polynomial coefficients, including the leading bit.
+
+\begin{center}
+\begin{tabular}{rrrr}
+\toprule
+\(d\)&modulus&\(a\)&\(t\)\\
+\midrule
+4&19&2&9\\
+6&97&6&58\\
+8&501&15&250\\
+10&1627&3&65\\
+12&7993&26&3012\\
+14&30279&3&6853\\
+16&124427&3&49789\\
+18&320757&26&159424\\
+20&1706235&9&1018552\\
+22&5740747&6&1921895\\
+24&33394861&6&9911191\\
+26&99611673&3&53205065\\
+28&336533213&3&177941084\\
+30&1179354645&3&252669766\\
+32&7185006415&8&164093156\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+For each row, exact polynomial arithmetic verifies that \(m_d\) is
+irreducible,
+\[
+ aU(a)\neq0,\quad \Tr(a^{-1})=1,
+\]
+\begin{equation}
+ \deg\gcd(K(a,T),T^{2^d}-T)=1
+ \label{eq:gcdK}
+\end{equation}
+with unique root the displayed \(t\), and
+\begin{equation}
+ \gcd(L(a,t,P),P^{2^d}-P)=1.
+ \label{eq:gcdL}
+\end{equation}
+Repeated Frobenius reduction proves these identities without enumerating the
+field.  An independent implementation obtains the same degrees.
+
+\begin{theorem}
+\label{thm:smalleven}
+For every even \(d\), \(4\leq d\leq32\), a proper array with
+\eqref{eq:qparams} exists.
+\end{theorem}
+
+\section{The all-power theorem}
+For \(d=3\), \(t=4\), the following \(7\times8\) array on symbols
+\(0,\ldots,13\) is a certificate:
+\[
+\begin{array}{rrrrrrrr}
+0&1&3&12&2&10&11&13\\
+1&11&0&2&4&13&12&9\\
+11&0&2&8&1&5&13&12\\
+3&10&9&0&13&6&4&7\\
+6&7&12&10&3&1&5&8\\
+9&5&7&4&8&2&6&11\\
+8&4&5&6&7&9&3&10
+\end{array}
+\]
+Every symbol occurs four times, with \(CC=3\) and \(RC=4\).  The
+row-concurrence multiset is
+\[
+ \{2^{(6)},4^{(9)},6^{(6)}\}.
+\]
+The fourteen symbol-incidence vectors occur in seven complementary pairs.
+Choosing from each pair the vector absent from the first column and adjoining
+the zero vector gives a three-dimensional binary linear space whose seven
+nonzero vectors all have weight four.  Thus its column support is the
+Sylvester trace design at \(q=8\).
+
+\begin{theorem}[All Sylvester--Hadamard powers]
+\label{thm:main}
+For every \(k\geq2\), \(t=2^k\), there exists
+\[
+ \SA(4t-2,t,-,t-1,t:(2t-1)\times2t).
+\]
+\end{theorem}
+\begin{proof}
+Set \(d=k+1\), \(q=2^d=2t\).  The displayed array covers \(k=2\).
+For even \(k\geq4\), \(d\) is odd and Theorem~\ref{thm:odd} applies.
+For odd \(k\geq3\), \(d\) is even and Theorem~\ref{thm:largeeven} or
+Theorem~\ref{thm:smalleven} applies.
+\end{proof}
+
+\section{Prior-work boundary}
+The trace columns \eqref{eq:columns} are the classical Sylvester--Hadamard
+design.  With
+\[
+ A_h=\{c\in F^*:\Tr(ch)=0\},
+\]
+the paired supports \(A_h\cup\{0\}\) and \(F^*\setminus A_h\) are exactly
+those in Gordeev--Öhman \cite[Theorem~5.13]{gordeev-ohman}.  Their result
+gives an exact-parameter resolvable unordered triple array but not the proper
+row supports or ordering in Theorem~\ref{thm:twofibre}.
+
+Same-parameter triple arrays were also known.  McSorley et al.
+\cite{mcsorley} give the \(t=8\) parameters, and Preece et al.
+\cite{preece} give the same form when \(2t-1\) is an odd prime power.  Their
+row concurrence is constant.  O-polynomials, Subiaco hyperovals, line ovals,
+and the two-to-one relation for \(O(x)+ux\) are also prior theory
+\cite{flocks-ovals,kolsch,abdukhalikov}.
+
+For the proper object, Jäger et al.\ \cite[Table~2]{jager} record
+\((v,r,c)=(30,15,16)\) as \texttt{?,T}: their search and listed constructions
+did not produce a proper transposed sesqui array, a triple array was known,
+and nonexistence was not proved.  The \(t=8\) instance here addresses that
+recorded proper-existence gap; this status statement alone does not establish
+global priority.
+
+The recent near-triple-array framework of Gordeev--Markstr\"om--Öhman
+\cite{near-triple} includes new constructions and selected enumerations of
+proper row--column designs, but its listed proper-design cases do not include
+the \(15\times16\), 30-symbol target or the all-power family here.
+
+Thus the qualified novelty claim is only the proper ordered all-power family:
+it is not the first Hadamard support, same-parameter unordered design, or
+same-parameter triple array.
+
+\section{Reproducibility}
+\label{sec:repro}
+The supplement provides both resultant verifiers, all symbolic identities,
+the geometry checks, fifteen finite-basis certificates, the boundary array,
+a single full-chain command, and a SHA-256 manifest.  The independent
+resultant coefficient hashes are
+\begin{quote}
+\ttfamily\small
+S3=0: 258eeeeca81b726d3bc13d4ab37edfdc0c118ec5b0e813c7dec46ef9ecf7f241\\
+S3=S1\textasciicircum3:
+212ed4eed451dbc3f7d078b3a61ffdbf51bceb117f548f3febfa68866d032e59
+\end{quote}
+The manuscript is internally proof-frozen but externally unreviewed.
+
+\section*{Declaration of AI-assisted research and writing}
+This research program used OpenAI Codex extensively for candidate selection,
+conjecture formation, symbolic and finite-field derivations, adversarial proof
+checking, literature-search assistance, verification-code generation, and
+manuscript drafting and revision.  The retained claims are exposed through
+human-readable arguments and reproducible artifacts, but AI output is not
+treated as an authority and independent expert review remains pending.  Codex
+is a tool, not an author.  The named author, Carptopus, accepts responsibility
+for the manuscript's accuracy, originality, citations, and integrity.
+
+\section*{License}
+\textcopyright\ 2026 Carptopus.  This manuscript is licensed under the
+\href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons
+Attribution 4.0 International License (CC BY 4.0)}.  The source of record is
+the \href{https://github.com/Carptopus/MathExplore-Notes}{MathExplore-Notes
+repository}.  Reusers must provide appropriate attribution and indicate
+whether changes were made.  No warranties are given.
+
+\begin{thebibliography}{99}
+\bibitem{abdukhalikov}
+K.~Abdukhalikov, Bent functions and line ovals, arXiv:1609.03138 (2016).
+\bibitem{bader-qclan}
+L.~Bader, G.~Lunardon, and S.~E. Payne,
+On \(q\)-clan geometry, \(q=2^e\),
+\emph{Bull. Belg. Math. Soc. Simon Stevin} 1 (1994), 301--328,
+\url{https://eudml.org/doc/225475}.
+\bibitem{conrad-kloosterman}
+K.~Conrad, On Weil's proof of the bound for Kloosterman sums,
+\emph{J. Number Theory} 97 (2002), 439--446,
+\url{https://doi.org/10.1016/S0022-314X(02)00011-2}.
+\bibitem{flocks-ovals}
+W.~Cherowitzo, T.~Penttila, I.~Pinneri, and G.~F. Royle,
+Flocks and ovals, \emph{Geom. Dedicata} 60 (1996), 17--37,
+\url{https://doi.org/10.1007/BF00150865}.
+\bibitem{gordeev-ohman}
+A.~Gordeev and L.-D. Öhman, Resolvable triple arrays,
+\emph{Electron. J. Combin.} 33(2) (2026), P2.35,
+\url{https://doi.org/10.37236/14977}.
+\bibitem{hartshorne}
+R.~Hartshorne, \emph{Algebraic Geometry}, Graduate Texts in Mathematics 52,
+Springer, 1977,
+\url{https://doi.org/10.1007/978-1-4757-3849-0}.
+\bibitem{jager}
+G.~Jäger, K.~Markström, D.~Shcherbak, and L.-D. Öhman,
+Enumeration and construction of row-column designs,
+\emph{J. Combin. Des.} 33 (2025), 357--372,
+\url{https://doi.org/10.1002/jcd.21991}.
+\bibitem{kolsch}
+L.~Kölsch and G.~Kyureghyan,
+The classifications of o-monomials and of 2-to-1 binomials are equivalent,
+\emph{Des. Codes Cryptogr.} 93 (2025), 961--970,
+\url{https://doi.org/10.1007/s10623-024-01463-1}.
+\bibitem{mcsorley}
+J.~P. McSorley, N.~C.~K. Phillips, W.~D. Wallis, and J.~L. Yucas,
+Double arrays, triple arrays and balanced grids,
+\emph{Des. Codes Cryptogr.} 35 (2005), 21--45.
+\bibitem{near-triple}
+A.~Gordeev, K.~Markstr\"om, and L.-D. Öhman,
+Near triple arrays, \emph{J. Combin. Theory Ser. A} 219 (2026), 106121,
+\url{https://doi.org/10.1016/j.jcta.2025.106121}.
+\bibitem{okeefe-thas}
+C.~M. O'Keefe and J.~A. Thas,
+Collineations of Subiaco and Cherowitzo hyperovals,
+\emph{Bull. Belg. Math. Soc. Simon Stevin} 3 (1996), 177--192,
+\url{https://projecteuclid.org/euclid.bbms/1105540790}.
+\bibitem{preece}
+D.~A. Preece, W.~D. Wallis, and J.~L. Yucas,
+Paley triple arrays, \emph{Australas. J. Combin.} 33 (2005), 237--246.
+\bibitem{xiang}
+Q.~Xiang, Recent results on difference sets with classical parameters,
+\emph{Finite Fields Appl.} 11 (2005), 622--653.
+\bibitem{anbar-ramification}
+N.~Anbar, H.~Stichtenoth, and S.~Tutdere,
+On ramification in the compositum of function fields,
+\emph{Bull. Braz. Math. Soc.} 40 (2009), 539--552,
+\url{https://doi.org/10.1007/s00574-009-0026-8}.
+\bibitem{stichtenoth}
+H.~Stichtenoth, \emph{Algebraic Function Fields and Codes}, 2nd ed.,
+Graduate Texts in Mathematics 254, Springer, 2009,
+\url{https://doi.org/10.1007/978-3-540-76878-4}.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,162 @@
+{
+  "research_id": "RESEARCH-HSF-0001",
+  "experiment_id": "HSF-E0496-SUBIACO-GENERAL-REDUCTIONS",
+  "claim_boundary": "Finite d=4,6,8 regression only.  The all-even-dimensional joint existence lemma remains open.",
+  "cases": [
+    {
+      "dimension": 4,
+      "field_order": 16,
+      "modulus": 19,
+      "admissible_parameter_count": 8,
+      "pass_count": 8,
+      "minimum_good_fibre_count": 2,
+      "minimum_j1_certified_good_fibre_count": 2,
+      "inverse_sum_zero_good_fibre_histogram": {
+        "0": 8
+      },
+      "total_j3_rescued_good_fibre_count": 0,
+      "maximum_power_sum_uncertified_good_fibre_count": 0,
+      "first_parameter": {
+        "parameter": 2,
+        "main_trace_identity": true,
+        "companion_trace_identity": true,
+        "image_sum": 14,
+        "expected_image_sum": 14,
+        "image_sum_identity": true,
+        "good_fibre_count": 2,
+        "j1_certified_good_fibre_count": 2,
+        "inverse_sum_zero_good_fibre_count": 0,
+        "j3_rescued_good_fibre_count": 0,
+        "power_sum_uncertified_good_fibre_count": 0,
+        "first_certified_fibre": {
+          "pair": [
+            0,
+            13
+          ],
+          "base": 0,
+          "difference": 13,
+          "special": 5,
+          "first_power_sum": 11,
+          "inverse_power_sum": 8,
+          "j1_proper_certificate": true,
+          "third_power_sum": 3,
+          "inverse_third_power_sum": 2,
+          "power_sum_certificate_exponent": 1
+        },
+        "bridge_check": {
+          "domain_complete": true,
+          "two_to_one": true,
+          "product_permutation": true,
+          "fibre_trace": true,
+          "label_count": 8
+        },
+        "status": "PASS_FORMULA_REGRESSION"
+      },
+      "status": "PASS_FORMULA_REGRESSION"
+    },
+    {
+      "dimension": 6,
+      "field_order": 64,
+      "modulus": 67,
+      "admissible_parameter_count": 30,
+      "pass_count": 30,
+      "minimum_good_fibre_count": 14,
+      "minimum_j1_certified_good_fibre_count": 14,
+      "inverse_sum_zero_good_fibre_histogram": {
+        "0": 30
+      },
+      "total_j3_rescued_good_fibre_count": 0,
+      "maximum_power_sum_uncertified_good_fibre_count": 0,
+      "first_parameter": {
+        "parameter": 2,
+        "main_trace_identity": true,
+        "companion_trace_identity": true,
+        "image_sum": 14,
+        "expected_image_sum": 14,
+        "image_sum_identity": true,
+        "good_fibre_count": 14,
+        "j1_certified_good_fibre_count": 14,
+        "inverse_sum_zero_good_fibre_count": 0,
+        "j3_rescued_good_fibre_count": 0,
+        "power_sum_uncertified_good_fibre_count": 0,
+        "first_certified_fibre": {
+          "pair": [
+            0,
+            31
+          ],
+          "base": 0,
+          "difference": 31,
+          "special": 30,
+          "first_power_sum": 16,
+          "inverse_power_sum": 3,
+          "j1_proper_certificate": true,
+          "third_power_sum": 50,
+          "inverse_third_power_sum": 54,
+          "power_sum_certificate_exponent": 1
+        },
+        "bridge_check": {
+          "domain_complete": true,
+          "two_to_one": true,
+          "product_permutation": true,
+          "fibre_trace": true,
+          "label_count": 32
+        },
+        "status": "PASS_FORMULA_REGRESSION"
+      },
+      "status": "PASS_FORMULA_REGRESSION"
+    },
+    {
+      "dimension": 8,
+      "field_order": 256,
+      "modulus": 283,
+      "admissible_parameter_count": 128,
+      "pass_count": 128,
+      "minimum_good_fibre_count": 51,
+      "minimum_j1_certified_good_fibre_count": 51,
+      "inverse_sum_zero_good_fibre_histogram": {
+        "0": 112,
+        "1": 16
+      },
+      "total_j3_rescued_good_fibre_count": 16,
+      "maximum_power_sum_uncertified_good_fibre_count": 0,
+      "first_parameter": {
+        "parameter": 2,
+        "main_trace_identity": true,
+        "companion_trace_identity": true,
+        "image_sum": 14,
+        "expected_image_sum": 14,
+        "image_sum_identity": true,
+        "good_fibre_count": 64,
+        "j1_certified_good_fibre_count": 64,
+        "inverse_sum_zero_good_fibre_count": 0,
+        "j3_rescued_good_fibre_count": 0,
+        "power_sum_uncertified_good_fibre_count": 0,
+        "first_certified_fibre": {
+          "pair": [
+            3,
+            201
+          ],
+          "base": 214,
+          "difference": 202,
+          "special": 64,
+          "first_power_sum": 78,
+          "inverse_power_sum": 18,
+          "j1_proper_certificate": true,
+          "third_power_sum": 233,
+          "inverse_third_power_sum": 104,
+          "power_sum_certificate_exponent": 1
+        },
+        "bridge_check": {
+          "domain_complete": true,
+          "two_to_one": true,
+          "product_permutation": true,
+          "fibre_trace": true,
+          "label_count": 128
+        },
+        "status": "PASS_FORMULA_REGRESSION"
+      },
+      "status": "PASS_FORMULA_REGRESSION"
+    }
+  ],
+  "status": "PASS_FORMULA_REGRESSION"
+}
