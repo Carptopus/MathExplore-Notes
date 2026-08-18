@@ -5,7 +5,7 @@ This directory contains the public, offline verification materials accompanying
 
 The five programs independently check the symbolic switching identities, the
 exact quadratic-character count, frozen prime-field cases, an extension-field
-case over \(GF(27)\), and a generic finite-field implementation with controlled
+case over $GF(27)$, and a generic finite-field implementation with controlled
 mutation tests. They use only the Python standard library and require no
 network access or computer algebra system.
 
@@ -34,7 +34,7 @@ avoid self-referential hashes).
 - `verify_general_paley_switch_symbolic.py`: exact symbolic switch identities;
 - `verify_general_paley_switch_character_count.py`: character-count formula;
 - `verify_general_paley_switch_prime_fields.py`: all admissible pairs in frozen prime fields;
-- `verify_general_paley_switch_gf27_independent.py`: independent \(GF(27)\) complete-array audit;
+- `verify_general_paley_switch_gf27_independent.py`: independent $GF(27)$ complete-array audit;
 - `audit_general_paley_switch_generic_fields.py`: implementation-separated generic-field audit.
 
 ## Interpretation

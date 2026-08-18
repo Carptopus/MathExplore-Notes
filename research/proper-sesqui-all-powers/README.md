@@ -23,7 +23,7 @@ verification package therefore remains the frozen v0.1-beta package.
 
 ## Main result
 
-For every power of two \(t=2^k\), \(k\ge 2\), the manuscript constructs a proper transposed sesqui array
+For every power of two $t=2^k$, $k\ge 2$, the manuscript constructs a proper transposed sesqui array
 
 $$
 SA^{\mathsf T}(4t-2,t,-,t-1,t:(2t-1)\times 2t).
@@ -37,7 +37,7 @@ The columns use the classical Sylvester--Hadamard trace design. The contribution
 - Odd field dimensions use an explicit inverse-pair family.
 - Even dimensions use a Subiaco map and reduce the zero-fibre condition to two fixed algebraic curves.
 - Geometric irreducibility, Artin--Schreier trace covers, and a Hasse--Weil estimate handle all sufficiently large even dimensions.
-- Exact polynomial-gcd certificates cover the fifteen remaining even dimensions, and an explicit array handles \(t=4\).
+- Exact polynomial-gcd certificates cover the fifteen remaining even dimensions, and an explicit array handles $t=4$.
 
 ## Scope of the claim
 

@@ -16,7 +16,7 @@
 
 ## Main result
 
-For every odd prime power \(q\equiv3\pmod4\), \(q\geq11\), the manuscript
+For every odd prime power $q\equiv3\pmod4$, $q\geq11$, the manuscript
 constructs a proper transposed sesqui array
 
 $$
@@ -36,9 +36,9 @@ defect forces row--row concurrence to be nonconstant, making the array proper.
 - Exact symbolic identities establish the two-edge switch and moment defect.
 - A quadratic-character count gives the exact number of admissible switches.
 - The count is controlled by a family of elliptic curves; the Hasse bound gives
-  existence for every \(q\geq19\).
-- An explicit \(q=11\) witness closes the remaining case.
-- Independent prime-field, \(GF(27)\), and generic finite-field programs audit
+  existence for every $q\geq19$.
+- An explicit $q=11$ witness closes the remaining case.
+- Independent prime-field, $GF(27)$, and generic finite-field programs audit
   the formulas, boundary behavior, and complete-array parameters.
 
 ## Scope of the claim

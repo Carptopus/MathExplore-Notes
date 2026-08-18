@@ -8,13 +8,13 @@ including manuscripts and reproducible verification materials.
 | Entry | Areas | Contribution | Status |
 | --- | --- | --- | --- |
 | [Proper transposed sesqui arrays at all Sylvester--Hadamard powers](research/proper-sesqui-all-powers/README.md) | Combinatorial designs, finite fields, finite geometry, algebraic curves | Constructs an exact-parameter proper transposed sesqui array for every power of two | Internally verified candidate proof; external review pending |
-| [Paley two-edge switching for proper transposed sesqui arrays](research/paley-two-edge-switching/README.md) | Combinatorial designs, finite fields, elliptic curves | Constructs an exact-parameter proper transposed sesqui array for every odd prime power \(q\equiv3\pmod4\), \(q\geq11\) | Internally verified candidate proof; external review pending |
+| [Paley two-edge switching for proper transposed sesqui arrays](research/paley-two-edge-switching/README.md) | Combinatorial designs, finite fields, elliptic curves | Constructs an exact-parameter proper transposed sesqui array for every odd prime power $q\equiv3\pmod4$, $q\geq11$ | Internally verified candidate proof; external review pending |
 
 ## Current results
 
 ### Sylvester--Hadamard powers
 
-For every \(t=2^k\), \(k\geq2\), the first manuscript constructs
+For every $t=2^k$, $k\geq2$, the first manuscript constructs
 
 $$
 SA^{\mathsf T}(4t-2,t,-,t-1,t:(2t-1)\times2t).
@@ -28,7 +28,7 @@ and exact certificates.
 
 ### Paley two-edge switching
 
-For every odd prime power \(q\equiv3\pmod4\), \(q\geq11\), the second
+For every odd prime power $q\equiv3\pmod4$, $q\geq11$, the second
 manuscript constructs
 
 $$

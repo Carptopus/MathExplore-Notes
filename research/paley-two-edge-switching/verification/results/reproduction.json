@@ -63,7 +63,7 @@
   },
   "manifest": {
     "path": "MANIFEST.json",
-    "sha256": "58a9b16af0e7bb7d7131e6e63fe8607a9eead55009b907ed5c8abdc389483ebb",
+    "sha256": "26efe5b6054c2d7b30e47c298eb2358bb239db204b64ad69ef6118114abcaa9f",
     "file_count": 15
   },
   "release_gate": {
