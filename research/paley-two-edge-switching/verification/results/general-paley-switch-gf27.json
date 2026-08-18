@@ -1,0 +1,59 @@
+{
+  "experiment_id": "HSF-SWITCH-0002-D2-GF27-INDEPENDENT",
+  "field": "GF(3)[z]/(z^3+2z+1)",
+  "alpha_count": 6,
+  "admissible_pair_count": 18,
+  "first_pair": [
+    3,
+    7
+  ],
+  "alpha_records": [
+    {
+      "alpha": 3,
+      "T_alpha": 4,
+      "C_alpha": 4
+    },
+    {
+      "alpha": 4,
+      "T_alpha": 4,
+      "C_alpha": 4
+    },
+    {
+      "alpha": 5,
+      "T_alpha": 4,
+      "C_alpha": 4
+    },
+    {
+      "alpha": 18,
+      "T_alpha": -4,
+      "C_alpha": 2
+    },
+    {
+      "alpha": 23,
+      "T_alpha": -4,
+      "C_alpha": 2
+    },
+    {
+      "alpha": 26,
+      "T_alpha": -4,
+      "C_alpha": 2
+    }
+  ],
+  "array_audit": {
+    "parameters": {
+      "v": 54,
+      "r": 27,
+      "c": 28,
+      "e": 14,
+      "cc": 13,
+      "rc": 14
+    },
+    "rr_spectrum": {
+      "12": 108,
+      "14": 162,
+      "16": 54,
+      "18": 27
+    }
+  },
+  "claim_boundary": "This closes the first non-prime prime-power implementation check. It does not replace the general Hasse proof or the novelty audit."
+}

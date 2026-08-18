@@ -1,0 +1,729 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{xurl}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!55!black,
+  citecolor=blue!55!black,
+  urlcolor=blue!55!black,
+  pdftitle={Paley two-edge switching for proper transposed sesqui arrays},
+  pdfauthor={Carptopus}
+}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\DeclareMathOperator{\GF}{GF}
+\newcommand{\F}{\mathbb F}
+\newcommand{\SA}{SA^{\mathsf T}}
+\newcommand{\calA}{\mathcal A}
+\newcommand{\one}{\mathbf 1}
+
+\title{Paley two-edge switching for proper transposed sesqui arrays}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{\texttt{carptopus@163.com}}}
+\date{19 August 2026\\\small Version v0.2-beta}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let \(q\equiv3\pmod4\) be an odd prime power.  We construct, for every
+\(q\geq11\), a proper transposed sesqui array
+\[
+ \SA\!\left(
+ 2q,\frac{q+1}{2},-,\frac{q-1}{2},\frac{q+1}{2}:q\times(q+1)
+ \right).
+\]
+The construction starts from a Paley matching between the nonzero squares
+and nonsquares of \(\F_q\), then crosses two matching edges.  Five quadratic
+character conditions preserve the column--column and row--column
+concurrences while a nonzero second-moment defect forces the row--row
+concurrence to be nonconstant.  An exact character count reduces the
+existence of suitable switching parameters to the Hasse bound for a family
+of elliptic curves.  The bound covers \(q\geq19\), and the remaining case
+\(q=11\) has an explicit witness.
+\end{abstract}
+
+\paragraph{Status.}
+This is a proof-complete initial draft.  Its symbolic identities, finite-field
+instances, and boundary cases have passed implementation-separated internal
+checks.  External mathematical review and a definitive priority assessment
+remain open, so the novelty statement below is qualified.
+
+\section{Introduction}
+Row--column designs are binary arrays whose rows and columns are regarded as
+blocks on a common symbol set.  Triple arrays require constant row--row,
+column--column, and row--column concurrence.  A transposed sesqui array keeps
+the latter two conditions but does not require constant row--row concurrence;
+it is \emph{proper} when row--row concurrence is in fact nonconstant
+\cite{jager-enumeration}.
+
+For odd prime powers \(q\equiv3\pmod4\) with \(q>3\), the classical Paley construction
+gives triple arrays with parameters
+\[
+ TA\!\left(
+ 2q,\frac{q+1}{2},\frac{q+1}{2},\frac{q-1}{2},
+ \frac{q+1}{2}:q\times(q+1)
+ \right)
+\]
+\cite{preece-paley,nilson-intercalates}.  Thus the dimensions, replication,
+and concurrence parameters studied here are not new.  Our objective is to
+retain the Paley column structure while replacing the constant row
+concurrence by a provably nonconstant one.
+
+The construction is local.  A standard Paley matching pairs every nonzero
+square with a nonsquare.  We cross two of its edges, subject to five quadratic
+character conditions.  This changes only four endpoints, but it has three
+global consequences: the sum map remains two-to-one away from zero, the
+column design remains Paley, and the row block acquires a nonzero moment
+defect.  The first two properties give a transposed sesqui array; the third
+proves that it is proper.
+
+The nonlocal part of the argument is existence.  For a fixed matching
+parameter \(\alpha\), the number of valid second edges is expressed exactly as
+a cubic quadratic-character sum.  The associated curve is elliptic, and the
+Hasse bound makes the count positive for every \(q\geq19\).  A direct witness
+closes \(q=11\).  No finite computation is used to infer the infinite family.
+
+The smallest instance has \((v,r,c)=(22,11,12)\).  The 2025 enumeration and
+construction table of J\"ager et al. marks its proper transposed-sesqui entry
+as \texttt{?,T}: a same-parameter triple array was known, while their search
+and listed constructions did not produce a proper example
+\cite[Table~2]{jager-enumeration}.  To the best of our knowledge, the Paley
+two-edge switching construction and the resulting proper family have not
+appeared in the row--column design literature.
+
+\section{Definitions and Paley preliminaries}
+Let \(A\) be an \(r\times c\) array on a symbol set \(\Omega\) of size \(v\).
+Write \(R_i\) and \(C_j\) for the symbol supports of row \(i\) and column
+\(j\).
+
+\begin{definition}
+The array \(A\) is \emph{binary} if no symbol occurs twice in one row or one
+column, and \emph{equireplicate} with replication \(e\) if every symbol occurs
+in exactly \(e\) cells.  It is a transposed sesqui array if there are constants
+\(\lambda_{CC}\) and \(\lambda_{RC}\) such that
+\[
+ |C_j\cap C_{j'}|=\lambda_{CC}\quad(j\ne j'),
+ \qquad
+ |R_i\cap C_j|=\lambda_{RC}\quad\text{for all }i,j.
+\]
+We write
+\[
+ \SA(v,e,-,\lambda_{CC},\lambda_{RC}:r\times c).
+\]
+It is \emph{proper} if \(|R_i\cap R_{i'}|\) is not constant over distinct
+rows.
+\end{definition}
+
+Let \(F=\F_q\), where throughout \(q\equiv3\pmod4\) is an odd prime power.
+Let \(\chi:F\to\{0,\pm1\}\) be the quadratic character, with \(\chi(0)=0\),
+and put
+\[
+ Q=\{x^2:x\in F^*\},\qquad N=F^*\setminus Q,
+ \qquad N_0=N\cup\{0\}.
+\]
+Then \(\chi(-1)=-1\), and \(Q\sqcup N_0=F\).
+
+\begin{lemma}[Paley intersections]
+\label{lem:paley}
+For every \(h\in F^*\),
+\[
+ |Q\cap(Q+h)|=\frac{q-3}{4},\qquad
+ |N_0\cap(N_0+h)|=\frac{q+1}{4}.
+\]
+In particular, \(Q\) is a
+\((q,(q-1)/2,(q-3)/4)\) difference set in the additive group of \(F\),
+and \(N_0\) is its complement.
+\end{lemma}
+
+\begin{proof}
+For \(h\ne0\), the standard quadratic sum
+\[
+ \sum_{x\in F}\chi\bigl(x(x-h)\bigr)=-1
+\]
+follows by completing the square.  Indeed, after scaling by \(h\), it reduces
+to \(\sum_t\chi(t^2-1)=-1\); the equation \(y^2=t^2-1\) has \(q-1\)
+solutions because \((t-y)(t+y)=1\), and counting its solutions by \(t\)
+gives the stated sum.  Hence
+\[
+ \frac14\sum_{x\in F}(1+\chi(x))(1+\chi(x-h))=\frac{q-1}{4}.
+\]
+This product is the indicator of \(Q\cap(Q+h)\), except at \(x=0,h\).
+The two false contributions total
+\[
+ \frac{1+\chi(-h)}4+\frac{1+\chi(h)}4=\frac12,
+\]
+because \(\chi(-1)=-1\).  Thus \(|Q\cap(Q+h)|=(q-3)/4\).
+Since \(N_0=F\setminus Q\), taking complements gives
+\(|N_0\cap(N_0+h)|=(q+1)/4\).
+\end{proof}
+
+\section{A switched Paley matching}
+We first isolate the conditions on the two crossed edges.
+
+\begin{proposition}[Two-edge switch]
+\label{prop:switch}
+Suppose \(\alpha,r\in F\) satisfy
+\begin{equation}
+ \chi(\alpha)=\chi(1+\alpha)=-1,
+ \label{eq:alpha-conditions}
+\end{equation}
+and
+\begin{equation}
+ \chi(r)=\chi(1+\alpha r)=\chi(r+\alpha)=1.
+ \label{eq:r-conditions}
+\end{equation}
+Define \(\pi_0:F\to F\) by
+\begin{equation}
+ \pi_0(0)=0,\qquad
+ \pi_0(u)=\alpha u\ (u\in Q),\qquad
+ \pi_0(v)=\alpha^{-1}v\ (v\in N).
+ \label{eq:baseline-involution}
+\end{equation}
+Replace the two pairs
+\[
+ \{1,\alpha\},\qquad \{r,\alpha r\}
+\]
+by
+\[
+ \{1,\alpha r\},\qquad \{r,\alpha\},
+\]
+and leave every other pair of \(\pi_0\) unchanged.  The resulting map
+\(\pi\) is an involution.  Moreover, the map
+\begin{equation}
+ s:F\longrightarrow F,\qquad s(b)=b+\pi(b),
+ \label{eq:sum-map}
+\end{equation}
+has one singleton fibre \(\{0\}\) over zero and \((q-1)/2\) two-element
+fibres over distinct nonzero values.  Each two-element fibre contains one
+square and one nonsquare.
+\end{proposition}
+
+\begin{proof}
+Equation \eqref{eq:baseline-involution} pairs each member of \(Q\) with a
+member of \(N\), and conversely, because \(\chi(\alpha)=-1\).  The condition
+\(r=1\) is impossible: it would make
+\(\chi(1+\alpha r)=\chi(1+\alpha)=-1\), contrary to
+\eqref{eq:r-conditions}.  Hence \(1,r,\alpha,\alpha r\) are four distinct
+nonzero endpoints, and the crossed pairs still join \(Q\) to \(N\).
+
+Every unchanged pair has sum \((1+\alpha)u\) for some
+\(u\in Q\setminus\{1,r\}\).  These sums are distinct and lie in \(N\) by
+\eqref{eq:alpha-conditions}.  The two new sums are
+\[
+ 1+\alpha r,\qquad r+\alpha,
+\]
+which lie in \(Q\) by \eqref{eq:r-conditions}; hence they cannot collide with
+an unchanged sum.  They do not collide with one another because
+\[
+ (1+\alpha r)-(r+\alpha)=(1-\alpha)(1-r)\ne0.
+\]
+Together with the fixed point \(0\), this proves all assertions about the
+fibres of \(s\).
+\end{proof}
+
+Let
+\begin{equation}
+ D=s(F)=\{b+\pi(b):b\in F\}.
+ \label{eq:D-definition}
+\end{equation}
+Proposition~\ref{prop:switch} gives \(|D|=(q+1)/2\).  Relative to the
+unswitched sum set \(N_0\), it has the explicit form
+\begin{equation}
+ D=\bigl(N_0\setminus\{1+\alpha,r(1+\alpha)\}\bigr)
+ \cup\{1+\alpha r,r+\alpha\}.
+ \label{eq:D-switch}
+\end{equation}
+
+\section{The cellwise array construction}
+The next step records the ordering, including the zero fibre and the extra
+column.
+
+\begin{theorem}[Array from the switched matching]
+\label{thm:cellwise}
+Under the hypotheses of Proposition~\ref{prop:switch}, there is a binary
+equireplicate transposed sesqui array
+\[
+ \SA\!\left(
+ 2q,\frac{q+1}{2},-,\frac{q-1}{2},\frac{q+1}{2}:q\times(q+1)
+ \right).
+\]
+Its row--row concurrence is nonconstant if and only if the additive
+intersection numbers \(|D\cap(D+h)|\), \(h\in F^*\), are nonconstant.
+\end{theorem}
+
+\begin{proof}
+Take the symbol set \(\Omega=F\times\{0,1\}\), index rows by \(a\in F\), and
+index columns by \(F\cup\{\infty\}\).  Define
+\[
+ \ell(b)=
+ \begin{cases}
+ 0,&\pi(b)\in Q,\\
+ 1,&\pi(b)\in N_0,
+ \end{cases}
+\]
+and, for a finite column \(y\), put \(b=y-a\) and
+\begin{equation}
+ A(a,y)=\bigl(a+b+\pi(b),\ell(b)\bigr).
+ \label{eq:array-cell}
+\end{equation}
+In the additional column set
+\begin{equation}
+ A(a,\infty)=(a,0).
+ \label{eq:infinity-column}
+\end{equation}
+
+Fix a row \(a\).  Each nonzero fibre of \(s\) contains a square and a
+nonsquare, which receive different labels because \(\pi\) interchanges the
+two character classes.  Thus every \(d\in D\setminus\{0\}\) contributes both
+\((a+d,0)\) and \((a+d,1)\).  The zero fibre is \(b=0\): its finite cell is
+\((a,1)\), while \eqref{eq:infinity-column} supplies \((a,0)\).  Therefore
+the row support is exactly
+\begin{equation}
+ R_a=(a+D)\times\{0,1\}.
+ \label{eq:row-support}
+\end{equation}
+In particular, every row is binary.
+
+Fix a finite column \(y\).  As \(a\) runs through \(F\), the element
+\(b=y-a\) runs through \(F\), and \(\pi(b)\) also runs through \(F\).  Since
+the first coordinate in \eqref{eq:array-cell} is \(y+\pi(b)\), the column
+support is
+\begin{equation}
+ C_y=((y+Q)\times\{0\})\cup((y+N_0)\times\{1\}),
+ \label{eq:finite-column-support}
+\end{equation}
+while
+\begin{equation}
+ C_\infty=F\times\{0\}.
+ \label{eq:infinity-support}
+\end{equation}
+These columns are binary.  A symbol with label zero occurs in \(|Q|\) finite
+columns and the infinity column; a symbol with label one occurs in \(|N_0|\)
+finite columns.  Hence every symbol has replication \((q+1)/2\).
+
+For two finite columns, Lemma~\ref{lem:paley} and the disjoint labels give
+\[
+ |C_y\cap C_{y'}|
+ =\frac{q-3}{4}+\frac{q+1}{4}=\frac{q-1}{2}.
+\]
+A finite column meets \(C_\infty\) in its \(|Q|=(q-1)/2\) label-zero
+symbols, so column concurrence is constant.  Finally, \(Q\sqcup N_0=F\)
+implies
+\[
+ |R_a\cap C_y|
+ =|(a+D)\cap(y+Q)|+|(a+D)\cap(y+N_0)|
+ =|D|=\frac{q+1}{2},
+\]
+and the same value follows from \eqref{eq:infinity-support}.  This proves the
+transposed-sesqui conditions.
+
+For \(h\ne0\), equation \eqref{eq:row-support} gives
+\begin{equation}
+ |R_a\cap R_{a+h}|=2|D\cap(D+h)|.
+ \label{eq:row-concurrence}
+\end{equation}
+The final assertion follows.
+\end{proof}
+
+\section{A moment obstruction to constant row concurrence}
+We now show that the two-edge switch forces the array in
+Theorem~\ref{thm:cellwise} to be proper.
+
+\begin{lemma}[Difference-set moment identity]
+\label{lem:moment}
+Let \(E\subseteq F\), where \(q>3\) is odd, and set
+\[
+ k=|E|,\qquad S_1(E)=\sum_{x\in E}x,
+ \qquad S_2(E)=\sum_{x\in E}x^2.
+\]
+If \(|E\cap(E+h)|\) is constant for \(h\in F^*\), then
+\begin{equation}
+ kS_2(E)-S_1(E)^2=0
+ \label{eq:moment-necessary}
+\end{equation}
+in \(F\).
+\end{lemma}
+
+\begin{proof}
+Constant nonzero translation intersections make \(E\) a difference set in
+the additive group of \(F\); write its difference multiplicity as \(\lambda\).
+Summing the square of every ordered difference gives
+\[
+ \sum_{x,y\in E}(x-y)^2
+ =2kS_2(E)-2S_1(E)^2
+ =\lambda\sum_{h\in F^*}h^2.
+\]
+The last field sum is zero.  For example, choose \(c\in F^*\) with
+\(c^2\ne1\); multiplication by \(c\) permutes \(F^*\), so the sum equals
+\(c^2\) times itself.  Since the characteristic is odd, division by two
+proves \eqref{eq:moment-necessary}.
+\end{proof}
+
+\begin{proposition}[Nonzero switched moment]
+\label{prop:proper}
+The block \(D\) in \eqref{eq:D-switch} satisfies
+\begin{equation}
+ |D|S_2(D)-S_1(D)^2=-\alpha(r-1)^2\ne0.
+ \label{eq:moment-defect}
+\end{equation}
+Consequently, the array in Theorem~\ref{thm:cellwise} is proper.
+\end{proposition}
+
+\begin{proof}
+The removed and inserted elements in \eqref{eq:D-switch} have the same sum:
+\[
+ (1+\alpha)+r(1+\alpha)=(1+\alpha r)+(r+\alpha).
+\]
+Thus the first moment does not change.  Direct expansion gives the change in
+the second moment:
+\begin{align*}
+ \Delta S_2
+ &=(1+\alpha r)^2+(r+\alpha)^2
+   -(1+\alpha)^2-r^2(1+\alpha)^2\\
+ &=-2\alpha(r-1)^2.
+\end{align*}
+The original block \(N_0\) is a difference set, so its moment defect is zero
+by Lemma~\ref{lem:moment}.  In the field \(F\), the integer
+\(|D|=(q+1)/2\) equals \(1/2\), because \(q=0\) in \(F\).  Hence the new
+defect is
+\[
+ |D|\Delta S_2=-\alpha(r-1)^2,
+\]
+which is nonzero.  Lemma~\ref{lem:moment} shows that the translation
+intersections of \(D\) cannot be constant; now use
+\eqref{eq:row-concurrence}.
+\end{proof}
+
+\section{Existence of switching parameters}
+It remains to prove that \(\alpha,r\) satisfying
+\eqref{eq:alpha-conditions}--\eqref{eq:r-conditions} always exist in the
+claimed range.
+
+\begin{lemma}[The first parameter]
+\label{lem:alpha-count}
+Let
+\[
+ \calA=\{\alpha\in F:\chi(\alpha)=\chi(1+\alpha)=-1\}.
+\]
+Then
+\begin{equation}
+ |\calA|=\frac{q-3}{4}.
+ \label{eq:alpha-count}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The standard quadratic-character sum is
+\[
+ \sum_{\alpha\in F}\chi\bigl(\alpha(1+\alpha)\bigr)=-1.
+\]
+Expanding
+\((1-\chi(\alpha))(1-\chi(1+\alpha))/4\) and summing therefore gives
+\((q-1)/4\).  This expression is the indicator of membership in \(\calA\)
+except at the zeros.  At \(\alpha=0\) it contributes zero, while at
+\(\alpha=-1\) it contributes \(1/2\), although \(-1\notin\calA\).  Removing
+this false contribution proves \eqref{eq:alpha-count}.
+\end{proof}
+
+Fix \(\alpha\in\calA\), and define
+\begin{align}
+ C(\alpha)
+ &=\#\{r\in F:\chi(r)=\chi(1+\alpha r)=\chi(r+\alpha)=1\},
+ \label{eq:C-definition}\\
+ T(\alpha)
+ &=\sum_{r\in F}\chi\bigl(r(1+\alpha r)(r+\alpha)\bigr).
+ \label{eq:T-definition}
+\end{align}
+
+\begin{lemma}[Exact character count]
+\label{lem:character-count}
+For every \(\alpha\in\calA\),
+\begin{equation}
+ C(\alpha)=
+ \frac{q-3+T(\alpha)-4\chi(\alpha-1)}{8}.
+ \label{eq:exact-character-count}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Temporarily sum the product of the three positive-character indicators:
+\[
+ \frac18\sum_{r\in F}
+ (1+\chi(r))(1+\chi(1+\alpha r))(1+\chi(r+\alpha)).
+\]
+ The three linear character sums vanish.  For a quadratic polynomial with
+ nonzero leading coefficient and nonzero discriminant, completing the square
+ gives
+ \(\sum_x\chi(Ax^2+Bx+C)=-\chi(A)\).  Since
+ \(\alpha\notin\{0,\pm1\}\), this identity gives the three pairwise sums
+\begin{align*}
+ \sum_r\chi(r(1+\alpha r))&=1,\\
+ \sum_r\chi(r(r+\alpha))&=-1,\\
+ \sum_r\chi((1+\alpha r)(r+\alpha))&=1.
+\end{align*}
+Together with \eqref{eq:T-definition}, the uncorrected total is
+\((q+1+T(\alpha))/8\).
+
+The zero \(r=0\) contributes nothing to that expanded expression.  The two
+other zeros, \(r=-1/\alpha\) and \(r=-\alpha\), are distinct and each
+contributes falsely
+\[
+ \frac{1+\chi(\alpha-1)}{4}.
+\]
+Indeed, the remaining nonzero character is \(\chi(\alpha-1)\) at each
+point, while the other nonzero factor has character one.
+Subtracting both contributions gives
+\eqref{eq:exact-character-count}.
+\end{proof}
+
+\begin{lemma}[Elliptic-curve bound]
+\label{lem:hasse}
+For every \(\alpha\in\calA\),
+\begin{equation}
+ |T(\alpha)|\leq2\sqrt q.
+ \label{eq:hasse-bound}
+\end{equation}
+Consequently,
+\begin{equation}
+ C(\alpha)\geq\frac{q-7-2\sqrt q}{8}.
+ \label{eq:C-lower}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Consider
+\begin{equation}
+ E_\alpha:\quad z^2=r(1+\alpha r)(r+\alpha).
+ \label{eq:elliptic-curve}
+\end{equation}
+The roots \(0,-1/\alpha,-\alpha\) are pairwise distinct because
+\(\alpha\notin\{0,\pm1\}\).  Hence the affine cubic is nonsingular.  Its
+projective closure
+\[
+ Z^2W=R(W+\alpha R)(R+\alpha W)
+\]
+has the unique point \([0:1:0]\) at infinity, and the partial derivative with
+respect to \(W\) is nonzero there.  Thus \(E_\alpha\) is an elliptic curve
+over \(F\).
+
+For each \(r\in F\), the number of affine \(z\)-values is
+\(1+\chi(r(1+\alpha r)(r+\alpha))\).  Including the point at infinity gives
+\[
+ \#E_\alpha(F)=q+1+T(\alpha).
+\]
+The Hasse bound for elliptic curves over finite fields
+\cite[Chapter~V]{silverman} proves \eqref{eq:hasse-bound}.  Substituting
+\(T(\alpha)\geq-2\sqrt q\) and \(\chi(\alpha-1)\leq1\) into
+\eqref{eq:exact-character-count} proves \eqref{eq:C-lower}.
+\end{proof}
+
+\begin{proposition}[Parameter existence]
+\label{prop:parameter-existence}
+If \(q\equiv3\pmod4\) is an odd prime power and \(q\geq19\), then there are
+\(\alpha,r\in F\) satisfying
+\eqref{eq:alpha-conditions}--\eqref{eq:r-conditions}.
+\end{proposition}
+
+\begin{proof}
+Lemma~\ref{lem:alpha-count} gives \(\calA\ne\varnothing\).  For any
+\(\alpha\in\calA\), the right-hand side of \eqref{eq:C-lower} is positive
+when \(q\geq19\).  Since \(C(\alpha)\) is an integer, a valid \(r\) exists.
+As observed in Proposition~\ref{prop:switch}, its conditions automatically
+exclude \(r=1\).
+\end{proof}
+
+\section{The boundary instance and the main theorem}
+For \(q=11\), take \(\alpha=7\) and \(r=5\).  The involution consists of the
+fixed point \(0\) and the pairs
+\[
+ \{1,2\},\quad\{5,7\},\quad\{3,10\},\quad\{4,6\},\quad\{9,8\}.
+\]
+All five character conditions hold.  Its sum set is
+\begin{equation}
+ D=\{0,1,2,3,6,10\}\subset\F_{11},
+ \label{eq:q11-D}
+\end{equation}
+and \eqref{eq:moment-defect} equals
+\[
+ -7(5-1)^2=9\ne0\pmod{11}.
+\]
+Equations \eqref{eq:array-cell} and \eqref{eq:infinity-column} therefore give
+a proper
+\[
+ \SA(22,6,-,5,6:11\times12).
+\]
+
+\begin{theorem}[Main theorem]
+\label{thm:main}
+For every odd prime power \(q\equiv3\pmod4\) with \(q\geq11\), there exists
+a proper transposed sesqui array
+\[
+ \SA\!\left(
+ 2q,\frac{q+1}{2},-,\frac{q-1}{2},\frac{q+1}{2}:q\times(q+1)
+ \right).
+\]
+\end{theorem}
+
+\begin{proof}
+The explicit parameters above cover \(q=11\).  Every remaining admissible
+prime power is at least \(19\), so Proposition~\ref{prop:parameter-existence}
+provides switching parameters.  Proposition~\ref{prop:switch},
+Theorem~\ref{thm:cellwise}, and Proposition~\ref{prop:proper} then construct
+the required proper array.
+\end{proof}
+
+\begin{remark}[Lower parameters]
+The switching conditions themselves have no solution for \(q=3\) or \(7\):
+\(\calA\) is empty for \(q=3\); for \(q=7\), the sole candidate is
+\(\alpha=5\), and no \(r\) satisfies \eqref{eq:r-conditions}.  This is a
+boundary of the present construction, not a nonexistence claim for all
+proper arrays with those parameters.
+\end{remark}
+
+\section{Prior-work boundary}
+The target parameter family overlaps substantially with earlier work.  The
+Paley triple arrays of Preece, Wallis, and Yucas already have the same
+dimensions, replication, column concurrence, and row--column concurrence
+\cite{preece-paley}.  They have constant row concurrence; later work has
+studied their Youden-square representations and intercalates
+\cite{nilson-youden,nilson-intercalates}.  Difference-set constructions give
+another infinite source of triple arrays, again with constant row concurrence
+by definition \cite{nilson-cameron}.
+
+The deletion--exchange construction of J\"ager et al. can transform a Youden
+rectangle into a row--column design and automatically preserves a binary,
+equireplicate column-balanced layer \cite[Construction~5.2 and
+Theorem~5.3]{jager-youden}.  It does not automatically provide the
+row--column concurrence and properness proved here.  Recent resolvable triple
+arrays also include an infinite Paley subfamily, but remain triple arrays
+\cite{gordeev-ohman}.
+
+Intercalates in Paley arrays are an established subject
+\cite{nilson-intercalates}.  We therefore do not claim the Paley support, the
+target parameters, the character-sum method, or the Hasse bound as new.  The
+contribution claimed here is the
+specific two-edge switch satisfying
+\eqref{eq:alpha-conditions}--\eqref{eq:r-conditions}, the moment obstruction
+that makes its array proper, and the existence proof for every odd prime
+power \(q\equiv3\pmod4\), \(q\geq11\).
+
+The closest dated parameter anchor is the \((22,11,12)\) entry in the 2025
+table of J\"ager et al. \cite[Table~2]{jager-enumeration}.  That table is
+evidence of an open construction gap at the time of publication, not by
+itself proof of global priority.  Accordingly, our novelty statement remains
+``to the best of our knowledge.''
+
+The general Youden deletion interface does not imply this construction.
+Whether individual arrays from the present family also admit alternative
+compatible Youden representations is a separate representation problem and
+is not used in the proof.
+
+\section{Reproducibility}
+The proof is independent of computation.  The accompanying repository
+contains five complementary verification paths:
+\begin{itemize}
+\item a symbolic check of the first- and second-moment identities;
+\item an exact check of the character-count formula over sample prime fields;
+\item full cellwise array checks over sample prime fields;
+\item an implementation-independent check over \(\GF(27)\); and
+\item a generic finite-field audit covering positive and negative boundary
+      cases.
+\end{itemize}
+The corresponding scripts are
+\begin{quote}
+\ttfamily\small
+verify\_general\_paley\_switch\_symbolic.py\\
+verify\_general\_paley\_switch\_character\_count.py\\
+verify\_general\_paley\_switch\_prime\_fields.py\\
+verify\_general\_paley\_switch\_gf27\_independent.py\\
+audit\_general\_paley\_switch\_generic\_fields.py
+\end{quote}
+They test the formulas and finite instances; they are not used to extrapolate
+the infinite conclusion in Theorem~\ref{thm:main}.
+
+\section*{Declaration of AI-assisted research and writing}
+This research program used OpenAI Codex extensively for candidate selection,
+conjecture formation, finite-field derivations, adversarial proof checking,
+literature-search assistance, verification-code generation, and manuscript
+drafting and revision.  The retained claims are presented through
+human-readable arguments and reproducible artifacts, but AI output is not
+treated as an authority and independent expert review remains pending.  Codex
+is a tool, not an author.  The named author, Carptopus, accepts responsibility
+for the manuscript's accuracy, originality, citations, and integrity.
+
+\section*{License}
+\textcopyright\ 2026 Carptopus.  This manuscript is licensed under the
+\href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons
+Attribution 4.0 International License (CC BY 4.0)}.  Reusers must provide
+appropriate attribution and indicate whether changes were made.  No
+warranties are given.
+
+\begingroup
+\small
+\begin{thebibliography}{99}
+\bibitem{gordeev-ohman}
+A.~Gordeev and L.-D. \"Ohman,
+Resolvable triple arrays,
+\emph{Electron. J. Combin.} 33(2) (2026), P2.35,
+\url{https://doi.org/10.37236/14977}.
+
+\bibitem{jager-enumeration}
+G.~J\"ager, K.~Markstr\"om, D.~Shcherbak, and L.-D. \"Ohman,
+Enumeration and construction of row-column designs,
+\emph{J. Combin. Des.} 33 (2025), 357--372,
+\url{https://doi.org/10.1002/jcd.21991}.
+
+\bibitem{jager-youden}
+G.~J\"ager, K.~Markstr\"om, D.~Shcherbak, and L.-D. \"Ohman,
+Small Youden rectangles, near Youden rectangles, and their connections to
+other row-column designs,
+\emph{Discrete Math. Theor. Comput. Sci.} 25(1) (2023), Paper No.~9,
+\url{https://doi.org/10.46298/dmtcs.6754}.
+
+\bibitem{nilson-cameron}
+T.~Nilson and P.~J. Cameron,
+Triple arrays from difference sets,
+\emph{J. Combin. Des.} 25 (2017), 494--506,
+\url{https://doi.org/10.1002/jcd.21569}.
+
+\bibitem{nilson-intercalates}
+T.~Nilson,
+Intercalates in double and triple arrays,
+\emph{J. Combin. Des.} 30 (2022), 135--151,
+\url{https://doi.org/10.1002/jcd.21816}.
+
+\bibitem{nilson-youden}
+T.~Nilson and L.-D. \"Ohman,
+Triple arrays and Youden squares,
+\emph{Des. Codes Cryptogr.} 75 (2015), 429--451,
+\url{https://doi.org/10.1007/s10623-014-9926-8}.
+
+\bibitem{preece-paley}
+D.~A. Preece, W.~D. Wallis, and J.~L. Yucas,
+Paley triple arrays,
+\emph{Australas. J. Combin.} 33 (2005), 237--246,
+\url{https://ajc.maths.uq.edu.au/pdf/33/ajc_v33_p237.pdf}.
+
+\bibitem{silverman}
+J.~H. Silverman,
+\emph{The Arithmetic of Elliptic Curves}, 2nd ed., Graduate Texts in
+Mathematics 106, Springer, 2009,
+\url{https://doi.org/10.1007/978-0-387-09494-6}.
+\end{thebibliography}
+\endgroup
+
+\end{document}

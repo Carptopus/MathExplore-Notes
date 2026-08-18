@@ -1,0 +1,79 @@
+{
+  "title": "Paley two-edge switching for proper transposed sesqui arrays",
+  "release": "v0.2-beta",
+  "python": "3.13.11 (main, Dec  9 2025, 19:02:08) [MSC v.1944 64 bit (AMD64)]",
+  "commands": [
+    {
+      "script": "verify_general_paley_switch_symbolic.py",
+      "returncode": 0,
+      "stdout_tail": "tion\",\n  \"variable_order\": [\n    \"alpha\",\n    \"r\",\n    \"x\"\n  ],\n  \"checks\": {\n    \"first_moment_preserved\": true,\n    \"second_moment_defect\": true,\n    \"new_sums_distinct_factorization\": true\n  },\n  \"second_moment_defect\": \"-2*alpha*x^2*(r-1)^2\",\n  \"new_sum_difference\": \"x*(1-alpha)*(1-r)\",\n  \"claim_boundary\": \"This proves the algebraic identities only. It does not prove that the quadratic-character conditions have solutions, that the Paley array interface closes, or that the result is novel.\"\n}",
+      "stderr_tail": ""
+    },
+    {
+      "script": "verify_general_paley_switch_character_count.py",
+      "returncode": 0,
+      "stdout_tail": "pha\": 6,\n    \"hasse_lower_bound\": 5.453661807031887\n  },\n  {\n    \"q\": 71,\n    \"alpha_count\": 17,\n    \"admissible_pair_count\": 144,\n    \"minimum_C_alpha\": 6,\n    \"hasse_lower_bound\": 5.89346255670591\n  },\n  {\n    \"q\": 79,\n    \"alpha_count\": 19,\n    \"admissible_pair_count\": 180,\n    \"minimum_C_alpha\": 8,\n    \"hasse_lower_bound\": 6.777951395671103\n  },\n  {\n    \"q\": 83,\n    \"alpha_count\": 20,\n    \"admissible_pair_count\": 200,\n    \"minimum_C_alpha\": 8,\n    \"hasse_lower_bound\": 7.222391605213925\n  }\n]",
+      "stderr_tail": ""
+    },
+    {
+      "script": "verify_general_paley_switch_prime_fields.py",
+      "returncode": 0,
+      "stdout_tail": "   \"v\": 118,\n        \"r\": 59,\n        \"c\": 60,\n        \"e\": 30,\n        \"lambda_cc\": 29,\n        \"lambda_rc\": 30,\n        \"rr_spectrum\": {\n          \"24\": 59,\n          \"26\": 59,\n          \"28\": 295,\n          \"30\": 885,\n          \"32\": 236,\n          \"34\": 177\n        }\n      }\n    }\n  ],\n  \"claim_boundary\": \"The frozen prime scan calibrates the conditional lemma and exhibits cases outside 19 mod 24. It is not an infinite-family proof and says nothing about unscanned prime powers or novelty.\"\n}",
+      "stderr_tail": ""
+    },
+    {
+      "script": "verify_general_paley_switch_gf27_independent.py",
+      "returncode": 0,
+      "stdout_tail": "ha\": -4,\n      \"C_alpha\": 2\n    },\n    {\n      \"alpha\": 26,\n      \"T_alpha\": -4,\n      \"C_alpha\": 2\n    }\n  ],\n  \"array_audit\": {\n    \"parameters\": {\n      \"v\": 54,\n      \"r\": 27,\n      \"c\": 28,\n      \"e\": 14,\n      \"cc\": 13,\n      \"rc\": 14\n    },\n    \"rr_spectrum\": {\n      \"12\": 108,\n      \"14\": 162,\n      \"16\": 54,\n      \"18\": 27\n    }\n  },\n  \"claim_boundary\": \"This closes the first non-prime prime-power implementation check. It does not replace the general Hasse proof or the novelty audit.\"\n}",
+      "stderr_tail": ""
+    },
+    {
+      "script": "audit_general_paley_switch_generic_fields.py",
+      "returncode": 0,
+      "stdout_tail": "9,\n          90\n        ]\n      },\n      \"array_audit\": null,\n      \"controlled_mutation_detected\": null\n    }\n  ],\n  \"checks\": {\n    \"alpha_count\": true,\n    \"fixed_alpha_count\": true,\n    \"elliptic_point_count_hasse\": true,\n    \"switch_and_moment_defect\": true,\n    \"complete_array_selected_fields\": true,\n    \"controlled_mutation\": true\n  },\n  \"claim_boundary\": \"Finite-field regression attacks implementation and boundary errors. The infinite conclusion still requires the written Hasse proof.\"\n}",
+      "stderr_tail": ""
+    }
+  ],
+  "artifacts": {
+    "symbolic": {
+      "path": "results/general-paley-switch-symbolic.json",
+      "sha256": "282664f1bb8a3820cda31b346e47259e0f4c35c572e834e0fa6c6245beeee8d7",
+      "status": "PASS_ALL_CHECKS"
+    },
+    "character_count": {
+      "path": "results/general-paley-switch-character-count.json",
+      "sha256": "ff80d3fe8f487e1a05f619091805703118293dace1958b6a44c2eb3344cb6896",
+      "status": "PASS_ALL_CHECKS"
+    },
+    "prime_fields": {
+      "path": "results/general-paley-switch-primes.json",
+      "sha256": "37eed89676e86a93da43c166b2c0ee93a4b51ff133a5e2f71eb808f575ac42e9",
+      "status": "PASS_FROZEN_PRIME_FIELDS"
+    },
+    "gf27": {
+      "path": "results/general-paley-switch-gf27.json",
+      "sha256": "851d86bc098044070edde04aaf652fe8218de895bf6d4f7e85d53bdd9d30b4cb",
+      "status": "PASS_GF27_COMPLETE_ARRAY"
+    },
+    "generic_fields": {
+      "path": "results/audit-paley-switch-generic-fields.json",
+      "sha256": "80442bb675c73b45d862f55723da1b2de2fdc64df0796892a2957d9c9394fcdf",
+      "status": "PASS_ALL_CHECKS"
+    }
+  },
+  "manifest": {
+    "path": "MANIFEST.json",
+    "sha256": "58a9b16af0e7bb7d7131e6e63fe8607a9eead55009b907ed5c8abdc389483ebb",
+    "file_count": 15
+  },
+  "release_gate": {
+    "internal_reproduction": true,
+    "private_path_scan": true,
+    "human_author_selected": true,
+    "author": "Carptopus",
+    "licenses_selected": true,
+    "external_review_complete": false,
+    "ai_assisted_disclosure": true
+  },
+  "status": "PASS_PUBLIC_REPRODUCTION_EXTERNAL_REVIEW_PENDING"
+}

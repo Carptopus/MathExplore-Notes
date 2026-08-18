@@ -1,0 +1,876 @@
+{
+  "experiment_id": "HSF-SWITCH-0002-D2-CHARACTER-COUNT",
+  "checks": {
+    "alpha_count_formula": true,
+    "fixed_alpha_formula_D2_1": true,
+    "hasse_bound_on_frozen_primes": true,
+    "empirical_total_count_formula_on_frozen_primes": true
+  },
+  "records": [
+    {
+      "q": 7,
+      "alpha_count": 1,
+      "admissible_pair_count": 0,
+      "minimum_C_alpha": 0,
+      "hasse_lower_bound": -0.6614378277661477,
+      "alpha_records": [
+        {
+          "alpha": 5,
+          "T_alpha": 0,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 0
+        }
+      ]
+    },
+    {
+      "q": 11,
+      "alpha_count": 2,
+      "admissible_pair_count": 2,
+      "minimum_C_alpha": 0,
+      "hasse_lower_bound": -0.32915619758884995,
+      "alpha_records": [
+        {
+          "alpha": 6,
+          "T_alpha": -4,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 0
+        },
+        {
+          "alpha": 7,
+          "T_alpha": 4,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 2
+        }
+      ]
+    },
+    {
+      "q": 19,
+      "alpha_count": 4,
+      "admissible_pair_count": 8,
+      "minimum_C_alpha": 2,
+      "hasse_lower_bound": 0.4102752641148315,
+      "alpha_records": [
+        {
+          "alpha": 2,
+          "T_alpha": 4,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 2
+        },
+        {
+          "alpha": 12,
+          "T_alpha": 4,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 2
+        },
+        {
+          "alpha": 13,
+          "T_alpha": -4,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 2
+        },
+        {
+          "alpha": 14,
+          "T_alpha": -4,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 2
+        }
+      ]
+    },
+    {
+      "q": 23,
+      "alpha_count": 5,
+      "admissible_pair_count": 12,
+      "minimum_C_alpha": 2,
+      "hasse_lower_bound": 0.8010421191718202,
+      "alpha_records": [
+        {
+          "alpha": 10,
+          "T_alpha": 0,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 2
+        },
+        {
+          "alpha": 14,
+          "T_alpha": 0,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 2
+        },
+        {
+          "alpha": 19,
+          "T_alpha": 0,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 2
+        },
+        {
+          "alpha": 20,
+          "T_alpha": -8,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 2
+        },
+        {
+          "alpha": 21,
+          "T_alpha": 8,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 4
+        }
+      ]
+    },
+    {
+      "q": 31,
+      "alpha_count": 7,
+      "admissible_pair_count": 24,
+      "minimum_C_alpha": 2,
+      "hasse_lower_bound": 1.6080589092924946,
+      "alpha_records": [
+        {
+          "alpha": 11,
+          "T_alpha": 8,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 4
+        },
+        {
+          "alpha": 12,
+          "T_alpha": 0,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 4
+        },
+        {
+          "alpha": 21,
+          "T_alpha": 8,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 4
+        },
+        {
+          "alpha": 22,
+          "T_alpha": 0,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 4
+        },
+        {
+          "alpha": 23,
+          "T_alpha": 0,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 4
+        },
+        {
+          "alpha": 26,
+          "T_alpha": -8,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 2
+        },
+        {
+          "alpha": 29,
+          "T_alpha": -8,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 2
+        }
+      ]
+    },
+    {
+      "q": 43,
+      "alpha_count": 10,
+      "admissible_pair_count": 50,
+      "minimum_C_alpha": 4,
+      "hasse_lower_bound": 2.8606403689245,
+      "alpha_records": [
+        {
+          "alpha": 2,
+          "T_alpha": -4,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 4
+        },
+        {
+          "alpha": 7,
+          "T_alpha": -4,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 4
+        },
+        {
+          "alpha": 18,
+          "T_alpha": -4,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 4
+        },
+        {
+          "alpha": 19,
+          "T_alpha": 4,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 6
+        },
+        {
+          "alpha": 26,
+          "T_alpha": 12,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 6
+        },
+        {
+          "alpha": 27,
+          "T_alpha": 4,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 6
+        },
+        {
+          "alpha": 28,
+          "T_alpha": -12,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 4
+        },
+        {
+          "alpha": 29,
+          "T_alpha": 4,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 6
+        },
+        {
+          "alpha": 32,
+          "T_alpha": -4,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 4
+        },
+        {
+          "alpha": 33,
+          "T_alpha": 4,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 6
+        }
+      ]
+    },
+    {
+      "q": 47,
+      "alpha_count": 11,
+      "admissible_pair_count": 60,
+      "minimum_C_alpha": 4,
+      "hasse_lower_bound": 3.286086349899739,
+      "alpha_records": [
+        {
+          "alpha": 10,
+          "T_alpha": 8,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 6
+        },
+        {
+          "alpha": 19,
+          "T_alpha": 8,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 6
+        },
+        {
+          "alpha": 22,
+          "T_alpha": -8,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 4
+        },
+        {
+          "alpha": 29,
+          "T_alpha": -8,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 4
+        },
+        {
+          "alpha": 30,
+          "T_alpha": 0,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 6
+        },
+        {
+          "alpha": 38,
+          "T_alpha": 8,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 6
+        },
+        {
+          "alpha": 39,
+          "T_alpha": 0,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 6
+        },
+        {
+          "alpha": 40,
+          "T_alpha": 0,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 6
+        },
+        {
+          "alpha": 43,
+          "T_alpha": -8,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 4
+        },
+        {
+          "alpha": 44,
+          "T_alpha": 0,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 6
+        },
+        {
+          "alpha": 45,
+          "T_alpha": 0,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 6
+        }
+      ]
+    },
+    {
+      "q": 59,
+      "alpha_count": 14,
+      "admissible_pair_count": 98,
+      "minimum_C_alpha": 6,
+      "hasse_lower_bound": 4.579713563032848,
+      "alpha_records": [
+        {
+          "alpha": 10,
+          "T_alpha": 12,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 13,
+          "T_alpha": -4,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 6
+        },
+        {
+          "alpha": 23,
+          "T_alpha": -4,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 6
+        },
+        {
+          "alpha": 30,
+          "T_alpha": -4,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 6
+        },
+        {
+          "alpha": 31,
+          "T_alpha": -12,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 6
+        },
+        {
+          "alpha": 32,
+          "T_alpha": 4,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 33,
+          "T_alpha": -12,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 6
+        },
+        {
+          "alpha": 37,
+          "T_alpha": -4,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 6
+        },
+        {
+          "alpha": 38,
+          "T_alpha": -12,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 6
+        },
+        {
+          "alpha": 39,
+          "T_alpha": 4,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 42,
+          "T_alpha": 12,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 43,
+          "T_alpha": 4,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 54,
+          "T_alpha": 12,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 55,
+          "T_alpha": 4,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 8
+        }
+      ]
+    },
+    {
+      "q": 67,
+      "alpha_count": 16,
+      "admissible_pair_count": 128,
+      "minimum_C_alpha": 6,
+      "hasse_lower_bound": 5.453661807031887,
+      "alpha_records": [
+        {
+          "alpha": 2,
+          "T_alpha": 4,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 7,
+          "T_alpha": 4,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 11,
+          "T_alpha": -12,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 6
+        },
+        {
+          "alpha": 12,
+          "T_alpha": 12,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 27,
+          "T_alpha": 4,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 30,
+          "T_alpha": 4,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 31,
+          "T_alpha": -4,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 41,
+          "T_alpha": -12,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 6
+        },
+        {
+          "alpha": 42,
+          "T_alpha": -4,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 43,
+          "T_alpha": 12,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 44,
+          "T_alpha": -4,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 45,
+          "T_alpha": -4,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 50,
+          "T_alpha": -12,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 6
+        },
+        {
+          "alpha": 51,
+          "T_alpha": -4,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 52,
+          "T_alpha": 12,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 57,
+          "T_alpha": 4,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 8
+        }
+      ]
+    },
+    {
+      "q": 71,
+      "alpha_count": 17,
+      "admissible_pair_count": 144,
+      "minimum_C_alpha": 6,
+      "hasse_lower_bound": 5.89346255670591,
+      "alpha_records": [
+        {
+          "alpha": 13,
+          "T_alpha": 0,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 21,
+          "T_alpha": 0,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 22,
+          "T_alpha": -8,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 33,
+          "T_alpha": 16,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 34,
+          "T_alpha": -8,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 41,
+          "T_alpha": -16,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 6
+        },
+        {
+          "alpha": 46,
+          "T_alpha": 0,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 51,
+          "T_alpha": 0,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 52,
+          "T_alpha": 8,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 55,
+          "T_alpha": 0,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 61,
+          "T_alpha": 0,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 62,
+          "T_alpha": -8,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 65,
+          "T_alpha": 0,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 66,
+          "T_alpha": 8,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 67,
+          "T_alpha": 8,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 68,
+          "T_alpha": 8,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 69,
+          "T_alpha": -8,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 8
+        }
+      ]
+    },
+    {
+      "q": 79,
+      "alpha_count": 19,
+      "admissible_pair_count": 180,
+      "minimum_C_alpha": 8,
+      "hasse_lower_bound": 6.777951395671103,
+      "alpha_records": [
+        {
+          "alpha": 6,
+          "T_alpha": 8,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 14,
+          "T_alpha": -8,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 27,
+          "T_alpha": 8,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 28,
+          "T_alpha": 0,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 29,
+          "T_alpha": 16,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 12
+        },
+        {
+          "alpha": 33,
+          "T_alpha": -8,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 34,
+          "T_alpha": -16,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 47,
+          "T_alpha": -8,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 53,
+          "T_alpha": -8,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 56,
+          "T_alpha": 8,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 57,
+          "T_alpha": -16,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 58,
+          "T_alpha": 0,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 59,
+          "T_alpha": 0,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 60,
+          "T_alpha": 16,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 12
+        },
+        {
+          "alpha": 68,
+          "T_alpha": 8,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 69,
+          "T_alpha": 0,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 70,
+          "T_alpha": 0,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 74,
+          "T_alpha": -8,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 77,
+          "T_alpha": 8,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 10
+        }
+      ]
+    },
+    {
+      "q": 83,
+      "alpha_count": 20,
+      "admissible_pair_count": 200,
+      "minimum_C_alpha": 8,
+      "hasse_lower_bound": 7.222391605213925,
+      "alpha_records": [
+        {
+          "alpha": 5,
+          "T_alpha": -12,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 13,
+          "T_alpha": -12,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 14,
+          "T_alpha": -4,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 18,
+          "T_alpha": 4,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 19,
+          "T_alpha": -4,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 34,
+          "T_alpha": -12,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 42,
+          "T_alpha": 4,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 45,
+          "T_alpha": 4,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 46,
+          "T_alpha": 12,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 12
+        },
+        {
+          "alpha": 52,
+          "T_alpha": 4,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 53,
+          "T_alpha": -4,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 54,
+          "T_alpha": 12,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 12
+        },
+        {
+          "alpha": 55,
+          "T_alpha": -4,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 56,
+          "T_alpha": 12,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 12
+        },
+        {
+          "alpha": 57,
+          "T_alpha": 12,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 12
+        },
+        {
+          "alpha": 66,
+          "T_alpha": 4,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 71,
+          "T_alpha": -12,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 8
+        },
+        {
+          "alpha": 72,
+          "T_alpha": 12,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 12
+        },
+        {
+          "alpha": 73,
+          "T_alpha": -4,
+          "chi_alpha_minus_one": -1,
+          "C_alpha": 10
+        },
+        {
+          "alpha": 79,
+          "T_alpha": -12,
+          "chi_alpha_minus_one": 1,
+          "C_alpha": 8
+        }
+      ]
+    }
+  ],
+  "claim_boundary": "The script verifies D2.1 on frozen prime fields. The displayed total pair-count closed form is still empirical and is not used in the Hasse existence proof. Prime-power and literature audits remain open."
+}

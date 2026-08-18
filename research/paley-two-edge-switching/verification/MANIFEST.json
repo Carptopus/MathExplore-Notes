@@ -1,0 +1,90 @@
+{
+  "title": "Paley two-edge switching for proper transposed sesqui arrays",
+  "release": "v0.2-beta",
+  "author": "Carptopus",
+  "contact": "carptopus@163.com",
+  "mathematical_status": "INTERNAL_CANDIDATE_EXTERNAL_REVIEW_PENDING",
+  "licenses": {
+    "documentation": "CC BY 4.0",
+    "python_code": "MIT",
+    "json_results_and_manifests": "CC0 1.0"
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 2273,
+      "sha256": "094e6a825ae5b215c357b04d506e8d6a73cfd46f387425507c52372a67678aea"
+    },
+    {
+      "path": "LICENSE-DOCS-CC-BY-4.0.md",
+      "bytes": 679,
+      "sha256": "e74ebce9e715e83d36da7d383c7fb0a3ad00588a41110ed345a32298c3bb3239"
+    },
+    {
+      "path": "LICENSE-CODE-MIT.txt",
+      "bytes": 1066,
+      "sha256": "535b1049da73b324b9d66542748aed39df637337cc775fbbe3f9e4dd1d9598f2"
+    },
+    {
+      "path": "LICENSE-DATA-CC0.md",
+      "bytes": 516,
+      "sha256": "568d897e76e8435c60e665b7c5860c85f9e458d8177acd46ef3fa59138fc00a8"
+    },
+    {
+      "path": "run_reproduction.py",
+      "bytes": 8799,
+      "sha256": "ffbb3a9336e30a55f963e0d285add752a83e0a0fcb2129c7f2bfc1a3f5885273"
+    },
+    {
+      "path": "verify_general_paley_switch_symbolic.py",
+      "bytes": 4617,
+      "sha256": "4ca7002a270973c13d1477cf9c87f2ebad6255089038f5a135c84e5415e8fa62"
+    },
+    {
+      "path": "verify_general_paley_switch_character_count.py",
+      "bytes": 4064,
+      "sha256": "eb46783e9765d043d01b219e30f8c0b2b73e5354ec2ba3eec978c5d7cdae2134"
+    },
+    {
+      "path": "verify_general_paley_switch_prime_fields.py",
+      "bytes": 9308,
+      "sha256": "dc0c1c6a0cee23a82e61b6ee1a8000b16e59fe8022bafbaf1c999d0f78ba85a1"
+    },
+    {
+      "path": "verify_general_paley_switch_gf27_independent.py",
+      "bytes": 7559,
+      "sha256": "96f5efc6960db4f3246dbf27f86b4ea2df4d558e03ef1d459fe8a6212e2a85e5"
+    },
+    {
+      "path": "audit_general_paley_switch_generic_fields.py",
+      "bytes": 15402,
+      "sha256": "b8be56dd7baaecfb72c21bf04612c62819015d8cf5dc21d82ea2c1cdc1bcee81"
+    },
+    {
+      "path": "results/general-paley-switch-symbolic.json",
+      "bytes": 625,
+      "sha256": "282664f1bb8a3820cda31b346e47259e0f4c35c572e834e0fa6c6245beeee8d7"
+    },
+    {
+      "path": "results/general-paley-switch-character-count.json",
+      "bytes": 18993,
+      "sha256": "ff80d3fe8f487e1a05f619091805703118293dace1958b6a44c2eb3344cb6896"
+    },
+    {
+      "path": "results/general-paley-switch-primes.json",
+      "bytes": 3606,
+      "sha256": "37eed89676e86a93da43c166b2c0ee93a4b51ff133a5e2f71eb808f575ac42e9"
+    },
+    {
+      "path": "results/general-paley-switch-gf27.json",
+      "bytes": 1022,
+      "sha256": "851d86bc098044070edde04aaf652fe8218de895bf6d4f7e85d53bdd9d30b4cb"
+    },
+    {
+      "path": "results/audit-paley-switch-generic-fields.json",
+      "bytes": 19912,
+      "sha256": "80442bb675c73b45d862f55723da1b2de2fdc64df0796892a2957d9c9394fcdf"
+    }
+  ],
+  "status": "PASS_PUBLIC_VERIFICATION_MANIFEST_NO_PRIVATE_PATHS"
+}

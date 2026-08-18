@@ -8,21 +8,40 @@ including manuscripts and reproducible verification materials.
 | Entry | Areas | Contribution | Status |
 | --- | --- | --- | --- |
 | [Proper transposed sesqui arrays at all Sylvester--Hadamard powers](research/proper-sesqui-all-powers/README.md) | Combinatorial designs, finite fields, finite geometry, algebraic curves | Constructs an exact-parameter proper transposed sesqui array for every power of two | Internally verified candidate proof; external review pending |
+| [Paley two-edge switching for proper transposed sesqui arrays](research/paley-two-edge-switching/README.md) | Combinatorial designs, finite fields, elliptic curves | Constructs an exact-parameter proper transposed sesqui array for every odd prime power \(q\equiv3\pmod4\), \(q\geq11\) | Internally verified candidate proof; external review pending |
 
-### Current entry: proper transposed sesqui arrays
+## Current results
 
-For every \(t=2^k\), \(k\geq2\), the current manuscript constructs
+### Sylvester--Hadamard powers
+
+For every \(t=2^k\), \(k\geq2\), the first manuscript constructs
 
 $$
 SA^{\mathsf T}(4t-2,t,-,t-1,t:(2t-1)\times2t).
 $$
 
-It combines the classical Sylvester--Hadamard trace design with a compatible
-proper ordering, using finite-field maps, Subiaco geometry, algebraic curves,
-Hasse--Weil estimates, resultants, and finite certificates.
+It combines the classical Sylvester--Hadamard column design with a compatible
+proper ordering based on finite-field maps, finite geometry, algebraic curves,
+and exact certificates.
 
-- [Manuscript overview and files](research/proper-sesqui-all-powers/README.md)
-- [Verification code, certificates, and reproduction instructions](research/proper-sesqui-all-powers/verification/README.md)
+- [Manuscript and verification materials](research/proper-sesqui-all-powers/README.md)
+
+### Paley two-edge switching
+
+For every odd prime power \(q\equiv3\pmod4\), \(q\geq11\), the second
+manuscript constructs
+
+$$
+SA^{\mathsf T}\!\left(
+2q,\frac{q+1}{2},-,\frac{q-1}{2},\frac{q+1}{2}:q\times(q+1)
+\right).
+$$
+
+It converts a classical Paley matching into a proper array by a two-edge
+switch, with existence proved through exact character counts and the Hasse
+bound for elliptic curves.
+
+- [Manuscript and verification materials](research/paley-two-edge-switching/README.md)
 
 ## Status and review policy
 
@@ -45,31 +64,24 @@ a substitute for reading the proof.
 ## Repository organization
 
 Each research topic lives under [`research/`](research/) in its own directory.
-An entry may contain:
-
-- a focused README describing the question, result, methods, and status;
-- a manuscript or technical note;
-- source files and references;
-- verification code, frozen inputs, certificates, and reproduction steps;
-- entry-specific licensing and provenance information.
-
-The root README serves only as the repository-wide introduction and index.
-Detailed mathematical claims belong in the corresponding research directory.
+An entry may contain a focused README, manuscript and source, verification
+programs, generated evidence, checksums, and entry-specific licensing.
 
 ## Licensing and attribution
 
-Licenses are declared per research entry because manuscripts, source code, and
-data may use different terms. For the current entry, the manuscript and
-documentation use CC BY 4.0, Python verification code uses the MIT License, and
-JSON data and certificates use CC0 1.0.
+Licenses are declared per research entry. The current entries use CC BY 4.0
+for manuscripts and documentation, the MIT License for Python verification
+code, and CC0 1.0 for JSON results, certificates, and manifests.
 
 Unless an entry states otherwise, the responsible author is **Carptopus**.
 Contact: [carptopus@163.com](mailto:carptopus@163.com).
 
 ## Repository-level keywords
 
-Mathematical exploration; experimental mathematics; computer-assisted
-mathematics; reproducible mathematics; exact computation; constructive
-mathematics; combinatorics; combinatorial designs; finite geometry; finite
-fields; algebraic combinatorics; algebraic curves over finite fields;
-cross-disciplinary mathematical methods.
+AI-assisted mathematics; mathematical exploration; experimental mathematics;
+computer-assisted mathematics; reproducible mathematics; exact computation;
+constructive mathematics; combinatorics; combinatorial designs; row-column
+designs; transposed sesqui arrays; finite geometry; finite fields; Paley
+designs; quadratic characters; edge switching; algebraic combinatorics;
+algebraic curves over finite fields; elliptic curves; Hasse and Hasse--Weil
+bounds; cross-disciplinary mathematical methods.

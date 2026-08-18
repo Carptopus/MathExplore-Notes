@@ -1,0 +1,17 @@
+{
+  "experiment_id": "HSF-SWITCH-0002-D1-SYMBOLIC",
+  "scope": "integer polynomial identities before finite-field specialization",
+  "variable_order": [
+    "alpha",
+    "r",
+    "x"
+  ],
+  "checks": {
+    "first_moment_preserved": true,
+    "second_moment_defect": true,
+    "new_sums_distinct_factorization": true
+  },
+  "second_moment_defect": "-2*alpha*x^2*(r-1)^2",
+  "new_sum_difference": "x*(1-alpha)*(1-r)",
+  "claim_boundary": "This proves the algebraic identities only. It does not prove that the quadratic-character conditions have solutions, that the Paley array interface closes, or that the result is novel."
+}
