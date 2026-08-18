@@ -30,7 +30,7 @@
 \newcommand{\ind}{\mathbf 1}
 \title{Proper transposed sesqui arrays at all Sylvester--Hadamard powers}
 \author{Carptopus\\\href{mailto:carptopus@163.com}{\texttt{carptopus@163.com}}}
-\date{18 August 2026}
+\date{19 August 2026\\\small Version v0.2-beta}
 
 \begin{document}
 \maketitle
@@ -364,11 +364,17 @@ The exterior condition becomes
 
 For \(Y\subset F^*\), put \(S_j(Y)=\sum_{y\in Y}y^j\).  If
 \(|Y|=q/2\) and every nontrivial \(|Y\cap aY|\) equals \(q/4\), then \(Y\)
-is a cyclic \((v,k,\lambda)=(q-1,q/2,q/4)\) difference set.  Its order is
-\(n=k-\lambda=q/4\), a power of the prime \(2\), and
+is a cyclic \((v,k,\lambda)=(q-1,q/2,q/4)\) difference set.  Apply the
+multiplier theorem to its complement \(D=F^*\setminus Y\), whose parameters
+are
+\[
+ (v,k',\lambda',n)=(q-1,q/2-1,q/4-1,q/4).
+\]
+Here \(n\) is a power of the prime \(2\), \(n>\lambda'\), and
 \(\gcd(2,v)=\gcd(2,q-1)=1\).  The prime-power case of the Second Multiplier
-Theorem \cite[Section~4]{xiang} therefore makes \(2\) a numerical multiplier,
-so \(Y^2=\alpha Y\) for some \(\alpha\in F^*\).
+Theorem \cite[Section~4]{xiang} therefore makes \(2\) a numerical multiplier
+of \(D\), and hence also of \(Y\).  Thus \(Y^2=\alpha Y\) for some
+\(\alpha\in F^*\).
 When \(S_1(Y)\neq0\), summing and normalizing gives
 \begin{equation}
  S_j(Y)\in\{0,S_1(Y)^j\}\qquad\text{for all }j.
@@ -761,6 +767,17 @@ those in Gordeev--Öhman \cite[Theorem~5.13]{gordeev-ohman}.  Their result
 gives an exact-parameter resolvable unordered triple array but not the proper
 row supports or ordering in Theorem~\ref{thm:twofibre}.
 
+The deletion--exchange construction of J\"ager et al.
+\cite[Construction~5.2 and Theorem~5.3]{jager-youden} is an especially close
+prior framework.  Applied to a Youden rectangle with
+\((n,k,\lambda)=(4t-1,2t-1,t-1)\), it gives exactly the dimensions,
+replication, and column concurrence in \eqref{eq:tparams}.  What it guarantees
+automatically is the binary equireplicate mono-array layer; constant
+row--column concurrence and properness require an additional compatibility.
+The contribution here is not the deletion--exchange transformation, but a
+compatible proper ordering for every power-of-two \(t\), supplied by
+Theorem~\ref{thm:twofibre} and the maps constructed in the preceding sections.
+
 Same-parameter triple arrays were also known.  McSorley et al.
 \cite{mcsorley} give the \(t=8\) parameters, and Preece et al.
 \cite{preece} give the same form when \(2t-1\) is an odd prime power.  Their
@@ -845,6 +862,12 @@ G.~Jäger, K.~Markström, D.~Shcherbak, and L.-D. Öhman,
 Enumeration and construction of row-column designs,
 \emph{J. Combin. Des.} 33 (2025), 357--372,
 \url{https://doi.org/10.1002/jcd.21991}.
+\bibitem{jager-youden}
+G.~J\"ager, K.~Markstr\"om, D.~Shcherbak, and L.-D. \"Ohman,
+Small Youden rectangles, near Youden rectangles, and their connections to
+other row-column designs,
+\emph{Discrete Math. Theor. Comput. Sci.} 25(1) (2023), Paper No.~9,
+\url{https://dmtcs.episciences.org/11000}.
 \bibitem{kolsch}
 L.~Kölsch and G.~Kyureghyan,
 The classifications of o-monomials and of 2-to-1 binomials are equivalent,
