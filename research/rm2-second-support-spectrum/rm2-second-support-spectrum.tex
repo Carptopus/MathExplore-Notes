@@ -1,0 +1,647 @@
+% AI-assisted manuscript source; responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=29mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Second support weights of $RM_2(2,n)$}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlength{\emergencystretch}{2.5em}
+\setlist{nosep,leftmargin=*}
+
+\title{Attainable Second Support Weights\\of Binary Second-Order Reed--Muller Codes}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{20 August 2026}
+
+\hypersetup{
+  pdftitle={Attainable Second Support Weights of Binary Second-Order Reed-Muller Codes},
+  pdfauthor={Carptopus},
+  pdfsubject={Exact support-value sets for two-dimensional subcodes of binary second-order Reed-Muller codes},
+  pdfkeywords={Reed-Muller code, higher weight spectrum, support weight, quadratic Boolean function, Walsh spectrum, quadratic pencil}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\small\itshape
+Public Beta v0.1. The proof and the contribution boundary have passed
+writing-admission and manuscript-level zero-trust audits, including full-text review of the closest
+quadratic-pencil sources. External mathematical review and journal peer review are pending.
+\end{center}
+\vspace{0.8em}
+
+\begin{abstract}
+
+Let $RM_2(2,n)$ be the binary Reed--Muller code obtained by evaluating Boolean polynomials of degree at most two on $F_2^n$. We determine, for every $n$, the set of support sizes attained by its two-dimensional subcodes. The answer is stated through an explicit finite system for the three zero-frequency Walsh coefficients of the nonzero members of a quadratic pencil. Necessity follows from the Walsh spectrum of affine quadratic functions, rank inequalities for alternating polar forms, a sharp equality case for the zero-frequency convolution, Warning's second theorem, and the second generalized Hamming weight. Sufficiency is proved by a finite collection of two- and four-variable quadratic atoms, an even-value descent, and three normal forms for the odd layer. We also prove that the spectrum in odd dimension is twice the spectrum in the preceding even dimension. The result determines the nonzero positions of the second higher weight polynomial; it does not determine their multiplicities.
+
+\end{abstract}
+\section{Introduction}
+
+For a binary linear code $C$ and a subcode $D \le  C$, write
+
+\[
+\operatorname{Supp}(D)
+=\bigcup_{c\in D}\operatorname{Supp}(c),
+\qquad
+\operatorname{wt}(D)=|\operatorname{Supp}(D)|.
+\]
+
+The $r$-th support weight distribution records, for every $w$, the number $A_w^{(r)}(C)$ of $r$-dimensional subcodes of support weight $w$ \cite{ref5}. Its least nonzero position is the generalized Hamming weight $d_r(C)$. Complete support weight distributions are known for substantially fewer code families than ordinary weight distributions or generalized Hamming weights. Ghorpade, Johnsen, Ludhani and Pratihar \cite{ref4} recently determined the higher weight spectra of $RM_q(2,2)$, where the number of variables is fixed at two and the field varies. Their survey cautiously notes that the best general Reed--Muller higher-spectrum result then known appears to concern first-order codes; it does not identify a complete arbitrary-variable second-order result.
+
+We study the complementary specialization
+
+\[
+C_n=RM_2(2,n),
+\]
+
+with the binary field fixed and the number of variables arbitrary, and only ask which positions of the second support weight distribution are nonzero. Thus our object is
+
+\[
+\mathcal S_n
+=\{\operatorname{wt}(D):D\le C_n,\ \dim D=2\}.
+\tag{1}
+\]
+
+If $D=\langle f,g\rangle$, then its three nonzero words are $f,g,f+g$, and
+
+\[
+\operatorname{wt}(D)
+=\frac{\operatorname{wt}(f)+\operatorname{wt}(g)+\operatorname{wt}(f+g)}2.
+\tag{2}
+\]
+
+Equivalently, $\operatorname{wt}(D)$ is the weight of the coordinatewise disjunction of $f$ and $g$. This is the two-independent-codeword layer of a broader problem posed by Kovács \cite{ref6} about possible disjunction weights in $RM(n,2)$. We do not address arbitrary collections of codewords.
+
+The classical theory already supplies several ingredients used here. The ordinary weight distribution of binary second-order Reed--Muller codes follows from the classification of quadratic forms \cite{ref9}. Leep and Schueller \cite[Theorem 3.6]{ref7} gave a common-zero formula for an arbitrary finite-field quadratic system in terms of the orders and types of its pencil members, including pencils with degenerate members; after reducing a pair to full order, their later results give sharp bounds and extremal constructions. Fitzgerald and Yucas \cite[Theorem 2]{ref10} supplied a simpler proof for an $r$-dimensional nondegenerate pencil on a $2e$-dimensional space under $r\le e$, and then evaluated the member invariants for special gap-form pencils. Schueller \cite{ref8} computed the zeta function of a nonsingular quadratic pair in arbitrary characteristic. Hence neither counting common zeros by the members of a quadratic pencil, treating degenerate pencil members in that formula, nor the rank/type theory of individual members is new. Our contribution is the exact union of all attainable affine support values in every binary dimension, together with a finite-atom sufficiency proof realizing every candidate value.
+
+The main theorem is given in Section 3. Sections 4 and 5 prove necessity and sufficiency. Section 6 establishes the odd-dimensional doubling relation, and Section 7 records the precise role of computation and the scope of the result.
+
+\section{Preliminaries}
+
+All functions in this paper are functions on $V=F_2^n$. Every word of $C_n$ has a unique representation as a Boolean polynomial of degree at most two. For a Boolean function $h$, define
+
+\[
+W_h(a)=\sum_{x\in V}(-1)^{h(x)+a\cdot x},
+\qquad a\in V.
+\tag{3}
+\]
+
+In particular,
+
+\[
+\operatorname{wt}(h)=2^{n-1}-\frac12W_h(0).
+\tag{4}
+\]
+
+Write $h=q+\ell+c$, where $q$ is homogeneous quadratic, $\ell$ is linear and $c$ is constant. Its alternating polar form is
+
+\[
+B_h(x,y)=q(x+y)+q(x)+q(y).
+\tag{5}
+\]
+
+Let $r(h)=\operatorname{rank}(B_h)$, which is even. The standard Walsh theory of quadratic Boolean functions \cite{ref3} gives
+
+\[
+W_h(0)\in\{0,\pm2^{n-r(h)/2}\}.
+\tag{6}
+\]
+
+We include the short argument needed later. If $R=\ker B_h$ and
+
+\[
+S=\sum_x(-1)^{h(x)},
+\]
+
+then grouping $S^2$ by $z=x+y$ gives
+
+\[
+S^2=2^n\sum_{z\in R}(-1)^{q(z)+\ell(z)}.
+\tag{7}
+\]
+
+The restriction of $q+\ell$ to $R$ is linear. The final sum is zero when this restriction is nonzero and is $|R|$ otherwise, proving (6).
+
+We shall also use the complete Walsh support. If $W_h(0) \ne 0$, then $(q+\ell)|_R=0$, and applying (7) to $h+a\cdot x$ shows
+
+\[
+W_h(a)\ne0
+\quad\Longleftrightarrow\quad
+a|_R=0
+\quad\Longleftrightarrow\quad
+a\in R^\perp=\operatorname{im}B_h.
+\tag{8}
+\]
+
+The last equality uses the alternating matrix representing $B_h$.
+
+Let $D=\langle f,g\rangle$ be two-dimensional, and put
+
+\[
+N_{ab}=|\{x\in V:(f(x),g(x))=(a,b)\}|,
+\qquad a,b\in F_2.
+\]
+
+Fourier inversion on $F_2^2$ gives
+
+\[
+4N_{ab}
+=2^n+(-1)^aW_f(0)+(-1)^bW_g(0)
++(-1)^{a+b}W_{f+g}(0).
+\tag{9}
+\]
+
+Consequently,
+
+\[
+\operatorname{wt}(D)=2^n-N_{00},
+\tag{10}
+\]
+
+which is equivalent to (2).
+
+\section{Statement of the result}
+
+We first define a finite numerical set. Let $m\ge 2$ and
+
+\[
+E_m=\{0,-2^m\}\cup\{\pm2^j:0\le j<m\}.
+\tag{11}
+\]
+
+For $u \in E_m$, define the set of compatible polar ranks
+
+\[
+R_m(u)=
+\begin{cases}
+\{0\},&u=-2^m,\\
+\{0,2,\ldots,2m-2\},&u=0,\\
+\{2(m-j)\},&|u|=2^j.
+\end{cases}
+\tag{12}
+\]
+
+Let $X_m$ be the set of triples $x=(x_1,x_2,x_3) \in E_m^3$ for which there exist $r_i \in R_m(x_i)$ satisfying all of the following conditions.
+
+\begin{enumerate}
+\item The three cyclic rank inequalities hold:
+\[
+   r_i\le r_j+r_k.
+   \tag{13}
+\]
+
+\item Whenever $r_k=r_i+r_j$ and $x_1x_2x_3 \ne  0$, one has
+\[
+   x_k=2^{-m}x_ix_j.
+   \tag{14}
+\]
+
+\item The four integers
+\[
+   F_{ab}(x)
+   =2^m+(-1)^ax_1+(-1)^bx_2+(-1)^{a+b}x_3
+   \tag{15}
+\]
+
+   are nonnegative, and every nonzero $F_{ab}(x)$ is at least $2^{m-2}$.
+
+\item One has
+\[
+   F_{00}(x)\le5\cdot2^{m-1}.
+   \tag{16}
+\]
+\end{enumerate}
+
+Finally, set
+
+\[
+T_m=\{F_{00}(x):x\in X_m\}.
+\tag{17}
+\]
+
+This definition involves only three signed powers of two, three even ranks, and finitely many inequalities. It does not enumerate the codewords of $C_{2m}$.
+
+\begin{theorem}[even dimension]
+
+For every $m\ge 2$,
+
+\[
+\boxed{
+\mathcal S_{2m}
+=\{2^{2m}-2^{m-2}A:A\in T_m\}.
+}
+\tag{18}
+\]
+
+\end{theorem}
+\begin{theorem}[odd dimension]
+
+For every $m\ge 2$,
+
+\[
+\boxed{\mathcal S_{2m+1}=2\mathcal S_{2m}.}
+\tag{19}
+\]
+
+The remaining low-dimensional cases are
+
+\[
+\mathcal S_1=\{2\},\qquad
+\mathcal S_2=\{2,3,4\},\qquad
+\mathcal S_3=\{3,4,5,6,7,8\}.
+\tag{20}
+\]
+
+Indeed, $RM_2(2,1)=F_2^2$ and $RM_2(2,2)=F_2^4$, so the first two assertions follow by choosing two independent vectors with the prescribed union of supports. Moreover, $RM_2(2,3)$ is the even-weight code of length eight. Two distinct nonzero even-weight vectors have union of size at least three. Conversely, size three is realized by supports $\{1,2\}$ and $\{1,3\}$; for even $w$ with $4\le w\le 8$, use $\{1,2\}$ and $\{3,\ldots,w\}$; and for odd $w$ with $5\le w\le 7$, use $\{1,2\}$ and $\{2,3,\ldots,w\}$. This proves (20) without computation.
+
+\end{theorem}
+\section{Necessity}
+
+Assume first that $n=2m$, and define
+
+\[
+(x_1,x_2,x_3)
+=2^{-m}(W_f(0),W_g(0),W_{f+g}(0)).
+\tag{21}
+\]
+
+Equation (6) shows that each $x_i$ belongs to $E_m$. The value $+2^m$ would mean that the corresponding pencil member is the zero function and is excluded because $D$ is two-dimensional. The value $-2^m$ is the constant-one function and has polar rank zero. A zero Walsh coefficient may have any even polar rank except full rank: in even dimension a full-rank quadratic form has trivial radical and therefore cannot be balanced. This proves (12).
+
+Since
+
+\[
+B_{f+g}=B_f+B_g,
+\]
+
+subadditivity of matrix rank gives (13). We next prove the equality condition (14). Suppose, after permuting the three members, that
+
+\[
+\operatorname{rank}(B_f+B_g)
+=\operatorname{rank}B_f+\operatorname{rank}B_g.
+\]
+
+Then $im B_f$ and $im B_g$ intersect trivially. When all three zero-frequency Walsh coefficients are nonzero, (8) shows that the Walsh supports of $f$ and $g$ intersect only at zero. The Fourier convolution identity for pointwise multiplication yields
+
+\[
+W_{f+g}(0)
+=2^{-n}\sum_aW_f(a)W_g(a)
+=2^{-n}W_f(0)W_g(0).
+\tag{22}
+\]
+
+Dividing by $2^m$ gives (14).
+
+Equation (9) and the normalization (21) give
+
+\[
+N_{ab}=2^{m-2}F_{ab}(x),
+\tag{23}
+\]
+
+so all four values in (15) are nonnegative integers. For $n\ge 5$, Warning's second theorem \cite{ref1} applied to the two equations $f=a$, $g=b$ says that every nonempty fiber has at least
+
+\[
+2^{n-(2+2)}=2^{n-4}
+\]
+
+points. After (23), this is the positive lower bound in condition 3. When $n=4$, the required normalized lower bound is one and is immediate from nonemptiness.
+
+It remains to prove (16). The generalized Hamming weights of Reed--Muller codes are known \cite{ref2}. In the binary degree-two case, the second admissible descending-lexicographic tuple gives a maximum common-zero count
+
+\[
+2^{n-1}+2^{n-3}=5\cdot2^{n-3}.
+\]
+
+Equivalently,
+
+\[
+d_2(C_n)=3\cdot2^{n-3}.
+\tag{24}
+\]
+
+For $n=2m$, equations (10) and (23) turn (24) into (16). Thus every genuine two-dimensional subcode contributes a member of the right-hand side of (18).
+
+\section{Sufficiency}
+
+We must show that every value allowed by (11)--(17) is attained. The proof is by induction on $m$; importantly, it reconstructs only the target support value, not necessarily the original witness triple in $X_m$.
+
+\subsection{A rank-lowering lemma}
+
+The following lemma resolves the only obstruction caused by lowering the ambient even dimension.
+
+\begin{lemma}[maximal zero-Walsh rank replacement]
+
+Let $s\ge 2$. Suppose $z \in E_s^3$ has nonnegative normalized fibers and admits compatible even ranks satisfying (13) and (14), except that a zero coordinate is temporarily allowed to have rank $2s$. Then the ranks at the zero coordinates can be reselected so that all are at most $2s-2$, while preserving (13) and every applicable instance of (14).
+
+\end{lemma}
+\begin{proof}
+
+Put $R=2s$. If no zero coordinate has rank $R$, there is nothing to prove. If at least two do, lower all such ranks to $R-2$. The remaining rank is at most $R$, and
+
+\[
+2(R-2)\ge R
+\]
+
+because $R\ge 4$, so all triangle inequalities remain true.
+
+Now suppose exactly one zero coordinate has rank $R$, and let the other two ranks be $a,b$. If $|a-b|\le R-2$, lower $R$ to $R-2$. Otherwise parity and the bounds $0\le a,b\le R$ force $\{a,b\}=\{0,R\}$. If the rank-zero coordinate also has Walsh value zero, change the two zero-coordinate ranks to $R-2$ and $2$; the resulting ranks are $(R-2,2,R)$. If instead the rank-zero member is the constant-one function, the remaining rank-$R$ nonzero coordinate has normalized value $+1$ or $-1$. The four expressions (15) then include both a positive and a negative unit perturbation of zero, contradicting their nonnegativity.
+
+Only zero-Walsh coordinates were changed, so no new equality case with three nonzero Walsh values is created.
+
+\end{proof}
+\subsection{Even-value descent}
+
+\begin{lemma}
+
+For $m\ge 3$,
+
+\[
+T_m\cap2\mathbb Z=2T_{m-1}.
+\tag{25}
+\]
+
+\end{lemma}
+\begin{proof}
+
+The inclusion $2T_{m-1} \subset T_m$ follows by multiplying a normalized triple by two and retaining its ranks. Geometrically, add two variables ignored by both functions; every fiber and the support are multiplied by four.
+
+For the reverse inclusion, let $F_{00}(x)$ be even. Because $2^m$ is even, the number of coordinates of $x$ with absolute value one is either zero or two.
+
+If it is zero, divide all coordinates by two. Nonzero coordinates retain their fixed ranks. A zero coordinate may now carry the forbidden full rank in the lower dimension; Lemma 5.1, with $s=m-1$, replaces those ranks. Every normalized fiber, its positive lower bound, and (16) divide by two.
+
+Suppose next that two unit coordinates have opposite signs. After permuting coordinates, write
+
+\[
+x=(1,-1,2u).
+\]
+
+The lower-dimensional triple $(u,0,0)$ has the same halved target value:
+
+\[
+\frac{2^m+1-1+2u}{2}=2^{m-1}+u.
+\]
+
+If the fixed rank of $u$ is below full rank, give the two zero coordinates ranks $r(u)$ and zero. If it is full rank, use ranks $2$ and $2m-4$. These ranks satisfy (13), and (14) is inactive because a Walsh coordinate is zero.
+
+Finally, if the two unit coordinates have equal sign $\epsilon$, write
+
+\[
+x=(\epsilon,\epsilon,2u).
+\]
+
+Use the lower-dimensional triple $(u,\epsilon,0)$, since
+
+\[
+\frac{2^m+2\epsilon+2u}{2}
+=2^{m-1}+u+\epsilon.
+\]
+
+When $u \ne 0$, assign the zero coordinate the complementary rank $2(m-1)-r(u)$; when $u=0$, use zero-coordinate ranks $2$ and $2m-4$. The apparent endpoint $u=-2^{m-1}$ cannot occur in a member of $X_m$: the original triple would be $(\epsilon,\epsilon,-2^m)$, for which $F_{00}=-2$ if $\epsilon=-1$ and $F_{11}=-2$ if $\epsilon=1$. Thus the complementary rank is always legal. The triangle and equality conditions follow directly. The new fiber expressions are bounded below by the lower-dimensional threshold; at the smallest case $m=3$, equality may occur. This proves (25).
+
+\end{proof}
+\subsection{Explicit quadratic atoms}
+
+Direct sums on disjoint variable sets multiply the three zero-frequency Walsh coefficients coordinatewise. We use three finite types of blocks.
+
+First, on two variables let $h(u,v)=uv$. Since $W_h(0)=2$ and $W_{1+h}(0)=-2$, taking one output coordinate constant and the other equal to $h$ plus a constant gives, up to coordinate permutation,
+
+\[
+(2,1,1),\ (2,-1,-1),\ (-2,1,-1),\ (-2,-1,1).
+\tag{26}
+\]
+
+These are single-coordinate growth atoms; they cost two variables and permit any even number of sign flips.
+
+Second, on four variables put
+
+\[
+q=x_0x_3+x_1x_2.
+\]
+
+The following pairs give all core absolute-value types used below. The entries in the final column are the normalized triples $(W_f,W_g,W_{f+g})/4$ before optional linear and constant modifications.
+
+\begin{center}
+\small
+\begin{tabular}{@{}c p{0.25\textwidth} p{0.38\textwidth} c@{}}
+\toprule
+type & $f$ & $g$ & base triple \\
+\midrule
+$(1,0,0)$ & $q$ & $x_0+x_1+x_0x_3$ & $(1,0,0)$ \\
+$(1,1,0)$ & $q$ & $q+x_0$ & $(1,1,0)$ \\
+$(1,1,1)$ & $q$ & $x_0x_2+x_0x_3+x_1x_3$ & $(1,1,1)$ \\
+$(1,1,2)$ & $q$ & $q+x_0x_1$ & $(1,1,2)$ \\
+$(1,2,0)$ & $q$ & $x_0+x_0x_3$ & $(1,2,0)$ \\
+$(1,2,2)$ & $q$ & $x_0x_3$ & $(1,2,2)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Constant terms realize all signs for the active entries of $(1,0,0)$, $(1,1,0)$ and $(1,2,0)$. The types $(1,1,1)$ and $(1,1,2)$ realize all eight sign triples, while $(1,2,2)$ realizes precisely the four sign triples of positive product. Each assertion follows by summing first over one member of each hyperbolic pair; the complete finite representatives are also checked by \texttt{\detokenize{verification/verify_explicit_walsh_atoms.py}} in the companion source package.
+
+Third, we require an idle block that changes the variable budget but not the three normalized absolute values. Regard $x,y$ as two-dimensional binary column vectors and set
+
+\[
+f=x\cdot y,
+\qquad
+g=x\cdot My,
+\qquad
+M=\begin{pmatrix}0&1\\1&1\end{pmatrix}.
+\tag{27}
+\]
+
+The matrices $I$, $M$, and $I+M$ are invertible, so $f$, $g$, and $f+g$ are bent. For an invertible $A$,
+
+\[
+\sum_{x,y}(-1)^{x\cdot Ay+u\cdot x+v\cdot y}
+=4(-1)^{u\cdot A^{-1}v}.
+\tag{28}
+\]
+
+Choosing linear terms in the two outputs realizes every sign triple in ${\pm 1}^3$. Thus (27) is a cost-two idle atom.
+
+Finally, the induction starts at $m=2$. The following independent pairs in four variables realize every $F_{00}$ from zero through ten; conditions (15) and (16) allow no other base value.
+
+\begin{center}
+\small
+\begin{tabular}{@{}r p{0.28\textwidth} p{0.45\textwidth}@{}}
+\toprule
+$F_{00}$ & $f$ & $g$ \\
+\midrule
+0 & $1$ & $x_0$ \\
+1 & $1+x_0x_1$ & $1+x_2x_3$ \\
+2 & $x_0$ & $1+x_1x_2$ \\
+3 & $x_0x_1$ & $1+x_2x_3$ \\
+4 & $x_0$ & $x_1$ \\
+5 & $x_0x_1$ & $1+x_0+x_2x_3$ \\
+6 & $x_0$ & $x_1x_2$ \\
+7 & $x_0x_1$ & $x_0+x_2x_3$ \\
+8 & $x_0$ & $x_0x_1$ \\
+9 & $x_0x_1$ & $x_2x_3$ \\
+10 & $x_0x_1$ & $x_0x_2$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Odd normal forms}
+
+It remains to attain every odd member of $T_m$. An odd value in (15) means that exactly one or three coordinates of $x$ have absolute value one. The constant coordinate $-2^m$ cannot occur in the odd layer: the rank triangle would force the other two members to have equal rank, and the only possible unit/zero pairing would require a full-rank zero-Walsh member, which is impossible in even dimension.
+
+There are three cases.
+
+\paragraph{O1: one unit coordinate and two nonzero coordinates}
+
+After permutation,
+
+\[
+x=(\epsilon_0,\epsilon_1 2^a,\epsilon_2 2^b),
+\qquad 1\le a\le b<m.
+\tag{29}
+\]
+
+The rank triangle gives $a+b\le m$. If equality holds, (14) says
+
+\[
+\epsilon_0\epsilon_1\epsilon_2=1.
+\tag{30}
+\]
+
+Choose $s \in \{0,1,2\}$ satisfying
+
+\[
+s\ge\max(0,a+b-(m-2)),
+\qquad
+s\equiv a+b-(m-2)\pmod2.
+\tag{31}
+\]
+
+Represent $s$ by $(a_0,b_0)=(0,0),(0,1)$, or $(1,1)$, respectively. Start from the corresponding four-variable core $(1,1,1)$, $(1,1,2)$, or $(1,2,2)$. Apply $a-a_0$ and $b-b_0$ growth atoms to the last two coordinates, and fill the remaining even variable budget with idle atoms. Condition (31) makes all counts nonnegative integers. All signs are available unless no idle atom remains and the core is $(1,2,2)$; in that case $a+b=m$, and the required positive sign product is exactly (30).
+
+\paragraph{O2: one unit coordinate, one other nonzero coordinate, and one zero}
+
+Write
+
+\[
+x=(\epsilon,\delta2^a,0),
+\qquad1\le a<m.
+\tag{32}
+\]
+
+Choose $a_0 \in \{0,1\}$ with
+
+\[
+a_0\ge\max(0,a-(m-2)),
+\qquad
+a_0\equiv a-(m-2)\pmod2.
+\]
+
+Use the core $(1,1,0)$ or $(1,2,0)$, then the required number of growth and idle atoms. The active signs are unrestricted, and the zero coordinate remains zero under direct sum.
+
+\paragraph{O3: three units, or one unit and two zeros}
+
+When $m-2$ is even, use a $(1,1,1)$ or $(1,0,0)$ core and idle atoms. When $m-2$ is odd, only the target sum in $F_{00}$ must be retained. Replace the possible sums $3,1,-1,-3$ by
+
+\[
+-1+2+2,\quad
+1+2-2,\quad
+-1+2-2,\quad
+1-2-2,
+\tag{33}
+\]
+
+respectively. The sums $+1$ and $-1$ from a unit and two zeros are handled by the same $\pm 1+2-2$ replacement. Each replacement is an O1 target with $a=b=1$ and the same $F_{00}$.
+
+The base table, Lemma 5.2, and O1--O3 prove that every $A \in T_m$ is attained. If a direct-sum state had a coordinate $+2^m$, that pencil member would be the zero function; precisely those degenerate states are excluded by the definition of $E_m$. Hence the final pair is independent. This completes the proof of Theorem 3.1.
+
+\section{Odd dimensions}
+
+Let $n=2m+1$, $m\ge 2$, and normalize all zero-frequency Walsh coefficients by $2^{m+1}$. Formula (6) gives the same set $E_m$ as in even dimension, and (9) gives the same normalized four-fiber expressions. The actual fibers and support sizes have one additional factor of two.
+
+There is one apparent rank difference. In odd dimension an alternating polar form can have rank $2m$ and still have a one-dimensional radical, so a zero Walsh coefficient may carry rank $2m$. Apply Lemma 5.1 with $s=m$: every such zero-coordinate rank can be replaced by a rank at most $2m-2$ while the numerical triple and all compatibility conditions remain unchanged. Thus the odd- and even-dimensional normalized candidate triples coincide.
+
+Conversely, adding one ignored variable to any construction on $2m$ variables doubles every fiber and its support. Therefore
+
+\[
+\mathcal S_{2m+1}=2\mathcal S_{2m},
+\]
+
+proving Theorem 3.2.
+
+\section{Scope, verification, and limitations}
+
+The proof determines only the set
+
+\[
+\{w:A_w^{(2)}(C_n)\ne0\}.
+\]
+
+It does not determine the coefficients $A_w^{(2)}(C_n)$. In particular, it is not a complete second support weight distribution or a complete higher weight spectrum. It also does not classify quadratic pencils up to equivalence, and it does not determine disjunction weights of arbitrary collections of $RM(n,2)$ codewords.
+
+The accompanying programs have a deliberately limited role:
+
+\begin{itemize}
+\item they enumerate the exact spectra for the smallest dimensions as calibration;
+\item they check the explicit two- and four-variable atoms point by point;
+\item they test the rank-lowering map and the O1--O3 budget conditions over bounded parameter ranges;
+\item they contain destructive controls that reject an earlier insufficient two-variable atom model and an invalid full-rank zero-Walsh witness.
+\end{itemize}
+
+The companion source package fixes the following entry points:
+
+\begin{verbatim}
+python verification/verify_second_support_spectrum.py
+python verification/verify_explicit_walsh_atoms.py
+python verification/verify_normal_form_obligations.py
+python verification/probe_walsh_atom_semigroup.py
+\end{verbatim}
+
+The first three are verification programs. The last is explicitly a bounded discovery/calibration probe and is not independent evidence for the theorem.
+
+No finite computation is used to infer the all-$n$ statement. Generality comes from Lemmas 5.1--5.2 and the symbolic normal-form construction.
+\section{Novelty boundary}
+
+The following ingredients are classical and are not claimed as new: the Walsh spectrum and Dickson form of one quadratic Boolean function; Fourier inversion for a vectorial Boolean map; rank inequalities for a sum of alternating matrices; Warning's theorem; generalized Hamming weights of Reed--Muller codes; and counting common zeros through the ranks and types of a quadratic pencil. In particular, Fitzgerald and Yucas \cite[Theorem 2]{ref10}, explicitly presented there as a special case of \cite[Theorem 3.6]{ref7}, derive a common-zero formula for an $r$-dimensional nondegenerate pencil on a $2e$-dimensional space under $r\le e$. Over $F_2$ their definition permits linear terms but excludes nonzero constants. Here a full-rank affine pair means that all three nonzero pencil members have full polar rank. Every such pair in our range has a common zero and can be translated to this form, so their formula is exactly the entire full-rank affine slice of (15). They then compute the member invariants for special gap-form pencils. Neither this slice nor the pencil formula is claimed as new here.
+
+The candidate new result is the exact attainable support-value set (18)--(20) for binary $RM_2(2,n)$ in arbitrary dimension, together with the finite-atom sufficiency proof. A synonym-aware search through support weight distributions, generalized weight enumerators, joint/biweight and genus-two enumerators, characteristic-two quadratic pencils, common-zero counts, and quadratic vectorial Boolean maps found no direct prior statement of this result. This is evidence of novelty, not a proof of absolute priority. The full text of \cite[Theorem 3.6]{ref7} gives the common-zero formula for an arbitrary fixed quadratic system, including pencils with degenerate members, and Sections 4--5 give order constraints, sharp bounds, and extremal constructions for pairs. Over $F_2$, translating an affine pair to a common zero and representing linear terms by squares places every nontrivial common-zero instance within that framework. Thus neither the fixed-pencil formula nor the inclusion of degenerate members is claimed as new here. What \cite{ref7} does not provide is the union of all attainable common-zero or support values across all pairs, or a sufficiency theorem realizing every value allowed by the compatibility conditions. The more restrictive full text of \cite{ref10} likewise does not give that union. External expert review and the possibility of an unindexed equivalent joint-enumerator result remain pending.
+
+\section{Acknowledgment of AI assistance}
+
+This research and manuscript were developed with AI-assisted mathematical exploration and writing using Codex. Carptopus is the sole responsible author and independently takes responsibility for the claims, source selection, verification materials, and public release. Codex is not an author.
+
+\begingroup
+\small
+\raggedright
+\setlength{\parskip}{0.25em}
+\begin{thebibliography}{99}
+\bibitem{ref1} S. Asgarli, ``A new proof of Warning's second theorem,'' \emph{American Mathematical Monthly} 125 (2018), 548--552. \url{https://doi.org/10.1080/00029890.2018.1449555}.
+\bibitem{ref2} P. Beelen, ``A note on the generalized Hamming weights of Reed--Muller codes,'' arXiv:1807.01123 (2018). \url{https://arxiv.org/abs/1807.01123}.
+\bibitem{ref3} C. Carlet, \emph{Boolean Functions for Cryptography and Coding Theory}, Cambridge University Press, 2021; author manuscript. \url{https://www.math.univ-paris13.fr/~carlet/book-fcts-Bool-vect-crypt-codes.pdf}.
+\bibitem{ref4} S. R. Ghorpade, T. Johnsen, R. Ludhani and R. Pratihar, ``Betti numbers and higher weight spectra of Reed--Muller codes $RM_q(2,2)$,'' arXiv:2408.02548v3 (2026). \url{https://arxiv.org/abs/2408.02548v3}.
+\bibitem{ref5} T. Helleseth, T. Kløve and J. Mykkeltveit, ``The weight distribution of irreducible cyclic codes with block lengths $n_1(q^l-1)/n$,'' \emph{Discrete Mathematics} 18 (1977), no. 2, 179--211.
+\bibitem{ref6} B. Kovács, ``Code-based $[3,1]$-avoiders in finite affine spaces $AG(n,2)$,'' arXiv:2505.24072 (2025; manuscript dated 2026). \url{https://arxiv.org/abs/2505.24072}.
+\bibitem{ref7} D. B. Leep and L. M. Schueller, ``Zeros of a pair of quadratic forms defined over a finite field,'' \emph{Finite Fields and Their Applications} 5 (1999), 157--176. \url{https://doi.org/10.1006/ffta.1998.0232}.
+\bibitem{ref8} L. M. Schueller, ``The zeta function of a pair of quadratic forms,'' \emph{Canadian Mathematical Bulletin} 44 (2001), 242--256. \url{https://doi.org/10.4153/CMB-2001-024-7}.
+\bibitem{ref9} N. J. A. Sloane and E. R. Berlekamp, ``Weight enumerator for second-order Reed--Muller codes,'' \emph{IEEE Transactions on Information Theory} IT-16 (1970), 745--751.
+\bibitem{ref10} R. W. Fitzgerald and J. L. Yucas, ``Pencils of quadratic forms over finite fields,'' \emph{Discrete Mathematics} 283 (2004), 71--79. \url{https://doi.org/10.1016/j.disc.2004.01.006}.
+\end{thebibliography}
+\endgroup
+\end{document}

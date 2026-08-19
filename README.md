@@ -12,6 +12,7 @@ including manuscripts and reproducible verification materials.
 | [Spectral separation and the nSSP for looped double paths](research/nssp-looped-double-paths/README.md) | Inverse eigenvalue problems, graph patterns, Jacobi matrices | Classifies exactly which looped double paths allow the non-symmetric strong spectral property | v0.1-beta | Internally verified candidate proof; external review pending |
 | [An exact nSSP criterion for root-loop spider matrices](research/nssp-root-loop-spiders/README.md) | Inverse eigenvalue problems, generalized stars, matrix patterns | Characterizes the nSSP of every fixed root-loop bidirected spider matrix by pairwise coprimality of its arm polynomials | v0.1-beta | Internally verified candidate proof; external review pending |
 | [A recursive nSSP criterion for root-loop tree matrices](research/nssp-root-loop-trees/README.md) | Inverse eigenvalue problems, rooted trees, matrix patterns | Characterizes the nSSP of every fixed root-loop bidirected tree matrix by recursive sibling-subtree coprimality | v0.1-beta | Internally verified candidate proof; external review pending |
+| [Attainable second support weights of binary second-order Reed--Muller codes](research/rm2-second-support-spectrum/README.md) | Coding theory, quadratic Boolean functions, Walsh spectra | Determines for every dimension the exact set of support sizes attained by two-dimensional subcodes of $RM_2(2,n)$ | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
 
@@ -106,6 +107,25 @@ double-path pattern classification independent.
 
 - [Manuscript and verification materials](research/nssp-root-loop-trees/README.md)
 
+### Second support weights of binary second-order Reed--Muller codes
+
+For the binary Reed--Muller code $RM_2(2,n)$, this manuscript determines
+for every $n$ the exact set
+
+$$
+\mathcal S_n
+=\{\operatorname{wt}(D):D\le RM_2(2,n),\ \dim D=2\}.
+$$
+
+The even-dimensional answer is given by an explicit finite compatibility
+system for the zero-frequency Walsh coefficients and polar ranks of the three
+nonzero members of a quadratic pencil. A finite-atom construction realizes
+every candidate value, and the odd-dimensional spectra satisfy
+$\mathcal S_{2m+1}=2\mathcal S_{2m}$. The result determines support positions,
+not their multiplicities.
+
+- [Manuscript and verification materials](research/rm2-second-support-spectrum/README.md)
+
 ## Status and review policy
 
 Entries are research records, not automatically peer-reviewed publications.
@@ -153,4 +173,7 @@ graph patterns; non-symmetric strong spectral property; Jacobi matrices;
 tridiagonal matrices; spectral separation;
 root-loop spiders; spider matrices; generalized stars; bidirected trees; arm
 characteristic polynomials; rooted tree matrices; recursive subtree
-polynomials; pairwise coprimality; spectral collisions; centralizer witnesses.
+polynomials; pairwise coprimality; spectral collisions; centralizer witnesses;
+Reed--Muller codes; higher weight spectra; second support weights; quadratic
+Boolean functions; Walsh spectra; quadratic pencils; common-zero counts;
+alternating polar forms; generalized Hamming weights.
