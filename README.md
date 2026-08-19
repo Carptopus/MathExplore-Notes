@@ -5,12 +5,13 @@ including manuscripts and reproducible verification materials.
 
 ## Research index
 
-| No. | Entry | Areas | Contribution | Public version | Status |
-| ---: | --- | --- | --- | --- | --- |
-| 1 | [Proper transposed sesqui arrays at all Sylvester--Hadamard powers](research/proper-sesqui-all-powers/README.md) | Combinatorial designs, finite fields, finite geometry, algebraic curves | Constructs an exact-parameter proper transposed sesqui array for every power of two | v0.2-beta | Internally verified candidate proof; external review pending |
-| 2 | [Paley two-edge switching for proper transposed sesqui arrays](research/paley-two-edge-switching/README.md) | Combinatorial designs, finite fields, elliptic curves | Constructs an exact-parameter proper transposed sesqui array for every odd prime power $q\equiv3\pmod4$, $q\geq11$ | v0.2-beta | Internally verified candidate proof; external review pending |
-| 3 | [Spectral separation and the nSSP for looped double paths](research/nssp-looped-double-paths/README.md) | Inverse eigenvalue problems, graph patterns, Jacobi matrices | Classifies exactly which looped double paths allow the non-symmetric strong spectral property | v0.1-beta | Internally verified candidate proof; external review pending |
-| 4 | [An exact nSSP criterion for root-loop spider matrices](research/nssp-root-loop-spiders/README.md) | Inverse eigenvalue problems, generalized stars, matrix patterns | Characterizes the nSSP of every fixed root-loop bidirected spider matrix by pairwise coprimality of its arm polynomials | v0.1-beta | Internally verified candidate proof; external review pending |
+| Entry | Areas | Contribution | Public version | Status |
+| --- | --- | --- | --- | --- |
+| [Proper transposed sesqui arrays at all Sylvester--Hadamard powers](research/proper-sesqui-all-powers/README.md) | Combinatorial designs, finite fields, finite geometry, algebraic curves | Constructs an exact-parameter proper transposed sesqui array for every power of two | v0.2-beta | Internally verified candidate proof; external review pending |
+| [Paley two-edge switching for proper transposed sesqui arrays](research/paley-two-edge-switching/README.md) | Combinatorial designs, finite fields, elliptic curves | Constructs an exact-parameter proper transposed sesqui array for every odd prime power $q\equiv3\pmod4$, $q\geq11$ | v0.2-beta | Internally verified candidate proof; external review pending |
+| [Spectral separation and the nSSP for looped double paths](research/nssp-looped-double-paths/README.md) | Inverse eigenvalue problems, graph patterns, Jacobi matrices | Classifies exactly which looped double paths allow the non-symmetric strong spectral property | v0.1-beta | Internally verified candidate proof; external review pending |
+| [An exact nSSP criterion for root-loop spider matrices](research/nssp-root-loop-spiders/README.md) | Inverse eigenvalue problems, generalized stars, matrix patterns | Characterizes the nSSP of every fixed root-loop bidirected spider matrix by pairwise coprimality of its arm polynomials | v0.1-beta | Internally verified candidate proof; external review pending |
+| [A recursive nSSP criterion for root-loop tree matrices](research/nssp-root-loop-trees/README.md) | Inverse eigenvalue problems, rooted trees, matrix patterns | Characterizes the nSSP of every fixed root-loop bidirected tree matrix by recursive sibling-subtree coprimality | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
 
@@ -83,6 +84,28 @@ arbitrary-loop double-path classification independent.
 
 - [Manuscript and verification materials](research/nssp-root-loop-spiders/README.md)
 
+### Recursive root-loop tree matrices
+
+For an arbitrary finite rooted tree, consider a real matrix whose nonzero
+off-diagonal positions are exactly both directed entries on every tree edge,
+with a single nonzero diagonal entry at the root. For each child of every
+vertex, form the characteristic polynomial of its complete descendant
+subtree. The fifth manuscript proves
+
+$$
+A\text{ has the nSSP}
+\quad\Longleftrightarrow\quad
+\text{the child-subtree polynomials are pairwise coprime at every vertex}.
+$$
+
+This fixed-matrix theorem allows arbitrary non-symmetric real weights,
+negative edge products, nonreal or repeated subtree roots, and arbitrarily
+many nested branch vertices. It strictly extends the preceding fixed-matrix
+double-path and spider criteria while leaving the earlier arbitrary-loop
+double-path pattern classification independent.
+
+- [Manuscript and verification materials](research/nssp-root-loop-trees/README.md)
+
 ## Status and review policy
 
 Entries are research records, not automatically peer-reviewed publications.
@@ -129,4 +152,5 @@ bounds; cross-disciplinary mathematical methods; inverse eigenvalue problems;
 graph patterns; non-symmetric strong spectral property; Jacobi matrices;
 tridiagonal matrices; spectral separation;
 root-loop spiders; spider matrices; generalized stars; bidirected trees; arm
-characteristic polynomials; pairwise coprimality; centralizer witnesses.
+characteristic polynomials; rooted tree matrices; recursive subtree
+polynomials; pairwise coprimality; spectral collisions; centralizer witnesses.

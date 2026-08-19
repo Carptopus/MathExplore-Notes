@@ -1,0 +1,728 @@
+% AI-assisted manuscript source; responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=29mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{fvextra}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{The nSSP for root-loop trees}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlength{\emergencystretch}{2.5em}
+\setlist{nosep,leftmargin=*}
+
+\title{A recursive non-symmetric strong spectral criterion\\for root-loop tree matrices}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{19 August 2026}
+
+\hypersetup{
+  pdftitle={A recursive non-symmetric strong spectral criterion for root-loop tree matrices},
+  pdfauthor={Carptopus},
+  pdfsubject={A recursive coprimality criterion for the nSSP of root-loop bidirected tree matrices},
+  pdfkeywords={nSSP, rooted tree matrix, inverse eigenvalue problem, spectral criterion, coprime polynomials}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\small\itshape
+Public Beta v0.1. The theorem chain has passed a writing-admission
+proof audit, exact computational calibration, and a manuscript-level zero-trust audit.
+External mathematical review and journal peer review are pending. Priority statements
+are qualified by the public-literature boundary stated in the manuscript.
+\end{center}
+\vspace{0.8em}
+
+\begin{abstract}
+
+Let $(T,r)$ be a finite rooted tree. We consider arbitrary real matrices whose nonzero off-diagonal positions are exactly the two directed entries on every edge of $T$, whose root entry is a single nonzero loop, and whose remaining diagonal entries are zero. No symmetry, sign, real-spectrum, diagonalizability, or square-free-spectrum assumption is imposed. For every vertex $v$ and child $c$ of $v$, let $F_c(x)$ be the characteristic polynomial of the complete rooted subtree below $c$.
+
+We prove that the full matrix has the non-symmetric strong spectral property if and only if, at every vertex, the child-subtree polynomials are pairwise coprime. The sufficient direction combines a recursive PBH cyclicity argument with an exact infinitesimal recovery of all directed edge products from the characteristic polynomial. The converse is constructive: a deepest collision between two child-subtree spectra produces a nonzero real pattern-zero centralizer, including for a zero, nonreal, or repeated common root. The theorem strictly extends the root-loop spider criterion to arbitrarily many nested branch vertices. It also gives a topological obstruction: a positive instance must satisfy the classical nearly-even-branching recursion. Exact rational and modular computations are included only as reproducible falsification controls and do not replace the proof.
+
+\end{abstract}
+
+\section{Introduction}
+
+
+The non-symmetric strong spectral property, abbreviated nSSP, is a transversality condition for a real matrix and its zero--nonzero or sign pattern \cite{ref1,ref2,ref11}. It is useful in bifurcation and superpattern arguments for non-symmetric inverse eigenvalue problems. A pattern-level question asks whether some or every matrix in a qualitative class has the property. The present question has different quantifiers: it asks for an exact criterion for each fixed matrix in one sparse infinite family.
+
+The family consists of bidirected tree matrices with exactly one nonzero diagonal position, at a chosen root. The two-arm fixed-matrix mechanism first appeared in the author's looped-double-path work \cite{ref12}, while deleting the root of a spider produces a direct sum of paths and leads to the pairwise-coprimality criterion in \cite{ref7}. For a general rooted tree, however, branch vertices occur recursively inside the deleted components. A root-level test is therefore insufficient: two grandchildren may share a spectral factor even when the root has only one child.
+
+The main theorem shows that the spider mechanism persists, but only after being imposed at every vertex. The correct invariant is a hierarchy of characteristic polynomials of complete child subtrees. Pairwise coprimality at every sibling set is both necessary and sufficient.
+
+Three points distinguish the statement from the classical Hermitian setting.
+
+\begin{enumerate}
+\item Directed edge products may have mixed signs, so the matrix need not be diagonally similar over $\mathbb R$ to a symmetric matrix.
+\item A single child-subtree polynomial may have repeated or nonreal roots; only a factor shared by siblings is forbidden.
+\item Failure is witnessed explicitly at the deepest spectral collision, rather than inferred only from a Jacobian rank loss.
+\end{enumerate}
+
+
+The recursive tree skeleton has important precedents. Duarte's construction and the 2013 Jacobian formulation use recursive strict interlacing for symmetric tree matrices \cite{ref3,ref8}. A skew-symmetric analogue connects the same recursion with nearly even branching (NEB) \cite{ref4}. These results cover the positive-product or skew-symmetric special mechanisms but do not state the mixed-product fixed-matrix nSSP equivalence proved below. The general characteristic-Jacobian-to-nSSP equivalence is also prior work \cite[Theorem 5.1]{ref1} and is used as a bridge, not claimed as a contribution.
+
+\subsection*{Main theorem}
+
+
+Let $(T,r)$ be a finite rooted tree and let $A$ be a real matrix such that:
+
+\begin{itemize}
+\item $A_{rr}=a\ne0$ and $A_{vv}=0$ for $v\ne r$;
+\item for every tree edge $\{u,v\}$, both $A_{uv}$ and $A_{vu}$ are nonzero;
+\item all remaining entries are zero.
+\end{itemize}
+
+
+For a vertex $v$, write $C(v)$ for its children. For every child $c\in C(v)$, let $B_c$ be the principal matrix on the complete rooted subtree below $c$, and set
+
+\[
+F_c(x)=\det(xI-B_c).
+\]
+
+Then
+
+\[
+A\text{ has the nSSP}
+\quad\Longleftrightarrow\quad
+\{F_c:c\in C(v)\}\text{ is pairwise coprime for every }v.
+\tag{1.1}
+\]
+
+Equivalently, $A$ fails the nSSP exactly when two sibling subtrees share an eigenvalue over $\mathbb C$.
+
+\subsection*{Contribution boundary}
+
+
+The nSSP and bifurcation framework \cite{ref1,ref2}, its similarity-transversality formulation \cite{ref11}, the Duarte property \cite{ref3,ref8}, the skew-Duarte/NEB mechanism \cite{ref4}, PBH cyclicity, and the characteristic polynomial of a tree in terms of two-way edge products are prior tools. Matrices on the same rooted tree with the same root loop and the same edge products are related by real diagonal similarity; changing the directional splitting is therefore a gauge freedom, not an independent result.
+
+The retained contribution is the exact synthesis into an arbitrary mixed-product fixed-tree criterion, including nonnormal and defective cases, together with a recursive recovery proof and an explicit real witness at an arbitrary-depth collision. This draft makes no absolute global-priority claim.
+
+\section{Definitions and rooted-tree notation}
+
+
+\subsection*{The nSSP}
+
+
+For real matrices $A$ and $X$ of order $n$, let $A\circ X$ denote their Hadamard product. The matrix $A$ has the non-symmetric strong spectral property if
+
+\[
+A\circ X=0,
+\qquad
+AX^{\mathsf T}=X^{\mathsf T}A
+\tag{2.1}
+\]
+
+imply $X=0$.
+
+Equivalently, the tangent space to the zero--nonzero pattern class and the tangent space to the similarity orbit of $A$ span $M_n(\mathbb R)$ \cite{ref1,ref2}. We use (2.1) for the failure direction and the characteristic-coefficient Jacobian for the sufficient direction.
+
+\subsection*{Rooted subtrees}
+
+
+Orient the tree only for notation, away from $r$. For $v\ne r$, write $\pi(v)$ for its parent. Let $T_v$ be the complete descendant subtree rooted at $v$.
+
+For every $v$, define $B_v$ to be the zero-diagonal matrix induced on $T_v$. When $v=r$, this means that the loop $a$ is temporarily suppressed. Put
+
+\[
+F_v(x)=\det(xI-B_v),
+\qquad
+Q_v(x)=\prod_{c\in C(v)}F_c(x).
+\tag{2.2}
+\]
+
+The empty product is $1$. Thus a leaf has $F_v=x$ and $Q_v=1$.
+
+For an edge from $v$ to its child $c$, write
+
+\[
+p_{vc}=A_{vc},
+\qquad
+q_{vc}=A_{cv},
+\qquad
+\beta_{vc}=p_{vc}q_{vc}\ne0.
+\tag{2.3}
+\]
+
+The theorem's condition is
+
+\[
+\gcd(F_c,F_d)=1
+\quad\text{for all }v\text{ and distinct }c,d\in C(v).
+\tag{H}
+\]
+
+For a leaf or a vertex with one child, (H) is vacuous at that vertex.
+
+\section{Polynomial recursion and edge-product reduction}
+
+
+\begin{lemma}
+
+For every vertex $v$,
+
+\[
+F_v
+=xQ_v-
+\sum_{c\in C(v)}
+\beta_{vc}Q_c\prod_{\substack{d\in C(v)\\d\ne c}}F_d.
+\tag{3.1}
+\]
+
+The characteristic polynomial of the full matrix is
+
+\[
+\chi_A(x)=F_r(x)-aQ_r(x).
+\tag{3.2}
+\]
+
+\end{lemma}
+
+\begin{proof}
+
+A nonzero permutation term in the determinant of a zero-diagonal tree matrix is a product of disjoint transpositions along tree edges. Hence every directed edge enters only through $A_{uv}A_{vu}$. Expanding at $v$, the unmatched term contributes $xQ_v$. Matching $v$ to a child $c$ contributes $-\beta_{vc}$, the deleted-root polynomial $Q_c$ inside that child subtree, and the full polynomials of all sibling subtrees. This is (3.1). Restoring the root loop is a rank-one diagonal update whose cofactor is $Q_r$, giving (3.2).
+
+\end{proof}
+
+\begin{lemma}
+
+The polynomial $F_v$ contains only powers of the same parity as $|T_v|$, while $Q_v$ contains only powers of the same parity as $|T_v|-1$.
+
+\end{lemma}
+
+\begin{proof}
+
+Every determinant term of $B_v$ chooses a matching with $k$ edges and contributes a power $x^{|T_v|-2k}$. The statement for $Q_v$ follows either from the forest interpretation or from (2.2).
+
+\end{proof}
+
+\begin{remark}
+
+The characteristic data depend only on $a$ and the edge products $\beta_e$. If two matrices on the same rooted tree have the same $a$ and the same $\beta_e$, choose a nonzero diagonal scaling recursively along the tree to match one directed entry on each edge; equality of the products then matches the reverse entry. Thus the matrices are real diagonally similar. The nSSP is invariant under this similarity because a pattern-zero centralizer is transported by the same diagonal conjugation.
+
+\end{remark}
+
+\section{Recursive cyclicity}
+
+
+We work over $\mathbb C$ when discussing eigenvectors.
+
+\begin{lemma}
+
+Assume (H) holds at every vertex of $T_v$. Then $e_v$ is cyclic for both $B_v$ and $B_v^{\mathsf T}$.
+
+\end{lemma}
+
+\begin{proof}
+
+We induct on $|T_v|$. The assertion is immediate for a leaf. Suppose a left eigenvector $y^{\mathsf T}B_v=\lambda y^{\mathsf T}$ has $y_v=0$. Its restriction to every child subtree is either zero or a left $\lambda$-eigenvector of the corresponding $B_c$. Pairwise coprimality allows $\lambda$ to occur in at most one child polynomial, so at most one child block is nonzero.
+
+If the block below $c$ is nonzero, the induction hypothesis implies that its coordinate at $c$ is nonzero. The eigenvector equation at the parent $v$ then consists of one nonzero edge weight times this nonzero coordinate, a contradiction. Hence no left eigenvector is orthogonal to $e_v$. The PBH criterion \cite{ref10} gives cyclicity of $e_v$ for $B_v$.
+
+Applying the same argument to $B_v^{\mathsf T}$ proves the second assertion, since transposition does not change any $F_c$.
+
+\end{proof}
+
+\begin{corollary}
+
+Under (H), the root vector $e_r$ is cyclic for the full matrix $A$. In particular, the minimal polynomial of $A$ has degree $n$.
+
+\end{corollary}
+
+\begin{proof}
+
+The argument of Lemma 4.1 is unchanged by the root loop when the root coordinate of the putative left eigenvector is zero.
+
+The proof does not assume real or simple eigenvalues. Cyclicity permits a repeated characteristic root provided it belongs to one Jordan chain \cite{ref9}.
+
+\end{proof}
+
+\section{Infinitesimal recovery of the edge products}
+
+
+Only the variables $\beta_e$ inside $T_v$ vary in this section. A dot denotes their first-order variation. We use the convention $\deg0=-\infty$.
+
+\begin{lemma}
+
+Assume (H) holds throughout $T_v$. If
+
+\[
+\dot F_v=0,
+\qquad
+\dot Q_v=0,
+\tag{5.1}
+\]
+
+then every $\dot\beta_e$ in $T_v$ is zero.
+
+\end{lemma}
+
+\begin{proof}
+
+We induct on the subtree order. A leaf has no edge variable. Differentiating $Q_v=\prod_cF_c$ gives
+
+\[
+0=\dot Q_v=
+\sum_c\dot F_c\prod_{d\ne c}F_d.
+\tag{5.2}
+\]
+
+Modulo $F_c$, the product of the siblings is invertible because of (H), so $F_c\mid\dot F_c$. The polynomial $F_c$ is monic and its coefficient of degree $\deg F_c-1$ is the fixed value $-\operatorname{tr}B_c=0$. Therefore
+
+\[
+\deg\dot F_c\le\deg F_c-2,
+\]
+
+and $\dot F_c=0$.
+
+Differentiate (3.1) and use $\dot F_v=\dot Q_v=\dot F_c=0$:
+
+\[
+\sum_c
+\left(\dot\beta_{vc}Q_c+\beta_{vc}\dot Q_c\right)
+\prod_{d\ne c}F_d=0.
+\tag{5.3}
+\]
+
+Reducing modulo $F_c$ yields
+
+\[
+F_c\mid H_c,
+\qquad
+H_c:=\dot\beta_{vc}Q_c+\beta_{vc}\dot Q_c.
+\tag{5.4}
+\]
+
+Now $Q_c$ is monic of degree $\deg F_c-1$, and its next coefficient is again fixed at zero. Hence
+
+\[
+\deg\dot Q_c\le\deg F_c-3.
+\]
+
+Thus $\deg H_c<\deg F_c$, so $H_c=0$. Comparing its highest-degree coefficient gives $\dot\beta_{vc}=0$; since $\beta_{vc}\ne0$, it follows that $\dot Q_c=0$. Together with $\dot F_c=0$, the induction hypothesis recovers every descendant product.
+
+For a leaf child, $Q_c=1$ and $\dot Q_c=0$; for one child, the same reductions hold without a sibling condition; empty products are $1$. These cases close all degree-bound endpoints.
+
+\end{proof}
+
+\section{Sufficiency: the characteristic Jacobian}
+
+
+Let
+
+\[
+\Phi:(a,(\beta_e)_{e\in E(T)})
+\longmapsto
+\text{the }n\text{ nonleading coefficients of }\chi_A.
+\tag{6.1}
+\]
+
+\begin{proposition}
+
+Under (H), the Jacobian of $\Phi$ is nonsingular.
+
+\end{proposition}
+
+\begin{proof}
+
+Suppose $\dot\chi_A=0$. By (3.2),
+
+\[
+0=\dot F_r-\dot a\,Q_r-a\dot Q_r.
+\tag{6.2}
+\]
+
+Lemma 3.2 separates this identity into opposite parity parts:
+
+\[
+\dot F_r=0,
+\qquad
+\dot a\,Q_r+a\dot Q_r=0.
+\tag{6.3}
+\]
+
+The polynomial $Q_r$ is monic while $\dot Q_r$ has degree at least two lower. Comparing leading coefficients gives $\dot a=0$. Since $a\ne0$, also $\dot Q_r=0$. Lemma 5.1 then gives $\dot\beta_e=0$ for every edge. The differential is injective between two $n$-dimensional spaces and is therefore nonsingular.
+
+\end{proof}
+
+\begin{proposition}
+
+If (H) holds, then $A$ has the nSSP.
+
+\end{proposition}
+
+\begin{proof}
+
+For one edge with directed entries $p,q\ne0$,
+
+\[
+d\beta=q\,dp+p\,dq,
+\]
+
+so the map from the original pattern variables to $(a,(\beta_e))$ has full row rank. Proposition 6.1 therefore implies that the full characteristic-coefficient Jacobian with respect to the nonzero entries of $A$ has row rank $n$.
+
+Corollary 4.2 says that the minimal polynomial of $A$ has degree $n$. The general Jacobian--nSSP equivalence \cite[Theorem 5.1]{ref1} now implies that $A$ has the nSSP.
+
+\end{proof}
+
+\section{Necessity: a deepest spectral collision}
+
+
+\begin{proposition}
+
+If (H) fails, then $A$ does not have the nSSP.
+
+\end{proposition}
+
+\begin{proof}
+
+Choose a deepest vertex $v$ at which (H) fails. Two children $c,d$ have a common root $\lambda\in\mathbb C$ of $F_c$ and $F_d$. All vertices strictly below $v$ satisfy (H), so Lemma 4.1 applies to both child subtrees and their transposes.
+
+Choose right $\lambda$-eigenvectors $z_c,z_d$ of $B_c,B_d$ and left eigenvectors $y_c,y_d$, written as right eigenvectors of $B_c^{\mathsf T},B_d^{\mathsf T}$. Normalize all four child-root coordinates to $1$. Let
+
+\[
+p_c=A_{vc},\quad p_d=A_{vd},
+\qquad
+q_c=A_{cv},\quad q_d=A_{dv}.
+\]
+
+Define whole-tree vectors, zero at $v$, its ancestors, and every unused branch, by
+
+\[
+u_+|_{T_c}=p_dz_c,
+\qquad
+u_+|_{T_d}=-p_cz_d,
+\tag{7.1}
+\]
+
+and
+
+\[
+w_+|_{T_c}=q_dy_c,
+\qquad
+w_+|_{T_d}=-q_cy_d.
+\tag{7.2}
+\]
+
+The coefficients cancel the row and column equations at $v$, respectively. Hence
+
+\[
+Au_+=\lambda u_+,
+\qquad
+A^{\mathsf T}w_+=\lambda w_+.
+\tag{7.3}
+\]
+
+Each zero-diagonal child subtree is bipartite. Let $S$ be the diagonal sign matrix on the two used subtrees, with sign $+1$ at both child roots and alternating by depth. Put
+
+\[
+u_-=Su_+,
+\qquad
+w_-=Sw_+.
+\]
+
+Then $u_-,w_-$ are right and left eigenvectors for $-\lambda$. Consequently,
+
+\[
+Y=u_+w_+^{\mathsf T}+u_-w_-^{\mathsf T}
+\tag{7.4}
+\]
+
+commutes with $A$.
+
+For adjacent vertices $i,j$ within either used child subtree, their bipartition signs satisfy $s_is_j=-1$, so
+
+\[
+Y_{ij}=(u_+)_i(w_+)_j(1+s_is_j)=0.
+\]
+
+Every edge incident with $v$ has one zero vector coordinate, and every other prescribed edge lies outside the support or inside a used subtree. The root-loop position is also zero. Hence $Y$ vanishes at every prescribed nonzero position of $A$.
+
+At the child root $c$,
+
+\[
+Y_{cc}=2p_dq_d=2\beta_{vd}\in\mathbb R\setminus\{0\}.
+\tag{7.5}
+\]
+
+Thus $Y$ is nonzero and $\operatorname{Re}Y$ is a nonzero real commuting matrix. Let
+
+\[
+X=(\operatorname{Re}Y)^{\mathsf T}.
+\]
+
+The support of $A$ is bidirected, so transposition preserves the pattern-zero condition. Therefore $X\ne0$ satisfies (2.1), and $A$ fails the nSSP.
+
+The argument includes $\lambda=0$: the sign transform may return the same eigenvectors, but the edge cancellation and (7.5) remain valid. It also includes a repeated or nonreal common root because only left and right eigenvectors, not diagonalizability, are used.
+
+\end{proof}
+
+\section{The classification theorem and consequences}
+
+
+\begin{theorem}
+
+For the root-loop bidirected tree matrix $A$ in Section 1, the following are equivalent:
+
+\begin{enumerate}
+\item $A$ has the nSSP;
+\item for every vertex $v$, the child-subtree polynomials $\{F_c:c\in C(v)\}$ are pairwise coprime.
+\end{enumerate}
+
+
+\end{theorem}
+
+\begin{proof}
+
+Proposition 6.2 proves sufficiency. Proposition 7.1 proves the contrapositive of necessity.
+
+\end{proof}
+
+\begin{corollary}[NEB obstruction]
+
+If $A$ has the nSSP, then $T$ is nearly evenly branching at $r$ in the recursive sense of \cite{ref4}.
+
+\end{corollary}
+
+\begin{proof}
+
+Every odd-order zero-diagonal child subtree has $F_c(0)=0$. Pairwise coprimality therefore permits at most one odd-order child at each vertex. If $|T_v|$ is even, the sum of child orders is odd, so exactly one child has odd order. If $|T_v|$ is odd, the sum is even, so no child has odd order. Recursing gives the NEB condition.
+
+The converse is false in general: NEB removes the forced common factor $x$, but two sibling subtrees may still share a nonzero or nonreal eigenvalue.
+
+\end{proof}
+
+\begin{corollary}[recursive certificate]
+
+The nSSP status can be decided bottom-up using exact polynomial arithmetic: compute every $F_v$ from (3.1), then compute the pairwise gcds at each sibling set. A nonconstant gcd supplies a spectral-collision certificate and Proposition 7.1 supplies a centralizer witness over a splitting field; if every gcd is $1$, Lemma 4.1 and Propositions 6.1--6.2 certify the nSSP.
+
+\end{corollary}
+
+\begin{remark}
+
+A repeated root inside one $F_c$ does not obstruct the nSSP unless the same factor occurs in a sibling polynomial. Thus the theorem is not a simple-spectrum criterion.
+
+\end{remark}
+
+\begin{remark}
+
+For a path rooted at an endpoint, every sibling set has at most one member and the condition is vacuous. For a root-loop double path it becomes separation of the two arms \cite{ref12}. For a root-loop spider it becomes pairwise coprimality of the arm polynomials \cite{ref7}.
+
+\end{remark}
+
+\begin{remark}
+
+The zero nonroot diagonal hypothesis cannot simply be removed from the sufficient direction. On the endpoint-rooted path $0-1-2$, let
+
+\[
+A=
+\begin{pmatrix}
+1&1&0\\
+1&0&1\\
+0&1&1
+\end{pmatrix},
+\qquad
+X=A^2-A-I=
+\begin{pmatrix}
+0&0&1\\
+0&1&0\\
+1&0&0
+\end{pmatrix}.
+\]
+
+Every sibling set has at most one member, so the recursive coprimality condition is vacuous. Nevertheless, $X=X^{\mathsf T}\ne0$, $A\circ X=0$, and $AX^{\mathsf T}=X^{\mathsf T}A$ because $X$ is a polynomial in $A$. Thus $A$ does not have the nSSP. This refutes the same sufficient criterion for arbitrary fixed nonroot diagonal entries; it does not assert that every additional nonroot loop destroys the nSSP.
+
+\end{remark}
+
+\section{Exact computational calibration}
+
+
+The proof is independent of computation. Three dependency-free Python programs provide definition-level falsification controls:
+
+\begin{itemize}
+\item \href{verification/verify_recursive_tree_criterion.py}{recursive criterion calibration};
+\item \href{verification/verify_collision_witness.py}{explicit collision witnesses};
+\item the \href{verification/verify_minimal_counterexample.py}{exact three-vertex boundary certificate} from Remark 8.6.
+\end{itemize}
+
+
+The standard calibration command is
+
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\small]
+python -X utf8 verification/verify_recursive_tree_criterion.py --max-vertices 7 --samples 2
+\end{Verbatim}
+
+
+It covers all $1,2,6,24,120,720$ increasing-rooted parent tuples on $n=2,\ldots,7$ vertices, with two signed directed-weight samples each, for 1746 cases total.
+
+\begin{itemize}
+\item all 366 recursively coprime cases have full verification rank modulo $1000003$;
+\item none of the 1380 recursively noncoprime cases has modular full rank;
+\item six targeted cases independently reproduce the subtree polynomials by a Newton--trace implementation and use exact rational elimination where a rank loss is asserted.
+\end{itemize}
+
+
+The targeted controls include nested branch collisions, two distinct branch vertices, negative edge products, a single subtree with repeated complex roots, and a changed directional splitting with fixed products.
+
+The explicit-witness command is
+
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\small]
+python -X utf8 verification/verify_collision_witness.py
+\end{Verbatim}
+
+
+It constructs rational pattern-zero centralizers directly for a deepest shared zero root and a deepest shared factor $x^2-1$. Both commute exactly with $A$, vanish on every prescribed position, and are nonzero.
+
+The boundary-certificate command is
+
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\small]
+python -X utf8 verification/verify_minimal_counterexample.py
+\end{Verbatim}
+
+It reconstructs $X=A^2-A-I$, checks $X=X^{\mathsf T}$ and the transpose commutation equation directly, recomputes the verification rank as $2/3$ over $\mathbb Q$, and checks two destructive controls of rank $3/3$.
+
+Modular full rank proves full rank over $\mathbb Q$ and $\mathbb R$ for that integer instance. Modular rank loss alone does not prove rational rank loss. Random and finite cases serve only to catch false conjectures and implementation errors; they do not prove Theorem 8.1.
+
+\section{Relation to prior work}
+
+
+Duarte's inverse spectral construction for acyclic Hermitian matrices \cite{ref8} and the Monfared--Shader Jacobian formulation \cite{ref3} recursively impose strict interlacing between a tree matrix and a vertex-deleted principal submatrix. Their Duarte property yields a strong-Arnold-like centralizer lemma and a nonsingular joint spectral-data Jacobian. For real symmetric tree matrices, recursive strict interlacing is closely equivalent to disjoint sibling spectra together with cyclic child roots. The positive-product subfamily of the present theorem is real diagonally similar to that symmetric setting and is not claimed as new.
+
+Monfared--Mallik \cite{ref4} develop the skew-symmetric Duarte analogue, characterize the NEB tree obstruction, and prove a corresponding Jacobian result for distinct purely imaginary interlacing data. Corollary 8.2 is therefore a compatibility boundary, not a new NEB mechanism. The present theorem differs by deciding every fixed matrix with mixed products and by allowing nonreal and defective subtree spectra.
+
+Monfared \cite{ref5} proves an existence theorem for not-necessarily-symmetric matrices with a prescribed graph and distinct real or conjugate-pair spectrum, under the hypothesis that the graph's matching number is at least the number of prescribed nonreal conjugate pairs. That work does not classify the nSSP of a fixed rooted-tree matrix.
+
+Fallat, Hall, Lin, and Shader \cite{ref2} formulate the nSSP and its bifurcation/superpattern framework. Arav et al. \cite{ref11} characterize the same similarity transversality through the STP and develop its pattern-level consequences. Catral, Fallat, Gupta, and Lin \cite{ref1} later prove the exact characteristic-Jacobian equivalence used in Proposition 6.2. These are essential prior bridges, but none states a fixed rooted-tree recursive-coprimality criterion.
+
+Koljan\v{c}i\'{c}--Oblak \cite{ref6} study which directed graph patterns allow or require nSSP and classify many loop assignments on double paths. Their path results contain endpoint-rooted path special cases at the pattern level, but they do not state the arbitrary fixed-tree hierarchy in Theorem 8.1. The author's earlier public Beta \cite{ref12} proves a spectral-separation criterion for symmetric single-loop double paths and uses it in a pattern-level classification. Its fixed-matrix criterion is recovered by Theorem 8.1, while its classification of arbitrary loop assignments is not reproved here.
+
+The author's two preceding results form the progression double path \cite{ref12}, root-loop spider \cite{ref7}, and arbitrary rooted tree. Theorem 8.1 shows that the spider pairwise-coprimality mechanism is the first level of a fully recursive tree classification. The two earlier fixed-matrix criteria remain useful precursors with simpler proofs and verifiers, but the general theorem strictly subsumes those fixed-matrix statements; the separate pattern-level loop classification in \cite{ref12} remains independent.
+
+The public sources above were checked through 2026-08-19. No direct arbitrary mixed-product fixed-tree nSSP iff was found. Search non-detection does not establish global priority, and any public version should retain that limitation.
+
+\section{Limits and further questions}
+
+
+The proof uses each frozen assumption.
+
+\begin{itemize}
+\item The unique nonzero root loop separates the parity components of $\chi_A=F_r-aQ_r$.
+\item Zero nonroot diagonal entries provide the $\lambda/-\lambda$ symmetry used by the failure witness; Remark 8.6 shows that deleting this hypothesis while retaining the same sufficient criterion is already false on three vertices.
+\item Nonzero weights make the product differential onto and prevent a branch from decoupling.
+\item Bidirected support is needed for two-way products and for the transpose of the witness to preserve pattern zeros.
+\item A tree makes the bottom-up factorization and deepest-collision localization exact.
+\end{itemize}
+
+
+Several extensions are therefore separate problems rather than routine corollaries:
+
+\begin{enumerate}
+\item several nonzero loops on one tree;
+\item missing reverse arcs or zero edge weights;
+\item unicyclic or block-tree support;
+\item a pattern-level characterization of which rooted-tree sign patterns allow the criterion to be realized;
+\item efficient construction of a rational witness when the common factor is irreducible over $\mathbb Q$.
+\end{enumerate}
+
+
+The current paper should not absorb these questions before release. Their value can be assessed in separate bounded loops.
+
+\section{Reproducibility and evidence boundary}
+
+
+The public research package contains:
+
+\begin{itemize}
+\item this manuscript PDF and its corresponding \href{nssp-root-loop-trees.tex}{LaTeX source};
+\item an \href{README.md}{entry README} stating the theorem, scope, status, and reproduction commands;
+\item the three dependency-free verification programs linked in Section 9 and their \href{verification/README.md}{verification guide};
+\item the \href{SHA256SUMS.txt}{SHA-256 manifest} and the entry-specific license notices.
+\end{itemize}
+
+The finite tests serve only to catch implementation errors, exercise boundary cases, and prevent hidden symmetric or simple-spectrum assumptions. The theorem is supported by the proof in Sections 3--8. No solver timeout, modular rank loss, random sample, or finite enumeration is used as a general theorem.
+
+\section{AI-assisted research and writing disclosure}
+
+
+This work was developed with AI assistance for literature search, symbolic derivation, proof red-teaming, code generation, exact computational checks, and manuscript drafting. Carptopus is the responsible author and is accountable for the mathematical claims, source selection, software, and public versions. OpenAI Codex is a research and writing tool, not an author.
+
+\begin{thebibliography}{12}
+
+\bibitem{ref1} M. Catral, S. M. Fallat, H. Gupta, and J. C.-H. Lin,
+\emph{The Strong Spectral Property and the Jacobian Method for Weighted Laplacian Matrices},
+arXiv:2602.18999v1 (2026), especially Theorem 5.1.
+\url{https://arxiv.org/abs/2602.18999}
+
+\bibitem{ref2} S. M. Fallat, H. T. Hall, J. C.-H. Lin, and B. L. Shader,
+\emph{The bifurcation lemma for strong properties in the inverse eigenvalue problem of a graph},
+Linear Algebra and its Applications 648 (2022), 70--87.
+\url{https://arxiv.org/abs/2112.11712}
+
+\bibitem{ref3} K. H. Monfared and B. L. Shader,
+\emph{Construction of matrices with a given graph and prescribed interlaced spectral data},
+Linear Algebra and its Applications 438 (2013), 4348--4358.
+\url{https://doi.org/10.1016/j.laa.2013.01.036}
+
+\bibitem{ref4} K. H. Monfared and S. Mallik,
+\emph{Construction of real skew-symmetric matrices from interlaced spectral data, and graph},
+Linear Algebra and its Applications 471 (2015), 241--263.
+\url{https://arxiv.org/abs/1412.6085}
+
+\bibitem{ref5} K. H. Monfared,
+\emph{Existence of a not necessarily symmetric matrix with given distinct eigenvalues and graph},
+Linear Algebra and its Applications 527 (2017), 1--11.
+\url{https://arxiv.org/abs/1604.02195}
+
+\bibitem{ref6} S. Koljan\v{c}i\'{c} and P. Oblak,
+\emph{Combinatorial aspects of the non-symmetric strong spectral property for graphs},
+arXiv:2604.21552v1 (2026).
+\url{https://arxiv.org/abs/2604.21552}
+
+\bibitem{ref7} Carptopus,
+\emph{An exact non-symmetric strong spectral criterion for root-loop spider matrices},
+MathExplore Notes, v0.1-beta (19 August 2026), commit \texttt{26d6458}.
+\href{https://github.com/Carptopus/MathExplore-Notes/tree/26d6458029d09c59fd52a56ede4840ed7faf7bae/research/nssp-root-loop-spiders}{immutable GitHub source}
+
+\bibitem{ref8} A. L. Duarte,
+\emph{Construction of acyclic matrices from spectral data},
+Linear Algebra and its Applications 113 (1989), 173--182.
+\url{https://doi.org/10.1016/0024-3795(89)90295-4}
+
+\bibitem{ref9} R. A. Horn and C. R. Johnson,
+\emph{Matrix Analysis}, second edition, Cambridge University Press, 2013.
+
+\bibitem{ref10} T. Kailath,
+\emph{Linear Systems}, Prentice--Hall, 1980.
+
+\bibitem{ref11} M. Arav, F. J. Hall, H. van der Holst, Z. Li, A. Mathivanan,
+J. Pan, H. Xu, and Z. Yang,
+\emph{Advances on similarity via transversal intersection of manifolds},
+Linear Algebra and its Applications 721 (2025), 102--121.
+\url{https://doi.org/10.1016/j.laa.2024.05.013}
+
+\bibitem{ref12} Carptopus,
+\emph{Spectral separation and the non-symmetric strong spectral property for looped double paths},
+MathExplore Notes, v0.1-beta (19 August 2026), commit \texttt{e57ee00}.
+\href{https://github.com/Carptopus/MathExplore-Notes/tree/e57ee007380cbc351eb371d8e991303cab5f1e48/research/nssp-looped-double-paths}{immutable GitHub source}
+
+\end{thebibliography}
+
+\end{document}
