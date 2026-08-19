@@ -9,6 +9,7 @@ including manuscripts and reproducible verification materials.
 | --- | --- | --- | --- |
 | [Proper transposed sesqui arrays at all Sylvester--Hadamard powers](research/proper-sesqui-all-powers/README.md) | Combinatorial designs, finite fields, finite geometry, algebraic curves | Constructs an exact-parameter proper transposed sesqui array for every power of two | Internally verified candidate proof; external review pending |
 | [Paley two-edge switching for proper transposed sesqui arrays](research/paley-two-edge-switching/README.md) | Combinatorial designs, finite fields, elliptic curves | Constructs an exact-parameter proper transposed sesqui array for every odd prime power $q\equiv3\pmod4$, $q\geq11$ | Internally verified candidate proof; external review pending |
+| [Spectral separation and the nSSP for looped double paths](research/nssp-looped-double-paths/README.md) | Inverse eigenvalue problems, graph patterns, Jacobi matrices | Classifies exactly which looped double paths allow the non-symmetric strong spectral property | Internally verified candidate proof; external review pending |
 
 ## Current results
 
@@ -42,6 +43,23 @@ switch, with existence proved through exact character counts and the Hasse
 bound for elliptic curves.
 
 - [Manuscript and verification materials](research/paley-two-edge-switching/README.md)
+
+### Spectral separation for looped double paths
+
+For the double path $P_{n,L}$ with loops at the vertices in $L$, the third
+manuscript proves
+
+$$
+P_{n,L}\text{ allows the nSSP}
+\quad\Longleftrightarrow\quad
+L\ne\varnothing\text{ and }(n\text{ is even or }L\text{ contains an odd vertex}).
+$$
+
+Its main structural tool is a spectral-separation criterion for a symmetric
+irreducible tridiagonal matrix with one nonzero diagonal entry: nSSP is
+equivalent to disjoint spectra of the two Jacobi arms.
+
+- [Manuscript and verification materials](research/nssp-looped-double-paths/README.md)
 
 ## Status and review policy
 
@@ -84,4 +102,6 @@ constructive mathematics; combinatorics; combinatorial designs; row-column
 designs; transposed sesqui arrays; finite geometry; finite fields; Paley
 designs; quadratic characters; edge switching; algebraic combinatorics;
 algebraic curves over finite fields; elliptic curves; Hasse and Hasse--Weil
-bounds; cross-disciplinary mathematical methods.
+bounds; cross-disciplinary mathematical methods; inverse eigenvalue problems;
+graph patterns; non-symmetric strong spectral
+property; Jacobi matrices; tridiagonal matrices; spectral separation.

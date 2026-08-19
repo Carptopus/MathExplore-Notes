@@ -1,0 +1,657 @@
+% AI-assisted manuscript source; responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=30mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{fvextra}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Spectral separation and the nSSP}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlength{\emergencystretch}{2em}
+\setlist{nosep,leftmargin=*}
+
+\title{Spectral separation and the non-symmetric strong spectral property\\for looped double paths}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{19 August 2026}
+
+\hypersetup{
+  pdftitle={Spectral separation and the non-symmetric strong spectral property for looped double paths},
+  pdfauthor={Carptopus},
+  pdfsubject={Non-symmetric strong spectral property for looped double paths},
+  pdfkeywords={nSSP, inverse eigenvalue problem, looped double path, Jacobi matrix, spectral separation}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\small\itshape
+Public Beta v0.1. The theorem chain has passed an internal writing-admission audit,
+exact computational calibration, and a manuscript-level zero-trust audit. External mathematical
+review and journal peer review are pending. Priority statements are qualified by
+``to the best of our knowledge.''
+\end{center}
+\vspace{0.8em}
+
+\begin{abstract}
+
+
+Let $P_{n,L}$ be the double path on $[n]$, with a loop at precisely the vertices in
+$L\subseteq[n]$. We classify when this zero--nonzero pattern allows the non-symmetric strong spectral
+property (nSSP). The main structural step concerns a real symmetric irreducible tridiagonal matrix with
+exactly one nonzero diagonal entry. We prove that it has the nSSP if and only if the two zero-diagonal
+Jacobi arms obtained by deleting the looped vertex have disjoint spectra. The forward obstruction is an
+explicit commuting spectral-projector certificate; the reverse implication follows from parity separation
+of the characteristic polynomial and a rooted-continuant recovery argument. Scaling one arm avoids the
+finitely many nonzero spectral collisions whenever parity does not force a common zero eigenvalue. Using
+the Superpattern Lemma and the known nonexistence theorem for odd double paths whose loops lie only on
+even vertices, we obtain
+
+\[
+  P_{n,L}\text{ allows the nSSP}
+  \quad\Longleftrightarrow\quad
+  L\neq\varnothing\ \text{ and }\bigl(n\text{ is even or }L\text{ contains an odd vertex}\bigr).
+\]
+
+In particular, the answer to Question 5.11 of Koljan\v{c}i\'{c} and Oblak is affirmative. The result classifies
+allowance, not the finer distinction between patterns that require the nSSP and those that merely allow it.
+
+\end{abstract}
+
+\section{Introduction}
+
+
+For a real matrix $A$, the non-symmetric strong spectral property requires that the simultaneous
+linear equations
+
+\[
+  A\circ X=0,
+  \qquad
+  [A,X^{\mathsf T}]=0
+\]
+
+have only the zero solution. Here $\circ$ is the Hadamard product and
+$[A,B]=AB-BA$. This property is a transversality condition for inverse eigenvalue problems and is
+preserved, in an appropriate existence sense, when nonzero entries are added to a pattern through the
+Superpattern Lemma [3, 4].
+
+Koljan\v{c}i\'{c} and Oblak [4] study the nSSP for \textbf{double paths}: irreducible tridiagonal zero--nonzero
+patterns with a prescribed set of nonzero diagonal positions. They show that loop placement creates all
+three behaviours relevant to their classification problem: a pattern may require the nSSP, may allow but
+not require it, or may fail to allow it. They ask in Question 5.11 whether every even-order double path
+with at least one loop allows the nSSP.
+
+We answer that question and, more generally, classify the allow/not-allow boundary for every order and
+every loop assignment. The key is to use a symmetric matrix inside the generally non-symmetric pattern.
+For a matrix with a single loop, deleting the looped vertex leaves two zero-diagonal Jacobi-type arms.
+Their spectra provide an exact certificate:
+
+\begin{quote}
+\emph{the symmetric single-loop matrix has the nSSP exactly when the two arm spectra are disjoint.}
+\end{quote}
+
+This statement is closely related to the classical three-spectra inverse problem for Jacobi matrices.
+Michor and Teschl [5] showed that the spectrum of a Jacobi matrix together with the spectra of the two
+submatrices obtained by deleting an interior vertex gives unique reconstruction without additional mixing
+data precisely when the two submatrix spectra are disjoint. Spectral separation and continuant recovery
+are therefore not new by themselves. The contribution here is their connection to the nSSP pattern
+functionals, an explicit nSSP obstruction when the arm spectra meet, and the resulting parity
+classification of loop assignments.
+
+The proof has three conceptual parts.
+
+\begin{enumerate}
+\item Simple spectrum identifies every commuting matrix with a polynomial in $A$. The nSSP equations
+   then become exactly $n$ linear functionals on $\mathbb R[A]$, equivalently the Jacobian of the
+   characteristic coefficients with respect to the one loop value and the $n-1$ edge weights.
+\item The zero-diagonal path polynomial and the deleted-vertex polynomial have opposite parity. An
+   infinitesimal isospectral perturbation therefore separates into two equations. If the arm polynomials
+   are coprime, rooted continuants recover every edge-weight square to first order. If the arm spectra
+   meet, spectral projectors give a nonzero commuting matrix supported outside the pattern.
+\item Parity forces a common zero eigenvalue exactly when $n$ is odd and the unique loop is at an even
+   vertex. In all other cases, scaling one arm avoids the finitely many remaining collisions.
+\end{enumerate}
+Our final theorem uses two prior results exactly at their established scope: loopless patterns do not
+allow the nSSP [1, Observation 3.4], and an odd-order double path whose loops all lie on even vertices
+does not allow the nSSP [4, Theorem 5.7(Cc)]. We do not claim a classification of which allowable
+patterns require the nSSP.
+
+\section{Definitions and notation}
+
+
+For $n\geq1$, write $[n]=\{1,\ldots,n\}$. The double path with loop assignment
+$L\subseteq[n]$ is the directed graph
+
+\[
+  P_{n,L}:\qquad
+  E(P_{n,L})=
+  \{(j,j+1),(j+1,j):1\leq j<n\}
+  \cup\{(\ell,\ell):\ell\in L\}.
+\]
+
+Let $\mathcal M(P_{n,L})$ be the set of real matrices whose nonzero pattern is exactly
+$P_{n,L}$. A pattern \textbf{allows} the nSSP if at least one matrix in its pattern class has the nSSP; it
+\textbf{requires} the nSSP if every matrix in the class has it [4].
+
+The positive constructions below are symmetric. Fix $i\in[n]$, a nonzero loop value $a$, and
+nonzero edge weights $b_1,\ldots,b_{n-1}$. Put
+
+\[
+  A=A_i(a,b)
+  =aE_{ii}+\sum_{j=1}^{n-1}b_j(E_{j,j+1}+E_{j+1,j}).       \tag{2.1}
+\]
+
+Thus $A\in\mathcal M(P_{n,\{i\}})$. We call such matrices symmetric Jacobi-type matrices; no
+positivity assumption on the nonzero $b_j$ is needed.
+
+Let
+
+\[
+  J=A-aE_{ii}.
+\]
+
+Deleting vertex $i$ from $J$ leaves a left arm of order $i-1$ and a right arm of order
+$n-i$. Denote their characteristic polynomials by $L(x)$ and $R(x)$, respectively. An empty arm
+has characteristic polynomial $1$.
+
+For a zero-diagonal weighted path, its monic continuants satisfy
+
+\[
+  K_0(x)=1,\qquad K_1(x)=x,\qquad
+  K_s(x)=xK_{s-1}(x)-c_{s-1}^2K_{s-2}(x).                \tag{2.2}
+\]
+
+Consequently $K_s(-x)=(-1)^sK_s(x)$. Such a path has simple spectrum, symmetric about zero; zero is
+an eigenvalue exactly when its order is odd.
+
+\section{The nSSP as a spectral-coefficient Jacobian}
+
+
+We first record the Jacobian bridge in the special form needed here. General relations between strong
+properties, transversality, and Jacobian methods are developed in [1--3].
+
+\begin{lemma}[pattern functionals and the spectral Jacobian]
+\label{lemma:3-1}
+
+Let $A=A_i(a,b)$ be as in (2.1). Let $\Phi(a,b_1,\ldots,b_{n-1})$ be the vector of the $n$
+non-leading coefficients of $\det(xI-A)$. Then the following are equivalent:
+
+\begin{enumerate}
+\item $A$ has the nSSP;
+\item $D\Phi$ is nonsingular;
+\item the $n$ functionals
+   \[
+     p\longmapsto p(A)_{ii},\qquad
+     p\longmapsto p(A)_{j,j+1}\quad(1\leq j<n)
+   \]
+   are linearly independent on $\mathbb R[x]_{<n}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+
+Every real symmetric irreducible tridiagonal matrix has simple spectrum. Hence its real centralizer is
+
+\[
+  \{p(A):p\in\mathbb R[x]_{<n}\}.
+\]
+
+In particular, every matrix commuting with $A$ is symmetric. If
+$[A,X^{\mathsf T}]=0$, then $X^{\mathsf T}=p(A)$ for a unique polynomial of degree less than
+$n$, and symmetry gives $X=p(A)$. Since the nonzero entries of $A$ occur exactly at $(i,i)$
+and on the two orientations of each path edge, the equation $A\circ X=0$ is equivalent to
+
+\[
+  p(A)_{ii}=0,\qquad p(A)_{j,j+1}=0\quad(1\leq j<n).
+\]
+
+Thus (1) and (3) are equivalent.
+
+For $1\leq k\leq n$, define the normalized moments
+
+\[
+  m_k(A)=\frac1k\operatorname{tr}(A^k).
+\]
+
+Differentiation gives
+
+\[
+  \frac{\partial m_k}{\partial a}=(A^{k-1})_{ii},
+  \qquad
+  \frac{\partial m_k}{\partial b_j}=2(A^{k-1})_{j,j+1}. \tag{3.1}
+\]
+
+In the polynomial basis $1,x,\ldots,x^{n-1}$, this moment Jacobian is the transpose of the
+functional matrix in (3), with each edge column multiplied by the nonzero scalar $2$. Newton's
+identities give an invertible triangular change of coordinates between the first $n$ power sums and
+the $n$ non-leading characteristic coefficients. Hence the moment Jacobian and $D\Phi$ have the
+same rank, proving the equivalence of (2) and (3). \qedhere
+
+\end{proof}
+
+\section{The spectral-separation criterion}
+
+
+We now characterize the nSSP for every matrix in the symmetric single-loop family (2.1).
+
+\begin{theorem}[single-loop spectral separation]
+\label{theorem:4-1}
+
+Let $A=A_i(a,b)$, where $a\neq0$ and every $b_j\neq0$. Then
+
+\[
+  A\text{ has the nSSP}
+  \quad\Longleftrightarrow\quad
+  \gcd(L,R)=1,
+\]
+
+equivalently, the left and right arms obtained by deleting $i$ have disjoint spectra.
+
+\end{theorem}
+
+\begin{proof}[Proof: disjoint arm spectra imply the nSSP]
+
+Let
+
+\[
+  P(x)=\det(xI-J),\qquad Q(x)=L(x)R(x).
+\]
+
+Expanding at the unique diagonal perturbation gives
+
+\[
+  \det(xI-A)=P(x)-aQ(x).                                  \tag{4.1}
+\]
+
+Consider an infinitesimal parameter perturbation
+$(\delta a,\delta b_1,\ldots,\delta b_{n-1})$ in the kernel of $D\Phi$. Equation (4.1) yields
+
+\[
+  0=\delta P-(\delta a)Q-a\,\delta Q.                     \tag{4.2}
+\]
+
+By (2.2), $P$ and $\delta P$ contain only powers with the parity of $n$, whereas $Q$ and
+$\delta Q$ contain only powers with the parity of $n-1$. The two parity parts of (4.2) therefore
+vanish separately:
+
+\[
+  \delta P=0,\qquad (\delta a)Q+a\,\delta Q=0.            \tag{4.3}
+\]
+
+The polynomial $Q$ is monic of degree $n-1$, while its first variation has degree strictly less
+than $n-1$. Comparing leading coefficients in (4.3) gives $\delta a=0$, and then
+$\delta Q=0$.
+
+Assume $\gcd(L,R)=1$. Since
+
+\[
+  0=\delta Q=(\delta L)R+L(\delta R),                    \tag{4.4}
+\]
+
+Euclid's lemma and the strict degree bounds
+$\deg\delta L<\deg L$, $\deg\delta R<\deg R$ imply
+
+\[
+  \delta L=\delta R=0.                                   \tag{4.5}
+\]
+
+The conclusion remains literal when an arm is empty: its polynomial is the constant $1$ and has zero
+variation.
+
+Let $L^-$ and $R^-$ be the characteristic polynomials obtained by deleting the arm vertex adjacent
+to $i$; for a one-vertex arm the resulting polynomial is $1$. Define, when the corresponding arm
+exists,
+
+\[
+  U=b_{i-1}^2L^-,
+  \qquad
+  V=b_i^2R^-.
+\]
+
+The absent term is omitted at an endpoint. Expanding the zero-diagonal full path at vertex $i$ gives
+
+\[
+  P=xLR-UR-LV.                                            \tag{4.6}
+\]
+
+Using $\delta P=\delta L=\delta R=0$ in the first variation of (4.6), we obtain
+
+\[
+  (\delta U)R+L(\delta V)=0.                              \tag{4.7}
+\]
+
+Again coprimality and
+$\deg\delta U<\deg L$, $\deg\delta V<\deg R$ imply that every existing term satisfies
+
+\[
+  \delta U=\delta V=0.                                   \tag{4.8}
+\]
+
+For example, if the left arm is nonempty, the leading coefficient of
+$\delta(b_{i-1}^2L^-)$ is $\delta(b_{i-1}^2)$. Thus (4.8) first gives
+
+\[
+  \delta(b_{i-1}^2)=0,\qquad \delta L^-=0.
+\]
+
+Apply the continuant recurrence (2.2) successively to the rooted pair $(L,L^-)$. If two consecutive
+continuants have zero first variation, comparison of the leading coefficient in
+
+\[
+  \delta\bigl(c^2K_{s-2}\bigr)=0
+\]
+
+first gives $\delta(c^2)=0$ and then $\delta K_{s-2}=0$. Finite induction recovers every internal
+left-arm edge square. The right arm is identical. Hence $\delta(b_j^2)=0$ for all $j$. Since every
+$b_j\neq0$, all $\delta b_j=0$; together with $\delta a=0$, the Jacobian kernel is trivial.
+Lemma 3.1 now gives the nSSP.
+
+\end{proof}
+
+\begin{proof}[Proof: a common arm eigenvalue obstructs the nSSP]
+
+Suppose the arms share an eigenvalue $\mu$. Both arms are then nonempty. Choose corresponding arm
+eigenvectors. Their coordinates at the endpoints adjacent to $i$ are nonzero, because a nonzero
+eigenvector of an irreducible tridiagonal matrix cannot vanish at an endpoint. Scale the two vectors so
+that their contributions through the two edges incident with $i$ cancel. After embedding them in
+$\mathbb R^n$ and putting zero at coordinate $i$, we obtain a nonzero vector $z$ satisfying
+
+\[
+  Az=\mu z,\qquad z_i=0.                                 \tag{4.9}
+\]
+
+Let $S$ be a diagonal sign matrix alternating along the full path, so
+$S_jS_{j+1}=-1$. The zero-diagonal matrix $J$ anticommutes with $S$. Because $z_i=0$, (4.9)
+also gives $Jz=\mu z$, and therefore
+
+\[
+  A(Sz)=-\mu(Sz).                                        \tag{4.10}
+\]
+
+If $\mu\neq0$, set
+
+\[
+  X=zz^{\mathsf T}+(Sz)(Sz)^{\mathsf T}.                 \tag{4.11}
+\]
+
+Each rank-one term is a spectral projector up to scale, so $[A,X]=0$. At every path edge
+$(j,j+1)$,
+
+\[
+  X_{j,j+1}=z_jz_{j+1}\bigl(1+S_jS_{j+1}\bigr)=0,
+\]
+
+and $X_{ii}=0$. Thus $A\circ X=0$, while $X\neq0$, so $A$ fails the nSSP.
+
+If $\mu=0$, each arm must have odd order. Its zero mode is supported on alternating vertices, hence
+the product of its two coordinates across every arm edge is zero. The vector $z$ in (4.9) inherits
+this property, and
+
+\[
+  X=zz^{\mathsf T}
+\]
+
+already satisfies $[A,X]=0$, $A\circ X=0$, and $X\neq0$. This proves the converse. \qedhere
+
+\end{proof}
+
+\begin{remark}
+\label{remark:4-2}
+
+The proof of the sufficient direction is a local, first-order recovery argument. It does not infer
+Jacobian nonsingularity merely from global uniqueness in the three-spectra inverse problem. Conversely,
+the explicit matrices (4.11) and $zz^{\mathsf T}$ show directly why a shared arm eigenvalue violates
+the nSSP equations.
+
+\end{remark}
+
+\section{Single-loop existence}
+
+
+The structural criterion turns existence into a parity question plus a finite collision-avoidance step.
+
+\begin{lemma}[rational spectral separation]
+\label{lemma:5-1}
+
+Suppose the two arm orders have opposite parity, or both are even. Then the edge weights in (2.1) can be
+chosen nonzero and rational so that $\gcd(L,R)=1$.
+
+\end{lemma}
+
+\begin{proof}
+
+A zero-diagonal irreducible path of odd order has one simple zero eigenvalue, while one of even order has
+none. Under the stated parity hypothesis, the two arms do not both contain zero.
+
+Choose arbitrary nonzero rational internal edge weights on both arms. If necessary, multiply every
+internal edge weight of the right arm by a positive rational number $c$. Every nonzero right-arm
+eigenvalue is then multiplied by $c$. A collision with a nonzero left-arm eigenvalue can occur only for
+one of finitely many positive ratios $|\lambda/\nu|$, where $\lambda$ and $\nu$ range over the
+nonzero spectra of the two unscaled arms. Choose $c\in\mathbb Q_{>0}$ outside this finite set. Empty
+arms and one-vertex arms require no scaling. Assign arbitrary nonzero rational weights to the one or two
+edges, when present, that join the arms to vertex $i$. These weights do not enter $L$ or $R$. The
+two arm spectra are then disjoint. \qedhere
+
+\end{proof}
+
+\begin{theorem}[single-loop classification]
+\label{theorem:5-2}
+
+For every $n\geq1$ and $i\in[n]$,
+
+\[
+  P_{n,\{i\}}\text{ allows the nSSP}
+  \quad\Longleftrightarrow\quad
+  n\text{ is even or }i\text{ is odd}.                   \tag{5.1}
+\]
+
+\end{theorem}
+
+\begin{proof}
+
+The arm orders are $i-1$ and $n-i$.
+
+\begin{itemize}
+\item If $n$ is even, these orders have opposite parity.
+\item If $n$ is odd and $i$ is odd, both orders are even.
+\item If $n$ is odd and $i$ is even, both orders are odd.
+\end{itemize}
+In the first two cases, Lemma 5.1 gives rational arm weights with disjoint spectra. Choose the loop and
+the one or two edges incident with $i$ to be any nonzero rational numbers. Theorem 4.1 produces a
+symmetric matrix in $\mathcal M(P_{n,\{i\}})$ with the nSSP.
+
+In the third case, nonexistence is stronger than the failure of our symmetric construction:
+Koljan\v{c}i\'{c}--Oblak [4, Theorem 5.7(Cc)] proves that for odd $n$, every double path whose loops lie only
+on even vertices does not allow the nSSP. Applying that theorem to $L=\{i\}$ gives the reverse
+implication. The case $n=1$ is included directly: the one-by-one matrix $[a]$, $a\neq0$, has the
+nSSP. \qedhere
+
+\end{proof}
+
+\section{All loop assignments}
+
+
+We now combine the single-loop construction with the Superpattern Lemma and the two known negative
+cases.
+
+\begin{theorem}[allow/not-allow classification]
+\label{theorem:6-1}
+
+Let $n\geq1$ and $L\subseteq[n]$. Then
+
+\[
+  P_{n,L}\text{ allows the nSSP}
+  \quad\Longleftrightarrow\quad
+  L\neq\varnothing
+  \quad\text{and}\quad
+  \bigl(n\text{ is even or }L\cap\{1,3,5,\ldots\}\neq\varnothing\bigr). \tag{6.1}
+\]
+
+\end{theorem}
+
+\begin{proof}
+
+Assume first that the condition on the right holds. If $n$ is even, choose any $i\in L$; if
+$n$ is odd, choose an odd $i\in L$. By Theorem 5.2, the single-loop pattern
+$P_{n,\{i\}}$ allows the nSSP. Since $P_{n,L}$ is a superpattern, the Superpattern Lemma
+[3, 4] shows that $P_{n,L}$ also allows the nSSP.
+
+Conversely, if $L=\varnothing$, a loopless pattern does not allow the nSSP
+[1, Observation 3.4]. In the remaining case, if $n\geq3$ is odd and $L$ contains no odd vertex, then
+every loop lies on an even vertex, and [4, Theorem 5.7(Cc)] again says that $P_{n,L}$ does not allow the
+nSSP. These are exactly the failures of the right-hand condition. \qedhere
+
+\end{proof}
+
+\begin{corollary}[Question 5.11]
+\label{corollary:6-2}
+
+If $n$ is even and $L\neq\varnothing$, then $P_{n,L}$ allows the nSSP.
+
+\end{corollary}
+
+\begin{remark}[scope of the classification]
+\label{remark:6-3}
+
+Theorem 6.1 gives a complete \textbf{allow/not-allow} classification. It does not decide whether an allowable
+pattern requires the nSSP or merely contains at least one matrix having it. Thus it answers Question 5.11
+but does not complete the three-way classification requested in [4, Problem 1.6].
+
+\end{remark}
+
+\section{Relation to previous work}
+
+
+The novelty boundary is deliberately narrow.
+
+\begin{enumerate}
+\item The nSSP, the Superpattern Lemma, and the similarity-transversality viewpoint are prior theory
+   [1, 3]. General comparisons between strong properties and Jacobian methods are also available [2].
+   Lemma 3.1 is included as a self-contained specialization, not claimed as a new general framework.
+\item Continuant recurrences, simple spectrum of irreducible symmetric tridiagonal matrices, and parity of
+   zero-diagonal path spectra are classical.
+\item Michor--Teschl [5] already identify disjoint spectra of the two deleted arms as the condition under
+   which three spectra reconstruct a Jacobi matrix without additional mixing information. We do not
+   claim spectral separation or three-spectra recovery as new.
+\item Koljan\v{c}i\'{c}--Oblak [4] provide the double-path formulation and Question 5.11, as well as general
+   positive and negative subfamilies. In particular, their Theorem 5.5 covers all initial-segment loop
+   assignments and hence all endpoint single loops; Theorem 5.7(B) covers $P_{n,\{2\}}$ for even
+   $n$; Theorem 5.7(Cc) gives the odd-order negative family used here; and Examples 5.9--5.10 give
+   further internal single-loop cases.
+\end{enumerate}
+To the best of our knowledge, the items not directly covered by these sources are Theorem 4.1 as an nSSP
+criterion with an explicit common-spectrum obstruction, the completion in Theorem 5.2 of the single-loop
+allow/not-allow classification beyond the subfamilies just listed, and the combined classification in
+Theorem 6.1. Thus the contribution is a unified spectral criterion and a completion of known positive and
+negative subfamilies, not the first positive result for single-loop double paths. This statement records
+the result of a targeted public-literature search; it is not an assertion that all unpublished or
+unindexed work has been excluded.
+
+\section{Computational calibration and reproducibility}
+
+
+The proof above is general and does not depend on finite enumeration. Three complementary scripts are
+retained to expose indexing, parity, boundary, and implementation errors. The first and second reuse the
+weighted-path construction and modular-rank routines from the third, so they are not three
+implementation-independent verifiers; they test different identities and controls over a shared core:
+
+\begin{enumerate}
+\item \texttt{verify\_nssp\_spectral\_separation.py} compares polynomial coprimality, mod-$p$ rank calibration, and
+   the parity classification at all 119 single-loop positions with $2\leq n\leq15$.
+\item \texttt{audit\_nssp\_spectral\_jacobian.py} compares the characteristic-coefficient Jacobian, moment Jacobian,
+   and full verification matrix on 77 weighted samples. It also constructs exact commuting witnesses for
+   one nonzero common eigenvalue and one common zero eigenvalue.
+\item \texttt{verify\_nssp\_weighted\_paths.py --max-n 32} checks all 272 naturally labelled single-loop positions
+   at even orders through $32$ for the discovery formula $b_j=j$.
+\end{enumerate}
+The third computation is only a finite check of one convenient weight formula. The general existence
+proof uses Lemma 5.1 and makes no claim that $b_j=j$ works for every even order.
+
+From the manuscript entry directory, the checks require Python 3.11 or newer and only the standard
+library:
+
+\begin{Verbatim}[fontsize=\small,breaklines=true,breakanywhere=true]
+python -X utf8 verification/verify_nssp_weighted_paths.py --max-n 32
+python -X utf8 verification/verify_nssp_spectral_separation.py
+python -X utf8 verification/audit_nssp_spectral_jacobian.py
+\end{Verbatim}
+
+A full-rank result modulo a prime certifies full rank over $\mathbb Q$ and $\mathbb R$. A rank
+deficiency modulo a prime is used only as calibration and is not treated as a real-rank proof; the
+negative direction is instead certified analytically by Theorem 4.1.
+
+\section{Discussion}
+
+
+The classification illustrates a useful division of labour between pattern theory and inverse spectral
+structure. Pattern results supply the Superpattern Lemma and the sharp nonexistence region. Inside the
+remaining region, a symmetric Jacobi-type witness is enough, and its nSSP reduces to separation of two
+small spectra. The unavoidable zero mode explains the entire parity obstruction; every nonzero collision
+can be removed by a one-parameter rational scaling.
+
+Two questions remain outside the present result. First, one can ask which of the allowable loop
+assignments require the nSSP. That problem concerns all matrices in a generally non-symmetric pattern and
+cannot be settled by the symmetric existence witnesses used here. Second, it may be useful to determine
+whether the spectral-separation criterion extends to broader tree-like patterns with one loop, where
+deleting the looped vertex produces more than two branches and common branch spectra may interact in a
+higher-dimensional way.
+
+\section*{Declaration of AI-assisted research and writing}
+
+
+This project used OpenAI Codex extensively for problem exploration, symbolic derivation, adversarial
+proof checking, literature-search assistance, verification-code generation, and manuscript drafting.
+The retained claims are presented through human-readable arguments and reproducible checks, but AI output
+is not treated as an authority and external expert review remains pending. Codex is a tool, not an author.
+The named author, Carptopus, accepts responsibility for the manuscript's accuracy, originality,
+citations, and integrity.
+
+\section*{License}
+
+
+Copyright 2026 Carptopus. This manuscript is licensed under the
+\href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International License (CC BY 4.0)}.
+Reusers must provide appropriate attribution and indicate whether changes were made. No warranties are
+given.
+
+\begin{thebibliography}{9}
+
+
+\bibitem{ref1} M. Arav, F. J. Hall, H. van der Holst, Z. Li, A. Mathivanan, J. Pan, H. Xu and Z. Yang,
+   \emph{Advances on similarity via transversal intersection of manifolds}, Linear Algebra and its
+   Applications 721 (2025), 102--121, \url{https://doi.org/10.1016/j.laa.2024.05.013}.
+\bibitem{ref2} M. Catral, S. Fallat, H. Gupta and J. C.-H. Lin,
+   \emph{The Strong Spectral Property and the Jacobian Method for Weighted Laplacian Matrices},
+   arXiv:2602.18999, 2026, \url{https://arxiv.org/abs/2602.18999}.
+\bibitem{ref3} S. M. Fallat, H. T. Hall, J. C.-H. Lin and B. L. Shader,
+   \emph{The bifurcation lemma for strong properties in the inverse eigenvalue problem of a graph},
+   Linear Algebra and its Applications 648 (2022), 70--87.
+\bibitem{ref4} S. Koljan\v{c}i\'{c} and P. Oblak,
+   \emph{Combinatorial aspects of the non-symmetric strong spectral property for graphs},
+   arXiv:2604.21552v1, 2026, \url{https://arxiv.org/abs/2604.21552}.
+\bibitem{ref5} J. Michor and G. Teschl,
+   \emph{Reconstructing Jacobi Matrices from Three Spectra}, in J. Janas, P. Kurasov and S. Naboko (eds.),
+   \emph{Spectral Methods for Operators of Mathematical Physics}, Operator Theory: Advances and Applications
+   154, Birkhäuser, Basel, 2004, 151--154,
+   \url{https://doi.org/10.1007/978-3-0348-7947-7_9}.
+\end{thebibliography}
+
+\end{document}
