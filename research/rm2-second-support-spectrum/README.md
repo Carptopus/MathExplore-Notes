@@ -21,15 +21,15 @@ polynomials of degree at most two on $F_2^n$. For a two-dimensional subcode
 $D=\langle f,g\rangle$, its support size is
 
 $$
-\operatorname{wt}(D)
-=\frac{\operatorname{wt}(f)+\operatorname{wt}(g)+\operatorname{wt}(f+g)}2.
+\mathrm{wt}(D)
+=\frac{\mathrm{wt}(f)+\mathrm{wt}(g)+\mathrm{wt}(f+g)}2.
 $$
 
 The manuscript determines, for every $n$, the exact set
 
 $$
 \mathcal S_n
-=\{\operatorname{wt}(D):D\le RM_2(2,n),\ \dim D=2\}.
+=\{\mathrm{wt}(D):D\le RM_2(2,n),\ \dim D=2\}.
 $$
 
 For even dimension $n=2m$, the answer is an explicit finite compatibility

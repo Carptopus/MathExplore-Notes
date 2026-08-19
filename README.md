@@ -114,7 +114,7 @@ for every $n$ the exact set
 
 $$
 \mathcal S_n
-=\{\operatorname{wt}(D):D\le RM_2(2,n),\ \dim D=2\}.
+=\{\mathrm{wt}(D):D\le RM_2(2,n),\ \dim D=2\}.
 $$
 
 The even-dimensional answer is given by an explicit finite compatibility
