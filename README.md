@@ -5,11 +5,12 @@ including manuscripts and reproducible verification materials.
 
 ## Research index
 
-| Entry | Areas | Contribution | Status |
-| --- | --- | --- | --- |
-| [Proper transposed sesqui arrays at all Sylvester--Hadamard powers](research/proper-sesqui-all-powers/README.md) | Combinatorial designs, finite fields, finite geometry, algebraic curves | Constructs an exact-parameter proper transposed sesqui array for every power of two | Internally verified candidate proof; external review pending |
-| [Paley two-edge switching for proper transposed sesqui arrays](research/paley-two-edge-switching/README.md) | Combinatorial designs, finite fields, elliptic curves | Constructs an exact-parameter proper transposed sesqui array for every odd prime power $q\equiv3\pmod4$, $q\geq11$ | Internally verified candidate proof; external review pending |
-| [Spectral separation and the nSSP for looped double paths](research/nssp-looped-double-paths/README.md) | Inverse eigenvalue problems, graph patterns, Jacobi matrices | Classifies exactly which looped double paths allow the non-symmetric strong spectral property | Internally verified candidate proof; external review pending |
+| No. | Entry | Areas | Contribution | Public version | Status |
+| ---: | --- | --- | --- | --- | --- |
+| 1 | [Proper transposed sesqui arrays at all Sylvester--Hadamard powers](research/proper-sesqui-all-powers/README.md) | Combinatorial designs, finite fields, finite geometry, algebraic curves | Constructs an exact-parameter proper transposed sesqui array for every power of two | v0.2-beta | Internally verified candidate proof; external review pending |
+| 2 | [Paley two-edge switching for proper transposed sesqui arrays](research/paley-two-edge-switching/README.md) | Combinatorial designs, finite fields, elliptic curves | Constructs an exact-parameter proper transposed sesqui array for every odd prime power $q\equiv3\pmod4$, $q\geq11$ | v0.2-beta | Internally verified candidate proof; external review pending |
+| 3 | [Spectral separation and the nSSP for looped double paths](research/nssp-looped-double-paths/README.md) | Inverse eigenvalue problems, graph patterns, Jacobi matrices | Classifies exactly which looped double paths allow the non-symmetric strong spectral property | v0.1-beta | Internally verified candidate proof; external review pending |
+| 4 | [An exact nSSP criterion for root-loop spider matrices](research/nssp-root-loop-spiders/README.md) | Inverse eigenvalue problems, generalized stars, matrix patterns | Characterizes the nSSP of every fixed root-loop bidirected spider matrix by pairwise coprimality of its arm polynomials | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
 
@@ -61,6 +62,27 @@ equivalent to disjoint spectra of the two Jacobi arms.
 
 - [Manuscript and verification materials](research/nssp-looped-double-paths/README.md)
 
+### Root-loop spider matrices
+
+For a spider with at least three arms, consider an arbitrary real matrix whose
+nonzero off-diagonal positions are exactly both directed entries on every tree
+edge, with a single nonzero diagonal entry at the root. If $P_j$ is the
+characteristic polynomial of arm $j$ after deleting the root, the fourth
+manuscript proves
+
+$$
+A\text{ has the nSSP}
+\quad\Longleftrightarrow\quad
+P_1,\ldots,P_m\text{ are pairwise coprime}.
+$$
+
+This fixed-matrix criterion allows arbitrary non-symmetric real weights,
+negative edge products, repeated roots within an arm, and nonreal shared-root
+witnesses. It extends the two-arm spectral mechanism while leaving the earlier
+arbitrary-loop double-path classification independent.
+
+- [Manuscript and verification materials](research/nssp-root-loop-spiders/README.md)
+
 ## Status and review policy
 
 Entries are research records, not automatically peer-reviewed publications.
@@ -87,9 +109,10 @@ programs, generated evidence, checksums, and entry-specific licensing.
 
 ## Licensing and attribution
 
-Licenses are declared per research entry. The current entries use CC BY 4.0
-for manuscripts and documentation, the MIT License for Python verification
-code, and CC0 1.0 for JSON results, certificates, and manifests.
+Licenses are declared per research entry. Manuscripts and documentation
+typically use CC BY 4.0, while Python verification code typically uses the MIT
+License. Some entries separately place specified JSON results, certificates,
+or manifests under CC0 1.0; the declaration inside each entry is authoritative.
 
 Unless an entry states otherwise, the responsible author is **Carptopus**.
 Contact: [carptopus@163.com](mailto:carptopus@163.com).
@@ -103,5 +126,7 @@ designs; transposed sesqui arrays; finite geometry; finite fields; Paley
 designs; quadratic characters; edge switching; algebraic combinatorics;
 algebraic curves over finite fields; elliptic curves; Hasse and Hasse--Weil
 bounds; cross-disciplinary mathematical methods; inverse eigenvalue problems;
-graph patterns; non-symmetric strong spectral
-property; Jacobi matrices; tridiagonal matrices; spectral separation.
+graph patterns; non-symmetric strong spectral property; Jacobi matrices;
+tridiagonal matrices; spectral separation;
+root-loop spiders; spider matrices; generalized stars; bidirected trees; arm
+characteristic polynomials; pairwise coprimality; centralizer witnesses.

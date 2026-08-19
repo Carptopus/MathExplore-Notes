@@ -1,0 +1,773 @@
+% AI-assisted manuscript source; responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=29mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{fvextra}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{The nSSP for root-loop spiders}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlength{\emergencystretch}{2.5em}
+\setlist{nosep,leftmargin=*}
+
+\title{An exact non-symmetric strong spectral criterion\\for root-loop spider matrices}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{19 August 2026}
+
+\hypersetup{
+  pdftitle={An exact non-symmetric strong spectral criterion for root-loop spider matrices},
+  pdfauthor={Carptopus},
+  pdfsubject={A pairwise-coprimality criterion for the nSSP of root-loop spider matrices},
+  pdfkeywords={nSSP, spider matrix, inverse eigenvalue problem, spectral criterion, tridiagonal matrix}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\small\itshape
+Public Beta v0.1. The theorem chain has passed a writing-admission proof audit,
+exact computational calibration, and a manuscript-level zero-trust audit.
+External mathematical review and journal peer review are pending. Priority statements
+are qualified by the public-literature boundary stated in the manuscript.
+\end{center}
+\vspace{0.8em}
+
+\begin{abstract}
+
+Let $T$ be a spider with at least three arms. We consider arbitrary real matrices whose nonzero off-diagonal positions are exactly the two directed entries on every edge of $T$, with a single nonzero diagonal entry at the root and zero diagonal entries at every other vertex. No symmetry, sign, symmetrizability, real-spectrum, or square-free-spectrum assumption is imposed. If $B_1,\ldots,B_m$ are the tridiagonal arm matrices obtained by deleting the root and $P_j(x)=\det(xI-B_j)$, we prove that the full matrix has the non-symmetric strong spectral property if and only if $P_1,\ldots,P_m$ are pairwise coprime.
+
+The forward direction combines a cyclic-root criterion with an exact characteristic-coefficient Jacobian on the quotient by diagonal similarity. The reverse direction is constructive. A common nonzero arm eigenvalue, including a nonreal one, yields a real pattern-zero centralizer from paired $\lambda$ and $-\lambda$ left and right eigenvectors; a common zero eigenvalue yields a corresponding witness from the alternating zero modes of two odd arms. The result permits repeated roots inside a single arm and negative directed edge products. Exact computations over $\mathbb Q$, together with modular rank screening, are provided only as reproducible calibration and do not replace the general proof.
+\end{abstract}
+
+\section{Introduction}
+
+The non-symmetric strong spectral property, abbreviated nSSP, is a transversality condition for a real matrix and its zero--nonzero or sign pattern \cite{ref1,ref3}. It supports bifurcation and superpattern arguments in non-symmetric inverse eigenvalue problems \cite{ref3,ref6}. In contrast with a pattern-level allowability question, which asks whether at least one matrix in a qualitative class has the property, the present problem asks for an exact test on every matrix in one structured family.
+
+Our matrices have nonzero off-diagonal entries exactly in both directions of every edge of a spider; all off-diagonal positions outside those bidirected tree edges are zero. The only diagonal nonzero is a loop at the root. Removing the root leaves a direct sum of zero-diagonal irreducible tridiagonal arm matrices. This produces two competing phenomena:
+
+\begin{enumerate}
+\item the characteristic polynomial depends on a small quotient of the directed edge parameters, namely their two-way products; and
+\item a spectral collision between different arms creates a centralizer element invisible on the prescribed nonzero positions.
+
+\end{enumerate}
+
+The main result shows that these are exact complements: the full matrix has the nSSP precisely when no two arms share an eigenvalue over $\mathbb C$.
+
+An earlier public Beta by the present author \cite{ref11} proves a spectral-separation criterion for symmetric single-loop double paths and uses it to classify which arbitrary loop assignments on a double path allow the nSSP. The present theorem is not a replacement for that pattern-level classification. It generalizes the fixed-matrix mechanism from two symmetric arms to a genuinely branching root with arbitrary non-symmetric real weights; conversely, it does not reprove the earlier classification for multiple loop positions.
+
+The proof is not restricted to real or simple arm spectra. Pairwise coprimality allows one arm polynomial to have repeated or nonreal roots. This point matters because arbitrary signs of the two directed edge weights can make an arm non-symmetrizable over $\mathbb R$.
+
+\subsection*{Main theorem}
+
+Let $T=S(\ell_1,\ldots,\ell_m)$ be a spider with $m\ge 3$ and $\ell_j\ge1$. The nonzero off-diagonal positions of $A$ are exactly both directed entries on every edge of $T$. The root diagonal entry is nonzero, and all other diagonal entries are zero. Let $B_j$ be the matrix induced by arm $j$ after deleting the root, and put
+
+\[
+P_j(x)=\det(xI-B_j).
+\]
+
+Then
+
+\[
+A\text{ has the nSSP}
+\quad\Longleftrightarrow\quad
+P_1,\ldots,P_m\text{ are pairwise coprime in }\mathbb R[x].
+\]
+
+Equivalently, $A$ fails the nSSP exactly when two distinct arms share an eigenvalue over $\mathbb C$.
+
+\subsection*{Contribution boundary}
+
+The general nSSP/similarity-transversality framework \cite{ref1,ref3}, the exact Jacobian--nSSP equivalence for matrices with minimal polynomial of degree $n$ \cite[Theorem 5.1]{ref2}, and generalized-star inverse eigenvalue and Jacobian methods \cite{ref4,ref5} are prior tools. Cyclic-matrix centralizer facts, PBH cyclicity, and continuant recurrences are also standard \cite{ref9,ref10}. Likewise, reducing a bidirected tree to directed edge products up to diagonal similarity is a classical elementary mechanism. The symmetric two-arm spectral-separation criterion and the resulting looped-double-path allowability classification are already public in \cite{ref11}. The contribution here is the exact synthesis and extension of these ingredients into an arbitrary non-symmetric, genuinely branching fixed-matrix criterion, including repeated roots within one arm, nonreal common roots, and explicit real centralizer witnesses for the converse.
+
+\section{Definitions and notation}
+
+\subsection{The nSSP}
+
+For real matrices $A$ and $X$ of order $n$, let $A\circ X$ denote their Hadamard product. We say that $A$ has the non-symmetric strong spectral property if
+
+\[
+A\circ X=0,
+\qquad
+AX^{\mathsf T}=X^{\mathsf T}A
+\]
+
+imply $X=0$.
+
+Let $W_A\subseteq M_n(\mathbb R)$ be the linear space supported on the nonzero positions of $A$, and let
+
+\[
+\mathcal O_A=\{LA-AL:L\in M_n(\mathbb R)\}
+\]
+
+be the tangent space to the similarity orbit of $A$.
+
+Under the Frobenius inner product,
+
+\[
+W_A^\perp=\{X:A\circ X=0\},
+\]
+
+and a trace calculation gives
+
+\[
+\langle X,LA-AL\rangle
+=\operatorname{tr}\bigl((AX^{\mathsf T}-X^{\mathsf T}A)L\bigr).
+\]
+
+Consequently,
+
+\[
+A\text{ has the nSSP}
+\quad\Longleftrightarrow\quad
+W_A+\mathcal O_A=M_n(\mathbb R).
+\tag{2.1}
+\]
+
+\subsection{Root-loop spider matrices}
+
+Let the root be $r$. Arm $j$ has vertices
+
+\[
+v_{j,1},v_{j,2},\ldots,v_{j,\ell_j},
+\]
+
+in increasing distance from $r$, and we set $v_{j,0}=r$. Write
+
+\[
+u_{j,s}=A_{v_{j,s-1},v_{j,s}},
+\qquad
+d_{j,s}=A_{v_{j,s},v_{j,s-1}},
+\qquad
+\beta_{j,s}=u_{j,s}d_{j,s}.
+\]
+
+All $u_{j,s}$ and $d_{j,s}$ are nonzero. Let
+
+\[
+a=A_{r,r}\ne0.
+\]
+
+Every other diagonal entry is zero. The root-edge product on arm $j$ is denoted
+
+\[
+\gamma_j=\beta_{j,1}.
+\]
+
+Deleting the root gives
+
+\[
+A(r)=B_1\oplus\cdots\oplus B_m,
+\]
+
+where each $B_j$ is an irreducible zero-diagonal tridiagonal matrix of order $\ell_j$. Define
+
+\[
+P_j(x)=\det(xI-B_j),
+\]
+
+and let $Q_j(x)$ be the characteristic polynomial of the tail obtained from $B_j$ by deleting its first vertex. Thus $Q_j=1$ when $\ell_j=1$.
+
+We use
+
+\[
+P(x)=\prod_{j=1}^m P_j(x).
+\]
+
+All polynomial gcd statements may be taken over $\mathbb R$ or $\mathbb C$: two real polynomials are not coprime over $\mathbb R$ exactly when they share a root over $\mathbb C$.
+
+\section{Edge-product reduction}
+
+\begin{lemma}
+
+The characteristic polynomial of $A$ depends on the prescribed nonzero entries only through $a$ and the directed edge products $\beta_{j,s}$.
+\end{lemma}
+
+\begin{proof}
+
+The underlying undirected graph is a tree, and the only loop is at the root. Every nonzero term in the determinant expansion is therefore a product of the root loop, possibly, and a collection of vertex-disjoint adjacent transpositions. Each adjacent transposition contributes
+
+\[
+A_{p,q}A_{q,p},
+\]
+
+the product attached to that tree edge. No longer directed cycle exists. Hence the determinant, and therefore every characteristic coefficient, depends only on $a$ and the edge products.
+\end{proof}
+
+\begin{lemma}
+
+The differential from the $2n-1$ supported matrix entries to
+
+\[
+(a,\beta_e:e\in E(T))\in\mathbb R^n
+\]
+
+is onto. Its kernel is the $(n-1)$-dimensional space of infinitesimal diagonal similarities.
+\end{lemma}
+
+\begin{proof}
+
+For an edge $e$ with directed weights $p_e,q_e\ne0$,
+
+\[
+\delta\beta_e=q_e\,\delta p_e+p_e\,\delta q_e.
+\]
+
+This map is onto for every edge. Its kernel on that edge can be written
+
+\[
+\delta p_e=t_ep_e,
+\qquad
+\delta q_e=-t_eq_e.
+\]
+
+Because the underlying graph is a tree, arbitrary edge values $t_e$ are differences of vertex potentials. After fixing the root potential, these are exactly the infinitesimal changes produced by diagonal similarity. There are $n-1$ independent edge potentials. Together with the free root-loop direction, the quotient has the stated $n$ coordinates.
+\end{proof}
+
+\section{Pairwise coprimality makes the root cyclic}
+
+\begin{lemma}
+
+Every left or right eigenvector of an irreducible tridiagonal matrix has nonzero first coordinate.
+\end{lemma}
+
+\begin{proof}
+
+Suppose the first coordinate of a right eigenvector is zero. The first row equation and the nonzero superdiagonal entry force the second coordinate to be zero. Continuing along the path forces every coordinate to vanish. The left case is the right case for the transpose, which is also irreducible tridiagonal.
+
+The same recurrence shows that every eigenspace of an irreducible tridiagonal matrix is at most one-dimensional. This does not rule out an algebraically repeated eigenvalue or a defective Jordan block, and neither is ruled out in this paper.
+\end{proof}
+
+\begin{lemma}
+
+If $P_1,\ldots,P_m$ are pairwise coprime, then $e_r$ is a cyclic vector for $A$. In particular, $A$ is nonderogatory.
+\end{lemma}
+
+\begin{proof}
+
+Work over $\mathbb C$. Suppose that
+
+\[
+w^{\mathsf T}A=\lambda w^{\mathsf T}
+\]
+
+and $w_r=0$. The restriction of $w$ to arm $j$ is either zero or a left $\lambda$-eigenvector of $B_j$. Pairwise coprimality implies that at most one arm can contain $\lambda$ in its spectrum.
+
+If a single arm contributes, its first coordinate is nonzero by Lemma 4.1. The root-column equation for $w^{\mathsf T}A=\lambda w^{\mathsf T}$ then consists of one nonzero first coordinate multiplied by one nonzero arm-to-root weight, and cannot equal zero. Thus no nonzero left eigenvector of $A$ has zero root coordinate.
+
+The PBH cyclicity criterion \cite[Chapter 6]{ref10} now implies that $e_r$ is cyclic. Hence the minimal polynomial of $A$ has degree $n$, so $A$ is nonderogatory.
+\end{proof}
+
+\section{The reduced characteristic-coefficient Jacobian}
+
+Let $H(x)$ be the characteristic polynomial after setting the root loop to zero while retaining every edge product. Expansion at the root gives
+
+\[
+\chi_A(x)=H(x)-aP(x),
+\tag{5.1}
+\]
+
+where
+
+\[
+H(x)=xP(x)-\sum_{j=1}^m
+\gamma_jQ_j(x)\frac{P(x)}{P_j(x)}.
+\tag{5.2}
+\]
+
+The zero-loop spider is bipartite. Therefore $H$ has the parity of its degree $n$, while $P$ has the opposite parity, namely that of $n-1$.
+
+\begin{proposition}
+
+If $P_1,\ldots,P_m$ are pairwise coprime, the differential of the characteristic-coefficient map with respect to the reduced coordinates
+
+\[
+(a,\beta_e:e\in E(T))
+\]
+
+is nonsingular.
+\end{proposition}
+
+\begin{proof}
+
+Consider an infinitesimal reduced perturbation for which every characteristic coefficient is fixed, or equivalently
+
+\[
+\delta\chi_A=0.
+\]
+
+From (5.1) and the opposite parities of $H$ and $P$, we obtain separately
+
+\[
+\delta H=0,
+\qquad
+\delta a\,P+a\,\delta P=0.
+\tag{5.3}
+\]
+
+The polynomial $P$ is monic of degree $n-1$, while $\delta P$ has degree at most $n-3$. Comparing the coefficient of $x^{n-1}$ in the second equation of (5.3) gives $\delta a=0$. Since $a\ne0$, it follows that
+
+\[
+\delta P=0.
+\tag{5.4}
+\]
+
+Differentiate $P=\prod_jP_j$:
+
+\[
+0=\delta P
+=\sum_{j=1}^m
+\delta P_j\frac{P}{P_j}.
+\tag{5.5}
+\]
+
+Reduce (5.5) modulo $P_j$. Because the arm polynomials are pairwise coprime, $P/P_j$ is invertible modulo $P_j$. Thus $P_j$ divides $\delta P_j$. However,
+
+\[
+\deg(\delta P_j)\le \ell_j-2<\ell_j=\deg P_j,
+\]
+
+and hence
+
+\[
+\delta P_j=0
+\qquad (1\le j\le m).
+\tag{5.6}
+\]
+
+Differentiate (5.2), using (5.4) and (5.6):
+
+\[
+0=\delta H
+=-\sum_{j=1}^m
+\delta(\gamma_jQ_j)\frac{P}{P_j}.
+\tag{5.7}
+\]
+
+Reducing (5.7) modulo $P_j$ gives
+
+\[
+P_j\mid \delta(\gamma_jQ_j).
+\]
+
+But
+
+\[
+\deg\delta(\gamma_jQ_j)\le \ell_j-1<\ell_j,
+\]
+
+so
+
+\[
+\delta(\gamma_jQ_j)=0.
+\]
+
+Since $Q_j$ is monic, comparison of its highest coefficient first gives $\delta\gamma_j=0$. Because $\gamma_j\ne0$, we then get
+
+\[
+\delta Q_j=0.
+\tag{5.8}
+\]
+
+It remains to recover the internal edge products on each arm. When $\ell_j=1$, $Q_j=1$ and there is no internal edge. Suppose $\ell_j\ge2$. If $R_j$ is the characteristic polynomial of the arm tail beginning at its third vertex, the standard continuant recurrence \cite{ref4,ref5} is
+
+\[
+P_j=xQ_j-\beta_{j,2}R_j.
+\tag{5.9}
+\]
+
+Differentiating (5.9) and using (5.6) and (5.8) gives
+
+\[
+0=-\delta\beta_{j,2}\,R_j-\beta_{j,2}\,\delta R_j.
+\]
+
+If $\ell_j=2$, then $R_j=1$ and $\delta R_j=0$, so highest-degree comparison immediately gives $\delta\beta_{j,2}=0$. If $\ell_j\ge3$, the polynomial $R_j$ is monic of degree $\ell_j-2$, whereas $\delta R_j$ has strictly smaller degree, at most $\ell_j-4$ when nonzero. Highest-degree comparison again yields $\delta\beta_{j,2}=0$; then $\beta_{j,2}\ne0$ yields $\delta R_j=0$. Repeating the same argument down the arm proves that every internal $\delta\beta_{j,s}$ is zero.
+
+All reduced parameter variations therefore vanish. The reduced Jacobian has trivial kernel and is an $n\times n$ matrix, so it is nonsingular.
+\end{proof}
+
+\section{From the reduced Jacobian to nSSP}
+
+Let
+
+\[
+\Phi:M_n(\mathbb R)\longrightarrow\mathbb R^n
+\]
+
+send a matrix to the non-leading coefficients of its characteristic polynomial.
+
+\begin{lemma}
+
+If $A$ is nonderogatory, then
+
+\[
+\ker d\Phi_A=\mathcal O_A.
+\]
+
+This is the cyclic-matrix specialization of the general Jacobian--nSSP equivalence in \cite[Theorem 5.1]{ref2}; a direct argument is included for completeness.
+\end{lemma}
+
+\begin{proof}
+
+The map $\Phi$ is similarity-invariant, so $\mathcal O_A\subseteq\ker d\Phi_A$. A nonderogatory matrix is similar to the companion matrix of its characteristic polynomial \cite{ref9}. At a companion matrix, the $n$ companion-coefficient directions show directly that $d\Phi$ has rank $n$. Rank is preserved by the invertible linear change induced by similarity. Hence
+
+\[
+\dim\ker d\Phi_A=n^2-n.
+\]
+
+The centralizer of a nonderogatory matrix has dimension $n$ \cite{ref9}, so
+
+\[
+\dim\mathcal O_A=n^2-n.
+\]
+
+The inclusion and equal dimensions prove equality.
+\end{proof}
+
+\begin{proposition}
+
+If $P_1,\ldots,P_m$ are pairwise coprime, then $A$ has the nSSP.
+\end{proposition}
+
+\begin{proof}
+
+By Lemma 4.2, $A$ is nonderogatory. By Proposition 5.1 and Lemma 3.2, the restriction
+
+\[
+d\Phi_A|_{W_A}:W_A\longrightarrow\mathbb R^n
+\]
+
+is onto. Lemma 6.1 then gives
+
+\[
+W_A+\ker d\Phi_A
+=W_A+\mathcal O_A
+=M_n(\mathbb R).
+\]
+
+Equation (2.1) proves that $A$ has the nSSP.
+\end{proof}
+
+\section{Common arm roots give explicit obstructions}
+
+The converse requires real nSSP witnesses even when the common arm eigenvalue is nonreal.
+
+\subsection{A common nonzero root}
+
+\begin{proposition}
+
+If two distinct arm polynomials share a root $\lambda\in\mathbb C\setminus\{0\}$, then $A$ does not have the nSSP.
+\end{proposition}
+
+\begin{proof}
+
+Suppose arms $j$ and $k$ share $\lambda$. Choose right $\lambda$-eigenvectors $z_j,z_k$ of $B_j,B_k$, and left eigenvectors $y_j,y_k$, normalized so that their first coordinates equal $1$. This normalization is possible by Lemma 4.1.
+
+Define a vector $v_+$, supported only on arms $j$ and $k$ and zero at the root, by
+
+\[
+v_+|_j=u_{k,1}z_j,
+\qquad
+v_+|_k=-u_{j,1}z_k.
+\]
+
+The two contributions to the root row cancel, so
+
+\[
+Av_+=\lambda v_+.
+\]
+
+Similarly define $w_+$ by
+
+\[
+w_+|_j=d_{k,1}y_j,
+\qquad
+w_+|_k=-d_{j,1}y_k,
+\qquad
+(w_+)_r=0.
+\]
+
+The root equation for $A^{\mathsf T}$ cancels, and
+
+\[
+A^{\mathsf T}w_+=\lambda w_+.
+\]
+
+On every zero-diagonal arm, let
+
+\[
+S=\operatorname{diag}(1,-1,1,-1,\ldots).
+\]
+
+Then $SBS=-B$. Apply the corresponding $S$ independently on arms $j$ and $k$. Because the first sign is $1$, the same root-cancellation coefficients produce vectors $v_-,w_-$ satisfying
+
+\[
+Av_-=-\lambda v_-,
+\qquad
+A^{\mathsf T}w_-=-\lambda w_-.
+\]
+
+Now set
+
+\[
+Y=v_+w_+^{\mathsf T}+v_-w_-^{\mathsf T}.
+\tag{7.1}
+\]
+
+Each outer product commutes with $A$, so $AY=YA$. Root coordinates vanish. At every directed internal arm edge, the two terms in (7.1) cancel because adjacent alternating signs have product $-1$. Thus $Y$ is zero at every prescribed nonzero position of $A$.
+
+The diagonal entry of $Y$ at the first vertex of arm $j$ is
+
+\[
+2u_{k,1}d_{k,1}=2\gamma_k\ne0.
+\]
+
+Hence $Y\ne0$. If $\lambda$ is nonreal, the displayed entry shows that $\operatorname{Re}Y\ne0$. Since $A$ is real, $\operatorname{Re}Y$ still commutes with $A$ and is still zero on the pattern.
+
+Take
+
+\[
+X=Y^{\mathsf T}
+\]
+
+when $Y$ is real, and $X=(\operatorname{Re}Y)^{\mathsf T}$ otherwise. The bidirected spider support is invariant under transpose, so
+
+\[
+A\circ X=0,
+\qquad
+AX^{\mathsf T}=X^{\mathsf T}A,
+\]
+
+with $X\ne0$. Therefore $A$ fails the nSSP.
+\end{proof}
+
+\subsection{A common zero root}
+
+\begin{proposition}
+
+If two distinct arm polynomials both vanish at zero, then $A$ does not have the nSSP.
+\end{proposition}
+
+\begin{proof}
+
+For a zero-diagonal irreducible tridiagonal arm, zero is an eigenvalue exactly when the arm order is odd. A right or left zero mode then has nonzero entries at odd depths and zero entries at even depths; its first coordinate is nonzero.
+
+Normalize right zero modes $z_j,z_k$ and left zero modes $y_j,y_k$ to have first coordinate $1$. Using the same root-cancellation coefficients as in Proposition 7.1, define root-zero vectors
+
+\[
+v|_j=u_{k,1}z_j,
+\qquad
+v|_k=-u_{j,1}z_k,
+\]
+
+and
+
+\[
+w|_j=d_{k,1}y_j,
+\qquad
+w|_k=-d_{j,1}y_k.
+\]
+
+Then
+
+\[
+Av=0,
+\qquad
+A^{\mathsf T}w=0.
+\]
+
+Set $Y=vw^{\mathsf T}$. This matrix commutes with $A$. Its root row and column vanish. On every internal arm edge, one of the adjacent zero-mode coordinates is zero, so $Y$ is zero in both directed edge positions. Its first-depth diagonal entry on arm $j$ is $\gamma_k\ne0$, and hence $Y\ne0$.
+
+Taking $X=Y^{\mathsf T}$ gives a nonzero real nSSP witness.
+\end{proof}
+
+\section{Proof of the main theorem}
+
+\begin{theorem}
+
+Let $T=S(\ell_1,\ldots,\ell_m)$ with $m\ge3$ and every $\ell_j\ge1$. Let $A$ be a real matrix whose nonzero off-diagonal positions are exactly the two directed entries on every edge of $T$, whose root diagonal entry $a$ is nonzero, and whose remaining diagonal entries are zero. With $B_j$ and $P_j(x)=\det(xI-B_j)$ as in Section 2, the following are equivalent:
+
+\[
+A\text{ has the nSSP}
+\quad\Longleftrightarrow\quad
+P_1,\ldots,P_m\text{ are pairwise coprime in }\mathbb R[x].
+\]
+\end{theorem}
+
+\begin{proof}
+
+If the arm polynomials are pairwise coprime, Proposition 6.2 gives the nSSP.
+
+Conversely, suppose two arm polynomials are not coprime over $\mathbb R$. They share a root over $\mathbb C$. If a common root is nonzero, Proposition 7.1 gives a nonzero real nSSP witness. If the common root is zero, Proposition 7.2 gives such a witness. Therefore $A$ does not have the nSSP.
+\end{proof}
+
+\begin{corollary}
+
+Within the family of Theorem 8.1, with $a\ne0$ and every root-edge product $\gamma_j\ne0$, the nSSP status of $A$ depends only on the internal products $\beta_{j,s}$ for $2\le s\le\ell_j$. It is independent of the nonzero values of $a$ and the $\gamma_j$, and of how every nonzero product is split between the two directions.
+\end{corollary}
+
+\begin{proof}
+
+Each $P_j$ depends only on the internal products $\beta_{j,s}$ with $2\le s\le\ell_j$, and Theorem 8.1 depends only on the pairwise gcds of the $P_j$. The nonzero restrictions on $a$ and the $\gamma_j$ remain part of the ambient family.
+\end{proof}
+
+\begin{remark}
+
+A repeated root within a single $P_j$ does not by itself obstruct nSSP. The obstruction is exclusively a root shared by two different arms. Thus the theorem is not a simple-spectrum criterion for either the arms or the full matrix.
+\end{remark}
+
+\begin{remark}
+
+The theorem is stated for $m\ge3$ because spiders are conventionally used here for a genuine branching root and because the motivating extension begins beyond double paths. The proof itself also specializes to the corresponding two-arm root-loop path whenever the same hypotheses and notation apply, recovering and extending the symmetric fixed-matrix mechanism in \cite{ref11}. It does not replace the arbitrary-loop pattern classification proved there.
+\end{remark}
+
+\section{Exact computational calibration}
+
+The proof above is independent of computation. We nevertheless provide a \href{verification/verify_directed_spider_criterion.py}{standard-library Python verifier} and a \href{verification/README.md}{verification guide} for definition-level calibration.
+
+For every test matrix, the program creates variables $X_{ij}$ exactly at the zero positions of $A$ and forms the linear system
+
+\[
+AX^{\mathsf T}-X^{\mathsf T}A=0.
+\]
+
+There are
+
+\[
+n^2-(2n-1)=(n-1)^2
+\]
+
+variables. Full column rank is exactly the nSSP condition.
+
+The standard run is
+
+\begin{Verbatim}[fontsize=\small,breaklines=true,breakanywhere=true,breaksymbolleft={},breaksymbolright={}]
+python -X utf8 verification/verify_directed_spider_criterion.py --max-vertices 11 --samples 10
+\end{Verbatim}
+
+It produces 585 signed, genuinely non-symmetric integer-weight cases:
+
+\begin{itemize}
+\item 145 cases have pairwise-coprime arm polynomials, and all 145 have full verification rank modulo $1000003$;
+\item 440 cases have a cross-arm common factor, and none has full verification rank modulo $1000003$;
+\item no coprime case has a modular rank-loss candidate;
+\item no noncoprime case gives a modular full-rank counterexample.
+
+\end{itemize}
+
+A modular full-rank result proves full rank over $\mathbb Q$ and $\mathbb R$ for that integer matrix. A modular rank loss does not prove a rank loss over $\mathbb Q$; it is only a screen. Accordingly, the negative controls used to support the failure side are also eliminated exactly with rational arithmetic.
+
+The integrated destructive controls include:
+
+\begin{enumerate}
+\item arm polynomials $x^2-2$, $x^2-3$, and $(x^2+1)^2$, showing that an internal repeated complex root and a negative edge product are compatible with full rank $64/64$;
+\item a different directed splitting with the same edge products, again with exact rank $64/64$;
+\item two arms sharing $x^2-2$, with exact rank $62/64$;
+\item two arms sharing $x^2+1$, with exact rank $23/25$;
+\item two odd arms sharing $x$, with exact rank $63/64$.
+
+\end{enumerate}
+
+These tests target the assumptions most likely to be imported accidentally from the symmetric case. They do not enlarge the theorem's logical evidence beyond the proof.
+
+\section{Relation to prior work}
+
+The nSSP was introduced as a non-symmetric strong property connected with bifurcation and superpattern results \cite{ref3}. Similarity transversality provides an equivalent differential-geometric formulation \cite{ref1}, and later work develops combinatorial allow/require questions for sign and zero--nonzero patterns \cite{ref6,ref7}. Those pattern-level questions have different quantifiers from Theorem 8.1: they ask whether a qualitative class contains, or consists of, nSSP matrices; our theorem decides each fixed matrix in a particular infinite family.
+
+The closest result by the present author is the public Beta \cite{ref11}. Its structural theorem treats a symmetric irreducible tridiagonal matrix with one nonzero diagonal entry: nSSP is equivalent to disjoint spectra of the two Jacobi arms. That paper then combines the symmetric witness with superpattern and nonexistence results to classify all loop assignments on double paths and answer an explicit open question. Theorem 8.1 retains a single root loop but moves in a different direction: it permits a genuinely branching root, arbitrary non-symmetric directed weights, negative edge products, repeated roots within one arm, and nonreal shared-root witnesses. Thus the two-arm symmetric criterion is precursor work, while the arbitrary-loop pattern classification remains an independent result not contained in this paper.
+
+Generalized-star inverse eigenvalue theory already uses the spectra of arm principal submatrices and explains how common arm eigenvalues affect whole-matrix multiplicities in the real symmetric setting \cite{ref4}. Jacobian constructions on generalized-star components also appear in work on linear trees \cite{ref5}. These results supply important background for the arm decomposition and continuant method, but they do not state the arbitrary non-symmetric fixed-matrix nSSP criterion proved here.
+
+The closest general Jacobian result is public in full: Catral, Fallat, Gupta, and Lin prove that the characteristic-coefficient Jacobian has full row rank exactly when the minimal polynomial has degree $n$ and the matrix has the nSSP \cite[Theorem 5.1]{ref2}. Thus Lemma 6.1 and the general Jacobian-to-nSSP bridge are prior tools, not contributions of this paper. Separately, Vander Meulen, Cavers, and Li announce in an ILAS 2026 abstract a characterization of sign patterns that allow nSSP \cite{ref7}. The full text of that sign-pattern classification is not publicly available at the time of this draft. It may settle which rooted-spider signings admit some nSSP realization, but the abstract alone does not provide the fixed-weight iff in Theorem 8.1. Any later public theorem must be compared directly before a priority claim is made.
+
+Accordingly, this draft makes no claim of absolute global priority. The novelty statement is limited to the absence of a direct match in the public sources checked as of 2026-08-19.
+
+\section{Limits and further questions}
+
+Except for the convention $m\ge3$ used to reserve the word \emph{spider} for a genuinely branching root, the proof uses the following frozen structural assumptions:
+
+\begin{itemize}
+\item zero diagonal entries away from the root give arm parity and the $\lambda/-\lambda$ symmetry;
+\item nonzero weights make the path recurrences irreducible and make the edge-product differential onto;
+\item the nonzero root loop $a$ separates the two parity components in (5.3) and allows $\delta P=0$ to be recovered;
+\item a single branching root makes deletion of the root a direct sum of arms;
+\item bidirected support makes the pattern invariant under transpose and supplies two-way edge products.
+
+\end{itemize}
+
+Adding nonroot loops destroys the parity split and the alternating-sign construction. Allowing more than one branching vertex changes both the arm factorization and the centralizer witnesses. Missing reverse arcs or zero edge weights make the quotient and cyclicity arguments degenerate. These are separate research problems rather than routine corollaries.
+
+Two natural follow-up questions are:
+
+\begin{enumerate}
+\item Is there a comparably exact nSSP criterion for a tree with several branching vertices, formulated through spectra or resultants of rooted components?
+\item Which sign patterns in the present root-loop spider family allow nSSP, once the matrix-level criterion is combined with realizability of pairwise-coprime arm polynomials?
+
+\end{enumerate}
+
+Neither question is pursued here.
+
+\section{Reproducibility and evidence boundary}
+
+The public research package contains:
+
+\begin{itemize}
+\item this manuscript PDF and its corresponding \href{nssp-root-loop-spiders.tex}{LaTeX source};
+\item an \href{README.md}{entry README} stating the theorem, scope, status, and reproduction command;
+\item the \href{verification/verify_directed_spider_criterion.py}{dependency-free verification program} and its \href{verification/README.md}{verification guide};
+\item the \href{SHA256SUMS.txt}{SHA-256 manifest} and the entry-specific license notices.
+
+\end{itemize}
+
+The finite tests serve three roles only: catching implementation errors, testing boundary cases, and preventing hidden symmetric assumptions. The theorem is supported by the proof in Sections 3--8. No solver timeout, modular rank loss, random sample, or finite enumeration is used as a general existence or nonexistence argument.
+
+\section{AI-assisted research and writing disclosure}
+
+This work was developed with AI assistance for literature search, symbolic derivation, proof red-teaming, code generation, exact computational checks, and manuscript drafting. Carptopus is the responsible author and is accountable for the mathematical claims, source selection, software, and public versions. OpenAI Codex is a research and writing tool, not an author.
+
+\begin{thebibliography}{10}
+
+\bibitem{ref1} M. Arav, F. J. Hall, H. van der Holst, Z. Li, A. Mathivanan, J. Pan, H. Xu, and Z. Yang, \emph{Advances on similarity via transversal intersection of manifolds}, Linear Algebra and its Applications 721 (2025), 102--121. \url{https://doi.org/10.1016/j.laa.2024.05.013}
+
+\bibitem{ref2} M. Catral, S. Fallat, H. Gupta, and J. C.-H. Lin, \emph{The Strong Spectral Property and the Jacobian Method for Weighted Laplacian Matrices}, arXiv:2602.18999v1 (2026), especially Theorem 5.1. \url{https://arxiv.org/abs/2602.18999}
+
+\bibitem{ref3} S. M. Fallat, H. T. Hall, J. C.-H. Lin, and B. L. Shader, \emph{The bifurcation lemma for strong properties in the inverse eigenvalue problem of a graph}, Linear Algebra and its Applications 648 (2022), 70--87.
+
+\bibitem{ref4} C. R. Johnson, A. Leal Duarte, and C. M. Saiago, \emph{Inverse eigenvalue problems and lists of multiplicities of eigenvalues for matrices whose graph is a tree: the case of generalized stars and double generalized stars}, Linear Algebra and its Applications 373 (2003), 311--330. \url{https://doi.org/10.1016/S0024-3795(03)00582-2}
+
+\bibitem{ref5} C. R. Johnson and T. Wakhare, \emph{The inverse eigenvalue problem for linear trees}, Discrete Mathematics 345 (2022), Article 112737. \url{https://doi.org/10.1016/j.disc.2021.112737}
+
+\bibitem{ref6} S. Koljan\v{c}i\'{c} and P. Oblak, \emph{Combinatorial aspects of the non-symmetric strong spectral property for graphs}, arXiv:2604.21552v1 (2026). \url{https://arxiv.org/abs/2604.21552}
+
+\bibitem{ref7} K. N. Vander Meulen, \emph{Sign patterns that require or allow the non-symmetric strong spectral property}, abstract, 27th Conference of the International Linear Algebra Society (2026), joint work with M. Cavers and Z. Li. \url{https://ilas2026.math.vt.edu/docs/ILAS2026-Book-Of-Abstracts.pdf}
+
+\bibitem{ref8} M. Cavers and K. N. Vander Meulen, \emph{Nonzero matrix patterns that require distinct eigenvalues}, Linear Algebra and its Applications 742 (2026), 66--76. \url{https://doi.org/10.1016/j.laa.2026.04.011}
+
+\bibitem{ref9} R. A. Horn and C. R. Johnson, \emph{Matrix Analysis}, second edition, Cambridge University Press, 2013.
+
+\bibitem{ref10} T. Kailath, \emph{Linear Systems}, Prentice--Hall, 1980.
+
+\bibitem{ref11} Carptopus, \emph{Spectral separation and the non-symmetric strong spectral property for looped double paths}, MathExplore Notes, v0.1-beta (19 August 2026). \href{https://github.com/Carptopus/MathExplore-Notes/tree/e57ee007380cbc351eb371d8e991303cab5f1e48/research/nssp-looped-double-paths}{Stable public version}.
+\end{thebibliography}
+
+\end{document}
