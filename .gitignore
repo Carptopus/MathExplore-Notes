@@ -3,6 +3,7 @@
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+**/build/
 .DS_Store
 Thumbs.db
 desktop.ini

@@ -1,0 +1,578 @@
+% AI-assisted manuscript source; responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=29mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{maintheorem}{Theorem A}
+\numberwithin{equation}{section}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Low-component total cut complexes}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlength{\emergencystretch}{4em}
+\setlist{nosep,leftmargin=*}
+
+\title{The low-component cases for total cut complexes\\of disconnected graphs}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{20 August 2026}
+
+\hypersetup{
+  pdftitle={The low-component cases for total cut complexes of disconnected graphs},
+  pdfauthor={Carptopus},
+  pdfsubject={A wedge-of-spheres formula for the low-component cases of total cut complexes},
+  pdfkeywords={total cut complex, disconnected graph, Alexander duality, simplicial complex, wedge of spheres, polyhedral join}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\small\itshape
+Public Beta v0.1. The proof, novelty boundary, and complete manuscript have passed
+writing-admission, manuscript-level, and release-level zero-trust audits. External
+mathematical review and journal peer review are pending.
+\end{center}
+\vspace{0.8em}
+
+\begin{abstract}
+Let $G=G_1\sqcup\cdots\sqcup G_k$ be a graph with $k$ nonempty connected
+components and $n$ vertices. For $d\geq 2$, write $\Delta_d^t(G)$ for the total
+$d$-cut complex and $\mathrm{BI}_d(G)$ for its Alexander dual. For $d\geq3$,
+Carnero Bravo proved that, under natural contractibility and simple-connectivity
+assumptions on the components, if $k\geq d+3$, then
+\[
+\Delta_d^t(G)\simeq
+\bigvee_{\binom{k-1}{d-1}} S^{n-d-1},
+\]
+and asked whether the same formula holds for $k=d,d+1,d+2$. We also give the
+elementary independent argument needed for the stated $d=2$ high-component range.
+
+We answer all three cases affirmatively. For $k=d+2$, a complete $1$-skeleton
+and a fixed-component triangular fan give simple connectivity. For $k=d+1$, we
+separate the excess $n-k=0,1$ boundary cases and fill the fundamental cycles of a
+spanning star by explicit triangular disks. For $k=d$, we cover the total cut
+complex by joins indexed by weak compositions of $d$. The all-ones block is the
+required sphere, while the union of the remaining blocks deformation retracts
+onto its intersection with that sphere. The last argument requires only the
+componentwise contractibility-or-void assumption and not the additional
+simple-connectivity hypothesis. Together with the previously known range, this
+completes the formula for every $k\geq d$ under the stated hypotheses.
+\end{abstract}
+
+\section{Introduction}
+
+For a graph $G$ and an integer $d\geq1$, the total $d$-cut complex
+$\Delta_d^t(G)$ consists of the vertex sets whose complement contains an
+independent set of size $d$ \cite{ref1}. Equivalently,
+\begin{equation}
+\sigma\in\Delta_d^t(G)
+\quad\Longleftrightarrow\quad
+\alpha(G-\sigma)\geq d.
+\label{eq:definition}
+\end{equation}
+
+Total cut complexes were introduced by Bayer, Denker, Jeli\'c Milutinovi\'c,
+Rowlands, Sundaram, and Xue \cite{ref1}. Their topology connects graph structure,
+Stanley--Reisner theory, Alexander duality, shellability, and discrete Morse
+theory.
+
+Carnero Bravo \cite{ref2} studies both $\Delta_d^t(G)$ and its Alexander dual
+$\mathrm{BI}_d(G)$, the bounded-independence complex. For a disconnected graph
+$G=G_1\sqcup\cdots\sqcup G_k$, \cite[Theorem 26]{ref2} calculates the
+homotopy type of $\mathrm{BI}_d(G)$ under componentwise contractibility
+assumptions. Alexander duality then determines the homology of $\Delta_d^t(G)$.
+To upgrade this homology calculation to a wedge-of-spheres homotopy type,
+\cite[Theorem 28]{ref2} proves simple connectivity by observing that every three
+vertices form a face when $k\geq d+3$. Its proof invokes \cite[Theorem 26]{ref2},
+which is stated for $d\geq3$; we therefore supply the short $d=2$ argument
+independently in Section~\ref{sec:completion}.
+
+This leaves exactly three component counts. In \cite[Question 29]{ref2}, it is
+asked whether the same formula remains true for
+\[
+k=d,\qquad k=d+1,\qquad k=d+2.
+\]
+
+The difficulty is genuinely low-dimensional. The dual calculation already fixes
+the target homology, but the complete-$2$-skeleton argument used for
+$k\geq d+3$ is no longer available. The three missing layers exhibit three
+different boundary phenomena:
+\begin{enumerate}
+\item for $k=d+2$, the $1$-skeleton is complete, but some triangles may be absent;
+\item for $k=d+1$, even the $1$-skeleton can have missing edges and the target may
+have dimension $0$ or $1$;
+\item for $k=d$, the all-singleton case is already a sphere, and the extra faces
+contributed by larger components must be shown not to change its homotopy type.
+\end{enumerate}
+
+Our main theorem resolves all three layers.
+
+\begin{maintheorem}\label{thm:main}
+Let $d\geq2$, and let
+\[
+G=G_1\sqcup\cdots\sqcup G_k
+\]
+have $k\geq d$ nonempty connected components and $n$ vertices. Assume that
+\begin{enumerate}
+\item for every $i$ and every $2\leq \ell\leq d$, the complex
+$\Delta_\ell^t(G_i)$ is void or contractible; and
+\item $\mathrm{BI}_2(G_i)$ is simply connected for every $i$.
+\end{enumerate}
+Then
+\begin{equation}
+\Delta_d^t(G)\simeq
+\bigvee_{\binom{k-1}{d-1}} S^{n-d-1}.
+\label{eq:main}
+\end{equation}
+For $d\geq3$, the range $k\geq d+3$ is \cite[Theorem 28]{ref2}. The main new
+content is the range $k=d,d+1,d+2$; Section~\ref{sec:completion} also closes the
+elementary $d=2$, $k\geq5$ dependency separately. Moreover, when $k=d$,
+condition~2 is unnecessary.
+\end{maintheorem}
+
+The proof for $k=d$ is naturally expressed by a weak-composition cover. This is
+close in spirit to the composition-poset and two-factor decompositions developed
+in \cite[Theorems 26 and 34]{ref2} and to the general polyhedral-join framework
+in \cite{ref3}. Those tools are prior work. The point here is the particular
+multi-filter cover and the comparison between its nonbaseline union and its trace
+on the baseline sphere.
+
+\section{Definitions and conventions}
+
+All graphs are finite and simple. All simplicial complexes are finite. We
+distinguish the void complex, which has no faces, from $\{\varnothing\}$. A
+contractible complex is in particular nonvoid.
+
+For a graph $H$ and $r\geq1$, set
+\begin{equation}
+\Delta_r^t(H)
+=\{\sigma\subseteq V(H):\alpha(H-\sigma)\geq r\}.
+\label{eq:total-cut}
+\end{equation}
+The bounded-independence complex is
+\begin{equation}
+\mathrm{BI}_r(H)
+=\{\sigma\subseteq V(H):\alpha(H[\sigma])<r\}.
+\label{eq:bounded-independence}
+\end{equation}
+These two complexes are Alexander dual on the common vertex set \cite{ref2}. We
+use the standard join $K*L$ for complexes on disjoint vertex sets.
+
+For the weak-composition argument, it is convenient to extend the total-cut
+filtration by
+\begin{equation}
+\Delta_0^t(H)=\Delta^{V(H)},
+\qquad
+\Delta_1^t(H)=\partial\Delta^{V(H)}.
+\label{eq:extended-filtration}
+\end{equation}
+The second identity follows because $H-\sigma$ contains an independent vertex
+exactly when $\sigma\neq V(H)$. If $H$ has one vertex, then
+$\partial\Delta^{V(H)}=\{\varnothing\}$, viewed as $S^{-1}$ in join formulas.
+
+We repeatedly use the following elementary observation.
+
+\begin{lemma}\label{lem:components}
+If deleting a vertex set $\sigma$ leaves at least $d$ nonempty connected
+components of $G$, then $\sigma\in\Delta_d^t(G)$.
+\end{lemma}
+
+\begin{proof}
+Choose one remaining vertex from each of $d$ components. Vertices in distinct
+components are pairwise nonadjacent, so they form an independent $d$-set.
+\end{proof}
+
+\section{The inherited homology calculation}
+
+The component hypotheses first determine the homology needed in the two
+connectivity arguments.
+
+\begin{proposition}\label{prop:homology}
+Under the hypotheses of Theorem~A, $\Delta_d^t(G)$ has only one nonzero reduced
+homology group, namely
+\begin{equation}
+\widetilde H_{n-d-1}(\Delta_d^t(G);\mathbb Z)
+\cong \mathbb Z^{\binom{k-1}{d-1}}.
+\label{eq:homology}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Suppose first that $d\geq3$. The proof of \cite[Theorem 28]{ref2}, using its
+connectivity result for bounded-independence complexes, shows that the component
+hypotheses make every $\mathrm{BI}_\ell(G_i)$ contractible for
+$2\leq\ell\leq d$. Then \cite[Theorem 26]{ref2} gives
+\begin{equation}
+\mathrm{BI}_d(G)\simeq
+\bigvee_{\binom{k-1}{d-1}}S^{d-2}.
+\label{eq:dual-wedge}
+\end{equation}
+Combinatorial Alexander duality gives \eqref{eq:homology}.
+
+For $d=2$, $\mathrm{BI}_2(G)$ is the disjoint union, in geometric realization,
+of the clique complexes $\mathrm{BI}_2(G_i)$. Each is contractible under the
+assumptions: if the dual total-cut complex is void this is immediate, and if it
+is contractible, Alexander duality gives acyclicity while the assumed simple
+connectivity permits Whitehead's theorem. Thus $\mathrm{BI}_2(G)$ is homotopy
+equivalent to $k$ points. Its reduced $H_0$ has rank $k-1$, which is
+$\binom{k-1}{1}$, and Alexander duality again yields \eqref{eq:homology}.
+\end{proof}
+
+For $k=d+1,d+2$, we will combine Proposition~\ref{prop:homology} with direct
+low-dimensional connectivity arguments. The $k=d$ proof is stronger and does
+not use this proposition.
+
+\section{The case \texorpdfstring{$k=d$}{k=d}}
+
+We first treat the most structured boundary layer.
+
+\begin{theorem}\label{thm:k-equals-d}
+Let $d\geq2$, and let $G=G_1\sqcup\cdots\sqcup G_d$ have $d$ nonempty connected
+components and $n$ vertices. If $\Delta_\ell^t(G_i)$ is void or contractible for
+every $i$ and $2\leq\ell\leq d$, then
+\begin{equation}
+\Delta_d^t(G)\simeq S^{n-d-1}.
+\label{eq:k-equals-d}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Let
+\[
+W_d=\{(r_1,\ldots,r_d)\in\mathbb Z_{\geq0}^d:
+r_1+\cdots+r_d=d\}
+\]
+be the weak compositions of $d$ into $d$ parts. For
+$\mathbf r=(r_1,\ldots,r_d)\in W_d$, define
+\begin{equation}
+X_{\mathbf r}
+=\Delta_{r_1}^t(G_1)*\cdots*\Delta_{r_d}^t(G_d).
+\label{eq:blocks}
+\end{equation}
+We claim that
+\begin{equation}
+\Delta_d^t(G)=\bigcup_{\mathbf r\in W_d}X_{\mathbf r}.
+\label{eq:block-cover}
+\end{equation}
+
+Indeed, let $\sigma\in\Delta_d^t(G)$ and choose an independent $d$-set
+$S\subseteq V(G)-\sigma$. Put $r_i=|S\cap V(G_i)|$. Then
+$\mathbf r\in W_d$, and the component of $\sigma$ in $V(G_i)$ lies in
+$\Delta_{r_i}^t(G_i)$. Hence $\sigma\in X_{\mathbf r}$. Conversely, if
+$\sigma\in X_{\mathbf r}$, choose an independent $r_i$-set in
+each $G_i-(\sigma\cap V(G_i))$. Their union is an independent $d$-set in
+$G-\sigma$. This proves \eqref{eq:block-cover}.
+
+The unique weak composition with every coordinate equal to $1$ is
+$\mathbf 1=(1,\ldots,1)$. Its block is
+\begin{equation}
+B=X_{\mathbf1}
+=\partial\Delta^{V(G_1)}*\cdots*\partial\Delta^{V(G_d)}
+\simeq S^{n-d-1}.
+\label{eq:baseline}
+\end{equation}
+Let $R=W_d-\{\mathbf1\}$, omit any void blocks, and put
+\begin{equation}
+Y=\bigcup_{\mathbf r\in R}X_{\mathbf r},
+\qquad
+A=B\cap Y.
+\label{eq:nonbaseline}
+\end{equation}
+Every $\mathbf r\in R$ has a zero coordinate and a coordinate at least $2$.
+The zero coordinate supplies a full-simplex factor in \eqref{eq:blocks}, so
+every nonvoid $X_{\mathbf r}$ is a cone.
+
+Now take a finite nonempty set $T\subseteq R$ and define
+\[
+m_i=\max_{\mathbf r\in T}r_i.
+\]
+Because the total-cut filtration decreases with its index and the component
+vertex sets are disjoint,
+\begin{equation}
+\bigcap_{\mathbf r\in T}X_{\mathbf r}
+=\Delta_{m_1}^t(G_1)*\cdots*\Delta_{m_d}^t(G_d).
+\label{eq:cover-intersection}
+\end{equation}
+At least one $m_i$ is at least $2$. If some $m_j=0$, the intersection is a cone.
+If no coordinate is zero, every nonvoid factor of index at least $2$ is
+contractible by hypothesis. Thus every nonempty intersection in this cover of
+$Y$ is contractible.
+
+Intersecting \eqref{eq:cover-intersection} with $B$ gives
+\begin{equation}
+B\cap\bigcap_{\mathbf r\in T}X_{\mathbf r}
+=\Delta_{\max(1,m_1)}^t(G_1)*\cdots*
+\Delta_{\max(1,m_d)}^t(G_d).
+\label{eq:trace-intersection}
+\end{equation}
+Every nonempty complex in \eqref{eq:trace-intersection} is contractible for the
+same reason. Moreover, \eqref{eq:cover-intersection} contains a nonempty simplex
+if and only if \eqref{eq:trace-intersection} does. Only the zero coordinates
+change, from a full simplex to a simplex boundary; a factor with index at least
+$2$ is nonvoid and contractible, hence contains a nonempty face. Therefore the
+covers of $Y$ and $A$ have exactly the same nonempty-intersection pattern.
+
+Take as a basis-like cover of $Y$ all nonempty finite intersections of the
+$X_{\mathbf r}$. For the inclusion $p:A\hookrightarrow Y$, the inverse image of
+each cover element is its intersection with $B$. By
+\eqref{eq:cover-intersection}--\eqref{eq:trace-intersection}, both spaces are
+contractible. The local-to-global theorem \cite[Theorem 10]{ref2} implies that
+$p$ is a weak equivalence, hence a homotopy equivalence between finite CW
+complexes.
+
+The inclusion $A\hookrightarrow Y$ is also a cofibration, so $A$ is a strong
+deformation retract of $Y$. Extending this deformation by the identity on $B$
+gives
+\[
+\Delta_d^t(G)=B\cup_A Y\simeq B\simeq S^{n-d-1}.
+\]
+If $R$ contains no nonvoid block, then $\Delta_d^t(G)=B$ from the outset.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:k-equals-d} does not use the simple connectivity of
+$\mathrm{BI}_2(G_i)$. It is therefore slightly stronger than the $k=d$
+specialization requested in \cite[Question 29]{ref2}.
+\end{remark}
+
+\section{The case \texorpdfstring{$k=d+1$}{k=d+1}}
+
+Write
+\begin{equation}
+e=n-k=\sum_{i=1}^k(|V(G_i)|-1).
+\label{eq:excess}
+\end{equation}
+The target sphere dimension is exactly $e$.
+
+\begin{theorem}\label{thm:k-equals-d-plus-one}
+Under the hypotheses of Theorem~A, if $k=d+1$, then
+\begin{equation}
+\Delta_d^t(G)\simeq\bigvee_d S^{n-d-1}.
+\label{eq:k-equals-d-plus-one}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+If $e=0$, all components are singletons. Then
+\[
+\Delta_d^t(G)=\{\sigma:|\sigma|\leq1\},
+\]
+which is a set of $d+1$ points and hence a wedge of $d$ copies of $S^0$.
+
+If $e=1$, there is one two-vertex connected component $\{a,b\}$ and $d$
+singleton components. The complex is the graph obtained from $K_{2,d}$ by
+adding the edge $ab$. It is connected and has cycle rank
+\[
+(2d+1)-(d+2)+1=d.
+\]
+Thus it is a wedge of $d$ circles.
+
+Assume now that $e\geq2$. If a component with at least three vertices exists,
+choose one such component as $C$; otherwise choose any nonsingleton component as
+$C$, in which case every nonsingleton component is a $K_2$. Fix $a\in C$. For
+every other vertex $x$, deleting $a$ and $x$ empties at most one component. By
+Lemma~\ref{lem:components}, $ax$ is an edge of $\Delta_d^t(G)$. Hence the star
+with center $a$ is a spanning tree of the $1$-skeleton. The fundamental group is
+generated by loops
+\begin{equation}
+a-x-y-a,
+\label{eq:fundamental-loop}
+\end{equation}
+where $xy$ is an edge not in the star.
+
+First suppose $|C|\geq3$. Choose a neighbor $b$ of $a$ in the connected graph
+$C$. If $axy$ is a face, the loop \eqref{eq:fundamental-loop} is filled.
+Otherwise $b\notin\{x,y\}$. The triples $abx$ and $aby$ are faces, since
+deleting either triple empties at most one component. Because $xy$ is an edge,
+there is an independent $d$-set $S$ in $G-\{x,y\}$. The failure of $axy$ to be
+a face forces $a\in S$. Since $ab$ is an edge of $G$, we have $b\notin S$, so
+the same $S$ witnesses that $bxy$ is a face. The triangles $abx$, $aby$, and
+$bxy$ form a disk with boundary \eqref{eq:fundamental-loop}.
+
+It remains to consider the case in which every nonsingleton component is a
+$K_2$. Since $e\geq2$, there are at least two such components. Write one as
+$\{a,b\}$ and choose a vertex $c$ in another. If $axy$ is not a face while $xy$
+is an edge, then necessarily $\{x,y\}=\{b,s\}$ for a singleton component $s$.
+Indeed, if $b$ is absent, failure of $ab$'s star triangle requires $x$ and $y$
+to exhaust two singleton components, contradicting that $xy$ is an edge; if
+$b$ is present and the other point is not a singleton, at most one component is
+exhausted. In the remaining case, $abc$, $acs$, and $bcs$ are faces and form a
+disk with boundary $a-b-s-a$.
+
+Every generator \eqref{eq:fundamental-loop} is therefore null-homotopic, so
+$\Delta_d^t(G)$ is simply connected for $e\geq2$.
+Proposition~\ref{prop:homology} says that its only nonzero reduced homology is
+$\mathbb Z^d$ in dimension $e$. The standard wedge-of-spheres criterion used in
+\cite[Theorem 5]{ref2} now gives \eqref{eq:k-equals-d-plus-one}.
+\end{proof}
+
+\section{The case \texorpdfstring{$k=d+2$}{k=d+2}}
+
+\begin{theorem}\label{thm:k-equals-d-plus-two}
+Under the hypotheses of Theorem~A, if $k=d+2$, then
+\begin{equation}
+\Delta_d^t(G)\simeq
+\bigvee_{\binom{d+1}{2}}S^{n-d-1}.
+\label{eq:k-equals-d-plus-two}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Deleting any two vertices empties at most two components, so at least $d$
+nonempty components remain. Lemma~\ref{lem:components} shows that the
+$1$-skeleton of $\Delta_d^t(G)$ is complete.
+
+Suppose some component $C$ has at least two vertices, and fix $v\in C$. For any
+two other vertices $x,y$, the triple $vxy$ cannot exhaust three components:
+exhausting a component with $v$ requires another vertex of $C$, leaving only one
+vertex available to exhaust another component. Hence $vxy$ is a face. Every
+loop in the complete $1$-skeleton is filled by a triangular fan with apex $v$.
+Thus the complex is simply connected. Here $n\geq d+3$, so the target dimension
+$n-d-1$ is at least $2$. Proposition~\ref{prop:homology} and the
+wedge-of-spheres criterion give \eqref{eq:k-equals-d-plus-two}.
+
+If every component is a singleton, then $G=(d+2)K_1$ and
+\[
+\Delta_d^t(G)=\{\sigma:|\sigma|\leq2\}
+=\mathrm{sk}_1\Delta^{d+1}.
+\]
+This is the complete graph on $d+2$ vertices. Its cycle rank is
+\[
+\binom{d+2}{2}-(d+2)+1=\binom{d+1}{2},
+\]
+which again gives \eqref{eq:k-equals-d-plus-two}.
+\end{proof}
+
+\section{Completion of the disconnected formula}\label{sec:completion}
+
+\begin{proof}[Proof of Theorem~A]
+The cases $k=d$, $k=d+1$, and $k=d+2$ are
+Theorems~\ref{thm:k-equals-d}, \ref{thm:k-equals-d-plus-one}, and
+\ref{thm:k-equals-d-plus-two}. If $d\geq3$, the range $k\geq d+3$ is
+\cite[Theorem 28]{ref2}.
+
+It remains only to make the $d=2$, $k\geq5$ range independent of the parameter
+restriction in \cite[Theorem 26]{ref2}. Proposition~\ref{prop:homology} gives
+\[
+\widetilde H_{n-3}(\Delta_2^t(G);\mathbb Z)
+\cong\mathbb Z^{k-1}
+\]
+and no other reduced homology. Deleting any three vertices empties at most three
+components, so at least $k-3\geq2$ nonempty components remain.
+Lemma~\ref{lem:components} shows that the $2$-skeleton of $\Delta_2^t(G)$ is the
+full $2$-skeleton on its vertex set. Hence the complex is simply connected.
+Since $n-3\geq2$, the wedge-of-spheres criterion \cite[Theorem 5]{ref2} gives
+\[
+\Delta_2^t(G)\simeq\bigvee_{k-1}S^{n-3}.
+\]
+These ranges exhaust all $d\geq2$ and $k\geq d$.
+\end{proof}
+
+The binomial multiplicities agree on the three boundary layers:
+\[
+\binom{d-1}{d-1}=1,
+\qquad
+\binom{d}{d-1}=d,
+\qquad
+\binom{d+1}{d-1}=\binom{d+1}{2}.
+\]
+
+The proofs also explain why the single complete-$2$-skeleton argument of
+\cite[Theorem 28]{ref2} does not simply extend downward. At $k=d+2$ only selected
+triangles are needed; at $k=d+1$ one must first choose a spanning star and fill
+its fundamental cycles; at $k=d$ the correct object is the entire
+weak-composition cover rather than the $2$-skeleton.
+
+\section{Relation to previous decomposition methods}
+
+The proof uses several established tools whose scope should be separated from
+the new conclusion.
+
+First, for $d\geq3$, the homology input is inherited from the
+bounded-independence calculation and Alexander duality in
+\cite[Theorems 26 and 28]{ref2}. For $d=2$, Proposition~\ref{prop:homology}
+supplies the elementary clique-component/Alexander-duality argument directly.
+Second, the passage from local equivalences on a basis-like cover to a global
+weak equivalence is \cite[Theorem 10]{ref2}. Third, \cite[Theorem 34]{ref2} gives
+a two-graph decomposition of $\Delta_d^t(G_1\sqcup G_2)$ when the relevant
+filtration inclusions are null-homotopic. This already identifies
+independent-number splitting as a natural mechanism for disjoint unions.
+
+Theorem~\ref{thm:k-equals-d} is not a direct iteration of that two-factor result.
+After combining several components, the intermediate total-cut filtration need
+not retain the componentwise contractibility and null-homotopy hypotheses. The
+weak-composition cover instead handles all distributions simultaneously and
+compares the full nonbaseline diagram to its trace on the all-ones block.
+
+Polyhedral joins and their homotopy-colimit decompositions are also established
+objects; see \cite{ref3}. We do not claim a new general theorem about polyhedral
+joins. The retained point is the total-cut-specific cover and its consequence
+for the three component counts asked about in \cite[Question 29]{ref2}.
+
+\section{Boundary of the result}
+
+Theorem~A is conditional on the same component assumptions as
+\cite[Theorem 28]{ref2}. It does not classify $\Delta_d^t(G)$ for arbitrary
+disconnected graphs. In particular, it does not answer \cite[Question 30]{ref2},
+which asks whether the clique-complex connectivity condition can be removed.
+
+The $k=d$ argument shows that one hypothesis can be removed in that single
+layer, but it does not imply a corresponding weakening for $k>d$. Nor does the
+proof determine simple-homotopy type, shellability, torsion outside the stated
+hypotheses, or the maps between consecutive total-cut filtration levels.
+
+No computer enumeration is used in the proof. Finite calculations performed
+during discovery served only as falsification controls and are not evidence for
+the universal statements.
+
+\section{AI-assisted research and writing disclosure}
+
+This work was developed with AI assistance for literature discovery, proof
+stress-testing, symbolic organization, and drafting. Carptopus is the responsible
+author and has reviewed the mathematical claims and the disclosed computational
+boundaries. OpenAI Codex is a research and writing tool, not an author.
+
+\begingroup
+\small
+\raggedright
+\setlength{\parskip}{0.25em}
+\begin{thebibliography}{9}
+
+\bibitem{ref1}
+M. Bayer, M. Denker, M. Jeli\'c Milutinovi\'c, R. Rowlands, S. Sundaram, and
+L. Xue,
+\emph{Total Cut Complexes of Graphs}, arXiv:2209.13503 (2022).
+\url{https://arxiv.org/abs/2209.13503}
+
+\bibitem{ref2}
+A. Carnero Bravo,
+\emph{Total cut complexes and their duals}, arXiv:2602.21427v3 (2026).
+\url{https://arxiv.org/abs/2602.21427}
+
+\bibitem{ref3}
+A. Carnero Bravo,
+\emph{Polyhedral joins and graph complexes}, arXiv:2307.14321v3 (2025).
+\url{https://arxiv.org/abs/2307.14321}
+
+\end{thebibliography}
+\endgroup
+
+\end{document}

@@ -13,6 +13,7 @@ including manuscripts and reproducible verification materials.
 | [An exact nSSP criterion for root-loop spider matrices](research/nssp-root-loop-spiders/README.md) | Inverse eigenvalue problems, generalized stars, matrix patterns | Characterizes the nSSP of every fixed root-loop bidirected spider matrix by pairwise coprimality of its arm polynomials | v0.1-beta | Internally verified candidate proof; external review pending |
 | [A recursive nSSP criterion for root-loop tree matrices](research/nssp-root-loop-trees/README.md) | Inverse eigenvalue problems, rooted trees, matrix patterns | Characterizes the nSSP of every fixed root-loop bidirected tree matrix by recursive sibling-subtree coprimality | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Attainable second support weights of binary second-order Reed--Muller codes](research/rm2-second-support-spectrum/README.md) | Coding theory, quadratic Boolean functions, Walsh spectra | Determines for every dimension the exact set of support sizes attained by two-dimensional subcodes of $RM_2(2,n)$ | v0.1-beta | Internally verified candidate proof; external review pending |
+| [The low-component cases for total cut complexes of disconnected graphs](research/total-cut-low-components/README.md) | Algebraic topology, graph complexes, simplicial complexes | Resolves the three low-component cases of the total-cut wedge-of-spheres problem and completes the stated range for all $k\geq d$ | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
 
@@ -126,6 +127,25 @@ not their multiplicities.
 
 - [Manuscript and verification materials](research/rm2-second-support-spectrum/README.md)
 
+### Low-component total cut complexes
+
+Let $G$ be a graph with $k$ nonempty connected components and $n$ vertices.
+Under the component hypotheses stated in the manuscript, this result resolves
+the three low-component cases $k=d,d+1,d+2$ and proves
+
+$$
+\Delta_d^t(G)\simeq
+\bigvee_{\binom{k-1}{d-1}} S^{n-d-1}.
+$$
+
+Together with the previously known high-component range and an independent
+argument for the required $d=2$ case, this completes the formula for every
+$d\geq2$ and $k\geq d$ under the stated hypotheses. The proof combines
+explicit triangular fillings, Alexander duality, joins, deformation
+retractions, and a nerve-lemma argument.
+
+- [Manuscript materials](research/total-cut-low-components/README.md)
+
 ## Status and review policy
 
 Entries are research records, not automatically peer-reviewed publications.
@@ -176,4 +196,7 @@ characteristic polynomials; rooted tree matrices; recursive subtree
 polynomials; pairwise coprimality; spectral collisions; centralizer witnesses;
 Reed--Muller codes; higher weight spectra; second support weights; quadratic
 Boolean functions; Walsh spectra; quadratic pencils; common-zero counts;
-alternating polar forms; generalized Hamming weights.
+alternating polar forms; generalized Hamming weights; total cut complexes;
+bounded-independence complexes; simplicial complexes;
+Alexander duality; polyhedral joins; nerve lemma; wedges of spheres;
+disconnected graphs; graph complexes; algebraic topology.
