@@ -4,6 +4,7 @@
 
 - [Read or download the PDF](bi-esakia-comb-bounded-trees.pdf)
 - [BibTeX citation](CITATION.bib)
+- DOI: [10.5281/zenodo.22045542](https://doi.org/10.5281/zenodo.22045542)
 - [LaTeX source](bi-esakia-comb-bounded-trees.tex)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus

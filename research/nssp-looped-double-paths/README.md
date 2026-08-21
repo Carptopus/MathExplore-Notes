@@ -4,6 +4,7 @@
 
 - [Read or download the PDF](nssp-looped-double-paths.pdf)
 - [BibTeX citation](CITATION.bib)
+- DOI: [10.5281/zenodo.22045508](https://doi.org/10.5281/zenodo.22045508)
 - [LaTeX source](nssp-looped-double-paths.tex)
 - [Verification code](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
