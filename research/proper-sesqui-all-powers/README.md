@@ -3,6 +3,7 @@
 ## Manuscript
 
 - [Read or download the PDF](proper-sesqui-all-powers.pdf)
+- [BibTeX citation](CITATION.bib)
 - [LaTeX source](proper-sesqui-all-powers.tex)
 - [Verification code and certificates](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)

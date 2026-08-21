@@ -3,6 +3,7 @@
 ## Manuscript
 
 - [Read or download the PDF](rm2-second-support-spectrum.pdf)
+- [BibTeX citation](CITATION.bib)
 - [LaTeX source](rm2-second-support-spectrum.tex)
 - [Verification code](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)

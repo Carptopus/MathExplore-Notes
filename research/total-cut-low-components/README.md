@@ -3,6 +3,7 @@
 ## Manuscript
 
 - [Read or download the PDF](total-cut-low-components.pdf)
+- [BibTeX citation](CITATION.bib)
 - [LaTeX source](total-cut-low-components.tex)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus

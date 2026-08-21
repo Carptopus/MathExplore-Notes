@@ -3,6 +3,7 @@
 ## Manuscript
 
 - [Read or download the PDF](paley-two-edge-switching.pdf)
+- [BibTeX citation](CITATION.bib)
 - [LaTeX source](paley-two-edge-switching.tex)
 - [Verification code and reproduced results](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)

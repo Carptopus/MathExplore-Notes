@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "For use of a specific result, cite that entry's CITATION.bib. Cite this repository only when referring to the collection as a whole."
+title: "MathExplore Notes"
+abstract: "A collection of AI-assisted mathematical research manuscripts and reproducible verification materials."
+authors:
+  - family-names: "Carptopus"
+    email: "carptopus@163.com"
+type: dataset
+repository: "https://github.com/Carptopus/MathExplore-Notes"
+url: "https://github.com/Carptopus/MathExplore-Notes"
+keywords:
+  - "AI-assisted mathematics"
+  - "computer-assisted mathematics"
+  - "reproducible mathematics"
+  - "experimental mathematics"
+  - "combinatorics"
+  - "inverse eigenvalue problems"
+  - "coding theory"
+  - "algebraic topology"
+  - "order theory"

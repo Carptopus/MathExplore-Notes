@@ -3,6 +3,7 @@
 ## Manuscript
 
 - [Read or download the PDF](nssp-looped-double-paths.pdf)
+- [BibTeX citation](CITATION.bib)
 - [LaTeX source](nssp-looped-double-paths.tex)
 - [Verification code](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)

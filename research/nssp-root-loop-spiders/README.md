@@ -3,6 +3,7 @@
 ## Manuscript
 
 - [Read or download the PDF](nssp-root-loop-spiders.pdf)
+- [BibTeX citation](CITATION.bib)
 - [LaTeX source](nssp-root-loop-spiders.tex)
 - [Verification code](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
