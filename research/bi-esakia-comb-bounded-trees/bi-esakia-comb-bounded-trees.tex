@@ -1,0 +1,604 @@
+% AI-assisted manuscript source; responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=29mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{maintheorem}{Theorem A}
+\numberwithin{equation}{section}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Comb-bounded crowns}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlength{\emergencystretch}{4em}
+\setlist{nosep,leftmargin=*}
+
+\title{Comb-bounded crowns and bi-Esakia representability\\of well-ordered rooted trees}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{21 August 2026}
+
+\hypersetup{
+  pdftitle={Comb-bounded crowns and bi-Esakia representability of well-ordered rooted trees},
+  pdfauthor={Carptopus},
+  pdfsubject={A finite-anchor synchronization theorem and a bi-Esakia representability criterion for comb-bounded crowns},
+  pdfkeywords={bi-Esakia space, bi-Heyting algebra, well-ordered tree, bi-p-morphism, inverse limit, better partial order, finite comb}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\small\itshape
+Public Beta v0.1. The corrected proof and the complete manuscript have passed
+the repository's internal writing-admission, manuscript, and artifact audits.
+External mathematical review and journal peer review are pending.
+\end{center}
+\vspace{0.8em}
+
+\begin{abstract}
+We give a sufficient condition for an abstract well-ordered rooted tree to
+admit a bi-Esakia topology. Let $X$ have root $r$, and for every cover $a$ of
+$r$ write $Q_a=\uparrow a$ for the corresponding first-level crown. We prove
+that $X$ is bi-Esakia representable whenever all $Q_a$ are finite and their
+order duals uniformly omit one fixed finite co-tree comb.
+
+The proof separates topology from finite order theory. First, we prove a
+synchronization theorem for arbitrarily many finite posets amalgamated over a
+common finite downset. If the petals fall into finitely many classes and every
+petal admits a stem-exact surjective bi-p-morphism onto an actual anchor petal,
+then the amalgam carries a bi-Esakia topology. The topology is a finite sum of
+one-point compactifications of anchor fibers and also arises as the
+inverse-limit topology of the finite-petal quotients. Second, a
+better-partial-order theorem of Martins supplies finitely many actual minimal
+anchor types for every uniformly comb-bounded family of finite crowns. The
+resulting class allows arbitrary root width, no uniform bound on crown size,
+and no uniform depth bound. We also explain why a known infinite antichain of
+finite co-trees obstructs the finite-anchor method without providing a
+nonrepresentability theorem.
+\end{abstract}
+
+\section{Introduction}
+
+Esakia duality represents Heyting algebras by ordered Stone spaces in which the
+down-closure of every clopen set is clopen. Bi-Heyting algebras require the same
+topology to support both directions: both down-closures and up-closures of
+clopen sets must remain clopen. Consequently, showing separately that a poset
+and its order dual are Esakia representable does not by itself produce a
+bi-Esakia topology on the original poset.
+
+Fornasiere and Moraschini characterized the Esakia-representable well-ordered
+forests satisfying the appropriate chain-supremum condition \cite{ref4}. Their
+recursive topology is intrinsically one-sided, and the corresponding bi-Esakia
+representability problem remains subtler. Tasiou proved inverse-limit closure
+for bi-Esakia spaces in her master's thesis \cite[Theorem 4.2.6]{ref1},
+synchronized arbitrary disjoint copies of a fixed finite connected poset
+\cite[Theorem 4.3.4]{ref1}\cite[Theorem 4.6]{ref2}, and represented the finite
+stages of a countable inverse system as the zigzag image-finite part of a
+larger bi-Esakia space
+\cite[Theorem 4.3.8]{ref1}\cite[Theorem 4.3]{ref2}. The present question is
+different: the finite rooted pieces need not be isomorphic, and they meet at a
+common root, or more generally at a common finite stem.
+
+Our first result isolates the required topological construction. Suppose finite
+petals $P_i$ share a finite downset $K$. If they can be partitioned into
+finitely many groups so that every petal in a group maps by a surjective
+bi-p-morphism onto an actual anchor petal, with the map fixing $K$ and taking no
+external point into $K$, then the amalgam is bi-Esakia representable. The
+topology synchronizes all fibers lying over the same anchor point. This extends
+the point-synchronization idea for isomorphic copies to finitely many
+nonisomorphic quotient types and a common stem.
+
+The second result applies this construction to trees. Martins proved that
+finite co-trees omitting a fixed finite comb form a better partial order under
+the surjective bi-p-image relation \cite[Proposition 4.10]{ref5}. Thus, among
+the finite crowns that actually occur above a root, there are only finitely many
+minimal quotient types. Choosing actual crowns as representatives gives
+exactly the anchors required by the synchronization theorem.
+
+\begin{maintheorem}
+Let $X$ be a well-ordered rooted tree with root $r$. For each
+$a\in\operatorname{Cov}_X(r)$, put $Q_a=\uparrow_Xa$. Assume that
+\begin{enumerate}
+\item every $Q_a$ is finite; and
+\item for some fixed $n\geq1$, the finite tree-comb
+  $H_n=C_n^{\mathrm{op}}$ does not order-embed into any $Q_a$, where $C_n$ is
+  the finite co-tree $n$-comb of \cite{ref5}.
+\end{enumerate}
+Then the underlying poset $X$ admits a bi-Esakia topology.
+\end{maintheorem}
+
+The well-ordered hypothesis is essential to the statement as written. Indeed,
+let
+\[
+X=\{0\}\cup(\mathbb Q\cap(0,1))
+\]
+with the usual order. It is a rooted tree whose root has no cover, so the crown
+assumptions are vacuous. It has no gaps and is not even Priestley representable
+by \cite[Proposition 2.5]{ref4}. The first frozen version of Theorem~A omitted
+the well-ordered hypothesis and was therefore false. Section~\ref{sec:crowns}
+uses well-ordering to prove that the first-level crowns exhaust all nonroot
+points.
+
+The conclusion covers trees of arbitrary root width. The crown sizes need not
+have a common bound, and their depths may be unbounded. The uniform restriction
+is order-theoretic: the family omits one fixed comb.
+
+\section{Preliminaries}
+
+All posets are ordered by $\leq$. For $x$ in a poset $P$, write
+$\uparrow_Px$ and $\downarrow_Px$ for its principal up- and downsets. A tree is
+a poset with a least element in which every principal downset is a chain. It is
+well-ordered if every principal downset is a well-ordered chain.
+
+A map $f:P\to Q$ is a \emph{surjective bi-p-morphism} if it is surjective and
+order preserving and, for every $x\in P$,
+\begin{equation}
+f[\uparrow_Px]=\uparrow_Qf(x),
+\qquad
+f[\downarrow_Px]=\downarrow_Qf(x).
+\label{eq:bip}
+\end{equation}
+Equivalently, it satisfies both the bounded and co-bounded back conditions.
+These conditions imply, for every $D\subseteq Q$,
+\begin{equation}
+\downarrow_P f^{-1}(D)=f^{-1}(\downarrow_QD),
+\qquad
+\uparrow_P f^{-1}(D)=f^{-1}(\uparrow_QD).
+\label{eq:inverse-cones}
+\end{equation}
+
+A bi-Esakia space is an ordered Stone space whose clopen sets have clopen down-
+and up-closures. We use the equivalent criterion from
+\cite[Theorem 2.12]{ref3}: besides the clopen-cone conditions, it is enough in
+the present Stone setting to verify that every principal upset is closed.
+
+For each positive integer $n$, let $C_n$ be the finite co-tree with points
+\[
+\{c_1,\ldots,c_n,c'_1,\ldots,c'_n\},
+\]
+whose order is generated by
+\begin{equation}
+c_1<c_2<\cdots<c_n,
+\qquad
+c'_i<c_i\quad(1\leq i\leq n).
+\label{eq:comb}
+\end{equation}
+This is the $n$-comb of \cite[Figure 6]{ref5}, and we put
+$H_n=C_n^{\mathrm{op}}$. We define the height of a finite poset to be the
+maximum number of points in a chain. Thus $C_1=H_1^{\mathrm{op}}$ is a
+two-point chain, $H_n$ has height $n+1$, and $H_2$ is branched and contains a
+three-point chain.
+
+For finite co-trees, write $M\preceq_p Q$ when there exists a surjective
+bi-p-morphism $Q\to M$. Martins \cite{ref5} proves that, for each fixed $n$,
+the class
+\begin{equation}
+\mathcal T_n=
+\{Y:Y\text{ is a finite co-tree and }C_n
+  \text{ does not order-embed into }Y\}
+\label{eq:Tn}
+\end{equation}
+is a better partial order under $\preceq_p$. In particular, it is a well
+partial order.
+
+\section{Synchronization over a common finite stem}
+
+We first prove the topological part independently of trees.
+
+\begin{theorem}[finite-anchor synchronization]\label{thm:synchronization}
+Let $K$ be a finite poset and let $G$ be finite. For each $g\in G$, let $I_g$
+be an arbitrary index set with a distinguished anchor $0_g\in I_g$. Suppose
+that finite posets $P_{g,i}$ satisfy the following conditions and that their
+amalgam is nonempty.
+\begin{enumerate}
+\item Every $P_{g,i}$ contains the same copy of $K$, and $K$ is a downset of
+  $P_{g,i}$.
+\item Distinct petals meet exactly in $K$, and external points belonging to
+  distinct petals are incomparable.
+\item For every $i\in I_g$ there is a surjective bi-p-morphism
+  \[
+  f_{g,i}:P_{g,i}\longrightarrow P_{g,0_g}
+  \]
+  which is the identity on $K$ and satisfies $f_{g,i}^{-1}(K)=K$. For the
+  anchor, take the identity map.
+\end{enumerate}
+Let $X$ be the amalgam of all petals over $K$. Then $X$ admits a bi-Esakia
+topology.
+\end{theorem}
+
+\begin{proof}
+For $g\in G$ and $a\in P_{g,0_g}\setminus K$, define the synchronized fiber
+\begin{equation}
+E_{g,a}=\{a\}\cup
+\bigcup_{i\in I_g\setminus\{0_g\}}f_{g,i}^{-1}(a).
+\label{eq:fiber}
+\end{equation}
+Give $E_{g,a}$ the one-point compactification topology in which every point
+other than $a$ is isolated and $a$ is the unique possible nonisolated point.
+Give $K$ the discrete topology. Since $G$, $K$, and every anchor petal are
+finite, $X$ is the finite topological sum
+\begin{equation}
+X=K\mathbin{\dot\cup}
+\mathop{\dot\bigcup}_{g\in G}
+\mathop{\dot\bigcup}_{a\in P_{g,0_g}\setminus K}E_{g,a},
+\label{eq:sum}
+\end{equation}
+and is therefore a compact Stone space.
+
+A set $U\subseteq X$ is clopen precisely when, for each synchronized fiber,
+its trace is finite if the anchor is absent and cofinite if the anchor is
+present. Because the number of anchors is finite and every individual fiber
+$f_{g,i}^{-1}(a)$ is finite, there is for each $g$ a finite exceptional set
+$J_g\subseteq I_g$ such that
+\begin{equation}
+U\cap P_{g,i}
+=f_{g,i}^{-1}(U\cap P_{g,0_g})
+\qquad(i\notin J_g).
+\label{eq:stable}
+\end{equation}
+Conversely, this eventual inverse-image condition characterizes clopen
+subsets.
+
+We show that the down-closure of $U$ has the same form. Fix a nonexceptional
+petal and abbreviate
+\[
+U_i=U\cap P_{g,i},\qquad U_0=U\cap P_{g,0_g},
+\qquad
+T=(\downarrow_XU)\cap K.
+\]
+No external point is comparable across distinct petals, $K$ is a common
+downset, and $f_{g,i}^{-1}(T)=T$. Hence
+Equation~\eqref{eq:inverse-cones} gives
+\begin{align}
+(\downarrow_XU)\cap P_{g,i}
+&=\downarrow_{P_{g,i}}U_i\cup T \notag\\
+&=f_{g,i}^{-1}
+  (\downarrow_{P_{g,0_g}}U_0\cup T) \notag\\
+&=f_{g,i}^{-1}
+  ((\downarrow_XU)\cap P_{g,0_g}).
+\label{eq:down-stable}
+\end{align}
+The up-closure cannot move from an external point into another petal, while
+the common influence of $U\cap K$ is already present in every inverse image.
+Thus
+\begin{align}
+(\uparrow_XU)\cap P_{g,i}
+&=\uparrow_{P_{g,i}}U_i \notag\\
+&=f_{g,i}^{-1}(\uparrow_{P_{g,0_g}}U_0) \notag\\
+&=f_{g,i}^{-1}((\uparrow_XU)\cap P_{g,0_g}).
+\label{eq:up-stable}
+\end{align}
+Only the finitely many exceptional finite petals and the finite set $K$ can
+deviate from \eqref{eq:down-stable} or \eqref{eq:up-stable}. Therefore
+$\downarrow_XU$ and $\uparrow_XU$ are clopen.
+
+It remains to check principal upsets. If $x\in K$, stem-exactness and the
+co-bounded back condition imply that each synchronized fiber lies either
+wholly inside $\uparrow_Xx$ or wholly outside it. Hence $\uparrow_Xx$ is
+clopen. If $x\notin K$, then $\uparrow_Xx$ lies inside one finite petal and is
+finite; it is closed because the Stone space is $T_1$. The criterion from
+\cite[Theorem 2.12]{ref3} now shows that $X$ is bi-Esakia.
+\end{proof}
+
+\begin{proposition}[inverse-limit realization]\label{prop:inverse-limit}
+The topology in Theorem~\ref{thm:synchronization} is the inverse-limit topology
+of the finite amalgams obtained by retaining finitely many petals and
+collapsing every unretained petal onto its anchor.
+\end{proposition}
+
+\begin{proof}
+Let
+\begin{equation}
+\mathcal D=
+\prod_{g\in G}
+\{F_g\in[I_g]^{<\omega}:0_g\in F_g\},
+\label{eq:directed-set}
+\end{equation}
+ordered by coordinatewise inclusion. It is directed because $G$ is finite and
+coordinatewise finite unions give common upper bounds. For $F\in\mathcal D$,
+let $X_F$ retain exactly the petals indexed by $F_g$ in each group, and give
+this finite poset its discrete bi-Esakia topology. If $F\leq E$, define
+\begin{equation}
+\pi_{EF}:X_E\longrightarrow X_F
+\label{eq:bonding}
+\end{equation}
+to be the identity on $K$ and on petals already retained by $F$, and to use
+$f_{g,i}$ on every petal indexed by $E_g\setminus F_g$. The three possible
+locations of a point---stem, retained petal, or collapsed petal---show directly
+that both back conditions hold. The definitions also give
+\begin{equation}
+\pi_{FF}=\operatorname{id}_{X_F},
+\qquad
+\pi_{LF}=\pi_{EF}\circ\pi_{LE}
+\quad(F\leq E\leq L).
+\label{eq:coherence}
+\end{equation}
+Thus $(X_F,\pi_{EF})_{F\in\mathcal D}$ is an inverse system of finite posets and
+surjective bi-p-morphisms.
+
+Define the canonical quotient $q_F:X\to X_F$ by retaining every $F_g$-petal
+and applying $f_{g,i}$ to every other petal. Then
+$q_F=\pi_{EF}\circ q_E$ whenever $F\leq E$, so
+\begin{equation}
+\eta:X\longrightarrow\varprojlim_{F\in\mathcal D}X_F,
+\qquad
+\eta(x)=(q_F(x))_F,
+\label{eq:eta}
+\end{equation}
+is well defined.
+
+Let $(x_F)_F$ be compatible, and inspect the least stage containing only the
+anchors. If its coordinate belongs to $K$, stem-exactness forces every higher
+coordinate, and hence every coordinate, to be the same stem point. Otherwise
+that coordinate is an external anchor point. Either every coordinate remains
+that anchor, or at some stage $F$ a retained nonanchor petal contains an
+external point $y$. Above $F$, compatibility and identity on retained petals
+lock every coordinate to $y$. For an incomparable stage $H$, a common upper
+bound $L\geq F,H$ uniquely determines the $H$-coordinate by projection. Two
+distinct petals cannot both be selected, since a stage retaining both would
+have to project to two different external points. Thus $\eta$ is surjective.
+It is also injective. For $x\ne y$, choose a finite stage retaining the
+nonanchor petals to which the external points among $x,y$ belong; there are at
+most two such petals. Identity on retained petals separates two external
+points, while stem-exactness separates a point of $K$ from every distinct
+point. Hence $q_F(x)\ne q_F(y)$.
+
+For topology, $q_F^{-1}(\{k\})=\{k\}$ for $k\in K$, by stem-exactness. The
+preimage of a nonanchor retained point is an isolated singleton. The preimage
+of an anchor point $a$ contains $a$ and the full $a$-fiber in every unretained
+petal, while it differs only within finitely many retained finite fibers. Thus
+every $q_F$ is continuous for the synchronized topology, so that topology is
+at least as fine as the cylinder topology.
+
+Conversely, let $E_{g,a}\setminus R$ be a basic synchronized neighborhood of
+an anchor, where $R$ is finite and does not contain $a$. Choose $F$ retaining
+every petal that contains a point of $R$, and put
+\begin{equation}
+V=\{a\}\cup\bigl((E_{g,a}\cap X_F)\setminus R\bigr).
+\label{eq:V}
+\end{equation}
+Since $X_F$ is discrete, $V$ is open, and direct inspection gives
+\begin{equation}
+q_F^{-1}(V)=E_{g,a}\setminus R.
+\label{eq:cylinder}
+\end{equation}
+The isolated stem and nonanchor points were already realized as singleton
+cylinders. These sets form a base for the finite topological sum
+\eqref{eq:sum}, so the synchronized topology is also no finer than the cylinder
+topology. Hence the two topologies agree. Since $X$ is compact and the inverse
+limit of finite discrete spaces is Hausdorff, the continuous bijection $\eta$
+is a homeomorphism.
+\end{proof}
+
+\section{Comb-bounded crowns}\label{sec:crowns}
+
+We now prove Theorem~A.
+
+\begin{lemma}[root-crown decomposition]\label{lem:decomposition}
+Let $X$ be a well-ordered rooted tree with root $r$. Then
+\begin{equation}
+X=\{r\}\mathbin{\dot\cup}
+\mathop{\dot\bigcup}_{a\in\operatorname{Cov}_X(r)}\uparrow_Xa,
+\label{eq:decomposition}
+\end{equation}
+and external points from distinct crowns are incomparable.
+\end{lemma}
+
+\begin{proof}
+For $x>r$, the nonempty interval $(r,x]$ is a subset of the well-ordered chain
+$\downarrow x$ and therefore has a least element $a$. No point lies strictly
+between $r$ and $a$, so $a$ covers $r$, and $x\in\uparrow a$. If two different
+covers $a,b$ both lie below $x$, the chain $\downarrow x$ makes them
+comparable, contradicting that both cover $r$. The same argument rules out
+comparability between external points in different crowns.
+\end{proof}
+
+\begin{theorem}[comb-bounded crown theorem]\label{thm:crowns}
+Under the hypotheses of Theorem~A, $X$ is bi-Esakia representable.
+\end{theorem}
+
+\begin{proof}
+Let $A=\operatorname{Cov}_X(r)$ and $Q_a=\uparrow_Xa$. By
+Lemma~\ref{lem:decomposition}, the sets $P_a=\{r\}\cup Q_a$ are finite petals
+amalgamated over the common downset $K=\{r\}$.
+
+Every dual crown $Q_a^{\mathrm{op}}$ belongs to $\mathcal T_n$. Let $S$ be the
+set of isomorphism types that actually occur among these dual crowns. For each
+$s\in S$, well-foundedness gives a minimal element of the nonempty set
+$S\cap\downarrow s$. It is globally minimal in $S$, since any smaller element
+of $S$ would also lie in $S\cap\downarrow s$. The global minimal elements of
+$S$ form an antichain and are therefore finite. Choose, from the original tree,
+one actual crown index $a_j$ for each minimal isomorphism type and put
+\begin{equation}
+M_j=Q_{a_j}^{\mathrm{op}}
+\qquad(j=1,\ldots,t).
+\label{eq:anchors}
+\end{equation}
+Hence, for every $a\in A$, there is a $j=j(a)$ and a surjective bi-p-morphism
+\begin{equation}
+g_a:Q_a^{\mathrm{op}}\longrightarrow M_j.
+\label{eq:dual-map}
+\end{equation}
+After transporting along an isomorphism if necessary, the target is the chosen
+actual representative. Taking order duals preserves both back conditions, so
+\begin{equation}
+g_a^{\mathrm{op}}:Q_a\longrightarrow Q_{a_j}
+\label{eq:primal-map}
+\end{equation}
+is again a surjective bi-p-morphism.
+
+Extend \eqref{eq:primal-map} to $f_a:P_a\to P_{a_j}$ by setting $f_a(r)=r$.
+This map is root-exact. At the root, the up-back condition follows from
+surjectivity of \eqref{eq:primal-map}, while the only lower point is the root
+itself. Inside a crown, both back conditions come from
+\eqref{eq:primal-map}, except that a lower target equal to the common root is
+lifted by the root. Therefore $f_a$ is a surjective bi-p-morphism and
+$f_a^{-1}(\{r\})=\{r\}$.
+
+There are only finitely many anchors $P_{a_j}$.
+Theorem~\ref{thm:synchronization} applies and supplies a bi-Esakia topology on
+$X$.
+\end{proof}
+
+\section{Consequences}
+
+\begin{corollary}[three-level trees]
+Every well-ordered rooted tree of height at most three in which each first-level
+point has finitely many immediate successors is bi-Esakia representable, with
+no restriction on the cardinality of the first level.
+\end{corollary}
+
+\begin{proof}
+Each crown is a finite star and therefore has height at most two. Since $H_2$
+has height three, no crown contains $H_2$. Apply Theorem~\ref{thm:crowns}.
+\end{proof}
+
+\begin{corollary}[uniform finite height]
+Let $X$ be a well-ordered rooted tree whose first-level crowns are finite. If
+the heights, measured by the maximum number of points in a chain, have a common
+finite bound $h$, then $X$ is bi-Esakia representable. Crown cardinalities need
+not be uniformly bounded.
+\end{corollary}
+
+\begin{proof}
+Choose $n$ with $n+1>h$. Since $H_n$ has height $n+1$, it cannot embed into any
+crown. Apply Theorem~\ref{thm:crowns}.
+\end{proof}
+
+\begin{corollary}[unbounded depth]
+Theorem~\ref{thm:crowns} applies to families of crowns with unbounded depth
+whenever they uniformly omit one fixed comb. In particular, arbitrary families
+of finite chains are covered.
+\end{corollary}
+
+\begin{proof}
+The fixed poset $H_2$ is branched, so it does not embed into a chain,
+independently of the chain length.
+\end{proof}
+
+\section{The finite-anchor boundary}
+
+The uniform comb bound is not a decorative assumption in the proof.
+Bezhanishvili, Martins, and Moraschini record a countably infinite antichain of
+finite co-trees under the surjective bi-p-image relation
+\cite[Proposition 4.15]{ref3}. Taking order duals gives an antichain of finite
+rooted trees.
+
+If all these rooted trees are placed as crowns above a common root, the
+resulting family has no finite set of minimal anchor types generated by the WPO
+argument. Thus Theorem~\ref{thm:synchronization} cannot be applied by the
+present finite-group reduction.
+
+This is only a limitation of the method. It does not prove that the common-root
+tree built from the antichain lacks every possible bi-Esakia topology. A
+genuine negative result would require a topology-independent obstruction, or a
+proof that any bi-Esakia topology forces a finite quotient comparability absent
+from the antichain. Neither statement is established here.
+
+\section{Relation to prior work}
+
+Tasiou's inverse-limit theorem \cite[Theorem 4.2.6]{ref1} supplies the general
+categorical background. Her synchronization result for arbitrary copies of one
+finite connected poset \cite[Theorem 4.3.4]{ref1}\cite[Theorem 4.6]{ref2} is
+the closest explicit construction;
+\cite[Theorem 4.3.8]{ref1}\cite[Theorem 4.3]{ref2} instead realizes the finite
+stages of a countable inverse system as the zigzag image-finite part of a larger
+space. Theorem~\ref{thm:synchronization} differs in three coupled features: the
+pieces may be nonisomorphic, only finitely many actual quotient anchors are
+required, and all pieces may share a finite downset. The inverse-limit mechanism
+itself is not new; the contribution is the stem-exact finite-anchor criterion
+and its application to a natural infinite class of bare trees.
+
+Fornasiere and Moraschini \cite{ref4} address Esakia representability of
+well-ordered forests. Their result motivates the object class but does not
+provide a common bi-Esakia topology. Martins \cite{ref5} proves the BPO theorem
+used in Section~\ref{sec:crowns} but does not discuss bi-Esakia topologies on
+the common-root amalgams. The antichain in \cite{ref3} explains why the same
+finite-anchor argument cannot simply discard the comb restriction.
+
+The present result is therefore a sufficient theorem, not a classification. It
+neither proves that the comb condition is necessary nor settles bi-Esakia
+representability for arbitrary well-ordered trees or forests.
+
+\section{Open directions}
+
+The most direct continuation is to replace the finite anchor family in
+Theorem~\ref{thm:synchronization} by a compact parameter space of anchor types.
+Such a construction would have to control clopen up- and down-closures across
+infinitely many groups and prevent new inverse-limit points. The known
+antichain shows that order-theoretic minimality alone cannot provide this
+compactness.
+
+A different route is negative: identify a topology-independent invariant that
+prevents a common-root amalgam from being bi-Esakia representable. At present,
+the antichain supplies no such invariant.
+
+Other extensions---an infinite common stem, infinite petals, or arbitrary
+forest components---each break a separate finiteness step in
+Theorem~\ref{thm:synchronization} and should be treated as new problems rather
+than formal corollaries.
+
+\section{AI-assisted research and writing disclosure}
+
+This work was developed with AI assistance for literature search, proof
+exploration, adversarial checking, computation, and drafting. Carptopus is the
+responsible author and independently controls the mathematical claims and
+public version. OpenAI Codex is a research and writing tool, not an author.
+
+\begingroup
+\small
+\raggedright
+\setlength{\parskip}{0.25em}
+\begin{thebibliography}{9}
+
+\bibitem{ref1}
+L. Tasiou,
+\emph{Profinite bi-Heyting algebras}, MSc thesis, Korteweg-de Vries Institute
+for Mathematics, University of Amsterdam (2021).
+
+\bibitem{ref2}
+L. Tasiou,
+\emph{Profinite bi-Heyting algebras}, Algebra Universalis 86(3), article 16
+(2025).
+\url{https://doi.org/10.1007/s00012-025-00892-w}
+
+\bibitem{ref3}
+N. Bezhanishvili, M. Martins, and T. Moraschini,
+\emph{Bi-intermediate logics of trees and co-trees}, Annals of Pure and Applied
+Logic 175 (2024), 103490.
+\url{https://doi.org/10.1016/j.apal.2024.103490}
+
+\bibitem{ref4}
+D. Fornasiere and T. Moraschini,
+\emph{Trees and spectra of Heyting algebras}, Indagationes Mathematicae 37(4)
+(2026), 1158--1191.
+\url{https://doi.org/10.1016/j.indag.2025.08.002}
+
+\bibitem{ref5}
+M. Martins,
+\emph{There are only countably many locally tabular bi-intermediate logics of
+co-trees}, arXiv:2602.21960v1 (2026).
+\url{https://arxiv.org/abs/2602.21960}
+
+\end{thebibliography}
+\endgroup
+
+\end{document}

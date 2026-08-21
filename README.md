@@ -14,6 +14,7 @@ including manuscripts and reproducible verification materials.
 | [A recursive nSSP criterion for root-loop tree matrices](research/nssp-root-loop-trees/README.md) | Inverse eigenvalue problems, rooted trees, matrix patterns | Characterizes the nSSP of every fixed root-loop bidirected tree matrix by recursive sibling-subtree coprimality | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Attainable second support weights of binary second-order Reed--Muller codes](research/rm2-second-support-spectrum/README.md) | Coding theory, quadratic Boolean functions, Walsh spectra | Determines for every dimension the exact set of support sizes attained by two-dimensional subcodes of $RM_2(2,n)$ | v0.1-beta | Internally verified candidate proof; external review pending |
 | [The low-component cases for total cut complexes of disconnected graphs](research/total-cut-low-components/README.md) | Algebraic topology, graph complexes, simplicial complexes | Resolves the three low-component cases of the total-cut wedge-of-spheres problem and completes the stated range for all $k\geq d$ | v0.1-beta | Internally verified candidate proof; external review pending |
+| [Comb-bounded crowns and bi-Esakia representability of well-ordered rooted trees](research/bi-esakia-comb-bounded-trees/README.md) | Order theory, Esakia duality, bi-Heyting algebras | Gives a finite-anchor synchronization theorem and a sufficient bi-Esakia representability criterion for well-ordered rooted trees with uniformly comb-bounded finite crowns | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
 
@@ -146,6 +147,20 @@ retractions, and a nerve-lemma argument.
 
 - [Manuscript materials](research/total-cut-low-components/README.md)
 
+### Comb-bounded crowns and bi-Esakia representability
+
+Let $X$ be a well-ordered rooted tree. For every point $a$ covering the root,
+write $Q_a=\uparrow a$. This manuscript proves that $X$ admits a bi-Esakia
+topology if every $Q_a$ is finite and the order duals $Q_a^{\mathrm{op}}$
+uniformly omit one fixed finite co-tree comb.
+
+The proof combines a finite-anchor synchronization theorem for finite posets
+amalgamated over a common finite downset with a better-partial-order theorem
+for comb-bounded finite co-trees. The criterion is sufficient rather than a
+classification, and allows arbitrary root width and unbounded crown sizes.
+
+- [Manuscript materials](research/bi-esakia-comb-bounded-trees/README.md)
+
 ## Status and review policy
 
 Entries are research records, not automatically peer-reviewed publications.
@@ -199,4 +214,7 @@ Boolean functions; Walsh spectra; quadratic pencils; common-zero counts;
 alternating polar forms; generalized Hamming weights; total cut complexes;
 bounded-independence complexes; simplicial complexes;
 Alexander duality; polyhedral joins; nerve lemma; wedges of spheres;
-disconnected graphs; graph complexes; algebraic topology.
+disconnected graphs; graph complexes; algebraic topology; order theory;
+bi-Esakia spaces; bi-Heyting algebras; well-ordered rooted trees; finite
+crowns; finite combs; bi-p-morphisms; inverse limits; better partial orders;
+Priestley duality; Esakia duality.
