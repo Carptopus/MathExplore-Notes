@@ -15,6 +15,7 @@ including manuscripts and reproducible verification materials.
 | [Attainable second support weights of binary second-order Reed--Muller codes](research/rm2-second-support-spectrum/README.md)<br>[PDF](research/rm2-second-support-spectrum/rm2-second-support-spectrum.pdf) · [BibTeX](research/rm2-second-support-spectrum/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22045534) | Coding theory, quadratic Boolean functions, Walsh spectra | Determines for every dimension the exact set of support sizes attained by two-dimensional subcodes of $RM_2(2,n)$ | v0.1-beta | Internally verified candidate proof; external review pending |
 | [The low-component cases for total cut complexes of disconnected graphs](research/total-cut-low-components/README.md)<br>[PDF](research/total-cut-low-components/total-cut-low-components.pdf) · [BibTeX](research/total-cut-low-components/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22045540) | Algebraic topology, graph complexes, simplicial complexes | Resolves the three low-component cases of the total-cut wedge-of-spheres problem and completes the stated range for all $k\geq d$ | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Comb-bounded crowns and bi-Esakia representability of well-ordered rooted trees](research/bi-esakia-comb-bounded-trees/README.md)<br>[PDF](research/bi-esakia-comb-bounded-trees/bi-esakia-comb-bounded-trees.pdf) · [BibTeX](research/bi-esakia-comb-bounded-trees/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22045542) | Order theory, Esakia duality, bi-Heyting algebras | Gives a finite-anchor synchronization theorem and a sufficient bi-Esakia representability criterion for well-ordered rooted trees with uniformly comb-bounded finite crowns | v0.1-beta | Internally verified candidate proof; external review pending |
+| [Near-minimal Ehrhart data on the primitive-triangle boundary of denominator-two polygons](research/ehrhart-denominator2-primitive-boundary/README.md)<br>[PDF](research/ehrhart-denominator2-primitive-boundary/ehrhart-denominator2-primitive-boundary.pdf) · [BibTeX](research/ehrhart-denominator2-primitive-boundary/CITATION.bib) | Ehrhart theory, rational polygons, discrete geometry | Proves a mod-$8$ obstruction and sharply classifies the near-minimal boundary through $I=3N-2$, with an infinite one-point-sharp family | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
 
@@ -161,6 +162,23 @@ classification, and allows arbitrary root width and unbounded crown sizes.
 
 - [Manuscript materials](research/bi-esakia-comb-bounded-trees/README.md)
 
+### Near-minimal denominator-two Ehrhart data
+
+Let $P\subset\mathbb R^2$ be a convex polygon of denominator two satisfying
+$b(P)=0$ and $b(2P)=3$, and set $N=i(P)$ and $I=i(2P)$. This manuscript proves
+
+$$
+2I+1\equiv4N\pm1\pmod8
+$$
+
+and gives a sharp classification near the lower boundary: all values through
+$I\le3N-3$, the unique next-boundary case $(N,I)=(10,28)$ at $I=3N-2$,
+and an infinite family with $N=4k+5$ and $I=3N-1$ showing one-point
+sharpness. The result is not a classification of all denominator-two Ehrhart
+data.
+
+- [Manuscript and verification materials](research/ehrhart-denominator2-primitive-boundary/README.md)
+
 ## Status and review policy
 
 Entries are research records, not automatically peer-reviewed publications.
@@ -224,3 +242,7 @@ disconnected graphs; graph complexes; algebraic topology; order theory;
 bi-Esakia spaces; bi-Heyting algebras; well-ordered rooted trees; finite
 crowns; finite combs; bi-p-morphisms; inverse limits; better partial orders;
 Priestley duality; Esakia duality.
+Ehrhart theory; rational polygons; half-integral polygons; denominator-two
+polygons; lattice polygons; primitive lattice triangles; parity obstructions;
+internal hulls; outer hulls; lattice width; discrete geometry; computational
+geometry.

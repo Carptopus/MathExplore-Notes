@@ -1,0 +1,816 @@
+% AI-assisted manuscript source; responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,tabularx,array}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Near-minimal denominator-two Ehrhart data}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlength{\emergencystretch}{4em}
+
+\title{Near-minimal Ehrhart data on the primitive-triangle boundary\\of denominator-two polygons}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{22 August 2026}
+
+\hypersetup{
+  pdftitle={Near-minimal Ehrhart data on the primitive-triangle boundary of denominator-two polygons},
+  pdfauthor={Carptopus},
+  pdfsubject={Sharp near-boundary constraints for denominator-two polygon Ehrhart data},
+  pdfkeywords={Ehrhart theory, rational polygon, denominator two, lattice triangle, parity, outer hull, lattice width}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\small\itshape
+Public Beta v0.1. The complete manuscript has passed independent proof,
+bounded-novelty, and manuscript-level zero-trust audits. External mathematical
+review and journal peer review are pending.
+\end{center}
+\vspace{0.8em}
+
+
+
+\begin{abstract}
+
+Let $P\subset\mathbb R^2$ be a convex polygon of denominator two. Write $b(P)$ and $i(P)$ for the numbers of boundary and interior lattice points, and suppose
+
+\[
+b(P)=0,\qquad b(2P)=3.
+\]
+
+Set $N=i(P)$ and $I=i(2P)$. We first prove the congruence
+
+\[
+2I+1\equiv 4N\pm1\pmod 8.
+\]
+
+We then classify the near-minimal values of $I$. For $N\ge4$, the values with $I\le3N-3$ are exactly $2N-1$, $2N$, and, when $N\equiv2$ or $3\pmod4$, $3N-3$. The small cases are $N=2$, where only $I=3$ occurs in this region, and $N=3$, where $I=5,6$ occur. At the next boundary, for $N\ge3$ and $I=3N-2$, existence holds exactly for $(N,I)=(10,28)$. Finally, for every $k\ge1$ we construct an example with $N=4k+5$ and $I=3N-1$, showing that the last exclusion is one lattice point sharp on an infinite subfamily.
+
+The proof combines a parity theorem for the missing mod-$2$ color of a primitive lattice triangle, an internal-hull stability argument, outer-hull geometry for hollow width-one polygons, and a finite exhaustive check after a theoretical reduction to $3\le N\le10$. The finite check is used only in that bounded branch and is supplied as reproducible code.
+
+\end{abstract}
+
+\section{Introduction}
+
+
+For a rational polygon $P\subset\mathbb R^2$, let
+
+\[
+b(P)=\#(\partial P\cap\mathbb Z^2),\qquad
+i(P)=\#(P^\circ\cap\mathbb Z^2).
+\]
+
+We call $P$ denominator two if $2P$ is a lattice polygon. Hamm, Hofscheier, and Kasprzyk \cite{ref2} study the possible quadruples
+
+\[
+\bigl(b(P),i(P),b(2P),i(2P)\bigr).
+\]
+
+For $i(P)>0$, their necessary region includes
+
+\[
+\begin{aligned}
+b(2P)&\geq\max\{3,2b(P)\},\\
+i(2P)&\geq b(P)+2i(P)-1,\\
+b(2P)+i(2P)&\leq2b(P)+6i(P)+7,
+\end{aligned}
+\]
+
+apart from a possible finite exceptional set in the upper inequality. Their positive-interior conditions are not a complete realizability criterion.
+
+We study the sharp triangular slice
+
+\[
+b(P)=0,\qquad b(2P)=3.
+\]
+
+Then $Q=2P$ is a lattice triangle whose three edges are primitive. Integer points of $P$ correspond to one of the four mod-$2$ color classes inside $Q$, namely the color missing from the vertices of $Q$. This converts a two-level Ehrhart question into a colored primitive-triangle problem.
+
+The first result is an arithmetic obstruction.
+
+\begin{theorem}[mod-$8$ obstruction]\label{thm:mod8}
+
+If $N=i(P)>0$ and $I=i(2P)$, then
+
+\[
+2I+1\equiv4N\pm1\pmod8.
+\]
+
+Equivalently,
+
+\[
+I\equiv2N\quad\text{or}\quad2N-1\pmod4.
+\]
+
+\end{theorem}
+
+The next theorem gives the near-minimal classification.
+
+\begin{theorem}[near-minimal values]\label{thm:near-minimal}
+
+Let $N\ge2$.
+
+\par\noindent\textbf{1.} If $I\le3N-4$, then
+
+\[
+I\in\{2N-1,2N\}.
+\]
+
+\par\noindent\textbf{2.} If $N\ge4$, the realizable values in $I\le3N-3$ are exactly
+
+\[
+2N-1,\qquad2N,
+\]
+
+together with $3N-3$ if and only if $N\equiv2$ or $3\pmod4$.
+
+\par\noindent\textbf{3.} For $N=2$, only $I=3$ occurs in this region. For $N=3$, the values are $I=5,6$.
+
+Thus an interval of length linear in $N$ is excluded: no value
+
+\[
+2N+1\leq I\leq3N-4
+\]
+
+is realizable.
+
+\end{theorem}
+
+The immediately adjacent boundary is also rigid.
+
+\begin{theorem}[the next boundary]\label{thm:next-boundary}
+
+Let $N\ge3$. A denominator-two polygon on the above slice with
+
+\[
+I=3N-2
+\]
+
+exists if and only if
+
+\[
+(N,I)=(10,28).
+\]
+
+\end{theorem}
+
+The existence direction is represented by the primitive triangle $T(57,8)$ defined below. The uniqueness of the parameter pair is computer-assisted only after the proof reduces the non-hollow branch to $3\le N\le10$; the remaining infinite hollow width-one branch is excluded theoretically.
+
+\begin{theorem}[one-point sharpness]\label{thm:sharpness}
+
+For every $k\ge1$, there is an example with
+
+\[
+N=4k+5,\qquad I=3N-1.
+\]
+
+Hence the exclusion in Theorem 1.3 is one point sharp for infinitely many $N$.
+
+\end{theorem}
+
+The internal-hull count used below already appears in the proof of \cite[Proposition~6.8]{ref2}, and collinear internal polygons and width-two strip normal forms are classical or appear in \cite{ref4,ref7,ref8}. Our contribution is not those ingredients individually. It is the congruence, the near-equality thresholds, their colored compatibility conditions, and the closure of the next boundary.
+
+\section{Primitive triangles and the missing color}
+
+
+Color a lattice point by its residue class in $(\mathbb Z/2\mathbb Z)^2$.
+
+\begin{lemma}[colored normal form]\label{lem:normal-form}
+
+Let $Q$ be a lattice triangle with exactly three boundary lattice points, and suppose its vertices have three distinct colors. After an affine unimodular change of coordinates, transporting the distinguished missing color with the triangle, the pair has the form
+
+\[
+T(D,p)=\mathrm{conv}\bigl((0,0),(1,0),(p,D)\bigr),
+\]
+
+where
+
+\[
+D\text{ is odd},\qquad p\text{ is even},\qquad
+\gcd(p,D)=\gcd(p-1,D)=1,
+\]
+
+and the missing color is the odd--odd class.
+
+\end{lemma}
+
+\begin{proof}
+
+Every edge is primitive because $b(Q)=3$. Send one edge to the segment from $(0,0)$ to $(1,0)$. The third vertex is $(p,D)$ after choosing orientation with $D>0$. The three distinct vertex colors force $D$ odd. A shear fixing the base changes $p$ by a multiple of $D$, so $p$ can be chosen even. The colors are then $00,10,01$, and the missing color is $11$. Primitivity of the remaining two edges is precisely the pair of gcd conditions.
+\end{proof}
+
+
+Equivalently, one may record the horizontal parameter as an admissible residue
+$\bar p\bmod D$. Because $D$ is odd, this residue has a unique even lift modulo
+$2D$; different lifts give shear-equivalent colored triangles. Let
+$N(D,\bar p)$ denote the number of odd--odd points in the triangle formed with
+this even lift. We suppress the bar when an even representative has already
+been chosen. Conversely, define
+
+\[
+P(D,p)=\frac{T(D,p)+(1,1)}2.
+\]
+
+Then
+
+\[
+b(P(D,p))=0,\qquad b(2P(D,p))=3,
+\]
+
+and
+
+\[
+i(P(D,p))=N(D,p),\qquad i(2P(D,p))=\frac{D-1}{2}.
+\]
+
+The vertex $(1/2,1/2)$ shows that the denominator is exactly two.
+
+\section{The missing-color parity theorem}
+
+
+\begin{theorem}\label{thm:missing-color}
+
+Under the hypotheses of Lemma 2.1,
+
+\[
+N(D,p)\equiv\frac{D^2-1}{8}\pmod2.
+\]
+
+\end{theorem}
+
+\begin{proof}
+
+When $D=1$, the open triangle has no lattice points and both sides of the
+congruence are zero. Hence assume $D\ge3$.
+
+For $1\le y\le D-1$, write
+
+\[
+py=qD+r,\qquad0<r<D.
+\]
+
+The open horizontal slice of $T(D,p)$ at height $y$ has endpoints
+
+\[
+\frac{py}{D},\qquad1+\frac{(p-1)y}{D}
+\]
+
+and length $1-y/D<1$. It contains an integer exactly when $r>y$, in which case that integer is $q+1$. Since $p$ is even and $D$ is odd, $q$ and $r$ have the same parity. The point is odd--odd exactly when $y$ is odd and $r$ is even.
+
+Set
+
+\[
+x=D-r,\qquad z=r-y.
+\]
+
+This is a bijection between counted points and positive odd triples
+
+\[
+x+y+z=D,\qquad x+py\equiv0\pmod D.
+\]
+
+Let $S_D$ be the set of positive odd triples summing to $D$, and define
+
+\[
+c_s=\#\{(x,y,z)\in S_D:x+py\equiv s\pmod D\}.
+\]
+
+Then $N(D,p)=c_0$. For a $D$-th root of unity $\zeta$, put
+
+\[
+F(\zeta)=\sum_{s\bmod D}c_s\zeta^s.
+\]
+
+Writing $x=2u+1$, $y=2v+1$, $z=2w+1$ gives
+
+\[
+F(\zeta)=\zeta^{p+1}h_{(D-3)/2}(1,\zeta^2,\zeta^{2p}),
+\]
+
+where $h_m$ is the complete homogeneous symmetric polynomial. For $\zeta\ne1$, the three arguments are pairwise distinct; the gcd hypotheses remain valid even when $\zeta$ is nonprimitive. Partial fractions, with $a=\zeta$ and $b=\zeta^p$, give
+
+\[
+F(\zeta)=-\frac{ab}{(1+a)(1+b)(a+b)}.
+\]
+
+Replacing $a,b$ by their inverses shows $F(\zeta^{-1})=F(\zeta)$. Fourier inversion yields $c_s=c_{-s}$. Since $D$ is odd, all nonzero residues pair off, and therefore
+
+\[
+c_0\equiv|S_D|\equiv\binom{(D+1)/2}{2}
+=\frac{D^2-1}{8}\pmod2.
+\]
+
+This proves the theorem.
+\end{proof}
+
+
+The two gcd hypotheses are essential: $(D,p)=(9,6)$ and $(9,4)$ respectively provide negative controls when one condition is removed.
+
+\begin{proof}[Proof of Theorem 1.1]
+
+Let $Q=2P$. The vertices of $Q$ occupy three distinct colors. The even--even class is absent from the boundary because $b(P)=0$, and it is therefore the missing vertex color. By Theorem 3.1,
+
+\[
+N\equiv\frac{D^2-1}{8}\pmod2.
+\]
+
+Pick's theorem and $b(Q)=3$ give
+
+\[
+D=2I+1.
+\]
+
+For odd $D$, the parity identity is equivalent to $D\equiv4N\pm1\pmod8$, proving the claim.
+\end{proof}
+
+
+\section{The near-minimal region}
+
+
+Let
+
+\[
+R=\mathrm{conv}(P^\circ\cap\mathbb Z^2).
+\]
+
+All lattice points of $R$ are precisely the $N$ lattice points of $P$. If $R$ is two-dimensional, the Ehrhart formula for a lattice polygon gives
+
+\[
+|2R\cap\mathbb Z^2|=3N+i(R)-3.
+\]
+
+Since $2R\subset(2P)^\circ$, this is at most $I$.
+
+\begin{proposition}\label{prop:gap}
+
+If $N\ge2$ and $I\le3N-4$, then $I\in\{2N-1,2N\}$.
+
+\end{proposition}
+
+\begin{proof}
+
+The preceding identity rules out a two-dimensional $R$, so $R$ is a segment. The segment $2R$ contains $2N-1$ consecutive lattice points and has lattice length $\ell=2N-2$. Let $L$ be its lattice line and choose a primitive integer height that vanishes on $L$.
+
+The triangle $Q=2P$ has vertices on both sides of $L$. If two opposite-side vertices have positive absolute heights $h_+$ and $h_-$, the two triangles with common base $2R$ give
+
+\[
+D\geq\ell(h_++h_-).
+\]
+
+If the height sum were at least three, then
+
+\[
+D\geq3(2N-2)=6N-6,
+\]
+
+contradicting $D=2I+1\le6N-7$. Thus every off-line vertex has absolute height one. If all three vertices were off $L$, two would lie on the same unit-height line; their joining edge is primitive and parallel to $L$, forcing normalized area $2$, impossible here. Hence one vertex lies on $L$ and the other two lie at heights $1$ and $-1$.
+
+In suitable coordinates,
+
+\[
+Q=\mathrm{conv}\bigl((0,0),(a,1),(b,-1)\bigr),
+\]
+
+with $a+b=D$ odd. Its interior lattice points are exactly
+
+\[
+(1,0),(2,0),\ldots,(I,0).
+\]
+
+The two off-line vertices have opposite parity in the first coordinate, so the missing color occurs on alternating points of this segment. Consequently $N=\lceil I/2\rceil$, which is equivalent to $I=2N-1$ or $2N$.
+\end{proof}
+
+
+\begin{proposition}[sharpness through $3N-3$]\label{prop:near-sharp}
+
+The values $2N-1$ and $2N$ are realizable for every $N\ge1$. The value $3N-3$ is realizable exactly when $N\equiv2$ or $3\pmod4$.
+
+\end{proposition}
+
+\begin{proof}
+
+For $p=2$, the missing-color points of $T(D,2)$ are $(1,y)$ with $1\le y<D/2$ and $y$ odd. Taking $D=4N-1$ gives $I=2N-1$ and $N(D,2)=N$; taking $D=4N+1$ gives $I=2N$ and the same missing-color count. The first family is already represented in \cite[Figure~6]{ref2}; it is included here only to complete the classification.
+
+For $I=3N-3$, Theorem 1.1 gives the necessary condition $N\equiv2$ or $3\pmod4$. It is sufficient. Take $p=4$ and $D=6N-5$. If $N=4m+2$, then $D=24m+7$; if $N=4m+3$, then $D=24m+13$. In both cases $\gcd(4,D)=\gcd(3,D)=1$. On odd horizontal levels, the missing-color condition is
+
+\[
+0<y<D/4\qquad\text{or}\qquad2D/3<y<3D/4.
+\]
+
+Counting the odd integers in these intervals gives $N(D,4)=N$. Since $(D-1)/2=3N-3$, the boundary is attained. The small cases follow from the same formulas and the congruence.
+\end{proof}
+
+
+Theorems 1.1 and 1.2 now follow.
+
+\section{Reduction of the next boundary}
+
+
+Assume from now on that $N\ge3$ and
+
+\[
+I=3N-2,\qquad D=2I+1=6N-3.
+\]
+
+\begin{lemma}\label{lem:next-reduction}
+
+The internal polygon $R$ is two-dimensional and satisfies $i(R)\in\{0,1\}$.
+
+\end{lemma}
+
+\begin{proof}
+
+Suppose first that $R$ is a segment. As above, $2R$ has lattice length $\ell=2N-2$. For any two vertices on opposite sides of its line, the sum of absolute heights is at most three because $D<4\ell$.
+
+If one vertex lies on the line, the other heights are $(1,1)$ or $(1,2)$. The latter case has a normal form
+
+\[
+\mathrm{conv}\bigl((0,0),(a,1),(b,-2)\bigr).
+\]
+
+Since $3\mid D$, one obtains $3\mid(a-b)$, so the edge vector $(a-b,3)$ is not primitive. In the $(1,1)$ case all interior points lie on the line, forcing $N=\lfloor I/2\rfloor$ or $\lceil I/2\rceil$; this is impossible for $N\ge4$, and the remaining case $N=3,D=15$ has no admissible parameter.
+
+If no vertex lies on the line, the only possible height multiset is $\{-1,1,2\}$. Writing the vertices as $(c,-1),(a,1),(b,2)$ gives
+
+\[
+D=|3(a-c)-2(b-c)|.
+\]
+
+Again $3\mid D$ implies $3\mid(b-c)$, contradicting primitivity of the edge with vector $(b-c,3)$. Thus $R$ is two-dimensional.
+
+Put $j=i(R)$. Since $|R\cap\mathbb Z^2|=N$,
+
+\[
+|2R\cap\mathbb Z^2|=3N+j-3\leq I=3N-2.
+\]
+
+Hence $j\le1$.
+\end{proof}
+
+
+If $i(R)=1$, then $b(R)=N-1$. Scott's bound \cite{ref10} gives $b(R)\le9$, so $N\le10$. The primitive-triangle normal form makes this branch finite: for every $3\le N\le10$, set $D=6N-3$ and enumerate all residues
+
+\[
+0\leq p<D,\qquad\gcd(p,D)=\gcd(p-1,D)=1.
+\]
+
+The only hit with $N(D,p)=N$ is
+
+\[
+(N,D,p)=(10,57,8)
+\]
+
+and its symmetric representative $p=50$. For $p=8$, the ten missing-color points, after translating the color and dividing by two, have convex hull
+
+\[
+\mathrm{conv}\bigl((0,0),(0,3),(3,24)\bigr),
+\]
+
+which has nine boundary points and one interior point. This proves both existence and uniqueness in the one-interior branch.
+
+If $i(R)=0$, Schicho's classification \cite{ref9} says that $R$ is either lattice-width one or equivalent to twice the standard triangle. The latter has $N=6$ and is excluded by the same complete $D=33$ parameter check. It remains to exclude the infinite width-one branch.
+
+\section{The hollow width-one branch}
+
+
+After an affine unimodular transformation, write
+
+\[
+R=\mathrm{conv}\bigl((0,0),(m,0),(n,1),(0,1)\bigr),
+\]
+
+where $m,n\ge0$, $m+n\ge1$, and $N=m+n+2$. Set
+
+\[
+S=2R=\mathrm{conv}\bigl((0,0),(2m,0),(2n,2),(0,2)\bigr).
+\]
+
+Then $|S\cap\mathbb Z^2|=3N-3$. Because $I=3N-2$, there is a unique lattice point $z\notin S$ such that
+
+\[
+Q^\circ\cap\mathbb Z^2=(S\cap\mathbb Z^2)\sqcup\{z\}.
+\]
+
+Put $H=\mathrm{conv}(S,z)$. Thus $H$ is the interior hull of the lattice triangle $Q$.
+
+For a two-dimensional lattice polygon $K$, let $O(K)$ be the closed region bounded by the nearest exterior lattice lines parallel to the edges of $K$. Ko\l{}odziejczyk and Olszewska \cite[Theorems~2.3--2.4]{ref11} show that if $K$ is the interior hull of a lattice polygon, then $O(K)$ is a lattice polygon, and the vertices of the original polygon lie on $\partial O(K)$. These hypotheses apply to $H=\mathrm{conv}(Q^\circ\cap\mathbb Z^2)$.
+
+\begin{lemma}[local outer-hull integrality]\label{lem:outer-integrality}
+
+Let $V$ be a vertex of a lattice polygon, and let $u,v$ be the adjacent primitive edge directions, ordered so that $d=\det(u,v)>0$. The intersection of the two supporting lattice lines shifted outward by one lattice distance is
+
+\[
+V-\frac{v-u}{d}.
+\]
+
+If the two shifted constraints are active in the outer hull, this point is integral if and only if
+
+\[
+\frac{v-u}{\det(u,v)}\in\mathbb Z^2. \tag{6.1}
+\]
+
+In particular, a one-point empty cap attached to a single edge of even lattice length $2\ell$ forces $\ell=1$.
+
+\end{lemma}
+
+\begin{proof}
+
+The displacement $w$ from $V$ satisfies $\det(u,w)=\det(v,w)=-1$, giving the displayed formula. For a cap with local directions $(a,-1)$ and $(2\ell-a,1)$, the second coordinate in (6.1) forces $2\ell\mid2$.
+\end{proof}
+
+
+Connecting $z$ to every unit segment in the visible boundary chain of $S$ triangulates the added cap. Because $H$ contains no new lattice point other than $z$, every small triangle is unimodular. Therefore $z$ lies on the first exterior lattice line of every visible edge, and the visible edges form a consecutive boundary chain.
+
+\begin{lemma}[short-edge reduction]\label{lem:short-edge}
+
+Either $H$ retains nondegenerate horizontal edges on both $y=0$ and $y=2$, or $m+n\le4$, hence $N\le6$.
+
+\end{lemma}
+
+\begin{proof}
+
+Write
+
+\[
+A=(0,0),\quad B=(2m,0),\quad C=(2n,2),\quad D=(0,2).
+\]
+
+Assume first $m,n\ge1$ and that the lower horizontal edge is removed. The visible chain contains $AB$. If it contains only $AB$, then
+
+\[
+z=(a,-1),\qquad0\leq a\leq3m-n.
+\]
+
+The shifted supporting lines adjacent to $z$ meet at
+
+\[
+X=(-1+a+a/m,-1-1/m).
+\]
+
+With $t=3m-a-n$, substitution into the other shifted half-planes gives the nonnegative slacks
+
+\[
+a(1+1/m),\qquad4+1/m,\qquad t(1+1/m).
+\]
+
+Thus the two constraints are active. Lemma 6.1 forces $m=1$. The three possible projections $a=0,1,2$ then give $n\le3,2,1$, respectively.
+
+If the visible chain contains $AB$ and one adjacent edge, the first shifted lines meet at
+
+\[
+z=(-1,-1)\quad\text{or}\quad z=(3m-n+1,-1).
+\]
+
+At $z$, the local determinant is $6m+2$, while (6.1) requires $6m+2\mid4$. The remaining half-plane has slack
+
+\[
+(3m+1-n)\left(1+\frac4{6m+2}\right)\geq0,
+\]
+
+so this integrality condition is genuinely active. It is impossible for $m\ge1$. A three-edge visible chain would additionally force $n=3m+2$, contradicting the endpoint convexity inequality $n\le3m+1$.
+
+When $m=0$, $S$ is triangular. The visible-chain possibilities are: one of the two lattice-length-two sides; the upper edge; the two slanted sides together; or a slanted side together with the upper edge. Applying (6.1) to these cases respectively yields
+
+\[
+n+1\mid2,\quad2n+1\mid3,\quad2n=2,
+\]
+
+or one of the impossible conditions
+
+\[
+(d,v-u)=(8,(4,8)),\ (12,(6,6)),\qquad6n+2\mid4.
+\]
+
+The two collinear endpoint cases at $n=1$ are the degenerate limits of the adjacent-edge case above. Hence this branch forces $n=1$. The case $n=0$ is symmetric. Reflecting across the middle horizontal line handles removal of the upper edge.
+
+Consequently, if the two horizontal edges are not both retained, then
+
+\[
+(m,n)\in\{(0,1),(1,0),(1,1),(1,2),(1,3),(2,1),(3,1)\},
+\]
+
+and in every case $N=m+n+2\le6$.
+\end{proof}
+
+
+The complete admissible-parameter check for $N=3,4,5,6$ gives no target.
+The table lists standard residues $0\le p<D$; an odd residue is interpreted
+through its even lift $p+D$ in the definition above. Explicitly:
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}r r X@{}}
+\toprule
+$N$ & $D$ & pairs $(p,N(D,p))$ \\
+\midrule
+3 & 15 & $(2,4),(8,4),(14,4)$ \\
+4 & 21 & $(2,5),(5,1),(11,5),(17,1),(20,5)$ \\
+5 & 27 & $(2,7),(5,3),(8,3),(11,3),(14,7),(17,3),(20,3),(23,3),(26,7)$ \\
+6 & 33 & $(2,8),(5,4),(8,4),(14,4),(17,8),(20,4),(26,4),(29,4),(32,8)$ \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+
+It remains to treat the first alternative in Lemma 6.2. The two horizontal edges of $H$ force
+
+\[
+-1\leq y\leq3
+\]
+
+in $O(H)$. The horizontal-edge lattice points of $H$ lie strictly inside $Q$, so $Q$ has a vertex at $y=-1$ and another at $y=3$. Its three vertices occupy three nonzero mod-$2$ colors; the third vertex must therefore lie at $y=0$ or $y=2$.
+
+Write the first two vertices as $U=(a,-1)$ and $V=(b,3)$. If the third is $W=(c,0)$, then
+
+\[
+\det(V-U,W-U)\equiv b-c\pmod3.
+\]
+
+Since $D=6N-3$ is divisible by three, $3\mid(b-c)$, so the edge vector $V-W=(b-c,3)$ is not primitive. If $W=(c,2)$, the same calculation gives $3\mid(a-c)$, and $W-U=(c-a,3)$ is not primitive. Both contradict $b(Q)=3$.
+
+This excludes the hollow width-one branch.
+
+\begin{proof}[Proof of Theorem 1.3]
+
+Lemma 5.1 leaves $i(R)=0$ or $1$. The one-interior branch is finite and has the unique hit $P(57,8)$ with $(N,I)=(10,28)$. Schicho's exceptional twice-standard triangle is excluded at $N=6$, and Section 6 excludes every hollow width-one internal polygon.
+\end{proof}
+
+
+\section{One-point sharpness}
+
+
+For $k\ge1$, define
+
+\[
+Q_k=\mathrm{conv}\bigl((-2,-1),(8k+9,3),(-1,2)\bigr),\qquad P_k=Q_k/2.
+\]
+
+The three edges of $Q_k$ are primitive, its vertex colors are $01,11,10$, and its normalized area is
+
+\[
+D_k=24k+29.
+\]
+
+Put $N=4k+5$. Then $D_k=6N-1$, so Pick's theorem gives $i(Q_k)=3N-1$. The even--even interior points occur only on $y=0$ and $y=2$:
+
+\[
+(0,0),(2,0),\ldots,(2k,0)
+\]
+
+and
+
+\[
+(0,2),(2,2),\ldots,(6k+6,2).
+\]
+
+Their total number is $(k+1)+(3k+4)=4k+5=N$. No even--even point lies on the boundary. Thus
+
+\[
+\bigl(b(P_k),i(P_k),b(2P_k),i(2P_k)\bigr)
+=(0,N,3,3N-1),
+\]
+
+proving Theorem 1.4.
+
+\section{Computational evidence and reproducibility boundary}
+
+
+The congruence, near-minimal gap, and hollow width-one exclusion are general proofs. Computation has three limited roles:
+
+\par\noindent\textbf{1.} destructive calibration and negative controls for the colored parity formula;
+\par\noindent\textbf{2.} checking the explicit bottom, boundary, and sharpness constructions;
+\par\noindent\textbf{3.} exhausting the theoretically bounded one-interior branch $3\le N\le10$ and the short-edge tail $N\le6$.
+
+The maintained internal verification entrances are:
+
+\begin{itemize}
+\item \href{../../../loops/EHRHART-D2-MOD8-0001/verify_mod8_obstruction.py}{\texttt{\detokenize{verify_mod8_obstruction.py}}};
+\item \href{../../../loops/EHRHART-D2-CLASSIFY-0002/verify_near_lower_gap.py}{\texttt{\detokenize{verify_near_lower_gap.py}}};
+\item \href{../../../loops/EHRHART-D2-CLASSIFY-0002/verify_next_boundary_reduction.py}{\texttt{\detokenize{verify_next_boundary_reduction.py}}};
+\item \href{../../../loops/EHRHART-D2-WIDTH1-0003/verify_width_one_shell_gate.py}{\texttt{\detokenize{verify_width_one_shell_gate.py}}}.
+\end{itemize}
+
+The finite branch enumerates all residues $p\bmod D$ satisfying both primitive-edge gcd conditions. It does not infer a universal result from a search cutoff. The width-one verifier only calibrates the theorem and explicitly does not claim to prove the outer-hull lemma.
+
+\section{Relation to previous work and novelty boundary}
+
+
+Hamm, Hofscheier, and Kasprzyk \cite{ref2} provide the denominator-two quadruple framework, the linear necessary region, finite data, the internal-hull dimension count, and an $I=2N-1$ family. Those components are not claimed as new here.
+
+Herrmann \cite{ref1} describes odd Ehrhart constituents of half-integral polygons, but the construction does not simultaneously fix $b(2P)=3$ and does not give the present congruence or boundary classification.
+
+Bohnert and Springer \cite{ref3,ref4} prove rational Scott/Pick-type bounds, classify many rational polygons, and place polygons with sufficiently many collinear interior points in a narrow strip. Koelman's earlier classification and the later collinearity papers \cite{ref7,ref8,ref12} are structurally adjacent. None of the current versions checked for this draft states the thresholds or colored compatibility conditions proved here.
+
+Li and Paquin \cite{ref7} use a $p=4$ primitive-triangle skeleton in a different collinearity problem. Accordingly, the skeleton itself is not a new construction; the use here is the exact missing-color count needed for the two-level Ehrhart boundary.
+
+Abrams and Pommersheim \cite{ref5} use the same four parity colors for integer-area dissections. Their result concerns boundary color words and dissections, not the parity of the missing-color interior population.
+
+Schicho \cite{ref9}, Haase--Schicho \cite{ref10}, and Ko\l{}odziejczyk--Olszewska \cite{ref11} supply essential hollow-polygon, Scott-bound, and outer-hull tools. The new part of Section 6 is the compatibility argument that combines those tools with a one-point shell, primitive triangle edges, and the mod-$2$/mod-$3$ height pattern.
+
+No direct or equivalent statement of Theorems 1.1--1.4 was found in the current primary sources, corrected theses, author repositories, arXiv corpus, zbMATH Open, or Crossref searches completed on 2026-08-22. This is a bounded novelty assessment, not a claim that an equivalent unpublished or unindexed result cannot exist. The work does not classify all denominator-two Ehrhart quadruples.
+
+\enlargethispage{2\baselineskip}
+\section{AI-assisted research disclosure}
+
+
+This work was developed with AI assistance for literature search, proof exploration, symbolic checking, verification-code development, adversarial auditing, and manuscript drafting. Carptopus is the responsible author and controls the mathematical claims, source selection, revisions, and release decisions.
+
+\begin{thebibliography}{99}
+
+\bibitem{ref1}
+A. Herrmann,
+\emph{Classification of Ehrhart quasi-polynomials of half-integral polygons},
+Master's thesis, San Francisco State University, 2010.
+\url{https://matthbeck.github.io/teach/masters/andrewh.pdf}
+
+\bibitem{ref2}
+G. Hamm, C. Hofscheier, and A. M. Kasprzyk,
+\emph{Classification and Ehrhart theory of denominator 2 polygons},
+arXiv:2411.19183, 2024.
+\url{https://arxiv.org/abs/2411.19183}
+
+\bibitem{ref3}
+M. Bohnert and J. Springer,
+\emph{Generalizations of Scott's inequality and Pick's formula to rational polygons},
+arXiv:2411.11187, 2024.
+\url{https://arxiv.org/abs/2411.11187}
+
+\bibitem{ref4}
+M. Bohnert and J. Springer,
+\emph{Classifying rational polygons with small denominator and few interior lattice points},
+Discrete Comput. Geom. 76 (2026), 1238--1265.
+\url{https://doi.org/10.1007/s00454-026-00822-0}
+
+\bibitem{ref5}
+A. Abrams and J. Pommersheim,
+\emph{Integer area dissections of lattice polygons via a non-abelian Sperner's lemma},
+Amer. Math. Monthly 132 (2025), 737--753.
+\url{https://doi.org/10.1080/00029890.2025.2530372}
+
+\bibitem{ref6}
+R. J. Koelman,
+\emph{The number of moduli of families of curves on toric surfaces},
+PhD thesis, Katholieke Universiteit Nijmegen, 1991.
+
+\bibitem{ref7}
+E. Li and D. Paquin,
+\emph{On lattice triangles satisfying $B(T)=3$ with collinear interior lattice points},
+arXiv:2501.15009, 2025.
+\url{https://arxiv.org/abs/2501.15009}
+
+\bibitem{ref8}
+D. Paquin, E. Sumera, and T. Tran,
+\emph{Convex lattice polygons with $k\geq3$ interior points},
+arXiv:2501.18003, 2025.
+\url{https://arxiv.org/abs/2501.18003}
+
+\bibitem{ref9}
+J. Schicho,
+\emph{Simplification of surface parametrizations---a lattice polygon approach},
+J. Symbolic Comput. 36 (2003), 535--554.
+\url{https://doi.org/10.1016/S0747-7171(03)00094-4}
+
+\bibitem{ref10}
+C. Haase and J. Schicho,
+\emph{Lattice polygons and the number $2i+7$},
+Amer. Math. Monthly 116 (2009), 151--165.
+\url{https://arxiv.org/abs/math/0406224}
+
+\bibitem{ref11}
+K. Ko\l odziejczyk and D. Olszewska,
+\emph{On the first unknown value of two functions for convex lattice $v$-gons},
+Ars Combin. 113 (2014), 263--279.
+\url{https://combinatorialpress.com/article/ars/Volume%20113/volume-113-paper-22.pdf}
+
+\bibitem{ref12}
+J. Sakunkoo, A. Sakunkoo, and D. Paquin,
+\emph{Collinear interior lattice points in triangles satisfying $B(T)\in\{4,5\}$},
+arXiv:2608.00889, 2026.
+\url{https://arxiv.org/abs/2608.00889}
+
+\end{thebibliography}
+
+\end{document}
