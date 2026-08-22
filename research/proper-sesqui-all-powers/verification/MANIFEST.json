@@ -1,6 +1,6 @@
 {
   "title": "Proper transposed sesqui arrays at all Sylvester--Hadamard powers",
-  "release": "v0.1-beta",
+  "release": "v0.3-beta",
   "author": "Carptopus",
   "contact": "carptopus@163.com",
   "mathematical_status": "INTERNAL_CANDIDATE_EXTERNAL_REVIEW_PENDING",
@@ -12,8 +12,8 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 1887,
-      "sha256": "5c400572f5d09d0fd72931bf209d8dbeef42c81533757cef288bd388ef39cce9"
+      "bytes": 1964,
+      "sha256": "3169829ec89b559b31708bd5b435d32d76400b803e76945a9325462238113b6d"
     },
     {
       "path": "LICENSE-DOCS-CC-BY-4.0.md",
@@ -33,7 +33,7 @@
     {
       "path": "run_reproduction.py",
       "bytes": 7703,
-      "sha256": "1f639059ab01ff260a5f96ff9db5152c456eac7e5e5a4659b65d7bc9f407c4d7"
+      "sha256": "f18161b2f56c8feb5b9271f22aca58c23c722067ece57e4e2f55d03abaa7e4d9"
     },
     {
       "path": "src/analyze_subiaco_hyperoval_bridge.py",

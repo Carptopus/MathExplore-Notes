@@ -30,7 +30,7 @@
 
 \title{Spectral separation and the non-symmetric strong spectral property\\for looped double paths}
 \author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
-\date{19 August 2026}
+\date{22 August 2026}
 
 \hypersetup{
   pdftitle={Spectral separation and the non-symmetric strong spectral property for looped double paths},
@@ -44,7 +44,7 @@
 
 \begin{center}
 \small\itshape
-Public Beta v0.1. The theorem chain has passed an internal writing-admission audit,
+Public Beta v0.2. The theorem chain has passed an internal writing-admission audit,
 exact computational calibration, and a manuscript-level zero-trust audit. External mathematical
 review and journal peer review are pending. Priority statements are qualified by
 ``to the best of our knowledge.''
@@ -556,6 +556,10 @@ The novelty boundary is deliberately narrow.
    assignments and hence all endpoint single loops; Theorem 5.7(B) covers $P_{n,\{2\}}$ for even
    $n$; Theorem 5.7(Cc) gives the odd-order negative family used here; and Examples 5.9--5.10 give
    further internal single-loop cases.
+\item An ILAS 2026 abstract by Vander Meulen, reporting joint work with Cavers and Li [6], announces a
+   characterization of sign patterns that require or allow the nSSP.  No public theorem or proof was
+   found as of 22 August 2026, so the abstract may overlap or supersede the pattern-level classification
+   here but cannot presently be compared theorem by theorem.  This is an explicit priority risk.
 \end{enumerate}
 To the best of our knowledge, the items not directly covered by these sources are Theorem 4.1 as an nSSP
 criterion with an explicit common-spectrum obstruction, the completion in Theorem 5.2 of the single-loop
@@ -564,6 +568,10 @@ Theorem 6.1. Thus the contribution is a unified spectral criterion and a complet
 negative subfamilies, not the first positive result for single-loop double paths. This statement records
 the result of a targeted public-literature search; it is not an assertion that all unpublished or
 unindexed work has been excluded.
+
+The later root-loop spider and rooted-tree manuscripts [7, 8] strictly extend the fixed-matrix
+spectral-separation mechanism from two arms to branching trees.  They do not reprove the present
+allow/not-allow classification for arbitrary loop sets, whose pattern-level quantifiers remain distinct.
 
 \section{Computational calibration and reproducibility}
 
@@ -593,6 +601,10 @@ python -X utf8 verification/verify_nssp_weighted_paths.py --max-n 32
 python -X utf8 verification/verify_nssp_spectral_separation.py
 python -X utf8 verification/audit_nssp_spectral_jacobian.py
 \end{Verbatim}
+
+The released verification-code snapshot is anchored by Git commit
+\texttt{1eac397bc5db\allowbreak ac2107dcb1ed\allowbreak 95ea8a96b232\allowbreak fa65}; the entry manifest records
+the file hashes used by this version.
 
 A full-rank result modulo a prime certifies full rank over $\mathbb Q$ and $\mathbb R$. A rank
 deficiency modulo a prime is used only as calibration and is not treated as a real-rank proof; the
@@ -652,6 +664,19 @@ given.
    \emph{Spectral Methods for Operators of Mathematical Physics}, Operator Theory: Advances and Applications
    154, Birkhäuser, Basel, 2004, 151--154,
    \url{https://doi.org/10.1007/978-3-0348-7947-7_9}.
+\bibitem{ref6} K. N. Vander Meulen,
+   \emph{Sign patterns that require or allow the non-symmetric strong spectral property},
+   abstract, 27th Conference of the International Linear Algebra Society (2026),
+   joint work with M. Cavers and Z. Li,
+   \url{https://ilas2026.math.vt.edu/docs/ILAS2026-Book-Of-Abstracts.pdf}.
+\bibitem{ref7} Carptopus,
+   \emph{An exact non-symmetric strong spectral criterion for root-loop spider matrices},
+   MathExplore Notes, Public Beta v0.2 (2026),
+   \url{https://doi.org/10.5281/zenodo.22045527}.
+\bibitem{ref8} Carptopus,
+   \emph{A recursive non-symmetric strong spectral criterion for root-loop tree matrices},
+   MathExplore Notes, Public Beta v0.2 (2026),
+   \url{https://doi.org/10.5281/zenodo.22045531}.
 \end{thebibliography}
 
 \end{document}

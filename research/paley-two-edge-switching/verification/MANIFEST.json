@@ -1,6 +1,6 @@
 {
   "title": "Paley two-edge switching for proper transposed sesqui arrays",
-  "release": "v0.2-beta",
+  "release": "v0.3-beta",
   "author": "Carptopus",
   "contact": "carptopus@163.com",
   "mathematical_status": "INTERNAL_CANDIDATE_EXTERNAL_REVIEW_PENDING",
@@ -12,8 +12,8 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 2269,
-      "sha256": "16e367ac46b47b02ff0116aa6fb4cd3fa3ecdd244df98dfc85e9b85e973a1ea1"
+      "bytes": 2568,
+      "sha256": "ae862eea6b566687a81fa3fc1571f13d695528d9cbb22ee41522eb54f254afe1"
     },
     {
       "path": "LICENSE-DOCS-CC-BY-4.0.md",
@@ -32,8 +32,8 @@
     },
     {
       "path": "run_reproduction.py",
-      "bytes": 8799,
-      "sha256": "ffbb3a9336e30a55f963e0d285add752a83e0a0fcb2129c7f2bfc1a3f5885273"
+      "bytes": 9193,
+      "sha256": "08d04eee3e46bd494edecbb897e1ceb6fa34e4620f452170eabcada37c491fff"
     },
     {
       "path": "verify_general_paley_switch_symbolic.py",
@@ -61,6 +61,21 @@
       "sha256": "b8be56dd7baaecfb72c21bf04612c62819015d8cf5dc21d82ea2c1cdc1bcee81"
     },
     {
+      "path": "audit_q11_youden_certificate_independent.py",
+      "bytes": 7652,
+      "sha256": "5e899ca2cedb83c7cc23bf7ca9519e787cf5c68da5691005ff790a52426f92fd"
+    },
+    {
+      "path": "results/audit-paley-switch-q11-youden-completion.json",
+      "bytes": 14971,
+      "sha256": "117893837897390c6aad61a57bda5835efeb605f217cab17e3252c260f87d869"
+    },
+    {
+      "path": "results/audit-paley-switch-q11-certificate.json",
+      "bytes": 9074,
+      "sha256": "bddeeeb85efbf90fd9e2968d419508da614295da9bb982c5cea2f1fc970d094d"
+    },
+    {
       "path": "results/general-paley-switch-symbolic.json",
       "bytes": 625,
       "sha256": "282664f1bb8a3820cda31b346e47259e0f4c35c572e834e0fa6c6245beeee8d7"
@@ -84,6 +99,11 @@
       "path": "results/audit-paley-switch-generic-fields.json",
       "bytes": 19912,
       "sha256": "80442bb675c73b45d862f55723da1b2de2fdc64df0796892a2957d9c9394fcdf"
+    },
+    {
+      "path": "results/audit-paley-switch-q11-youden-independent.json",
+      "bytes": 819,
+      "sha256": "6560b926f0150e2967cd7a5bfb7fe54f89f655ac54a02d9b5b14833dfab7a6cb"
     }
   ],
   "status": "PASS_PUBLIC_VERIFICATION_MANIFEST_NO_PRIVATE_PATHS"

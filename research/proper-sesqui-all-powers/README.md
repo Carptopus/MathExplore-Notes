@@ -10,18 +10,18 @@
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
 - Contact: [carptopus@163.com](mailto:carptopus@163.com)
-- Version: v0.2-beta (19 August 2026)
+- Version: v0.3-beta (22 August 2026)
 - Manuscript license: [Creative Commons Attribution 4.0 International](LICENSE.md)
 - Verification licenses: documentation [CC BY 4.0](verification/LICENSE-DOCS-CC-BY-4.0.md),
   Python code [MIT](verification/LICENSE-CODE-MIT.txt), and JSON certificates/results [CC0 1.0](verification/LICENSE-DATA-CC0.md)
 - Status: internally verified candidate proof; public mathematical review pending.
 
-Version v0.2-beta makes two explanatory corrections identified by a
-post-publication internal audit: it states the complement step in the Second
-Multiplier Theorem argument and adds the closest known Youden
-deletion--exchange framework to the prior-work boundary. The theorem,
-construction, verification programs, and certificates are unchanged; the
-verification package therefore remains the frozen v0.1-beta package.
+Version v0.3-beta incorporates a portfolio re-audit: it cites the 2025
+Kölsch--Kyureghyan correction, distinguishes the map on $F^*$ explicitly,
+and records the 2026 Bagchi--Bagchi oval-based triple-array family as a
+non-covering neighbor. The theorem, construction, verification programs, and
+certificates are unchanged; the verification package remains the frozen
+v0.1-beta package.
 
 ## Main result
 

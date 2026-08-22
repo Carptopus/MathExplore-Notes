@@ -1,6 +1,6 @@
 {
   "title": "Proper transposed sesqui arrays at all Sylvester--Hadamard powers",
-  "release": "v0.1-beta",
+  "release": "v0.3-beta",
   "python": "3.13.11 (main, Dec  9 2025, 19:02:08) [MSC v.1944 64 bit (AMD64)]",
   "commands": [
     {
@@ -182,7 +182,7 @@
   },
   "manifest": {
     "path": "MANIFEST.json",
-    "sha256": "72bb1dbd1df78ba75eb2ade29c0b8be829585197615734e07a7280aeb017863b",
+    "sha256": "6633ed4ef7600bccd6aa4fdd699ced66069d285b6239f239eaf5b39ae636ab05",
     "file_count": 32
   },
   "release_gate": {

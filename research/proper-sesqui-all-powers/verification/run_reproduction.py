@@ -168,7 +168,7 @@ def main() -> int:
 
     manifest = {
         "title": "Proper transposed sesqui arrays at all Sylvester--Hadamard powers",
-        "release": "v0.1-beta",
+        "release": "v0.3-beta",
         "author": "Carptopus",
         "contact": "carptopus@163.com",
         "mathematical_status": "INTERNAL_CANDIDATE_EXTERNAL_REVIEW_PENDING",

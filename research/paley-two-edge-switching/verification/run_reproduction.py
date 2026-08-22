@@ -134,6 +134,7 @@ def main() -> int:
         "verify_general_paley_switch_prime_fields.py",
         "verify_general_paley_switch_gf27_independent.py",
         "audit_general_paley_switch_generic_fields.py",
+        "audit_q11_youden_certificate_independent.py",
     ]
     runs = [run(script) for script in scripts]
 
@@ -143,6 +144,7 @@ def main() -> int:
         "prime_fields": RESULTS / "general-paley-switch-primes.json",
         "gf27": RESULTS / "general-paley-switch-gf27.json",
         "generic_fields": RESULTS / "audit-paley-switch-generic-fields.json",
+        "q11_youden": RESULTS / "audit-paley-switch-q11-youden-independent.json",
     }
     missing = [str(path) for path in generated.values() if not path.is_file()]
     if missing:
@@ -157,6 +159,7 @@ def main() -> int:
         "prime_fields": validate_prime_fields(payloads["prime_fields"]),
         "gf27": validate_gf27(payloads["gf27"]),
         "generic_fields": require_true_checks(payloads["generic_fields"], "generic_fields"),
+        "q11_youden": require_true_checks(payloads["q11_youden"], "q11_youden"),
     }
     artifacts = {
         name: {
@@ -167,6 +170,10 @@ def main() -> int:
         for name, path in generated.items()
     }
 
+    static_data = [
+        RESULTS / "audit-paley-switch-q11-youden-completion.json",
+        RESULTS / "audit-paley-switch-q11-certificate.json",
+    ]
     source_files = [
         ROOT / "README.md",
         ROOT / "LICENSE-DOCS-CC-BY-4.0.md",
@@ -174,6 +181,7 @@ def main() -> int:
         ROOT / "LICENSE-DATA-CC0.md",
         ROOT / "run_reproduction.py",
         *(ROOT / script for script in scripts),
+        *static_data,
         *generated.values(),
     ]
     entry_text_files = [
@@ -188,7 +196,7 @@ def main() -> int:
 
     manifest = {
         "title": "Paley two-edge switching for proper transposed sesqui arrays",
-        "release": "v0.2-beta",
+        "release": "v0.3-beta",
         "author": "Carptopus",
         "contact": "carptopus@163.com",
         "mathematical_status": "INTERNAL_CANDIDATE_EXTERNAL_REVIEW_PENDING",

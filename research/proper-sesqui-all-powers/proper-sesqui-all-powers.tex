@@ -30,7 +30,7 @@
 \newcommand{\ind}{\mathbf 1}
 \title{Proper transposed sesqui arrays at all Sylvester--Hadamard powers}
 \author{Carptopus\\\href{mailto:carptopus@163.com}{\texttt{carptopus@163.com}}}
-\date{19 August 2026\\\small Version v0.2-beta}
+\date{22 August 2026\\\small Version v0.3-beta}
 
 \begin{document}
 \maketitle
@@ -109,8 +109,9 @@ pairing gives a hyperplane of size \(q/2\); remove \(h=0\).
 
 \begin{theorem}[Two-fibre ordering]
 \label{thm:twofibre}
-Suppose \(f:F\to F^*\) is exactly two-to-one with image \(Y\), the map
-\(x\mapsto xf(x)\) permutes \(F^*\), and every fibre \(\{x,x'\}\) satisfies
+Suppose \(f:F\to F^*\) is exactly two-to-one with image \(Y\), the restriction
+\(x\mapsto xf(x)\) from \(F^*\) to \(F^*\) is a permutation, and every fibre
+\(\{x,x'\}\) satisfies
 \begin{equation}
  \Tr((x+x')f(x))=1.
  \label{eq:fibretrace}
@@ -783,7 +784,7 @@ Same-parameter triple arrays were also known.  McSorley et al.
 \cite{preece} give the same form when \(2t-1\) is an odd prime power.  Their
 row concurrence is constant.  O-polynomials, Subiaco hyperovals, line ovals,
 and the two-to-one relation for \(O(x)+ux\) are also prior theory
-\cite{flocks-ovals,kolsch,abdukhalikov}.
+\cite{flocks-ovals,kolsch,kolsch-correction,abdukhalikov}.
 
 For the proper object, Jäger et al.\ \cite[Table~2]{jager} record
 \((v,r,c)=(30,15,16)\) as \texttt{?,T}: their search and listed constructions
@@ -796,6 +797,12 @@ The recent near-triple-array framework of Gordeev--Markstr\"om--Öhman
 \cite{near-triple} includes new constructions and selected enumerations of
 proper row--column designs, but its listed proper-design cases do not include
 the \(15\times16\), 30-symbol target or the all-power family here.
+
+Bagchi--Bagchi \cite{bagchi-ovals} construct triple arrays from ovals in
+projective planes of odd order, with dimensions \((n+1)\times n^2\) and
+\(n(n+1)\) symbols.  That odd-order triple-array family has different
+parameters and constant row concurrence, so it does not supply the proper
+ordering or the power-of-two family proved here.
 
 Thus the qualified novelty claim is only the proper ordered all-power family:
 it is not the first Hadamard support, same-parameter unordered design, or
@@ -873,6 +880,19 @@ L.~Kölsch and G.~Kyureghyan,
 The classifications of o-monomials and of 2-to-1 binomials are equivalent,
 \emph{Des. Codes Cryptogr.} 93 (2025), 961--970,
 \url{https://doi.org/10.1007/s10623-024-01463-1}.
+\bibitem{kolsch-correction}
+L.~Kölsch and G.~Kyureghyan,
+Correction: The classifications of o-monomials and of 2-to-1 binomials are
+equivalent,
+\emph{Des. Codes Cryptogr.} 93 (2025), 2895--2896,
+\url{https://doi.org/10.1007/s10623-025-01645-5}.
+The correction concerns the displayed polynomial \(F_7\) in their
+Theorem~4.1; the present manuscript uses their Theorem~2.2.
+\bibitem{bagchi-ovals}
+S.~Bagchi and B.~Bagchi,
+Triple arrays from ovals in finite projective planes,
+arXiv:2607.20275 (2026),
+\url{https://arxiv.org/abs/2607.20275}.
 \bibitem{mcsorley}
 J.~P. McSorley, N.~C.~K. Phillips, W.~D. Wallis, and J.~L. Yucas,
 Double arrays, triple arrays and balanced grids,

@@ -31,7 +31,7 @@
 
 \title{An exact non-symmetric strong spectral criterion\\for root-loop spider matrices}
 \author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
-\date{19 August 2026}
+\date{22 August 2026}
 
 \hypersetup{
   pdftitle={An exact non-symmetric strong spectral criterion for root-loop spider matrices},
@@ -45,7 +45,7 @@
 
 \begin{center}
 \small\itshape
-Public Beta v0.1. The theorem chain has passed a writing-admission proof audit,
+Public Beta v0.2. The theorem chain has passed a writing-admission proof audit,
 exact computational calibration, and a manuscript-level zero-trust audit.
 External mathematical review and journal peer review are pending. Priority statements
 are qualified by the public-literature boundary stated in the manuscript.
@@ -97,7 +97,7 @@ Equivalently, $A$ fails the nSSP exactly when two distinct arms share an eigenva
 
 \subsection*{Contribution boundary}
 
-The general nSSP/similarity-transversality framework \cite{ref1,ref3}, the exact Jacobian--nSSP equivalence for matrices with minimal polynomial of degree $n$ \cite[Theorem 5.1]{ref2}, and generalized-star inverse eigenvalue and Jacobian methods \cite{ref4,ref5} are prior tools. Cyclic-matrix centralizer facts, PBH cyclicity, and continuant recurrences are also standard \cite{ref9,ref10}. Likewise, reducing a bidirected tree to directed edge products up to diagonal similarity is a classical elementary mechanism. The symmetric two-arm spectral-separation criterion and the resulting looped-double-path allowability classification are already public in \cite{ref11}. The contribution here is the exact synthesis and extension of these ingredients into an arbitrary non-symmetric, genuinely branching fixed-matrix criterion, including repeated roots within one arm, nonreal common roots, and explicit real centralizer witnesses for the converse.
+The general nSSP/similarity-transversality framework \cite{ref1,ref3}, the exact Jacobian--nSSP equivalence for matrices with minimal polynomial of degree $n$ \cite[Theorem 5.1]{ref2}, and generalized-star inverse eigenvalue and Jacobian methods \cite{ref4,ref5} are prior tools. Duarte's recursive spectral construction and the related symmetric and skew-symmetric Jacobian/NEB developments are also important precedents \cite{ref12,ref13,ref14}. Cyclic-matrix centralizer facts, PBH cyclicity, and continuant recurrences are standard \cite{ref9,ref10}. Likewise, reducing a bidirected tree to directed edge products up to diagonal similarity is a classical elementary mechanism. The symmetric two-arm spectral-separation criterion and the resulting looped-double-path allowability classification are already public in \cite{ref11}. The contribution here is the exact synthesis and extension of these ingredients into an arbitrary non-symmetric, genuinely branching fixed-matrix criterion, including repeated roots within one arm, nonreal common roots, and explicit real centralizer witnesses for the converse.
 
 \section{Definitions and notation}
 
@@ -702,6 +702,12 @@ The closest general Jacobian result is public in full: Catral, Fallat, Gupta, an
 
 Accordingly, this draft makes no claim of absolute global priority. The novelty statement is limited to the absence of a direct match in the public sources checked as of 2026-08-19.
 
+The later rooted-tree theorem \cite{ref15} strictly generalizes Theorem 8.1:
+for a spider, its recursive sibling-subtree coprimality condition reduces
+exactly to pairwise coprimality of the arm polynomials.  The present paper is
+therefore retained as a shorter pedagogical precursor and historical first
+step, not as a parallel main result of the same generality.
+
 \section{Limits and further questions}
 
 Except for the convention $m\ge3$ used to reserve the word \emph{spider} for a genuinely branching root, the proof uses the following frozen structural assumptions:
@@ -768,6 +774,10 @@ This work was developed with AI assistance for literature search, symbolic deriv
 \bibitem{ref10} T. Kailath, \emph{Linear Systems}, Prentice--Hall, 1980.
 
 \bibitem{ref11} Carptopus, \emph{Spectral separation and the non-symmetric strong spectral property for looped double paths}, MathExplore Notes, v0.1-beta (19 August 2026). \href{https://github.com/Carptopus/MathExplore-Notes/tree/e57ee007380cbc351eb371d8e991303cab5f1e48/research/nssp-looped-double-paths}{Stable public version}.
+\bibitem{ref12} A. L. Duarte, \emph{Construction of acyclic matrices from spectral data}, Linear Algebra and its Applications 113 (1989), 173--182. \url{https://doi.org/10.1016/0024-3795(89)90295-4}
+\bibitem{ref13} K. H. Monfared and B. L. Shader, \emph{Construction of matrices with a given graph and prescribed interlaced spectral data}, Linear Algebra and its Applications 438 (2013), 4348--4358. \url{https://doi.org/10.1016/j.laa.2013.01.036}
+\bibitem{ref14} K. H. Monfared and S. Mallik, \emph{Construction of real skew-symmetric matrices from interlaced spectral data, and graph}, Linear Algebra and its Applications 471 (2015), 241--263. \url{https://arxiv.org/abs/1412.6085}
+\bibitem{ref15} Carptopus, \emph{A recursive non-symmetric strong spectral criterion for root-loop tree matrices}, MathExplore Notes, Public Beta v0.2 (2026). \url{https://doi.org/10.5281/zenodo.22045531}
 \end{thebibliography}
 
 \end{document}

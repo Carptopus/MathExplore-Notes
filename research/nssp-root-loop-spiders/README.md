@@ -1,4 +1,4 @@
-# An exact nSSP criterion for root-loop spider matrices
+# An exact non-symmetric strong spectral criterion for root-loop spider matrices
 
 ## Manuscript
 
@@ -10,11 +10,16 @@
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
 - Contact: [carptopus@163.com](mailto:carptopus@163.com)
-- Version: v0.1-beta (19 August 2026)
+- Version: v0.2-beta (22 August 2026)
 - Manuscript and documentation license: [Creative Commons Attribution 4.0 International](LICENSE.md)
 - SHA-256 checksum-manifest license: [Creative Commons Attribution 4.0 International](LICENSE.md)
 - Verification-code license: [MIT](verification/LICENSE-CODE-MIT.txt)
-- Status: internally verified candidate proof; public mathematical review pending.
+- Status: internally verified precursor result; strictly generalized by the rooted-tree entry; public mathematical review pending.
+
+This entry is retained as a shorter pedagogical precursor and historical step.
+Its theorem is a strict special case of the later
+[root-loop tree criterion](../nssp-root-loop-trees/README.md), so it is not
+counted as a parallel result of the same generality.
 
 ## Main result
 
@@ -60,9 +65,10 @@ result. The contribution claimed here is the extension to genuinely branching
 root-loop spiders with arbitrary non-symmetric real weights.
 
 The general nSSP/transversality framework, the characteristic-coefficient
-Jacobian bridge, generalized-star inverse-eigenvalue methods, cyclic-matrix
-facts, and continuant recurrences are prior tools. Global priority remains
-qualified pending broader public and expert review.
+Jacobian bridge, Duarte's construction, the Monfared--Shader and
+Monfared--Mallik Jacobian/NEB developments, generalized-star inverse-eigenvalue
+methods, cyclic-matrix facts, and continuant recurrences are prior tools.
+Global priority remains qualified pending broader public and expert review.
 
 ## Reproduction
 

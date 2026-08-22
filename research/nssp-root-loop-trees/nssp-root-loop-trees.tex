@@ -31,7 +31,7 @@
 
 \title{A recursive non-symmetric strong spectral criterion\\for root-loop tree matrices}
 \author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
-\date{19 August 2026}
+\date{22 August 2026}
 
 \hypersetup{
   pdftitle={A recursive non-symmetric strong spectral criterion for root-loop tree matrices},
@@ -45,7 +45,7 @@
 
 \begin{center}
 \small\itshape
-Public Beta v0.1. The theorem chain has passed a writing-admission
+Public Beta v0.2. The theorem chain has passed a writing-admission
 proof audit, exact computational calibration, and a manuscript-level zero-trust audit.
 External mathematical review and journal peer review are pending. Priority statements
 are qualified by the public-literature boundary stated in the manuscript.
@@ -512,7 +512,7 @@ The converse is false in general: NEB removes the forced common factor $x$, but 
 
 \begin{corollary}[recursive certificate]
 
-The nSSP status can be decided bottom-up using exact polynomial arithmetic: compute every $F_v$ from (3.1), then compute the pairwise gcds at each sibling set. A nonconstant gcd supplies a spectral-collision certificate and Proposition 7.1 supplies a centralizer witness over a splitting field; if every gcd is $1$, Lemma 4.1 and Propositions 6.1--6.2 certify the nSSP.
+When the matrix entries lie in an effective exact field---for example $\mathbb Q$, an explicitly represented algebraic-number field, or a symbolic field with exact zero testing---the nSSP status can be decided bottom-up by exact polynomial arithmetic: compute every $F_v$ from (3.1), then compute the pairwise gcds at each sibling set. A nonconstant gcd supplies a spectral-collision certificate and Proposition 7.1 supplies a centralizer witness over a splitting field; if every gcd is $1$, Lemma 4.1 and Propositions 6.1--6.2 certify the nSSP. This is not asserted as a numerical algorithm for arbitrary inexact real inputs.
 
 \end{corollary}
 
@@ -607,6 +607,12 @@ Modular full rank proves full rank over $\mathbb Q$ and $\mathbb R$ for that int
 Duarte's inverse spectral construction for acyclic Hermitian matrices \cite{ref8} and the Monfared--Shader Jacobian formulation \cite{ref3} recursively impose strict interlacing between a tree matrix and a vertex-deleted principal submatrix. Their Duarte property yields a strong-Arnold-like centralizer lemma and a nonsingular joint spectral-data Jacobian. For real symmetric tree matrices, recursive strict interlacing is closely equivalent to disjoint sibling spectra together with cyclic child roots. The positive-product subfamily of the present theorem is real diagonally similar to that symmetric setting and is not claimed as new.
 
 Monfared--Mallik \cite{ref4} develop the skew-symmetric Duarte analogue, characterize the NEB tree obstruction, and prove a corresponding Jacobian result for distinct purely imaginary interlacing data. Corollary 8.2 is therefore a compatibility boundary, not a new NEB mechanism. The present theorem differs by deciding every fixed matrix with mixed products and by allowing nonreal and defective subtree spectra.
+
+Generalized-star and linear-tree inverse spectral results \cite{ref13,ref14}
+also use branch spectra and multiplicity constraints.  Their quantifiers concern
+existence or realization of matrices with prescribed spectral data, rather
+than the nSSP of every fixed nonsymmetric root-loop matrix; they do not state
+the recursive iff proved here.
 
 Monfared \cite{ref5} proves an existence theorem for not-necessarily-symmetric matrices with a prescribed graph and distinct real or conjugate-pair spectrum, under the hypothesis that the graph's matching number is at least the number of prescribed nonreal conjugate pairs. That work does not classify the nSSP of a fixed rooted-tree matrix.
 
@@ -722,6 +728,16 @@ Linear Algebra and its Applications 721 (2025), 102--121.
 \emph{Spectral separation and the non-symmetric strong spectral property for looped double paths},
 MathExplore Notes, v0.1-beta (19 August 2026), commit \texttt{e57ee00}.
 \href{https://github.com/Carptopus/MathExplore-Notes/tree/e57ee007380cbc351eb371d8e991303cab5f1e48/research/nssp-looped-double-paths}{immutable GitHub source}
+
+\bibitem{ref13} C. R. Johnson, A. Leal Duarte, and C. M. Saiago,
+\emph{Inverse eigenvalue problems and lists of multiplicities of eigenvalues for matrices whose graph is a tree: the case of generalized stars and double generalized stars},
+Linear Algebra and its Applications 373 (2003), 311--330.
+\url{https://doi.org/10.1016/S0024-3795(03)00582-2}
+
+\bibitem{ref14} C. R. Johnson and T. Wakhare,
+\emph{The inverse eigenvalue problem for linear trees},
+Discrete Mathematics 345 (2022), Article 112737.
+\url{https://doi.org/10.1016/j.disc.2021.112737}
 
 \end{thebibliography}
 

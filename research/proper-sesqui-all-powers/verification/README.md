@@ -24,8 +24,9 @@ PASS_PUBLIC_REPRODUCTION_EXTERNAL_REVIEW_PENDING
 ```
 
 Generated JSON files are written to `results/`. `MANIFEST.json` records the
-SHA-256 digest of every distributed source, input certificate, and generated
-verification artifact.
+SHA-256 digest of every distributed source, input certificate, and mathematical
+verification artifact; the top-level `SHA256SUMS.txt` separately covers the
+reproduction report.
 
 ## Layout
 

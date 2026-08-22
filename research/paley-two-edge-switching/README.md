@@ -10,7 +10,7 @@
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
 - Contact: [carptopus@163.com](mailto:carptopus@163.com)
-- Version: v0.2-beta (19 August 2026)
+- Version: v0.3-beta (22 August 2026)
 - Manuscript license: [Creative Commons Attribution 4.0 International](LICENSE.md)
 - Verification licenses: documentation [CC BY 4.0](verification/LICENSE-DOCS-CC-BY-4.0.md),
   Python code [MIT](verification/LICENSE-CODE-MIT.txt), and JSON results [CC0 1.0](verification/LICENSE-DATA-CC0.md)
@@ -51,6 +51,12 @@ candidate new contribution is the two-edge switching construction that yields
 a proper ordered family for every odd prime power in the stated range. This
 priority statement remains qualified pending broader public and expert review.
 
+The general Youden deletion--exchange interface and proper examples obtained
+from it are also prior work. The released $q=11$ array has a compatible
+Youden completion. The retained candidate increment is therefore the uniform
+Paley parameterization, its two-edge switch and character constraints, and
+the all-$q$ existence proof, not the abstract switch or Youden interface.
+
 ## Reproduction
 
 The verification programs use Python 3.11 or newer and only the standard
@@ -62,8 +68,9 @@ python -X utf8 run_reproduction.py
 
 The expected final status is
 `PASS_PUBLIC_REPRODUCTION_EXTERNAL_REVIEW_PENDING`. A successful run reproduces
-the distributed exact calculations; it does not replace independent review of
-the mathematical proof or the priority claim.
+the distributed exact calculations, including an independent check of the
+frozen $q=11$ Youden completion and deletion roundtrip; it does not replace
+independent review of the mathematical proof or the priority claim.
 
 ## AI-assisted research disclosure
 

@@ -10,7 +10,7 @@
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
 - Contact: [carptopus@163.com](mailto:carptopus@163.com)
-- Version: v0.1-beta (20 August 2026)
+- Version: v0.2-beta (22 August 2026)
 - Manuscript and documentation license: [Creative Commons Attribution 4.0 International](LICENSE.md)
 - SHA-256 checksum-manifest license: [Creative Commons Attribution 4.0 International](LICENSE.md)
 - Verification-code license: [MIT](verification/LICENSE-CODE-MIT.txt)
@@ -71,13 +71,15 @@ number of two-dimensional subcodes attaining each value, classify quadratic
 pencils up to equivalence, or treat arbitrary collections of codewords.
 
 The Walsh theory of one quadratic Boolean function, fixed-pencil common-zero
-formulas, degenerate pencil members, order/type mechanisms, sharp bounds, and
-extremal constructions are prior work. In particular, the closest full-text
-sources are Leep--Schueller (1999) and Fitzgerald--Yucas (2004). The candidate
-new contribution is the union of all attainable support values across all
-pairs in every binary dimension, together with a uniform sufficiency proof
-realizing every value allowed by the compatibility conditions. Absolute
-priority remains qualified pending broader public and expert review.
+formulas, degenerate pencil members, order/type mechanisms, sharp bounds,
+extremal constructions, alternating-matrix rank-triple counts, and homogeneous
+Boolean quadratic rank types are prior work. The closest sources include
+Leep--Schueller (1999), Fitzgerald--Yucas (2004), Pott--Schmidt--Zhou (2016),
+and Hodges--Iyer (2022). The candidate new contribution is narrower: the union
+of all attainable affine support values across all pairs in every binary
+dimension, including zero-frequency Walsh signs and fibers, together with a
+uniform sufficiency proof. Absolute priority remains qualified pending broader
+public and expert review.
 
 ## Reproduction
 

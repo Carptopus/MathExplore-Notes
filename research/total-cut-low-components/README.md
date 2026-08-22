@@ -9,7 +9,7 @@
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
 - Contact: [carptopus@163.com](mailto:carptopus@163.com)
-- Version: v0.1-beta (20 August 2026)
+- Version: v0.2-beta (22 August 2026)
 - Manuscript and documentation license: [Creative Commons Attribution 4.0 International](LICENSE.md)
 - Status: internally verified candidate proof; public mathematical review pending.
 
@@ -49,6 +49,10 @@ cases, plus the independent $d=2$ completion needed to state the combined
 range uniformly. Definitions, Alexander-duality machinery, and the cited
 high-component results remain prior work. Absolute priority remains qualified
 pending broader public and expert review.
+
+The published version of *Total Cut Complexes of Graphs* is cited by DOI
+`10.1007/s00454-024-00630-4`; the earlier arXiv record remains useful as an
+open version but is not the sole bibliographic anchor.
 
 This is a theoretical proof. No finite computation or software output is used
 to establish the theorem.

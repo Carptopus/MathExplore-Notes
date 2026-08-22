@@ -1,4 +1,4 @@
-# A recursive nSSP criterion for root-loop tree matrices
+# A recursive non-symmetric strong spectral criterion for root-loop tree matrices
 
 ## Manuscript
 
@@ -10,7 +10,7 @@
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
 - Contact: [carptopus@163.com](mailto:carptopus@163.com)
-- Version: v0.1-beta (19 August 2026)
+- Version: v0.2-beta (22 August 2026)
 - Manuscript and documentation license: [Creative Commons Attribution 4.0 International](LICENSE.md)
 - SHA-256 checksum-manifest license: [Creative Commons Attribution 4.0 International](LICENSE.md)
 - Verification-code license: [MIT](verification/LICENSE-CODE-MIT.txt)
@@ -87,9 +87,15 @@ does not assert that every additional loop destroys nSSP or that no more
 elaborate multi-loop criterion exists.
 
 The nSSP/transversality framework, the general
-characteristic-Jacobian-to-nSSP bridge, Duarte and NEB recursions, PBH
-cyclicity, and the tree characteristic-polynomial recurrence are prior tools.
+characteristic-Jacobian-to-nSSP bridge, Duarte and NEB recursions,
+generalized-star and linear-tree inverse spectral methods, PBH cyclicity, and
+the tree characteristic-polynomial recurrence are prior tools.
 Global priority remains qualified pending broader public and expert review.
+
+The bottom-up decision procedure is an exact symbolic algorithm only when the
+entries belong to an effective exact field with exact zero testing, such as
+$\mathbb Q$ or an explicitly represented algebraic-number field. It is not a
+numerical guarantee for arbitrary floating-point real inputs.
 
 ## Reproduction
 

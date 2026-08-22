@@ -3,10 +3,12 @@
 This directory contains the public, offline verification materials accompanying
 *Paley two-edge switching for proper transposed sesqui arrays*.
 
-The five programs independently check the symbolic switching identities, the
+The six programs check the symbolic switching identities, the
 exact quadratic-character count, frozen prime-field cases, an extension-field
 case over $GF(27)$, and a generic finite-field implementation with controlled
-mutation tests. They use only the Python standard library and require no
+mutation tests. An implementation-separated verifier also checks the frozen
+$q=11$ Youden-completion certificate, its deletion roundtrip, and a destructive
+negative control. They use only the Python standard library and require no
 network access or computer algebra system.
 
 ## Run
@@ -25,8 +27,8 @@ PASS_PUBLIC_REPRODUCTION_EXTERNAL_REVIEW_PENDING
 ```
 
 Generated JSON files are written to `results/`. `MANIFEST.json` records the
-SHA-256 digest of every distributed verification source and the five
-mathematical result files (excluding the manifest and reproduction report to
+SHA-256 digest of every distributed verification source, two frozen completion
+inputs, and six mathematical result files (excluding the manifest and reproduction report to
 avoid self-referential hashes).
 
 ## Programs
@@ -36,6 +38,7 @@ avoid self-referential hashes).
 - `verify_general_paley_switch_prime_fields.py`: all admissible pairs in frozen prime fields;
 - `verify_general_paley_switch_gf27_independent.py`: independent $GF(27)$ complete-array audit;
 - `audit_general_paley_switch_generic_fields.py`: implementation-separated generic-field audit.
+- `audit_q11_youden_certificate_independent.py`: independent check of one frozen $q=11$ Youden completion and deletion roundtrip.
 
 ## Interpretation
 

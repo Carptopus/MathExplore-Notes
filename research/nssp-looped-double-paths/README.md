@@ -10,7 +10,7 @@
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
 - Contact: [carptopus@163.com](mailto:carptopus@163.com)
-- Version: v0.1-beta (19 August 2026)
+- Version: v0.2-beta (22 August 2026)
 - Manuscript and documentation license: [Creative Commons Attribution 4.0 International](LICENSE.md)
 - Verification-code license: [MIT](verification/LICENSE-CODE-MIT.txt)
 - Status: internally verified candidate proof; public mathematical review pending.
@@ -48,6 +48,13 @@ criterion together with the resulting complete allow/not-allow classification.
 The global priority statement remains qualified pending broader public and
 expert review.
 
+An ILAS 2026 abstract announces a potentially broader characterization of
+sign patterns that require or allow nSSP. No public theorem or proof was
+available for theorem-level comparison as of 22 August 2026, so the overlap
+is disclosed as unresolved. The later spider and rooted-tree results extend
+the fixed-matrix spectral mechanism but not this arbitrary-loop pattern
+classification.
+
 ## Reproduction
 
 The three verification programs use Python 3.11 or newer and only the standard
@@ -63,6 +70,10 @@ The expected summaries report 272 weighted single-loop positions, 119
 spectral-separation cases, and 77 Jacobian/projector cases. These computations
 calibrate the proof and expose boundary errors; they do not replace the general
 mathematical argument or independent review.
+
+The released verification-code snapshot is anchored at Git commit
+`1eac397bc5dbac2107dcb1ed95ea8a96b232fa65`; `SHA256SUMS.txt` records the
+individual file hashes used by this version.
 
 ## AI-assisted research disclosure
 

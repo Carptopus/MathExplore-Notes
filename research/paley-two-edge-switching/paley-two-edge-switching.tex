@@ -33,7 +33,7 @@
 
 \title{Paley two-edge switching for proper transposed sesqui arrays}
 \author{Carptopus\\\href{mailto:carptopus@163.com}{\texttt{carptopus@163.com}}}
-\date{19 August 2026\\\small Version v0.2-beta}
+\date{22 August 2026\\\small Version v0.3-beta}
 
 \begin{document}
 \maketitle
@@ -628,20 +628,31 @@ itself proof of global priority.  Accordingly, our novelty statement remains
 ``to the best of our knowledge.''
 
 The general Youden deletion interface does not imply this construction.
-Whether individual arrays from the present family also admit alternative
-compatible Youden representations is a separate representation problem and
-is not used in the proof.
+J\"ager et al. also obtain several proper arrays through that interface, so
+neither the abstract deletion--exchange operation nor properness after a
+Youden deletion is claimed as new.  The \(q=11\) array constructed here has a
+compatible Youden completion, as certified in the accompanying verification
+package.  What remains specific to this paper is the uniform Paley
+parameterization, the two-edge switch and character conditions, and the
+all-\(q\) existence proof.  Whether every larger member has a compatible
+Youden representation is not used and remains open here.
+
+The externally verifiable public archive date for the first version is no
+later than 21 August 2026; manuscript dates and local Git timestamps are not
+used as independent priority evidence.
 
 \section{Reproducibility}
 The proof is independent of computation.  The accompanying repository
-contains five complementary verification paths:
+contains six complementary verification paths:
 \begin{itemize}
 \item a symbolic check of the first- and second-moment identities;
 \item an exact check of the character-count formula over sample prime fields;
 \item full cellwise array checks over sample prime fields;
 \item an implementation-independent check over \(\GF(27)\); and
 \item a generic finite-field audit covering positive and negative boundary
-      cases.
+      cases; and
+\item an implementation-separated verification of the frozen (q=11)
+      Youden completion and deletion roundtrip, including a destructive control.
 \end{itemize}
 The corresponding scripts are
 \begin{quote}
@@ -650,8 +661,10 @@ verify\_general\_paley\_switch\_symbolic.py\\
 verify\_general\_paley\_switch\_character\_count.py\\
 verify\_general\_paley\_switch\_prime\_fields.py\\
 verify\_general\_paley\_switch\_gf27\_independent.py\\
-audit\_general\_paley\_switch\_generic\_fields.py
+audit\_general\_paley\_switch\_generic\_fields.py\\
+audit\_q11\_youden\_certificate\_independent.py
 \end{quote}
+\medskip
 They test the formulas and finite instances; they are not used to extrapolate
 the infinite conclusion in Theorem~\ref{thm:main}.
 

@@ -1,6 +1,6 @@
 {
   "title": "Paley two-edge switching for proper transposed sesqui arrays",
-  "release": "v0.2-beta",
+  "release": "v0.3-beta",
   "python": "3.13.11 (main, Dec  9 2025, 19:02:08) [MSC v.1944 64 bit (AMD64)]",
   "commands": [
     {
@@ -32,6 +32,12 @@
       "returncode": 0,
       "stdout_tail": "9,\n          90\n        ]\n      },\n      \"array_audit\": null,\n      \"controlled_mutation_detected\": null\n    }\n  ],\n  \"checks\": {\n    \"alpha_count\": true,\n    \"fixed_alpha_count\": true,\n    \"elliptic_point_count_hasse\": true,\n    \"switch_and_moment_defect\": true,\n    \"complete_array_selected_fields\": true,\n    \"controlled_mutation\": true\n  },\n  \"claim_boundary\": \"Finite-field regression attacks implementation and boundary errors. The infinite conclusion still requires the written Hasse proof.\"\n}",
       "stderr_tail": ""
+    },
+    {
+      "script": "audit_q11_youden_certificate_independent.py",
+      "returncode": 0,
+      "stdout_tail": "y_12\": true,\n    \"controlled_corruption_detected\": true\n  },\n  \"target\": {\n    \"errors\": [],\n    \"replication_values\": [\n      6\n    ],\n    \"cc_values\": [\n      5\n    ],\n    \"rc_values\": [\n      6\n    ],\n    \"rr_spectrum\": {\n      \"4\": 11,\n      \"6\": 33,\n      \"8\": 11\n    }\n  },\n  \"claim_boundary\": \"This independently verifies one q=11 completion certificate. It does not prove that every switched array is Youden-completable or establish priority.\",\n  \"status\": \"PASS_Q11_COMPLETION_CERTIFICATE\"\n}",
+      "stderr_tail": ""
     }
   ],
   "artifacts": {
@@ -59,12 +65,17 @@
       "path": "results/audit-paley-switch-generic-fields.json",
       "sha256": "80442bb675c73b45d862f55723da1b2de2fdc64df0796892a2957d9c9394fcdf",
       "status": "PASS_ALL_CHECKS"
+    },
+    "q11_youden": {
+      "path": "results/audit-paley-switch-q11-youden-independent.json",
+      "sha256": "6560b926f0150e2967cd7a5bfb7fe54f89f655ac54a02d9b5b14833dfab7a6cb",
+      "status": "PASS_ALL_CHECKS"
     }
   },
   "manifest": {
     "path": "MANIFEST.json",
-    "sha256": "26efe5b6054c2d7b30e47c298eb2358bb239db204b64ad69ef6118114abcaa9f",
-    "file_count": 15
+    "sha256": "2d70ab7bc4cb2f2ad0197db7485848292b62e499e789950dafe5d4091abeaa26",
+    "file_count": 19
   },
   "release_gate": {
     "internal_reproduction": true,
