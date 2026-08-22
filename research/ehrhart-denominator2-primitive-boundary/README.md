@@ -4,6 +4,7 @@
 
 - [Read or download the PDF](ehrhart-denominator2-primitive-boundary.pdf)
 - [BibTeX citation](CITATION.bib)
+- DOI: [10.5281/zenodo.22055266](https://doi.org/10.5281/zenodo.22055266)
 - [LaTeX source](ehrhart-denominator2-primitive-boundary.tex)
 - [Verification material](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
