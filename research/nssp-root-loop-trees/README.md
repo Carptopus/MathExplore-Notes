@@ -4,7 +4,7 @@
 
 - [Read or download the PDF](nssp-root-loop-trees.pdf)
 - [BibTeX citation](CITATION.bib)
-- DOI: [10.5281/zenodo.22045532](https://doi.org/10.5281/zenodo.22045532)
+- DOI: [10.5281/zenodo.22059060](https://doi.org/10.5281/zenodo.22059060)
 - [LaTeX source](nssp-root-loop-trees.tex)
 - [Verification code](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)

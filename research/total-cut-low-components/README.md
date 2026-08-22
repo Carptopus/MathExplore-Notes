@@ -4,7 +4,7 @@
 
 - [Read or download the PDF](total-cut-low-components.pdf)
 - [BibTeX citation](CITATION.bib)
-- DOI: [10.5281/zenodo.22045540](https://doi.org/10.5281/zenodo.22045540)
+- DOI: [10.5281/zenodo.22059068](https://doi.org/10.5281/zenodo.22059068)
 - [LaTeX source](total-cut-low-components.tex)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus

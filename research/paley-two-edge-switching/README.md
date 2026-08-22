@@ -4,7 +4,7 @@
 
 - [Read or download the PDF](paley-two-edge-switching.pdf)
 - [BibTeX citation](CITATION.bib)
-- DOI: [10.5281/zenodo.22045506](https://doi.org/10.5281/zenodo.22045506)
+- DOI: [10.5281/zenodo.22059004](https://doi.org/10.5281/zenodo.22059004)
 - [LaTeX source](paley-two-edge-switching.tex)
 - [Verification code and reproduced results](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
