@@ -16,6 +16,7 @@ including manuscripts and reproducible verification materials.
 | [The low-component cases for total cut complexes of disconnected graphs](research/total-cut-low-components/README.md)<br>[PDF](research/total-cut-low-components/total-cut-low-components.pdf) · [BibTeX](research/total-cut-low-components/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22059068) | Algebraic topology, graph complexes, simplicial complexes | Resolves the three low-component cases of the total-cut wedge-of-spheres problem and completes the stated range for all $k\geq d$ | v0.2-beta | Internally verified candidate proof; external review pending |
 | [Comb-bounded crowns and bi-Esakia representability of well-ordered rooted trees](research/bi-esakia-comb-bounded-trees/README.md)<br>[PDF](research/bi-esakia-comb-bounded-trees/bi-esakia-comb-bounded-trees.pdf) · [BibTeX](research/bi-esakia-comb-bounded-trees/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22045542) | Order theory, Esakia duality, bi-Heyting algebras | Gives a finite-anchor synchronization theorem and a sufficient bi-Esakia representability criterion for well-ordered rooted trees with uniformly comb-bounded finite crowns | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Near-minimal Ehrhart data on the primitive-triangle boundary of denominator-two polygons](research/ehrhart-denominator2-primitive-boundary/README.md)<br>[PDF](research/ehrhart-denominator2-primitive-boundary/ehrhart-denominator2-primitive-boundary.pdf) · [BibTeX](research/ehrhart-denominator2-primitive-boundary/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22055266) | Ehrhart theory, rational polygons, discrete geometry | Proves a mod-$8$ obstruction and sharply classifies the near-minimal boundary through $I=3N-2$, with an infinite one-point-sharp family | v0.1-beta | Internally verified candidate proof; external review pending |
+| [Periodic infinite ringsets in the Lipschitz quaternions](research/periodic-quaternion-ringsets/README.md)<br>[PDF](research/periodic-quaternion-ringsets/periodic-quaternion-ringsets.pdf) · [BibTeX](research/periodic-quaternion-ringsets/CITATION.bib) | Integer-valued polynomials, quaternion algebras, noncommutative algebra | Classifies exactly which odd-squarefree-period binary words produce infinite ringsets in the Lipschitz quaternions | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
 
@@ -179,6 +180,25 @@ data.
 
 - [Manuscript and verification materials](research/ehrhart-denominator2-primitive-boundary/README.md)
 
+### Periodic infinite quaternion ringsets
+
+Let $m$ be an odd squarefree positive integer and let
+$w:\mathbb Z\to\{\mathbf i,\mathbf j\}$ be periodic with prescribed period
+$m$. For
+
+$$
+S_w=\{a+w(a):a\in\mathbb Z\}
+$$
+
+inside the Lipschitz quaternions, this manuscript proves that $S_w$ is a
+ringset exactly when $w$ is nonconstant and, for every prime $p\mid m$ with
+$p\equiv3\pmod4$, every residue class modulo $p$ contains both letters. The
+proof combines split matrix-ring idempotents, Frobenius obstruction
+polynomials, periodic congruence orbits, and a Chinese-remainder local-global
+argument.
+
+- [Manuscript materials](research/periodic-quaternion-ringsets/README.md)
+
 ## Status and review policy
 
 Entries are research records, not automatically peer-reviewed publications.
@@ -246,3 +266,6 @@ Ehrhart theory; rational polygons; half-integral polygons; denominator-two
 polygons; lattice polygons; primitive lattice triangles; parity obstructions;
 internal hulls; outer hulls; lattice width; discrete geometry; computational
 geometry.
+Integer-valued polynomials; Lipschitz quaternions; quaternion algebras;
+noncommutative algebra; ringsets; null ideals; periodic words; local-global
+principles; matrix rings; Chinese remainder theorem.

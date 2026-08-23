@@ -1,0 +1,703 @@
+% AI-assisted manuscript source; responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Periodic infinite quaternion ringsets}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlength{\emergencystretch}{4em}
+
+\title{Periodic infinite ringsets in the Lipschitz quaternions}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{23 August 2026}
+
+\hypersetup{
+  pdftitle={Periodic infinite ringsets in the Lipschitz quaternions},
+  pdfauthor={Carptopus},
+  pdfsubject={A local-global classification of periodic infinite ringsets in the Lipschitz quaternions},
+  pdfkeywords={integer-valued polynomial, Lipschitz quaternion, ringset, null ideal, periodic word, local-global principle}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\small\itshape
+Public Beta v0.1. The complete manuscript has passed independent proof and
+manuscript-level zero-trust audits. External mathematical review and journal
+peer review are pending.
+\end{center}
+\vspace{0.8em}
+\begin{abstract}
+
+Let $\mathbf L=\mathbb Z[\mathbf i,\mathbf j,\mathbf k]$ be the ring of
+Lipschitz quaternions. Given a periodic word
+$w:\mathbb Z\to\{\mathbf i,\mathbf j\}$, we study the infinite set
+
+\[
+S_w=\{a+w(a):a\in\mathbb Z\}\subset\mathbf L.
+\]
+
+A subset $S\subseteq\mathbf L$ is a ringset if the polynomials over the
+rational quaternion algebra that are integer-valued on $S$ form a ring. We
+give a complete criterion when a prescribed period $m$ is odd and squarefree.
+The set $S_w$ is a ringset if and only if $w$ is nonconstant and, for every
+prime $p\mid m$ with $p\equiv3\pmod4$, the restriction of $w$ to each residue
+class modulo $p$ is nonconstant. Consequently, if every prime divisor of $m$
+is congruent to $1$ modulo $4$, every nonconstant binary word of period $m$
+produces an infinite ringset.
+
+The proof combines the residue-null-ideal criterion for noncommutative
+integer-valued polynomials with two local mechanisms. At split prime powers,
+rank-one idempotents in
+$\mathbf L/p^e\mathbf L\simeq M_2(\mathbb Z/p^e\mathbb Z)$ show that one
+chosen letter above each real residue already forces a core set. At primes
+congruent to $3$ modulo $4$, a Frobenius real-part extractor gives an explicit
+right-multiplication obstruction whenever a residue fibre has only one
+letter. Periodic congruence orbits and the Chinese remainder theorem then
+give the global classification.
+
+\end{abstract}
+\section{Introduction}
+
+Let $\mathbb D$ denote the rational Hamilton quaternion algebra and let
+
+\[
+\mathbf L
+=\mathbb Z[\mathbf i,\mathbf j,\mathbf k],
+\qquad
+\mathbf i^2=\mathbf j^2=-1,
+\qquad
+\mathbf i\mathbf j=\mathbf k=-\mathbf j\mathbf i.
+\]
+
+The variable in $\mathbb D[x]$ is central, and polynomials are evaluated on
+the right: if $f(x)=\sum_d c_dx^d$, then
+$f(\alpha)=\sum_d c_d\alpha^d$. For $S\subseteq\mathbf L$, put
+
+\[
+\mathrm{Int}(S,\mathbf L)
+=\{f\in\mathbb D[x]:f(S)\subseteq\mathbf L\}.
+\]
+
+This set is always a left $\mathbf L$-module, but in the noncommutative
+setting it need not be closed under polynomial multiplication. Following
+Werner \cite{werner2026}, $S$ is called a \emph{ringset} if
+$\mathrm{Int}(S,\mathbf L)$ is a subring of $\mathbb D[x]$.
+
+Werner \cite{werner2026} completely classified the finite ringsets in the Lipschitz and
+Hurwitz quaternion rings. The infinite problem behaves differently. In
+particular, a finite set can be decomposed into its minimal-polynomial
+classes, whereas this reduction fails for infinite sets. Werner's
+Proposition 5.6 gives a sufficient congruence-pairing condition and Example
+5.9 constructs an infinite ringset whose individual minimal-polynomial
+fibres are all non-ringsets.
+
+We examine the simplest stationary version of that phenomenon. Let
+$m\in\mathbb Z_{\ge1}$ and let
+$w:\mathbb Z\to\{\mathbf i,\mathbf j\}$ satisfy $w(a+m)=w(a)$ for every
+$a\in\mathbb Z$. The period $m$ is prescribed and need not be the least
+period. Define
+
+\[
+S_w=\{a+w(a):a\in\mathbb Z\}.
+\]
+
+Every element $a+w(a)$ has minimal polynomial
+
+\[
+x^2-2ax+a^2+1.
+\]
+
+Thus distinct real parts lie in distinct minimal-polynomial classes, and
+every such fibre is a noncentral singleton. Nevertheless, many of the
+resulting infinite sets are ringsets.
+
+Our main theorem is the following local--global classification.
+
+\begin{theorem}
+
+Let $m\ge1$ be odd and squarefree, and let
+$w:\mathbb Z\to\{\mathbf i,\mathbf j\}$ have period $m$. Then $S_w$ is a
+ringset of $\mathbf L$ if and only if both of the following hold:
+
+\begin{enumerate}
+\item $w$ is nonconstant;
+\item for every prime $p\mid m$ with $p\equiv3\pmod4$, and every
+$c\in\mathbb Z/p\mathbb Z$, the set
+
+\[
+\{w(a):a\equiv c\pmod p\}
+\]
+
+contains both $\mathbf i$ and $\mathbf j$.
+
+\end{enumerate}
+The criterion is independent of whether the displayed period is minimal.
+At the split primes, no two-colour condition is needed.
+
+\end{theorem}
+\begin{corollary}
+
+Suppose that $m$ is odd and squarefree and every prime divisor of $m$ is
+congruent to $1$ modulo $4$. Then every nonconstant word of period $m$
+produces a ringset $S_w$. In particular, among the $2^m$ labelled binary
+words on $\mathbb Z/m\mathbb Z$, exactly $2^m-2$ satisfy the conclusion.
+\end{corollary}
+
+The finite-field core-set problem for $M_2(\mathbb F_q)$ has already been
+classified algorithmically by Werner \cite{werner2022}. Rissner and Werner \cite{rissnerwerner} enumerated
+core subsets within each similarity class, counted purely core subsets
+globally, and obtained an asymptotic count for all core subsets. We do not
+claim those local classifications and counts, the split quaternion
+representation, or the residue-null-ideal bridge as new.
+The contribution here is the explicit split prime-power lemma and its
+combination with periodic congruence orbits and nonsplit obstructions to
+obtain the above infinite-family if-and-only-if theorem.
+
+\section{Null ideals and the residue criterion}
+
+Let $A$ be a ring and $T\subseteq A$. Its null ideal is
+
+\[
+\mathcal N(T,A)
+=\{f\in A[x]:f(t)=0\text{ for every }t\in T\}.
+\]
+
+It is always a left ideal. The set $T$ is called \emph{core} if
+$\mathcal N(T,A)$ is a two-sided ideal. For $n\ge2$, write
+$\overline S_n$ for the image of $S\subseteq\mathbf L$ in
+$\mathbf L/n\mathbf L$.
+
+We use the following consequence of Werner [4, Lemmas 5.3 and 5.4].
+
+\begin{lemma}[residue criterion]
+
+Let $S\subseteq\mathbf L$.
+
+\begin{enumerate}
+\item If $\overline S_n$ is core in $\mathbf L/n\mathbf L$ for every $n\ge2$,
+then $S$ is a ringset.
+\item Conversely, if for some $n$ there are
+$g\in\mathcal N(\overline S_n,\mathbf L/n\mathbf L)$ and
+$u\in\{\mathbf i,\mathbf j,\mathbf k\}$ such that
+$gu\notin\mathcal N(\overline S_n,\mathbf L/n\mathbf L)$, then $S$ is
+not a ringset.
+
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+
+Every $f\in\mathbb D[x]$ can be written as $f=g/n$ with
+$g\in\mathbf L[x]$ and $n\ge1$. By [4, Lemma 5.3], $f$ is integer-valued on
+$S$ exactly when the reduction of $g$ belongs to
+$\mathcal N(\overline S_n,\mathbf L/n\mathbf L)$.
+
+If every residue image is core, reduction remains null after the coefficients
+of $g$ are right-multiplied by $\mathbf i,\mathbf j$, or $\mathbf k$. Hence
+$f\mathbf i,f\mathbf j,f\mathbf k$ are integer-valued on $S$. Since every
+Lipschitz quaternion is an integral linear combination of
+$1,\mathbf i,\mathbf j,\mathbf k$, [4, Lemma 5.4] gives multiplicative
+closure. The same argument in reverse proves part 2 after lifting the
+coefficients of the residue polynomial $g$ to $\mathbf L[x]$.
+\end{proof}
+
+The next elementary lemma records the paired-fibre calculation contained in
+the proof of [4, Proposition 5.6]. We state it directly for a finite quotient;
+we are not applying the global proposition itself to a finite ring.
+
+\begin{lemma}[two letters over every real residue]
+
+Let $q\ge2$, let $A=\mathbf L/q\mathbf L$, and let
+
+\[
+T=\{a+\mathbf i,a+\mathbf j:a\in\mathbb Z/q\mathbb Z\}.
+\]
+
+Then $T$ is core in $A$.
+
+\end{lemma}
+\begin{proof}
+
+Take $f\in\mathcal N(T,A)$ and fix a real residue $a$. Divide $f$ by the
+central monic polynomial
+
+\[
+\mu_a(x)=x^2-2ax+a^2+1.
+\]
+
+The remainder has the form $r(x)=\gamma_1x+\gamma_0$, and it vanishes at
+$a+\mathbf i$ and $a+\mathbf j$. Subtracting gives
+
+\[
+\gamma_1(\mathbf i-\mathbf j)=0.
+\]
+
+Since
+
+\[
+(\mathbf i-\mathbf j)(-\mathbf i+\mathbf j)=2,
+\]
+
+we have $2\gamma_1=0$ in $A$; no invertibility of $2$ is used.
+
+For $u\in\{\mathbf i,\mathbf j,\mathbf k\}$ and
+$\alpha\in\{a+\mathbf i,a+\mathbf j\}$, direct right evaluation gives
+
+\[
+(ru)(\alpha)-r(\alpha)u
+=\gamma_1(u\alpha-\alpha u).
+\]
+
+Every displayed commutator lies in $2A$, so the right-hand side is zero.
+To pass from the remainder back to $f$, write $f=q_a\mu_a+r$. Since
+$\mu_a$ has central coefficients,
+
+\[
+fu=(q_au)\mu_a+ru,
+\qquad
+((q_au)\mu_a)(\alpha)=0.
+\]
+
+Hence $(fu)(\alpha)=(ru)(\alpha)$ at both roots of $\mu_a$, and $fu$ is
+null on $T$ for the three basis units. It follows by linearity
+that the null ideal is stable under right multiplication by every constant in
+$A$. If $h(x)=\sum_t r_tx^t\in A[x]$, then
+
+\[
+fh=\sum_t(fr_t)x^t=\sum_tx^t(fr_t)
+\]
+
+belongs to the null ideal because the latter is a left ideal and $x$ is
+central. Hence the null ideal is two-sided.
+\end{proof}
+
+The same proof applies to any subset of the two-letter grid that contains both
+letters above every real residue.
+
+\section{A split prime-power lemma}
+
+At a prime congruent to $1$ modulo $4$, the conclusion is much stronger: one
+letter above each real residue is enough.
+
+\begin{lemma}[split one-letter lemma]
+
+Let $p\equiv1\pmod4$ be prime, let $e\ge1$, and put
+$R=\mathbb Z/p^e\mathbb Z$ and $A=\mathbf L/p^e\mathbf L$. Suppose
+
+\[
+T\subseteq\{a+\mathbf i,a+\mathbf j:a\in R\}
+\]
+
+contains at least one point of real part $a$ for every $a\in R$. Then $T$ is
+core in $A$.
+
+\end{lemma}
+\begin{proof}
+
+Hensel lifting gives a unit $s\in R$ with $s^2=-1$. The assignments
+
+\[
+\mathbf i\longmapsto
+\begin{pmatrix}s&0\\0&-s\end{pmatrix},
+\qquad
+\mathbf j\longmapsto
+\begin{pmatrix}0&1\\-1&0\end{pmatrix}
+\]
+
+give an isomorphism $A\simeq M_2(R)$. Indeed,
+$a+b\mathbf i+c\mathbf j+d\mathbf k$ maps to
+
+\[
+\begin{pmatrix}
+a+bs&c+ds\\
+-c+ds&a-bs
+\end{pmatrix},
+\]
+
+and the four coordinates are recovered by dividing sums and differences by
+the units $2$ and $s$.
+
+For $u\in\{\mathbf i,\mathbf j\}$ define
+
+\[
+e_u^+=\frac{1+u/s}{2},
+\qquad
+e_u^-=\frac{1-u/s}{2}.
+\]
+
+These are complementary orthogonal idempotents. For every $a\in R$ and
+$d\ge0$,
+
+\[
+(a+u)^d=(a+s)^d e_u^+ +(a-s)^d e_u^-.
+\]
+
+Under the matrix representation, their image modules are
+
+\[
+\begin{aligned}
+\mathrm{im}(e_{\mathbf i}^+)&=R(1,0)^T,
+&\mathrm{im}(e_{\mathbf i}^-)&=R(0,1)^T,\\
+\mathrm{im}(e_{\mathbf j}^+)&=R(1,s)^T,
+&\mathrm{im}(e_{\mathbf j}^-)&=R(1,-s)^T.
+\end{aligned}
+\]
+
+For $u_1,u_2\in\{\mathbf i,\mathbf j\}$, place a generator of
+$\mathrm{im}(e_{u_1}^+)$ beside a generator of
+$\mathrm{im}(e_{u_2}^-)$. In the four cases
+
+\[
+(u_1,u_2)
+=(\mathbf i,\mathbf i),(\mathbf i,\mathbf j),
+(\mathbf j,\mathbf i),(\mathbf j,\mathbf j),
+\]
+
+the determinants may be chosen as
+
+\[
+1,\qquad -s,\qquad1,\qquad-2s,
+\]
+
+respectively. They are all units. Thus the two image modules are
+complementary; if a matrix $X$ satisfies
+$Xe_{u_1}^+=Xe_{u_2}^-=0$, then $X=0$.
+
+Now take
+$f(x)=\sum_dc_dx^d\in\mathcal N(T,A)$ and introduce the scalar-variable
+matrix polynomial
+
+\[
+F(z)=\sum_dc_dz^d,
+\qquad z\in R.
+\]
+
+For a fixed $z$, use the selected point of real part $z-s$ and multiply its
+zero-evaluation equation on the right by its plus idempotent. This gives
+
+\[
+F(z)e_{u_1}^+=0.
+\]
+
+Similarly, the selected point of real part $z+s$ gives
+
+\[
+F(z)e_{u_2}^-=0.
+\]
+
+The complementarity just proved implies $F(z)=0$ for every $z\in R$. This
+argument does not use uniqueness of polynomial functions over $R$.
+
+Let $r\in A$ and let $fr$ denote uniform right multiplication of the
+coefficients by $r$. Its scalar-variable polynomial is
+
+\[
+F_r(z)=\sum_d(c_dr)z^d=F(z)r=0.
+\]
+
+Applying the idempotent decomposition again shows that $fr$ vanishes at every
+point of $T$. Hence the null ideal is stable under right multiplication by
+all constants. As in Lemma 2.2, stability under arbitrary polynomial right
+multiplication follows from the left-ideal property and centrality of $x$.
+Therefore $T$ is core.
+\end{proof}
+
+The proof deliberately uses the matrix equations $Xe=0$ and the image modules
+of the idempotents. No classification of left or right ideals is being
+invoked.
+
+\section{Periodic congruence fibres}
+
+The arithmetic input is elementary but records exactly where squarefreeness
+enters.
+
+\begin{lemma}[periodic orbit lemma]
+
+Let $w$ have period $m$, let $q\ge1$, and fix $a\in\mathbb Z/q\mathbb Z$.
+The positions modulo $m$ attained by integers congruent to $a$ modulo $q$ are
+
+\[
+a+q\mathbb Z\pmod m
+=\{r\in\mathbb Z/m\mathbb Z:r\equiv a
+\pmod{\gcd(q,m)}\}.
+\]
+
+\end{lemma}
+\begin{proof}
+
+The subgroup generated by $q$ in $\mathbb Z/m\mathbb Z$ consists exactly of
+the multiples of $\gcd(q,m)$. Translating by $a$ gives the formula.
+\end{proof}
+
+In particular, if $\gcd(q,m)=1$, every real residue fibre of $S_w$ contains
+both letters exactly when $w$ is nonconstant. If $m$ is squarefree,
+$p\mid m$, and $q=p^e$, then $\gcd(q,m)=p$, so a real residue fibre sees
+exactly one position class modulo $p$.
+
+The formula also shows that the criterion does not depend on choosing a
+nonminimal period. If the least period is $d\mid m$ and a prime divisor of
+$m$ does not divide $d$, each corresponding position class still projects
+onto every position modulo $d$.
+
+\section{Nonsplit missing-letter obstructions}
+
+We next give the explicit obstruction used for necessity.
+
+\begin{lemma}[missing-letter obstruction]
+
+Let $p\equiv3\pmod4$ be prime and let
+
+\[
+T\subseteq\{a+\mathbf i,a+\mathbf j:a\in\mathbb F_p\}.
+\]
+
+If for some $a$ the fibre of real part $a$ is nonempty and contains only one
+of the two letters, then $T$ is not core in $\mathbf L/p\mathbf L$.
+
+\end{lemma}
+\begin{proof}
+
+In $(\mathbf L/p\mathbf L)[x]$ define the central polynomial
+
+\[
+\rho_p(x)=\frac{x+x^p}{2}.
+\]
+
+For $y=b+u$ with $u\in\{\mathbf i,\mathbf j\}$, the congruence
+$p\equiv3\pmod4$ gives $u^p=-u$, and hence
+
+\[
+\rho_p(y)=b.
+\]
+
+The central Lagrange indicator of the real residue $a$ is
+
+\[
+\delta_a(x)=1-(\rho_p(x)-a)^{p-1}.
+\]
+
+It evaluates to $1$ above $a$ and to $0$ above every other real residue.
+
+Suppose first that the fibre contains $a+\mathbf i$ but not
+$a+\mathbf j$. Put
+
+\[
+h(x)=(x-(a+\mathbf i))\delta_a(x).
+\]
+
+The order of the two factors is intentional. Since $\delta_a$ has central
+coefficients, $h$ vanishes on all of $T$. After uniformly right-multiplying
+its coefficients by $\mathbf j$, evaluation at $\alpha=a+\mathbf i$ gives
+
+\[
+(h\mathbf j)(\alpha)
+=\mathbf j\alpha-\alpha\mathbf j
+=\mathbf j\mathbf i-\mathbf i\mathbf j
+=-2\mathbf k\ne0.
+\]
+
+Thus the null ideal is not stable under right multiplication. If the fibre
+contains only $a+\mathbf j$, use
+$(x-(a+\mathbf j))\delta_a(x)$ and right multiplication by $\mathbf i$;
+the value is $2\mathbf k\ne0$.
+\end{proof}
+
+Choosing integer representatives of the coefficients lifts the above null
+polynomial to $\widehat h\in\mathbf L[x]$. Then
+$\widehat h/p$ is integer-valued on every integer set whose residue image is
+$T$, while the indicated right multiple is not. Lemma 2.1 therefore turns
+the finite obstruction into a non-ringset certificate.
+
+\section{Proof of the classification}
+
+We now prove Theorem 1.1.
+
+\paragraph{Sufficiency.}
+
+Assume that $w$ is nonconstant and that every position class required in
+condition 2 is bichromatic. We show that the image of $S_w$ is core modulo
+every prime power $p^e$.
+
+If $p\equiv1\pmod4$, every real residue modulo $p^e$ is represented by at
+least one element of $S_w$. Lemma 3.1 applies without any two-colour
+condition.
+
+Suppose $p=2$. Since $m$ is odd,
+$\gcd(2^e,m)=1$. Lemma 4.1 and nonconstancy show that every real residue
+fibre modulo $2^e$ contains both letters. Lemma 2.2 applies.
+
+Now let $p\equiv3\pmod4$. If $p\nmid m$, then again
+$\gcd(p^e,m)=1$, and Lemmas 4.1 and 2.2 apply. If $p\mid m$, squarefreeness
+gives $\gcd(p^e,m)=p$. Each real residue fibre therefore sees exactly one
+position class modulo $p$, which is bichromatic by condition 2. Lemma 2.2
+again applies.
+
+It remains to pass from prime powers to arbitrary denominators. Write
+$n=\prod_rp_r^{e_r}$. The Chinese remainder theorem gives
+
+\[
+\mathbf L/n\mathbf L
+\simeq\prod_r\mathbf L/p_r^{e_r}\mathbf L.
+\]
+
+For $A=\prod_rA_r$ and an arbitrary subset $T\subseteq A$, polynomial
+coefficients and right evaluation are componentwise. Therefore
+
+\[
+\mathcal N(T,A)
+\simeq
+\prod_r\mathcal N(\pi_rT,A_r).
+\]
+
+This identity does not require $T$ to be the Cartesian product of its
+projections: a component polynomial vanishes on every element of $T$ exactly
+when it vanishes on the corresponding projection. Since every prime-power
+projection of $S_w$ is core, its image modulo $n$ is core. Lemma 2.1 now
+shows that $S_w$ is a ringset.
+
+\paragraph{Necessity.}
+
+If $w$ is constant, reduce modulo $3$. Every real residue fibre then contains
+only one letter, so Lemma 5.1 and Lemma 2.1 show that $S_w$ is not a ringset.
+
+Next suppose that $p\mid m$, $p\equiv3\pmod4$, and some position class
+$c\pmod p$ is monochromatic. Fix a real residue $a\equiv c\pmod p$. By
+Lemma 4.1, the fibre of the image of $S_w$ above $a$ sees precisely that
+position class, and hence contains only one letter. Lemma 5.1 again gives a
+null polynomial whose right multiple is non-null. Lemma 2.1 implies that
+$S_w$ is not a ringset. This proves both necessary conditions and completes
+the theorem.
+
+\section{Examples and the squarefree boundary}
+
+If $m=5$, the only prime divisor is split. Hence every one of the
+$2^5-2=30$ nonconstant labelled words produces a ringset. More generally,
+Corollary 1.2 gives $2^m-2$ examples whenever all prime divisors of $m$ are
+$1$ modulo $4$.
+
+For $m=3$ or $m=7$, condition 2 is impossible: a position class modulo $m$
+contains only one position. Thus no word of these prescribed periods gives a
+ringset. Composite periods can behave differently. For $m=15$, the condition
+requires each of the three position classes modulo $3$ to be bichromatic. For
+$m=21$, both every class modulo $3$ and every class modulo $7$ must be
+bichromatic. The length-$m$ word obtained by alternating the two letters on
+the standard representatives $0,1,\ldots,m-1$ satisfies these requirements
+for $m=15,21$, and similarly for $m=35$.
+
+Squarefreeness is used only in the equality
+$\gcd(p^e,m)=p$ when a nonsplit prime divides $m$. If $p^2\mid m$, a fibre
+modulo $p^e$ may see a position class modulo $p^2$ or a higher power. Being
+bichromatic modulo $p$ no longer guarantees a paired fine fibre, while a
+missing letter in one fine fibre is not automatically detected by the
+finite-field polynomial of Lemma 5.1. A classification for nonsquarefree
+periods therefore requires genuinely local-ring information about core
+subsets of $\mathbf L/p^e\mathbf L$. We make no claim about that boundary
+here.
+
+\section{Computational calibration}
+
+The proof above is symbolic and does not depend on computation. During
+discovery, the degree-$\le2p$ truncated evaluation kernel over $\mathbb F_p$
+was checked for all three choices \texttt{i only}, \texttt{j only}, or \texttt{both} over every
+real residue:
+
+\begin{itemize}
+\item all $3^3=27$ patterns for $p=3$;
+\item all $3^5=243$ patterns for $p=5$;
+\item all $3^7=2187$ patterns for $p=7$;
+\item representative patterns for $p=11$ and $p=13$.
+
+\end{itemize}
+Within this degree-$\le2p$ truncation, for $p\equiv3\pmod4$ only the
+all-bichromatic pattern was stable; for $p\equiv1\pmod4$, every pattern was
+stable. These checks motivated the local lemmas but do not prove them or
+establish stability of the full null ideal. The discovery program is retained
+with the research record and explicitly labels itself as finite-field
+calibration.
+
+AI assistance was used to help formulate finite test cases, review the
+exploratory program, and compare its reported outputs with the symbolic
+argument. The author executed and inspected the computations; no computed
+case is used as a proof of the theorem.
+
+\section{Prior-work boundary}
+
+The following components are prior work and are not claimed here:
+
+\begin{itemize}
+\item the general connection between ringsets and null-ideal sets \cite{frisch2018};
+\item the algorithmic classification of finite core subsets of
+$M_2(\mathbb F_q)$ \cite{werner2022}, and the within-class, purely-core, and asymptotic
+counts in \cite{rissnerwerner};
+\item the finite Lipschitz/Hurwitz ringset classification, the residue criterion,
+the right-multiplication criterion, and the infinite sufficient condition
+\cite{werner2026}.
+
+\end{itemize}
+As of the literature search completed on 23 August 2026, we found no public
+source directly stating the odd-squarefree periodic criterion of Theorem 1.1.
+This search result is a bounded prior-work assessment, not a claim of absolute
+global priority. The result has not yet received external expert review or
+formal peer review.
+
+\section*{Declaration of generative AI and AI-assisted technologies}
+
+During the research and preparation of this work, the author used OpenAI
+Codex to assist with literature searches, symbolic exploration, exploratory
+code review, proof checking, and language drafting. The author reviewed and
+edited all generated output and takes full responsibility for the content of
+this manuscript.
+
+
+\begin{thebibliography}{9}
+
+\bibitem{frisch2018}
+Sophie Frisch,
+\emph{Polynomial functions on subsets of non-commutative rings---a link between ringsets and null-ideal sets},
+ITM Web of Conferences \textbf{20} (2018), 01003.
+\href{https://doi.org/10.1051/itmconf/20182001003}{doi:10.1051/itmconf/20182001003}.
+
+\bibitem{rissnerwerner}
+Roswitha Rissner and Nicholas J. Werner,
+\emph{Counting core sets in matrix rings over finite fields},
+Linear Algebra and its Applications \textbf{720} (2025), 1--25.
+\href{https://doi.org/10.1016/j.laa.2025.04.006}{doi:10.1016/j.laa.2025.04.006};
+\href{https://arxiv.org/abs/2405.04106}{arXiv:2405.04106v2}.
+
+\bibitem{werner2022}
+Nicholas J. Werner,
+\emph{Null ideals of subsets of matrix rings over fields},
+Linear Algebra and its Applications \textbf{642} (2022), 50--72.
+\href{https://doi.org/10.1016/j.laa.2022.02.007}{doi:10.1016/j.laa.2022.02.007}.
+
+\bibitem{werner2026}
+Nicholas J. Werner,
+\emph{Integer-valued polynomials on subsets of quaternion algebras},
+Journal of Algebra \textbf{686} (2026), 195--219.
+\href{https://doi.org/10.1016/j.jalgebra.2025.08.011}{doi:10.1016/j.jalgebra.2025.08.011};
+\href{https://arxiv.org/abs/2412.20609}{arXiv:2412.20609v2}.
+
+\end{thebibliography}
+
+\end{document}
