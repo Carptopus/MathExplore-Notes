@@ -4,6 +4,7 @@
 
 - [Read or download the PDF](periodic-quaternion-ringsets.pdf)
 - [BibTeX citation](CITATION.bib)
+- DOI: [10.5281/zenodo.22069614](https://doi.org/10.5281/zenodo.22069614)
 - [LaTeX source](periodic-quaternion-ringsets.tex)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
