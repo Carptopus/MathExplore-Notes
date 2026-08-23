@@ -17,6 +17,7 @@ including manuscripts and reproducible verification materials.
 | [Comb-bounded crowns and bi-Esakia representability of well-ordered rooted trees](research/bi-esakia-comb-bounded-trees/README.md)<br>[PDF](research/bi-esakia-comb-bounded-trees/bi-esakia-comb-bounded-trees.pdf) · [BibTeX](research/bi-esakia-comb-bounded-trees/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22045542) | Order theory, Esakia duality, bi-Heyting algebras | Gives a finite-anchor synchronization theorem and a sufficient bi-Esakia representability criterion for well-ordered rooted trees with uniformly comb-bounded finite crowns | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Near-minimal Ehrhart data on the primitive-triangle boundary of denominator-two polygons](research/ehrhart-denominator2-primitive-boundary/README.md)<br>[PDF](research/ehrhart-denominator2-primitive-boundary/ehrhart-denominator2-primitive-boundary.pdf) · [BibTeX](research/ehrhart-denominator2-primitive-boundary/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22055266) | Ehrhart theory, rational polygons, discrete geometry | Proves a mod-$8$ obstruction and sharply classifies the near-minimal boundary through $I=3N-2$, with an infinite one-point-sharp family | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Periodic infinite ringsets in the Lipschitz quaternions](research/periodic-quaternion-ringsets/README.md)<br>[PDF](research/periodic-quaternion-ringsets/periodic-quaternion-ringsets.pdf) · [BibTeX](research/periodic-quaternion-ringsets/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22069614) | Integer-valued polynomials, quaternion algebras, noncommutative algebra | Classifies exactly which odd-squarefree-period binary words produce infinite ringsets in the Lipschitz quaternions | v0.1-beta | Internally verified candidate proof; external review pending |
+| [Periodic two-letter ringsets in the Lipschitz quaternions: the general odd-period classification](research/odd-period-quaternion-ringsets/README.md)<br>[PDF](research/odd-period-quaternion-ringsets/odd-period-quaternion-ringsets.pdf) · [BibTeX](research/odd-period-quaternion-ringsets/CITATION.bib) | Integer-valued polynomials, quaternion algebras, noncommutative algebra | Classifies exactly which arbitrary odd-period binary words produce infinite ringsets, strictly generalizing the preceding squarefree result | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
 
@@ -199,6 +200,23 @@ argument.
 
 - [Manuscript materials](research/periodic-quaternion-ringsets/README.md)
 
+### General odd-period quaternion ringsets
+
+For an arbitrary prescribed odd period $m$, the new manuscript proves that
+
+$$
+S_w=\{a+w(a):a\in\mathbb Z\}
+$$
+
+is a ringset in the Lipschitz quaternions exactly when $w$ is nonconstant and,
+for every prime $p\mid m$ with $p\equiv3\pmod4$, every position class modulo
+$p^{v_p(m)}$ contains both letters. This strictly generalizes the preceding
+odd-squarefree-period theorem. The new ingredient is an explicit
+higher-prime-power fixed-divisor obstruction for monochromatic position
+classes.
+
+- [Manuscript materials](research/odd-period-quaternion-ringsets/README.md)
+
 ## Status and review policy
 
 Entries are research records, not automatically peer-reviewed publications.
@@ -268,4 +286,5 @@ internal hulls; outer hulls; lattice width; discrete geometry; computational
 geometry.
 Integer-valued polynomials; Lipschitz quaternions; quaternion algebras;
 noncommutative algebra; ringsets; null ideals; periodic words; local-global
-principles; matrix rings; Chinese remainder theorem.
+principles; matrix rings; Chinese remainder theorem; prime-power position
+classes; fixed-divisor obstructions.
