@@ -4,7 +4,7 @@
 
 - [Read or download the PDF](odd-period-quaternion-ringsets.pdf)
 - [BibTeX citation](CITATION.bib)
-- DOI: pending Zenodo publication
+- DOI: [10.5281/zenodo.22070532](https://doi.org/10.5281/zenodo.22070532)
 - [LaTeX source](odd-period-quaternion-ringsets.tex)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
