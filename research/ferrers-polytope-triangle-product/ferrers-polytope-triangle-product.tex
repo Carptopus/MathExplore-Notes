@@ -1,0 +1,484 @@
+% Generated from the audited Markdown source; responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{needspace}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Ferrers-polytope face lattice}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\setlength{\emergencystretch}{4em}
+
+\title{The face lattice of the irreducible-Ferrers polytope\\
+is a product of triangles}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{24 August 2026}
+
+\hypersetup{
+  pdftitle={The face lattice of the irreducible-Ferrers polytope is a product of triangles},
+  pdfauthor={Carptopus},
+  pdfsubject={A proof of the product-of-triangles conjecture for irreducible-Ferrers polytopes},
+  pdfkeywords={Ferrers diagram, polytope, face lattice, product of triangles, rank-metric code, combinatorial equivalence}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fcolorbox{black!35}{black!4}{\parbox{0.88\textwidth}{\centering\small
+Public Beta, version 0.1. The mathematical claims have passed a
+project-internal zero-trust manuscript audit; external review is pending.}}
+\end{center}
+
+\begin{abstract}
+
+
+Beeloo-Sauerbier Couvée and Neri associated, for every integer $d\geq 3$,
+an integral polytope $\mathfrak P_d$ with irreducible Ferrers diagrams and
+conjectured that $\mathfrak P_d$ is combinatorially equivalent to a Cartesian
+product of $d-2$ triangles. Their construction includes a linearly isomorphic
+nonnegative affine slice $\mathfrak L_d$ and a complete description of its
+vertices: after grouping the coordinates into $d-2$ triples, each vertex has
+exactly one positive coordinate in every triple, and all $3^{d-2}$ possible
+support patterns occur. We show that this vertex-support description already
+determines the whole face lattice. More generally, a polytope obtained by
+intersecting an affine subspace with a nonnegative orthant, whose vertices
+realize exactly the one-per-block supports, has the face lattice of a product
+of simplices. Applying this observation proves the product-of-triangles
+conjecture for every $d\geq 3$. It also gives the complete face enumerator,
+simplicity, and the number of facets of $\mathfrak P_d$.
+
+\end{abstract}
+
+\section{Introduction}
+
+
+Ferrers-diagram rank-metric codes connect algebraic coding theory with the
+combinatorics of partitions and convex polytopes. In recent work,
+Beeloo-Sauerbier Couvée and Neri \cite{couvee2026} introduced a reduction theory for Ferrers
+diagrams in the Etzion--Silberstein conjecture. For every distance parameter
+$d\geq 3$, they encoded the irreducible diagram pairs as the integer points of
+an integral polytope $\mathfrak P_d$.
+
+The same paper computed the face vectors of $\mathfrak P_d$ for
+$3\leq d\leq 7$. These vectors agree with those of the Cartesian product of
+$d-2$ triangles, leading to the following conjecture \cite[Conjecture 5.28]{couvee2026}:
+
+\begin{quote}\itshape
+For every $d\geq 3$, the polytope $\mathfrak P_d$ is combinatorially
+equivalent to the Cartesian product of $d-2$ triangles.
+\end{quote}
+
+
+The purpose of this note is to prove that conjecture. The argument uses no
+additional enumeration. The key input is the vertex theorem already proved
+in \cite[Proposition 5.25]{couvee2026}. After a sequence of linear isomorphisms, the
+polytope is presented as a nonnegative affine slice with coordinates grouped
+into triples. Its vertices realize all possible choices of one positive
+coordinate per triple. In such a presentation, a face is determined by the
+coordinates that vanish on its relative interior, and averaging compatible
+vertices realizes every allowable vanishing pattern. Those patterns are
+exactly the faces of a product of triangles.
+
+We isolate this argument as a general block-support lemma for products of
+simplices. The Ferrers-polytope conjecture is its immediate three-coordinate
+specialization. This formulation separates the new observation from the
+substantial prior work in \cite{couvee2026}: the definition and integrality of
+$\mathfrak P_d$, the affine model $\mathfrak L_d$, and the complete vertex
+classification all belong to Beeloo-Sauerbier Couvée and Neri. The new result
+is the recovery of the full face lattice from that classification.
+
+Throughout, a \emph{polytope} is a nonempty bounded polyhedron. Two polytopes are
+\emph{combinatorially equivalent} if their face lattices, including the empty face,
+are isomorphic. We write $\Delta_{r-1}$ for an $(r-1)$-simplex.
+
+\section{Faces of nonnegative affine slices}
+
+
+We first recall directly, in the form needed below, how faces are encoded in
+a nonnegative affine-slice presentation.
+
+Let $A\subseteq\mathbb R^N$ be an affine subspace and let
+
+\nopagebreak[4]
+\[
+P=A\cap\mathbb R_{\geq 0}^{N}
+\]
+
+be a polytope. For a nonempty face $F$ of $P$, choose
+$p\in\mathrm{relint}(F)$ and define
+
+\nopagebreak[4]
+\[
+Z(F)=\{j\in[N]:p_j=0\}.
+\]
+
+The set $Z(F)$ is independent of the chosen relative-interior point, and
+
+\nopagebreak[4]
+\[
+F=P\cap\bigcap_{j\in Z(F)}\{x_j=0\}.
+\tag{2.1}
+\]
+
+For completeness, let $y$ belong to the right-hand side of (2.1). Every
+coordinate of $p$ outside $Z(F)$ is positive, so for sufficiently small
+$\varepsilon>0$,
+
+\nopagebreak[4]
+\[
+w=(1+\varepsilon)p-\varepsilon y
+\]
+
+still belongs to $A\cap\mathbb R^N_{\geq0}=P$. Since
+$p=(w+\varepsilon y)/(1+\varepsilon)$, the face property and
+$p\in\mathrm{relint}(F)$ imply $w,y\in F$. Thus (2.1) holds. Conversely,
+an intersection with coordinate hyperplanes as in (2.1), when nonempty, is a
+face of $P$.
+
+We now group the coordinates. Let $I$ be a finite index set and, for every
+$i\in I$, let $E_i$ be a finite set with $|E_i|\geq2$. The ambient coordinates
+are indexed by pairs $(i,e)$ with $i\in I$ and $e\in E_i$.
+
+\Needspace{0.32\textheight}
+\begin{lemma}[complete block-support lemma]
+
+Let
+
+\nopagebreak[4]
+\[
+P=A\cap\mathbb R_{\geq0}^{\sum_{i\in I}|E_i|}
+\]
+
+be a polytope. Suppose its vertices are precisely
+
+\nopagebreak[4]
+\[
+v_\sigma,
+\qquad
+\sigma\in\prod_{i\in I}E_i,
+\]
+
+and their supports satisfy
+
+\nopagebreak[4]
+\[
+(v_\sigma)_{i,e}>0
+\quad\Longleftrightarrow\quad
+e=\sigma_i.
+\tag{2.2}
+\]
+
+Then the face lattice of $P$ is isomorphic to the face lattice of
+
+\nopagebreak[4]
+\[
+\prod_{i\in I}\Delta_{|E_i|-1}.
+\]
+
+\end{lemma}
+
+\begin{proof}
+
+Let $F$ be a nonempty face of $P$. For every $i\in I$, its zero set $Z(F)$
+cannot contain all coordinates $(i,e)$ with $e\in E_i$: otherwise every
+vertex of $F$ would have zero support in the entire $i$-th block, contradicting
+(2.2). Hence
+
+\nopagebreak[4]
+\[
+S_i(F)=\{e\in E_i:(i,e)\notin Z(F)\}
+\]
+
+is nonempty. Equation (2.1) shows that $F$ is uniquely determined by the tuple
+$(S_i(F))_{i\in I}$.
+
+It remains to show that every tuple of nonempty subsets occurs. Fix nonempty
+$S_i\subseteq E_i$ and set
+
+\nopagebreak[4]
+\[
+\Sigma_S=\{\sigma\in\prod_{i\in I}E_i:
+\sigma_i\in S_i\text{ for every }i\}.
+\]
+
+This set is nonempty. Let
+
+\nopagebreak[4]
+\[
+q_S=\frac{1}{|\Sigma_S|}\sum_{\sigma\in\Sigma_S}v_\sigma.
+\]
+
+By (2.2), the coordinate $(i,e)$ of $q_S$ is positive exactly when
+$e\in S_i$. Therefore the zero set of $q_S$ is precisely
+
+\nopagebreak[4]
+\[
+Z_S=\{(i,e):e\notin S_i\}.
+\]
+
+The coordinate face
+
+\nopagebreak[4]
+\[
+F_S=P\cap\bigcap_{(i,e)\in Z_S}\{x_{i,e}=0\}
+\]
+
+is nonempty, contains $q_S$, and has no coordinate inequality beyond those in
+$Z_S$ active at $q_S$. Thus $q_S\in\mathrm{relint}(F_S)$ and
+$Z(F_S)=Z_S$. In particular, distinct tuples $S$ give distinct faces.
+
+We have obtained a bijection between the nonempty faces of $P$ and tuples of
+nonempty subsets $S_i\subseteq E_i$. Under this bijection, face containment is
+coordinatewise inclusion of the subsets. This is exactly the nonempty face
+poset of $\prod_i\Delta_{|E_i|-1}$. Matching the unique empty faces completes
+the face-lattice isomorphism.
+\end{proof}
+
+
+\Needspace{0.32\textheight}
+\begin{remark}
+
+The hypotheses require the complete and exact support description (2.2). A
+vertex count alone does not determine the face lattice. Strict positivity of
+the selected coordinate is also essential: without it, averaging compatible
+vertices need not realize the intended zero pattern.
+
+The lemma proves only combinatorial equivalence. It does not produce an affine
+or a unimodular equivalence between $P$ and the product of simplices.
+
+\end{remark}
+
+\section{The Ferrers polytopes}
+
+
+We now apply Lemma 2.1 to the polytopes of \cite{couvee2026}. Fix $d\geq3$ and put
+
+\nopagebreak[4]
+\[
+k=d-2.
+\]
+
+Beeloo-Sauerbier Couvée and Neri construct four linearly isomorphic polytopes
+
+\nopagebreak[4]
+\[
+\mathfrak P_d,
+\qquad
+\mathfrak P'_d,
+\qquad
+\mathfrak K_d,
+\qquad
+\mathfrak L_d.
+\tag{3.1}
+\]
+
+The first transformation is unimodular \cite[Lemma 5.23]{couvee2026}. The latter two arise
+from injective linear maps whose restrictions are linear isomorphisms onto
+their images \cite[Lemma 5.24 and the definitions following it]{couvee2026}. Consequently,
+all four polytopes have isomorphic face lattices.
+
+The model relevant here is $\mathfrak L_d\subseteq\mathbb R^{3k}$. Write its
+coordinates as
+
+\nopagebreak[4]
+\[
+(x_1,\ldots,x_k,y_1,\ldots,y_k,z_1,\ldots,z_k).
+\]
+
+Equation (11) of \cite{couvee2026} presents $\mathfrak L_d$ as the intersection of the
+nonnegative orthant with $k$ affine equations. The precise coefficient matrix
+of those equations will not be needed here; what matters is that the only
+inequalities in this presentation are
+
+\nopagebreak[4]
+\[
+x_i\geq0,
+\qquad
+y_i\geq0,
+\qquad
+z_i\geq0
+\qquad(i\in[k]).
+\tag{3.2}
+\]
+
+Proposition 5.25 of \cite{couvee2026} gives the complete vertex set. For every word
+
+\nopagebreak[4]
+\[
+\sigma\in\{X,Y,Z\}^{k},
+\]
+
+there is exactly one vertex $v_\sigma$, and in the $i$-th coordinate triple
+
+\nopagebreak[4]
+\[
+(x_i,y_i,z_i)
+\]
+
+the coordinate selected by $\sigma_i$ is strictly positive while the other
+two coordinates are zero. Conversely, every vertex is obtained in this way.
+The strict positivity follows in \cite{couvee2026} from the explicit consecutive-block
+formula in the proof of Proposition 5.25.
+
+We can therefore take $I=[k]$ and $E_i=\{X,Y,Z\}$ in Lemma 2.1.
+
+\Needspace{0.32\textheight}
+\begin{theorem}
+
+For every integer $d\geq3$,
+
+\nopagebreak[4]
+\[
+\mathfrak P_d\simeq_{\mathrm{comb}}(\Delta_2)^{d-2}.
+\tag{3.3}
+\]
+
+In particular, Conjecture 5.28 of \cite{couvee2026} holds for all $d\geq3$.
+
+\end{theorem}
+
+\begin{proof}
+
+The affine-slice presentation (3.2) and the vertex-support theorem just
+described satisfy every hypothesis of Lemma 2.1. Hence
+
+\nopagebreak[4]
+\[
+\mathfrak L_d\simeq_{\mathrm{comb}}(\Delta_2)^k.
+\]
+
+The linear isomorphisms in (3.1) preserve face lattices. Substituting
+$k=d-2$ proves (3.3).
+\end{proof}
+
+
+\Needspace{0.32\textheight}
+\begin{corollary}
+
+Let $k=d-2$. The polytope $\mathfrak P_d$ is a simple polytope of dimension
+$2k$, with $3k$ facets and $3^k$ vertices. Every vertex has degree $2k$.
+
+\end{corollary}
+
+\begin{proof}
+
+These properties hold for a product of $k$ two-dimensional simplices and are
+preserved by combinatorial equivalence. The vertex count also agrees with
+\cite[Theorem 5.20]{couvee2026}.
+\end{proof}
+
+
+\Needspace{0.32\textheight}
+\begin{corollary}
+
+If $f_j(\mathfrak P_d)$ denotes the number of $j$-dimensional faces, then
+
+\nopagebreak[4]
+\[
+\sum_{j=0}^{2k}f_j(\mathfrak P_d)t^j
+=(3+3t+t^2)^k.
+\tag{3.4}
+\]
+
+Equivalently,
+
+\nopagebreak[4]
+\[
+f_j(\mathfrak P_d)
+=\sum_{b=0}^{\lfloor j/2\rfloor}
+\frac{k!}{(j-2b)!\,b!\,(k-j+b)!}
+3^{k-b},
+\tag{3.5}
+\]
+
+where a summand is understood to vanish when one of the factorial arguments
+is negative.
+
+\end{corollary}
+
+\begin{proof}
+
+The face polynomial of a triangle, with the empty face omitted, is
+$3+3t+t^2$. Face dimensions add under Cartesian products, giving (3.4).
+To obtain (3.5), choose $b$ factors contributing a two-dimensional face,
+$j-2b$ factors contributing an edge, and all remaining factors contributing
+a vertex. The edge and vertex choices contribute
+$3^{j-2b}3^{k-j+b}=3^{k-b}$.
+\end{proof}
+
+
+\Needspace{0.32\textheight}
+\begin{remark}
+
+Formula (3.4) explains, for every $d$, the face vectors computed in \cite{couvee2026} for
+$3\leq d\leq7$. These enumerative statements are consequences of the single
+face-lattice theorem, not separate independent results.
+
+\end{remark}
+
+\section{Scope and relation to prior work}
+
+
+Theorem 3.1 is short because the difficult structural input was already
+available. The construction of $\mathfrak P_d$, its interpretation in terms
+of irreducible Ferrers diagrams, its integrality, and the exact
+$3^{d-2}$-vertex classification are all results of \cite{couvee2026}. The present note adds
+the observation that their support classification, together with the
+nonnegative affine-slice presentation, determines every face rather than only
+the vertices.
+
+The result does not settle the Etzion--Silberstein conjecture itself.
+The polytopes $\mathfrak P_d$ parametrize the irreducible cases identified in
+\cite{couvee2026}, but knowing their face lattices does not construct maximum Ferrers
+diagram codes at their integer points. Nor does Theorem 3.1 assert that
+$\mathfrak P_d$ is affinely or unimodularly equivalent to a product of
+triangles. Such stronger equivalences would require metric or lattice data not
+encoded by the face lattice.
+
+As of 24 August 2026, the arXiv record of \cite{couvee2026} contains only version v1 and the
+authors' public repository contains only its initial commit. Exact searches
+for Conjecture 5.28 and its product-of-triangles formulation found no direct
+public proof. This search boundary supports the relevance of the result but
+is not a claim of exhaustive global priority.
+
+\section*{Acknowledgement of AI assistance}
+
+
+The author used OpenAI Codex as an AI-assisted tool for literature discovery,
+proof stress testing, computationally checking finite consequences, and
+language editing. The author reviewed the mathematical argument and assumes
+responsibility for the claims and presentation.
+
+\begin{thebibliography}{9}
+\footnotesize
+\raggedright
+
+\bibitem{couvee2026}
+H.~Beeloo-Sauerbier Couv\'ee and A.~Neri,
+\emph{Irreducible Ferrers diagrams in the Etzion--Silberstein conjecture},
+arXiv:2604.27868v1 (2026).
+\href{https://arxiv.org/abs/2604.27868}{arXiv:2604.27868}.
+
+\end{thebibliography}
+
+\end{document}

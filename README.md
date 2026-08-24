@@ -20,6 +20,7 @@ including manuscripts and reproducible verification materials.
 | [Periodic two-letter ringsets in the Lipschitz quaternions: the general odd-period classification](research/odd-period-quaternion-ringsets/README.md)<br>[PDF](research/odd-period-quaternion-ringsets/odd-period-quaternion-ringsets.pdf) · [BibTeX](research/odd-period-quaternion-ringsets/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22070532) | Integer-valued polynomials, quaternion algebras, noncommutative algebra | Classifies exactly which arbitrary odd-period binary words produce infinite ringsets, strictly generalizing the preceding squarefree result | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Periodic ringsets in the Lipschitz quaternions: the complete six-letter classification](research/complete-periodic-quaternion-ringsets/README.md)<br>[PDF](research/complete-periodic-quaternion-ringsets/complete-periodic-quaternion-ringsets.pdf) · [BibTeX](research/complete-periodic-quaternion-ringsets/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22077574) | Integer-valued polynomials, quaternion algebras, noncommutative algebra | Classifies exactly which full six-letter words of arbitrary period produce infinite ringsets, strictly containing both preceding quaternion classifications | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Minorizing measures and truncations of measurable lattice-path matroids](research/measurable-lattice-path-matroids/README.md)<br>[PDF](research/measurable-lattice-path-matroids/measurable-lattice-path-matroids.pdf) · [BibTeX](research/measurable-lattice-path-matroids/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22079095) | Measurable matroids, infinite-dimensional convexity, continuous optimization | Determines exactly the basic and full minorizing-measure sets, all real truncation slices, and the exposed extreme points of the full-rank basic corridor | v0.1-beta | Internally verified candidate proof; external review pending |
+| [The face lattice of the irreducible-Ferrers polytope is a product of triangles](research/ferrers-polytope-triangle-product/README.md)<br>[PDF](research/ferrers-polytope-triangle-product/ferrers-polytope-triangle-product.pdf) · [BibTeX](research/ferrers-polytope-triangle-product/CITATION.bib) | Ferrers diagrams, polyhedral combinatorics, coding theory | Proves that the irreducible-Ferrers polytope is combinatorially equivalent to a product of triangles for every $d\geq3$, resolving Conjecture 5.28 of arXiv:2604.27868 | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
 
@@ -256,6 +257,25 @@ gaps and Cantor-type contact sets.
 
 - [Manuscript materials](research/measurable-lattice-path-matroids/README.md)
 
+### Irreducible-Ferrers polytopes
+
+For every integer $d\geq3$, this manuscript proves that the polytope
+$\mathfrak P_d$ associated with irreducible Ferrers diagrams is
+combinatorially equivalent to a Cartesian product of $d-2$ triangles:
+
+$$
+\mathfrak P_d\simeq_{\mathrm{comb}}(\Delta_2)^{d-2}.
+$$
+
+This resolves Conjecture 5.28 of Beeloo-Sauerbier Couvée and Neri. The proof
+uses their nonnegative affine-slice model and complete vertex-support
+classification, together with a general block-support lemma that recovers the
+entire face lattice. It claims combinatorial equivalence only, not affine or
+unimodular equivalence, and does not resolve the Etzion--Silberstein conjecture
+itself.
+
+- [Manuscript materials](research/ferrers-polytope-triangle-product/README.md)
+
 ## Status and review policy
 
 Entries are research records, not automatically peer-reviewed publications.
@@ -332,3 +352,6 @@ Measurable matroids; lattice-path matroids; minorizing measures; basic
 minorizing measures; weak-star topology; interval relaxations; real
 truncations; extreme points; exposed points; continuous linear programming;
 purification.
+Ferrers diagrams; Ferrers polytopes; face lattices; products of triangles;
+products of simplices; polyhedral combinatorics; combinatorial equivalence;
+rank-metric codes; Etzion--Silberstein conjecture.
