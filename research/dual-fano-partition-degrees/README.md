@@ -5,11 +5,12 @@
 - [Read or download the PDF](dual-fano-partition-degrees.pdf)
 - [LaTeX source](dual-fano-partition-degrees.tex)
 - [BibTeX citation](CITATION.bib)
+- DOI: [10.5281/zenodo.22083219](https://doi.org/10.5281/zenodo.22083219)
 - [Finite calibration](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
 - Contact: [carptopus@163.com](mailto:carptopus@163.com)
-- Version: v0.1-beta (24 August 2026)
+- Version: v0.1.1-beta (24 August 2026)
 - Licenses: manuscript and documentation under CC BY 4.0; Python calibration code under MIT
 - Status: internally verified candidate proof; external mathematical review pending.
 
