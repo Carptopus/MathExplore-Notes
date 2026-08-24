@@ -5,7 +5,7 @@
 - [Read or download the PDF](co-chordal-third-symbolic-power.pdf)
 - [LaTeX source](co-chordal-third-symbolic-power.tex)
 - [BibTeX citation](CITATION.bib)
-- DOI: pending Zenodo deposit
+- DOI: [10.5281/zenodo.22085466](https://doi.org/10.5281/zenodo.22085466)
 - [Finite proof-identity calibration](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
