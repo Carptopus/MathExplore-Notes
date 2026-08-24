@@ -1,0 +1,94 @@
+{
+  "status": "PASS_FINITE_VALUATION_CALIBRATION",
+  "boundary": "checks the closed valuation formulas for 3 <= N <= 10 and three representative lifts per nonzero residue; the general proof is the argument in Section 7",
+  "rows": [
+    {
+      "exponent": 3,
+      "period": 8,
+      "factorial_v2": 4,
+      "tau_sum": 8,
+      "baseline_pi_valuation": 16,
+      "minimum_checked_off_class_gain": 2,
+      "witness_modulus_exponent": 18,
+      "null_same_class_lower_bound": 19,
+      "transverse_failure_v2": 17
+    },
+    {
+      "exponent": 4,
+      "period": 16,
+      "factorial_v2": 11,
+      "tau_sum": 18,
+      "baseline_pi_valuation": 40,
+      "minimum_checked_off_class_gain": 2,
+      "witness_modulus_exponent": 42,
+      "null_same_class_lower_bound": 44,
+      "transverse_failure_v2": 41
+    },
+    {
+      "exponent": 5,
+      "period": 32,
+      "factorial_v2": 26,
+      "tau_sum": 38,
+      "baseline_pi_valuation": 90,
+      "minimum_checked_off_class_gain": 2,
+      "witness_modulus_exponent": 92,
+      "null_same_class_lower_bound": 95,
+      "transverse_failure_v2": 91
+    },
+    {
+      "exponent": 6,
+      "period": 64,
+      "factorial_v2": 57,
+      "tau_sum": 78,
+      "baseline_pi_valuation": 192,
+      "minimum_checked_off_class_gain": 2,
+      "witness_modulus_exponent": 194,
+      "null_same_class_lower_bound": 198,
+      "transverse_failure_v2": 193
+    },
+    {
+      "exponent": 7,
+      "period": 128,
+      "factorial_v2": 120,
+      "tau_sum": 158,
+      "baseline_pi_valuation": 398,
+      "minimum_checked_off_class_gain": 2,
+      "witness_modulus_exponent": 400,
+      "null_same_class_lower_bound": 405,
+      "transverse_failure_v2": 399
+    },
+    {
+      "exponent": 8,
+      "period": 256,
+      "factorial_v2": 247,
+      "tau_sum": 318,
+      "baseline_pi_valuation": 812,
+      "minimum_checked_off_class_gain": 2,
+      "witness_modulus_exponent": 814,
+      "null_same_class_lower_bound": 820,
+      "transverse_failure_v2": 813
+    },
+    {
+      "exponent": 9,
+      "period": 512,
+      "factorial_v2": 502,
+      "tau_sum": 638,
+      "baseline_pi_valuation": 1642,
+      "minimum_checked_off_class_gain": 2,
+      "witness_modulus_exponent": 1644,
+      "null_same_class_lower_bound": 1651,
+      "transverse_failure_v2": 1643
+    },
+    {
+      "exponent": 10,
+      "period": 1024,
+      "factorial_v2": 1013,
+      "tau_sum": 1278,
+      "baseline_pi_valuation": 3304,
+      "minimum_checked_off_class_gain": 2,
+      "witness_modulus_exponent": 3306,
+      "null_same_class_lower_bound": 3314,
+      "transverse_failure_v2": 3305
+    }
+  ]
+}

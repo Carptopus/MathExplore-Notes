@@ -1,0 +1,188 @@
+{
+  "status": "PASS_SPLIT_EIGENLINE_BOUNDARY",
+  "ordered_pairs": 36,
+  "zero_pairs": 6,
+  "boundary": "zero exactly for the six antipodal ordered pairs",
+  "rows": [
+    {
+      "left_plus": "i",
+      "right_minus": "i",
+      "determinant": "1"
+    },
+    {
+      "left_plus": "i",
+      "right_minus": "-i",
+      "determinant": "0"
+    },
+    {
+      "left_plus": "i",
+      "right_minus": "j",
+      "determinant": "-s"
+    },
+    {
+      "left_plus": "i",
+      "right_minus": "-j",
+      "determinant": "s"
+    },
+    {
+      "left_plus": "i",
+      "right_minus": "k",
+      "determinant": "-1"
+    },
+    {
+      "left_plus": "i",
+      "right_minus": "-k",
+      "determinant": "1"
+    },
+    {
+      "left_plus": "-i",
+      "right_minus": "i",
+      "determinant": "0"
+    },
+    {
+      "left_plus": "-i",
+      "right_minus": "-i",
+      "determinant": "-1"
+    },
+    {
+      "left_plus": "-i",
+      "right_minus": "j",
+      "determinant": "-1"
+    },
+    {
+      "left_plus": "-i",
+      "right_minus": "-j",
+      "determinant": "-1"
+    },
+    {
+      "left_plus": "-i",
+      "right_minus": "k",
+      "determinant": "-1"
+    },
+    {
+      "left_plus": "-i",
+      "right_minus": "-k",
+      "determinant": "-1"
+    },
+    {
+      "left_plus": "j",
+      "right_minus": "i",
+      "determinant": "1"
+    },
+    {
+      "left_plus": "j",
+      "right_minus": "-i",
+      "determinant": "-s"
+    },
+    {
+      "left_plus": "j",
+      "right_minus": "j",
+      "determinant": "-2*s"
+    },
+    {
+      "left_plus": "j",
+      "right_minus": "-j",
+      "determinant": "0"
+    },
+    {
+      "left_plus": "j",
+      "right_minus": "k",
+      "determinant": "-s - 1"
+    },
+    {
+      "left_plus": "j",
+      "right_minus": "-k",
+      "determinant": "1 - s"
+    },
+    {
+      "left_plus": "-j",
+      "right_minus": "i",
+      "determinant": "1"
+    },
+    {
+      "left_plus": "-j",
+      "right_minus": "-i",
+      "determinant": "s"
+    },
+    {
+      "left_plus": "-j",
+      "right_minus": "j",
+      "determinant": "0"
+    },
+    {
+      "left_plus": "-j",
+      "right_minus": "-j",
+      "determinant": "2*s"
+    },
+    {
+      "left_plus": "-j",
+      "right_minus": "k",
+      "determinant": "s - 1"
+    },
+    {
+      "left_plus": "-j",
+      "right_minus": "-k",
+      "determinant": "s + 1"
+    },
+    {
+      "left_plus": "k",
+      "right_minus": "i",
+      "determinant": "1"
+    },
+    {
+      "left_plus": "k",
+      "right_minus": "-i",
+      "determinant": "-1"
+    },
+    {
+      "left_plus": "k",
+      "right_minus": "j",
+      "determinant": "-s - 1"
+    },
+    {
+      "left_plus": "k",
+      "right_minus": "-j",
+      "determinant": "s - 1"
+    },
+    {
+      "left_plus": "k",
+      "right_minus": "k",
+      "determinant": "-2"
+    },
+    {
+      "left_plus": "k",
+      "right_minus": "-k",
+      "determinant": "0"
+    },
+    {
+      "left_plus": "-k",
+      "right_minus": "i",
+      "determinant": "1"
+    },
+    {
+      "left_plus": "-k",
+      "right_minus": "-i",
+      "determinant": "1"
+    },
+    {
+      "left_plus": "-k",
+      "right_minus": "j",
+      "determinant": "1 - s"
+    },
+    {
+      "left_plus": "-k",
+      "right_minus": "-j",
+      "determinant": "s + 1"
+    },
+    {
+      "left_plus": "-k",
+      "right_minus": "k",
+      "determinant": "0"
+    },
+    {
+      "left_plus": "-k",
+      "right_minus": "-k",
+      "determinant": "2"
+    }
+  ]
+}

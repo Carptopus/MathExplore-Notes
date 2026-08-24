@@ -1,0 +1,1143 @@
+% Converted from the audited Markdown manuscript; responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\numberwithin{equation}{section}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Complete periodic quaternion ringsets}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\setlength{\emergencystretch}{4em}
+
+\title{Periodic ringsets in the Lipschitz quaternions:\\
+the complete six-letter classification}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{24 August 2026}
+
+\hypersetup{
+  pdftitle={Periodic ringsets in the Lipschitz quaternions: the complete six-letter classification},
+  pdfauthor={Carptopus},
+  pdfsubject={A complete ringset classification for six-letter periodic subsets of the Lipschitz quaternions},
+  pdfkeywords={integer-valued polynomial, Lipschitz quaternion, ringset, null ideal, periodic word, fixed divisor, split prime, ramified prime}
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+
+Let
+
+\nopagebreak[4]
+\[
+\mathbf L=\mathbb Z[\mathbf i,\mathbf j,\mathbf k]
+\]
+
+be the ring of Lipschitz quaternions, and let
+
+\nopagebreak[4]
+\[
+U=\{\pm\mathbf i,\pm\mathbf j,\pm\mathbf k\}
+\]
+
+be its six square roots of $-1$. For a periodic word
+$w:\mathbb Z\to U$, we study
+
+\nopagebreak[4]
+\[
+S_w=\{a+w(a):a\in\mathbb Z\}\subseteq\mathbf L.
+\]
+
+A subset of $\mathbf L$ is a ringset if the rational quaternion polynomials
+integer-valued on it are closed under multiplication. We give a complete
+criterion for $S_w$ to be a ringset for every prescribed period, including
+even periods and words containing antipodal letters.
+
+At ramified and nonsplit prime divisors of the period, every highest
+prime-power position class must contain at least two letters. At a split
+prime, the only obstruction occurs when two position fibres separated by a
+square root of $-1$ are singletons carrying antipodal letters. Necessity is
+proved by explicit null polynomials. The ramified prime $2$ requires a
+Gaussian valuation calculation and a squared central fixed-divisor factor;
+the split obstruction uses rank-one idempotents over a matrix ring. These
+local results, periodic congruence orbits, and the Chinese remainder theorem
+give the global if-and-only-if classification. The theorem strictly
+generalizes the preceding squarefree-period and all-odd-period binary
+classifications.
+
+\end{abstract}
+
+\section{Introduction}
+
+
+Let $\mathbb D$ be the rational Hamilton quaternion algebra and let
+
+\nopagebreak[4]
+\[
+\mathbf L
+=\mathbb Z[\mathbf i,\mathbf j,\mathbf k],
+\qquad
+\mathbf i^2=\mathbf j^2=-1,
+\qquad
+\mathbf i\mathbf j=\mathbf k=-\mathbf j\mathbf i.
+\]
+
+The variable in $\mathbb D[x]$ is central. Polynomials have coefficients on
+the left and are evaluated on the right:
+
+\nopagebreak[4]
+\[
+\left(\sum_d c_dx^d\right)(\alpha)=\sum_dc_d\alpha^d.
+\]
+
+For $S\subseteq\mathbf L$, put
+
+\nopagebreak[4]
+\[
+\mathrm{Int}(S,\mathbf L)
+=\{f\in\mathbb D[x]:f(S)\subseteq\mathbf L\}.
+\]
+
+Following Werner \cite{werner2026}, $S$ is called a \emph{ringset} if
+$\mathrm{Int}(S,\mathbf L)$ is a subring of $\mathbb D[x]$. This
+condition is nontrivial because the coefficient algebra is noncommutative.
+
+Werner \cite{werner2026} classified finite ringsets in the Lipschitz and Hurwitz
+quaternion rings and supplied residue-null-ideal criteria for infinite sets.
+The first paper in the present series \cite{carptopus-squarefree} classified periodic binary sets of
+odd squarefree period. The second \cite{carptopus-odd} removed squarefreeness and classified
+all odd-period words with alphabet $\{\mathbf i,\mathbf j\}$. Two natural
+boundaries remained:
+
+\begin{enumerate}
+\item the ramified prime $2$, which is unavoidable for even periods;
+\item the other four Lipschitz square roots of $-1$, particularly antipodal
+pairs at split primes.
+
+\end{enumerate}
+
+This paper closes both boundaries. Let
+
+\nopagebreak[4]
+\[
+U=\{\pm\mathbf i,\pm\mathbf j,\pm\mathbf k\},
+\]
+
+let $m\ge1$, and let $w:\mathbb Z\to U$ satisfy $w(a+m)=w(a)$. The displayed
+period is not required to be least. Define
+
+\nopagebreak[4]
+\[
+S_w=\{a+w(a):a\in\mathbb Z\}.
+\]
+
+For a prime $p\mid m$, write $\nu_p=v_p(m)$. For
+$c\in\mathbb Z/p^{\nu_p}\mathbb Z$, define the position-fibre alphabet
+
+\nopagebreak[4]
+\[
+A_p(c)
+=\{w(a):a\equiv c\pmod {p^{\nu_p}}\}\subseteq U.
+\]
+
+Our main result is the following.
+
+\begin{theorem}
+\label{thm:main}
+
+Let $w:\mathbb Z\to U$ have period $m\ge1$. Then $S_w$ is a ringset in
+$\mathbf L$ if and only if all of the following hold:
+
+\begin{enumerate}
+\item $w$ is nonconstant;
+\item for every prime $p\mid m$ such that either $p=2$ or
+$p\equiv3\pmod4$, one has
+
+$$
+|A_p(c)|\ge2
+\qquad
+\left(c\in\mathbb Z/p^{\nu_p}\mathbb Z\right);
+$$
+
+\item for every prime $p\mid m$ with $p\equiv1\pmod4$, every
+$s\in\mathbb Z/p^{\nu_p}\mathbb Z$ satisfying $s^2=-1$, every
+$c\in\mathbb Z/p^{\nu_p}\mathbb Z$, and every $u\in U$, it is not the
+case that
+
+$$
+A_p(c-s)=\{u\}
+\quad\text{and}\quad
+A_p(c+s)=\{-u\}.
+$$
+
+\end{enumerate}
+
+\end{theorem}
+
+Condition 3 is independent of the choice between the two square roots:
+replacing $s$ by $-s$ interchanges the fibres and replaces $u$ by $-u$.
+All three conditions are independent of the choice of displayed period.
+
+For the binary alphabet $\{\mathbf i,\mathbf j\}$, condition 3 is automatic,
+and Theorem 1.1 reduces on odd periods to \cite[Theorem 1.1]{carptopus-odd}. The new mechanisms
+are the ramified $2$-adic obstruction and the exact antipodal obstruction at
+split primes. The paired-fibre lemma, matrix representation, fixed-divisor
+background, and residue-null-ideal bridge are not claimed as new.
+
+The rest of the paper proves Theorem 1.1. Sections 2 and 3 collect the global
+and paired-fibre tools. Section 4 isolates the split-prime geometry. Section
+5 records a prime-power fixed-divisor estimate. Sections 6 and 7 construct
+the nonsplit and ramified obstruction polynomials. Section 8 assembles the
+classification.
+
+\section{Residue null ideals and periodic fibres}
+
+
+For a ring $A$ and $T\subseteq A$, define
+
+\nopagebreak[4]
+\[
+\mathcal N(T,A)
+=\{f\in A[x]:f(t)=0\text{ for every }t\in T\}.
+\]
+
+This is always a left ideal. The set $T$ is \emph{core} if
+$\mathcal N(T,A)$ is a two-sided ideal. For $n\ge2$, let $\overline S_n$
+denote the image of $S\subseteq\mathbf L$ in
+$\mathbf L/n\mathbf L$.
+
+We use the following consequence of Werner \cite[Lemmas 5.3 and 5.4]{werner2026}.
+
+\begin{lemma}[Residue criterion]
+\label{lem:residue}
+
+Let $S\subseteq\mathbf L$.
+
+\begin{enumerate}
+\item If $\overline S_n$ is core in $\mathbf L/n\mathbf L$ for every $n\ge2$,
+then $S$ is a ringset.
+\item Conversely, if for some $n$ there are
+$g\in\mathcal N(\overline S_n,\mathbf L/n\mathbf L)$ and
+$r\in\mathbf L/n\mathbf L$ such that the coefficientwise right multiple
+$gr$ is not null on $\overline S_n$, then $S$ is not a ringset.
+
+\end{enumerate}
+
+\begin{proof}
+
+Write a rational quaternion polynomial as $f=g/n$ with
+$g\in\mathbf L[x]$. By \cite[Lemma 5.3]{werner2026}, it is integer-valued on $S$ exactly
+when the reduction of $g$ is null on $\overline S_n$. Stability of every
+null ideal under coefficientwise right multiplication by constants gives
+multiplicative closure by \cite[Lemma 5.4]{werner2026}. Conversely, a failed right multiple
+lifts to an integer-valued polynomial whose corresponding product is not
+integer-valued.
+\end{proof}
+
+\end{lemma}
+
+
+The alphabet $U$ is intrinsic to the Lipschitz order.
+
+\begin{lemma}
+\label{lem:null-factor}
+
+The elements of $\mathbf L$ whose square is $-1$ are exactly
+$\pm\mathbf i,\pm\mathbf j,\pm\mathbf k$.
+
+\begin{proof}
+
+If $q=a+b\mathbf i+c\mathbf j+d\mathbf k$ and $q^2=-1$, its vector part is
+$2a(b\mathbf i+c\mathbf j+d\mathbf k)$, so either $a=0$ or the vector part
+vanishes. The latter is incompatible with $q^2=-1$ for integral $a$. Thus
+$a=0$ and $b^2+c^2+d^2=1$, whose integral solutions are the six stated
+units.
+\end{proof}
+
+\end{lemma}
+
+
+We next record the congruence orbit of a periodic word.
+
+\begin{lemma}[Periodic orbit lemma]
+\label{lem:periodic-orbit}
+
+Let $w$ have period $m$, let $q\ge1$, and fix
+$a\in\mathbb Z/q\mathbb Z$. The positions modulo $m$ attained by integers
+congruent to $a$ modulo $q$ are
+
+\nopagebreak[4]
+\[
+a+q\mathbb Z\pmod m
+=\{r\in\mathbb Z/m\mathbb Z:r\equiv a
+  \pmod {\gcd(q,m)}\}.
+\]
+
+\begin{proof}
+
+The subgroup generated by $q$ in $\mathbb Z/m\mathbb Z$ consists exactly
+of the multiples of $\gcd(q,m)$. Translate by $a$.
+\end{proof}
+
+\end{lemma}
+
+
+For $q=p^e$ and $\nu=v_p(m)$, a real residue fibre modulo $p^e$ therefore
+sees one position class modulo $p^{\min(e,\nu)}$. In particular, a
+highest-level class modulo $p^\nu$ controls every finer real residue fibre,
+while a coarser fibre is a union of highest-level classes.
+
+The same formula proves invariance under a nonminimal displayed period. If
+$d\mid m$ is the least period, then a class modulo $p^{v_p(m)}$ visits
+exactly a class modulo $p^{v_p(d)}$ when $p\mid d$, and visits the entire
+least period when $p\nmid d$. The letter sets in Theorem 1.1 therefore
+repeat, rather than change, when the displayed period is enlarged. At split
+primes, Hensel lifting transports the two square-root offsets compatibly.
+
+\section{More than one letter above every real residue}
+
+
+Every point $a+u$ with $u\in U$ has central minimal polynomial
+
+\nopagebreak[4]
+\[
+\mu_a(x)=(x-a)^2+1.
+\]
+
+The following paired-fibre lemma extends the calculation used in \cite{carptopus-squarefree,carptopus-odd}.
+
+\begin{lemma}[Multi-letter paired fibres]
+\label{lem:paired-fibres}
+
+Let $n\ge2$, and let
+
+\nopagebreak[4]
+\[
+T\subseteq\{a+u:a\in\mathbb Z/n\mathbb Z,\ u\in U\}.
+\]
+
+If at least two distinct letters occur above every real residue, then $T$ is
+core in $\mathbf L/n\mathbf L$.
+
+\begin{proof}
+
+Take $f\in\mathcal N(T,\mathbf L/n\mathbf L)$ and fix a real residue $a$.
+Divide $f$ by the central monic polynomial $\mu_a$. The remainder is
+
+\nopagebreak[4]
+\[
+r(x)=\gamma_1x+\gamma_0.
+\]
+
+If $a+u$ and $a+v$ are two points of $T$ with $u\ne v$, subtraction of
+their zero evaluations gives
+
+\nopagebreak[4]
+\[
+\gamma_1(u-v)=0.
+\]
+
+If $v\ne-u$, then $\mathrm{Nm}(u-v)=2$, so right multiplication by
+$\overline{u-v}$ yields $2\gamma_1=0$. If $v=-u$, then
+$u-v=2u$, and right multiplication by the unit $-u$ gives the same
+conclusion.
+
+For a basis unit $t\in\{\mathbf i,\mathbf j,\mathbf k\}$ and
+$\alpha=a+u$, direct right evaluation gives
+
+\nopagebreak[4]
+\[
+(rt)(\alpha)-r(\alpha)t
+=\gamma_1(t\alpha-\alpha t).
+\]
+
+Every displayed commutator lies in $2\mathbf L/n\mathbf L$, so the
+right-hand side vanishes. Centrality of $\mu_a$ passes this conclusion from
+the remainder to $f$. Thus the null ideal is stable under coefficientwise
+right multiplication by the quaternion basis and hence by every constant.
+Since it is a left ideal and $x$ is central, it is then stable under right
+multiplication by every polynomial.
+\end{proof}
+
+\end{lemma}
+
+
+Lemma 3.1 immediately supplies all ramified and nonsplit sufficiency
+directions in Theorem 1.1. The remaining sufficiency issue is the split
+case, where a single letter above a real residue can already suffice.
+
+\section{Split primes and antipodal fibres}
+
+
+Let $p\equiv1\pmod4$, let $e\ge1$, put
+
+\nopagebreak[4]
+\[
+R=\mathbb Z/p^e\mathbb Z,
+\qquad
+A=\mathbf L/p^e\mathbf L,
+\]
+
+and choose $s\in R$ with $s^2=-1$. The standard representation
+
+\nopagebreak[4]
+\[
+\mathbf i\longmapsto
+\begin{pmatrix}s&0\\0&-s\end{pmatrix},
+\qquad
+\mathbf j\longmapsto
+\begin{pmatrix}0&1\\-1&0\end{pmatrix}
+\]
+
+identifies $A$ with $M_2(R)$. For $u\in U$, define
+
+\nopagebreak[4]
+\[
+e_u^+=\frac{1+u/s}{2},
+\qquad
+e_u^-=\frac{1-u/s}{2}.
+\]
+
+They are complementary rank-one idempotents, and
+
+\nopagebreak[4]
+\[
+(a+u)^d=(a+s)^d e_u^+ +(a-s)^d e_u^-.
+\]
+
+Generators for their image lines may be chosen as follows.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular}{c c c}
+\hline
+$u$ & $\mathrm{im}(e_u^+)$ & $\mathrm{im}(e_u^-)$ \\
+\hline
+$\mathbf i$ & $(1,0)^T$ & $(0,1)^T$ \\
+$-\mathbf i$ & $(0,1)^T$ & $(1,0)^T$ \\
+$\mathbf j$ & $(1,s)^T$ & $(1,-s)^T$ \\
+$-\mathbf j$ & $(1,-s)^T$ & $(1,s)^T$ \\
+$\mathbf k$ & $(1,1)^T$ & $(1,-1)^T$ \\
+$-\mathbf k$ & $(1,-1)^T$ & $(1,1)^T$ \\
+\hline
+\end{tabular}
+\end{center}
+
+The determinants obtained from distinct same-sign lines are units. A plus
+line for $u$ and a minus line for $v$ fail to be complementary exactly when
+$v=-u$. Indeed, all nonzero determinants are among
+
+\nopagebreak[4]
+\[
+\pm1,\quad \pm s,\quad \pm2,\quad \pm2s,
+\quad \pm(1+s),\quad \pm(1-s),
+\]
+
+and these are units because $p$ is odd and
+$(1+s)(1-s)=2$.
+
+\begin{lemma}[Split local core criterion]
+\label{lem:split-core}
+
+Let
+
+\nopagebreak[4]
+\[
+T\subseteq\{a+u:a\in R,\ u\in U\}
+\]
+
+have a nonempty fibre above every $a\in R$. Suppose that, for every
+$z\in R$, the two fibres above $z-s$ and $z+s$ are not respectively the
+singleton pair $\{u\}$ and $\{-u\}$ for any $u\in U$. Then $T$ is core in
+$A$.
+
+\begin{proof}
+
+Take a null polynomial $f(x)=\sum_dc_dx^d$ and introduce the scalar-variable
+matrix polynomial
+
+\nopagebreak[4]
+\[
+F(z)=\sum_dc_dz^d.
+\]
+
+At fixed $z$, every letter $u$ occurring above $z-s$ gives
+
+\nopagebreak[4]
+\[
+F(z)e_u^+=0,
+\]
+
+and every letter $v$ occurring above $z+s$ gives
+
+\nopagebreak[4]
+\[
+F(z)e_v^-=0.
+\]
+
+If either fibre contains two letters, the corresponding two same-sign image
+lines are complementary. If both are singletons, the hypothesis and the
+table show that the plus and minus lines are complementary. Thus $F(z)=0$
+for every $z\in R$.
+
+For any $B\in A$, the scalar polynomial associated with the coefficientwise
+right multiple $fB$ is $F(z)B=0$. The same idempotent decomposition shows
+that $fB$ vanishes on $T$. Hence the null ideal is stable under all constant
+right multiples and therefore is two-sided.
+\end{proof}
+
+\end{lemma}
+
+
+The excluded singleton-antipode configuration is also a genuine periodic
+obstruction. We first record the fixed-divisor estimate used to detect it.
+
+\section{A prime-power fixed-divisor estimate}
+
+
+\begin{lemma}
+\label{lem:fixed-divisor}
+
+Let $p$ be a prime, let $\nu\ge1$, and put
+
+\nopagebreak[4]
+\[
+M=p^\nu,
+\qquad
+V=v_p((M-1)!),
+\qquad
+P_c(t)=\prod_{r=1}^{M-1}(t-(c+r)).
+\]
+
+Then
+
+\nopagebreak[4]
+\[
+v_p(P_c(t))=
+\begin{cases}
+V,&t\equiv c\pmod M,\\
+\ge V+1,&t\not\equiv c\pmod M.
+\end{cases}
+\]
+
+\begin{proof}
+
+The assertion is translation-invariant, so write $d=t-c$. If $M\mid d$,
+then $v_p(d-r)=v_p(r)$ for $1\le r<M$, giving $V$.
+
+Otherwise choose $h\in\{1,\ldots,M-1\}$ with $d\equiv h\pmod M$. The
+factor $d-h$ contributes at least $\nu$, while comparison of the two
+remaining factorial segments gives
+
+\nopagebreak[4]
+\[
+v_p(P_c(t))
+\ge \nu+v_p((h-1)!)+v_p((M-1-h)!).
+\]
+
+Because $\binom{M-1}{h}$ is nonzero modulo $p$,
+
+\nopagebreak[4]
+\[
+v_p((h-1)!)+v_p((M-1-h)!)=V-v_p(h).
+\]
+
+Since $v_p(h)\le\nu-1$, the result follows.
+\end{proof}
+
+\end{lemma}
+
+
+Set $K=V+1$. Notice that $K\ge\nu$: this is immediate for $\nu=1$, and
+for $\nu\ge2$ one has
+
+\nopagebreak[4]
+\[
+V\ge\left\lfloor\frac{p^\nu-1}{p}\right\rfloor
+=p^{\nu-1}-1\ge\nu-1.
+\]
+
+\begin{lemma}[Split antipodal obstruction]
+\label{lem:split-obstruction}
+
+Let $p\equiv1\pmod4$, let $\nu=v_p(m)\ge1$, and choose
+$s\in\mathbb Z/p^\nu\mathbb Z$ with $s^2=-1$. If for some $c$ and $u\in U$
+
+\nopagebreak[4]
+\[
+A_p(c-s)=\{u\},
+\qquad
+A_p(c+s)=\{-u\},
+\]
+
+then $S_w$ is not a ringset.
+
+\begin{proof}
+
+Let $M=p^\nu$, let $V,K$ be as above, and Hensel-lift $s$ to a square root
+of $-1$ modulo $p^K$. In
+
+\nopagebreak[4]
+\[
+\mathbf L/p^K\mathbf L\simeq M_2(\mathbb Z/p^K\mathbb Z),
+\]
+
+put $E=e_u^+$ and $A=1-E=e_u^-$. Choose a matrix $B$ such that
+
+\nopagebreak[4]
+\[
+ABE\ne0\pmod p.
+\]
+
+For example, in a basis where $E=E_{11}$ one may take
+$A=E_{22}$ and $B=E_{21}$.
+
+Consider the matrix-coefficient polynomial
+
+\nopagebreak[4]
+\[
+F(t)=P_c(t)A.
+\]
+
+At a point $a+v$, its idempotent decomposition is
+
+\nopagebreak[4]
+\[
+F(a+v)
+=P_c(a+s)Ae_v^+ +P_c(a-s)Ae_v^-.
+\]
+
+By Lemma 5.1, a term can survive modulo $p^K$ only if its scalar parameter
+is congruent to $c$ modulo $M$. The plus case then has
+$a\equiv c-s$ and $v=u$, so $Ae_u^+=AE=0$. The minus case has
+$a\equiv c+s$ and $v=-u$, so
+$e_{-u}^-=e_u^+=E$ and is also killed. Thus $F$ is null on the periodic
+image modulo $p^K$.
+
+After coefficientwise right multiplication by $B$, evaluation at the
+appearing point $c-s+u$ has plus component
+
+\nopagebreak[4]
+\[
+P_c(c)ABE.
+\]
+
+Its $p$-adic valuation is exactly $V=K-1$, because $ABE$ is nonzero modulo
+$p$. Hence the right multiple is not null modulo $p^K$. Lemma 2.1 proves
+that $S_w$ is not a ringset.
+\end{proof}
+
+\end{lemma}
+
+
+\section{Nonsplit prime-power obstructions}
+
+
+Let $p\equiv3\pmod4$, and suppose that
+$A_p(c)=\{q\}$ for some $q\in U$. Put $M=p^\nu$, where
+$\nu=v_p(m)$, and retain $V,K$ from Section 5. Define central polynomials
+
+\nopagebreak[4]
+\[
+\mu_{c+r}(x)=(x-(c+r))^2+1,
+\qquad
+Q_c(x)=\prod_{r=1}^{M-1}\mu_{c+r}(x),
+\]
+
+and
+
+\nopagebreak[4]
+\[
+h_c(x)=(x-(c+q))Q_c(x).
+\]
+
+\begin{lemma}[Higher nonsplit obstruction]
+\label{lem:nonsplit-obstruction}
+
+The polynomial $h_c$ is null on the periodic image modulo $p^K$, but a
+suitable coefficientwise right multiple is not null. Consequently $S_w$ is
+not a ringset.
+
+\begin{proof}
+
+At $y=a+u$, with $d=a-c$, one has
+
+\nopagebreak[4]
+\[
+\mu_{c+r}(y)=(d-r)(d-r+2u).
+\]
+
+The second factor is a unit modulo $p$, because its norm is
+$(d-r)^2+4$, which cannot vanish when $-1$ is nonsquare modulo $p$. Hence
+
+For a Lipschitz quaternion $z$, write $v_p(z)$ for the minimum of the
+$p$-adic valuations of its four integer coordinates, equivalently for the
+largest $s$ such that $z\in p^s\mathbf L$. Then
+
+\nopagebreak[4]
+\[
+v_p(Q_c(y))=v_p(P_c(a)).
+\]
+
+If $M\nmid d$, Lemma 5.1 makes $Q_c(y)$ zero modulo $p^K$. If $M\mid d$,
+the periodic orbit lemma says that the only occurring letter is $q$; the
+leading factor then evaluates to the real integer $d$, whose valuation is
+at least $\nu$. Since $V+\nu\ge K$, $h_c(y)=0$ in every case.
+
+Choose a basis unit $v$ that does not commute with $q$. Since $Q_c$ is
+central,
+
+\nopagebreak[4]
+\[
+h_cv=((x-(c+q))v)Q_c.
+\]
+
+At the appearing point $c+q$, the first factor evaluates to
+
+\nopagebreak[4]
+\[
+v(c+q)-(c+q)v=vq-qv,
+\]
+
+which is twice a quaternion unit and hence a $p$-adic unit. The second
+factor has valuation exactly $V=K-1$. Thus $h_cv$ is not null modulo $p^K$.
+Apply Lemma 2.1.
+\end{proof}
+
+\end{lemma}
+
+
+A constant word may be displayed with period $3$. Taking $p=3$ and $\nu=1$
+gives $A_3(c)=\{q\}$ for every position class $c$, so Lemma 6.1 supplies a
+constant-word obstruction modulo $3$. Therefore nonconstancy in Theorem 1.1
+is necessary even when the originally displayed period has no prime divisor
+requiring a separate condition.
+
+\section{The ramified prime \texorpdfstring{$2$}{2}}
+
+
+The proof at $2$ differs because $-1$ has ramified rather than split or
+nonsplit behaviour. Let $\nu=v_2(m)\ge1$, and suppose that one position class
+modulo $2^\nu$ contains only a letter $q\in U$. Choose
+
+\nopagebreak[4]
+\[
+N\ge\max\{\nu,3\},
+\qquad
+M=2^N,
+\]
+
+and refine the monochromatic class to a class $c\pmod M$. Every occurring
+point whose real part is congruent to $c$ modulo $M$ still has letter $q$.
+Put
+
+\nopagebreak
+\[
+\begin{gathered}
+Q_c(x)=\prod_{r=1}^{M-1}\bigl((x-(c+r))^2+1\bigr),\\[0.4em]
+h_c(x)=(x-(c+q))Q_c(x)^2.
+\end{gathered}
+\]
+
+The square on the central factor is the essential ramified correction.
+
+For $u\in U$, work in the Gaussian subring $\mathbb Z[u]$ and write
+$\pi=1+u$. Since $2$ is associated with $\pi^2$, divisibility of all four
+Lipschitz coordinates by $2^k$ is equivalent, for elements of
+$\mathbb Z[u]$, to $\pi$-adic valuation at least $2k$.
+
+Let
+
+\nopagebreak[4]
+\[
+P(d)=\prod_{r=1}^{M-1}(d-r),
+\qquad
+V=v_2((M-1)!).
+\]
+
+At $y=a+u$, with $d=a-c$, direct calculation gives
+
+\nopagebreak[4]
+\[
+Q_c(y)=P(d)P(d+2u).
+\]
+
+Define
+
+\nopagebreak[4]
+\[
+\tau(n)=v_2(n^2+4).
+\]
+
+Then
+
+\nopagebreak[4]
+\[
+v_\pi(Q_c(y))
+=2v_2(P(d))+\sum_{r=1}^{M-1}\tau(d-r).
+\]
+
+The value of $\tau$ depends only on $n\pmod4$:
+
+\nopagebreak[4]
+\[
+\tau(n)=
+\begin{cases}
+0,&n\text{ odd},\\
+3,&n\equiv2\pmod4,\\
+2,&n\equiv0\pmod4.
+\end{cases}
+\]
+
+If $M\mid d$, the baseline valuation is
+
+\nopagebreak[4]
+\[
+L_0=2V+\frac{5M}{4}-2.
+\]
+
+Indeed, among $1,\ldots,M-1$ there are $M/2$ odd residues,
+$M/4$ residues congruent to $2$ modulo $4$, and $M/4-1$ nonzero residues
+divisible by $4$.
+
+\begin{lemma}[Ramified valuation gap]
+\label{lem:ramified-gap}
+
+If $M\nmid d$, then
+
+\nopagebreak[4]
+\[
+v_\pi(Q_c(a+u))\ge L_0+2.
+\]
+
+\begin{proof}
+
+Choose $s\in\{1,\ldots,M-1\}$ with $d\equiv s\pmod M$. The consecutive
+integer product satisfies
+
+\nopagebreak[4]
+\[
+v_2(P(d))\ge V-v_2(s)+N.
+\]
+
+Compared with the baseline residue set, the $\tau$-sum gains $2$ if $s$ is
+odd, loses $1$ if $s\equiv2\pmod4$, and is unchanged if
+$s\equiv0\pmod4$. Consequently the total gain is at least
+
+\nopagebreak[4]
+\[
+2N+2,
+\qquad
+2N-3,
+\qquad
+2,
+\]
+
+respectively. The last estimate uses $v_2(s)\le N-1$, and the second is at
+least $3$ because $N\ge3$.
+\end{proof}
+
+\end{lemma}
+
+
+\begin{lemma}[Ramified monochromatic obstruction]
+\label{lem:ramified-obstruction}
+
+If a highest $2$-power position class is monochromatic, then $S_w$ is not a
+ringset.
+
+\begin{proof}
+
+Set $K=L_0+2$. Since $K\ge\nu$, the periodic orbit in the quotient modulo
+$2^K$ sees the original class modulo $2^\nu$.
+
+If $M\nmid d$, Lemma 7.1 gives
+
+\nopagebreak[4]
+\[
+v_\pi(Q_c(y)^2)\ge2(L_0+2),
+\]
+
+so every Lipschitz coordinate of $Q_c(y)^2$ is divisible by $2^K$. If
+$M\mid d$, the occurring letter is $q$ and the leading factor of $h_c(y)$
+is the real integer $d$, divisible by $2^N$. The coordinate valuation of
+$Q_c(y)^2$ is $L_0$, so again $h_c(y)=0\pmod {2^K}$. Thus $h_c$ is null on
+the entire periodic image.
+
+Choose a basis unit $v$ transverse to $q$. Since $Q_c^2$ is central,
+
+\nopagebreak[4]
+\[
+h_cv=((x-(c+q))v)Q_c^2.
+\]
+
+At $c+q$, the leading factor is the commutator $vq-qv$, whose coordinate
+$2$-valuation is exactly $1$. The coordinate valuation of
+$Q_c(c+q)^2$ is exactly $L_0$. Therefore
+
+\nopagebreak[4]
+\[
+v_2((h_cv)(c+q))=L_0+1<K,
+\]
+
+and the right multiple is not null modulo $2^K$. Lemma 2.1 completes the
+proof.
+\end{proof}
+
+\end{lemma}
+
+
+Together with Lemma 3.1, Lemma 7.2 gives the exact local condition at $2$:
+all residue images modulo powers of $2$ are core if and only if every
+highest $2$-power position class contains at least two letters.
+
+\section{Proof of the classification}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+
+We now prove Theorem 1.1.
+
+\medskip
+\noindent\textbf{Sufficiency.}
+
+Assume conditions 1--3. By Lemma 2.1 and the Chinese remainder theorem, it
+is enough to prove that the periodic image is core modulo every prime power
+$p^e$.
+
+Suppose first that $p=2$. If $p\nmid m$, every real residue fibre traverses
+the entire word by Lemma 2.3 and therefore contains at least two letters by
+nonconstancy. If $p\mid m$, condition 2 makes every highest position class
+contain at least two letters, and hence every coarser real fibre does also.
+Lemma 3.1 applies.
+
+The same argument applies when $p\equiv3\pmod4$: use nonconstancy when
+$p\nmid m$, and condition 2 when $p\mid m$. Again Lemma 3.1 gives core
+images.
+
+Now let $p\equiv1\pmod4$. If $p\nmid m$, both fibres used at each scalar
+parameter in Lemma 4.1 traverse the full nonconstant word, so each contains
+at least two letters. If $p\mid m$ and $e\ge\nu_p$, their letter sets are
+the highest position fibres in condition 3, after projecting the chosen
+square root modulo $p^e$ to modulo $p^{\nu_p}$. Lemma 4.1 applies directly.
+
+If $e<\nu_p$ and the two coarse fibres were singleton antipodes, every
+highest-level class refining the first would carry the same singleton, and
+every class refining the second would carry its antipode. Hensel-lift the
+root modulo $p^e$ to the unique root modulo $p^{\nu_p}$ and lift the scalar
+centre arbitrarily. This would violate condition 3. Hence Lemma 4.1 applies
+for every $e$.
+
+For an arbitrary $n=\prod_rp_r^{e_r}$, the Chinese remainder theorem gives
+
+\nopagebreak[4]
+\[
+\mathbf L/n\mathbf L
+\simeq\prod_r\mathbf L/p_r^{e_r}\mathbf L.
+\]
+
+Polynomial coefficients and evaluation are componentwise, so the null ideal
+of the image is the product of the null ideals of its projections. Every
+prime-power projection is core, and Lemma 2.1 proves that $S_w$ is a
+ringset.
+
+\medskip
+\noindent\textbf{Necessity.}
+
+If $w$ is constant, display it with period $3$ and take $p=3$, $\nu=1$.
+Every position fibre is then the singleton $\{q\}$, so Lemma 6.1 shows that
+$S_w$ is not a ringset.
+
+If condition 2 fails for a prime $p\equiv3\pmod4$, Lemma 6.1 gives an
+explicit null polynomial and a failed right multiple. If it fails for
+$p=2$, Lemma 7.2 gives the corresponding ramified witness. In both cases
+Lemma 2.1 shows that $S_w$ is not a ringset.
+
+Finally, if condition 3 fails at a split prime, Lemma 5.2 gives an explicit
+matrix-coefficient null polynomial whose coefficientwise right multiple is
+not null. Thus $S_w$ is again not a ringset. All three conditions are
+necessary, completing the proof.
+\end{proof}
+
+
+\section{Consequences and examples}
+
+
+\begin{corollary}[Binary words]
+\label{cor:binary}
+
+Let $w:\mathbb Z\to\{\mathbf i,\mathbf j\}$ have arbitrary period $m$.
+Then $S_w$ is a ringset if and only if $w$ is nonconstant and, for every
+$p\mid m$ with $p=2$ or $p\equiv3\pmod4$, each position class modulo
+$p^{v_p(m)}$ is bichromatic.
+
+\begin{proof}
+
+The binary alphabet has no antipodal pair, so condition 3 of Theorem 1.1 is
+automatic.
+\end{proof}
+
+\end{corollary}
+
+
+Corollary 9.1 strictly extends \cite{carptopus-odd}, which assumes that $m$ is odd. In
+particular, the condition at $2$ is not a formal copy of the odd-prime
+condition: its necessity comes from the ramified Gaussian calculation in
+Section 7.
+
+\begin{corollary}[Antipode-free alphabets]
+\label{cor:antipode-free}
+
+Let $\Omega\subseteq U$ contain at least two letters and no pair $u,-u$.
+For a periodic word $w:\mathbb Z\to\Omega$, the set $S_w$ is a ringset if
+and only if conditions 1 and 2 of Theorem 1.1 hold.
+
+\end{corollary}
+
+The split condition disappears because no forbidden antipodal singleton pair
+can occur. This includes the natural three-letter alphabet
+$\{\mathbf i,\mathbf j,\mathbf k\}$.
+
+The full alphabet exhibits genuinely new split failures. If
+$p\equiv1\pmod4$ divides the period and two square-root-separated position
+classes are constantly $u$ and $-u$, respectively, then all ramified and
+nonsplit colour conditions may hold while the set still fails to be a
+ringset. Lemma 5.2 detects exactly this configuration.
+
+\section{Computational calibration}
+
+
+The proof is symbolic and does not depend on finite enumeration. Computation
+was used during discovery to locate and attack the local boundaries.
+
+\begin{itemize}
+\item All $81$ three-state fibre patterns modulo $4$ and all $256$ binary words
+of period $8$ were checked against the evaluation kernel in degrees
+strictly below $2q$ for the tested modulus $q$.
+\item The $16$ period-$8$ patterns surviving modulo $16$ all failed modulo $64$,
+disproving the provisional half-period-antipodal sufficiency guess.
+\item The ramified valuation formula was independently checked for
+$N=3,\ldots,10$; this exposed that the smallest off-class gain is $2$, not
+$3$, and the proof above uses the corrected value.
+\item The split eigenline table was checked for all $36$ ordered letter pairs;
+exactly the six antipodal pairs fail complementarity.
+\item The split obstruction was evaluated for $p=5,13,17$ and
+$\nu=1,2$ in finite quotients.
+
+\end{itemize}
+
+These calculations are calibration and destructive testing only. They do
+not establish the all-period theorem, whose general content is proved in
+Sections 3--8. The first two bullets share the same truncated-null-module
+solver and therefore are not independent implementations.
+
+\section{Prior work and novelty boundary}
+
+
+Frisch \cite{frisch2018} established a general connection between ringsets and null-ideal
+sets. Werner \cite{werner2022} classified null ideals of subsets of matrix rings over
+fields, while Rissner and Werner \cite{rissnerwerner2025} studied their enumeration. Werner \cite{werner2026}
+classified finite Lipschitz and Hurwitz quaternion ringsets and proved the
+residue and right-multiplication criteria used here. Peruginelli \cite{peruginelli2014}
+developed prime-power fixed-divisor ideals in the commutative setting. None
+of these general tools is claimed as new.
+
+The preceding squarefree-period paper \cite{carptopus-squarefree} supplies the initial periodic
+framework, and \cite{carptopus-odd} proves the complete all-odd-period binary classification.
+The present theorem strictly contains both published results. Its candidate
+new content is limited to:
+
+\begin{enumerate}
+\item the explicit ramified $2$-adic monochromatic-fibre obstruction;
+\item the exact split-prime antipodal singleton obstruction;
+\item their assembly into the complete six-letter, arbitrary-period
+classification.
+
+\end{enumerate}
+
+The paired-fibre calculation, split matrix model, idempotent vocabulary,
+consecutive-product fixed-divisor estimates, and Chinese-remainder assembly
+are treated as prior tools or standard ingredients.
+
+As of the bounded search completed on 24 August 2026, no public source was
+found that directly states or implies the complete criterion of Theorem 1.1.
+This is a qualified \texttt{NO\_DIRECT\_COVERAGE\_FOUND} statement, not a certificate
+of absolute global priority. The manuscript has not received external
+expert review or formal peer review.
+
+\section*{Declaration of generative AI and AI-assisted technologies}
+
+
+During the research and preparation of this work, the author used OpenAI
+Codex to assist with literature searches, symbolic exploration, exploratory
+code review, proof checking, and language drafting. The author reviewed and
+edited all generated output and takes full responsibility for the content of
+this manuscript.
+
+\begin{thebibliography}{9}
+\footnotesize
+
+\bibitem{carptopus-squarefree}
+Carptopus,
+\emph{Periodic infinite ringsets in the Lipschitz quaternions},
+Public Beta v0.1-beta (2026).
+\href{https://doi.org/10.5281/zenodo.22069614}{doi:10.5281/zenodo.22069614}.
+
+\bibitem{carptopus-odd}
+Carptopus,
+\emph{Periodic two-letter ringsets in the Lipschitz quaternions: the general odd-period classification},
+Public Beta v0.1-beta (2026).
+\href{https://doi.org/10.5281/zenodo.22070532}{doi:10.5281/zenodo.22070532}.
+
+\bibitem{peruginelli2014}
+G.~Peruginelli,
+\emph{Primary decomposition of the ideal of polynomials whose fixed divisor is divisible by a prime power},
+J. Algebra 398 (2014), 227--242.
+\href{https://doi.org/10.1016/j.jalgebra.2013.09.016}{doi:10.1016/j.jalgebra.2013.09.016};
+\href{https://arxiv.org/abs/1304.7450}{arXiv:1304.7450}.
+
+\bibitem{frisch2018}
+S.~Frisch,
+\emph{Polynomial functions on non-commutative rings---a link between ringsets and null-ideal sets},
+ITM Web Conf. 20 (2018), 01003.
+\href{https://doi.org/10.1051/itmconf/20182001003}{doi:10.1051/itmconf/20182001003};
+\href{https://arxiv.org/abs/1809.09160}{arXiv:1809.09160}.
+
+\bibitem{werner2022}
+N.~J. Werner,
+\emph{Null ideals of subsets of matrix rings over fields},
+Linear Algebra Appl. 642 (2022), 50--72.
+\href{https://doi.org/10.1016/j.laa.2022.02.007}{doi:10.1016/j.laa.2022.02.007}.
+
+\bibitem{werner2026}
+N.~J. Werner,
+\emph{Integer-valued polynomials on subsets of quaternion algebras},
+J. Algebra 686 (2026), 195--219.
+\href{https://doi.org/10.1016/j.jalgebra.2025.08.011}{doi:10.1016/j.jalgebra.2025.08.011};
+\href{https://arxiv.org/abs/2412.20609}{arXiv:2412.20609v2}.
+
+\bibitem{rissnerwerner2025}
+R.~Rissner and N.~J. Werner,
+\emph{Counting core sets in matrix rings over finite fields},
+Linear Algebra Appl. 720 (2025), 1--25.
+\href{https://doi.org/10.1016/j.laa.2025.04.006}{doi:10.1016/j.laa.2025.04.006};
+\href{https://arxiv.org/abs/2405.04106}{arXiv:2405.04106v2}.
+
+\end{thebibliography}
+
+\end{document}

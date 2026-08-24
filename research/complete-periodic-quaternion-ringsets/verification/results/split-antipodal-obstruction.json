@@ -1,0 +1,84 @@
+{
+  "status": "PASS",
+  "scope": "finite calibration only",
+  "cases": [
+    {
+      "prime": 5,
+      "nu": 1,
+      "M": 5,
+      "V": 0,
+      "K": 1,
+      "K_ge_nu": true,
+      "base_valuation_exact": true,
+      "minimum_off_gain": 1,
+      "off_vanishes_mod_pK": true,
+      "ABE_nonzero_mod_p": true,
+      "witness_survives": true
+    },
+    {
+      "prime": 5,
+      "nu": 2,
+      "M": 25,
+      "V": 4,
+      "K": 5,
+      "K_ge_nu": true,
+      "base_valuation_exact": true,
+      "minimum_off_gain": 1,
+      "off_vanishes_mod_pK": true,
+      "ABE_nonzero_mod_p": true,
+      "witness_survives": true
+    },
+    {
+      "prime": 13,
+      "nu": 1,
+      "M": 13,
+      "V": 0,
+      "K": 1,
+      "K_ge_nu": true,
+      "base_valuation_exact": true,
+      "minimum_off_gain": 1,
+      "off_vanishes_mod_pK": true,
+      "ABE_nonzero_mod_p": true,
+      "witness_survives": true
+    },
+    {
+      "prime": 13,
+      "nu": 2,
+      "M": 169,
+      "V": 12,
+      "K": 13,
+      "K_ge_nu": true,
+      "base_valuation_exact": true,
+      "minimum_off_gain": 1,
+      "off_vanishes_mod_pK": true,
+      "ABE_nonzero_mod_p": true,
+      "witness_survives": true
+    },
+    {
+      "prime": 17,
+      "nu": 1,
+      "M": 17,
+      "V": 0,
+      "K": 1,
+      "K_ge_nu": true,
+      "base_valuation_exact": true,
+      "minimum_off_gain": 1,
+      "off_vanishes_mod_pK": true,
+      "ABE_nonzero_mod_p": true,
+      "witness_survives": true
+    },
+    {
+      "prime": 17,
+      "nu": 2,
+      "M": 289,
+      "V": 16,
+      "K": 17,
+      "K_ge_nu": true,
+      "base_valuation_exact": true,
+      "minimum_off_gain": 1,
+      "off_vanishes_mod_pK": true,
+      "ABE_nonzero_mod_p": true,
+      "witness_survives": true
+    }
+  ]
+}

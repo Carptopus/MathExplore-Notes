@@ -18,6 +18,7 @@ including manuscripts and reproducible verification materials.
 | [Near-minimal Ehrhart data on the primitive-triangle boundary of denominator-two polygons](research/ehrhart-denominator2-primitive-boundary/README.md)<br>[PDF](research/ehrhart-denominator2-primitive-boundary/ehrhart-denominator2-primitive-boundary.pdf) · [BibTeX](research/ehrhart-denominator2-primitive-boundary/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22055266) | Ehrhart theory, rational polygons, discrete geometry | Proves a mod-$8$ obstruction and sharply classifies the near-minimal boundary through $I=3N-2$, with an infinite one-point-sharp family | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Periodic infinite ringsets in the Lipschitz quaternions](research/periodic-quaternion-ringsets/README.md)<br>[PDF](research/periodic-quaternion-ringsets/periodic-quaternion-ringsets.pdf) · [BibTeX](research/periodic-quaternion-ringsets/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22069614) | Integer-valued polynomials, quaternion algebras, noncommutative algebra | Classifies exactly which odd-squarefree-period binary words produce infinite ringsets in the Lipschitz quaternions | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Periodic two-letter ringsets in the Lipschitz quaternions: the general odd-period classification](research/odd-period-quaternion-ringsets/README.md)<br>[PDF](research/odd-period-quaternion-ringsets/odd-period-quaternion-ringsets.pdf) · [BibTeX](research/odd-period-quaternion-ringsets/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22070532) | Integer-valued polynomials, quaternion algebras, noncommutative algebra | Classifies exactly which arbitrary odd-period binary words produce infinite ringsets, strictly generalizing the preceding squarefree result | v0.1-beta | Internally verified candidate proof; external review pending |
+| [Periodic ringsets in the Lipschitz quaternions: the complete six-letter classification](research/complete-periodic-quaternion-ringsets/README.md)<br>[PDF](research/complete-periodic-quaternion-ringsets/complete-periodic-quaternion-ringsets.pdf) · [BibTeX](research/complete-periodic-quaternion-ringsets/CITATION.bib) · DOI pending | Integer-valued polynomials, quaternion algebras, noncommutative algebra | Classifies exactly which full six-letter words of arbitrary period produce infinite ringsets, strictly containing both preceding quaternion classifications | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
 
@@ -217,6 +218,24 @@ classes.
 
 - [Manuscript materials](research/odd-period-quaternion-ringsets/README.md)
 
+### Complete arbitrary-period six-letter quaternion ringsets
+
+Let $w:\mathbb Z\to\{\pm\mathbf i,\pm\mathbf j,\pm\mathbf k\}$ have an
+arbitrary prescribed period $m$. This manuscript gives a complete
+necessary-and-sufficient criterion for
+
+$$
+S_w=\{a+w(a):a\in\mathbb Z\}
+$$
+
+to be a ringset in the Lipschitz quaternions. Ramified and nonsplit highest
+prime-power position fibres must contain at least two letters, while at split
+primes the unique additional obstruction is a square-root-separated pair of
+singleton antipodal fibres. The theorem covers even periods and the full
+six-letter alphabet, strictly containing both preceding quaternion entries.
+
+- [Manuscript and verification materials](research/complete-periodic-quaternion-ringsets/README.md)
+
 ## Status and review policy
 
 Entries are research records, not automatically peer-reviewed publications.
@@ -287,4 +306,5 @@ geometry.
 Integer-valued polynomials; Lipschitz quaternions; quaternion algebras;
 noncommutative algebra; ringsets; null ideals; periodic words; local-global
 principles; matrix rings; Chinese remainder theorem; prime-power position
-classes; fixed-divisor obstructions.
+classes; fixed-divisor obstructions; ramified primes; split primes; antipodal
+fibres.
