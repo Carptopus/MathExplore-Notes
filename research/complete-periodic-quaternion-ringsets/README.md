@@ -4,7 +4,7 @@
 
 - [Read or download the PDF](complete-periodic-quaternion-ringsets.pdf)
 - [BibTeX citation](CITATION.bib)
-- DOI: pending Zenodo publication
+- DOI: [10.5281/zenodo.22077574](https://doi.org/10.5281/zenodo.22077574)
 - [LaTeX source](complete-periodic-quaternion-ringsets.tex)
 - [Verification materials](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
