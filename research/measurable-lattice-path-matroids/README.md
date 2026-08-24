@@ -4,6 +4,7 @@
 
 - [Read or download the PDF](measurable-lattice-path-matroids.pdf)
 - [BibTeX citation](CITATION.bib)
+- DOI: [10.5281/zenodo.22079095](https://doi.org/10.5281/zenodo.22079095)
 - [LaTeX source](measurable-lattice-path-matroids.tex)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
