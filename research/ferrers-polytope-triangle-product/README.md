@@ -4,7 +4,7 @@
 
 - [Read or download the PDF](ferrers-polytope-triangle-product.pdf)
 - [BibTeX citation](CITATION.bib)
-- DOI: pending
+- DOI: [10.5281/zenodo.22080499](https://doi.org/10.5281/zenodo.22080499)
 - [LaTeX source](ferrers-polytope-triangle-product.tex)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
