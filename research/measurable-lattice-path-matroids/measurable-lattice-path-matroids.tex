@@ -1,0 +1,1023 @@
+% Generated from the audited Markdown source; responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\numberwithin{equation}{section}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Measurable lattice-path matroids}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\setlength{\emergencystretch}{4em}
+
+\title{Minorizing measures and truncations\\
+of measurable lattice-path matroids}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{24 August 2026}
+
+\hypersetup{
+  pdftitle={Minorizing measures and truncations of measurable lattice-path matroids},
+  pdfauthor={Carptopus},
+  pdfsubject={Exact minorizing-measure relaxations for measurable lattice-path matroids},
+  pdfkeywords={measurable matroid, lattice-path matroid, minorizing measure, weak-star topology, truncation, extreme point, continuous linear programming}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fcolorbox{black!35}{black!4}{\parbox{0.88\textwidth}{\centering\small
+Public Beta v0.1-beta. The mathematical claims have passed a project-internal
+zero-trust manuscript audit; external review is pending.}}
+\end{center}
+
+\begin{abstract}
+
+
+We study the minorizing-measure sets of the measurable lattice-path matroids recently
+introduced by Bérczi, Imolay, and Schweitzer. Such a matroid is specified by a closed
+set of times and by lower and upper cumulative paths. We first prove that its set of
+basic minorizing measures is exactly the weak-star compact corridor of fractional path
+densities. The proof is constructive: after moving a fractional path slightly toward
+a genuine basis path, we purify it on the components of the strict interior by a
+countable endpoint-preserving bang--bang construction.
+
+We then determine the full minorizing-measure set. A density belongs to it if and only
+if all interval increments satisfy the inequalities forced by the two boundary paths.
+The nontrivial direction is proved by an explicit residual-capacity time change that
+extends the density to a basic minorizing measure. As a consequence, the basic
+minorizing measures of every real truncation are described by the same interval
+inequalities together with one total-mass equation. We also record the contact-set
+criterion for extreme points, show directly that every extreme point is weak-star
+exposed, and give a bounded laminar-composition application.
+
+The finite-dimensional shadows of the corridor and interval descriptions are classical
+lattice-path and positroid polytope phenomena. The contribution here is their exact
+atomless measurable counterpart, including arbitrary closed time sets and real
+truncation levels.
+
+\end{abstract}
+
+\section{Introduction}
+
+
+Measurable matroids provide a measure-theoretic analogue of finite matroids on standard
+atomless measure spaces. Bérczi, Imolay, and Schweitzer established equivalent
+independent-set, basis, rank, and closure descriptions, introduced measurable versions
+of standard matroid classes and operations, and proved that independent-set and basis
+measures are weak-star dense in the corresponding minorizing-measure sets \cite{berczi2026}. Their
+examples include measurable lattice-path matroids: a basis is represented by a
+zero--one derivative whose cumulative path stays between two prescribed boundaries.
+
+The purpose of this paper is to make the associated fractional geometry explicit.
+There are two distinct convex sets:
+
+\begin{enumerate}
+\item the basic minorizing measures, which have the full matroid rank as total mass; and
+\item all minorizing measures, whose total mass is allowed to vary.
+
+\end{enumerate}
+
+For the first set, the expected candidate is the obvious path corridor. In a finite
+lattice-path matroid the analogous base-polytope description is classical \cite{bidkhori2012,ohxiang2022}. In the
+atomless setting, however, it is not enough to observe that every basis lies in the
+corridor: one must prove that every fractional corridor path is a weak-star limit of
+genuine basis paths. We give a self-contained purification proof that remains valid for
+an arbitrary closed set of constrained times, including infinitely many complementary
+gaps and Cantor-type contact sets.
+
+The full minorizing-measure set is subtler. Prefix lower bounds no longer make sense
+without fixed total mass. They are replaced by interval inequalities
+
+\nopagebreak[4]
+\[
+F(t)-F(s)\le b(t)-a(s)\qquad(s\le t),
+\]
+
+where $F$ is the cumulative density. We prove that these inequalities are not merely
+necessary: they are sufficient. The proof builds, from the unused pointwise capacity
+$1-f$, a complementary path that raises the density to a point in the basic
+minorizing-measure set. This yields the following informal form of the main result:
+
+\begin{quote}\itshape
+The complete independence relaxation of a measurable lattice-path matroid is its
+interval relaxation, and every real truncation is obtained by taking a mass slice.
+\end{quote}
+
+
+The extreme-point criterion for the fixed-mass corridor is closely related to classical
+extreme-point results in separated continuous linear programming \cite{anderson1983,andersonnash1987}. We include a
+short direct proof because it identifies the exact contact set and gives a concrete
+exposing functional without relying on a claimed theorem-level equivalence. We do not
+claim a new general bang--bang or continuous-control theorem: related purification
+mechanisms have a substantial history \cite{amarcellina1994,carlota2016}.
+
+The paper is organized as follows. Section 2 gives the setup. Section 3 proves the
+basic-minorizing-measure identity. Section 4 determines the full minorizing-measure set
+and all truncation slices. Section 5 treats extreme and exposed points. Section 6 gives
+a finite-depth laminar-composition application and carefully separates it from the main
+contribution. Section 7 records the scope and remaining open boundary.
+
+\section{Setup}
+
+
+\subsection{Minorizing measures}
+
+
+Let $(J,\Sigma,\mu,r)$ be a measurable matroid in the sense of \cite{berczi2026}. Throughout,
+$\alpha$ denotes a finite nonnegative charge on $(J,\Sigma)$. Its set of minorizing
+measures and its set of basic minorizing measures are
+
+\nopagebreak[4]
+\[
+\mathsf{mm}(r)
+=\{\alpha:0\le \alpha(X)\le r(X)\text{ for every }X\in\Sigma\},
+\]
+
+and
+
+\nopagebreak[4]
+\[
+\mathsf{bmm}(r)
+=\{\alpha\in\mathsf{mm}(r):\alpha(J)=r(J)\}.
+\]
+
+Since $r\le\mu$, every such measure is absolutely continuous with respect to $\mu$ and
+has a density in the order interval $0\le f\le1$. We use the weak-star topology of
+$L^\infty(\mu)=(L^1(\mu))^*$. Proposition 5.6 and Corollary 5.7 of \cite{berczi2026} state that
+independent-set measures are weak-star dense in $\mathsf{mm}(r)$ and basis measures are
+weak-star dense in $\mathsf{bmm}(r)$.
+
+\subsection{Measurable lattice-path data}
+
+
+Let $K\subseteq[0,1]$ be closed and contain $0$ and $1$. Fix $0\le R\le1$ and let
+
+\nopagebreak[4]
+\[
+a,b:K\longrightarrow[0,R]
+\]
+
+be nondecreasing $1$-Lipschitz functions satisfying
+
+\nopagebreak[4]
+\[
+a(0)=b(0)=0,\qquad a(1)=b(1)=R,\qquad a(t)\le b(t).
+\]
+
+Assume that the basis family
+
+\nopagebreak[4]
+\[
+\mathcal B_K(a,b)
+=\left\{B\subseteq[0,1]:
+\lambda(B)=R,
+\ a(t)\le\lambda(B\cap[0,t])\le b(t)\quad(t\in K)
+\right\}
+\]
+
+is nonempty. By Theorem 3.13 of \cite{berczi2026}, it is the basis family of a measurable matroid,
+which we denote by $M_K(a,b)$. Its rank function is denoted by $r$.
+
+For $f\in L^\infty([0,1])$, set
+
+\nopagebreak[4]
+\[
+F_f(t)=\int_0^t f(x)\,dx.
+\]
+
+We use two convex relaxations. The fixed-mass path corridor is
+
+\nopagebreak[4]
+\[
+\mathcal P_K(a,b)
+=\left\{f:
+0\le f\le1,\ F_f(1)=R,
+\ a(t)\le F_f(t)\le b(t)\quad(t\in K)
+\right\}.
+\]
+
+The interval relaxation is
+
+\nopagebreak[4]
+\[
+\mathcal I_K(a,b)
+=\left\{f:
+0\le f\le1,
+\ F_f(t)-F_f(s)\le b(t)-a(s)
+\quad(s,t\in K,\ s\le t)
+\right\}.
+\]
+
+Both sets are weak-star compact. Indeed, the order interval $0\le f\le1$ is weak-star
+compact, and every cumulative evaluation $f\mapsto F_f(t)$ is weak-star continuous.
+
+\section{The basic minorizing-measure corridor}
+
+
+The first main result identifies the fixed-mass relaxation exactly.
+
+\begin{theorem}[corridor identity]
+\label{thm:corridor}
+
+For every nonempty measurable lattice-path matroid $M_K(a,b)$,
+
+\nopagebreak[4]
+\[
+\mathsf{bmm}(M_K(a,b))
+=\{f\lambda:f\in\mathcal P_K(a,b)\}.
+\]
+
+The inclusion from left to right follows immediately from the weak-star density of
+basis measures. The reverse inclusion is the content of the following purification
+argument.
+
+\end{theorem}
+
+\noindent\emph{Proof.}
+
+\subsection{Completing the obstacles across the gaps}
+
+
+Let $(s,t)$ be a component of $[0,1]\setminus K$. Define on this gap
+
+\nopagebreak[4]
+\[
+\ell(x)=\max\{a(s),a(t)-(t-x)\},
+\]
+
+and
+
+\nopagebreak[4]
+\[
+u(x)=\min\{b(s)+x-s,b(t)\}.
+\]
+
+On $K$, put $\ell=a$ and $u=b$. These definitions give continuous, nondecreasing,
+$1$-Lipschitz functions on $[0,1]$. Moreover, a nondecreasing $1$-Lipschitz path $F$
+satisfies the constraints at the endpoints of a gap if and only if
+
+\nopagebreak[4]
+\[
+\ell(x)\le F(x)\le u(x)
+\]
+
+throughout the gap. Thus $\mathcal P_K(a,b)$ is exactly the set of derivatives of
+absolutely continuous paths $F$ such that
+
+\nopagebreak[4]
+\[
+F(0)=0,\qquad F(1)=R,\qquad
+0\le F'\le1,\qquad \ell\le F\le u.
+\]
+
+Because $\mathcal B_K(a,b)$ is nonempty, there is a path $H_0$ in this corridor with
+$H_0'\in\{0,1\}$ almost everywhere.
+
+\subsection{A local endpoint-preserving purification}
+
+
+We first record an elementary lemma.
+
+\begin{lemma}
+\label{lem:local-purification}
+
+Let $Y$ be absolutely continuous on a compact interval $[p,q]$ and satisfy
+$0\le Y'\le1$ almost everywhere. For every $\eta>0$, there exists an absolutely
+continuous $W$ such that
+
+\nopagebreak[4]
+\[
+W(p)=Y(p),\qquad W(q)=Y(q),\qquad W'\in\{0,1\}\text{ a.e.},
+\]
+
+and $\|W-Y\|_\infty<\eta$.
+
+\end{lemma}
+
+\begin{proof}
+
+Choose a mesh of width smaller than $\eta$. On a mesh interval $[r,s]$, let
+$\Delta=Y(s)-Y(r)$. Since $0\le\Delta\le s-r$, define $W$ to move with slope $1$
+for time $\Delta$ and with slope $0$ for the rest of the interval. The new and old
+paths agree at all mesh points and both remain between the same two endpoint values on
+each mesh interval. The uniform error is therefore smaller than the mesh width.
+\end{proof}
+
+
+\subsection{Countable purification inside the corridor}
+
+
+Fix $f\in\mathcal P_K(a,b)$ and write $F=F_f$. For $0<\delta<1$, set
+
+\nopagebreak[4]
+\[
+F_\delta=(1-\delta)F+\delta H_0.
+\]
+
+Let
+
+\nopagebreak[4]
+\[
+Z=\{x:F_\delta(x)=\ell(x)\text{ or }F_\delta(x)=u(x)\}.
+\]
+
+This is closed. If, for example, $F_\delta=\ell$ at a point, then both
+$F-\ell$ and $H_0-\ell$ are nonnegative there and their strict convex combination is
+zero. Hence $F=H_0=\ell$ at that point. The analogous statement holds on the upper
+contact set. The zero-set derivative lemma for absolutely continuous functions now
+implies
+
+\nopagebreak[4]
+\[
+F_\delta'=H_0'\in\{0,1\}
+\quad\text{almost everywhere on }Z.
+\]
+
+The complement of $Z$ is a countable union of disjoint open intervals. In each such
+interval choose a bi-infinite sequence of subdivision points tending to both endpoints.
+Every compact cell $I_j$ between consecutive subdivision points lies strictly inside
+the corridor, so
+
+\nopagebreak[4]
+\[
+\rho_j=\min_{I_j}\{F_\delta-\ell,u-F_\delta\}>0.
+\]
+
+Apply Lemma 3.2 on $I_j$ with mesh width smaller than
+$\min\{\varepsilon,\rho_j\}$. The replacement agrees with $F_\delta$ at the cell
+endpoints, remains in the corridor, and has zero--one derivative almost everywhere.
+Keep $F_\delta$ on $Z$ and at all subdivision points. This defines a continuous path
+$H$ on $[0,1]$.
+
+For completeness, we verify the global regularity rather than merely the cellwise
+regularity. Let $S$ be the union of $Z$ and all subdivision points. It is closed: new
+accumulation points of subdivision points lie in $Z$. If $s<t$ lie in different cells,
+let $r\in S$ be the right endpoint of the cell containing $s$, with the convention
+$r=s$ when $s\in S$, and let $q\in S$ be the left endpoint of the cell containing $t$,
+with the convention $q=t$ when $t\in S$. These conventions also remove any ambiguity
+when an endpoint is adjacent to more than one cell. Since $H=F_\delta$ on $S$,
+
+\nopagebreak[4]
+\[
+0\le H(t)-H(s)
+\le (t-q)+F_\delta(q)-F_\delta(r)+(r-s)
+\le t-s.
+\]
+
+Thus $H$ is globally nondecreasing and $1$-Lipschitz, hence absolutely continuous.
+On $[0,1]\setminus S$ its derivative is zero--one by construction. On $S$, the
+function $H-F_\delta$ vanishes; its derivative is therefore zero almost everywhere on
+$S$. The set $S\setminus Z$ is countable, while $F_\delta'$ is zero--one almost
+everywhere on $Z$. Consequently
+
+\nopagebreak[4]
+\[
+H'=\mathbf 1_B
+\]
+
+almost everywhere for a measurable set $B$. The endpoint and corridor conditions show
+that $B\in\mathcal B_K(a,b)$. Moreover,
+
+\nopagebreak[4]
+\[
+\|H-F\|_\infty\le\varepsilon+\delta.
+\]
+
+Letting $\varepsilon,\delta\downarrow0$ gives basis paths converging uniformly to $F$.
+
+\subsection{Weak-star convergence of the derivatives}
+
+
+Suppose $H_n\to F$ uniformly and $0\le H_n',F'\le1$. For every
+$\varphi\in C^1([0,1])$, integration by parts gives
+
+\nopagebreak[4]
+\[
+\int_0^1\varphi(H_n'-F')
+=\varphi(1)(H_n-F)(1)-\varphi(0)(H_n-F)(0)
+-\int_0^1\varphi'(H_n-F),
+\]
+
+which tends to zero. Density of $C^1([0,1])$ in $L^1([0,1])$, together with the
+uniform $L^\infty$ bound on the derivatives, yields $H_n'\overset{*}{\rightharpoonup}F'$.
+Hence $f\lambda$ lies in the weak-star closure of the basis measures, which is
+$\mathsf{bmm}(M_K(a,b))$ by \cite{berczi2026}. This completes the proof of Theorem 3.1.
+\hfill\qedsymbol
+
+
+\section{The full independence relaxation and all truncations}
+
+
+We now allow the total mass to vary.
+
+\begin{theorem}[interval description of all minorizing measures]
+\label{thm:minorizing-interval}
+
+For every nonempty measurable lattice-path matroid $M_K(a,b)$,
+
+\nopagebreak[4]
+\[
+\mathsf{mm}(M_K(a,b))
+=\{f\lambda:f\in\mathcal I_K(a,b)\}.
+\]
+
+\end{theorem}
+
+\begin{proof}[Proof of necessity]
+
+Let $I$ be independent. It extends to a basis $B$. For $s\le t$ in $K$,
+
+\nopagebreak[4]
+\[
+\lambda(I\cap(s,t])
+\le\lambda(B\cap(s,t])
+=F_B(t)-F_B(s)
+\le b(t)-a(s).
+\]
+
+It follows that the rank of $(s,t]$ is at most $b(t)-a(s)$. Every minorizing measure
+therefore satisfies the interval inequalities. Its density also satisfies $0\le f\le1$.
+
+\medskip
+\noindent\emph{Proof of sufficiency.}
+
+
+Fix $f\in\mathcal I_K(a,b)$, set $F=F_f$, and write
+
+\nopagebreak[4]
+\[
+m=F(1),\qquad C(t)=t-F(t)=\int_0^t(1-f(x))\,dx.
+\]
+
+The function $C$ is nondecreasing and $1$-Lipschitz. Put $U=1-m$ and
+$S=C(K)\subseteq[0,U]$. For $u\in S$, define
+
+\nopagebreak[4]
+\[
+A(u)=\sup\{a(t)-F(t):t\in K,\ C(t)=u\},
+\]
+
+and
+
+\nopagebreak[4]
+\[
+B(u)=\inf\{b(t)-F(t):t\in K,\ C(t)=u\}.
+\]
+
+The fibers are compact. We claim that for $u\le v$ in $S$,
+
+\nopagebreak[4]
+\[
+A(u)\le B(v),\qquad A(v)-B(u)\le v-u. \tag{4.1}
+\]
+
+Take $s,t\in K$ with $C(s)=u$ and $C(t)=v$. If $u<v$, monotonicity of $C$ forces
+$s<t$. The interval inequality gives
+
+\nopagebreak[4]
+\[
+a(s)-F(s)\le b(t)-F(t),
+\]
+
+while monotonicity and the $1$-Lipschitz property of $a$ give
+
+\nopagebreak[4]
+\[
+a(t)-b(s)\le t-s.
+\]
+
+After subtracting $F(t)-F(s)$, the latter becomes
+
+\nopagebreak[4]
+\[
+a(t)-F(t)-\bigl(b(s)-F(s)\bigr)
+\le C(t)-C(s)=v-u.
+\]
+
+Taking the appropriate supremum and infimum proves (4.1). If $u=v$, points in the same
+fiber may occur in either order. Applying the first calculation in the forward order
+and the $1$-Lipschitz calculation in the reverse order gives both inequalities with
+right-hand side zero. Thus (4.1) holds for non-singleton fibers as well.
+
+Define, for $0\le u\le U$,
+
+\nopagebreak[4]
+\[
+y(u)=\sup_{v\in S}\{A(v)-\max(v-u,0)\}. \tag{4.2}
+\]
+
+Each function in the supremum is nondecreasing and $1$-Lipschitz, so the same is true
+of $y$. Choosing $v=u$ gives $A(u)\le y(u)$ for $u\in S$. If $v\le u$, the first
+inequality in (4.1) gives $A(v)\le B(u)$; if $v\ge u$, the second gives
+$A(v)-(v-u)\le B(u)$. Hence
+
+\nopagebreak[4]
+\[
+A(u)\le y(u)\le B(u)\qquad(u\in S). \tag{4.3}
+\]
+
+The endpoint fibers give
+
+\nopagebreak[4]
+\[
+A(0)=B(0)=0,qquad A(U)=B(U)=R-m.
+\]
+
+For the first pair, $C(t)=0$ implies $F(t)=t$, and the interval inequality from $0$ to
+$t$, together with $b(t)\le t$, forces $b(t)=t$. For the second pair, $C(t)=U$ means
+that $C$ is constant from $t$ to $1$; the interval inequality and the Lipschitz boundary
+conditions then squeeze both residual boundaries to $R-m$, with equality at $t=1$.
+Equations (4.1)--(4.2) consequently give
+
+\nopagebreak[4]
+\[
+y(0)=0,qquad y(U)=R-m. \tag{4.4}
+\]
+
+Set
+
+\nopagebreak[4]
+\[
+H(t)=y(C(t)).
+\]
+
+Both $y$ and $u\mapsto u-y(u)$ are nondecreasing. Therefore $H$ and $C-H$ are
+nondecreasing absolutely continuous functions. It follows that
+
+\nopagebreak[4]
+\[
+0\le H'\le C'=1-f
+\]
+
+almost everywhere. For $t\in K$, (4.3) gives
+
+\nopagebreak[4]
+\[
+a(t)-F(t)\le H(t)\le b(t)-F(t).
+\]
+
+Thus
+
+\nopagebreak[4]
+\[
+g=f+H'
+\]
+
+satisfies $0\le g\le1$, has total mass $R$ by (4.4), and its cumulative function
+$F+H$ belongs to the corridor $\mathcal P_K(a,b)$. Theorem 3.1 gives
+$g\lambda\in\mathsf{bmm}(M_K(a,b))$.
+
+Finally, $0\le f\le g$. Hence, for every measurable $X$,
+
+\nopagebreak[4]
+\[
+\int_X f\,d\lambda
+\le\int_X g\,d\lambda
+\le r(X).
+\]
+
+Therefore $f\lambda\in\mathsf{mm}(M_K(a,b))$.
+\end{proof}
+
+
+\begin{corollary}[all real truncations]
+\label{cor:truncations}
+
+Let $0\le c\le R$, and let $T_cM_K(a,b)$ denote the $c$-truncation. Then
+
+\nopagebreak[4]
+\[
+\mathsf{bmm}(T_cM_K(a,b))
+=\left\{f\lambda:
+f\in\mathcal I_K(a,b),\ \int_0^1f=c
+\right\}.
+\]
+
+\end{corollary}
+
+\begin{proof}
+
+The rank of a truncation is $r_c(X)=\min\{r(X),c\}$ \cite{berczi2026}. Consequently,
+
+\nopagebreak[4]
+\[
+\mathsf{mm}(T_cM)
+=\{\alpha\in\mathsf{mm}(M):\alpha(J)\le c\}.
+\]
+
+Indeed, the forward inclusion follows from $r_c\le r$ and $r_c(J)=c$; conversely,
+$\alpha(X)\le r(X)$ and $\alpha(X)\le\alpha(J)\le c$ imply
+$\alpha(X)\le r_c(X)$. Taking the mass-$c$ slice and applying Theorem 4.1 gives the
+claim. The endpoint cases $c=0$ and $c=R$ are included.
+\end{proof}
+
+
+When $c=R$, the interval inequalities with $(s,t)=(0,t)$ and $(t,1)$ recover the
+two prefix inequalities, so Corollary 4.2 specializes to Theorem 3.1.
+
+\section{Extreme and exposed points}
+
+
+For $f\in\mathcal P_K(a,b)$, define
+
+\nopagebreak[4]
+\[
+T_a(f)=\{t\in K:F_f(t)=a(t)\},
+\]
+
+\nopagebreak[4]
+\[
+T_b(f)=\{t\in K:F_f(t)=b(t)\},
+\]
+
+and $T(f)=T_a(f)\cup T_b(f)$. These sets are closed.
+
+\begin{theorem}[contact-set criterion]
+\label{thm:contact}
+
+For $f\in\mathcal P_K(a,b)$, the following are equivalent:
+
+\begin{enumerate}
+\item $f\lambda$ is an extreme point of $\mathsf{bmm}(M_K(a,b))$;
+\item $f\lambda$ is a weak-star exposed point of $\mathsf{bmm}(M_K(a,b))$;
+\item $f$ belongs to $\{0,1\}$ almost everywhere on $[0,1]\setminus T(f)$.
+
+\end{enumerate}
+
+\end{theorem}
+
+\begin{proof}[Proof of necessity]
+
+By Theorem 3.1 it suffices to work in $\mathcal P_K(a,b)$. If the fractional part of
+$f$ outside $T(f)$ has positive measure, then some compact interval contained in one
+component of $[0,1]\setminus T(f)$ contains a positive-measure set on which
+$\eta\le f\le1-\eta$ for some $\eta>0$. On the constrained times in that compact
+interval, both relevant slacks have a positive uniform lower bound. Choose disjoint
+equal-measure sets $E_+$ and $E_-$ in the fractional region and put
+$h=\mathbf1_{E_+}-\mathbf1_{E_-}$. Its cumulative integral vanishes outside the
+chosen interval. For sufficiently small $\varepsilon>0$, both
+$f+\varepsilon h$ and $f-\varepsilon h$ remain in the corridor. Hence $f$ is not
+extreme.
+
+\medskip
+\noindent\emph{Proof of sufficiency.}
+
+
+Suppose $f=(g_1+g_2)/2$ with $g_i\in\mathcal P_K(a,b)$. Put
+$d=(g_1-g_2)/2$ and $D(t)=\int_0^t d$. The box constraints force $d=0$ almost
+everywhere where $f=0$ or $f=1$, hence almost everywhere off $T(f)$. At a point of
+$T_a(f)$ or $T_b(f)$, equality in the averaged active constraint forces both $g_i$ to
+take the same cumulative value as $f$. Therefore $D=0$ on $T(f)$. An absolutely
+continuous function has derivative zero almost everywhere on its zero set, so $d=0$
+almost everywhere on $T(f)$ as well. Thus $g_1=g_2=f$.
+
+\medskip
+\noindent\emph{Exposedness.}
+
+
+Choose Borel probability measures $\nu_a$ and $\nu_b$ with full support on the two
+nonempty compact contact sets. Define
+
+\nopagebreak[4]
+\[
+q_b(x)=\nu_b(T_b(f)\cap[x,1]),\qquad
+q_a(x)=\nu_a(T_a(f)\cap[x,1]).
+\]
+
+On the complement of $T(f)$, choose a zero--one representative of $f$ and set
+$c_f=1$ where $f=1$ and $c_f=-1$ where $f=0$; put $c_f=0$ on $T(f)$. Then
+
+\nopagebreak[4]
+\[
+w=c_f+q_b-q_a\in L^1([0,1]).
+\]
+
+For every $g\in\mathcal P_K(a,b)$, the box constraints and Fubini's theorem give
+
+\nopagebreak[4]
+\[
+\int c_fg\le\int c_ff,
+\]
+
+\nopagebreak[4]
+\[
+\int q_bg
+=\int_{T_b(f)}F_g(t)\,d\nu_b(t)
+\le\int_{T_b(f)}b(t)\,d\nu_b(t)
+=\int q_bf,
+\]
+
+and similarly $-\int q_ag\le-\int q_af$. If equality holds in their sum, every
+nonnegative gap is zero. The first equality fixes $g=f$ off $T(f)$. Full support and
+continuity force all cumulative contact equalities, and the zero-set derivative lemma
+then fixes $g=f$ on $T(f)$ almost everywhere. Thus $w$ uniquely exposes $f$. If an
+explicit nonzero exposing representative is desired in a degenerate case, add the
+constant function $1$; the total mass is fixed on the corridor.
+\end{proof}
+
+
+The extreme/basic part of this theorem is analogous to classical SCLP extreme-point
+criteria \cite{anderson1983,andersonnash1987}. The direct argument above is self-contained; the references provide
+background rather than a claimed exact theorem-level reduction.
+
+\begin{corollary}[integrality for a fixed corridor]
+\label{cor:integrality}
+
+Let $\dot a_K$ and $\dot b_K$ denote the intrinsic almost-everywhere derivatives on
+$K$: take any Lipschitz extensions to $[0,1]$; their derivatives agree almost
+everywhere on $K$. Every extreme point of $\mathsf{bmm}(M_K(a,b))$ is induced by a
+basis if and only if
+
+\nopagebreak[4]
+\[
+\dot a_K,\dot b_K\in\{0,1\}
+\quad\text{almost everywhere on }K.
+\]
+
+\end{corollary}
+
+\begin{proof}
+
+Theorem 5.1 already forces zero--one values off the contact set. On the lower and upper
+contact sets, the zero-set derivative lemma gives $f=\dot a_K$ and
+$f=\dot b_K$, respectively, almost everywhere. This proves sufficiency.
+
+Conversely, if $\dot b_K$ is fractional on a positive-measure subset, extend $b$ over
+each complementary gap by moving first with slope $1$ and then with slope $0$, while
+keeping $F=b$ on $K$. The resulting path belongs to the corridor, is zero--one off
+$K$, and is in upper contact throughout $K$. Theorem 5.1 makes its derivative an
+exposed point, but it is fractional on a positive-measure subset of $K$. The lower
+boundary is handled analogously.
+\end{proof}
+
+
+\section{A bounded laminar-composition application}
+
+
+This section records a useful closure consequence but is not a separate main
+contribution.
+
+Let $T$ be a finite rooted tree whose internal nodes have finite arity. Its leaves carry
+pairwise disjoint atomless standard probability spaces, each identified measure
+preservingly with $[0,1]$. At a leaf $\ell$, let
+$K_\ell\subseteq[0,1]$ be closed and contain $0,1$, and let
+$b_\ell:K_\ell\to[0,\infty)$ be an effective, nondecreasing, $1$-Lipschitz upper
+capacity with $b_\ell(0)=0$. If one starts from an arbitrary capacity presentation, it
+must first be replaced by its effective rank representative: for a nested family
+$\mathcal D$ with raw capacity $b$, use the rank-effective capacity
+
+\nopagebreak[4]
+\[
+\beta(C)=\inf_{D\in\mathcal D}\{b(D)+\mu(C\setminus D)\}
+\qquad(C\in\mathcal D),
+\]
+
+and then parameterize the resulting closed chain by $K_\ell$. The contact-set statement
+below is not asserted for a raw discontinuous or redundant presentation.
+
+Let
+
+\nopagebreak[4]
+\[
+C_\ell=
+\left\{f_\ell:0\le f_\ell\le1,
+\ \int_0^t f_\ell\le b_\ell(t)\quad(t\in K_\ell)
+\right\}.
+\]
+
+Every internal node is labelled either by the direct sum of its children or by a
+truncation of the matroid represented by its unique child; every truncation capacity
+$c_v$ is a nonnegative real number. Consecutive direct sums may be merged and
+consecutive truncations replaced by the smaller capacity. If $L(v)$ is the set of
+leaves below a truncation node $v$, define
+
+\nopagebreak[4]
+\[
+Q_T=\left\{(f_\ell):
+f_\ell\in C_\ell,
+\ \sum_{\ell\in L(v)}\int f_\ell\le c_v
+\text{ for every truncation node }v
+\right\}.
+\]
+
+\begin{proposition}
+\label{prop:laminar-mm}
+
+For the measurable matroid $M_T$ obtained from this tree,
+
+\nopagebreak[4]
+\[
+\mathsf{mm}(M_T)=Q_T,
+\]
+
+and
+
+\nopagebreak[4]
+\[
+\mathsf{bmm}(M_T)
+=\left\{f\in Q_T:\sum_\ell\int f_\ell=r_T(J)\right\}.
+\]
+
+\end{proposition}
+
+\begin{proof}
+
+At a leaf, the effective nested rank formula says that the minorizing-measure set is
+exactly $C_\ell$. Minorizing-measure sets multiply under direct sum. Under a
+$c$-truncation they are intersected with the total-mass halfspace of level $c$, by the
+same rank calculation used in Corollary 4.2. Induction over the finite tree gives the
+claim.
+\end{proof}
+
+
+For the extreme-point statement, define the leaf contact set
+
+\nopagebreak[4]
+\[
+T_\ell(f_\ell)
+=\left\{t\in K_\ell:\int_0^t f_\ell=b_\ell(t)\right\}.
+\]
+
+We need one elementary convex lemma.
+
+\begin{lemma}[one affine slice of a product]
+\label{lem:affine-slice}
+
+Let $C_i$ be convex sets, let $\ell_i$ be affine real functionals, and put
+
+\nopagebreak[4]
+\[
+C(c)=\left\{(x_i)\in\prod_iC_i:\sum_i\ell_i(x_i)=c\right\}.
+\]
+
+A point $x=(x_i)$ is extreme in $C(c)$ if and only if every $x_i$ is extreme in its
+fixed-value fiber
+
+\nopagebreak[4]
+\[
+\{y\in C_i:\ell_i(y)=\ell_i(x_i)\},
+\]
+
+and at most one $x_i$ is not extreme in the whole set $C_i$.
+
+\end{lemma}
+
+\begin{proof}
+
+A nontrivial symmetric perturbation inside one fixed-value fiber immediately gives a
+perturbation in $C(c)$. If two coordinates admit whole-set perturbations but no
+fixed-fiber perturbations, both perturbations change their affine values. Reverse one
+and scale the two symmetric segments so that the changes cancel. Conversely, any
+nontrivial perturbation in $C(c)$ must, after fixed-fiber extremality is imposed, change
+the affine value in every perturbed coordinate. Since the changes sum to zero, at least
+two coordinates are perturbed.
+\end{proof}
+
+
+\begin{proposition}[leafwise extreme-point recursion]
+\label{prop:laminar-extreme}
+
+For every node $v$ of the tree, a feasible density is extreme in the whole subtree
+relaxation if and only if it is extreme in its fixed-total-mass fiber, if and only if
+every leaf below $v$ satisfies
+
+\nopagebreak[4]
+\[
+f_\ell\in\{0,1\}
+\quad\text{almost everywhere on }[0,1]\setminus T_\ell(f_\ell).
+\]
+
+\end{proposition}
+
+\begin{proof}
+
+At a leaf, the same perturbation and zero-set derivative argument as in Theorem 5.1
+shows that whole-set and fixed-mass-fiber extremality coincide and are characterized by
+the displayed contact condition. At a direct-sum node, whole-set extremality is
+coordinatewise, while fixed-mass extremality is governed by Lemma 6.2. The induction
+hypothesis makes the lemma's extra alternative redundant. At a truncation node, an
+inactive capacity leaves the original convex set locally unchanged, while an active
+capacity replaces it by the corresponding fixed-mass fiber. The induction hypothesis
+again identifies the two extreme-point notions.
+\end{proof}
+
+
+Finite laminar matroids are classically organized by direct sums, truncations, and
+related basic operations \cite{fifeoxley2017}. Propositions 6.1--6.3 should therefore be viewed as a
+measurable application of the preceding convex mechanism, not as a new structural
+classification of laminar matroids.
+
+\section{Scope and open boundary}
+
+
+Theorems 3.1 and 4.1 give exact infinite-dimensional counterparts of familiar finite
+lattice-path and positroid polytope descriptions. The finite shadow is not new: base
+polytopes of lattice-path matroids have path-inequality descriptions \cite{bidkhori2012}, and general
+positroid independence polytopes admit interval-type facet descriptions \cite{ohxiang2022}. The new
+claim made here is limited to the atomless measurable setting, arbitrary closed $K$,
+the explicit countable purification and residual-capacity extension, and all real
+truncation levels. No claim of absolute global priority is made without external review.
+
+Two natural questions remain.
+
+\begin{enumerate}
+\item Give a complete extreme-point criterion for the mass-$c$ slice of
+$\mathcal I_K(a,b)$ when $c<R$. The equalities on active intervals give necessary
+perturbation conditions, but nonactive slacks may converge to zero, so the obvious
+finite-dimensional kernel argument is not sufficient.
+\item Determine when finite laminar compositions as in Section 6 are genuinely outside
+the class of measurable lattice-path matroids. The classical finite truncation of
+$U_{1,2}^{\oplus3}$ is not transversal and hence not a lattice-path matroid \cite{bonindemier2006}, but
+transferring this into a sharp atomless nonrepresentation theorem requires a
+separate argument.
+
+\end{enumerate}
+
+These questions require new structure beyond the direct-sum and truncation identities
+used here.
+
+\section*{Acknowledgement of AI assistance}
+
+
+OpenAI Codex was used as an AI-assisted research and writing tool for literature
+discovery, exploratory checks, proof auditing, and language editing. Carptopus takes
+responsibility for the mathematical claims and the released version.
+
+\begin{thebibliography}{9}
+\footnotesize
+\raggedright
+
+\bibitem{berczi2026}
+K.~B\'erczi, A.~Imolay, and \'A.~Schweitzer,
+\emph{Measurable Matroids: Foundations and Min--Max Theorems},
+arXiv:2608.16464v1 (2026).
+\href{https://arxiv.org/abs/2608.16464}{arXiv:2608.16464}.
+
+\bibitem{bidkhori2012}
+H.~Bidkhori,
+\emph{Lattice Path Matroid Polytopes},
+arXiv:1212.5705 (2012).
+\href{https://arxiv.org/abs/1212.5705}{arXiv:1212.5705}.
+
+\bibitem{ohxiang2022}
+S.~Oh and D.~Xiang,
+\emph{The facets of the matroid polytope and the independent set polytope of a positroid},
+J. Combin. 13(4) (2022), 545--560.
+\href{https://doi.org/10.4310/JOC.2022.V13.N4.A5}{doi:10.4310/JOC.2022.V13.N4.A5};
+\href{https://arxiv.org/abs/1701.08483}{arXiv:1701.08483v3}.
+
+\bibitem{anderson1983}
+E.~J. Anderson, P.~Nash, and A.~F. Perold,
+\emph{Some Properties of a Class of Continuous Linear Programs},
+SIAM J. Control Optim. 21 (1983), 758--765.
+\href{https://doi.org/10.1137/0321046}{doi:10.1137/0321046}.
+
+\bibitem{andersonnash1987}
+E.~J. Anderson and P.~Nash,
+\emph{Linear Programming in Infinite-Dimensional Spaces: Theory and Applications},
+Wiley, 1987, Section 7.4.
+
+\bibitem{amarcellina1994}
+M.~Amar and A.~Cellina,
+\emph{On passing to the limit for non-convex variational problems},
+Asymptotic Anal. 9 (1994), 135--148.
+\href{https://doi.org/10.3233/ASY-1994-9203}{doi:10.3233/ASY-1994-9203}.
+
+\bibitem{carlota2016}
+C.~Carlota, S.~Ch\'a, and A.~Ornelas,
+\emph{A pointwise constrained version of the Liapunov convexity theorem for vectorial linear first-order control systems},
+J. Differential Equations 261 (2016), 296--318.
+\href{https://doi.org/10.1016/j.jde.2016.03.009}{doi:10.1016/j.jde.2016.03.009}.
+
+\bibitem{fifeoxley2017}
+T.~Fife and J.~Oxley,
+\emph{Laminar Matroids},
+European J. Combin. 62 (2017), 206--216.
+\href{https://doi.org/10.1016/j.ejc.2017.01.002}{doi:10.1016/j.ejc.2017.01.002}.
+
+\bibitem{bonindemier2006}
+J.~E. Bonin and A.~de Mier,
+\emph{Lattice Path Matroids: Structural Properties},
+European J. Combin. 27 (2006), 701--738.
+\href{https://doi.org/10.1016/j.ejc.2005.01.008}{doi:10.1016/j.ejc.2005.01.008}.
+
+\end{thebibliography}
+
+\end{document}

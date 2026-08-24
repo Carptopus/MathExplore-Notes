@@ -19,6 +19,7 @@ including manuscripts and reproducible verification materials.
 | [Periodic infinite ringsets in the Lipschitz quaternions](research/periodic-quaternion-ringsets/README.md)<br>[PDF](research/periodic-quaternion-ringsets/periodic-quaternion-ringsets.pdf) · [BibTeX](research/periodic-quaternion-ringsets/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22069614) | Integer-valued polynomials, quaternion algebras, noncommutative algebra | Classifies exactly which odd-squarefree-period binary words produce infinite ringsets in the Lipschitz quaternions | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Periodic two-letter ringsets in the Lipschitz quaternions: the general odd-period classification](research/odd-period-quaternion-ringsets/README.md)<br>[PDF](research/odd-period-quaternion-ringsets/odd-period-quaternion-ringsets.pdf) · [BibTeX](research/odd-period-quaternion-ringsets/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22070532) | Integer-valued polynomials, quaternion algebras, noncommutative algebra | Classifies exactly which arbitrary odd-period binary words produce infinite ringsets, strictly generalizing the preceding squarefree result | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Periodic ringsets in the Lipschitz quaternions: the complete six-letter classification](research/complete-periodic-quaternion-ringsets/README.md)<br>[PDF](research/complete-periodic-quaternion-ringsets/complete-periodic-quaternion-ringsets.pdf) · [BibTeX](research/complete-periodic-quaternion-ringsets/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22077574) | Integer-valued polynomials, quaternion algebras, noncommutative algebra | Classifies exactly which full six-letter words of arbitrary period produce infinite ringsets, strictly containing both preceding quaternion classifications | v0.1-beta | Internally verified candidate proof; external review pending |
+| [Minorizing measures and truncations of measurable lattice-path matroids](research/measurable-lattice-path-matroids/README.md)<br>[PDF](research/measurable-lattice-path-matroids/measurable-lattice-path-matroids.pdf) · [BibTeX](research/measurable-lattice-path-matroids/CITATION.bib) | Measurable matroids, infinite-dimensional convexity, continuous optimization | Determines exactly the basic and full minorizing-measure sets, all real truncation slices, and the exposed extreme points of the full-rank basic corridor | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
 
@@ -236,6 +237,25 @@ six-letter alphabet, strictly containing both preceding quaternion entries.
 
 - [Manuscript and verification materials](research/complete-periodic-quaternion-ringsets/README.md)
 
+### Measurable lattice-path matroids
+
+For a measurable lattice-path matroid specified by a closed time set $K$ and
+lower and upper cumulative paths $a\leq b$, this manuscript proves that its
+basic minorizing measures form exactly the fixed-mass path corridor and that
+all minorizing measures form exactly the interval relaxation
+
+$$
+F(t)-F(s)\leq b(t)-a(s)\qquad(s\leq t,\ s,t\in K).
+$$
+
+Every real truncation is obtained by one mass slice of this relaxation. For the
+full-rank basic corridor, the paper also gives the contact-set criterion for
+extreme points and proves that every such extreme point is weak-star exposed.
+The statements allow arbitrary closed time sets, including infinitely many
+gaps and Cantor-type contact sets.
+
+- [Manuscript materials](research/measurable-lattice-path-matroids/README.md)
+
 ## Status and review policy
 
 Entries are research records, not automatically peer-reviewed publications.
@@ -308,3 +328,7 @@ noncommutative algebra; ringsets; null ideals; periodic words; local-global
 principles; matrix rings; Chinese remainder theorem; prime-power position
 classes; fixed-divisor obstructions; ramified primes; split primes; antipodal
 fibres.
+Measurable matroids; lattice-path matroids; minorizing measures; basic
+minorizing measures; weak-star topology; interval relaxations; real
+truncations; extreme points; exposed points; continuous linear programming;
+purification.
