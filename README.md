@@ -21,6 +21,7 @@ including manuscripts and reproducible verification materials.
 | [Periodic ringsets in the Lipschitz quaternions: the complete six-letter classification](research/complete-periodic-quaternion-ringsets/README.md)<br>[PDF](research/complete-periodic-quaternion-ringsets/complete-periodic-quaternion-ringsets.pdf) · [BibTeX](research/complete-periodic-quaternion-ringsets/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22077574) | Integer-valued polynomials, quaternion algebras, noncommutative algebra | Classifies exactly which full six-letter words of arbitrary period produce infinite ringsets, strictly containing both preceding quaternion classifications | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Minorizing measures and truncations of measurable lattice-path matroids](research/measurable-lattice-path-matroids/README.md)<br>[PDF](research/measurable-lattice-path-matroids/measurable-lattice-path-matroids.pdf) · [BibTeX](research/measurable-lattice-path-matroids/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22079095) | Measurable matroids, infinite-dimensional convexity, continuous optimization | Determines exactly the basic and full minorizing-measure sets, all real truncation slices, and the exposed extreme points of the full-rank basic corridor | v0.1-beta | Internally verified candidate proof; external review pending |
 | [The face lattice of the irreducible-Ferrers polytope is a product of triangles](research/ferrers-polytope-triangle-product/README.md)<br>[PDF](research/ferrers-polytope-triangle-product/ferrers-polytope-triangle-product.pdf) · [BibTeX](research/ferrers-polytope-triangle-product/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22080499) | Ferrers diagrams, polyhedral combinatorics, coding theory | Proves that the irreducible-Ferrers polytope is combinatorially equivalent to a product of triangles for every $d\geq3$, resolving Conjecture 5.28 of arXiv:2604.27868 | v0.1-beta | Internally verified candidate proof; external review pending |
+| [Partition-representation degrees of the dual Fano matroid](research/dual-fano-partition-degrees/README.md)<br>[PDF](research/dual-fano-partition-degrees/dual-fano-partition-degrees.pdf) · [BibTeX](research/dual-fano-partition-degrees/CITATION.bib) | Matroid theory, information theory, combinatorial designs | Determines $\chi(F_7^*)$ exactly and characterizes regular matroids as precisely the 6-entropic matroids | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
 
@@ -276,6 +277,23 @@ itself.
 
 - [Manuscript materials](research/ferrers-polytope-triangle-product/README.md)
 
+### Dual Fano partition degrees and six-symbol regularity
+
+For the dual Fano matroid, this manuscript determines the complete
+partition-representation degree spectrum:
+
+$$
+\chi(F_7^*)=\{2^k:k\geq1\}.
+$$
+
+The proof propagates an $M(K_4)$ group slice through the remaining circuits
+and forces the group to be elementary abelian. Combined with the excluded
+minors for regular matroids and the orthogonal-Latin-square existence theorem,
+it proves that a finite matroid is 6-entropic exactly when it is regular, and
+that six is the unique alphabet size with this property.
+
+- [Manuscript and finite calibration](research/dual-fano-partition-degrees/README.md)
+
 ## Status and review policy
 
 Entries are research records, not automatically peer-reviewed publications.
@@ -355,3 +373,6 @@ purification.
 Ferrers diagrams; Ferrers polytopes; face lattices; products of triangles;
 products of simplices; polyhedral combinatorics; combinatorial equivalence;
 rank-metric codes; Etzion--Silberstein conjecture.
+Entropic matroids; partition representations; variable-strength orthogonal
+arrays; dual Fano matroid; regular matroids; excluded minors; orthogonal Latin
+squares; finite-group representations.

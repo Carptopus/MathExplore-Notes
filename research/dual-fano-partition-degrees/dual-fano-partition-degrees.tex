@@ -1,0 +1,632 @@
+% Generated from the audited Markdown source; responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{needspace}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\numberwithin{equation}{section}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Dual Fano partition degrees}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.48em}
+\setlength{\emergencystretch}{4em}
+\urlstyle{same}
+
+\title{The partition-representation degrees of the dual Fano matroid\\
+and a six-symbol characterization of regularity}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{24 August 2026}
+
+\hypersetup{
+  pdftitle={The partition-representation degrees of the dual Fano matroid and a six-symbol characterization of regularity},
+  pdfauthor={Carptopus},
+  pdfsubject={A complete partition-degree classification for the dual Fano matroid and a six-symbol characterization of regular matroids},
+  pdfkeywords={matroid, entropic matroid, partition representation, variable-strength orthogonal array, dual Fano matroid, regular matroid, orthogonal Latin square}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fcolorbox{black!35}{black!4}{\parbox{0.88\textwidth}{\centering\small
+Public Beta, version 0.1. The mathematical proof, complete manuscript, and
+release artifacts have passed project-internal zero-trust audits;
+external mathematical review and formal peer review are pending.}}
+\end{center}
+
+\begin{abstract}
+
+
+For a finite matroid $M$, let $\chi(M)$ be the set of integers $v\ge 2$ for
+which $M$ has a partition representation of degree $v$, equivalently a
+variable-strength orthogonal array of level $v$. We prove that the dual Fano
+matroid satisfies
+
+\nopagebreak[4]
+\[
+\chi(F_7^*)=\{2^k:k\ge 1\}.
+\]
+
+The proof fixes one coordinate fibre, identifies the resulting contraction
+with $M(K_4)$, applies Mat\'u\v{s}'s group normal form, and propagates that local
+normal form through the remaining circuit equations. The propagation forces
+every element of the underlying group to be an involution. Combining this
+classification with the excluded-minor characterization of regular matroids
+gives a fixed-alphabet characterization: a finite matroid is 6-entropic if
+and only if it is regular. Moreover, among all integers $v\ge 2$, the
+class of $v$-entropic matroids coincides with the class of regular matroids
+if and only if $v=6$.
+
+\end{abstract}
+
+\section{Introduction}
+
+
+A partition representation of a matroid is a nonlinear analogue of a linear
+representation. It may be expressed equivalently as an almost-affine code, an
+ideal secret-sharing representation, or a variable-strength orthogonal array
+(VOA). If a matroid $M$ has rank function $r_M$, a degree-$v$
+representation realizes the entropy vector
+
+\nopagebreak[4]
+\[
+A\longmapsto r_M(A)\log v.
+\]
+
+Following Abbe and Spirkl, we call $M$ $v$-entropic when its rank function
+is realized in this way \cite{abbe2019}. Following Chen, Cheng, and Bai, we write
+$\chi(M)$ for the set of all admissible degrees \cite{chen2025}.
+
+In the proof of Proposition 4.1, Mat\'u\v{s} showed that the Fano matroid has
+precisely the power-of-two degrees \cite{matus1999}. For the dual Fano matroid, Abbe and
+Spirkl gave an analytic proof that degree $3$ is impossible \cite[Lemma 9]{abbe2019};
+Chen, Cheng, and Bai later obtained an independent finite-computation proof
+\cite[Lemma 4]{chen2025}. The latter authors also posed the general question whether
+$\chi(M)=\chi(M^*)$ for every matroid \cite[Conjecture 1]{chen2025}. Our first result
+settles the complete degree set for this particular dual pair.
+
+\Needspace{0.26\textheight}
+\begin{theorem}
+For the dual Fano matroid,
+
+\nopagebreak[4]
+\[
+\chi(F_7^*)=\{2^k:k\ge 1\}.
+\]
+
+\end{theorem}
+
+The argument is structural rather than enumerative. A fibre of a hypothetical
+degree-$v$ representation of $F_7^*$ represents $M(K_4)$. Mat\'u\v{s}'s
+classification of partition representations of $M(K_4)$ supplies a finite
+group of order $v$. Three further circuit equations then force that group
+to have exponent two.
+
+The result has a consequence that is not restricted to a seven-element
+matroid. Recall that a finite matroid is regular if it is representable over
+every field, equivalently if it has no minor isomorphic to
+$U_{2,4}$, $F_7$, or $F_7^*$.
+
+\Needspace{0.26\textheight}
+\begin{theorem}
+A finite matroid is 6-entropic if and only if it is regular.
+
+\end{theorem}
+
+Chen, Cheng, and Bai proved that every regular matroid has a partition
+representation of every degree \cite[Proposition 7]{chen2025}. The new direction in
+Theorem 1.2 follows by excluding the three regular-matroid obstructions at
+degree six: the obstruction $U_{2,4}$ is Euler's order-six exception for
+orthogonal Latin squares, while $F_7$ and $F_7^*$ are excluded by their
+power-of-two degree sets.
+
+The alphabet size six is characterized by this property.
+
+\Needspace{0.26\textheight}
+\begin{corollary}
+For an integer $v\ge 2$, the following are equivalent:
+
+\begin{enumerate}
+\item every $v$-entropic matroid is regular;
+\item the $v$-entropic matroids are exactly the regular matroids;
+\item $v=6$.
+
+\end{enumerate}
+
+\end{corollary}
+
+Indeed, $F_7$ is a nonregular 2-entropic matroid. For every
+$v\ge 3$, $v\ne 6$, the nonregular matroid $U_{2,4}$ is
+$v$-entropic by the complete existence theorem for pairs of orthogonal
+Latin squares.
+
+The group slice used below is classical. Recent work of Kalantari and
+Khazaei also uses Mat\'u\v{s}'s $M(K_4)$ normal form in its characterization of
+4-entropic matroids \cite{kalantari2026}. Our contribution is the propagation across the
+specific circuit system of $F_7^*$, the resulting complete degree
+classification, and its degree-six consequences.
+
+\section{Partition representations and circuit equations}
+
+
+Let $M=(E,r)$ be a finite matroid of rank $r(E)$, and let $Q$ be a set
+of size $v$. A variable-strength orthogonal array
+$\mathrm{VOA}(M,v)$ is a $v^{r(E)}\times |E|$ array $T$ over
+$Q$ such that, for each $A\subseteq E$, every row appearing in the
+projection $T(A)$ appears exactly $v^{r(E)-r(A)}$ times. Its coordinate
+level partitions form a partition representation of degree $v$, and the
+two notions are equivalent \cite{matus1999,chen2025}. The entropy characterization of Chen,
+Cheng, and Bai shows that $M$ is $v$-entropic exactly when such an array
+exists \cite[Theorem 1 and the discussion following it]{chen2025}; see also \cite[Proposition 2.3]{kalantari2026}.
+
+We use three standard consequences.
+
+\Needspace{0.26\textheight}
+\begin{lemma}[basis coordinates]
+If $B$ is a basis of $M$, every tuple
+in $Q^B$ occurs exactly once in $T(B)$. Hence each coordinate outside
+$B$ is a function of the basis coordinates.
+
+\end{lemma}
+
+\begin{proof}
+Since $r(B)=|B|=r(E)$, the VOA multiplicity on $B$ is one.
+There are $v^{r(E)}=|Q^B|$ rows, so the projection is a bijection.
+\end{proof}
+
+
+\Needspace{0.26\textheight}
+\begin{lemma}[circuit quasigroups]
+Let $C$ be a circuit of $M$ and
+$e\in C$. In every degree-$v$ representation, the coordinate $X_e$
+is a quasigroup function of the coordinates $X_{C\setminus\{e\}}$.
+
+\end{lemma}
+
+\begin{proof}
+The set $C\setminus\{e\}$ is independent and
+$r(C)=|C|-1$. Every tuple on $C\setminus\{e\}$ therefore has a unique
+extension to the joint support on $C$. Repeating this with each coordinate
+singled out gives the quasigroup property.
+\end{proof}
+
+
+Here a $k$-ary quasigroup is a map $q:Q^k\to Q$ for which fixing any
+(k-1) arguments makes the remaining one a bijection.
+
+\Needspace{0.26\textheight}
+\begin{lemma}[minor closure]
+If $v\in\chi(M)$ and $N$ is a minor of
+$M$, then $v\in\chi(N)$.
+
+\end{lemma}
+
+\begin{proof}
+Deletion is obtained by projecting the array and deduplicating
+rows. Contraction by an element is obtained by fixing one coordinate value
+and restricting to that fibre. Iterating these two operations gives every
+minor. This is \cite[Theorem 2]{chen2025}.
+\end{proof}
+
+
+Coordinate relabellings preserve a VOA. More precisely, one may independently
+apply a bijection $Q\to Q$ to each coordinate. In Mat\'u\v{s}'s terminology this
+is partition isotopy. The same relabellings transform all circuit equations
+simultaneously; they cannot be chosen separately for different fibres.
+
+\section{A group slice inside \texorpdfstring{$F_7^*$}{F7*}}
+
+
+We use the labelling of $F_7^*$ from \cite{chen2025}. Its seven circuit-hyperplanes are
+
+\nopagebreak[4]
+\[
+1235,\qquad 1246,\qquad 1347,\qquad 1567,\qquad
+2367,\qquad 2457,\qquad 3456.             \tag{3.1}
+\]
+
+The set (1234) is a basis. By Lemmas 2.1 and 2.2, a degree-$v$
+representation can be written in basis coordinates as
+
+\nopagebreak[4]
+\[
+\begin{aligned}
+X_1&=a,&X_2&=b,&X_3&=c,&X_4&=d,\\
+X_5&=F(a,b,c),&
+X_6&=G(a,b,d),&
+X_7&=H(a,c,d),
+\end{aligned}                         \tag{3.2}
+\]
+
+where $F,G,H$ are ternary quasigroups on an alphabet $Q$ of size $v$.
+
+Fix an arbitrary value $a=a_0$. Restricting to this fibre is the VOA
+contraction by element (1). The circuit-hyperplanes through (1) give the
+four triangles
+
+\nopagebreak[4]
+\[
+235,\qquad 246,\qquad 347,\qquad 567.  \tag{3.3}
+\]
+
+They are precisely the four triangles of a labelled copy of $M(K_4)$.
+For example, a binary representation of $F_7^*$ may be chosen with
+
+\nopagebreak[4]
+\[
+5=e_1+e_2+e_3,\qquad
+6=e_1+e_2+e_4,\qquad
+7=e_1+e_3+e_4.
+\]
+
+After contraction by $e_1$, the six nonzero columns are
+
+\nopagebreak[4]
+\[
+e_2,e_3,e_4,e_2+e_3,e_2+e_4,e_3+e_4,
+\]
+
+so there are no loops, parallel elements, or additional triangles.
+
+Mat\'u\v{s}'s classification now supplies the key local normal form.
+
+\Needspace{0.26\textheight}
+\begin{lemma}[group normal form]
+After fixed relabellings of the six
+coordinate alphabets $2,\ldots,7$, there is a finite group
+$(\Gamma,\cdot)$ of order $v$ such that, on the fibre $a=a_0$,
+
+\nopagebreak[4]
+\[
+F(a_0,b,c)=b^{-1}c,\qquad
+G(a_0,b,d)=b^{-1}d,\qquad
+H(a_0,c,d)=c^{-1}d.                  \tag{3.4}
+\]
+
+The group is not assumed commutative.
+
+\end{lemma}
+
+\begin{proof}
+Mat\'u\v{s}'s Proposition 3.1 states that every partition representation
+of $M(K_4)$ is partition-isotopic to the canonical representation obtained
+from a finite group of the same order \cite{matus1999}. One orientation of that canonical
+model is
+
+\nopagebreak[4]
+\[
+(x,y,z,xy^{-1},yz^{-1},zx^{-1}).     \tag{3.5}
+\]
+
+Put $b=x^{-1}$, $c=y^{-1}$, and $d=z^{-1}$. Keep the output
+coordinates corresponding to $xy^{-1}$ and $yz^{-1}$, and invert the
+coordinate corresponding to $zx^{-1}$. After matching these coordinates
+with the triangles in (3.3), the three functions become exactly (3.4).
+These substitutions are six fixed coordinate bijections. We apply them to
+the entire representation and use the identity relabelling on coordinate
+1; no relabelling depends on $a$.
+\end{proof}
+
+
+\section{Propagation through the remaining circuits}
+
+
+The three circuit-hyperplanes $2367,2457,3456$ propagate the normalized
+fibre to every value of $a$. The point requiring care is that a circuit
+equation is initially known on the joint support of its four coordinates.
+In each of the following steps, the normalized fibre covers the complete
+three-dimensional input domain of the relevant circuit quasigroup.
+
+\Needspace{0.26\textheight}
+\begin{lemma}
+There is, for each $a\in Q$, a permutation
+$T_a:\Gamma\to\Gamma$ such that
+
+\nopagebreak[4]
+\[
+G(a,b,d)=b^{-1}T_a(d),\qquad
+H(a,c,d)=c^{-1}T_a(d).               \tag{4.1}
+\]
+
+\end{lemma}
+
+\begin{proof}
+Orient the circuit $2367$ toward coordinate $7$. On the
+normalized fibre, write $g=b^{-1}d$, so $d=bg$. Then
+
+\nopagebreak[4]
+\[
+h=c^{-1}d=c^{-1}bg.
+\]
+
+As $b,c,g$ independently range over $\Gamma$, this determines the entire
+ternary circuit quasigroup. Therefore, for every basis tuple,
+
+\nopagebreak[4]
+\[
+H(a,c,d)=c^{-1}bG(a,b,d).            \tag{4.2}
+\]
+
+The left-hand side is independent of $b$. Thus, for fixed $a,d$, the
+product $bG(a,b,d)$ is independent of $b$; call it $T_a(d)$. Since
+$G$ is a quasigroup in $d$, $T_a$ is a permutation. Equation (4.1)
+follows.
+\end{proof}
+
+
+\Needspace{0.26\textheight}
+\begin{lemma}
+For every $a\in Q$, there is an element
+$s_a\in\Gamma$ such that
+
+\nopagebreak[4]
+\[
+\begin{aligned}
+F(a,b,c)&=b^{-1}s_a^{-1}c,\\
+G(a,b,d)&=b^{-1}s_a d,\\
+H(a,c,d)&=c^{-1}s_a d.
+\end{aligned}               \tag{4.3}
+\]
+
+\end{lemma}
+
+\begin{proof}
+Orient $2457$ toward coordinate $7$. On the normalized fibre,
+put $f=b^{-1}c$, so $c=bf$. Then
+
+\nopagebreak[4]
+\[
+h=c^{-1}d=f^{-1}b^{-1}d.
+\]
+
+The variables $b,d,f$ independently range over $\Gamma$, so the whole
+circuit quasigroup is determined and
+
+\nopagebreak[4]
+\[
+H(a,c,d)=F(a,b,c)^{-1}b^{-1}d.       \tag{4.4}
+\]
+
+Substituting (4.1) into (4.4) gives
+
+\nopagebreak[4]
+\[
+F(a,b,c)^{-1}=c^{-1}T_a(d)d^{-1}b.
+\]
+
+The left-hand side is independent of $d$. Hence $T_a(d)d^{-1}$ is
+constant in $d$; denote it by $s_a$. Thus $T_a(d)=s_ad$, and (4.3)
+follows.
+\end{proof}
+
+
+\Needspace{0.26\textheight}
+\begin{lemma}
+Every element $s_a$ in (4.3) is an involution.
+
+\end{lemma}
+
+\begin{proof}
+Orient $3456$ toward coordinate $6$. On the normalized fibre,
+$f=b^{-1}c$ gives $b=cf^{-1}$, and hence
+
+\nopagebreak[4]
+\[
+g=b^{-1}d=fc^{-1}d.
+\]
+
+The variables $c,d,f$ independently range over $\Gamma$. Consequently
+the complete circuit equation is
+
+\nopagebreak[4]
+\[
+G(a,b,d)=F(a,b,c)c^{-1}d.            \tag{4.5}
+\]
+
+Using (4.3) on the two sides of (4.5) yields
+
+\nopagebreak[4]
+\[
+b^{-1}s_ad=b^{-1}s_a^{-1}d.
+\]
+
+Thus $s_a=s_a^{-1}$, or $s_a^2=e$.
+\end{proof}
+
+
+\Needspace{0.26\textheight}
+We can now prove the first main theorem.
+
+\begin{proof}[Proof of Theorem 1.1]
+Fix $b,c\in\Gamma$. Since $F$ is a ternary
+quasigroup, the map
+
+\nopagebreak[4]
+\[
+a\longmapsto F(a,b,c)=b^{-1}s_a^{-1}c
+\]
+
+is a bijection. Hence $a\mapsto s_a$ is a bijection from the alphabet
+$Q$ onto $\Gamma$. By Lemma 4.3, every element $x\in\Gamma$ satisfies
+$x^2=e$. Therefore
+
+\nopagebreak[4]
+\[
+xy=(xy)^{-1}=y^{-1}x^{-1}=yx
+\]
+
+for all $x,y\in\Gamma$. The group is elementary abelian of order $2^k$
+for some $k\ge1$, proving that every degree is a power of two.
+
+Conversely, $F_7^*$ is binary. A binary representing matrix has the same
+column ranks over every extension field $\mathbb F_{2^k}$, and the associated
+linear array is a degree-$2^k$ partition representation. Hence every
+$2^k$ occurs.
+\end{proof}
+
+
+\section{Six-symbol entropy and regularity}
+
+
+\Needspace{0.26\textheight}
+We now prove the global consequence.
+
+\begin{proof}[Proof of Theorem 1.2]
+Suppose first that $M$ is 6-entropic. By the
+entropy--VOA--partition equivalence, $6\in\chi(M)$. Lemma 2.3 implies that
+every minor of $M$ also has degree six.
+
+The matroid $U_{2,4}$ has a degree-$v$ representation exactly when there
+is an index-one orthogonal array $\mathrm{OA}(2,4,v)$, equivalently a
+pair of orthogonal Latin squares of order $v$. Such a pair does not exist
+for $v=6$; equivalently, $6\notin\chi(U_{2,4})$ \cite[Example 4]{chen2025}. The proof
+of Mat\'u\v{s}'s Proposition 4.1 gives $\chi(F_7)=\{2^k:k\ge1\}$ \cite{matus1999}, and
+Theorem 1.1 gives
+the same degree set for $F_7^*$. Thus none of
+
+\nopagebreak[4]
+\[
+U_{2,4},\qquad F_7,\qquad F_7^*
+\]
+
+is a minor of $M$. Tutte's excluded-minor theorem for regular matroids
+implies that $M$ is regular \cite[Theorem 6.6.6]{oxley2011}.
+
+Conversely, let $M$ be regular. A totally unimodular representation of
+$M$, reduced modulo $v$, defines a VOA over the ring $\mathbb Z_v$ for
+every integer $v\ge2$: every basis determinant is $\pm1$, hence remains
+a unit. This is proved explicitly in \cite[Lemma 3 and Proposition 7]{chen2025}. In
+particular $6\in\chi(M)$, so $M$ is 6-entropic.
+\end{proof}
+
+
+\begin{proof}[Proof of Corollary 1.3]
+The implication (2)$\Rightarrow$(1) is immediate,
+and Theorem 1.2 gives (3)$\Rightarrow$(2).
+
+It remains to show that (1) forces $v=6$. If $v=2$, the nonregular Fano
+matroid $F_7$ is $v$-entropic. If $v\ge3$ and $v\ne6$, there exists a
+pair of orthogonal Latin squares of order $v$, and hence the nonregular
+matroid $U_{2,4}$ is $v$-entropic. The existence statement is the theorem
+of Bose, Shrikhande, and Parker together with the classical small orders
+\cite[Example 4]{chen2025}; \cite{bose1960}. Therefore (1) fails for every $v\ne6$.
+\end{proof}
+
+
+\section{Scope and relation to previous work}
+
+
+The proof uses several established ingredients whose roles should be kept
+separate from the new argument.
+
+\begin{enumerate}
+\item Mat\'u\v{s} introduced partition representations, classified the
+$M(K_4)$ representations by finite groups, and determined
+$\chi(F_7)$ \cite{matus1999}.
+\item Abbe and Spirkl gave an analytic proof that
+$3\notin\chi(F_7^*)$ \cite[Lemma 9]{abbe2019}. Chen, Cheng, and Bai developed the
+VOA and entropy formulation, proved minor closure and arbitrary-degree
+representability of regular matroids, and later gave an independent
+finite-computation proof of the same degree-three obstruction \cite{chen2025}.
+\item Kalantari and Khazaei recently used the same $M(K_4)$ group slice in
+their degree-four characterization \cite{kalantari2026}. Thus the group normal form itself
+is not claimed as new.
+\item Tutte's excluded-minor characterization and the orthogonal-Latin-square
+existence theorem are classical \cite{oxley2011,bose1960}.
+
+\end{enumerate}
+
+The new point is that the three remaining circuit equations of $F_7^*$
+make the local group normal form global and force exponent two. This yields
+the complete degree set of $F_7^*$, rather than the exclusion of one fixed
+degree. Theorems 1.2 and Corollary 1.3 are consequences at the level of all
+finite matroids.
+
+This result verifies
+$\chi(F_7)=\chi(F_7^*)$ for the Fano pair, but it does not prove the general
+duality conjecture of \cite{chen2025}. Nor does it classify partition representations up
+to partition isotopy; it classifies only the possible degrees.
+
+The literature comparison made for this manuscript found no direct statement
+of Theorem 1.1, Theorem 1.2, or Corollary 1.3 in the sources above. This is a
+bounded prior-art statement, not a claim of absolute global priority.
+
+\section{Computational calibration}
+
+
+The proof is noncomputational. A small verification script accompanies the
+research record only to detect multiplication-order errors in the propagation
+formulas. It checks the full $F_7^*$ VOA conditions for elementary abelian
+2-groups of orders $2,4,8$, and checks that cyclic groups of orders $4,6$
+and the nonabelian group $S_3$ fail at the final circuit as predicted.
+Independent audit calculations also used the dihedral and quaternion groups
+of order eight as noncommutative negative controls.
+
+These finite checks do not establish any universal assertion and are not used
+in the proof.
+
+\section*{Acknowledgement of AI assistance}
+
+
+The author used Codex as an AI-assisted research and writing tool for
+literature organization, symbolic checking, adversarial proof review, and
+manuscript preparation. The author selected the claims, reviewed the evidence,
+and assumes responsibility for the mathematical content and the final text.
+
+\begin{thebibliography}{9}
+\footnotesize
+\raggedright
+
+\bibitem{matus1999}
+F.~Mat\'u\v{s},
+\emph{Matroid representations by partitions},
+Discrete Math. 203 (1999), 169--194.
+\href{https://doi.org/10.1016/S0012-365X(99)00004-7}{doi:10.1016/S0012-365X(99)00004-7}.
+
+\bibitem{chen2025}
+Q.~Chen, M.~Cheng, and B.~Bai,
+\emph{Matroidal entropy functions: constructions, characterizations, and representations},
+IEEE Trans. Inf. Theory 71(4) (2025), 3237--3249.
+\href{https://doi.org/10.1109/TIT.2024.3355942}{doi:10.1109/TIT.2024.3355942}.
+
+\bibitem{abbe2019}
+E.~Abbe and S.~Spirkl,
+\emph{Entropic matroids and their representation},
+Entropy 21(10) (2019), 948.
+\href{https://doi.org/10.3390/e21100948}{doi:10.3390/e21100948}.
+
+\bibitem{kalantari2026}
+M.~H. Kalantari and S.~Khazaei,
+\emph{Four-entropic matroids are quaternary},
+arXiv:2608.20553v1 (2026).
+\href{https://arxiv.org/abs/2608.20553}{arXiv:2608.20553}.
+
+\bibitem{oxley2011}
+J.~Oxley,
+\emph{Matroid Theory}, second edition,
+Oxford University Press, 2011.
+
+\bibitem{bose1960}
+R.~C. Bose, S.~S. Shrikhande, and E.~T. Parker,
+\emph{Further results on the construction of mutually orthogonal Latin squares and the falsity of Euler's conjecture},
+Canad. J. Math. 12 (1960), 189--203.
+\href{https://doi.org/10.4153/CJM-1960-016-5}{doi:10.4153/CJM-1960-016-5}.
+
+\end{thebibliography}
+
+\end{document}
