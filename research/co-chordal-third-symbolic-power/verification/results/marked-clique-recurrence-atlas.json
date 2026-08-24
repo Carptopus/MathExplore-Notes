@@ -1,0 +1,8 @@
+{
+  "scope": "all noncomplete nonisomorphic chordal atlas graphs through max_n; exact d=3,4,5 marked-clique split identities",
+  "max_n": 6,
+  "checked_states": 21023,
+  "failure_count": 0,
+  "first_failure": null,
+  "claim_boundary": "finite destructive verification of proof identities; not a proof of the general theorem"
+}

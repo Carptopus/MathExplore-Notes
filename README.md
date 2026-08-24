@@ -22,6 +22,7 @@ including manuscripts and reproducible verification materials.
 | [Minorizing measures and truncations of measurable lattice-path matroids](research/measurable-lattice-path-matroids/README.md)<br>[PDF](research/measurable-lattice-path-matroids/measurable-lattice-path-matroids.pdf) · [BibTeX](research/measurable-lattice-path-matroids/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22079095) | Measurable matroids, infinite-dimensional convexity, continuous optimization | Determines exactly the basic and full minorizing-measure sets, all real truncation slices, and the exposed extreme points of the full-rank basic corridor | v0.1-beta | Internally verified candidate proof; external review pending |
 | [The face lattice of the irreducible-Ferrers polytope is a product of triangles](research/ferrers-polytope-triangle-product/README.md)<br>[PDF](research/ferrers-polytope-triangle-product/ferrers-polytope-triangle-product.pdf) · [BibTeX](research/ferrers-polytope-triangle-product/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22080499) | Ferrers diagrams, polyhedral combinatorics, coding theory | Proves that the irreducible-Ferrers polytope is combinatorially equivalent to a product of triangles for every $d\geq3$, resolving Conjecture 5.28 of arXiv:2604.27868 | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Partition-representation degrees of the dual Fano matroid](research/dual-fano-partition-degrees/README.md)<br>[PDF](research/dual-fano-partition-degrees/dual-fano-partition-degrees.pdf) · [BibTeX](research/dual-fano-partition-degrees/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22083219) | Matroid theory, information theory, combinatorial designs | Determines $\chi(F_7^*)$ exactly and characterizes regular matroids as precisely the 6-entropic matroids | v0.1.1-beta | Internally verified candidate proof; external review pending |
+| [The third symbolic power of a co-chordal edge ideal is componentwise linear](research/co-chordal-third-symbolic-power/README.md)<br>[PDF](research/co-chordal-third-symbolic-power/co-chordal-third-symbolic-power.pdf) · [BibTeX](research/co-chordal-third-symbolic-power/CITATION.bib) | Commutative algebra, monomial ideals, chordal graphs | Proves componentwise linearity of the third symbolic power for every co-chordal graph over every field | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
 
@@ -293,6 +294,18 @@ it proves that a finite matroid is 6-entropic exactly when it is regular, and
 that six is the unique alphabet size with this property.
 
 - [Manuscript and finite calibration](research/dual-fano-partition-degrees/README.md)
+
+### Third symbolic powers of co-chordal edge ideals
+
+For every finite co-chordal graph $G$ over an arbitrary field, this manuscript proves that
+
+$$
+I(G)^{(3)}
+$$
+
+is componentwise linear. Existing results settle the second power, give counterexamples from the fourth power onward, and leave only the degree-five component undecided for the third power. A marked-clique capacity theorem on chordal graphs proves that this remaining component has a five-linear resolution.
+
+- [Manuscript and finite proof-identity calibration](research/co-chordal-third-symbolic-power/README.md)
 
 ## Status and review policy
 
