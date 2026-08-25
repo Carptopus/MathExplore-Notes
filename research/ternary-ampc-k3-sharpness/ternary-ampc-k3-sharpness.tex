@@ -1,0 +1,405 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newcommand{\A}{\mathbb A}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Lang}{\mathcal L}
+\newcommand{\one}{\mathbf 1}
+
+\hypersetup{
+  pdftitle={A Ternary Word Attaining the Abelian Maximal Pattern Complexity Bound at Pattern Size Three},
+  pdfauthor={Carptopus},
+  pdfsubject={Abelian maximal pattern complexity of a ternary substitution word},
+  pdfkeywords={Abelian maximal pattern complexity, primitive substitution, aperiodic by projection, computer-assisted proof}
+}
+
+\title{A Ternary Word Attaining the Abelian Maximal Pattern\\
+Complexity Bound at Pattern Size Three}
+\author{Carptopus\\\small\texttt{carptopus@163.com}}
+\date{25 August 2026\\\small v0.1-beta; not peer reviewed}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Kamae, Widmer and Zamboni proved that every recurrent word over an alphabet of
+size $r$ which is aperiodic by projection has Abelian maximal pattern
+complexity at least $(r-1)k+1$ at pattern size $k$. Their introduction left
+open whether this bound is attainable when $r\ge3$ and $k\ge3$. We settle the
+smallest unresolved parameter pair under the literature search described
+below. Let $\alpha$ be the fixed point beginning in $0$ of the constant-length
+substitution
+\[
+0\mapsto001,\qquad 1\mapsto020,\qquad 2\mapsto000.
+\]
+We prove that $\alpha$ is recurrent and aperiodic by projection and that
+\[
+p_{\alpha}^{*\mathrm{ab}}(3)=7.
+\]
+The upper bound is computer-assisted but exact. Sparse three-point languages
+obey a residue recursion modulo $3$. A $3\times3$ patch of neighboring
+languages makes this recursion finite-state; the closure contains 938 states
+and covers every pair of nonnegative offsets through their base-$3$ digits.
+Every central state has at most seven Parikh vectors, while the pattern
+$\{0,2,9\}$ realizes seven. The verification program is supplied with a
+canonical transition-table hash and fail-closed checks.
+\end{abstract}
+
+\noindent\textbf{Keywords.} Abelian maximal pattern complexity; infinite word;
+primitive substitution; aperiodic by projection; automatic sequence;
+computer-assisted proof.
+
+\medskip
+\noindent\textbf{2020 Mathematics Subject Classification.} 68R15, 37B10.
+
+\section{Introduction}
+
+Let $\A$ be a finite alphabet and let
+$\alpha=\alpha_0\alpha_1\alpha_2\cdots\in\A^{\N}$. For a finite set
+$S=\{s_1<\cdots<s_k\}\subset\N$, an $S$-factor is
+\[
+\alpha[n+S]=\alpha_{n+s_1}\alpha_{n+s_2}\cdots\alpha_{n+s_k}.
+\]
+Two finite words are Abelian equivalent when they have the same Parikh vector.
+Write $p_\alpha^{\mathrm{ab}}(S)$ for the number of Abelian classes among all
+$S$-factors and
+\[
+p_\alpha^{*\mathrm{ab}}(k)
+=\sup_{|S|=k}p_\alpha^{\mathrm{ab}}(S).
+\]
+
+We call $\alpha$ recurrent if each of its finite factors occurs infinitely
+often. For a nonempty proper subset $B\subsetneq\A$, let
+$\one_B(\alpha)$ be the binary word whose $n$-th term records whether
+$\alpha_n\in B$. The word $\alpha$ is \emph{aperiodic by projection} if
+$\one_B(\alpha)$ is not eventually periodic for every such $B$.
+
+Kamae, Widmer and Zamboni~\cite[Theorem~4]{KWZ} proved that if $\alpha$ is
+recurrent and aperiodic by projection over an $r$-letter alphabet, then
+\begin{equation}
+p_\alpha^{*\mathrm{ab}}(k)\ge(r-1)k+1.
+\label{eq:kwz}
+\end{equation}
+For binary words equality is automatic, and for arbitrary $r$ they gave
+equality examples at $k=2$. Their introduction records the pointwise
+sharpness problem for $r\ge3,k\ge3$. Their Remark~4.2 asks the stronger and
+still separate question whether one word can attain equality for every $k$.
+The survey of Fici and Puzynina~\cite{FP} lists only the previously known
+equality cases. The present note settles $r=3,k=3$, the smallest unresolved
+parameter pair under our current search; it does not answer the stronger
+all-$k$ question.
+
+Our construction is a primitive constant-length substitution rather than the
+2-adic Toeplitz family used in~\cite{KWZ} for $k=2$. The main difficulty is not
+finding seven classes for one pattern, but proving that no three-point pattern
+has eight. A bounded scan over offsets cannot establish that assertion. We
+instead give an exact digit automaton whose finite closure covers all offset
+pairs.
+
+\section{Main result}
+
+Define the length-three substitution $\sigma$ on $\A=\{0,1,2\}$ by
+\begin{equation}
+\sigma(0)=001,\qquad \sigma(1)=020,\qquad \sigma(2)=000.
+\label{eq:substitution}
+\end{equation}
+Since $\sigma(0)$ begins with $0$, the limit
+\[
+\alpha=\lim_{m\to\infty}\sigma^m(0)
+\]
+is a well-defined one-sided fixed point.
+
+\begin{theorem}\label{thm:main}
+The word $\alpha$ is recurrent and aperiodic by projection, and
+\[
+\boxed{p_\alpha^{*\mathrm{ab}}(3)=7.}
+\]
+Thus the lower bound~\eqref{eq:kwz} is sharp for $r=3,k=3$.
+\end{theorem}
+
+The proof occupies Sections~\ref{sec:dynamics}--\ref{sec:certificate}.
+Section~\ref{sec:dynamics} verifies the dynamical hypotheses,
+Section~\ref{sec:recursion} gives the exact sparse-language recursion, and
+Section~\ref{sec:certificate} converts that recursion into a finite
+certificate covering every pattern.
+
+\section{Recurrence and aperiodicity by projection}\label{sec:dynamics}
+
+\begin{proposition}\label{prop:recurrence}
+The substitution $\sigma$ is primitive. Consequently its fixed point
+$\alpha$ is uniformly recurrent.
+\end{proposition}
+
+\begin{proof}
+The word $\sigma(0)$ contains $0,1$, $\sigma(1)$ contains $0,2$, and
+$\sigma(2)$ contains $0$. Iterating at most three further times therefore
+makes every letter occur in the image of every letter. Hence the incidence
+matrix of $\sigma$ is primitive. The standard primitive-substitution theorem
+\cite{Queffelec} implies uniform recurrence of the fixed point.
+\end{proof}
+
+For $i\in\{0,1,2\}$, put
+\[
+\chi_i(n)=\one_{\{\alpha_n=i\}}.
+\]
+Reading~\eqref{eq:substitution} coordinatewise gives
+\begin{align}
+\alpha_{3n}&=0,\nonumber\\
+\chi_2(3n+1)&=\chi_1(n),\nonumber\\
+\chi_1(3n+2)&=\chi_0(n),\nonumber\\
+\chi_0(3n+2)&=1-\chi_0(n).
+\label{eq:digit-identities}
+\end{align}
+Moreover, $\chi_2$ is supported on $1\pmod3$, while $\chi_1$ is supported on
+$2\pmod3$.
+
+\begin{proposition}\label{prop:projection}
+The word $\alpha$ is aperiodic by projection.
+\end{proposition}
+
+\begin{proof}
+Primitivity implies that each letter occurs infinitely often. Suppose first
+that $\chi_0$ is eventually periodic with positive period $p$. If $3\nmid p$,
+the identity $\chi_0(3n)=1$, together with $\gcd(3,p)=1$, forces $\chi_0$
+eventually to be identically one. This contradicts the infinite occurrence of
+$1$ and $2$. If $p=3q$, then the last identity in
+\eqref{eq:digit-identities} shows that $q$ is also an eventual period of
+$\chi_0$. Removing all powers of $3$ from $p$ reduces to the preceding
+contradiction.
+
+If $\chi_1$ is eventually periodic, its support in one residue class modulo
+$3$, together with infinitely many ones, forces every eventual period to be
+divisible by $3$. The third identity in~\eqref{eq:digit-identities} then
+transfers an eventual period divided by $3$ to $\chi_0$, which is impossible.
+The same argument using the second identity transfers eventual periodicity of
+$\chi_2$ first to $\chi_1$ and then to $\chi_0$.
+
+Every nonempty proper subset of a three-letter alphabet is either a singleton
+or the complement of a singleton. Its indicator is therefore one of the
+$\chi_i$, or its complement. No nontrivial projection is eventually periodic.
+\end{proof}
+
+\section{Exact recursion for sparse languages}\label{sec:recursion}
+
+For an ordered integer tuple $C=(c_1,\ldots,c_m)$, define
+\[
+\Lang(C)=\{(\alpha_{n+c_1},\ldots,\alpha_{n+c_m}):
+\text{the tuple occurs for arbitrarily large }n
+\text{ with }n+c_i\ge0\text{ for all }i\}.
+\]
+Adding the same integer to every coordinate does not change $\Lang(C)$.
+Uniform recurrence also ensures that deleting a finite initial segment does
+not change this language. Let
+\[
+f_d(x)=\sigma(x)_d,\qquad d\in\{0,1,2\}.
+\]
+
+\begin{lemma}[residue recursion]\label{lem:recursion}
+Normalize $C$ by subtracting $\min_i c_i$. For each
+$t\in\{0,1,2\}$, put
+\[
+q_i=\left\lfloor\frac{t+c_i}{3}\right\rfloor,
+\qquad d_i\equiv t+c_i\pmod3,
+\]
+and normalize $Q_t=(q_i)_i$ by a common translation. Then
+\begin{equation}
+\Lang(C)=\bigcup_{t=0}^2
+\{(f_{d_1}(x_1),\ldots,f_{d_m}(x_m)):
+(x_1,\ldots,x_m)\in\Lang(Q_t)\}.
+\label{eq:recursion}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Write the translation origin as $n=3u+t$. Each sampled coordinate then lies
+in position $d_i$ of the substituted letter $\alpha_{u+q_i}$. Conversely,
+every occurrence of a child tuple at an arbitrarily large $u$ produces an
+occurrence in the corresponding residue class. Common normalization only
+shifts $u$, and recurrence removes the finite boundary. No coordinate
+reordering is performed.
+\end{proof}
+
+The recursion terminates at span one. The exact two-letter factor set is
+\begin{equation}
+\mathcal F_\alpha(2)=\{00,01,02,10,20\}.
+\label{eq:pairs}
+\end{equation}
+Indeed, internal factors of the three substitution images give
+$00,01,02,20$; every image starts in $0$, while its final letter is $0$ or
+$1$, so crossing a substitution boundary adds only $00$ and $10$.
+
+\section{The finite patch certificate}\label{sec:certificate}
+
+For integers $a,b$, define the nine-cell patch
+\begin{equation}
+K(a,b)=\big(\Lang(0,a+i,b+j)\big)_{i,j\in\{-1,0,1\}}.
+\label{eq:patch}
+\end{equation}
+
+\begin{lemma}[digit transition]\label{lem:transition}
+For every $x,y\in\{0,1,2\}$, there is an explicit deterministic map
+$\Phi_{x,y}$ such that
+\begin{equation}
+K(3a+x,3b+y)=\Phi_{x,y}(K(a,b)).
+\label{eq:transition}
+\end{equation}
+Write $K_{u,v}$ for the $(u,v)$-cell of a patch. For each target cell
+$(i,j)\in\{-1,0,1\}^2$ and $t\in\{0,1,2\}$, set
+\[
+u_t=\left\lfloor\frac{t+x+i}{3}\right\rfloor,
+\qquad
+v_t=\left\lfloor\frac{t+y+j}{3}\right\rfloor,
+\]
+and
+\[
+d_t=(t,\ (t+x+i)\bmod3,\ (t+y+j)\bmod3).
+\]
+Then
+\begin{align}
+[\Phi_{x,y}(K)]_{i,j}
+=\bigcup_{t=0}^2\{&(
+f_{d_{t,0}}(z_0),f_{d_{t,1}}(z_1),f_{d_{t,2}}(z_2)):\nonumber\\[-2mm]
+&(z_0,z_1,z_2)\in K_{u_t,v_t}\}.
+\label{eq:explicit-transition}
+\end{align}
+\end{lemma}
+
+\begin{proof}
+Apply~\eqref{eq:recursion} to each of the nine target cells. After division
+by $3$, each quotient offset differs from $a$ or $b$ by an element of
+$\{-1,0,1\}$. Thus every required child language is already a cell of
+$K(a,b)$; the output digits determine the coordinate maps $f_d$.
+\end{proof}
+
+Starting from $K(0,0)$, close under the nine maps $\Phi_{x,y}$. The fail-closed
+verification obtains the following certificate.
+
+\begin{theorem}[finite closure certificate]\label{thm:certificate}
+The transition closure contains 938 patch states and 8442 directed labelled
+transitions. For the central language of a state, the distribution of the
+number of Parikh vectors is
+\begin{center}
+\begin{tabular}{@{}rr@{}}
+\toprule
+number of vectors & number of states\\
+\midrule
+3 & 3\\
+4 & 246\\
+5 & 223\\
+6 & 285\\
+7 & 181\\
+\bottomrule
+\end{tabular}
+\end{center}
+The maximum is seven. The canonical JSON serialization of the states and all
+labelled transitions has SHA-256 digest
+\begin{center}
+\small\texttt{BBF0CBF7D6E5E23CCEECC71A59644AD4F5DA0D48A1A2A0A219BB292A127CDAAA}.
+\end{center}
+\end{theorem}
+
+\begin{proof}[Why this covers every pattern]
+Let $0\le a,b$. Read the paired base-$3$ digits of $a,b$ from most significant
+to least significant, padding with leading zeros. Repeatedly apply the
+corresponding transition $\Phi_{x,y}$ to $K(0,0)$. Equation
+\eqref{eq:transition} shows inductively that the final state is $K(a,b)$.
+Therefore this finite closure covers every nonnegative offset pair; it is not
+a bounded search over offsets. In particular, every three-point pattern
+$\{s_1<s_2<s_3\}$, after translation to
+$\{0,s_2-s_1,s_3-s_1\}$, has at most seven Abelian classes.
+
+The supplied program cross-checks the Parikh images of the recursive languages
+against a length $3^{10}$ fixed-point prefix for a small offset box, checks
+digit transitions against direct recursive patches for $0\le a,b<100$, and
+aborts unless all state counts, the distribution and the canonical digest
+match the frozen values.
+\end{proof}
+
+\begin{proposition}[sharp pattern]\label{prop:witness}
+For $S=\{0,2,9\}$, the exact Parikh set is
+\[
+\{(0,2,1),(1,0,2),(1,1,1),(1,2,0),
+(2,0,1),(2,1,0),(3,0,0)\}.
+\]
+Hence $p_\alpha^{\mathrm{ab}}(S)=7$.
+\end{proposition}
+
+Combining Theorem~\ref{thm:certificate} and Proposition~\ref{prop:witness}
+proves the complexity equality in Theorem~\ref{thm:main}. Propositions
+\ref{prop:recurrence} and~\ref{prop:projection} verify the hypotheses of
+\eqref{eq:kwz}, providing an independent lower-bound route as well.
+
+\section{Scope and prior-work boundary}
+
+The result establishes sharpness only at $r=3,k=3$. It does not prove that the
+KWZ bound is sharp for all $r\ge3,k\ge3$, and it does not produce a single word
+attaining the bound for every $k$.
+
+The candidate new contribution is the explicit ternary substitution and the
+all-pattern proof that its three-point Abelian maximal pattern complexity is
+seven. Primitive-substitution recurrence and the KWZ lower bound are standard
+inputs. The finite-state method is used here to certify the global upper
+bound; the program is part of the proof package rather than evidence from a
+finite sample.
+
+The literature search covered the original paper~\cite{KWZ}, the
+survey~\cite{FP}, visible citation metadata, and targeted searches for the
+substitution and the exact parameter pair. No direct prior construction was
+found. This is not an absolute-priority claim: unindexed work, different
+notation and concurrent research remain possible until broader expert review.
+
+\section{Reproducibility and responsibility}
+
+The archived verification file is
+\texttt{verification/verify\_ternary\_ampc\_k3.py}, with SHA-256
+\begin{center}
+\small\texttt{7F827D487681F3F6139FBB239E89EAD0A5303C6CE853866B6F6E6E082CE78CC8}.
+\end{center}
+It uses Python 3.11 or later and only the standard library. From the entry
+directory, run
+\begin{center}
+\texttt{python -X utf8 verification/verify\_ternary\_ampc\_k3.py}.
+\end{center}
+The program regenerates the finite closure, checks the frozen counts and
+closure hash, and prints the sharpness witness. No random seed or external
+solver is used. The verification README records the expected output, file
+manifest and evidence boundary.
+
+Carptopus is the responsible author and takes responsibility for the
+mathematical claims and the released materials. OpenAI Codex was used
+extensively for AI-assisted research, proof development, verification and
+writing. The result remains subject to public mathematical review.
+
+\begin{thebibliography}{9}
+
+\bibitem{KWZ}
+T.~Kamae, S.~Widmer and L.~Q.~Zamboni,
+\newblock Abelian maximal pattern complexity of words,
+\newblock \emph{Ergodic Theory Dynam. Systems} 35 (2015), 142--151.
+\newblock \href{https://doi.org/10.1017/etds.2013.51}{doi:10.1017/etds.2013.51}.
+
+\bibitem{FP}
+G.~Fici and S.~Puzynina,
+\newblock Abelian combinatorics on words: a survey,
+\newblock \emph{Comput. Sci. Rev.} 47 (2023), 100532.
+\newblock \href{https://doi.org/10.1016/j.cosrev.2022.100532}{doi:10.1016/j.cosrev.2022.100532}.
+
+\bibitem{Queffelec}
+M.~Queffelec,
+\newblock \emph{Substitution Dynamical Systems---Spectral Analysis},
+\newblock second ed., Lecture Notes in Mathematics 1294, Springer, 2010.
+
+\end{thebibliography}
+
+\end{document}

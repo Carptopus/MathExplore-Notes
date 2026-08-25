@@ -23,6 +23,7 @@ including manuscripts and reproducible verification materials.
 | [The face lattice of the irreducible-Ferrers polytope is a product of triangles](research/ferrers-polytope-triangle-product/README.md)<br>[PDF](research/ferrers-polytope-triangle-product/ferrers-polytope-triangle-product.pdf) · [BibTeX](research/ferrers-polytope-triangle-product/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22080499) | Ferrers diagrams, polyhedral combinatorics, coding theory | Proves that the irreducible-Ferrers polytope is combinatorially equivalent to a product of triangles for every $d\geq3$, resolving Conjecture 5.28 of arXiv:2604.27868 | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Partition-representation degrees of the dual Fano matroid](research/dual-fano-partition-degrees/README.md)<br>[PDF](research/dual-fano-partition-degrees/dual-fano-partition-degrees.pdf) · [BibTeX](research/dual-fano-partition-degrees/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22083219) | Matroid theory, information theory, combinatorial designs | Determines $\chi(F_7^*)$ exactly and characterizes regular matroids as precisely the 6-entropic matroids | v0.1.1-beta | Internally verified candidate proof; external review pending |
 | [The third symbolic power of a co-chordal edge ideal is componentwise linear](research/co-chordal-third-symbolic-power/README.md)<br>[PDF](research/co-chordal-third-symbolic-power/co-chordal-third-symbolic-power.pdf) · [BibTeX](research/co-chordal-third-symbolic-power/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22085466) | Commutative algebra, monomial ideals, chordal graphs | Proves componentwise linearity of the third symbolic power for every co-chordal graph over every field | v0.1-beta | Internally verified candidate proof; external review pending |
+| [A ternary word attaining the Abelian maximal pattern complexity bound at pattern size three](research/ternary-ampc-k3-sharpness/README.md)<br>[PDF](research/ternary-ampc-k3-sharpness/ternary-ampc-k3-sharpness.pdf) · [BibTeX](research/ternary-ampc-k3-sharpness/CITATION.bib) | Combinatorics on words, Abelian complexity, substitution sequences | Constructs a recurrent ternary word, aperiodic by projection, with exact Abelian maximal pattern complexity $p_{\alpha}^{*\mathrm{ab}}(3)=7$ | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
 
@@ -307,6 +308,26 @@ is componentwise linear. Existing results settle the second power, give countere
 
 - [Manuscript and finite proof-identity calibration](research/co-chordal-third-symbolic-power/README.md)
 
+### Ternary Abelian maximal pattern complexity at pattern size three
+
+The fixed point beginning in `0` of the primitive substitution
+
+```text
+0 -> 001,  1 -> 020,  2 -> 000
+```
+
+is recurrent and aperiodic by projection and satisfies
+
+$$
+p_{\alpha}^{*\mathrm{ab}}(3)=7.
+$$
+
+Thus the general lower bound `(r-1)k+1` is attained at `r=3`, `k=3`. The
+global upper bound is certified by an exact 938-state base-three patch
+automaton, while the pattern `{0,2,9}` supplies sharpness.
+
+- [Manuscript and exact verification](research/ternary-ampc-k3-sharpness/README.md)
+
 ## Status and review policy
 
 Entries are research records, not automatically peer-reviewed publications.
@@ -389,3 +410,6 @@ rank-metric codes; Etzion--Silberstein conjecture.
 Entropic matroids; partition representations; variable-strength orthogonal
 arrays; dual Fano matroid; regular matroids; excluded minors; orthogonal Latin
 squares; finite-group representations.
+Combinatorics on words; Abelian maximal pattern complexity; recurrent words;
+aperiodicity by projection; primitive substitutions; automatic sequences;
+Parikh vectors; sparse factors; finite-state verification.
