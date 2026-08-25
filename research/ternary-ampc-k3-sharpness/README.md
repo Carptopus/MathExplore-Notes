@@ -4,6 +4,7 @@
 
 - [Read or download the PDF](ternary-ampc-k3-sharpness.pdf)
 - [BibTeX citation](CITATION.bib)
+- DOI: [10.5281/zenodo.22093018](https://doi.org/10.5281/zenodo.22093018)
 - [LaTeX source](ternary-ampc-k3-sharpness.tex)
 - [Verification code](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
