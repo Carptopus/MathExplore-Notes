@@ -5,6 +5,7 @@
 - [Read or download the PDF](abelian-border-periodicity-thresholds.pdf)
 - [LaTeX source](abelian-border-periodicity-thresholds.tex)
 - [BibTeX citation](CITATION.bib)
+- DOI: [10.5281/zenodo.22100526](https://doi.org/10.5281/zenodo.22100526)
 - [Verification code and certificates](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
