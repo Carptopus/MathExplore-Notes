@@ -1,0 +1,38 @@
+ABELIAN-BORDER-PERIODICITY-0001
+Exact finite-graph certificate summary
+Date: 2026-08-25
+
+[threshold 14, window 36]
+allowed_words=38450
+graph_nodes=38544
+graph_edges=38450
+cyclic_components=1377
+maximum_cyclic_states=13
+branching_components=0
+
+[threshold 15, window 30]
+allowed_words=199420
+graph_nodes=217280
+graph_edges=199420
+cyclic_components=2540
+branching_components=4
+phase_failures=0
+
+[branching components, sorted]
+states=40 internal_edges=42 covered_states=29 uncovered_acyclic=1 witness_period=4 witness_weight=2
+states=40 internal_edges=42 covered_states=29 uncovered_acyclic=1 witness_period=4 witness_weight=2
+states=60 internal_edges=62 covered_states=54 uncovered_acyclic=1 witness_period=14 witness_weight=7
+states=60 internal_edges=62 covered_states=54 uncovered_acyclic=1 witness_period=14 witness_weight=7
+
+Independent implementations: C++17 and Python/NetworkX.
+Python=3.13.11
+NetworkX=3.6.1
+definition_words_checked=131070
+small_controls=(3,6):4;(4,8):10;(5,10):22
+
+[sha256]
+probe_finite_type_cores.py=c77f9321e91f08fd69802ba55a32a1e69e55118ce6ea79ed62d47ce9ebc145f3
+verify.py=f8c9d2e7ba58751d6b5631e096b2298c987ed3043eb24fa7aecff590040c0e8b
+verify_period_bounds.py=99d7acc02954ee27145ee9b295108d5c2a1eb7343fd8c8e836ae37d992646798
+verify_threshold14.cpp=531284073fc20d5c1910d465482a7229e060dc314fdd1e59eb5fda84d8f8aef9
+verify_threshold15.cpp=9c27d77393222ec444759b9ceb653db88383b62b524b727599246e7194242ccc

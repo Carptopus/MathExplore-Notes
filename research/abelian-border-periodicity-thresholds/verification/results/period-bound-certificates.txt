@@ -1,0 +1,16 @@
+ABELIAN-BORDER-PERIODICITY-0001
+Exact cyclic-period certificate summary
+Date: 2026-08-26
+
+[threshold 14]
+nonbranching_cycles=1377
+maximum_least_ordinary_period=13
+canonical_witness=0000000000001
+
+[threshold 15]
+nonbranching_cycles=2536
+maximum_least_abelian_period=14
+canonical_witness=00000000000001
+
+Entry point: verification/verify_period_bounds.py
+Method: deterministic exact post-processing of cycles reconstructed by probe_finite_type_cores.py

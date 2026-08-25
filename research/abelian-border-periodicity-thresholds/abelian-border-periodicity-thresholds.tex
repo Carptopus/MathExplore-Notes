@@ -1,0 +1,527 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{2em}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newcommand{\Pvec}{\mathcal P}
+\newcommand{\N}{\mathbb N}
+
+\hypersetup{
+  pdftitle={Sharp Initial Thresholds for Abelian-Bordered Binary Infinite Words},
+  pdfauthor={Carptopus},
+  pdfsubject={Abelian-bordered factors and ultimate periodicity of binary infinite words},
+  pdfkeywords={Abelian border, infinite word, ultimate periodicity, combinatorics on words, finite overlap graph, computer-assisted proof}
+}
+
+\title{Sharp Initial Thresholds for Abelian-Bordered\\
+Binary Infinite Words}
+\author{Carptopus\\\small\texttt{carptopus@163.com}}
+\date{26 August 2026\\\small v0.1-beta; not peer reviewed}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $\mu_{\mathrm{ab}}(x)$ denote the maximum length of an
+Abelian-unbordered factor of a binary infinite word $x$, with value $\infty$
+when these lengths are unbounded. Charlier, Harju, Puzynina and Zamboni asked
+whether $\mu_{\mathrm{ab}}(x)<\infty$ forces $x$ to be Abelian ultimately
+periodic. We determine the first sharp threshold layers. If
+$\mu_{\mathrm{ab}}(x)\le13$, then $x$ is ultimately periodic in the ordinary
+sense and its eventual period can be chosen of length at most $13$. Both the
+threshold and the period bound are sharp: the least finite value of
+$\mu_{\mathrm{ab}}$ attained by a non-ultimately-periodic binary word is $14$.
+If $\mu_{\mathrm{ab}}(x)\le14$, then $x$ is Abelian ultimately periodic with
+Abelian period length at most $14$, again sharply.
+
+The upper bounds are computer-assisted but exact. We classify all recurrent
+cores of two finite overlap graphs. At threshold $14$, every cyclic strongly
+connected component is a directed cycle of length at most $13$. At threshold
+$15$, all but four cyclic components are directed cycles, and the four
+branching components are absorbed by closed Parikh phases of lengths $4$ or
+$14$. A separate exact computation establishes the sharp period bounds.
+
+We also prove a non-computational sufficient condition valid at arbitrary
+thresholds. If the frequency of $1$ in $x$ is the reduced fraction $p/q$,
+$M=\mu_{\mathrm{ab}}(x)<\infty$, and $M<2q$, then $x$ is Abelian ultimately
+periodic with blocks of length $q$ and weight $p$. The general question
+remains open outside these regimes.
+\end{abstract}
+
+\noindent\textbf{Keywords.} Abelian border; infinite word; ultimate
+periodicity; combinatorics on words; finite overlap graph; computer-assisted
+proof.
+
+\medskip
+\noindent\textbf{2020 Mathematics Subject Classification.} 68R15, 05A05.
+
+\section{Introduction}
+
+A nonempty finite word is bordered when it has a nonempty proper prefix equal
+to a suffix. Ehrenfeucht and Silberger~\cite{ES} proved that an infinite word
+is purely periodic exactly when it has only finitely many unbordered factors.
+Replacing equality by Abelian equivalence gives a natural commutative
+analogue: two words are Abelian equivalent when they have the same Parikh
+vector, and a word is Abelian bordered when a nonempty proper prefix is
+Abelian equivalent to a suffix.
+
+Charlier, Harju, Puzynina and Zamboni~\cite{CHPZ} asked whether a binary
+infinite word having only finitely many Abelian-unbordered factors must be
+Abelian ultimately periodic. They constructed aperiodic words all of whose
+factors of length at least $15$ are Abelian bordered, but their examples
+remain Abelian periodic. The problem was still listed as open in the survey
+of Fici and Puzynina~\cite[Problem~42]{FP}.
+
+For a binary infinite word $x$, define
+\[
+\mu_{\mathrm{ab}}(x)=\sup\{\,|u|:u\text{ is an Abelian-unbordered factor of }x\,\}.
+\]
+Thus the open problem asks whether $\mu_{\mathrm{ab}}(x)<\infty$ implies
+Abelian ultimate periodicity. Our first result determines the exact initial
+boundary at which ordinary ultimate periodicity can fail.
+
+\begin{theorem}\label{thm:ordinary}
+If $\mu_{\mathrm{ab}}(x)\le13$, then $x$ is ultimately periodic and its
+eventual period can be chosen of length at most $13$. Both constants are
+sharp. In particular,
+\[
+\min\{\mu_{\mathrm{ab}}(x):x\text{ is not ultimately periodic and }
+\mu_{\mathrm{ab}}(x)<\infty\}=14.
+\]
+\end{theorem}
+
+The first layer permitting ordinary aperiodicity still satisfies the desired
+Abelian conclusion.
+
+\begin{theorem}\label{thm:abelian}
+If $\mu_{\mathrm{ab}}(x)\le14$, then $x$ is Abelian ultimately periodic with
+Abelian period length at most $14$. The period bound $14$ is sharp.
+\end{theorem}
+
+Theorems~\ref{thm:ordinary} and~\ref{thm:abelian} are proved by finite
+certificates which cover every infinite word satisfying the corresponding
+threshold condition; they are not bounded-prefix experiments. Our second
+type of result comes from the rational frequency and bounded discrepancy
+forced by the hypothesis.
+
+\begin{theorem}\label{thm:denominator}
+Let $M=\mu_{\mathrm{ab}}(x)<\infty$, and write the frequency of $1$ as the
+reduced fraction $p/q$. If $M<2q$, then $x$ is Abelian ultimately periodic.
+More precisely, after deleting a finite prefix, $x$ factors into consecutive
+blocks of length $q$, each containing exactly $p$ occurrences of $1$.
+\end{theorem}
+
+Theorem~\ref{thm:denominator} covers an infinite parameter regime but not the
+whole open problem. The remaining difficulty begins when the extremal
+discrepancy layer can have several possible return lengths.
+
+\section{Preliminaries}
+
+Let $x=x_0x_1x_2\cdots\in\{0,1\}^{\N}$. For a finite binary word $u$, its
+Parikh vector is
+\[
+\Pvec(u)=(|u|_0,|u|_1).
+\]
+Words $u,v$ are Abelian equivalent, written $u\sim_{\mathrm{ab}}v$, when
+$\Pvec(u)=\Pvec(v)$. A word $u$ of length $L$ has an Abelian border of length
+$k$ if $1\le k<L$ and its prefix and suffix of length $k$ are Abelian
+equivalent. If $k>L/2$, deleting the common overlap from the two ends produces
+an Abelian border of length $L-k<L/2$. It is therefore enough to consider
+\[
+1\le k\le\lfloor L/2\rfloor.
+\]
+
+An infinite word is ultimately periodic if it has the form $uv^\omega$. It
+is Abelian ultimately periodic if it admits a factorization
+\[
+x=uv_0v_1v_2\cdots,
+\qquad v_i\sim_{\mathrm{ab}}v_j\quad(i,j\ge0).
+\]
+The common blocks consequently have the same length and the same number of
+ones. We call that common length an Abelian period length.
+
+For integers $C\le N$, call a binary word of length $N$ $(C,N)$-admissible if
+every one of its factors whose length lies in $[C,N]$ is Abelian bordered.
+
+\section{Finite overlap certificates}
+
+\subsection{The overlap graph}
+
+Define a finite directed labeled graph $G_{C,N}$ as follows. Its vertices are
+all length-$(N-1)$ prefixes and suffixes of $(C,N)$-admissible words. Every
+admissible word $w=w_0w_1\cdots w_{N-1}$ gives the edge
+\[
+w_0\cdots w_{N-2}\longrightarrow w_1\cdots w_{N-1},
+\]
+labeled by $w_{N-1}$.
+
+If every factor of an infinite word $x$ of length at least $C$ is Abelian
+bordered, then its consecutive length-$N$ windows form an infinite path in
+$G_{C,N}$. Since the condensation of a finite directed graph is acyclic, the
+path eventually remains inside a strongly connected component containing a
+directed cycle.
+
+\begin{lemma}\label{lem:cycle}
+Let $H$ be a finite strongly connected directed simple graph. If the number
+of internal edges of $H$ equals the number of vertices, then $H$ is a directed
+cycle.
+\end{lemma}
+
+\begin{proof}
+Every vertex of a strongly connected graph has positive internal indegree and
+outdegree. The sums of the internal indegrees and outdegrees both equal the
+number of edges. Equality with the number of vertices forces every internal
+indegree and outdegree to be one. Thus $H$ is a directed cycle.
+\end{proof}
+
+An infinite path which eventually remains in such a component has an
+ultimately periodic label sequence.
+
+\subsection{Closed Parikh phases}
+
+Branching components require a weaker certificate. Let $H$ be a strongly
+connected component, let $\ell\ge1$, and let $0\le m\le\ell$. A set
+$Q_{\ell,m}\subseteq V(H)$ is a closed $(\ell,m)$-phase if every
+length-$\ell$ path in $H$ beginning in $Q_{\ell,m}$ has label weight $m$ and
+terminates in $Q_{\ell,m}$.
+
+\begin{lemma}\label{lem:phase}
+Every infinite path in $H$ which visits $Q_{\ell,m}$ factors from that visit
+onward into label blocks of length $\ell$ and weight $m$.
+\end{lemma}
+
+\begin{proof}
+Apply the two defining properties successively to consecutive length-$\ell$
+path segments. Each segment has the same binary Parikh vector
+$(\ell-m,m)$, and its terminal state is again in the phase.
+\end{proof}
+
+For fixed $(\ell,m)$, the verification program computes the greatest closed
+phase by iterating the monotone operator
+\[
+\Phi_{\ell,m}(Q)=\{v\in V(H):\text{ every length-}\ell\text{ path from }v
+\text{ has weight }m\text{ and ends in }Q\}
+\]
+downward from $V(H)$. Stabilization is exact because $H$ is finite. Several
+closed phases may be used at once.
+
+\begin{lemma}\label{lem:absorb}
+Suppose $Q$ is a union of closed Parikh phases in $H$, and the subgraph
+induced by $V(H)\setminus Q$ is acyclic. Then every infinite path in $H$ is
+Abelian ultimately periodic.
+\end{lemma}
+
+\begin{proof}
+An infinite path cannot remain forever in a finite acyclic graph, so it
+eventually enters one of the closed phases contained in $Q$.
+Lemma~\ref{lem:phase} then gives an Abelian periodic factorization of its
+label tail.
+\end{proof}
+
+These lemmas reduce both upper bounds to exact finite graph statements.
+
+\section{Exact classification of the first two layers}
+
+The admissible words and overlap graphs were constructed independently in
+C++ and Python. The Python verification also exhaustively compares the two
+definitions of Abelian borderedness on all $131{,}070$ nonempty binary words
+of length at most $16$, and checks small overlap graphs by brute force.
+
+\begin{proposition}\label{prop:c14}
+For $(C,N)=(14,36)$, the graph $G_{14,36}$ has
+\[
+\begin{array}{lr}
+\text{admissible length-36 words} & 38{,}450,\\
+\text{vertices} & 38{,}544,\\
+\text{cyclic strongly connected components} & 1{,}377.
+\end{array}
+\]
+Every cyclic strongly connected component is a directed cycle, and the
+largest such cycle has $13$ states.
+\end{proposition}
+
+\begin{proof}[Proof of the upper bound in Theorem~\ref{thm:ordinary}]
+If $\mu_{\mathrm{ab}}(x)\le13$, every factor of length at least $14$ is
+Abelian bordered. The length-$36$ windows of $x$ therefore form an infinite
+path in $G_{14,36}$. Eventually the path remains in a cyclic strongly
+connected component. Proposition~\ref{prop:c14} and Lemma~\ref{lem:cycle}
+show that this component is a directed cycle of length at most $13$. Hence
+$x$ is ultimately periodic with eventual period length at most $13$.
+\end{proof}
+
+\begin{proposition}\label{prop:c15}
+For $(C,N)=(15,30)$, the graph $G_{15,30}$ has
+\[
+\begin{array}{lr}
+\text{admissible length-30 words} & 199{,}420,\\
+\text{vertices} & 217{,}280,\\
+\text{cyclic strongly connected components} & 2{,}540.
+\end{array}
+\]
+Exactly four cyclic components branch. Two have $40$ vertices and $42$
+edges; in each, closed phases include a phase of length $4$ and weight $2$,
+their union covers $29$ vertices, and the uncovered induced subgraph is
+acyclic. The other two have $60$ vertices and $62$ edges; closed phases
+include a phase of length $14$ and weight $7$, their union covers $54$
+vertices, and the uncovered induced subgraph is acyclic.
+
+The other $2{,}536$ cyclic components are directed cycles. A separate exact
+cycle-label post-processing computation shows that every one of these cycles
+has an Abelian period length at most $14$.
+\end{proposition}
+
+\begin{proof}[Proof of the upper bound in Theorem~\ref{thm:abelian}]
+If $\mu_{\mathrm{ab}}(x)\le14$, the length-$30$ windows of $x$ form an
+infinite path in $G_{15,30}$. If its eventual component is one of the four
+branching components, Proposition~\ref{prop:c15} and Lemma~\ref{lem:absorb}
+give a block factorization of length $4$ or $14$. Otherwise the eventual
+component is a directed cycle whose label word has an Abelian period of
+length at most $14$. In all cases $x$ is Abelian ultimately periodic with an
+Abelian period length at most $14$.
+\end{proof}
+
+The numerical assertions in Propositions~\ref{prop:c14} and~\ref{prop:c15}
+are certificate-bearing finite claims. The verification entry points and
+fixed outputs are described in Section~\ref{sec:verification}.
+
+\section{Sharpness}
+
+\subsection{The threshold for ordinary periodicity}
+
+Charlier et al.~\cite[Proposition~2 and Remark~2]{CHPZ} use the two codewords
+\[
+a=010100110011,
+\qquad b=0101001100110011.
+\]
+Any infinite concatenation of $a$ and $b$ has every factor of length at least
+$15$ Abelian bordered. Choosing a non-ultimately-periodic codeword selector
+produces a word which is not ultimately periodic: in the aligned length-$4$
+block alphabet, the block $0101$ marks the beginning of a codeword and is
+followed by two or three copies of $0011$, so the selector can be recovered
+from the binary word.
+
+The same construction contains the factor
+\[
+u=01001100110011
+\]
+of length $14$. For border lengths $k=1,\ldots,7$, the numbers of ones in the
+corresponding prefixes and suffixes are respectively
+\[
+(0,1),(1,2),(1,2),(1,2),(2,3),(3,4),(3,4).
+\]
+Thus no such $k$ is an Abelian border. A border longer than $7$ would, after
+deleting the common overlap, give a shorter Abelian border. Hence $u$ is
+Abelian unbordered and the constructed word has $\mu_{\mathrm{ab}}=14$.
+Together with Theorem~\ref{thm:ordinary} this proves the exact threshold
+assertion.
+
+\subsection{Sharp period bounds}
+
+Let $w=10^{12}$. The periodic word $w^\omega$ has least ordinary period $13$:
+for every $1\le p<13$, its symbol at position $0$ differs from the symbol at
+position $p$. Every factor of length $L\ge14$ has the ordinary border of
+length $L-13$. On the other hand, $w$ is Abelian unbordered because for
+$1\le k\le6$ its prefix of length $k$ has one occurrence of $1$, while its
+suffix has none. Therefore
+\[
+\mu_{\mathrm{ab}}(w^\omega)=13,
+\]
+and the period-length bound in Theorem~\ref{thm:ordinary} is sharp.
+
+Similarly, put $v=10^{13}$. Then $v$ is Abelian unbordered, while every factor
+of $v^\omega$ of length at least $15$ is ordinarily bordered. Hence
+\[
+\mu_{\mathrm{ab}}(v^\omega)=14.
+\]
+Every block in an Abelian periodic factorization of a tail of $v^\omega$ must
+have the word's frequency $1/14$, so its length is a multiple of $14$. Thus
+the least Abelian period length is $14$, proving sharpness in
+Theorem~\ref{thm:abelian}.
+
+\section{A frequency-denominator criterion}
+
+We now prove Theorem~\ref{thm:denominator}. Let
+\[
+A(n)=\sum_{j=0}^{n-1}x_j.
+\]
+Having only finitely many Abelian-unbordered factors implies having only
+finitely many weakly Abelian-unbordered factors, as used in the proof of
+\cite[Theorem~5]{CHPZ}. Lemmas 3 and 4 of~\cite{CHPZ} therefore imply that
+$x$ is balanced and has rational letter frequencies. Write the frequency of
+$1$ in lowest terms as $p/q$ and define the integer discrepancy
+\[
+z_n=qA(n)-pn.
+\]
+The bounded-deviation formulation of balance in
+\cite[Proposition~1]{CHPZ} implies that the set $\{z_n:n\ge0\}$ is finite.
+
+\begin{lemma}\label{lem:border-discrepancy}
+For $i\ge0$, $L\ge1$, and $1\le k\le L/2$, the factor $x[i,i+L)$ has an
+Abelian border of length $k$ if and only if
+\[
+z_{i+k}+z_{i+L-k}=z_i+z_{i+L}.
+\tag{6.1}
+\]
+\end{lemma}
+
+\begin{proof}
+The prefix and suffix of length $k$ contain the same number of ones exactly
+when
+\[
+A(i+k)-A(i)=A(i+L)-A(i+L-k).
+\]
+Substituting $qA(n)=z_n+pn$ cancels all linear terms and gives (6.1).
+\end{proof}
+
+Put $M=\mu_{\mathrm{ab}}(x)$ and $C=M+1$. Every factor of length at least
+$C$ is Abelian bordered. Choose a value $R$ which occurs infinitely often
+among the $z_n$ and is maximal among the infinitely recurrent values. After
+deleting a finite prefix, no value larger than $R$ occurs. Write the
+successive occurrences of $R$ as
+\[
+s_0<s_1<s_2<\cdots
+\]
+and set $g_i=s_{i+1}-s_i$.
+
+\begin{lemma}\label{lem:gaps}
+For every $i$,
+\[
+1\le g_i<C
+\qquad\text{and}\qquad
+q\mid g_i.
+\]
+\end{lemma}
+
+\begin{proof}
+Suppose $g_i\ge C$. Apply the Abelian-border condition and
+Lemma~\ref{lem:border-discrepancy} to the factor $x[s_i,s_{i+1})$. For some
+$1\le k\le g_i/2$,
+\[
+z_{s_i+k}+z_{s_{i+1}-k}=z_{s_i}+z_{s_{i+1}}=2R.
+\]
+Both terms on the left are at most $R$, so both equal $R$. At least one of
+the indicated positions lies strictly between $s_i$ and $s_{i+1}$,
+contradicting their consecutiveness. Thus $g_i<C$.
+
+Equal discrepancy at the endpoints gives
+\[
+0=z_{s_{i+1}}-z_{s_i}
+=q\bigl(A(s_{i+1})-A(s_i)\bigr)-pg_i.
+\]
+Since $\gcd(p,q)=1$, it follows that $q\mid g_i$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:denominator}]
+Assume $M<2q$. Then $C=M+1\le2q$. Write $g_i=r_iq$, where $r_i$ is a
+positive integer. Lemma~\ref{lem:gaps} gives
+\[
+0<r_i=\frac{g_i}{q}<\frac{C}{q}\le2,
+\]
+and hence $r_i=1$. Thus every $g_i=q$.
+
+For every $i$, the block $x[s_i,s_{i+1})$ has length $q$, and equality of
+endpoint discrepancies yields
+\[
+q\,|x[s_i,s_{i+1})|_1-pq=0.
+\]
+Every such block therefore contains exactly $p$ ones. These consecutive
+blocks cover the tail beginning at $s_0$, and they all have Parikh vector
+$(q-p,p)$. This is an Abelian ultimately periodic factorization with period
+length $q$.
+\end{proof}
+
+When $M\ge2q$, the maximal discrepancy layer may have several return lengths
+$q,2q,\ldots$. The argument above no longer selects a single block length.
+Controlling only that extremal layer is not sufficient in general; the
+unresolved problem requires compatibility with the other discrepancy levels.
+
+\section{Verification and reproducibility}\label{sec:verification}
+
+The finite results can be reconstructed from the verification material
+distributed with this manuscript. The principal checks are:
+\begin{enumerate}
+\item exhaustive agreement of direct and prefix-sum Abelian-border tests on
+all nonempty binary words of length at most $16$;
+\item brute-force controls for $(C,N)=(3,6),(4,8),(5,10)$;
+\item independent C++ and Python reconstruction of the $G_{14,36}$ and
+$G_{15,30}$ component certificates;
+\item greatest-fixed-point computation of the closed Parikh phases in the
+four branching components and acyclicity of the uncovered subgraphs;
+\item exact cyclic ordinary-period and Abelian-period computations, including
+the two sharp witnesses.
+\end{enumerate}
+
+From the project entry directory, run
+\begin{verbatim}
+python -X utf8 verification\verify.py
+python -X utf8 verification\verify_period_bounds.py
+\end{verbatim}
+The C++17 sources are \path{verification\verify_threshold14.cpp} and
+\path{verification\verify_threshold15.cpp}. The programs use exhaustive
+finite graph traversal; no random sampling, floating-point comparison, SAT
+solver, or unverified external dataset enters the stated certificates.
+
+\section{Scope and prior-work boundary}
+
+The present results do not solve the full question of Charlier et al. They
+establish the sharp initial ordinary-periodicity threshold, the next Abelian
+periodicity layer with a sharp period bound, and a sufficient condition
+depending on the denominator of the rational frequency.
+
+A targeted search of the original paper, the 2022 survey, and indexed
+follow-up literature found no result directly covering these statements.
+This is an internal novelty assessment, not a claim of exhaustive global
+priority. The manuscript has not undergone external expert review or formal
+peer review.
+
+Filimonova and Puzynina~\cite{FilimonovaPuzynina} recently characterized
+Abelian periodicity for purely morphic binary words. Their object class and
+hypotheses differ from the Abelian-border threshold conditions considered
+here.
+
+\section*{AI-assisted research and writing disclosure}
+
+The author used OpenAI Codex for literature triage, finite-search
+implementation, exact-certificate checking, proof stress-testing, and
+language editing. The mathematical statements, source selection, released
+artifacts, and decision to publish remain the responsibility of Carptopus.
+
+\begin{thebibliography}{9}
+
+\bibitem{CHPZ}
+E.~Charlier, T.~Harju, S.~Puzynina and L.~Q.~Zamboni,
+\newblock Abelian bordered factors and periodicity,
+\newblock \emph{European J. Combin.} 51 (2016), 407--418.
+\newblock \href{https://doi.org/10.1016/j.ejc.2015.07.003}{doi:10.1016/j.ejc.2015.07.003}.
+
+\bibitem{FP}
+G.~Fici and S.~Puzynina,
+\newblock Abelian combinatorics on words: a survey,
+\newblock \emph{Comput. Sci. Rev.} 47 (2023), 100532.
+\newblock \href{https://doi.org/10.1016/j.cosrev.2022.100532}{doi:10.1016/j.cosrev.2022.100532}.
+
+\bibitem{ES}
+A.~Ehrenfeucht and D.~M.~Silberger,
+\newblock Periodicity and unbordered segments of words,
+\newblock \emph{Discrete Math.} 26(2) (1979), 101--109.
+\newblock \href{https://doi.org/10.1016/0012-365X(79)90116-X}{doi:10.1016/0012-365X(79)90116-X}.
+
+\bibitem{FilimonovaPuzynina}
+A.~Filimonova and S.~Puzynina,
+\newblock On Abelian periodicity of purely morphic words,
+\newblock arXiv:2605.30306v1 (2026).
+\newblock \href{https://doi.org/10.48550/arXiv.2605.30306}{doi:10.48550/arXiv.2605.30306}.
+
+\end{thebibliography}
+
+\end{document}

@@ -24,6 +24,7 @@ including manuscripts and reproducible verification materials.
 | [Partition-representation degrees of the dual Fano matroid](research/dual-fano-partition-degrees/README.md)<br>[PDF](research/dual-fano-partition-degrees/dual-fano-partition-degrees.pdf) · [BibTeX](research/dual-fano-partition-degrees/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22083219) | Matroid theory, information theory, combinatorial designs | Determines $\chi(F_7^*)$ exactly and characterizes regular matroids as precisely the 6-entropic matroids | v0.1.1-beta | Internally verified candidate proof; external review pending |
 | [The third symbolic power of a co-chordal edge ideal is componentwise linear](research/co-chordal-third-symbolic-power/README.md)<br>[PDF](research/co-chordal-third-symbolic-power/co-chordal-third-symbolic-power.pdf) · [BibTeX](research/co-chordal-third-symbolic-power/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22085466) | Commutative algebra, monomial ideals, chordal graphs | Proves componentwise linearity of the third symbolic power for every co-chordal graph over every field | v0.1-beta | Internally verified candidate proof; external review pending |
 | [A ternary word attaining the Abelian maximal pattern complexity bound at pattern size three](research/ternary-ampc-k3-sharpness/README.md)<br>[PDF](research/ternary-ampc-k3-sharpness/ternary-ampc-k3-sharpness.pdf) · [BibTeX](research/ternary-ampc-k3-sharpness/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22093018) | Combinatorics on words, Abelian complexity, substitution sequences | Constructs a recurrent ternary word, aperiodic by projection, with exact Abelian maximal pattern complexity $p_{\alpha}^{*\mathrm{ab}}(3)=7$ | v0.1-beta | Internally verified candidate proof; external review pending |
+| [Sharp initial thresholds for Abelian-bordered binary infinite words](research/abelian-border-periodicity-thresholds/README.md)<br>[PDF](research/abelian-border-periodicity-thresholds/abelian-border-periodicity-thresholds.pdf) · [BibTeX](research/abelian-border-periodicity-thresholds/CITATION.bib) | Combinatorics on words, Abelian borders, ultimate periodicity | Proves the sharp ordinary-periodicity threshold $13$, the next sharp Abelian-periodicity layer at $14$, and a frequency-denominator sufficient condition | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
 
@@ -328,6 +329,22 @@ automaton, while the pattern `{0,2,9}` supplies sharpness.
 
 - [Manuscript and exact verification](research/ternary-ampc-k3-sharpness/README.md)
 
+### Sharp Abelian-border periodicity thresholds
+
+For a binary infinite word $x$, let $\mu_{\mathrm{ab}}(x)$ be the maximum
+length of an Abelian-unbordered factor, when finite. This manuscript proves
+that $\mu_{\mathrm{ab}}(x)\leq13$ forces ordinary ultimate periodicity with
+sharp period bound $13$, while $\mu_{\mathrm{ab}}(x)\leq14$ forces Abelian
+ultimate periodicity with sharp Abelian-period bound $14$. Hence the minimum
+finite value among non-ordinarily-periodic words is exactly $14$.
+
+More generally, if the frequency of $1$ is the reduced fraction $p/q$ and
+$\mu_{\mathrm{ab}}(x)<2q$, then the tail splits into consecutive length-$q$
+blocks of weight $p$. Exact finite overlap graphs and independent Python/C++
+implementations certify the two initial threshold layers.
+
+- [Manuscript and exact verification](research/abelian-border-periodicity-thresholds/README.md)
+
 ## Status and review policy
 
 Entries are research records, not automatically peer-reviewed publications.
@@ -412,4 +429,6 @@ arrays; dual Fano matroid; regular matroids; excluded minors; orthogonal Latin
 squares; finite-group representations.
 Combinatorics on words; Abelian maximal pattern complexity; recurrent words;
 aperiodicity by projection; primitive substitutions; automatic sequences;
-Parikh vectors; sparse factors; finite-state verification.
+Parikh vectors; sparse factors; finite-state verification; Abelian borders;
+Abelian-unbordered factors; ultimate periodicity; bounded discrepancy; finite
+overlap graphs.
