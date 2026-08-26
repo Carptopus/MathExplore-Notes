@@ -5,6 +5,7 @@
 - [Read or download the PDF](antichain-box-real-rootedness.pdf)
 - [LaTeX source](antichain-box-real-rootedness.tex)
 - [BibTeX citation](CITATION.bib)
+- DOI: [10.5281/zenodo.22112709](https://doi.org/10.5281/zenodo.22112709)
 - [Exact verification](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
