@@ -1,16 +1,16 @@
-# Real-rootedness of antichain polynomials for [2] x [m] x [n]
+# Real-rootedness, palindromicity, and gamma-positivity of antichain polynomials for [2] x [m] x [n]
 
 ## Manuscript
 
 - [Read or download the PDF](antichain-box-real-rootedness.pdf)
 - [LaTeX source](antichain-box-real-rootedness.tex)
 - [BibTeX citation](CITATION.bib)
-- DOI: [10.5281/zenodo.22112709](https://doi.org/10.5281/zenodo.22112709)
+- Concept DOI: [10.5281/zenodo.22112708](https://doi.org/10.5281/zenodo.22112708)
 - [Exact verification](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
 - Contact: [carptopus@163.com](mailto:carptopus@163.com)
-- Version: v0.1-beta (26 August 2026)
+- Version: v0.2-beta (27 August 2026)
 - Manuscript and documentation license: [CC BY 4.0](LICENSE.md)
 - Verification-code license: [MIT](verification/LICENSE-CODE-MIT.txt)
 - Status: internally verified candidate proof; external mathematical review pending.
@@ -24,12 +24,22 @@ N_{[2]\times[m]\times[n]}(x)=\sum_A x^{|A|}
 $$
 
 be the antichain generating polynomial of the product poset. The manuscript
-proves that every zero of this polynomial is real and negative. This proves
-Conjecture 4.3 of Ding and Dong (arXiv:1905.06692).
+proves:
 
-It also proves the previously unproved $2\times2$ determinantal formula found
-experimentally by He, Langner, and Witek for the associated Zhang--Zhang
-polynomial, after making the required unit variable shift explicit.
+1. every zero of this polynomial is real and negative, proving Ding and
+   Dong's Conjecture 4.3;
+2. the polynomial is palindromic if and only if $|m-n|=1$; and
+3. in precisely these adjacent-parameter cases, all gamma coefficients are
+   strictly positive.
+
+The latter two conclusions prove Ding and Dong's Conjecture 4.5 and verify
+their general gamma-positivity conjecture for the complete subfamily
+$k=2$, $P=[m]\times[n]$.
+
+The manuscript also proves the previously unproved $2\times2$ determinantal
+formula found experimentally by He, Langner, and Witek for the associated
+Zhang--Zhang polynomial, after making the required unit variable shift
+explicit.
 
 ## Proof structure
 
@@ -43,30 +53,42 @@ two linear combinations of adjacent Jacobi polynomials. Strict interlacing and
 explicit endpoint signs place all finite zeros in $(-1,1)$; transforming back
 places every zero of the antichain polynomial in $(-\infty,0)$.
 
+For palindromicity, the proof first derives the necessary degree condition and
+then uses the adjacent Jacobi symmetry to establish sufficiency. Negative real
+roots occur in reciprocal pairs, while an explicit nonzero value at $x=-1$
+rules out a central factor; this makes every gamma coefficient strictly
+positive.
+
 ## Verification
 
-The supplied Python program independently checks:
+The supplied programs independently check two evidence layers:
 
-- exact antichain enumeration against the determinant for 16 parameter pairs;
-- the tail-switch bijection and canonical inverse on 5,226 negative objects;
-- a deliberately incorrect off-diagonal index and a noncanonical inverse cut;
-- Jacobi connection identities for 36 parameter pairs;
-- exact transformed factorizations for 20 parameter pairs; and
-- numerical negative-real-root calibration for 49 parameter pairs.
+- `verification/verify.py` checks exact enumeration, the tail-switching
+  bijection and inverse, Jacobi identities, transformed factorizations,
+  negative-real-root calibration, and two destructive controls;
+- `verification/verify_palindromicity.py` checks the Jacobi symmetry identities,
+  the palindromicity classification on 144 parameter pairs, strict gamma
+  coefficients in 20 adjacent cases, the exact signed value at $x=-1$, and
+  square/gap-two destructive controls.
 
 These finite checks guard the implementation and boundary cases; the general
-claim rests on the proof in the manuscript.
+claims rest on the proofs in the manuscript.
 
 ## Scope and prior-work boundary
 
-The theorem covers the two-layer product $[2]\times[m]\times[n]$. It does not
-claim a corresponding theorem for $[k]\times[m]\times[n]$ with $k>2$, nor
-does it address the separate gamma-positivity conjecture for a related family.
+The theorem gives a complete result for the two-layer product
+$[2]\times[m]\times[n]$. It does not claim a corresponding classification for
+$[k]\times[m]\times[n]$ with $k>2$.
 
-A targeted search of the original conjecture, the determinantal paper, the
-$O(2,m,n)$ literature, and extended strict order-polynomial work found no
-direct prior proof of either main theorem. This records the search boundary;
-it is not a claim of exhaustive worldwide priority.
+Ding and Dong's necessary condition already implies that palindromicity in the
+two-layer rectangular family can occur only when $|m-n|=1$. The new contribution
+is the converse, the exact if-and-only-if classification, and strict gamma
+positivity in every adjacent case, combined with the real-rootedness and
+determinantal results already released in v0.1.
+
+A targeted search found no direct prior proof of the retained new claims. This
+records the search boundary; it is not a claim of exhaustive worldwide
+priority.
 
 ## Reproduction
 
@@ -74,11 +96,13 @@ With Python 3.11 or newer and SymPy 1.14.0 installed, run from this entry
 directory:
 
 ```powershell
+python -m pip install -r verification\requirements.txt
 python -X utf8 verification\verify.py
+python -X utf8 verification\verify_palindromicity.py
 ```
 
-All seven positive checks must print `PASS`; the final `BOUNDARY` line states
-that finite calibration does not replace the general proof.
+Both programs must complete successfully and report `PASS`. Their finite
+calibration does not replace the general proof.
 
 ## AI-assisted research disclosure
 
@@ -89,7 +113,7 @@ contains the full disclosure and responsibility statement.
 
 ## Keywords
 
-Antichain generating polynomial; real-rooted polynomial; product poset;
-Jacobi polynomial; lattice path; tail-switching bijection; Zhang--Zhang
-polynomial; extended strict order polynomial; combinatorics; AI-assisted
-mathematics.
+Antichain generating polynomial; real-rooted polynomial; palindromicity;
+gamma-positivity; product poset; Jacobi polynomial; lattice path;
+tail-switching bijection; Zhang--Zhang polynomial; extended strict order
+polynomial; combinatorics; AI-assisted mathematics.

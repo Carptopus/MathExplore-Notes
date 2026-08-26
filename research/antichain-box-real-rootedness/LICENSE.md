@@ -2,7 +2,7 @@
 
 ## Licensed work
 
-- Title: *Real-rootedness of antichain polynomials for [2] x [m] x [n]*
+- Title: *Real-rootedness, palindromicity, and gamma-positivity of antichain polynomials for [2] x [m] x [n]*
 - Author and licensor: Carptopus
 - Contact: [carptopus@163.com](mailto:carptopus@163.com)
 - Source: <https://github.com/Carptopus/MathExplore-Notes>

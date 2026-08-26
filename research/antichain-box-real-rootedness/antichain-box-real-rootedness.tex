@@ -18,7 +18,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{Carptopus}
-\fancyhead[R]{Antichain-box real-rootedness}
+\fancyhead[R]{Antichain-box polynomials}
 \fancyfoot[C]{\thepage}
 \setlength{\headheight}{14pt}
 \setlength{\parindent}{0pt}
@@ -26,16 +26,17 @@
 \setlength{\emergencystretch}{4em}
 \urlstyle{same}
 
-\title{Real-rootedness of antichain polynomials for
+\title{Real-rootedness, palindromicity, and $\gamma$-positivity\\
+of antichain polynomials for
 \texorpdfstring{$[2]\times[m]\times[n]$}{[2] x [m] x [n]}}
 \author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
 \date{26 August 2026}
 
 \hypersetup{
-  pdftitle={Real-rootedness of antichain polynomials for [2] x [m] x [n]},
+  pdftitle={Real-rootedness, palindromicity, and gamma-positivity of antichain polynomials for [2] x [m] x [n]},
   pdfauthor={Carptopus},
-  pdfsubject={A proof of real-rootedness for antichain generating polynomials of three-dimensional box posets},
-  pdfkeywords={antichain generating polynomial, real-rootedness, poset, Jacobi polynomial, lattice path, tail switching, Zhang-Zhang polynomial}
+  pdfsubject={Real-rootedness, palindromicity classification, and strict gamma-positivity for antichain generating polynomials of three-dimensional box posets},
+  pdfkeywords={antichain generating polynomial, real-rootedness, palindromicity, gamma-positivity, poset, Jacobi polynomial, lattice path, tail switching, Zhang-Zhang polynomial}
 }
 
 \begin{document}
@@ -43,16 +44,18 @@
 
 \begin{center}
 \fcolorbox{black!35}{black!4}{\parbox{0.88\textwidth}{\centering\small
-Internal candidate manuscript, version 0.1. The mathematical proof and the
-complete Markdown manuscript have passed project-internal zero-trust audits;
-external mathematical review and formal peer review are pending.}}
+Internal candidate manuscript, version 0.2. The mathematical proof and complete
+integrated manuscript have passed project-internal zero-trust audits. External
+mathematical review and formal peer review are pending.}}
 \end{center}
 
 \begin{abstract}
 
 
 Ding and Dong conjectured that the antichain generating polynomial of the product
-poset $[2]\times[m]\times[n]$ is real-rooted for all positive integers $m,n$.
+poset $[2]\times[m]\times[n]$ is real-rooted for all positive integers $m,n$,
+and that the adjacent-parameter family $[2]\times[r]\times[r+1]$ is
+palindromic and $\gamma$-positive.
 Independently, He, Langner, and Witek found by numerical experimentation a
 $2\times2$ determinantal formula for the corresponding Zhang--Zhang polynomial,
 which is obtained from the antichain polynomial by a unit variable shift, but
@@ -63,7 +66,12 @@ Möbius change of variables, into two controlled linear combinations of adjacent
 Jacobi polynomials. Interlacing and endpoint signs show that every finite zero of
 both factors lies in the required interval. Consequently the antichain generating
 polynomial of $[2]\times[m]\times[n]$ has only negative real zeros for all positive
-$m,n$, proving the conjecture.
+$m,n$, proving the first conjecture. We then prove that this polynomial is
+palindromic if and only if $|m-n|=1$. In precisely these cases its
+$\gamma$-coefficients are all strictly positive. This proves the
+adjacent-parameter conjecture and verifies Ding and Dong's general
+$\gamma$-positivity conjecture for the complete subfamily
+$k=2$, $P=[m]\times[n]$.
 
 \end{abstract}
 
@@ -89,6 +97,30 @@ N_{[2]\times[m]\times[n]}(x)
 
 is real-rooted for every pair of positive integers $m,n$.
 
+They further conjectured that
+
+\nopagebreak[4]
+\[
+N_{[2]\times[r]\times[r+1]}(x)
+\]
+
+is palindromic and real-rooted for every $r\geq1$, and hence
+$\gamma$-positive \cite[Conjecture~4.5]{ding2019}. Here a palindromic polynomial of degree
+$D$ has a unique expansion
+
+\nopagebreak[4]
+\[
+h(x)=\sum_{j=0}^{\lfloor D/2\rfloor}
+\gamma_jx^j(1+x)^{D-2j}.
+\tag{1.1}
+\]
+
+Following the strict convention in \cite{ding2019}, $\gamma$-positive means
+$\gamma_j>0$ for every $j$. The $\gamma$-positivity conclusion of Conjecture
+4.5 is the instance of their Conjecture B with $k=2$ and
+$P=[r]\times[r+1]$; Conjecture 4.5 additionally asserts palindromicity and
+real-rootedness.
+
 The same family appears in the theory of extended strict order polynomials and
 Zhang--Zhang polynomials of benzenoid systems. He, Langner, and Witek reported a
 determinantal expression for the Zhang--Zhang polynomial of the hexagonal flake
@@ -106,14 +138,14 @@ Define
 \nopagebreak[4]
 \[
 A_{m,n}(x)=\sum_{j\geq0}\binom mj\binom njx^j,
-\tag{1.1}
+\tag{1.2}
 \]
 
 \nopagebreak[4]
 \[
 B_{m,n}(x)=\sum_{r\geq0}
 \binom{m+1}{r+2}\binom{n-1}{r}x^{r+1},
-\tag{1.2}
+\tag{1.3}
 \]
 
 and
@@ -122,7 +154,7 @@ and
 \[
 C_{m,n}(x)=\sum_{s\geq0}
 \binom{m-1}{s}\binom{n+1}{s+2}x^{s+1}.
-\tag{1.3}
+\tag{1.4}
 \]
 
 As usual, a binomial coefficient is zero when its lower index lies outside its
@@ -137,7 +169,7 @@ For all positive integers $m,n$,
 \[
 N_{[2]\times[m]\times[n]}(x)
 =A_{m,n}(x)^2-B_{m,n}(x)C_{m,n}(x).
-\tag{1.4}
+\tag{1.5}
 \]
 
 \end{theorem}
@@ -157,15 +189,42 @@ $N_{[2]\times[m]\times[n]}(x)$ is real and negative.
 
 \end{theorem}
 
-The proof converts the two factors of (1.4) into linear combinations of adjacent
+The proof converts the two factors of (1.5) into linear combinations of adjacent
 Jacobi polynomials. The coefficients fall exactly in the interval for which the
 zeros remain in $[-1,1)$; the Möbius transformation back to $x$ sends the finite
 zeros to $(-\infty,0)$.
 
+\Needspace{0.30\textheight}
+\begin{theorem}
+
+For all positive integers $m,n$,
+
+\nopagebreak[4]
+\[
+N_{[2]\times[m]\times[n]}(x)
+\text{ is palindromic}
+\quad\Longleftrightarrow\quad
+|m-n|=1.
+\]
+
+For these and only these parameters it is strictly $\gamma$-positive.
+Consequently \cite[Conjecture~4.5]{ding2019} holds, and \cite[Conjecture~B]{ding2019} holds for
+$k=2$ and every rectangular minuscule poset $P=[m]\times[n]$.
+
+\end{theorem}
+
+The sufficiency is a parity identity for the Jacobi factorization. Necessity
+also follows from the monicity classification \cite[Lemma~2.3(a)]{ding2019}; for
+completeness we give a direct leading-coefficient proof. To obtain strict,
+rather than merely nonnegative, $\gamma$-coefficients, we compute
+$N_{[2]\times[r]\times[r+1]}(-1)$ explicitly and show that $-1$ is never a
+zero.
+
 The paper is organized as follows. Section 2 encodes antichains by two-rowed
 arrays. Section 3 proves the tail-switching bijection and Theorem 1.1. Section 4
-establishes the Jacobi factorization and proves Theorem 1.2. Section 5 records the
-scope of the result and its relation to the existing literature.
+establishes the Jacobi factorization and proves Theorem 1.2. Section 5 proves
+Theorem 1.3. Section 6 records the scope of the result and its relation to the
+existing literature.
 
 \section{Antichains and balanced two-rowed arrays}
 
@@ -321,7 +380,7 @@ of $Y$ has two more entries than its top row. The corresponding generating
 functions are $B_{m,n}(x)$ and $C_{m,n}(x)$. Indeed, if the shorter row of $X$
 has length $r$, then its rows choose $r+2$ entries from $[1,m+1]$ and $r$ entries
 from $[1,n-1]$ and carry weight $x^{r+1}$. The analogous statement for $Y$
-gives (1.3). The switch preserves the union of the four rows and hence preserves
+gives (1.4). The switch preserves the union of the four rows and hence preserves
 the weight
 
 \nopagebreak[4]
@@ -511,7 +570,7 @@ therefore include these boundary cases.
 \end{proof}
 
 
-\begin{proof}
+\begin{proof}[Proof of Theorem 1.1]
 
 The forward construction (3.1)--(3.2) and Lemma 3.1 give a weight-preserving
 bijection between
@@ -523,14 +582,14 @@ bijection between
 \end{enumerate}
 
 Removing the crossing pairs from all pairs leaves exactly the antichains of
-$[2]\times[m]\times[n]$. This proves (1.4).
+$[2]\times[m]\times[n]$. This proves (1.5).
 \end{proof}
 
 
 \section{Jacobi factorization and location of the zeros}
 
 
-Because (1.4) is symmetric in $m,n$, assume $m\leq n$ and put
+Because (1.5) is symmetric in $m,n$, assume $m\leq n$ and put
 
 \nopagebreak[4]
 \[
@@ -545,7 +604,7 @@ Let
 G(x)={}_2F_1(1-m,1-n;3;x).
 \]
 
-Elementary binomial identities applied to (1.2)--(1.3) give
+Elementary binomial identities applied to (1.3)--(1.4) give
 
 \nopagebreak[4]
 \[
@@ -578,7 +637,7 @@ Set
 \rho=\sqrt{\frac{n(n+1)}{m(m+1)}}.
 \]
 
-Using $x/(1-x)=(t-1)/2$, equations (1.4) and (4.2)--(4.4) give
+Using $x/(1-x)=(t-1)/2$, equations (1.5) and (4.2)--(4.4) give
 
 \nopagebreak[4]
 \[
@@ -739,7 +798,7 @@ c_+>-\frac{m+1}{m}
 reduces, after cancellation of the common $\rho m(m+1)$ term, to
 $mn<(m+1)(n+1)$. Hence every zero of $F_+$ lies in $(-1,1)$.
 
-\begin{proof}
+\begin{proof}[Proof of Theorem 1.2]
 
 The inverse transformation in (4.1) is
 
@@ -757,6 +816,286 @@ the theorem.
 \end{proof}
 
 
+\section{Palindromicity and strict \texorpdfstring{$\gamma$}{gamma}-positivity}
+
+
+We now determine exactly when the polynomial in Theorem 1.2 is palindromic.
+The sufficient direction comes from an additional symmetry of the Jacobi
+factorization when the two rectangular parameters are adjacent.
+
+\Needspace{0.30\textheight}
+\begin{lemma}[adjacent-parameter parity]
+
+For every positive integer $r$, put
+
+\nopagebreak[4]
+\[
+J(t)=P_r^{(0,1)}(t),\qquad
+\widetilde J(t)=P_r^{(1,0)}(t),
+\]
+
+\nopagebreak[4]
+\[
+H(t)=(t-1)P_{r-1}^{(2,1)}(t),\qquad
+K(t)=(t+1)P_{r-1}^{(1,2)}(t).
+\]
+
+Then
+
+\nopagebreak[4]
+\[
+J-\widetilde J=\frac12(H-K),
+\tag{5.1}
+\]
+
+\nopagebreak[4]
+\[
+J+\widetilde J=\frac{r+2}{2r}(H+K).
+\tag{5.2}
+\]
+
+Consequently
+
+\nopagebreak[4]
+\[
+E_r(t)=J(t)^2-\frac{r+2}{4r}H(t)^2
+\tag{5.3}
+\]
+
+is an even polynomial.
+
+\end{lemma}
+
+\begin{proof}
+
+Set
+
+\nopagebreak[4]
+\[
+u=\frac{t-1}{2},\qquad v=\frac{t+1}{2}.
+\]
+
+The Jacobi binomial expansion is
+
+\nopagebreak[4]
+\[
+P_r^{(\alpha,\beta)}(t)
+=\sum_{k=0}^r
+\binom{r+\alpha}{k}
+\binom{r+\beta}{r-k}u^{r-k}v^k.
+\tag{5.4}
+\]
+
+With
+
+\nopagebreak[4]
+\[
+T_k=\binom rk\binom{r+1}k,
+\]
+
+the coefficient of $u^{r-k}v^k$ in $J,\widetilde J,H,K$ is, respectively,
+
+\nopagebreak[4]
+\[
+T_k\frac{r+1-k}{k+1},\qquad
+T_k,\qquad
+2T_k\frac{r-k}{k+1},\qquad
+2T_k\frac{k}{k+1}.
+\tag{5.5}
+\]
+
+Thus both sides of (5.1) have coefficient
+$T_k(r-2k)/(k+1)$, and both sides of (5.2) have coefficient
+$T_k(r+2)/(k+1)$. This includes $k=0,r$, where the appropriate coefficient
+in $K$ or $H$ vanishes.
+
+Jacobi symmetry gives
+
+\nopagebreak[4]
+\[
+J(-t)=(-1)^r\widetilde J(t),\qquad
+H(-t)=(-1)^rK(t).
+\]
+
+Therefore
+
+\nopagebreak[4]
+\[
+\begin{aligned}
+E_r(t)-E_r(-t)
+&=(J-\widetilde J)(J+\widetilde J)\\
+&\quad-\frac{r+2}{4r}(H-K)(H+K)=0
+\end{aligned}
+\]
+
+by (5.1)--(5.2).
+\end{proof}
+
+
+\begin{proof}[Proof of Theorem 1.3]
+
+The determinant (1.5) is symmetric in $m,n$, so assume $m\leq n$.
+First let $n=r+1$ and $m=r$. Then $d=1$ and
+$\rho^2=(r+2)/r$ in (4.5)--(4.6), giving
+
+\nopagebreak[4]
+\[
+N_{[2]\times[r]\times[r+1]}(x)
+=(1-x)^{2r}
+E_r\!\left(\frac{1+x}{1-x}\right).
+\tag{5.6}
+\]
+
+Under $x\mapsto1/x$, the argument of $E_r$ changes sign, while
+
+\nopagebreak[4]
+\[
+\left(1-\frac1x\right)^{2r}=x^{-2r}(1-x)^{2r}.
+\]
+
+Lemma 5.1 therefore gives
+
+\nopagebreak[4]
+\[
+x^{2r}N_{[2]\times[r]\times[r+1]}(1/x)
+=N_{[2]\times[r]\times[r+1]}(x).
+\tag{5.7}
+\]
+
+The coefficient of $x^{2r}$ in (1.5) is
+
+\nopagebreak[4]
+\[
+(r+1)^2-r(r+2)=1,
+\]
+
+so the degree is exactly $2r$ and (5.7) proves palindromicity.
+
+We next exclude every nonadjacent parameter pair. If $m=n$, the coefficient of
+$x^{2m}$ cancels. The diagonal contribution to the coefficient of
+$x^{2m-1}$ is $2m^2$, while the two off-diagonal contributions total
+$2(m^2-1)$. Thus the degree is $2m-1$ and the leading coefficient is $2$.
+Since the constant term is $1$, the polynomial is not palindromic.
+
+If $n-m\geq2$, the degree is $2m$ and its leading coefficient is
+
+\nopagebreak[4]
+\[
+L_{m,n}
+=\binom nm^{\!2}
+-\binom{n-1}{m-1}\binom{n+1}{m+1}
+=\binom nm^{\!2}\frac{n-m}{n(m+1)}.
+\tag{5.8}
+\]
+
+For $m=1$, this is $n(n-1)/2>1$. For $m\geq2$, write
+$n=m+d$ with $d\geq2$. Then
+
+\nopagebreak[4]
+\[
+\binom{m+d}{m}\geq\frac{(m+2)(m+1)}2,
+\qquad
+\frac{d}{m+d}\geq\frac2{m+2},
+\]
+
+and (5.8) yields
+
+\nopagebreak[4]
+\[
+L_{m,n}\geq\frac{(m+2)(m+1)}2>1.
+\]
+
+Again the constant term is $1$, so the polynomial cannot be palindromic.
+This completes the classification.
+
+It remains to prove strict $\gamma$-positivity in the adjacent cases. Theorem
+1.2 gives only negative real zeros. Because the polynomial is palindromic,
+monic, has degree $2r$, and has constant term $1$, its zeros, counted with
+multiplicity, can be paired as $-a_i,-a_i^{-1}$ with $a_i>0$. To show that the
+resulting $\gamma$-coefficients are strictly positive, rather than merely
+nonnegative, we must exclude $a_i=1$.
+
+At $x=-1$, equation (4.3) gives
+
+\nopagebreak[4]
+\[
+A_{r,r+1}(-1)=2^rJ(0).
+\]
+
+Coefficient extraction also gives
+
+\nopagebreak[4]
+\[
+\begin{aligned}
+A_{r,r+1}(-1)
+&=\sum_j(-1)^j\binom rj\binom{r+1}j\\
+&=[z^{r+1}](1-z)^r(1+z)^{r+1}\\
+&=[z^{r+1}](1-z^2)^r(1+z).
+\end{aligned}
+\tag{5.9}
+\]
+
+Hence
+
+\nopagebreak[4]
+\[
+J(0)=
+\begin{cases}
+(-1)^s4^{-s}\binom{2s}{s},&r=2s,\\[4pt]
+(-1)^{s+1}2^{-2s-1}\binom{2s+1}{s},&r=2s+1.
+\end{cases}
+\tag{5.10}
+\]
+
+At $t=0$, Jacobi symmetry and (5.1)--(5.2) give
+
+\nopagebreak[4]
+\[
+H(0)=\frac{2r}{r+2}J(0)\quad\text{if }r\text{ is even},
+\]
+
+and
+
+\nopagebreak[4]
+\[
+H(0)=2J(0)\quad\text{if }r\text{ is odd}.
+\]
+
+Using (5.3), (5.6), and (5.10), we obtain
+
+\nopagebreak[4]
+\[
+(-1)^rN_{[2]\times[r]\times[r+1]}(-1)
+=
+\begin{cases}
+\displaystyle\frac{1}{s+1}\binom{2s}{s}^{\!2},
+&r=2s,\\[8pt]
+\displaystyle\frac{2(2s+1)}{(s+1)^2}\binom{2s}{s}^{\!2},
+&r=2s+1.
+\end{cases}
+\tag{5.11}
+\]
+
+Both values are strictly positive, so $-1$ is not a zero. We may therefore
+write
+
+\nopagebreak[4]
+\[
+N_{[2]\times[r]\times[r+1]}(x)
+=\prod_{i=1}^r\left((1+x)^2+\delta_i x\right),
+\qquad
+\delta_i=a_i+a_i^{-1}-2>0.
+\tag{5.12}
+\]
+
+The coefficient $\gamma_j$ in (1.1) is now
+$e_j(\delta_1,\ldots,\delta_r)$, which is strictly positive for every
+$0\leq j\leq r$. This proves strict $\gamma$-positivity. Together with the
+palindromicity classification, it proves Conjecture 4.5 and Conjecture B for
+$k=2$, $P=[m]\times[n]$.
+\end{proof}
+
+
 \section{Consequences, scope, and prior-work boundary}
 
 
@@ -765,7 +1104,11 @@ coefficient sequence because all coefficients are nonnegative. Theorem 1.2 also
 records the zero location explicitly: every zero lies in $(-\infty,0)$. For a
 real-rooted polynomial with positive coefficients and constant term $1$, this
 location is a consequence of real-rootedness rather than a logically stronger
-claim.
+claim. Theorem 1.3 adds a complete palindromicity classification. Its necessary
+direction is already implicit in Ding and Dong's monicity classification
+\cite[Lemma~2.3(a)]{ding2019}; the new part is the adjacent-parameter sufficiency and the
+strict $\gamma$-positivity conclusion obtained by combining that symmetry with
+Theorem 1.2 and the nonvanishing formula (5.11).
 
 After the substitution $x=y+1$ from (2.6), Theorem 1.1 proves the determinant
 of \cite{he2021}. It also explains the shifted parameters in its off-diagonal entries:
@@ -776,13 +1119,15 @@ combinatorics; the benzenoid interpretation is not needed.
 The argument is specific to the two-layer factor $[2]$. For
 $[k]\times[m]\times[n]$ with $k>2$, one would need a higher-order determinant or
 a compatible multi-path cancellation. No such extension is claimed here. We
-also do not address the separate $\gamma$-positivity conjecture for
-$N_{[2]\times[n]\times[n+1]}(x)$ from \cite{ding2019}.
+do not claim Conjecture B for other values of $k$ or for nonrectangular
+minuscule posets.
 
-As of 26 August 2026, targeted searches of the exact conjecture, the determinant
+As of 26 August 2026, targeted searches of the exact conjectures, the determinant
 in \cite{he2021}, the $O(2,m,n)$ family, and the extended strict order-polynomial literature
-found no public proof of either Theorem 1.1 or Theorem 1.2. This records the
-search boundary, not a claim of exhaustive worldwide priority.
+found no independent earlier public proof of Theorems 1.1--1.3 or of the
+adjacent-parameter sufficiency used in Theorem 1.3. Theorems 1.1--1.2 were
+already made public in this project's v0.1 release; Theorem 1.3 is new in v0.2.
+This records the search boundary, not a claim of exhaustive worldwide priority.
 
 \section*{Acknowledgement of AI assistance}
 
