@@ -26,6 +26,7 @@ including manuscripts and reproducible verification materials.
 | [A ternary word attaining the Abelian maximal pattern complexity bound at pattern size three](research/ternary-ampc-k3-sharpness/README.md)<br>[PDF](research/ternary-ampc-k3-sharpness/ternary-ampc-k3-sharpness.pdf) · [BibTeX](research/ternary-ampc-k3-sharpness/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22093018) | Combinatorics on words, Abelian complexity, substitution sequences | Constructs a recurrent ternary word, aperiodic by projection, with exact Abelian maximal pattern complexity $p_{\alpha}^{*\mathrm{ab}}(3)=7$ | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Sharp initial thresholds for Abelian-bordered binary infinite words](research/abelian-border-periodicity-thresholds/README.md)<br>[PDF](research/abelian-border-periodicity-thresholds/abelian-border-periodicity-thresholds.pdf) · [BibTeX](research/abelian-border-periodicity-thresholds/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22100526) | Combinatorics on words, Abelian borders, ultimate periodicity | Proves the sharp ordinary-periodicity threshold $13$, the next sharp Abelian-periodicity layer at $14$, and a frequency-denominator sufficient condition | v0.1-beta | Internally verified candidate proof; external review pending |
 | [On a claimed upper bound for partial Desarguesian parallelisms](research/desarguesian-johnson-bound-correction/README.md)<br>[PDF](research/desarguesian-johnson-bound-correction/desarguesian-johnson-bound-correction.pdf) · [BibTeX](research/desarguesian-johnson-bound-correction/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22105345) | Finite geometry, Desarguesian spreads, partial parallelisms | Proves that a known orbit lower bound uniformly exceeds Johnson's claimed upper bound for every prime power $q$, odd prime $t\geq3$, and $z\geq2$ | v0.1-beta | Internally verified correction note; external review pending |
+| [Real-rootedness of antichain polynomials for [2] x [m] x [n]](research/antichain-box-real-rootedness/README.md)<br>[PDF](research/antichain-box-real-rootedness/antichain-box-real-rootedness.pdf) · [BibTeX](research/antichain-box-real-rootedness/CITATION.bib) | Posets, real-rooted polynomials, Jacobi polynomials, lattice paths | Proves that the antichain generating polynomial of $[2]\times[m]\times[n]$ has only negative real zeros for all positive $m,n$ | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
 
@@ -367,6 +368,24 @@ the first counterexample. A compact certificate independently verifies 18
 pairwise disjoint Desarguesian $3$-spreads in $V(6,2)$.
 
 - [Correction note and verification certificate](research/desarguesian-johnson-bound-correction/README.md)
+
+### Antichain polynomials of three-dimensional boxes
+
+For all positive integers $m,n$, this manuscript proves that the antichain
+generating polynomial
+
+$$
+N_{[2]\times[m]\times[n]}(x)
+$$
+
+has only negative real zeros, proving Ding and Dong's Conjecture 4.3. A
+canonical two-gap tail-switching bijection first establishes the previously
+unproved $2\times2$ determinant for the associated Zhang--Zhang polynomial.
+A Möbius transformation then factors it into controlled combinations of
+adjacent Jacobi polynomials, whose zeros are located by interlacing and endpoint
+signs.
+
+- [Manuscript and exact verification](research/antichain-box-real-rootedness/README.md)
 
 ## Status and review policy
 

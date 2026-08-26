@@ -1,0 +1,844 @@
+% Generated from the audited Markdown source; responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{needspace}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\numberwithin{equation}{section}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Antichain-box real-rootedness}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\setlength{\emergencystretch}{4em}
+\urlstyle{same}
+
+\title{Real-rootedness of antichain polynomials for
+\texorpdfstring{$[2]\times[m]\times[n]$}{[2] x [m] x [n]}}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{26 August 2026}
+
+\hypersetup{
+  pdftitle={Real-rootedness of antichain polynomials for [2] x [m] x [n]},
+  pdfauthor={Carptopus},
+  pdfsubject={A proof of real-rootedness for antichain generating polynomials of three-dimensional box posets},
+  pdfkeywords={antichain generating polynomial, real-rootedness, poset, Jacobi polynomial, lattice path, tail switching, Zhang-Zhang polynomial}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fcolorbox{black!35}{black!4}{\parbox{0.88\textwidth}{\centering\small
+Internal candidate manuscript, version 0.1. The mathematical proof and the
+complete Markdown manuscript have passed project-internal zero-trust audits;
+external mathematical review and formal peer review are pending.}}
+\end{center}
+
+\begin{abstract}
+
+
+Ding and Dong conjectured that the antichain generating polynomial of the product
+poset $[2]\times[m]\times[n]$ is real-rooted for all positive integers $m,n$.
+Independently, He, Langner, and Witek found by numerical experimentation a
+$2\times2$ determinantal formula for the corresponding Zhang--Zhang polynomial,
+which is obtained from the antichain polynomial by a unit variable shift, but
+left the formula without a proof. We prove the translated determinantal formula
+by a weight-preserving tail-switching
+bijection on pairs of two-rowed arrays. The determinant then factors, after a
+Möbius change of variables, into two controlled linear combinations of adjacent
+Jacobi polynomials. Interlacing and endpoint signs show that every finite zero of
+both factors lies in the required interval. Consequently the antichain generating
+polynomial of $[2]\times[m]\times[n]$ has only negative real zeros for all positive
+$m,n$, proving the conjecture.
+
+\end{abstract}
+
+\section{Introduction}
+
+
+For a finite poset $P$, let
+
+\nopagebreak[4]
+\[
+N_P(x)=\sum_{A\in\mathcal A(P)}x^{|A|}
+\]
+
+be its antichain generating polynomial, where the empty antichain is included.
+Ding and Dong studied these polynomials for products involving minuscule posets
+and proposed several positivity and real-rootedness conjectures \cite{ding2019}. One of them,
+\cite[Conjecture~4.3]{ding2019}, states that
+
+\nopagebreak[4]
+\[
+N_{[2]\times[m]\times[n]}(x)
+\]
+
+is real-rooted for every pair of positive integers $m,n$.
+
+The same family appears in the theory of extended strict order polynomials and
+Zhang--Zhang polynomials of benzenoid systems. He, Langner, and Witek reported a
+determinantal expression for the Zhang--Zhang polynomial of the hexagonal flake
+$O(2,m,n)$ \cite{he2021}. Their formula was discovered through extensive numerical
+experimentation and was explicitly stated without proof. The general relation
+between extended strict order polynomials and the corresponding benzenoid
+polynomials was developed in [3,4]. If $y$ is the Zhang--Zhang variable and $z$
+is the antichain variable, their interface is $z=y+1$. We retain $x$ for the
+antichain variable throughout the proof and make this translation explicit in
+Section 2.
+
+Our first result proves that determinant directly in the language of posets.
+Define
+
+\nopagebreak[4]
+\[
+A_{m,n}(x)=\sum_{j\geq0}\binom mj\binom njx^j,
+\tag{1.1}
+\]
+
+\nopagebreak[4]
+\[
+B_{m,n}(x)=\sum_{r\geq0}
+\binom{m+1}{r+2}\binom{n-1}{r}x^{r+1},
+\tag{1.2}
+\]
+
+and
+
+\nopagebreak[4]
+\[
+C_{m,n}(x)=\sum_{s\geq0}
+\binom{m-1}{s}\binom{n+1}{s+2}x^{s+1}.
+\tag{1.3}
+\]
+
+As usual, a binomial coefficient is zero when its lower index lies outside its
+natural range.
+
+\Needspace{0.30\textheight}
+\begin{theorem}
+
+For all positive integers $m,n$,
+
+\nopagebreak[4]
+\[
+N_{[2]\times[m]\times[n]}(x)
+=A_{m,n}(x)^2-B_{m,n}(x)C_{m,n}(x).
+\tag{1.4}
+\]
+
+\end{theorem}
+
+The proof is a signed tail-switching argument on two-rowed arrays. Its local move
+is related to the crossing switch used by Krattenthaler \cite{krattenthaler1995}, but an independent
+crosscut argument is needed to prove that every negative object has an admissible
+inverse cut. This avoids the defective global crossing proof corrected by Rubey \cite{rubey}.
+
+Our main result proves the conjecture and directly locates its zeros.
+
+\Needspace{0.30\textheight}
+\begin{theorem}
+
+For all positive integers $m,n$, every zero of
+$N_{[2]\times[m]\times[n]}(x)$ is real and negative.
+
+\end{theorem}
+
+The proof converts the two factors of (1.4) into linear combinations of adjacent
+Jacobi polynomials. The coefficients fall exactly in the interval for which the
+zeros remain in $[-1,1)$; the Möbius transformation back to $x$ sends the finite
+zeros to $(-\infty,0)$.
+
+The paper is organized as follows. Section 2 encodes antichains by two-rowed
+arrays. Section 3 proves the tail-switching bijection and Theorem 1.1. Section 4
+establishes the Jacobi factorization and proves Theorem 1.2. Section 5 records the
+scope of the result and its relation to the existing literature.
+
+\section{Antichains and balanced two-rowed arrays}
+
+
+Write $[r]=\{1,\ldots,r\}$ with its natural order. Within one fixed first-coordinate
+layer of $[2]\times[m]\times[n]$, list the selected elements as
+
+\nopagebreak[4]
+\[
+(a_1,c_1),\ldots,(a_p,c_p),
+\]
+
+where
+
+\nopagebreak[4]
+\[
+a_1<\cdots<a_p,
+\qquad
+c_1>\cdots>c_p.
+\]
+
+Putting $b_i=n+1-c_i$ gives a balanced two-rowed array
+
+\nopagebreak[4]
+\[
+U=\binom{a_1<\cdots<a_p}{b_1<\cdots<b_p},
+\qquad
+a_i\in[1,m],\quad b_i\in[1,n].
+\tag{2.1}
+\]
+
+Conversely, every array of the form (2.1) uniquely determines an antichain in
+$[m]\times[n]$. Hence the length-generating polynomial of one layer is
+$A_{m,n}(x)$.
+
+Let
+
+\nopagebreak[4]
+\[
+U=\binom{a_1<\cdots<a_p}{b_1<\cdots<b_p},
+\qquad
+V=\binom{c_1<\cdots<c_q}{d_1<\cdots<d_q}
+\tag{2.2}
+\]
+
+encode the two first-coordinate layers. An element from the first layer and an
+element from the second layer are comparable precisely when some $i,j$ satisfy
+
+\nopagebreak[4]
+\[
+a_i\leq c_j,
+\qquad
+b_i\geq d_j.
+\tag{2.3}
+\]
+
+Shift the second array by setting
+
+\nopagebreak[4]
+\[
+c'_j=c_j+1\in[2,m+1],
+\qquad
+d'_j=d_j-1\in[0,n-1].
+\]
+
+Then (2.3) is equivalent to the strict crossing condition
+
+\nopagebreak[4]
+\[
+a_i<c'_j,
+\qquad
+d'_j<b_i.
+\tag{2.4}
+\]
+
+Thus $A_{m,n}(x)^2$ counts all ordered pairs $(U,V)$, and the antichains of the
+three-dimensional box are exactly the pairs having no crossing (2.4).
+
+For later comparison, antichains also admit the following standard strict-map
+interpretation. If $P$ is a finite poset, project an antichain in $[r]\times P$
+onto an induced subposet $Q\subseteq P$. Its first coordinates give a strict
+order-reversing map $Q\to[r]$, and this correspondence is bijective. Therefore
+
+\nopagebreak[4]
+\[
+N_{[r]\times P}(x)=E^o_{P^*}(r,x),
+\tag{2.5}
+\]
+
+where $E^o$ is the extended strict order polynomial. Since
+$[2]\times[m]$ is self-dual, (2.5) identifies the polynomial considered here
+with the relevant extended strict order polynomial. More precisely, using $z$
+for the strict-order/antichain variable and $y$ for the Zhang--Zhang variable,
+the equivalence theorem of Langner and Witek \cite{langner2022} gives
+
+\nopagebreak[4]
+\[
+\operatorname{ZZ}(O(2,m,n),y)
+=E^o_{[2]\times[m]}(n,y+1)
+=N_{[2]\times[m]\times[n]}(y+1).
+\tag{2.6}
+\]
+
+Thus Theorem 1.1 proves the determinant of \cite{he2021} after the explicit substitution
+$x=y+1$; the two polynomials are not literally identical in the same variable.
+
+\section{A two-gap tail-switching bijection}
+
+
+We first describe the forward switch. Give a crossing $(i,j)$ of (2.4) the
+coordinate
+
+\nopagebreak[4]
+\[
+S(i,j)=(c'_j,b_i)
+\]
+
+and order these coordinates lexicographically. Let $(I,J)$ be the crossing with
+maximal coordinate. Define
+
+\nopagebreak[4]
+\[
+X_{\rm top}=(a_1,\ldots,a_I,c'_J,\ldots,c'_q),
+\]
+
+\nopagebreak[4]
+\[
+X_{\rm bot}=(b_1,\ldots,b_{I-1},d'_{J+1},\ldots,d'_q),
+\tag{3.1}
+\]
+
+\nopagebreak[4]
+\[
+Y_{\rm top}=(c'_1,\ldots,c'_{J-1},a_{I+1},\ldots,a_p),
+\]
+
+and
+
+\nopagebreak[4]
+\[
+Y_{\rm bot}=(d'_1,\ldots,d'_J,b_I,\ldots,b_p).
+\tag{3.2}
+\]
+
+All four rows are strictly increasing. The two inequalities at the switch are
+exactly (2.4). If $b_{I-1}\geq d'_{J+1}$, then $(I,J+1)$ would be a crossing with
+larger first coordinate. If $c'_{J-1}\geq a_{I+1}$, then $(I+1,J)$ would be a
+crossing with the same first coordinate and larger second coordinate. Empty
+prefixes and suffixes handle the boundary cases.
+
+The top row of $X$ has two more entries than its bottom row, while the bottom row
+of $Y$ has two more entries than its top row. The corresponding generating
+functions are $B_{m,n}(x)$ and $C_{m,n}(x)$. Indeed, if the shorter row of $X$
+has length $r$, then its rows choose $r+2$ entries from $[1,m+1]$ and $r$ entries
+from $[1,n-1]$ and carry weight $x^{r+1}$. The analogous statement for $Y$
+gives (1.3). The switch preserves the union of the four rows and hence preserves
+the weight
+
+\nopagebreak[4]
+\[
+x^{\frac12(\text{sum of the four row lengths})}.
+\]
+
+It remains to prove that the switch is a bijection onto all pairs of arrays of
+these two unbalanced types.
+
+\Needspace{0.30\textheight}
+\begin{lemma}[two-gap tail switch]
+
+Let
+
+\nopagebreak[4]
+\[
+X=\binom{\alpha_1<\cdots<\alpha_{r+2}}
+          {\beta_1<\cdots<\beta_r},
+\qquad
+Y=\binom{\gamma_1<\cdots<\gamma_s}
+          {\delta_1<\cdots<\delta_{s+2}},
+\tag{3.3}
+\]
+
+where
+
+\nopagebreak[4]
+\[
+\alpha\subseteq[1,m+1],\quad \beta\subseteq[1,n-1],\quad
+\gamma\subseteq[2,m],\quad \delta\subseteq[0,n].
+\]
+
+Put
+
+\nopagebreak[4]
+\[
+\gamma_0=1,\quad \gamma_{s+1}=m+1,
+\qquad
+\beta_0=0,\quad \beta_{r+1}=n.
+\]
+
+Then there is a pair $(i,j)\in[1,r+1]\times[1,s+1]$ such that
+
+\nopagebreak[4]
+\[
+\alpha_i<\gamma_j,\qquad \gamma_{j-1}<\alpha_{i+1},
+\tag{3.4}
+\]
+
+\nopagebreak[4]
+\[
+\beta_{i-1}<\delta_{j+1},\qquad \delta_j<\beta_i.
+\tag{3.5}
+\]
+
+Call such a pair an admissible gap. Choose the admissible gap for which
+
+\nopagebreak[4]
+\[
+T(i,j)=(\alpha_{i+1},\delta_{j+1})
+\]
+
+is lexicographically maximal. The reverse splice at this gap produces a unique
+crossing pair $(U,V)$, and applying (3.1)--(3.2) at its maximal crossing returns
+$(X,Y)$.
+
+\end{lemma}
+
+\begin{proof}
+
+Set
+
+\nopagebreak[4]
+\[
+\widehat\beta=(0,\beta_1,\ldots,\beta_r,n),
+\qquad
+\widehat\gamma=(1,\gamma_1,\ldots,\gamma_s,m+1).
+\]
+
+Inside the rectangle $R=[1,m+1]\times[0,n]$, join consecutive points of
+
+\nopagebreak[4]
+\[
+P_i=(\alpha_i,\widehat\beta_i),\qquad 1\leq i\leq r+2,
+\]
+
+and of
+
+\nopagebreak[4]
+\[
+Q_j=(\widehat\gamma_j,\delta_j),\qquad 1\leq j\leq s+2.
+\]
+
+Both coordinates increase strictly along every edge. The polyline $P$ joins the
+bottom side of $R$ to its top side, while $Q$ joins the left side to the right
+side. The rectangle crosscut lemma therefore implies that they intersect.
+
+Choose incident edges at an intersection so that both their open horizontal
+projections and their open vertical projections overlap. Such a choice is
+immediate at an interior intersection. At a common vertex, take the two entering
+edges or the two leaving edges; strict monotonicity gives the same conclusion.
+If the polylines share a segment, use an interior point of that segment. At a
+boundary intersection, the only apparently exceptional entering--leaving choice
+would force one of the adjacent strictly increasing edges immediately outside
+$R$, so it cannot occur. This also covers the four corners.
+
+For the selected edge of $P$, say the edge from $P_i$ to $P_{i+1}$, and the
+selected edge of $Q$, say the edge from $Q_j$ to $Q_{j+1}$, overlap of the two
+open coordinate projections says
+
+\nopagebreak[4]
+\[
+\alpha_i<\widehat\gamma_{j+1},\qquad
+\widehat\gamma_j<\alpha_{i+1},
+\]
+
+\nopagebreak[4]
+\[
+\widehat\beta_i<\delta_{j+1},\qquad
+\delta_j<\widehat\beta_{i+1}.
+\]
+
+Substitution of the augmented entries gives (3.4)--(3.5), proving that an
+admissible gap exists.
+
+At an admissible gap define
+
+\nopagebreak[4]
+\[
+U_{\rm top}=(\alpha_1,\ldots,\alpha_i,
+              \gamma_j,\ldots,\gamma_s),
+\]
+
+\nopagebreak[4]
+\[
+U_{\rm bot}=(\beta_1,\ldots,\beta_{i-1},
+              \delta_{j+1},\ldots,\delta_{s+2}),
+\tag{3.6}
+\]
+
+\nopagebreak[4]
+\[
+V'_{\rm top}=(\gamma_1,\ldots,\gamma_{j-1},
+               \alpha_{i+1},\ldots,\alpha_{r+2}),
+\]
+
+and
+
+\nopagebreak[4]
+\[
+V'_{\rm bot}=(\delta_1,\ldots,\delta_j,
+               \beta_i,\ldots,\beta_r).
+\tag{3.7}
+\]
+
+The four inequalities (3.4)--(3.5) are precisely the conditions that all rows
+in (3.6)--(3.7) be strictly increasing. Undoing the shift,
+$V_{\rm top}=V'_{\rm top}-1$ and $V_{\rm bot}=V'_{\rm bot}+1$, gives balanced
+arrays in the ranges of (2.2). Moreover
+$\alpha_i<\alpha_{i+1}$ and $\delta_j<\delta_{j+1}$ become a crossing of $U$
+and $V'$ at the splice.
+
+The local switch is the two-rowed-array operation (27) of Krattenthaler \cite{krattenthaler1995}
+under the reindexing
+
+\nopagebreak[4]
+\[
+M_1=V':\quad a_j=c'_j,\quad b_{j-1}=d'_j,
+\qquad
+M_2=U:\quad c_i=a_i,\quad d_i=b_i.
+\]
+
+Under this reindexing its crossing coordinate is both
+$S=(c'_j,b_i)$ on the balanced side and
+$T=(\alpha_{i+1},\delta_{j+1})$ on the unbalanced side. The four tails strictly
+above and to the right of the splice are unchanged. Hence maximal $S$ is carried
+to maximal $T$, and conversely; switching again at that coordinate restores all
+four rows entry by entry. This proves the asserted inverse relation. Notice that
+we use only the local switch and maximal-coordinate argument of \cite{krattenthaler1995}. The separate
+crosscut argument above supplies existence on the unbalanced side, so the global
+crossing proof corrected in \cite{rubey} is not used.
+
+If $m=1$ or $n=1$, one of the interior rows may be empty, but each augmented
+polyline still has at least one edge. The same crosscut and switch arguments
+therefore include these boundary cases.
+\end{proof}
+
+
+\begin{proof}
+
+The forward construction (3.1)--(3.2) and Lemma 3.1 give a weight-preserving
+bijection between
+
+\begin{enumerate}
+\item the crossing pairs counted by $A_{m,n}(x)^2$, and
+\item all unbalanced pairs counted by $B_{m,n}(x)C_{m,n}(x)$.
+
+\end{enumerate}
+
+Removing the crossing pairs from all pairs leaves exactly the antichains of
+$[2]\times[m]\times[n]$. This proves (1.4).
+\end{proof}
+
+
+\section{Jacobi factorization and location of the zeros}
+
+
+Because (1.4) is symmetric in $m,n$, assume $m\leq n$ and put
+
+\nopagebreak[4]
+\[
+d=n-m,\qquad t=\frac{1+x}{1-x},\qquad R=m+n+1.
+\tag{4.1}
+\]
+
+Let
+
+\nopagebreak[4]
+\[
+G(x)={}_2F_1(1-m,1-n;3;x).
+\]
+
+Elementary binomial identities applied to (1.2)--(1.3) give
+
+\nopagebreak[4]
+\[
+B_{m,n}(x)C_{m,n}(x)
+=\binom{m+1}{2}\binom{n+1}{2}x^2G(x)^2.
+\tag{4.2}
+\]
+
+The hypergeometric representation of Jacobi polynomials \cite[Eq.~18.5.8]{dlmf} yields
+
+\nopagebreak[4]
+\[
+A_{m,n}(x)=(1-x)^mP_m^{(0,d)}(t),
+\tag{4.3}
+\]
+
+and
+
+\nopagebreak[4]
+\[
+G(x)=\frac{(1-x)^{m-1}}{\binom{m+1}{2}}
+P_{m-1}^{(2,d)}(t).
+\tag{4.4}
+\]
+
+Set
+
+\nopagebreak[4]
+\[
+\rho=\sqrt{\frac{n(n+1)}{m(m+1)}}.
+\]
+
+Using $x/(1-x)=(t-1)/2$, equations (1.4) and (4.2)--(4.4) give
+
+\nopagebreak[4]
+\[
+N_{[2]\times[m]\times[n]}(x)
+=(1-x)^{2m}F_-(t)F_+(t),
+\tag{4.5}
+\]
+
+where
+
+\nopagebreak[4]
+\[
+F_\pm(t)=P_m^{(0,d)}(t)
+\pm\frac{\rho}{2}(t-1)P_{m-1}^{(2,d)}(t).
+\tag{4.6}
+\]
+
+Write $Q_k(t)=P_k^{(1,d)}(t)$. The adjacent-parameter identities for Jacobi
+polynomials \cite[Eqs.~18.9.5--18.9.6]{dlmf}, after the symmetry
+$t\mapsto-t$ and exchange of parameters, give
+
+\nopagebreak[4]
+\[
+P_m^{(0,d)}(t)=\frac{n+1}{R}Q_m(t)-\frac nR Q_{m-1}(t),
+\tag{4.7}
+\]
+
+and
+
+\nopagebreak[4]
+\[
+(t-1)P_{m-1}^{(2,d)}(t)
+=\frac{2m}{R}Q_m(t)-\frac{2(m+1)}R Q_{m-1}(t).
+\tag{4.8}
+\]
+
+Consequently
+
+\nopagebreak[4]
+\[
+RF_-(t)=\bigl(n+1-\rho m\bigr)Q_m(t)
++\bigl(\rho(m+1)-n\bigr)Q_{m-1}(t),
+\tag{4.9}
+\]
+
+and
+
+\nopagebreak[4]
+\[
+RF_+(t)=\bigl(n+1+\rho m\bigr)Q_m(t)
+-\bigl(n+\rho(m+1)\bigr)Q_{m-1}(t).
+\tag{4.10}
+\]
+
+We use the following elementary consequence of interlacing.
+
+\Needspace{0.30\textheight}
+\begin{lemma}
+
+Let $d\geq0$ and $Q_k=P_k^{(1,d)}$. If
+
+\nopagebreak[4]
+\[
+-\frac{m+1}{m}<c<\frac{m+d}{m},
+\tag{4.11}
+\]
+
+then all $m$ zeros of $Q_m+cQ_{m-1}$ lie in $(-1,1)$. At either endpoint of
+(4.11), the corresponding endpoint $1$ or $-1$ is a zero and all remaining
+zeros lie in $(-1,1)$.
+
+\end{lemma}
+
+\begin{proof}
+
+The Jacobi weight $(1-t)(1+t)^d$ is positive on $(-1,1)$, so the zeros of
+$Q_m$ and $Q_{m-1}$ are simple and strictly interlace \cite[Sec.~18.2(vi)]{dlmf}.
+Evaluating $Q_m+cQ_{m-1}$ at consecutive zeros of $Q_m$ gives $m-1$ zeros,
+one in each intervening interval. The endpoint values are
+
+\nopagebreak[4]
+\[
+Q_k(1)=k+1,
+\qquad
+Q_k(-1)=(-1)^k\binom{k+d}{k}.
+\]
+
+The endpoint values give the bounds
+
+\nopagebreak[4]
+\[
+c>-\frac{m+1}{m}
+\qquad\text{and}\qquad
+c<\frac{m+d}{m}.
+\]
+
+If $c>0$, the $m-1$ interior sign changes are supplemented on the left: the
+condition $c<(m+d)/m$ makes the signs at $-1$ and at the smallest zero of
+$Q_m$ opposite. If $c<0$, the condition $c>-(m+1)/m$ similarly supplies the
+last zero in the right outer interval. If $c=0$, the polynomial is $Q_m$
+itself. Equality in the upper or lower bound makes $-1$ or $1$, respectively,
+the final zero.
+\end{proof}
+
+
+We now apply the lemma. The coefficient ratio in (4.9) is
+
+\nopagebreak[4]
+\[
+c_-=
+\frac{\rho(m+1)-n}{n+1-\rho m}.
+\tag{4.12}
+\]
+
+Both numerator and denominator are positive, as follows explicitly from
+
+\nopagebreak[4]
+\[
+\rho^2(m+1)^2-n^2=\frac{n(m+n+1)}m>0
+\]
+
+and
+
+\nopagebreak[4]
+\[
+(n+1)^2-\rho^2m^2
+=\frac{(n+1)(m+n+1)}{m+1}>0.
+\]
+
+Moreover
+
+\nopagebreak[4]
+\[
+c_-\leq\frac nm,
+\]
+
+because this inequality reduces to $\rho m\leq n$, whose square is equivalent
+to $m\leq n$. Equality holds exactly when $m=n$. Thus all zeros of $F_-$ lie
+in $(-1,1)$ when $m<n$; when $m=n$, one zero is $t=-1$ and the others remain
+in $(-1,1)$.
+
+The coefficient ratio in (4.10) is
+
+\nopagebreak[4]
+\[
+c_+=-
+\frac{n+\rho(m+1)}{n+1+\rho m}.
+\tag{4.13}
+\]
+
+Clearly $c_+<n/m$, while
+
+\nopagebreak[4]
+\[
+c_+>-\frac{m+1}{m}
+\]
+
+reduces, after cancellation of the common $\rho m(m+1)$ term, to
+$mn<(m+1)(n+1)$. Hence every zero of $F_+$ lies in $(-1,1)$.
+
+\begin{proof}
+
+The inverse transformation in (4.1) is
+
+\nopagebreak[4]
+\[
+x=\frac{t-1}{t+1},
+\]
+
+which maps $(-1,1)$ bijectively onto $(-\infty,0)$. Equations (4.5) and the
+preceding analysis therefore place every finite zero of
+$N_{[2]\times[m]\times[n]}(x)$ on the negative real axis. When $m=n$, the
+endpoint zero $t=-1$ of $F_-$ corresponds to the point at infinity and accounts
+for the degree drop from $2m$ to $2m-1$; it creates no finite zero. This proves
+the theorem.
+\end{proof}
+
+
+\section{Consequences, scope, and prior-work boundary}
+
+
+Real-rootedness immediately implies log-concavity and unimodality of the
+coefficient sequence because all coefficients are nonnegative. Theorem 1.2 also
+records the zero location explicitly: every zero lies in $(-\infty,0)$. For a
+real-rooted polynomial with positive coefficients and constant term $1$, this
+location is a consequence of real-rootedness rather than a logically stronger
+claim.
+
+After the substitution $x=y+1$ from (2.6), Theorem 1.1 proves the determinant
+of \cite{he2021}. It also explains the shifted parameters in its off-diagonal entries:
+they arise from the two-unit row imbalance forced by the tail switch rather than
+from numerical fitting. The proof is entirely within poset and two-rowed-array
+combinatorics; the benzenoid interpretation is not needed.
+
+The argument is specific to the two-layer factor $[2]$. For
+$[k]\times[m]\times[n]$ with $k>2$, one would need a higher-order determinant or
+a compatible multi-path cancellation. No such extension is claimed here. We
+also do not address the separate $\gamma$-positivity conjecture for
+$N_{[2]\times[n]\times[n+1]}(x)$ from \cite{ding2019}.
+
+As of 26 August 2026, targeted searches of the exact conjecture, the determinant
+in \cite{he2021}, the $O(2,m,n)$ family, and the extended strict order-polynomial literature
+found no public proof of either Theorem 1.1 or Theorem 1.2. This records the
+search boundary, not a claim of exhaustive worldwide priority.
+
+\section*{Acknowledgement of AI assistance}
+
+
+OpenAI Codex was used as an AI-assisted tool for literature discovery, proof
+stress testing, exact finite verification, and language editing. The author
+reviewed the mathematical argument and assumes responsibility for the claims and
+presentation.
+
+\begin{thebibliography}{9}
+\footnotesize
+\raggedright
+
+\bibitem{ding2019}
+J.~Ding and C.-P.~Dong,
+\emph{Antichain generating polynomials of posets},
+arXiv:1905.06692v1 (2019).
+\href{https://arxiv.org/abs/1905.06692}{arXiv:1905.06692}.
+
+\bibitem{he2021}
+B.-H.~He, J.~Langner, and H.~A.~Witek,
+\emph{Hexagonal flakes as fused parallelograms: A determinantal formula for
+Zhang--Zhang polynomials of the $O(2,m,n)$ benzenoids},
+J. Chinese Chem. Soc. 68 (2021), 1231--1242.
+\href{https://doi.org/10.1002/jccs.202000420}{doi:10.1002/jccs.202000420}.
+
+\bibitem{langner2021}
+J.~Langner and H.~A.~Witek,
+\emph{Extended strict order polynomial of a poset and fixed elements of linear extensions},
+Australas. J. Combin. 81 (2021), 187--207.
+\href{https://ajc.maths.uq.edu.au/pdf/81/ajc_v81_p187.pdf}{Open-access article}.
+
+\bibitem{langner2022}
+J.~Langner and H.~A.~Witek,
+\emph{ZZ polynomials of regular $m$-tier benzenoid strips as extended strict
+order polynomials of associated posets---Part 1: proof of equivalence},
+MATCH Commun. Math. Comput. Chem. 87 (2022), 585--620.
+\href{https://doi.org/10.46793/match.87-3.585L}{doi:10.46793/match.87-3.585L}.
+
+\bibitem{krattenthaler1995}
+C.~Krattenthaler,
+\emph{Counting nonintersecting lattice paths with turns},
+S\'em. Lothar. Combin. 34 (1995), Article B34i, 17 pp.
+\href{https://www.mat.univie.ac.at/~slc/wpapers/s34vienna.pdf}{Open-access article}.
+
+\bibitem{rubey}
+M.~Rubey,
+\emph{Comment on ``Counting nonintersecting lattice paths with turns'' by
+C. Krattenthaler}.
+\href{https://www.mat.univie.ac.at/~slc/wpapers/s34rubey.pdf}{Open-access comment}.
+
+\bibitem{dlmf}
+NIST Digital Library of Mathematical Functions,
+Chapter 18: \emph{Orthogonal Polynomials}.
+\href{https://dlmf.nist.gov/18}{dlmf.nist.gov/18}.
+
+\end{thebibliography}
+
+\end{document}
