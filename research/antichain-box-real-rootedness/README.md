@@ -5,6 +5,7 @@
 - [Read or download the PDF](antichain-box-real-rootedness.pdf)
 - [LaTeX source](antichain-box-real-rootedness.tex)
 - [BibTeX citation](CITATION.bib)
+- Current version DOI: [10.5281/zenodo.22115309](https://doi.org/10.5281/zenodo.22115309)
 - Concept DOI: [10.5281/zenodo.22112708](https://doi.org/10.5281/zenodo.22112708)
 - [Exact verification](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
