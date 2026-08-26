@@ -25,6 +25,7 @@ including manuscripts and reproducible verification materials.
 | [The third symbolic power of a co-chordal edge ideal is componentwise linear](research/co-chordal-third-symbolic-power/README.md)<br>[PDF](research/co-chordal-third-symbolic-power/co-chordal-third-symbolic-power.pdf) · [BibTeX](research/co-chordal-third-symbolic-power/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22085466) | Commutative algebra, monomial ideals, chordal graphs | Proves componentwise linearity of the third symbolic power for every co-chordal graph over every field | v0.1-beta | Internally verified candidate proof; external review pending |
 | [A ternary word attaining the Abelian maximal pattern complexity bound at pattern size three](research/ternary-ampc-k3-sharpness/README.md)<br>[PDF](research/ternary-ampc-k3-sharpness/ternary-ampc-k3-sharpness.pdf) · [BibTeX](research/ternary-ampc-k3-sharpness/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22093018) | Combinatorics on words, Abelian complexity, substitution sequences | Constructs a recurrent ternary word, aperiodic by projection, with exact Abelian maximal pattern complexity $p_{\alpha}^{*\mathrm{ab}}(3)=7$ | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Sharp initial thresholds for Abelian-bordered binary infinite words](research/abelian-border-periodicity-thresholds/README.md)<br>[PDF](research/abelian-border-periodicity-thresholds/abelian-border-periodicity-thresholds.pdf) · [BibTeX](research/abelian-border-periodicity-thresholds/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22100526) | Combinatorics on words, Abelian borders, ultimate periodicity | Proves the sharp ordinary-periodicity threshold $13$, the next sharp Abelian-periodicity layer at $14$, and a frequency-denominator sufficient condition | v0.1-beta | Internally verified candidate proof; external review pending |
+| [On a claimed upper bound for partial Desarguesian parallelisms](research/desarguesian-johnson-bound-correction/README.md)<br>[PDF](research/desarguesian-johnson-bound-correction/desarguesian-johnson-bound-correction.pdf) · [BibTeX](research/desarguesian-johnson-bound-correction/CITATION.bib) · DOI pending | Finite geometry, Desarguesian spreads, partial parallelisms | Proves that a known orbit lower bound uniformly exceeds Johnson's claimed upper bound for every prime power $q$, odd prime $t\geq3$, and $z\geq2$ | v0.1-beta | Internally verified correction note; external review pending |
 
 ## Current results
 
@@ -345,6 +346,28 @@ implementations certify the two initial threshold layers.
 
 - [Manuscript and exact verification](research/abelian-border-periodicity-thresholds/README.md)
 
+### Correction to a Desarguesian partial-parallelism bound
+
+For every prime power $q$, odd prime $t\geq3$, and $z\geq2$, set $n=zt$.
+This note combines the Zhang--Zhou orbit construction with an elementary
+comparison to prove
+
+$$
+D(n,t,q)>
+\frac{q^t-1}{q^n-1}
+\left[\begin{matrix}n-1\\t-1\end{matrix}\right]_q
+>
+\frac{q^{n-1}-1}{q^{t-1}-1}.
+$$
+
+Thus the upper bound claimed by Johnson in 2010 fails throughout its
+nontrivial odd-prime parameter range. Earlier $PG(5,2)$ work already implies a
+complete finite counterexample, so the note claims a uniform correction, not
+the first counterexample. A compact certificate independently verifies 18
+pairwise disjoint Desarguesian $3$-spreads in $V(6,2)$.
+
+- [Correction note and verification certificate](research/desarguesian-johnson-bound-correction/README.md)
+
 ## Status and review policy
 
 Entries are research records, not automatically peer-reviewed publications.
@@ -432,3 +455,5 @@ aperiodicity by projection; primitive substitutions; automatic sequences;
 Parikh vectors; sparse factors; finite-state verification; Abelian borders;
 Abelian-unbordered factors; ultimate periodicity; bounded discrepancy; finite
 overlap graphs.
+Desarguesian spreads; partial parallelisms; field reduction; Cayley graphs;
+Gaussian binomial coefficients; translation nets; correction notes.

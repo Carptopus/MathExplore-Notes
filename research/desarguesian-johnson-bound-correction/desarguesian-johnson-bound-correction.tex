@@ -1,0 +1,443 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{2em}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\F}{\mathbb F}
+\newcommand{\qbinom}[2]{\genfrac{[}{]}{0pt}{}{#1}{#2}_{q}}
+
+\hypersetup{
+  pdftitle={On a Claimed Upper Bound for Partial Desarguesian Parallelisms},
+  pdfauthor={Carptopus},
+  pdfsubject={A uniform correction to an upper bound for partial Desarguesian parallelisms},
+  pdfkeywords={Desarguesian spread, partial parallelism, finite geometry, field reduction, Cayley graph}
+}
+
+\title{On a Claimed Upper Bound for\\
+Partial Desarguesian Parallelisms}
+\author{Carptopus\\\small\texttt{carptopus@163.com}}
+\date{26 August 2026\\\small v0.1-beta; not peer reviewed}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Johnson claimed that, when $t$ is prime, a partial Desarguesian
+$t$-parallelism in $V(zt,q)$ has at most
+\[
+\left\lfloor\frac{q^{zt-1}-1}{q^{t-1}-1}\right\rfloor
+\]
+members, and concluded that no Desarguesian $t$-parallelism exists for odd
+prime $t$. We show that this bound fails throughout its nontrivial odd-prime
+parameter range. The Cayley-graph construction of Zhang and Zhou uses
+$\mathrm{GL}(zt,q)$-images of a standard Desarguesian spread. These images
+remain Desarguesian, and their lower bound is strictly larger than Johnson's
+claimed upper bound for every prime power $q$, odd prime $t\geq3$, and
+$z\geq2$. The comparison is elementary once the two bounds are placed in the
+same notation.
+
+We also locate the unsupported step in the proposed correspondence underlying
+the bound: affine lines arising from two potentially different extension-field
+structures are treated as a common line merely because their defining points
+belong to the set-theoretic intersection. Johnson's later book itself records
+the associated disjointness issue as unresolved while retaining the claimed
+theorem. Earlier work on $PG(5,2)$ already implicitly supplies a complete
+finite counterexample, so no priority is claimed for the first counterexample.
+A compact certificate of 18 pairwise disjoint Desarguesian $3$-spreads in
+$V(6,2)$ is included as an independently checkable finite witness.
+\end{abstract}
+
+\noindent\textbf{Keywords.} Desarguesian spread; partial parallelism; finite
+geometry; field reduction; Cayley graph.
+
+\medskip
+\noindent\textbf{2020 Mathematics Subject Classification.} 51E20, 51A40,
+05B25.
+
+\section{Introduction}
+
+Let $V=V(n,q)$ be an $n$-dimensional vector space over $\F_q$, and suppose
+that $t\mid n$. A $t$-spread of $V$ is a partition of the nonzero vectors
+into $t$-dimensional $\F_q$-subspaces. It is Desarguesian when $V$ can be
+regarded as a vector space over $\F_{q^t}$ and the spread members are the
+one-dimensional $\F_{q^t}$-subspaces. A partial $t$-parallelism is a family
+of $t$-spreads no two of which share a $t$-dimensional subspace.
+
+For $n=zt$, write $D(n,t,q)$ for the largest size of a partial
+$t$-parallelism all of whose spreads are Desarguesian. Johnson~\cite[Corollary~1]{JohnsonPaper}
+claimed, for prime $t$, the upper bound
+\begin{equation}
+D(zt,t,q)\leq
+J(zt,t,q):=
+\left\lfloor
+\frac{q^{zt-1}-1}{q^{t-1}-1}
+\right\rfloor.
+\label{eq:johnson}
+\end{equation}
+The paper then used~\eqref{eq:johnson} to rule out Desarguesian
+$t$-parallelisms for odd prime $t$. An equivalent statement and bound
+reappear as Theorem~51 and Corollary~14 of Johnson's
+book~\cite[Chapter~10]{JohnsonBook}.
+
+The purpose of this note is not to construct a new large family of spreads.
+Instead, it observes that a known construction already contradicts
+\eqref{eq:johnson} in every nontrivial odd-prime case. Zhang and
+Zhou~\cite{ZhangZhou} derived lower bounds for partial $t$-parallelisms by
+taking an independent set in a Cayley graph on $\mathrm{GL}(n,q)$. Their
+vertices act on a fixed field-reduction spread. Consequently, every spread in
+the resulting family is Desarguesian, even though their extremal notation does
+not impose that restriction.
+
+Our main result is the following uniform correction.
+
+\begin{theorem}\label{thm:main}
+Let $q$ be a prime power, let $t\geq3$ be an odd prime, let $z\geq2$, and put
+$n=zt$. Then
+\begin{equation}
+D(n,t,q)>
+\frac{q^t-1}{q^n-1}\qbinom{n-1}{t-1}
+>
+\frac{q^{n-1}-1}{q^{t-1}-1}.
+\label{eq:main}
+\end{equation}
+In particular, $D(n,t,q)>J(n,t,q)$, so the upper bound
+\eqref{eq:johnson} is false throughout this parameter range.
+\end{theorem}
+
+The first inequality in~\eqref{eq:main} comes from the Zhang--Zhou
+construction; the second is the new comparison needed to expose the
+contradiction.
+
+Section~\ref{sec:orbit} checks that the Zhang--Zhou witnesses satisfy
+Johnson's Desarguesian condition. Section~\ref{sec:comparison} proves the
+strict comparison. Section~\ref{sec:history} records the earlier finite
+counterexample and examines the proof step behind the claimed bound.
+Section~\ref{sec:certificate} describes the independent finite certificate.
+
+\section{Desarguesianity of the orbit construction}\label{sec:orbit}
+
+Fix $n$ divisible by $t$. A standard Desarguesian $t$-spread can be obtained
+by identifying $V(n,q)$ with $\F_{q^n}$ and taking
+\begin{equation}
+\mathcal S_0=
+\{\,\omega^i\F_{q^t}:
+0\leq i<(q^n-1)/(q^t-1)\,\},
+\label{eq:standard-spread}
+\end{equation}
+where $\omega$ is primitive in $\F_{q^n}$. Zhang and
+Zhou~\cite[Theorem~3.1]{ZhangZhou} form a Cayley graph on
+$\mathrm{GL}(n,q)$ in which two matrices are adjacent precisely when the
+corresponding images of $\mathcal S_0$ share a spread member. An independent
+set therefore produces a partial $t$-parallelism consisting of spreads
+$M\mathcal S_0$.
+
+The following elementary observation places this construction inside the
+restricted class counted by $D(n,t,q)$.
+
+\begin{lemma}\label{lem:orbit-desarguesian}
+For every $M\in\mathrm{GL}(n,q)$, the spread $M\mathcal S_0$ is
+Desarguesian.
+\end{lemma}
+
+\begin{proof}
+Let
+\[
+\rho:\F_{q^t}\longrightarrow
+\mathrm{End}_{\F_q}(V)
+\]
+be the extension-field embedding whose one-dimensional orbits give
+$\mathcal S_0$. Conjugation defines another embedding
+\[
+\rho_M(a)=M\rho(a)M^{-1}.
+\]
+The one-dimensional $\F_{q^t}$-subspaces for the extension structure
+$\rho_M$ are exactly the $M$-images of those for $\rho$. Hence
+$M\mathcal S_0$ is Desarguesian.
+\end{proof}
+
+Johnson's definition requires each spread in the partial parallelism to be
+Desarguesian; it does not require all spreads to arise from one common
+extension-field embedding. Lemma~\ref{lem:orbit-desarguesian} is therefore
+sufficient.
+
+Zhang and Zhou prove~\cite[Corollary~3.4]{ZhangZhou} that their construction
+contains more than
+\begin{equation}
+L(n,t,q):=
+\frac{q^t-1}{q^n-1}\qbinom{n-1}{t-1}
+\label{eq:L}
+\end{equation}
+spreads. Since the witnesses used in that proof are the orbit images just
+described, Lemma~\ref{lem:orbit-desarguesian} gives
+\begin{equation}
+D(n,t,q)>L(n,t,q).
+\label{eq:DgtL}
+\end{equation}
+
+\section{Uniform comparison with the claimed upper bound}
+\label{sec:comparison}
+
+Put
+\[
+J_0(n,t,q)=\frac{q^{n-1}-1}{q^{t-1}-1},
+\]
+so that $J(n,t,q)=\lfloor J_0(n,t,q)\rfloor$. Expanding the Gaussian
+binomial coefficient in~\eqref{eq:L} and cancelling the factor with index
+zero gives
+\begin{equation}
+\frac{L(n,t,q)}{J_0(n,t,q)}
+=
+\frac{q^t-1}{q^n-1}
+\prod_{i=1}^{t-2}
+\frac{q^{n-1-i}-1}{q^{t-1-i}-1}.
+\label{eq:ratio}
+\end{equation}
+We prove that this ratio is greater than one.
+
+\begin{lemma}\label{lem:t3}
+If $t=3$ and $n=3z$ with $z\geq2$, then $L(n,3,q)>J_0(n,3,q)$.
+\end{lemma}
+
+\begin{proof}
+Equation~\eqref{eq:ratio} becomes
+\[
+\frac{L(n,3,q)}{J_0(n,3,q)}
+=
+\frac{(q^2+q+1)(q^{n-2}-1)}{q^n-1}.
+\]
+The numerator minus the denominator is
+\[
+(q^2+q+1)(q^{n-2}-1)-(q^n-1)
+=(q+1)(q^{n-2}-q),
+\]
+which is positive because $n\geq6$.
+\end{proof}
+
+\begin{lemma}\label{lem:t4plus}
+If $t\geq4$, $n=zt$, and $z\geq2$, then
+$L(n,t,q)>J_0(n,t,q)$.
+\end{lemma}
+
+\begin{proof}
+For $1\leq i\leq t-2$,
+\begin{equation}
+\frac{q^{n-1-i}-1}{q^{t-1-i}-1}>q^{n-t},
+\label{eq:factor}
+\end{equation}
+because the numerator of the left side exceeds
+$q^{n-t}(q^{t-1-i}-1)$. Also,
+\begin{equation}
+\frac{q^t-1}{q^n-1}
+=q^{t-n}\frac{1-q^{-t}}{1-q^{-n}}
+>(1-q^{-t})q^{t-n}.
+\label{eq:leading}
+\end{equation}
+Substituting~\eqref{eq:factor} and~\eqref{eq:leading} into
+\eqref{eq:ratio} yields
+\begin{equation}
+\frac{L(n,t,q)}{J_0(n,t,q)}
+>(1-q^{-t})q^{(t-3)(n-t)}.
+\label{eq:coarse}
+\end{equation}
+For $t=4$, the right side is minimized at $q=2$ and $n-t=4$, where it is
+\[
+\frac{15}{16}\,2^4=15>1.
+\]
+For $t\geq5$, it is minimized at the boundary $q=2$, $t=5$, and $n-t=5$,
+where it is
+\[
+\frac{31}{32}\,2^{10}>1.
+\]
+Thus the ratio in~\eqref{eq:ratio} is greater than one.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+By Lemma~\ref{lem:orbit-desarguesian} and the Zhang--Zhou construction,
+\eqref{eq:DgtL} holds. Lemma~\ref{lem:t3} handles $t=3$, and
+Lemma~\ref{lem:t4plus} handles every odd prime $t\geq5$. Therefore
+\[
+D(n,t,q)>L(n,t,q)>J_0(n,t,q)
+\geq\lfloor J_0(n,t,q)\rfloor,
+\]
+which is~\eqref{eq:main}.
+\end{proof}
+
+The argument actually compares the two numerical bounds whenever $t\geq3$,
+$t\mid n$, and $n\geq2t$; primality is retained in
+Theorem~\ref{thm:main} because that is the scope of Johnson's claim under
+correction.
+
+\section{Historical boundary and the failed proof bridge}
+\label{sec:history}
+
+\subsection{An earlier complete finite counterexample}
+
+The parameter triple $(q,t,z)=(2,3,2)$ already shows why the present note
+cannot claim the first counterexample. Projective planes in $PG(5,2)$
+correspond to three-dimensional vector subspaces of $V(6,2)$. Topalova and
+Zhelezova~\cite{Topalova2008} proved that $PG(5,2)$ has only one equivalence
+class of projective $2$-spreads under $PGL(6,2)$. A standard field-reduction
+spread from $\F_{64}/\F_8$ is Desarguesian. Since
+$PGL(6,2)=GL(6,2)$, every $2$-spread in this geometry is therefore
+Desarguesian.
+
+Sarmiento~\cite{Sarmiento} had already constructed resolutions of the
+$2$-$(63,7,15)$ design associated with $PG(5,2)$; these resolutions are
+complete projective $2$-parallelisms. The number of projective planes is
+\[
+\genfrac{[}{]}{0pt}{}{6}{3}_{2}=1395,
+\]
+and every spread contains
+\[
+\frac{2^6-1}{2^3-1}=9
+\]
+planes. A complete parallelism consequently contains $1395/9=155$ spreads,
+all Desarguesian by the uniqueness result. Johnson's claimed bound at these
+parameters is only
+\[
+\left\lfloor\frac{2^5-1}{2^2-1}\right\rfloor=10.
+\]
+Thus the older literature already implicitly contains the contradiction
+$155>10$. Later work of Topalova and Zhelezova~\cite{Topalova2010} gives
+further explicit constructions and classifications in the same geometry.
+
+\subsection{Where the proposed correspondence loses a hypothesis}
+
+Johnson derives~\eqref{eq:johnson} from a correspondence between partial
+Desarguesian $t$-parallelisms and translation nets assembled from rational
+Desarguesian partial spreads~\cite[Theorem~3]{JohnsonPaper}. In the proof, two
+affine planes $\pi_1,\pi_2$ arise from two Desarguesian spreads. These spreads
+may use different copies of $\F_{q^t}$ inside
+$\mathrm{End}_{\F_q}(V)$.
+
+For two points $P,Q\in\pi_1\cap\pi_2$, the proof then treats the affine line
+through $P$ and $Q$ as a line common to both planes. Uniqueness of a line
+through two points holds within each affine-plane incidence structure, but it
+does not identify the two lines when the extension-field structures differ.
+The same issue occurs when $0$ and $Q-P$ are used to infer a common component.
+Consequently, the set-theoretic intersection $\pi_1\cap\pi_2$ has not been
+shown to be an affine subplane of either plane, and the subsequent subfield
+dimension argument lacks its required premise.
+
+The book version makes the status of this bridge especially clear. Before
+restating the result, Johnson~\cite[pp.~134--136]{JohnsonBook} says that it is
+``not clear'' whether the two rational Pappian partial spreads are disjoint
+outside their common regulus. Theorem~51 nevertheless restates the
+equivalence, leaves the common-affine-subplane assertion to the reader, and
+Corollary~14 repeats the upper bound.
+
+The numerical contradiction in Theorem~\ref{thm:main} proves that this
+unresolved bridge cannot hold under the stated hypotheses in general. This
+note does not attempt to classify additional compatibility assumptions under
+which a modified correspondence might be valid.
+
+\section{A compact independent certificate}\label{sec:certificate}
+
+The accompanying verification data give 18 explicit matrices in
+$\mathrm{GL}(6,2)$. Starting from the field-reduction spread
+$\F_{64}/\F_8$, the checker reconstructs the 18 image spreads and verifies
+that
+\begin{enumerate}
+\item every matrix is invertible;
+\item every image is a $3$-spread of $V(6,2)$;
+\item the 18 spreads are distinct; and
+\item every pair is disjoint as a set of three-dimensional subspaces.
+\end{enumerate}
+
+Every image is Desarguesian by Lemma~\ref{lem:orbit-desarguesian}, so the
+certificate independently establishes
+\[
+D(6,3,2)\geq18>10.
+\]
+It is intentionally smaller than the old complete $155$-spread witness. Its
+purpose is reproducibility: checking the correction does not require
+reconstructing the earlier full classifications or parallelisms. The checker
+also contains stable destructive controls which reject a singular map and an
+intentionally duplicated spread.
+
+From this public entry directory, run
+\begin{verbatim}
+python -X utf8 verification\check_desarguesian_certificate.py
+\end{verbatim}
+
+The finite certificate is supplementary evidence. The general result in
+Theorem~\ref{thm:main} rests on the symbolic comparison in
+Section~\ref{sec:comparison}, not on finite enumeration.
+
+\section{Scope of the correction}
+
+The mathematical contribution of this note is deliberately limited:
+\begin{itemize}
+\item it identifies the Zhang--Zhou orbit lower bound as a uniform
+contradiction to Johnson's claimed upper bound over the whole nontrivial
+odd-prime range;
+\item it explains why all orbit witnesses meet Johnson's individual
+Desarguesianity requirement;
+\item it shows that the unresolved common-subplane bridge is fatal to the
+claimed theorem under its published hypotheses; and
+\item it supplies a compact independent finite witness.
+\end{itemize}
+
+The note does not claim the first finite counterexample, the first
+Desarguesian $3$-parallelism, the first observation that the common-subplane
+step needs proof, or a best corrected replacement for Johnson's
+correspondence. It also does not claim external expert confirmation or peer
+review.
+
+\section*{Acknowledgement of AI assistance}
+
+The author used OpenAI Codex for literature triage, symbolic checks, proof
+stress testing, verification-code review, and drafting assistance. The author
+reviewed the mathematical argument and assumes responsibility for the claims
+and presentation.
+
+\begin{thebibliography}{9}
+
+\bibitem{JohnsonPaper}
+N.~L. Johnson,
+\emph{The non-existence of desarguesian t-parallelisms, t an odd prime},
+Note di Matematica 30 (2010), no.~1, 13--16.
+\url{https://doi.org/10.1285/i15900932v30n1p13}
+
+\bibitem{JohnsonBook}
+N.~L. Johnson,
+\emph{Combinatorics of Spreads and Parallelisms},
+CRC Press, 2010, Chapter~10, Theorem~51 and Corollary~14.
+\url{https://doi.org/10.1201/EBK1439819463}
+
+\bibitem{Sarmiento}
+J.~F. Sarmiento,
+\emph{On point-cyclic resolutions of the 2-(63,7,15) design associated with
+PG(5,2)},
+Graphs and Combinatorics 18 (2002), 621--632.
+\url{https://doi.org/10.1007/s003730200046}
+
+\bibitem{Topalova2008}
+S.~T. Topalova and S.~D. Zhelezova,
+\emph{Classification of the 2-spreads of PG(5,2)},
+Proceedings of the Thirty Seventh Spring Conference of the Union of Bulgarian
+Mathematicians (2008), 163--168.
+\url{https://www.math.bas.bg/smb/2008_PK/2008/pdf/163-168.pdf}
+
+\bibitem{Topalova2010}
+S.~Topalova and S.~Zhelezova,
+\emph{2-spreads and transitive and orthogonal 2-parallelisms of PG(5,2)},
+Graphs and Combinatorics 26 (2010), 727--735.
+\url{https://doi.org/10.1007/s00373-010-0943-8}
+
+\bibitem{ZhangZhou}
+T.~Zhang and Y.~Zhou,
+\emph{New lower bounds for partial k-parallelisms},
+Journal of Combinatorial Designs 28 (2020), 75--84.
+\url{https://doi.org/10.1002/jcd.21681}
+
+\end{thebibliography}
+
+\end{document}
