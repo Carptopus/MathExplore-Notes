@@ -5,7 +5,7 @@
 - [Read or download the PDF](desarguesian-johnson-bound-correction.pdf)
 - [LaTeX source](desarguesian-johnson-bound-correction.tex)
 - [BibTeX citation](CITATION.bib)
-- DOI: pending Zenodo publication
+- DOI: [10.5281/zenodo.22105345](https://doi.org/10.5281/zenodo.22105345)
 - [Verification code and certificate](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
