@@ -1,0 +1,8 @@
+CC0 1.0 Universal
+
+To the extent possible under law, Carptopus has waived all copyright and
+related or neighboring rights to the certificate arrays and their JSON
+metadata in this directory.
+
+The complete legal code is available at:
+https://creativecommons.org/publicdomain/zero/1.0/legalcode

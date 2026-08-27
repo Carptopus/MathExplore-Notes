@@ -1,0 +1,22 @@
+{
+  "schema": "cyclotomic-mindeg-farkas-certificate-v1",
+  "n": 46189,
+  "primes": [
+    11,
+    13,
+    17,
+    19
+  ],
+  "max_degree": 41989,
+  "scale_before_rounding": 100000,
+  "certificate_length": 34560,
+  "certificate_min": -937058597,
+  "certificate_max": 1013405025,
+  "certificate_nonzero": 34560,
+  "constraint_count": 41990,
+  "constraint_value_min": -937058597,
+  "constraint_value_max": -99986,
+  "constraint_positive_or_zero_count": 0,
+  "certificate_file": "certificate-46189.npz",
+  "certificate_sha256": "9f0e34517f3ae92161e359e0345563d1ae4ff73a5cdc99693c0e82657dce0e80"
+}

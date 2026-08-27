@@ -1,0 +1,589 @@
+% Generated deterministically from the audited Markdown source.
+% Responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,tabularx,array,graphicx}
+\usepackage{needspace}
+\usepackage{xcolor}
+\usepackage{fancyvrb}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\numberwithin{equation}{section}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Two cyclotomic minimum-degree cases}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\setlength{\emergencystretch}{4em}
+\urlstyle{same}
+
+\title{Exact certificates for the first two cases not covered\\
+by Steinberger's cyclotomic minimum-degree theorem}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{27 August 2026}
+
+\hypersetup{
+  pdftitle={Exact certificates for the first two cases not covered by Steinberger's cyclotomic minimum-degree theorem},
+  pdfauthor={Carptopus},
+  pdfsubject={Exact integer certificates for the cyclotomic nonnegative-coefficient minimum-degree problem at n=46189 and n=96577},
+  pdfkeywords={cyclotomic polynomial, nonnegative coefficients, minimum degree, exact certificate, CRT array, linear programming}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fcolorbox{black!35}{black!4}{\parbox{0.88\textwidth}{\centering\small
+Internal candidate manuscript, version 0.1-beta. The mathematical proof and
+complete Markdown manuscript have passed project-internal zero-trust audits.
+External mathematical review and formal peer review are pending.}}
+\end{center}
+
+\begin{abstract}
+
+
+Let $\Phi_n(x)$ be the $n$-th cyclotomic polynomial. Steinberger asked for the
+lowest degree of a nonzero polynomial with nonnegative coefficients divisible
+by $\Phi_n$ and conjectured that the unique monic minimizer is the regular
+$p$-gon polynomial
+
+\nopagebreak[4]
+\[
+1+x^{n/p}+\cdots+x^{(p-1)n/p},
+\]
+
+where $p$ is the smallest prime divisor of $n$. His general theorem leaves
+$46189=11\cdot13\cdot17\cdot19$ and
+$96577=13\cdot17\cdot19\cdot23$ as the first two uncovered values. We prove
+the conjecture for both values. The proof is computer assisted but exact: for
+each parameter we provide an integer element of the orthogonal complement of
+the cyclotomic-array space which vanishes on the regular polygon and has a
+strict sign at every other position up to the proposed boundary degree. The
+certificates are checked by two exact routes, one using CRT tensor marginals
+and one expanding the full multidimensional array and verifying every fiber
+sum. Consequently the minimum degrees are $41990$ and $89148$, respectively,
+and the monic minimizers over the nonnegative reals are unique. These are two
+fixed-parameter results, not a proof of the general conjecture.
+
+\end{abstract}
+
+\section{Introduction}
+
+
+For a positive integer $n$, consider the optimization problem
+
+\nopagebreak[4]
+\[
+\min\{\deg f:0\ne f\in\mathbb R_{\geq0}[x],\ \Phi_n(x)\mid f(x)\}.
+\tag{1.1}
+\]
+
+If $p$ is the smallest prime divisor of $n$, the polynomial
+
+\nopagebreak[4]
+\[
+R_{n,p}(x)=1+x^{n/p}+\cdots+x^{(p-1)n/p}
+\tag{1.2}
+\]
+
+is divisible by $\Phi_n(x)$ and has degree $(p-1)n/p$. Steinberger \cite{steinberger2012}
+conjectured that this is always the minimum degree and that $R_{n,p}$ is the
+unique monic minimizer. His Theorem 1 proves the conjecture when $n$ is even,
+when $n$ is a prime power, and, for squarefree notation
+$n=pq_1\cdots q_k$, whenever
+
+\nopagebreak[4]
+\[
+\frac{2}{p}>\frac1{q_1}+\cdots+\frac1{q_k}.
+\tag{1.3}
+\]
+
+The same paper identifies
+
+\nopagebreak[4]
+\[
+46189=11\cdot13\cdot17\cdot19,
+\qquad
+96577=13\cdot17\cdot19\cdot23
+\tag{1.4}
+\]
+
+as the first two values not covered by that theorem. It also explains that
+each fixed case is a finite linear-programming problem, while noting that the
+resulting systems were too large for the computations carried out there.
+
+The purpose of this note is to settle exactly these two fixed cases. Our main
+result is the following.
+
+\Needspace{0.28\textheight}
+\begin{theorem}
+
+Let $f\in\mathbb R_{\geq0}[x]$ be nonzero.
+
+\begin{enumerate}
+\item If $\Phi_{46189}(x)\mid f(x)$, then $\deg f\geq41990$. Equality holds
+   precisely for positive scalar multiples of
+   $1+x^{4199}+\cdots+x^{10\cdot4199}$.
+\item If $\Phi_{96577}(x)\mid f(x)$, then $\deg f\geq89148$. Equality holds
+   precisely for positive scalar multiples of
+   $1+x^{7429}+\cdots+x^{12\cdot7429}$.
+
+\end{enumerate}
+
+In particular, in each case the displayed polynomial is the unique monic
+minimizer.
+
+\end{theorem}
+
+The mathematical reduction is Steinberger's separation criterion \cite[Lemma~1]{steinberger2012}. The new finite objects are two exact integer certificates. Floating
+point linear programming was used to discover them, but it is not part of the
+proof: the final claims depend only on the integer files and exact arithmetic.
+
+Section 2 recalls the separation criterion and makes the coefficient field in
+the uniqueness statement explicit. Section 3 gives the CRT-array
+representation and the certificate data. Section 4 describes the exact
+verification. Section 5 records how the larger certificate was found, while
+separating that history from the proof. Section 6 states the scope relative to
+prior work.
+
+\section{The separation criterion}
+
+
+We use Steinberger's notation in a form adapted to exact certificates. Let $n$
+be squarefree, let
+
+\nopagebreak[4]
+\[
+n=p_1p_2\cdots p_s,
+\qquad p_1=p<p_2<\cdots<p_s,
+\]
+
+and put
+
+\nopagebreak[4]
+\[
+P=\frac np,
+\qquad d=(p-1)P.
+\]
+
+Let $V_n\subseteq\mathbb R^n$ be the space of coefficient vectors of
+polynomials of degree less than $n$ which are divisible by $\Phi_n$. Define
+
+\nopagebreak[4]
+\[
+H=\{0,P,2P,\ldots,(p-1)P\}
+\tag{2.1}
+\]
+
+and
+
+\nopagebreak[4]
+\[
+F^+=\{0,1,\ldots,d-1\}\setminus H.
+\tag{2.2}
+\]
+
+Thus $H$ is the support of the regular $p$-gon polynomial, including its
+degree-$d$ endpoint. Steinberger's Lemma 1 uses a vector in $V_n^\perp$ which
+is zero on $H$ and strictly positive on $F^+$. We use the negative of that
+vector.
+
+\Needspace{0.28\textheight}
+\begin{proposition}[Steinberger's criterion, sign reversed]
+
+Suppose there is a vector $w\in V_n^\perp$ such that
+
+\nopagebreak[4]
+\[
+w_j=0\quad(j\in H),
+\qquad
+w_j<0\quad(j\in F^+).
+\tag{2.3}
+\]
+
+Then every nonzero $f\in\mathbb R_{\geq0}[x]$ divisible by $\Phi_n$ and of
+degree at most $d$ is supported on $H$.
+
+\end{proposition}
+
+\begin{proof}
+
+Pad the coefficient vector $a$ of $f$ with zeros to length $n$. Because
+$\deg f\leq d<n$ and $\Phi_n\mid f$, we have $a\in V_n$. Hence
+
+\nopagebreak[4]
+\[
+0=\langle w,a\rangle=\sum_{j=0}^{d}w_ja_j.
+\]
+
+Every summand is nonpositive, and every summand indexed by $F^+$ is strictly
+negative whenever the corresponding coefficient is positive. Therefore
+$a_j=0$ for every $j\in F^+$, so the support is contained in $H$.
+\end{proof}
+
+
+For completeness, we record the step which turns support containment into the
+real-coefficient uniqueness statement. It is important here not to appeal
+merely to irreducibility over $\mathbb Q$, since our coefficients lie in
+$\mathbb R$.
+
+\Needspace{0.28\textheight}
+\begin{lemma}[real-coefficient boundary rigidity]
+
+Let $n$ be squarefree, let $p$ be its smallest prime divisor, and put $P=n/p$.
+Suppose $0\ne f\in\mathbb R_{\geq0}[x]$, $\Phi_n\mid f$,
+$\deg f\leq(p-1)P$, and $\operatorname{supp}(f)\subseteq H$. Then
+
+\nopagebreak[4]
+\[
+f(x)=c\bigl(1+x^P+\cdots+x^{(p-1)P}\bigr)
+\tag{2.4}
+\]
+
+for some $c>0$.
+
+\end{lemma}
+
+\begin{proof}
+
+Write $f(x)=g(x^P)$ with $g\in\mathbb R[x]$ and $\deg g\leq p-1$. Let
+$\zeta_n$ be a primitive $n$-th root of unity. For every
+$a\in(\mathbb Z/n\mathbb Z)^*$,
+
+\nopagebreak[4]
+\[
+0=f(\zeta_n^a)=g\bigl((\zeta_n^P)^a\bigr).
+\]
+
+The root $\zeta_n^P$ is primitive of order $p$. Because $n$ is squarefree,
+the reduction map
+
+\nopagebreak[4]
+\[
+(\mathbb Z/n\mathbb Z)^*\longrightarrow(\mathbb Z/p\mathbb Z)^*
+\tag{2.5}
+\]
+
+is surjective by the Chinese remainder theorem. Consequently $g$ vanishes at
+every primitive $p$-th root. Therefore $\Phi_p\mid g$ in $\mathbb R[x]$.
+Since both $\deg g\leq p-1$ and $\deg\Phi_p=p-1$, we have
+$g=c\Phi_p$ for a real scalar $c$. Nonzero nonnegative coefficients force
+$c>0$, proving (2.4).
+\end{proof}
+
+
+Proposition 2.1 and Lemma 2.2 show that a single boundary certificate proves
+both the degree lower bound and boundary uniqueness. Indeed, a polynomial of
+degree less than $d$ would be forced to equal a positive scalar multiple of
+the regular polygon, which has degree exactly $d$.
+
+\section{CRT arrays and the two certificates}
+
+
+We recall the exact coordinate model used to store the certificates. For
+$n=p_1\cdots p_s$, define
+
+\nopagebreak[4]
+\[
+\psi(t_1,\ldots,t_s)
+=\sum_{r=1}^s t_r\frac{n}{p_r}\pmod n,
+\qquad
+0\leq t_r<p_r.
+\tag{3.1}
+\]
+
+Every factor $n/p_r$ is invertible modulo $p_r$, so $\psi$ is a bijection. Its
+inverse sends an exponent $j$ to
+
+\nopagebreak[4]
+\[
+t_r(j)=j\left(\frac{n}{p_r}\right)^{-1}\pmod {p_r}.
+\tag{3.2}
+\]
+
+Under this identification, the space $V_n$ is spanned by indicators of fibers
+parallel to the coordinate axes \cite{steinberger2012}. It follows that
+
+\nopagebreak[4]
+\[
+V_n^\perp
+=\mathbf1_{p_1}^{\perp}\otimes\cdots\otimes
+  \mathbf1_{p_s}^{\perp}.
+\tag{3.3}
+\]
+
+For $1\leq i<p_r$, let $b_i^{(r)}=e_i-e_0$. These vectors form an integer
+basis of $\mathbf1_{p_r}^{\perp}$. An integer coordinate array
+
+\nopagebreak[4]
+\[
+U=(U_{i_1,\ldots,i_s}),
+\qquad 1\leq i_r<p_r,
+\]
+
+therefore determines
+
+\nopagebreak[4]
+\[
+W=
+\sum_{i_1=1}^{p_1-1}\cdots\sum_{i_s=1}^{p_s-1}
+U_{i_1,\ldots,i_s}
+b_{i_1}^{(1)}\otimes\cdots\otimes b_{i_s}^{(s)}
+\in V_n^\perp.
+\tag{3.4}
+\]
+
+The certificate value at exponent $j$ is
+
+\nopagebreak[4]
+\[
+w_j=W_{t_1(j),\ldots,t_s(j)}.
+\tag{3.5}
+\]
+
+The two retained boundary certificates have the following exact summaries.
+
+\begin{center}
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{r l r l r r}
+\toprule
+$n$ & prime factors & $P=n/p$ & logical shape of $U$ & $\min_{F^+}w_j$ & $\max_{F^+}w_j$ \\
+\midrule
+46189 & $11,13,17,19$ & 4199 & $10\times12\times16\times18$ & $-4272093684$ & $-999961$ \\
+96577 & $13,17,19,23$ & 7429 & $12\times16\times18\times22$ & $-40866441870$ & $-999967$ \\
+\bottomrule
+\end{tabular}%
+}
+\end{center}
+
+
+For $n=46189$, all 11 values on
+
+\nopagebreak[4]
+\[
+H=\{0,4199,\ldots,10\cdot4199\}
+\]
+
+are zero, and all other 41,980 values through degree 41,990 are negative. For
+$n=96577$, all 13 values on
+
+\nopagebreak[4]
+\[
+H=\{0,7429,\ldots,12\cdot7429\}
+\]
+
+are zero, and all other 89,136 values through degree 89,148 are negative.
+
+The certificate files are anchored by SHA-256:
+
+\begin{center}
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{r l l}
+\toprule
+$n$ & file & SHA-256 \\
+\midrule
+46189 & {\small\path{boundary-uniqueness-46189.npz}} & {\small\path{79d9042e4c050a7a2f5f12b95f47b2c53857b55a531419ece063fb6d6dc051b4}} \\
+96577 & {\small\path{boundary-uniqueness-96577.npz}} & {\small\path{78a03fa247e2d33cd232e7d0365c767c106feb8895ea55e16ababb980ce4a563}} \\
+\bottomrule
+\end{tabular}%
+}
+\end{center}
+
+
+The NPZ files store the integer coordinates as flat vectors; the verification
+programs reshape them to the logical tensor dimensions displayed above.
+
+\begin{proof}[Proof of Theorem 1.1]
+
+For each of the two values of $n$, exact verification establishes
+$W\in V_n^\perp$ for the reconstructed array, together with zero values on
+$H$ and strict negativity on $F^+$. Proposition 2.1 forces every nonnegative multiple of degree at most the
+proposed boundary to be supported on $H$. Lemma 2.2 then shows that it is a
+positive scalar multiple of the corresponding regular polygon. This proves
+the lower bound, characterizes equality, and gives monic uniqueness.
+\end{proof}
+
+
+\section{Exact verification}
+
+
+The proof objects are the final integer arrays, not the linear-programming
+transcripts. We provide two exact evaluation routes.
+
+\subsection{Tensor-marginal evaluation}
+
+
+Formula (3.4) can be evaluated without materializing all $n$ entries. For
+$t=(t_1,\ldots,t_s)$, let $Z(t)=\{r:t_r=0\}$. A nonzero coordinate $t_r$
+forces $i_r=t_r$, while a zero coordinate contributes a factor $-1$ and a sum
+over $i_r$. Thus
+
+\nopagebreak[4]
+\[
+W_t=(-1)^{|Z(t)|}
+\sum_{\substack{1\leq i_r<p_r\ (r\in Z(t))\\
+i_r=t_r\ (r\notin Z(t))}}
+U_{i_1,\ldots,i_s}.
+\tag{4.1}
+\]
+
+The marginal verifiers use (3.2) and (4.1) to recompute every exponent through
+the boundary using exact integer arithmetic. They check $n$, the prime tuple,
+the boundary, the support $H$, and the coordinate count, and recompute the
+certificate hash for comparison with the accompanying metadata. The fixed
+hashes in Section 3 are the manuscript-level anchors.
+
+\subsection{Full-array verification}
+
+
+The second route explicitly expands (3.4) to arrays of shapes
+
+\nopagebreak[4]
+\[
+11\times13\times17\times19
+\quad\text{and}\quad
+13\times17\times19\times23.
+\]
+
+It then checks that every fiber sum in each of the four coordinate directions
+is exactly zero. This verifies membership in $V_n^\perp$ without calling the
+marginal evaluation routine. Finally it applies the CRT map to all boundary
+positions and checks the required zero set and strict sign.
+
+All sums are exact integers. A deliberately conservative overflow audit bounds
+the largest possible fiber accumulation for the three retained certificates
+by $4.95\times10^{16}$, below the signed 64-bit limit
+$9.22\times10^{18}$. An additional audit expanded the arrays with arbitrary
+precision Python integers and reproduced the same extrema, counts, zero sets,
+and fiber sums.
+
+For $n=46189$ we also retain a logically redundant strict-separation
+certificate for all degrees at most 41,989. Its SHA-256 is
+
+{\small\path{9f0e34517f3ae92161e359e0345563d1ae4ff73a5cdc99693c0e82657dce0e80}}.
+
+It provides a separate check of the minimum-degree conclusion, although the
+boundary certificate alone already proves the full statement.
+
+\section{Certificate discovery and integerization}
+
+
+This section records how the proof objects were found. None of the numerical
+statuses described here is used as a theorem premise.
+
+An element of $V_n^\perp$ was parametrized by its integer-basis coordinates
+$U$. The boundary problem imposes $p$ homogeneous equalities on $H$ and strict
+inequalities on every position in $F^+$. In floating-point discovery these
+were normalized to inequalities of the form $w_j\leq-1$.
+
+For $n=46189$, a direct sparse formulation produced a feasible point which
+could be scaled, rounded, and repaired exactly. For $n=96577$, the recorded
+discovery run of the original 76,032-variable formulation reached its time
+limit without producing a proof object. This was a solver outcome, not a
+mathematical conclusion.
+
+The successful reformulation eliminated 12 independent boundary equalities
+using a pivot minor of determinant $+1$. The recorded reduced bounded
+interior-point run then produced a strict floating-point separator.
+After scaling by $10^6$ and rounding, the boundary equalities were repaired
+over the integers using a 12-by-12 minor of determinant $-1$. The resulting
+integer vector was then discarded as a numerical candidate unless and until
+the exact verifiers accepted it.
+
+Metadata fields recording the floating-point scale or repair size describe
+this discovery history only. They are not proof evidence and need not be
+reconstructed from the final NPZ files.
+
+\section{Scope and relation to prior work}
+
+
+Steinberger \cite{steinberger2012} formulated the optimization problem, proposed the general
+conjecture, established the separation criterion used here, and proved the
+large parameter range summarized by (1.3). The same paper explicitly lists
+$46189$ and $96577$ as the first two values outside that theorem. The present
+note contributes exact certificates and their verification for those two
+fixed values.
+
+The result does not prove the conjecture for all squarefree integers with four
+prime factors, does not provide an infinite parameter family, and does not
+settle the next listed value $215441$. The exact computation also does not by
+itself explain why a separator should exist in general.
+
+A targeted search completed on 27 August 2026 found no public paper, preprint,
+author update, or indexed computational archive directly treating either of
+these two certificates. This supports writing the fixed-parameter result but
+is not an assertion of exhaustive global priority. Unindexed manuscripts and
+independent unpublished computations remain possible.
+
+\section{Reproducibility}
+
+
+The exact certificate files, metadata, and verification programs are retained
+in the project {\small\path{verification}} directory. With Python, NumPy, and these files
+available, the principal checks are:
+
+\begin{Verbatim}[fontsize=\footnotesize]
+& '.\.venv\Scripts\python.exe' `
+  'loops\CYCLOTOMIC-MINDEG-0001\verification\verify_boundary_uniqueness.py' `
+  --certificate 'loops\CYCLOTOMIC-MINDEG-0001\verification\results\boundary-uniqueness-46189.npz' `
+  --metadata 'loops\CYCLOTOMIC-MINDEG-0001\verification\results\boundary-uniqueness-46189.json'
+
+& '.\.venv\Scripts\python.exe' `
+  'loops\CYCLOTOMIC-MINDEG-0001\verification\verify_full_array.py' `
+  --mode boundary `
+  --certificate 'loops\CYCLOTOMIC-MINDEG-0001\verification\results\boundary-uniqueness-46189.npz' `
+  --metadata 'loops\CYCLOTOMIC-MINDEG-0001\verification\results\boundary-uniqueness-46189.json'
+
+& '.\.venv\Scripts\python.exe' `
+  'loops\CYCLOTOMIC-MINDEG-0001\verification\verify_boundary_96577.py' `
+  --certificate 'loops\CYCLOTOMIC-MINDEG-0001\verification\results\boundary-uniqueness-96577.npz' `
+  --metadata 'loops\CYCLOTOMIC-MINDEG-0001\verification\results\boundary-uniqueness-96577.json'
+
+& '.\.venv\Scripts\python.exe' `
+  'loops\CYCLOTOMIC-MINDEG-0001\verification\verify_full_array_96577.py' `
+  --certificate 'loops\CYCLOTOMIC-MINDEG-0001\verification\results\boundary-uniqueness-96577.npz' `
+  --metadata 'loops\CYCLOTOMIC-MINDEG-0001\verification\results\boundary-uniqueness-96577.json'
+\end{Verbatim}
+
+
+The current project environment used Python 3.13.11 and NumPy 2.5.2. SciPy
+1.17.0 and HiGHS were used during discovery, but are not required by the
+mathematical verification of the final integer arrays.
+
+\section*{Acknowledgement of AI assistance}
+
+
+The author used OpenAI Codex as an AI-assisted tool for literature discovery,
+computational exploration, certificate construction, proof stress testing,
+and language editing. The author reviewed the mathematical argument and
+assumes responsibility for the claims and presentation.
+
+\begin{thebibliography}{9}
+\footnotesize
+\raggedright
+
+\bibitem{steinberger2012}
+J.~P. Steinberger,
+\emph{The lowest-degree polynomial with nonnegative coefficients divisible by
+the $n$-th cyclotomic polynomial},
+Electronic Journal of Combinatorics \textbf{19} (2012), no.~4, Paper P1.
+\href{https://doi.org/10.37236/2755}{doi:10.37236/2755}.
+
+\end{thebibliography}
+
+\end{document}

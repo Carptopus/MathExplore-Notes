@@ -1,0 +1,63 @@
+{
+  "schema": "cyclotomic-boundary-uniqueness-certificate-v1",
+  "n": 46189,
+  "primes": [
+    11,
+    13,
+    17,
+    19
+  ],
+  "boundary": 41990,
+  "polygon_support": [
+    0,
+    4199,
+    8398,
+    12597,
+    16796,
+    20995,
+    25194,
+    29393,
+    33592,
+    37791,
+    41990
+  ],
+  "scale_before_rounding": 1000000,
+  "certificate_length": 34560,
+  "certificate_min": -2762637901,
+  "certificate_max": 4688459757,
+  "certificate_nonzero": 34560,
+  "repair_rank": 10,
+  "repair_pivot_columns": [
+    0,
+    3456,
+    6912,
+    10368,
+    13824,
+    17280,
+    20736,
+    24192,
+    27648,
+    31104
+  ],
+  "repair_pivot_rows": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    6,
+    5,
+    7,
+    8,
+    9
+  ],
+  "repair_minor_determinant": -1,
+  "repair_correction_abs_max": 12,
+  "polygon_value_abs_max": 0,
+  "outside_constraint_count": 41980,
+  "outside_value_min": -4272093684,
+  "outside_value_max": -999961,
+  "outside_nonnegative_count": 0,
+  "certificate_file": "boundary-uniqueness-46189.npz",
+  "certificate_sha256": "79d9042e4c050a7a2f5f12b95f47b2c53857b55a531419ece063fb6d6dc051b4"
+}
