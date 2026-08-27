@@ -5,6 +5,8 @@
 - [Read or download the PDF](cyclotomic-minimum-degree-first-two-cases.pdf)
 - [LaTeX source](cyclotomic-minimum-degree-first-two-cases.tex)
 - [BibTeX citation](CITATION.bib)
+- Current version DOI: [10.5281/zenodo.22124096](https://doi.org/10.5281/zenodo.22124096)
+- Concept DOI: [10.5281/zenodo.22124095](https://doi.org/10.5281/zenodo.22124095)
 - [Exact certificates and verification](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
