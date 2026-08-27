@@ -27,6 +27,7 @@ including manuscripts and reproducible verification materials.
 | [Sharp initial thresholds for Abelian-bordered binary infinite words](research/abelian-border-periodicity-thresholds/README.md)<br>[PDF](research/abelian-border-periodicity-thresholds/abelian-border-periodicity-thresholds.pdf) · [BibTeX](research/abelian-border-periodicity-thresholds/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22100526) | Combinatorics on words, Abelian borders, ultimate periodicity | Proves the sharp ordinary-periodicity threshold $13$, the next sharp Abelian-periodicity layer at $14$, and a frequency-denominator sufficient condition | v0.1-beta | Internally verified candidate proof; external review pending |
 | [On a claimed upper bound for partial Desarguesian parallelisms](research/desarguesian-johnson-bound-correction/README.md)<br>[PDF](research/desarguesian-johnson-bound-correction/desarguesian-johnson-bound-correction.pdf) · [BibTeX](research/desarguesian-johnson-bound-correction/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22105345) | Finite geometry, Desarguesian spreads, partial parallelisms | Proves that a known orbit lower bound uniformly exceeds Johnson's claimed upper bound for every prime power $q$, odd prime $t\geq3$, and $z\geq2$ | v0.1-beta | Internally verified correction note; external review pending |
 | [Real-rootedness, palindromicity, and gamma-positivity of antichain polynomials for [2] x [m] x [n]](research/antichain-box-real-rootedness/README.md)<br>[PDF](research/antichain-box-real-rootedness/antichain-box-real-rootedness.pdf) · [BibTeX](research/antichain-box-real-rootedness/CITATION.bib) · [Concept DOI](https://doi.org/10.5281/zenodo.22112708) | Posets, real-rooted polynomials, palindromicity, gamma-positivity, Jacobi polynomials | Proves negative real-rootedness for all positive $m,n$, classifies palindromicity by $|m-n|=1$, and proves strict gamma-positivity in exactly those adjacent cases | v0.2-beta | Internally verified candidate proof; external review pending |
+| [A continuous family of counterexamples to the middle runner conjecture](research/middle-runner-counterexamples/README.md)<br>[PDF](research/middle-runner-counterexamples/middle-runner-counterexamples.pdf) · [BibTeX](research/middle-runner-counterexamples/CITATION.bib) | Dynamical algebraic combinatorics, circular runners, order statistics | Exactly classifies a one-parameter three-runner family and gives continuous counterexamples under the conjecture's printed hypotheses | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
 
@@ -391,6 +392,21 @@ Jacobi polynomials, whose zeros are located by interlacing and endpoint signs.
 
 - [Manuscript and exact verification](research/antichain-box-real-rootedness/README.md)
 
+### Middle runner counterexamples
+
+For velocities $(1,2,3)$ and initial positions $(0,0,a)$, this note evaluates
+the average median position exactly over one common period. Modulo one, the
+conjectured value $1/2$ occurs only for $a=0$ and $a=1/2$; every other offset
+is a counterexample to the 2015 AIM middle runner conjecture under its printed
+hypotheses. Thus the failure is an uncountable continuous family rather than
+an isolated numerical example.
+
+The proof is a complete piecewise integration, supported by an exact rational
+verifier covering the explicit example, controls, phase invariance, and 775
+rational parameter representatives.
+
+- [Manuscript and exact verification](research/middle-runner-counterexamples/README.md)
+
 ## Status and review policy
 
 Entries are research records, not automatically peer-reviewed publications.
@@ -480,3 +496,6 @@ Abelian-unbordered factors; ultimate periodicity; bounded discrepancy; finite
 overlap graphs.
 Desarguesian spreads; partial parallelisms; field reduction; Cayley graphs;
 Gaussian binomial coefficients; translation nets; correction notes.
+Middle runner conjecture; dynamical algebraic combinatorics; circular runners;
+order statistics; periodic trajectories; continuous counterexamples;
+piecewise integration.

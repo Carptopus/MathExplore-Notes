@@ -1,0 +1,452 @@
+% Generated deterministically from the audited Markdown source.
+% Responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{needspace}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\numberwithin{equation}{section}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Middle runner counterexamples}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\setlength{\emergencystretch}{4em}
+\urlstyle{same}
+
+\title{A continuous family of counterexamples\\
+to the middle runner conjecture}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{27 August 2026}
+
+\hypersetup{
+  pdftitle={A continuous family of counterexamples to the middle runner conjecture},
+  pdfauthor={Carptopus},
+  pdfsubject={An exact continuous family of three-runner counterexamples to the middle runner conjecture as stated in the 2015 AIM problem list},
+  pdfkeywords={middle runner conjecture, dynamical algebraic combinatorics, circular runners, order statistics, counterexample, piecewise integration}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fcolorbox{black!35}{black!4}{\parbox{0.88\textwidth}{\centering\small
+Internal candidate manuscript, version 0.1-beta. The mathematical proof and
+complete manuscript have passed project-internal zero-trust audits. External
+mathematical review and formal peer review are pending.}}
+\end{center}
+
+\begin{abstract}
+
+
+The middle runner conjecture from the 2015 AIM workshop problem list concerns
+the time averages of the ordered positions of runners moving at commensurable
+nonzero speeds on a circular track. As stated, the runners may start at
+arbitrary positions, and the conjecture asserts that complementary order
+statistics have averages summing to one. We give a continuous family of
+counterexamples with three runners. For velocities $(1,2,3)$ and initial
+positions $(0,0,a)$, let $M(a)$ be the average median position over one common
+period. We prove the exact formula
+
+\nopagebreak[4]
+\[
+M(a)=
+\begin{cases}
+\displaystyle \frac12-\frac49a\left(\frac12-a\right),
+  &0\leq a\leq\frac12,\\[6pt]
+\displaystyle \frac12+\frac49\left(a-\frac12\right)(1-a),
+  &\frac12\leq a\leq1.
+\end{cases}
+\]
+
+Consequently, modulo one, the conjectured equality holds in this family only
+for $a=0$ and $a=1/2$; every other offset is a counterexample. In particular,
+$a=1/4$ gives ordered-position averages
+
+\nopagebreak[4]
+\[
+\left(\frac{161}{576},\frac{17}{36},\frac{431}{576}\right).
+\]
+
+The proof is an elementary but complete piecewise integration. Exact rational
+verification code is provided as supplementary evidence.
+
+\end{abstract}
+
+\section{Introduction}
+
+
+The 2015 AIM workshop problem list on dynamical algebraic combinatorics asks
+the following question \cite[Section~2.1]{aim2015}. Consider $n$ runners moving on a
+circular track at commensurable nonzero speeds. Positions are normalized to
+$[0,1)$, and the runners are explicitly not required to start at the starting
+line. If
+
+\nopagebreak[4]
+\[
+p_1(t)\leq p_2(t)\leq\cdots\leq p_n(t)
+\]
+
+are the ordered positions at time $t$, let $p_i$ be the average of $p_i(t)$
+over one common period. Conjecture 2.1 of \cite{aim2015} states that
+
+\nopagebreak[4]
+\[
+p_i+p_j=1\qquad\text{whenever }i+j=n+1.
+\tag{1.1}
+\]
+
+For odd $n$, the central case says that the average position of the middle
+runner is $1/2$, which gives the problem its name. The source reports that the
+equal-speed case had been solved and that the general case remained open in
+2015.
+
+This note disproves (1.1) under its published hypotheses. The smallest
+nontrivial odd case $n=3$ already contains a one-parameter family for which the average
+middle position can be evaluated exactly. The parameter space is classified
+completely: only two offsets modulo one satisfy the proposed symmetry, while
+all other offsets fail it. Thus the obstruction is not an isolated numerical
+configuration.
+
+The result is deliberately limited to the fixed velocity triple $(1,2,3)$ and
+the initial positions $(0,0,a)$. It is not a classification of arbitrary
+three-runner systems and does not propose a corrected conjecture.
+
+\section{Setup and main result}
+
+
+For $x\in\mathbb R$, write $\{x\}=x-\lfloor x\rfloor\in[0,1)$ for its
+fractional part. Fix $a\in\mathbb R/\mathbb Z$ and consider the three
+positions
+
+\nopagebreak[4]
+\[
+x_1(t)=\{t\},\qquad
+x_2(t)=\{2t\},\qquad
+x_3(t)=\{3t+a\}.
+\tag{2.1}
+\]
+
+The velocities are positive, nonzero, and commensurable, and one common
+period is $1$. Let
+
+\nopagebreak[4]
+\[
+m_a(t)=\mathrm{med}\bigl(x_1(t),x_2(t),x_3(t)\bigr)
+\]
+
+and define
+
+\nopagebreak[4]
+\[
+M(a)=\int_0^1m_a(t)\,dt.
+\tag{2.2}
+\]
+
+Changing $a$ by an integer does not change the system, so we use the
+representative $a\in[0,1]$.
+
+\Needspace{0.25\textheight}
+\begin{theorem}
+
+For the system in (2.1),
+
+\nopagebreak[4]
+\[
+M(a)=
+\begin{cases}
+\displaystyle \frac12-\frac49a\left(\frac12-a\right),
+  &0\leq a\leq\frac12,\\[6pt]
+\displaystyle \frac12+\frac49\left(a-\frac12\right)(1-a),
+  &\frac12\leq a\leq1.
+\end{cases}
+\tag{2.3}
+\]
+
+Hence $M(a)=1/2$ exactly when $a\in\{0,1/2,1\}$. Equivalently, modulo one,
+the middle-runner equality holds in this family exactly for
+$a\in\{0,1/2\}$.
+
+\end{theorem}
+
+\Needspace{0.25\textheight}
+\begin{corollary}
+
+For every
+
+\nopagebreak[4]
+\[
+a\in(\mathbb R/\mathbb Z)\setminus\{0,1/2\},
+\]
+
+the three-runner system (2.1) is a counterexample to Conjecture 2.1 of \cite{aim2015}.
+The counterexamples form two open arcs in the parameter circle and therefore
+an uncountable continuous family.
+
+\end{corollary}
+
+\section{Piecewise evaluation of the median}
+
+
+We first assume
+
+\nopagebreak[4]
+\[
+0<a<\frac12.
+\tag{3.1}
+\]
+
+All changes in the relative order of the three trajectories occur at a wrap
+point or at an intersection. The internal wrap points of $x_3$ are
+
+\nopagebreak[4]
+\[
+A=\frac{1-a}{3},\qquad
+C=\frac{2-a}{3},\qquad
+F=1-\frac a3,
+\]
+
+and the internal wrap point of $x_2$ is $1/2$. The intersections of $x_1$
+with $x_3$ occur at
+
+\nopagebreak[4]
+\[
+B=\frac{1-a}{2},\qquad E=1-\frac a2,
+\]
+
+while the only internal intersection of $x_2$ with $x_3$ is
+
+\nopagebreak[4]
+\[
+D=1-a.
+\]
+
+The first two trajectories meet only at the endpoints of the period. Under
+(3.1), these events have the strict order
+
+\nopagebreak[4]
+\[
+0<A<B<\frac12<C<D<E<F<1.
+\tag{3.2}
+\]
+
+On each resulting open interval the relative order is fixed. Evaluating the
+three affine pieces at any interior point gives the following median.
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+interval & $m_a(t)$ \\
+\midrule
+$(0,A)$ & $2t$ \\
+$(A,B)$ & $t$ \\
+$(B,1/2)$ & $a+3t-1$ \\
+$(1/2,C)$ & $t$ \\
+$(C,D)$ & $2t-1$ \\
+$(D,E)$ & $a+3t-2$ \\
+$(E,F)$ & $t$ \\
+$(F,1)$ & $2t-1$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+Values at the finitely many intersections, wrap discontinuities, and period
+endpoints do not affect the integral. Therefore
+
+\nopagebreak[4]
+\[
+\begin{aligned}
+M(a)={}&A^2+\frac{B^2-A^2}{2}
+ +(a-1)\left(\frac12-B\right)
+ +\frac32\left(\frac14-B^2\right)\\
+&+\frac{C^2-1/4}{2}
+ +(D^2-C^2)-(D-C)\\
+&+(a-2)(E-D)+\frac32(E^2-D^2)
+ +\frac{F^2-E^2}{2}+F-F^2.
+\end{aligned}
+\tag{3.3}
+\]
+
+Substituting $A,\ldots,F$ and collecting terms yields
+
+\nopagebreak[4]
+\[
+M(a)=\frac{8a^2-4a+9}{18}
+=\frac12-\frac49a\left(\frac12-a\right).
+\tag{3.4}
+\]
+
+The endpoint values $a=0$ and $a=1/2$ follow either by direct subdivision or
+by dominated convergence, since for all but finitely many $t$ the trajectories
+and their median converge pointwise as $a$ approaches either endpoint.
+
+For clarity, write $x_i^{(b)}$ for the trajectory in (2.1) with offset
+parameter $b$; the first two trajectories do not depend on $b$. To obtain the
+second half of (2.3), compare parameters $a$ and $1-a$. Away
+from the finitely many wrap times, time reversal and reflection of the circle
+give the multiset identity
+
+\nopagebreak[4]
+\[
+\{x_1^{(a)}(1-t),x_2^{(a)}(1-t),x_3^{(a)}(1-t)\}
+=
+\{1-x_1^{(1-a)}(t),1-x_2^{(1-a)}(t),1-x_3^{(1-a)}(t)\}.
+\]
+
+Reflection reverses the order of three numbers but sends their median to one
+minus the original median. Hence, almost everywhere,
+
+\nopagebreak[4]
+\[
+m_a(1-t)=1-m_{1-a}(t).
+\tag{3.5}
+\]
+
+Integration gives
+
+\nopagebreak[4]
+\[
+M(a)=1-M(1-a).
+\tag{3.6}
+\]
+
+Using (3.4) for $1-a\in[0,1/2]$ proves the second line of (2.3). The two
+quadratic factors in (2.3) vanish only at $0,1/2,1$, completing the proof of
+Theorem 2.1 and Corollary 2.2.
+
+\section{A rational counterexample and the paired equality}
+
+
+The parameter $a=1/4$ gives a compact exact witness. Integrating all three
+order statistics over the same subdivision gives
+
+\nopagebreak[4]
+\[
+(p_1,p_2,p_3)=
+\left(\frac{161}{576},\frac{17}{36},\frac{431}{576}\right).
+\tag{4.1}
+\]
+
+In particular,
+
+\nopagebreak[4]
+\[
+p_2=\frac{17}{36}\neq\frac12,
+\qquad
+p_1+p_3=\frac{37}{36}\neq1.
+\tag{4.2}
+\]
+
+The simultaneous failure in (4.2) is forced throughout the family. Each
+individual positive-integer-speed trajectory is uniformly distributed over
+the circle during the common period and therefore has average $1/2$.
+Pointwise, sorting does not change the sum of the three positions, so
+
+\nopagebreak[4]
+\[
+p_1+p_2+p_3=\frac32.
+\tag{4.3}
+\]
+
+Consequently,
+
+\nopagebreak[4]
+\[
+p_1+p_3=\frac32-M(a).
+\tag{4.4}
+\]
+
+Thus the middle equality $p_2=1/2$ and the complementary equality
+$p_1+p_3=1$ hold or fail together, exactly at the parameters classified in
+Theorem 2.1.
+
+\section{Exact verification}
+
+
+The supplementary Python program
+{\small\path{verification/}\allowbreak\path{verify_middle_runner_counterexample.py}} uses exact rational
+arithmetic. It independently generates every wrap point and pairwise
+intersection, orders the affine pieces on each interval, and integrates all
+three order statistics. It checks:
+
+\begin{itemize}
+\item the witness $a=1/4$ in (4.1);
+\item the common-start positive control $a=0$;
+\item invariance under replacing an initial position by an integer translate; and
+\item formula (2.3) for all $775$ distinct rational representatives in $[0,1]$
+with denominator at most $50$. Since $0$ and $1$ represent the same point,
+these are $774$ distinct parameter classes modulo one.
+
+\end{itemize}
+
+The program uses only the Python standard library and requires Python 3.9 or
+later. From the directory containing this manuscript and the {\small\path{verification}}
+subdirectory, run
+
+\begin{verbatim}
+python verification/verify_middle_runner_counterexample.py
+\end{verbatim}
+
+
+The finite checks are supplementary evidence and regression tests. They do
+not prove the statement for all real parameters; the continuous result rests
+on the piecewise argument in Section 3.
+
+\section{Scope and literature boundary}
+
+
+The contribution of this note is the exact evaluation of a complete
+one-parameter family and the resulting disproof of the middle runner
+conjecture under the hypotheses printed in \cite{aim2015}. The phrase "as stated" is
+important only as a matter of scope: arbitrary starting positions are not an
+inference made here but an explicit part of the published problem statement.
+
+As of 27 August 2026, a targeted search through the exact problem title and wording, combinations
+of the four problem-list authors with the relevant terminology, and the
+arXiv, OpenAlex, and Crossref indexes did not locate a later correction or a
+directly equivalent counterexample. This is not an exhaustive priority
+certificate. Unindexed notes, private communications, differently named
+equivalent results, and later parallel work may exist. Accordingly, this note
+does not claim absolute global priority, external expert confirmation, or
+peer review.
+
+The theorem does not classify arbitrary initial phases or arbitrary velocity
+triples, and it does not settle any strengthened version that imposes a
+common starting position. Such variants are outside the present claim.
+
+\section*{Acknowledgement of AI assistance}
+
+
+The author used OpenAI Codex for literature triage, exact computation,
+symbolic checks, proof stress testing, verification-code review, and drafting
+assistance. The author reviewed the mathematical argument and assumes
+responsibility for the claims and presentation.
+
+\begin{thebibliography}{9}
+\footnotesize
+\raggedright
+
+\bibitem{aim2015}
+J.~Propp, T.~Roby, J.~Striker, and N.~Williams,
+\emph{Problems for 2015 AIM workshop on Dynamical Algebraic Combinatorics},
+29 May 2015, Section~2.1, Conjecture~2.1.
+\href{https://aimath.org/pastworkshops/dac_preworkshop.pdf}{AIM problem list}.
+
+\end{thebibliography}
+
+\end{document}
