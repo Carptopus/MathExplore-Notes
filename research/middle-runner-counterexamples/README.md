@@ -5,6 +5,8 @@
 - [Read or download the PDF](middle-runner-counterexamples.pdf)
 - [LaTeX source](middle-runner-counterexamples.tex)
 - [BibTeX citation](CITATION.bib)
+- Current version DOI: [10.5281/zenodo.22120844](https://doi.org/10.5281/zenodo.22120844)
+- Concept DOI: [10.5281/zenodo.22120843](https://doi.org/10.5281/zenodo.22120843)
 - [Exact verification](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
