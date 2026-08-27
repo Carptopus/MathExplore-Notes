@@ -6,6 +6,7 @@
 - [LaTeX source](cyclotomic-tail-projection-families.tex)
 - [BibTeX citation](CITATION.bib)
 - Current version DOI: [10.5281/zenodo.22127365](https://doi.org/10.5281/zenodo.22127365)
+- Concept DOI: [10.5281/zenodo.22127364](https://doi.org/10.5281/zenodo.22127364)
 - [Condition checker](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
