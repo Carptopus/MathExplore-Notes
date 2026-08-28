@@ -4,6 +4,7 @@
 
 - [Read or download the PDF](total-cut-low-components.pdf)
 - [BibTeX citation](CITATION.bib)
+- Version DOI: [10.5281/zenodo.22141830](https://doi.org/10.5281/zenodo.22141830)
 - Concept DOI: [10.5281/zenodo.22045539](https://doi.org/10.5281/zenodo.22045539)
 - Previous v0.2-beta: [10.5281/zenodo.22059068](https://doi.org/10.5281/zenodo.22059068)
 - [LaTeX source](total-cut-low-components.tex)
