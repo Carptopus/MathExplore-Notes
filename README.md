@@ -32,6 +32,7 @@ an exact minimum degree and a complete classification of the equality case.
 | [The third symbolic power of a co-chordal edge ideal is componentwise linear](research/co-chordal-third-symbolic-power/README.md)<br>[PDF](research/co-chordal-third-symbolic-power/co-chordal-third-symbolic-power.pdf) · [BibTeX](research/co-chordal-third-symbolic-power/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22085466) | Commutative algebra, monomial ideals, chordal graphs | Proves componentwise linearity of the third symbolic power for every co-chordal graph over every field | v0.1-beta | Internally verified candidate proof; external review pending |
 | [A ternary word attaining the Abelian maximal pattern complexity bound at pattern size three](research/ternary-ampc-k3-sharpness/README.md)<br>[PDF](research/ternary-ampc-k3-sharpness/ternary-ampc-k3-sharpness.pdf) · [BibTeX](research/ternary-ampc-k3-sharpness/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22093018) | Combinatorics on words, Abelian complexity, substitution sequences | Constructs a recurrent ternary word, aperiodic by projection, with exact Abelian maximal pattern complexity $p_{\alpha}^{*\mathrm{ab}}(3)=7$ | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Sharp initial thresholds for Abelian-bordered binary infinite words](research/abelian-border-periodicity-thresholds/README.md)<br>[PDF](research/abelian-border-periodicity-thresholds/abelian-border-periodicity-thresholds.pdf) · [BibTeX](research/abelian-border-periodicity-thresholds/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22100526) | Combinatorics on words, Abelian borders, ultimate periodicity | Proves the sharp ordinary-periodicity threshold $13$, the next sharp Abelian-periodicity layer at $14$, and a frequency-denominator sufficient condition | v0.1-beta | Internally verified candidate proof; external review pending |
+| [A sparse-defect counterexample to Abelian-border periodicity](research/abelian-border-problem42-counterexample/README.md)<br>[PDF](research/abelian-border-problem42-counterexample/abelian-border-problem42-counterexample.pdf) · [BibTeX](research/abelian-border-problem42-counterexample/CITATION.bib) | Combinatorics on words, Abelian borders, sparse constructions | Constructs a binary non-Abelian-ultimately-periodic word whose every factor of length at least 141 is Abelian bordered, giving a negative answer to Question 1 / Problem 42 | v0.1-beta | Internally verified candidate proof; external review pending |
 | [On a claimed upper bound for partial Desarguesian parallelisms](research/desarguesian-johnson-bound-correction/README.md)<br>[PDF](research/desarguesian-johnson-bound-correction/desarguesian-johnson-bound-correction.pdf) · [BibTeX](research/desarguesian-johnson-bound-correction/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22105345) | Finite geometry, Desarguesian spreads, partial parallelisms | Proves that a known orbit lower bound uniformly exceeds Johnson's claimed upper bound for every prime power $q$, odd prime $t\geq3$, and $z\geq2$ | v0.1-beta | Internally verified correction note; external review pending |
 | [Real-rootedness, palindromicity, and gamma-positivity of antichain polynomials for [2] x [m] x [n]](research/antichain-box-real-rootedness/README.md)<br>[PDF](research/antichain-box-real-rootedness/antichain-box-real-rootedness.pdf) · [BibTeX](research/antichain-box-real-rootedness/CITATION.bib) · [Concept DOI](https://doi.org/10.5281/zenodo.22112708) | Posets, real-rooted polynomials, palindromicity, gamma-positivity, Jacobi polynomials | Proves negative real-rootedness for all positive $m,n$, classifies palindromicity by $m=n+1$ or $n=m+1$, and proves strict gamma-positivity in exactly those adjacent cases | v0.2-beta | Internally verified candidate proof; external review pending |
 | [A continuous family of counterexamples to the middle runner conjecture](research/middle-runner-counterexamples/README.md)<br>[PDF](research/middle-runner-counterexamples/middle-runner-counterexamples.pdf) · [BibTeX](research/middle-runner-counterexamples/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22120844) | Dynamical algebraic combinatorics, circular runners, order statistics | Exactly classifies a one-parameter three-runner family and gives continuous counterexamples under the conjecture's printed hypotheses | v0.1-beta | Internally verified candidate proof; external review pending |
@@ -358,6 +359,22 @@ implementations certify the two initial threshold layers.
 
 - [Manuscript and exact verification](research/abelian-border-periodicity-thresholds/README.md)
 
+### A sparse-defect counterexample to Abelian-border periodicity
+
+This manuscript constructs a binary infinite word that is not Abelian
+ultimately periodic but whose every factor of length at least 141 is Abelian
+bordered. It therefore gives a negative answer to Question 1 of Charlier,
+Harju, Puzynina and Zamboni and to Problem 42 in the Fici--Puzynina survey.
+
+The construction starts from a four-height periodic nearest-neighbor path
+with a complete local endpoint-sum palette. Sparse replacement walks destroy
+every constant arithmetic-progression tail, while five translated witnesses
+preserve the local Abelian-border certificates. The exact periodic palette,
+28 replacement blocks and a finite sparse-prefix positive control are
+independently reproducible.
+
+- [Manuscript and exact verification](research/abelian-border-problem42-counterexample/README.md)
+
 ### Correction to a Desarguesian partial-parallelism bound
 
 For every prime power $q$, odd prime $t\geq3$, and $z\geq2$, set $n=zt$.
@@ -502,8 +519,8 @@ squares; finite-group representations.
 Combinatorics on words; Abelian maximal pattern complexity; recurrent words;
 aperiodicity by projection; primitive substitutions; automatic sequences;
 Parikh vectors; sparse factors; finite-state verification; Abelian borders;
-Abelian-unbordered factors; ultimate periodicity; bounded discrepancy; finite
-overlap graphs.
+Abelian-unbordered factors; Abelian periodicity; ultimate periodicity; sparse
+defects; counterexamples; bounded discrepancy; finite overlap graphs.
 Desarguesian spreads; partial parallelisms; field reduction; Cayley graphs;
 Gaussian binomial coefficients; translation nets; correction notes.
 Middle runner conjecture; dynamical algebraic combinatorics; circular runners;

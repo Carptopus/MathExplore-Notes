@@ -1,0 +1,439 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{2em}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newcommand{\N}{\mathbb N}
+
+\hypersetup{
+  pdftitle={A sparse-defect counterexample to Abelian-border periodicity},
+  pdfauthor={Carptopus},
+  pdfsubject={A binary counterexample to Abelian-border periodicity},
+  pdfkeywords={Abelian border, infinite word, Abelian periodicity, counterexample, combinatorics on words, sparse defects}
+}
+
+\title{A Sparse-Defect Counterexample to\\
+Abelian-Border Periodicity}
+\author{Carptopus\\\small\texttt{carptopus@163.com}}
+\date{28 August 2026\\\small Internal candidate; not peer reviewed}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Charlier, Harju, Puzynina, and Zamboni asked whether an infinite word whose
+sufficiently long factors are all Abelian bordered must be Abelian periodic.
+We answer the question negatively, already over the binary alphabet. The
+construction starts from a four-height periodic nearest-neighbor path whose
+every anti-diagonal contains all parity-compatible endpoint sums. Sparse
+finite replacement walks then destroy every constant arithmetic-progression
+tail while a five-witness redundancy preserves the full local anti-diagonal
+palette. The resulting binary word is not Abelian ultimately periodic,
+although every factor of length at least $141$ has an Abelian border. The
+finite periodic-palette and replacement certificates are exact and
+independently reproducible.
+\end{abstract}
+
+\noindent\textbf{Keywords.} Abelian border; infinite word; Abelian
+periodicity; counterexample; combinatorics on words; sparse defects.
+
+\medskip
+\noindent\textbf{2020 Mathematics Subject Classification.} 68R15, 05A05.
+
+\section{Introduction}
+
+A finite word is Abelian bordered if it has a nonempty proper prefix Abelian
+equivalent to a suffix. Charlier, Harju, Puzynina, and
+Zamboni~\cite[Question~1]{CHPZ} asked whether an infinite word for which every
+sufficiently long factor is Abelian bordered must be Abelian periodic. Their
+nonperiodic examples retained Abelian periodicity. Fici and Puzynina later
+recorded the same question as Problem~42 in their survey~\cite{FP}.
+
+Previous work by the present author determined the first finite-threshold
+layers: if every Abelian-unbordered factor has length at most $14$, then the
+word is Abelian ultimately periodic with an Abelian period of length at most
+$14$, and this bound is sharp~\cite{CarptopusThresholds}. Those results did
+not decide what happens under an arbitrary finite bound. The present
+construction shows that the unrestricted statement is false.
+
+The mechanism has two parts. First, a periodic height path on
+$\{0,1,2,3\}$ supplies every parity-compatible height sum near every center.
+Second, widely separated replacement blocks are placed so that every
+arithmetic progression is changed infinitely often. Five translated
+witnesses for each center and sum ensure that a single replacement block
+cannot destroy them all.
+
+The result is not a statement about the minimum possible threshold, period,
+or height range. The constants $28$ and $141$ are explicit parameters of one
+construction. Recent work on mutually Abelian-bordered finite
+words~\cite{MaityKrishna} and on Abelian periodicity of purely morphic
+words~\cite{FilimonovaPuzynina} concerns different object classes.
+
+\section{Definitions and the height-path translation}
+
+Two finite words are \emph{Abelian equivalent} if they have the same Parikh
+vector; in particular, Abelian-equivalent words have the same length. For
+binary words of the same length, this is equivalent to containing the same
+number of $1$s. A finite word is \emph{Abelian bordered} if it has a nonempty
+proper prefix Abelian equivalent to a suffix. An infinite word $w$ is
+\emph{Abelian ultimately periodic} if
+\[
+w=u v_0v_1v_2\cdots,
+\]
+where the nonempty finite words $v_n$ are pairwise Abelian equivalent.
+Following~\cite{CHPZ,FP}, we use \emph{Abelian periodic} with this allowed
+finite preperiod.
+
+For a binary word $w=w_0w_1\cdots$, define
+\[
+z_0=0,\qquad z_{n+1}-z_n=2w_n-1. \tag{2.1}
+\]
+Then $z$ is an integer nearest-neighbor path and
+\[
+|w[u,v)|_1=\frac{v-u+z_v-z_u}{2}. \tag{2.2}
+\]
+
+\begin{lemma}[Center contraction]\label{lem:center}
+Fix $C\ge1$. Every factor of $w$ of length at least $C$ is Abelian bordered
+if and only if, for all $0\le i<j$, there exist $i\le a\le b\le j$ such that
+\[
+a+b=i+j,\qquad b-a<C,\qquad z_a+z_b=z_i+z_j. \tag{2.3}
+\]
+\end{lemma}
+
+\begin{proof}
+If $j-i<C$, take $(a,b)=(i,j)$. Suppose $j-i\ge C$. An Abelian border can
+be chosen with length $1\le k\le(j-i)/2$: if a longer prefix and suffix
+overlap, deleting their common overlap gives the complementary shorter
+border. By (2.2), equality of the two Parikh vectors is equivalent to
+\[
+z_{i+k}+z_{j-k}=z_i+z_j.
+\]
+Replace $(i,j)$ by $(i+k,j-k)$ and repeat while the new gap is at least $C$.
+The gap strictly decreases, whereas the center and endpoint sum remain fixed,
+so (2.3) follows.
+
+Conversely, if $j-i\ge C$, a pair supplied by (2.3) cannot be the original
+endpoint pair. Writing $k=a-i=j-b>0$ and applying (2.2) gives an Abelian
+border of length $k$.
+\end{proof}
+
+\begin{lemma}[Arithmetic-progression criterion]\label{lem:ap}
+Assume that $z$ is bounded. The word $w$ is Abelian ultimately periodic if
+and only if there exist $A\ge0$ and $h\ge1$ such that
+\[
+z_{A+nh}\quad(n\ge0)
+\]
+is constant.
+\end{lemma}
+
+\begin{proof}
+If the length-$h$ blocks beginning at $A+nh$ have one common Parikh vector,
+(2.2) says that
+\[
+z_{A+(n+1)h}-z_{A+nh}=\delta
+\]
+is independent of $n$. Boundedness forces $\delta=0$. Conversely, a constant
+arithmetic-progression tail makes all those length-$h$ blocks have the same
+number of $1$s by (2.2).
+\end{proof}
+
+\section{A periodic full-palette skeleton}
+
+Set $d=28$, and extend the height word
+\[
+P=0101010101232323210123232321 \tag{3.1}
+\]
+periodically to $p\colon\N_0\to\{0,1,2,3\}$. Consecutive heights, including
+the last and first entries of $P$, differ by $1$.
+
+For a center residue $m\in\mathbb Z/d\mathbb Z$, define
+\[
+\Pi_m=\{p_r+p_{m-r}:r\in\mathbb Z/d\mathbb Z\}. \tag{3.2}
+\]
+
+\begin{lemma}[Full palette]\label{lem:palette}
+For every $m\in\mathbb Z/d\mathbb Z$,
+\[
+\Pi_m=
+\begin{cases}
+\{0,2,4,6\},&m\equiv0\pmod2,\\
+\{1,3,5\},&m\equiv1\pmod2.
+\end{cases} \tag{3.3}
+\]
+\end{lemma}
+
+\begin{proof}
+Substitution of the $28$ entries of (3.1) into (3.2) gives (3.3). The exact
+verification program checks equality, rather than mere containment, for all
+$28$ center residues.
+\end{proof}
+
+We also need to change the skeleton at an arbitrary residue without breaking
+the nearest-neighbor path at the boundary of one period block.
+
+\begin{lemma}[Replacement walks]\label{lem:replacement}
+For every target residue $t\in\mathbb Z/d\mathbb Z$, there exist a start
+residue $s_t$, an offset $1\le r_t<d$, and a word
+$Q^{(t)}=q_0q_1\cdots q_{d-1}$ over $\{0,1,2,3\}$ such that
+\begin{enumerate}
+\item $t\equiv s_t+r_t\pmod d$;
+\item $q_0=p_{s_t}$ and $|q_{d-1}-q_0|=1$;
+\item $|q_{j+1}-q_j|=1$ for $0\le j<d-1$;
+\item $q_{r_t}\ne p_t$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The $28$ explicit certificates are listed in Appendix~\ref{app:certificates}.
+The supplementary verifier checks them directly; its deterministic recursive
+depth-first search also regenerates one valid certificate for every target
+residue. Conditions 2 and 3 ensure that replacing one aligned period block by
+$Q^{(t)}$ preserves the nearest-neighbor condition both inside the block and
+across its two boundaries.
+\end{proof}
+
+\section{Sparse defects}
+
+Enumerate the pairs $(a,h)\in\N_0\times\N$ in a sequence
+$(a_j,h_j)_{j\ge1}$ in which every pair occurs infinitely many times. At
+stage $j$, choose a target
+\[
+t_j\in\{a_j+n h_j:n\ge0\}
+\]
+far enough to the right that the aligned replacement interval $I_j$ supplied
+by Lemma~\ref{lem:replacement} lies after all previous intervals, the distance
+between successive intervals is greater than $6d$, and these distances tend
+to infinity. This is possible because every arithmetic progression is
+unbounded and the target offset inside a replacement block is less than $d$.
+
+On $I_j$, replace $p$ by $Q^{(t_j\bmod d)}$; outside all replacement
+intervals retain $p$. Lemma~\ref{lem:replacement} gives a nearest-neighbor
+path
+\[
+z\colon\N_0\longrightarrow\{0,1,2,3\}
+\]
+such that $z_{t_j}\ne p_{t_j}$ for every $j$. Let $D$ be the set of
+positions where $z\ne p$.
+
+\begin{lemma}\label{lem:density}
+The set $D$ has natural density zero, and every arithmetic progression
+$\{a+nh:n\ge0\}$ contains infinitely many designated targets $t_j$.
+\end{lemma}
+
+\begin{proof}
+The second assertion follows from the repeated enumeration. The intervals
+have one fixed length and their successive gaps tend to infinity. Given
+$G>0$, all but finitely many consecutive intervals are separated by at least
+$G$; hence their upper density is at most $d/(d+G)$. Letting $G\to\infty$
+proves that the interval union, and therefore $D$, has density zero.
+\end{proof}
+
+\section{Preservation of center contraction}
+
+\begin{lemma}\label{lem:preservation}
+The path $z$ satisfies (2.3) with $C=141$.
+\end{lemma}
+
+\begin{proof}
+Let $0\le i<j$ with $j-i\ge141$, set $N=i+j$, and put $v=z_i+z_j$.
+Because every nearest-neighbor path has fixed height parity, $v$ is one of
+the values allowed by the corresponding case of (3.3). Choose $r\pmod d$
+such that
+\[
+p_r+p_{N-r}=v.
+\]
+Among the pairs $(a,b)$ satisfying $a+b=N$ and $a\equiv r\pmod d$, choose
+$(a_0,b_0)$ with $|a_0-b_0|\le d$. Consider the five pairs
+\[
+(a_k,b_k)=(a_0+kd,b_0-kd),\qquad -2\le k\le2. \tag{5.1}
+\]
+They have the same center and the same skeleton sum $v$, and
+\[
+|a_k-b_k|\le5d=140. \tag{5.2}
+\]
+Since $N\ge141$, all endpoints in (5.1) are nonnegative; exchanging the two
+entries of a pair if necessary does not change its properties.
+
+The candidate endpoints occupy a band of span at most $5d$. Since distinct
+replacement intervals are separated by more than $6d$, this band meets at
+most one of them. A replacement interval of length $d$ meets at most two
+members of the progression $(a_k)$ and at most two members of $(b_k)$. It
+therefore contaminates at most four of the five pairs. For a remaining clean
+pair,
+\[
+z_{a_k}+z_{b_k}=p_{a_k}+p_{b_k}=v=z_i+z_j.
+\]
+Together with (5.2), this is (2.3). Because the pair has center $N/2$, its
+gap is smaller than the original gap, so it lies inside $[i,j]$.
+\end{proof}
+
+\section{Destruction of every Abelian period}
+
+\begin{lemma}\label{lem:destroy}
+The path $z$ is not constant on the tail of any arithmetic progression.
+\end{lemma}
+
+\begin{proof}
+Fix $A\ge0$ and $h\ge1$. The periodic sequence $p_{A+nh}$ is either
+constant or takes at least two values periodically.
+
+In the second case, each of two distinct values occurs on a subprogression of
+positive natural density in $\N_0$. A zero-density set cannot contain a tail
+of either subprogression. Hence $z_{A+nh}$ takes both values infinitely often
+outside $D$.
+
+In the first case, the repeated enumeration designates infinitely many
+distinct targets on the progression, and each target is changed from its
+skeleton value. The progression also contains infinitely many points outside
+$D$, because it has positive density while $D$ has density zero. Thus
+$z_{A+nh}$ is again not eventually constant.
+\end{proof}
+
+\section{Main theorem}
+
+\begin{theorem}\label{thm:main}
+There exists a binary infinite word that is not Abelian ultimately periodic
+but whose every factor of length at least $141$ is Abelian bordered.
+Consequently, the answer to Question~1 of~\cite{CHPZ} and Problem~42
+of~\cite{FP} is negative.
+\end{theorem}
+
+\begin{proof}
+Define
+\[
+w_n=\frac{1+z_{n+1}-z_n}{2}.
+\]
+The nearest-neighbor property makes $w_n\in\{0,1\}$. Lemmas
+\ref{lem:preservation} and~\ref{lem:center} show that every factor of length
+at least $141$ is Abelian bordered. Lemmas~\ref{lem:destroy} and~\ref{lem:ap}
+show that $w$ is not Abelian ultimately periodic.
+\end{proof}
+
+\section{Remarks}
+
+\begin{enumerate}
+\item Theorem~\ref{thm:main} does not assert that $141$ is the least possible
+threshold.
+\item The period $28$ and the four-height range are not claimed to be
+minimal.
+\item The finite verification discovers and checks the skeleton certificates,
+but the infinite sparse-set and arithmetic-progression arguments are
+mathematical proofs independent of finite-prefix testing.
+\item No morphic representation of the construction is asserted.
+Reference~\cite{FilimonovaPuzynina} treats the restricted class of purely
+morphic words and does not cover the unrestricted hypothesis of
+Theorem~\ref{thm:main}.
+\end{enumerate}
+
+\appendix
+\section{Replacement certificates}\label{app:certificates}
+
+Each row gives $(t,s_t,r_t,Q^{(t)})$. The word has length $28$.
+
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{5pt}
+\begin{longtable}{rrr l}
+\toprule
+$t$ & $s_t$ & $r_t$ & $Q^{(t)}$\\
+\midrule
+\endfirsthead
+\toprule
+$t$ & $s_t$ & $r_t$ & $Q^{(t)}$\\
+\midrule
+\endhead
+0 & 1 & 27 & \texttt{1010101010101010101010101012}\\
+1 & 3 & 26 & \texttt{1010101010101010101010101232}\\
+2 & 0 & 2 & \texttt{0121010101010101010101010101}\\
+3 & 0 & 3 & \texttt{0123210101010101010101010101}\\
+4 & 0 & 4 & \texttt{0101210101010101010101010101}\\
+5 & 0 & 5 & \texttt{0101232101010101010101010101}\\
+6 & 0 & 6 & \texttt{0101012101010101010101010101}\\
+7 & 0 & 7 & \texttt{0101012321010101010101010101}\\
+8 & 0 & 8 & \texttt{0101010121010101010101010101}\\
+9 & 0 & 9 & \texttt{0101010123210101010101010101}\\
+10 & 0 & 10 & \texttt{0101010101010101010101010101}\\
+11 & 0 & 11 & \texttt{0101010101010101010101010101}\\
+12 & 0 & 12 & \texttt{0101010101010101010101010101}\\
+13 & 0 & 13 & \texttt{0101010101010101010101010101}\\
+14 & 0 & 14 & \texttt{0101010101010101010101010101}\\
+15 & 0 & 15 & \texttt{0101010101010101010101010101}\\
+16 & 0 & 16 & \texttt{0101010101010101010101010101}\\
+17 & 0 & 17 & \texttt{0101010101010101232101010101}\\
+18 & 0 & 18 & \texttt{0101010101010101012101010101}\\
+19 & 0 & 19 & \texttt{0101010101010101012321010101}\\
+20 & 0 & 20 & \texttt{0101010101010101010101010101}\\
+21 & 0 & 21 & \texttt{0101010101010101010101010101}\\
+22 & 0 & 22 & \texttt{0101010101010101010101010101}\\
+23 & 0 & 23 & \texttt{0101010101010101010101010101}\\
+24 & 0 & 24 & \texttt{0101010101010101010101010101}\\
+25 & 0 & 25 & \texttt{0101010101010101010101010101}\\
+26 & 0 & 26 & \texttt{0101010101010101010101010101}\\
+27 & 1 & 26 & \texttt{1010101010101010101010101232}\\
+\bottomrule
+\end{longtable}
+\endgroup
+
+\section{Reproducibility}
+
+The supplementary file \path{verify_sparse_palette_counterexample.py} has
+SHA-256
+\begin{center}
+\small\ttfamily
+92628A23B7ACED4E111A9909C0EBC429\\
+07981737479AB902240CABC0B61B7ECC.
+\end{center}
+The program checks the cyclic nearest-neighbor skeleton, all $28$ palette equalities, all
+$28$ replacement certificates, the four-of-five contamination bound, and a
+finite sparse-prefix positive control. Its role and limitations are stated in
+the program header.
+
+\section*{AI-assisted research and writing disclosure}
+
+The author used OpenAI Codex for computer-assisted exploration, exact
+verification, proof checking, literature triage, and drafting support. The
+author reviewed the claims and assumes responsibility for the content.
+
+\begin{thebibliography}{9}
+
+\bibitem{CHPZ}
+\'E. Charlier, T. Harju, S. Puzynina, and L. Q. Zamboni,
+Abelian bordered factors and periodicity,
+\emph{European Journal of Combinatorics} 51 (2016), 407--418.
+\href{https://doi.org/10.1016/j.ejc.2015.07.003}{doi:10.1016/j.ejc.2015.07.003}.
+
+\bibitem{FP}
+G. Fici and S. Puzynina,
+Abelian combinatorics on words: a survey,
+\emph{Computer Science Review} 47 (2023), 100532.
+\href{https://doi.org/10.1016/j.cosrev.2022.100532}{doi:10.1016/j.cosrev.2022.100532}.
+
+\bibitem{CarptopusThresholds}
+Carptopus,
+Sharp Initial Thresholds for Abelian-Bordered Binary Infinite Words,
+Public Beta v0.1-beta (2026).
+\href{https://doi.org/10.5281/zenodo.22100526}{doi:10.5281/zenodo.22100526}.
+
+\bibitem{MaityKrishna}
+A. Maity and K. V. Krishna,
+Mutually Abelian-Bordered Binary Words,
+\href{https://arxiv.org/abs/2509.20773}{arXiv:2509.20773v1} (2025).
+
+\bibitem{FilimonovaPuzynina}
+A. Filimonova and S. Puzynina,
+On abelian periodicity of purely morphic words,
+\href{https://arxiv.org/abs/2605.30306}{arXiv:2605.30306v1} (2026).
+
+\end{thebibliography}
+
+\end{document}
