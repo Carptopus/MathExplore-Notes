@@ -20,7 +20,7 @@ an exact minimum degree and a complete classification of the equality case.
 | [An exact non-symmetric strong spectral criterion for root-loop spider matrices](research/nssp-root-loop-spiders/README.md)<br>[PDF](research/nssp-root-loop-spiders/nssp-root-loop-spiders.pdf) · [BibTeX](research/nssp-root-loop-spiders/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22059059) | Inverse eigenvalue problems, generalized stars, matrix patterns | Characterizes the nSSP of every fixed root-loop bidirected spider matrix by pairwise coprimality of its arm polynomials | v0.2-beta | Internally verified precursor; strictly generalized by the rooted-tree entry |
 | [A recursive non-symmetric strong spectral criterion for root-loop tree matrices](research/nssp-root-loop-trees/README.md)<br>[PDF](research/nssp-root-loop-trees/nssp-root-loop-trees.pdf) · [BibTeX](research/nssp-root-loop-trees/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22059060) | Inverse eigenvalue problems, rooted trees, matrix patterns | Characterizes the nSSP of every fixed root-loop bidirected tree matrix by recursive sibling-subtree coprimality | v0.2-beta | Internally verified candidate proof; external review pending |
 | [Attainable second support weights of binary second-order Reed--Muller codes](research/rm2-second-support-spectrum/README.md)<br>[PDF](research/rm2-second-support-spectrum/rm2-second-support-spectrum.pdf) · [BibTeX](research/rm2-second-support-spectrum/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22059063) | Coding theory, quadratic Boolean functions, Walsh spectra | Determines for every dimension the exact set of support sizes attained by two-dimensional subcodes of $RM_2(2,n)$ | v0.2-beta | Internally verified candidate proof; external review pending |
-| [The low-component cases for total cut complexes of disconnected graphs](research/total-cut-low-components/README.md)<br>[PDF](research/total-cut-low-components/total-cut-low-components.pdf) · [BibTeX](research/total-cut-low-components/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22059068) | Algebraic topology, graph complexes, simplicial complexes | Resolves the three low-component cases of the total-cut wedge-of-spheres problem and completes the stated range for all $k\geq d$ | v0.2-beta | Internally verified candidate proof; external review pending |
+| [Acyclic component hypotheses for total cut complexes of disconnected graphs](research/total-cut-low-components/README.md)<br>[PDF](research/total-cut-low-components/total-cut-low-components.pdf) · [BibTeX](research/total-cut-low-components/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22045539) | Algebraic topology, graph complexes, simplicial complexes | Proves the wedge-of-spheres formula for every $k\geq d$ when all relevant component total-cut complexes are void or integer-acyclic, and answers Question 30 for this class | v0.3-beta | Internally verified candidate proof; external review pending |
 | [Comb-bounded crowns and bi-Esakia representability of well-ordered rooted trees](research/bi-esakia-comb-bounded-trees/README.md)<br>[PDF](research/bi-esakia-comb-bounded-trees/bi-esakia-comb-bounded-trees.pdf) · [BibTeX](research/bi-esakia-comb-bounded-trees/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22045542) | Order theory, Esakia duality, bi-Heyting algebras | Gives a finite-anchor synchronization theorem and a sufficient bi-Esakia representability criterion for well-ordered rooted trees with uniformly comb-bounded finite crowns | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Near-minimal Ehrhart data on the primitive-triangle boundary of denominator-two polygons](research/ehrhart-denominator2-primitive-boundary/README.md)<br>[PDF](research/ehrhart-denominator2-primitive-boundary/ehrhart-denominator2-primitive-boundary.pdf) · [BibTeX](research/ehrhart-denominator2-primitive-boundary/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22055266) | Ehrhart theory, rational polygons, discrete geometry | Proves a mod-$8$ obstruction and sharply classifies the near-minimal boundary through $I=3N-2$, with an infinite one-point-sharp family | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Periodic infinite ringsets in the Lipschitz quaternions](research/periodic-quaternion-ringsets/README.md)<br>[PDF](research/periodic-quaternion-ringsets/periodic-quaternion-ringsets.pdf) · [BibTeX](research/periodic-quaternion-ringsets/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22069614) | Integer-valued polynomials, quaternion algebras, noncommutative algebra | Classifies exactly which odd-squarefree-period binary words produce infinite ringsets in the Lipschitz quaternions | v0.1-beta | Internally verified candidate proof; external review pending |
@@ -150,22 +150,23 @@ not their multiplicities.
 
 - [Manuscript and verification materials](research/rm2-second-support-spectrum/README.md)
 
-### Low-component total cut complexes
+### Acyclic component hypotheses for total cut complexes
 
-Let $G$ be a graph with $k$ nonempty connected components and $n$ vertices.
-Under the component hypotheses stated in the manuscript, this result resolves
-the three low-component cases $k=d,d+1,d+2$ and proves
+Let $G=G_1\sqcup\cdots\sqcup G_k$ have $k\geq d$ nonempty connected
+components and $n$ vertices. If every relevant component total-cut complex
+$\Delta_r^t(G_i)$, $2\leq r\leq d$, is void or integer-acyclic, then
 
 $$
 \Delta_d^t(G)\simeq
 \bigvee_{\binom{k-1}{d-1}} S^{n-d-1}.
 $$
 
-Together with the previously known high-component range and an independent
-argument for the required $d=2$ case, this completes the formula for every
-$d\geq2$ and $k\geq d$ under the stated hypotheses. The proof combines
-explicit triangular fillings, Alexander duality, joins, deformation
-retractions, and a nerve-lemma argument.
+This successor theorem subsumes the previously published three
+low-component cases, removes the component clique-complex simple-connectivity
+condition, and answers Question 30 for the stated component class. Its proof
+combines Alexander duality, an acyclic composition diagram, a
+homology-colimit spectral sequence, direct connectivity arguments, and a
+weak-composition cover with van Kampen at the boundary $k=d$.
 
 - [Manuscript materials](research/total-cut-low-components/README.md)
 
