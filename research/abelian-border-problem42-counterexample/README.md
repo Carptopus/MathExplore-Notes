@@ -5,6 +5,8 @@
 - [Read or download the PDF](abelian-border-problem42-counterexample.pdf)
 - [LaTeX source](abelian-border-problem42-counterexample.tex)
 - [BibTeX citation](CITATION.bib)
+- Version DOI: [10.5281/zenodo.22145417](https://doi.org/10.5281/zenodo.22145417)
+- Concept DOI: [10.5281/zenodo.22145416](https://doi.org/10.5281/zenodo.22145416)
 - [Exact verification](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
