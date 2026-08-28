@@ -1,0 +1,473 @@
+% Typeset from the audited Markdown manuscript.
+% Responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{needspace}
+\usepackage{xcolor}
+\usepackage{fancyvrb}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\numberwithin{equation}{section}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Cyclotomic minimum degree for all orders}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\setlength{\emergencystretch}{4em}
+\urlstyle{same}
+
+\title{The minimum degree of nonnegative multiples\\
+of cyclotomic polynomials}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{28 August 2026}
+
+\hypersetup{
+  pdftitle={The minimum degree of nonnegative multiples of cyclotomic polynomials},
+  pdfauthor={Carptopus},
+  pdfsubject={An all-orders solution of Steinberger's cyclotomic minimum-degree conjecture},
+  pdfkeywords={cyclotomic polynomial, nonnegative coefficients, minimum degree, roots of unity, trigonometric kernel, separation certificate}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fcolorbox{black!35}{black!4}{\parbox{0.88\textwidth}{\centering\small
+Internal candidate manuscript, version 0.1-beta. The proof and complete
+manuscript have passed project-internal zero-trust audits. External mathematical
+review and formal peer review are pending.}}
+\end{center}
+
+\begin{abstract}
+Let $\Phi_n(x)$ be the $n$-th cyclotomic polynomial, let $p$ be the smallest
+prime divisor of $n>1$, and put $P=n/p$. Steinberger formulated the conjecture
+that the lowest-degree monic polynomial with nonnegative real coefficients
+divisible by $\Phi_n$ is
+\[
+R_{n,p}(x)=1+x^P+\cdots+x^{(p-1)P}.
+\]
+We prove this conjecture for every $n>1$. More precisely, every nonzero
+polynomial $f\in\mathbb R_{\geq0}[x]$ divisible by $\Phi_n$ has degree at
+least $(p-1)P$, and equality holds exactly for the positive scalar multiples
+of $R_{n,p}$.
+
+The proof uses an explicit trigonometric separation certificate involving only
+the primitive frequencies $1,\ldots,p-1$. With $\alpha=\pi/p$, define
+\[
+K_p(\theta)=\sum_{k=1}^{p-1}\sin(k\alpha)\cos(k\theta).
+\]
+An elementary closed form shows that the shifted values
+$K_p(2\pi j/n+\alpha)$ vanish at the regular $p$-gon positions and have one
+strict sign at every other exponent below the proposed degree. Evaluation at
+primitive $n$-th roots makes this vector orthogonal to every $\Phi_n$-multiple
+of degree less than $n$. A separate unit-group reduction argument gives
+uniqueness on the boundary. The argument is uniform: it does not require $n$
+to be squarefree and includes even integers, primes, prime powers, and integers
+with arbitrarily many prime factors.
+\end{abstract}
+
+\section{Introduction}
+
+For an integer $n>1$, define
+\begin{equation}
+\mu(n)=\min\{\deg f:0\ne f\in\mathbb R_{\geq0}[x],\ \Phi_n(x)\mid f(x)\}.
+\label{eq:mu}
+\end{equation}
+If $p$ is the smallest prime divisor of $n$ and $P=n/p$, then
+\begin{equation}
+R_{n,p}(x)=1+x^P+\cdots+x^{(p-1)P}=\Phi_p(x^P)
+\label{eq:regular}
+\end{equation}
+vanishes at every primitive $n$-th root of unity. Hence $\Phi_n\mid R_{n,p}$,
+and
+\begin{equation}
+\mu(n)\leq(p-1)P.
+\label{eq:upper}
+\end{equation}
+
+Steinberger \cite[Conjecture~1]{steinberger2012} conjectured equality in
+\eqref{eq:upper}, with $R_{n,p}$ as the unique monic minimizer. He proved the
+conjecture when $n$ is even, when $n$ is a prime power, and, writing the other
+distinct prime divisors as $q_1,\ldots,q_k$, whenever
+\begin{equation}
+\frac2p>\frac1{q_1}+\cdots+\frac1{q_k}.
+\label{eq:reciprocal}
+\end{equation}
+The same paper explicitly expressed disbelief in the full conjecture and
+anticipated counterexamples for orders with many large prime factors. Its
+general method reduces the squarefree case to a finite separation problem in a
+high-dimensional zero-sum array space.
+
+The purpose of this paper is to give a uniform affirmative solution. The
+certificate below is not obtained by solving those high-dimensional systems.
+It lies in a $(p-1)$-frequency subspace and is available in closed form for
+every $n$.
+
+\Needspace{0.24\textheight}
+\begin{theorem}\label{thm:main}
+Let $n>1$, let $p$ be its smallest prime divisor, and put $P=n/p$. If
+$0\ne f\in\mathbb R_{\geq0}[x]$ and $\Phi_n\mid f$, then
+\begin{equation}
+\deg f\geq(p-1)P.
+\label{eq:lower}
+\end{equation}
+Equality holds if and only if
+\begin{equation}
+f(x)=cR_{n,p}(x)
+\label{eq:equality}
+\end{equation}
+for some $c>0$. Consequently $R_{n,p}$ is the unique monic minimizer.
+\end{theorem}
+
+The proof is self-contained. Section~\ref{sec:kernel} establishes the
+trigonometric kernel identity and its exact sign pattern.
+Section~\ref{sec:certificate} turns the kernel into a separation certificate
+for every order. Section~\ref{sec:rigidity} proves the boundary rigidity needed
+for uniqueness, including nonsquarefree orders. Section~\ref{sec:proof} proves
+Theorem~\ref{thm:main}. Section~\ref{sec:checks} records exact destructive
+checks, and Section~\ref{sec:scope} positions the result relative to earlier
+work.
+
+\section{A sector kernel}\label{sec:kernel}
+
+Fix a prime $p$, and put
+\begin{equation}
+\alpha=\frac\pi p,
+\qquad
+K_p(\theta)=\sum_{k=1}^{p-1}\sin(k\alpha)\cos(k\theta).
+\label{eq:kernel}
+\end{equation}
+Angles are understood modulo $2\pi$. The open cyclic sector
+$(-\alpha,\alpha)$ means the arc represented by real angles strictly between
+$-\alpha$ and $\alpha$.
+
+\begin{lemma}\label{lem:kernel}
+If $\theta\not\equiv\pm\alpha\pmod{2\pi}$, then
+\begin{equation}
+K_p(\theta)=
+\frac{\sin\alpha\,[1+\cos(p\theta)]}
+     {2(\cos\theta-\cos\alpha)}.
+\label{eq:closed}
+\end{equation}
+The zeros of $K_p$ are exactly the odd multiples of $\alpha$. Moreover,
+$K_p(\theta)>0$ for $\theta\in(-\alpha,\alpha)$, and $K_p(\theta)<0$ at
+every point outside this sector that is not an odd multiple of $\alpha$ modulo
+$2\pi$.
+\end{lemma}
+
+\begin{proof}
+Set
+\[
+S(z)=\sum_{k=1}^{p-1}\sin(k\alpha)z^k.
+\]
+The recurrence
+\[
+\sin((k+1)\alpha)-2\cos\alpha\sin(k\alpha)
++\sin((k-1)\alpha)=0
+\]
+together with $\sin(p\alpha)=0$ and
+$\sin((p-1)\alpha)=\sin\alpha$ gives
+\begin{equation}
+(1-2z\cos\alpha+z^2)S(z)=\sin\alpha\,(z+z^{p+1}).
+\label{eq:generating}
+\end{equation}
+Substituting $z=e^{i\theta}$, dividing away from
+$\theta\equiv\pm\alpha$, and taking real parts yields \eqref{eq:closed}.
+At the two removable points, \eqref{eq:kernel} gives
+\begin{equation}
+K_p(\pm\alpha)=\frac12\sum_{k=1}^{p-1}\sin(2k\alpha)=0.
+\label{eq:removable}
+\end{equation}
+Away from these points, the numerator in \eqref{eq:closed} is zero exactly
+when $p\theta\equiv\pi\pmod{2\pi}$, hence exactly at the remaining odd
+multiples of $\alpha$. At all other points the numerator is positive. The
+denominator has the sign of $\cos\theta-\cos\alpha$, which is positive
+exactly in $(-\alpha,\alpha)$. This proves the zero set and sign statement.
+For $p=2$, the same calculation reduces to $K_2(\theta)=\cos\theta$.
+\end{proof}
+
+\section{A uniform separation certificate}\label{sec:certificate}
+
+Return to an arbitrary integer $n>1$. Let $p$ be its smallest prime divisor,
+put $P=n/p$, and define
+\begin{equation}
+d=(p-1)P,
+\qquad
+H=\{0,P,2P,\ldots,(p-1)P\}.
+\label{eq:anchors}
+\end{equation}
+For $0\leq j<n$, set
+\begin{equation}
+w_j=K_p\!\left(\frac{2\pi j}{n}+\alpha\right).
+\label{eq:weights}
+\end{equation}
+
+\begin{lemma}\label{lem:sign}
+The vector $w=(w_0,\ldots,w_{n-1})$ satisfies
+\begin{equation}
+w_j=0\quad(j\in H),
+\qquad
+w_j<0\quad(0\leq j<d,\ j\notin H).
+\label{eq:sign}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+If $j=hP$, then the angle in \eqref{eq:weights} is $(2h+1)\alpha$, so
+Lemma~\ref{lem:kernel} gives $w_j=0$. Conversely, an odd-multiple zero in
+\eqref{eq:weights} implies $j\equiv hP\pmod n$, and the representatives in
+$[0,n)$ are precisely the elements of $H$.
+
+The angle in \eqref{eq:weights} lies in the positive cyclic sector precisely
+when
+\[
+1-\frac1p<\frac jn<1,
+\]
+or equivalently $d<j<n$. Thus every nonanchor with $0\leq j<d$ lies in the
+strict negative region of Lemma~\ref{lem:kernel}. If $P=1$, the
+strict-negative index set is empty. If $p=2$, \eqref{eq:weights} becomes
+$w_j=-\sin(2\pi j/n)$, giving the same conclusion directly.
+\end{proof}
+
+\begin{lemma}\label{lem:orthogonal}
+Let $f(x)=\sum_{j=0}^{n-1}a_jx^j\in\mathbb R[x]$ and suppose
+$\Phi_n\mid f$. Then
+\begin{equation}
+\sum_{j=0}^{n-1}a_jw_j=0.
+\label{eq:orthogonal}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Let $\zeta_n=e^{2\pi i/n}$. For every integer $k$ with $1\leq k<p$,
+every prime divisor of $k$ is smaller than $p$ and therefore cannot divide
+$n$. Hence $(k,n)=1$, so $\zeta_n^k$ is a primitive $n$-th root and
+\begin{equation}
+f(\zeta_n^k)=0.
+\label{eq:root}
+\end{equation}
+Using \eqref{eq:kernel} and \eqref{eq:weights}, we obtain
+\begin{align}
+\sum_{j=0}^{n-1}a_jw_j
+&=\sum_{k=1}^{p-1}\sin(k\alpha)
+  \sum_{j=0}^{n-1}a_j
+  \cos\!\left(\frac{2\pi kj}{n}+k\alpha\right)\notag\\
+&=\sum_{k=1}^{p-1}\sin(k\alpha)\,
+  \mathop{\rm Re}\!\left(e^{ik\alpha}f(\zeta_n^k)\right)=0.
+\label{eq:fourier}
+\end{align}
+No squarefreeness or Chinese-remainder decomposition is used.
+\end{proof}
+
+\section{Boundary rigidity for arbitrary orders}\label{sec:rigidity}
+
+The separation certificate will force a minimizer onto $H$. We next show that
+divisibility then forces all anchor coefficients to be equal.
+
+\begin{lemma}\label{lem:surjective}
+The reduction homomorphism
+\begin{equation}
+(\mathbb Z/n\mathbb Z)^*\longrightarrow(\mathbb Z/p\mathbb Z)^*
+\label{eq:reduction}
+\end{equation}
+is surjective.
+\end{lemma}
+
+\begin{proof}
+Write $n=p^em$, where $e\geq1$ and $(p,m)=1$. Given
+$b\in(\mathbb Z/p\mathbb Z)^*$, choose a unit $b'$ modulo $p^e$ reducing to
+$b$. If $m>1$, the Chinese remainder theorem gives an integer $a$ satisfying
+\[
+a\equiv b'\pmod{p^e},
+\qquad
+a\equiv1\pmod m.
+\]
+Then $(a,n)=1$ and $a\equiv b\pmod p$. The case $m=1$ is immediate.
+\end{proof}
+
+\begin{lemma}\label{lem:rigidity}
+Suppose $0\ne f\in\mathbb R_{\geq0}[x]$, $\Phi_n\mid f$,
+$\deg f\leq d$, and $\operatorname{supp}(f)\subseteq H$. Then
+\begin{equation}
+f(x)=cR_{n,p}(x)
+\label{eq:rigidity}
+\end{equation}
+for some $c>0$.
+\end{lemma}
+
+\begin{proof}
+Write $f(x)=g(x^P)$, where $\deg g\leq p-1$. If $\zeta_n$ is a primitive
+$n$-th root, then $\zeta_p=\zeta_n^P$ has order $p$. For every
+$a\in(\mathbb Z/n\mathbb Z)^*$,
+\begin{equation}
+0=f(\zeta_n^a)=g(\zeta_p^a).
+\label{eq:groot}
+\end{equation}
+By Lemma~\ref{lem:surjective}, the exponents $a\bmod p$ range over all
+nonzero residue classes. Therefore $g$ vanishes at every primitive $p$-th
+root. Hence $\Phi_p\mid g$. Since $g\ne0$,
+$\deg g\leq p-1=\deg\Phi_p$, and
+$\Phi_p=1+x+\cdots+x^{p-1}$, we have $g=c\Phi_p$. The coefficient
+conditions force $c>0$, proving \eqref{eq:rigidity}.
+\end{proof}
+
+\section{Proof of the main theorem}\label{sec:proof}
+
+The polynomial $R_{n,p}=\Phi_p(x^P)$ vanishes at every primitive $n$-th
+root: if $\zeta_n$ is primitive, then $\zeta_n^P$ is a nontrivial $p$-th
+root. Thus $\Phi_n\mid R_{n,p}$, and \eqref{eq:upper} holds.
+
+Conversely, suppose that $0\ne f\in\mathbb R_{\geq0}[x]$,
+$\Phi_n\mid f$, and $\deg f\leq d$. Because $d<n$, write
+\[
+f(x)=\sum_{j=0}^{n-1}a_jx^j
+\]
+by padding with zero coefficients. Lemma~\ref{lem:orthogonal} gives
+\begin{equation}
+0=\sum_{j=0}^{d}a_jw_j.
+\label{eq:separate}
+\end{equation}
+Every term in \eqref{eq:separate} is nonpositive by Lemma~\ref{lem:sign}.
+At each nonanchor $0\leq j<d$, it is strictly negative if $a_j>0$.
+Therefore all such coefficients vanish and
+$\operatorname{supp}(f)\subseteq H$. Lemma~\ref{lem:rigidity} now gives
+$f=cR_{n,p}$ with $c>0$.
+
+It follows simultaneously that no nonzero admissible polynomial has degree
+less than $d$, and that every degree-$d$ admissible polynomial is a positive
+scalar multiple of $R_{n,p}$. This proves Theorem~\ref{thm:main}.
+
+\section{Exact destructive checks}\label{sec:checks}
+
+The proof above is symbolic and does not depend on computation. We nevertheless
+used exact and high-precision checks to attack the most likely failure modes.
+The accompanying verifier
+\texttt{verification/verify\_full\_n\_sector\_certificate.py} checks:
+\begin{itemize}
+\item every $2\leq n\leq1000$, separated into primes, prime powers, mixed
+  squarefree orders, and mixed nonsquarefree orders;
+\item every anchor by direct high-precision finite summation for
+  $2\leq n\leq300$, selected anchors above that range, and every nonanchor
+  prefix and tail sign for $2\leq n\leq1000$;
+\item exact gcd checks for primitivity of all frequencies $1,\ldots,p-1$;
+\item surjectivity of
+  $(\mathbb Z/n\mathbb Z)^*\to(\mathbb Z/p\mathbb Z)^*$;
+\item for every $2\leq n\leq180$, divisibility of $R_{n,p}$ and 6410
+  direct orthogonality checks on shifted $\Phi_n$-basis elements;
+\item direct finite-sum versus closed-form evaluations at 24 nontrivial angles;
+\item a phase-removal negative control and a wrong-prime negative control.
+\end{itemize}
+
+Run it from this entry directory with
+\begin{Verbatim}[fontsize=\footnotesize]
+python -X utf8 .\verification\verify_full_n_sector_certificate.py
+\end{Verbatim}
+The verifier SHA-256 is
+\begin{center}
+\small\texttt{62E512FD23DB231D05E08BDB074F9F36C37CC5FE0AC7337CA88BB0C249895AB3}.
+\end{center}
+All checks pass. Removing the phase destroys the anchor zeros, while replacing
+the smallest prime by an arbitrary prime can introduce nonprimitive low
+frequencies, as expected. These computations are destructive controls only;
+the all-orders conclusion rests on Lemmas~\ref{lem:kernel}--\ref{lem:rigidity}.
+
+\section{Relation to earlier work and scope}\label{sec:scope}
+
+Steinberger \cite{steinberger2012} introduced problem \eqref{eq:mu},
+formulated Conjecture~1, proved the reciprocal sufficient condition
+\eqref{eq:reciprocal}, and developed a squarefree array separation criterion.
+The present proof uses the same broad dual-separation idea, but its certificate
+is the explicit low-frequency vector \eqref{eq:weights}, whose membership and
+sign are established directly and uniformly for every order.
+
+Reddy \cite{reddy2011} studies a different restricted problem involving
+$0,1$-polynomials and minimal vanishing sums, principally for even orders with
+few distinct prime factors. Kepka and Korbel\'a\v{r} \cite{kepka2012} give degree
+bounds for nonnegative multiples of a general polynomial and solve their cubic
+case. {\L}aba and Zakharov \cite{laba2025} use Steinberger's bound in the study of
+integer tilings. None of these results states Theorem~\ref{thm:main}.
+
+Two earlier public-beta notes by the present author treated portions of the
+same problem. The first \cite{carptopus-fixed} gave exact dense certificates
+for the first two orders outside Steinberger's theorem. The second
+\cite{carptopus-tail} constructed symbolic tail-projection certificates for
+infinite prime families outside \eqref{eq:reciprocal}. Theorem~\ref{thm:main}
+strictly subsumes the mathematical conclusions of both notes; their
+certificate constructions remain separate computational and structural
+records, but they are not needed for the proof here.
+
+A targeted literature refresh on 28 August 2026 checked the original article,
+its current OpenAlex forward-citation set, arXiv, and exact-phrase and
+method-level searches. OpenAlex listed ten citing works; the newest was
+\cite{laba2025}, and the only directly adjacent lowest-degree papers were
+\cite{reddy2011,kepka2012}. We found no public source claiming an all-orders
+proof, the sector certificate \eqref{eq:weights}, or an affirmative resolution
+of Conjecture~1. This is a bounded public search, not proof of global priority:
+unindexed, unpublished, or concurrent work could still affect the novelty
+assessment.
+
+\section{AI-assisted research and writing disclosure}
+
+OpenAI Codex was used for computational exploration, proof development and
+organization, adversarial checking, literature search, and language editing.
+Carptopus selected and reviewed the retained mathematical claims and assumes
+responsibility for the manuscript.
+
+\begingroup
+\small
+\begin{thebibliography}{9}
+
+\bibitem{steinberger2012}
+J. P. Steinberger,
+``The lowest-degree polynomial with nonnegative coefficients divisible by the
+$n$-th cyclotomic polynomial,''
+\emph{Electronic Journal of Combinatorics} \textbf{19}(4) (2012), Paper P1.
+\href{https://doi.org/10.37236/2755}{doi:10.37236/2755}.
+
+\bibitem{reddy2011}
+A. S. Reddy,
+``The lowest degree $0,1$-polynomial divisible by cyclotomic polynomial,''
+arXiv:1106.1271v2 (2011).
+\url{https://arxiv.org/abs/1106.1271}.
+
+\bibitem{kepka2012}
+T. Kepka and M. Korbel\'a\v{r},
+``The lowest-degree polynomials with non-negative coefficients,''
+arXiv:1210.6868 (2012).
+\url{https://arxiv.org/abs/1210.6868}.
+
+\bibitem{laba2025}
+I. {\L}aba and D. Zakharov,
+``On the minimal period of integer tilings,''
+\emph{Bulletin of the London Mathematical Society} \textbf{57}(4) (2025),
+1160--1170.
+\href{https://doi.org/10.1112/blms.70023}{doi:10.1112/blms.70023}.
+
+\bibitem{carptopus-fixed}
+Carptopus,
+``Exact certificates for the first two cases not covered by Steinberger's
+cyclotomic minimum-degree theorem,'' Zenodo, v0.1-beta (2026).
+\href{https://doi.org/10.5281/zenodo.22124096}{doi:10.5281/zenodo.22124096}.
+
+\bibitem{carptopus-tail}
+Carptopus,
+``Tail-projection certificates for cyclotomic minimum-degree polynomials beyond
+the reciprocal condition,'' Zenodo, v0.1-beta (2026).
+\href{https://doi.org/10.5281/zenodo.22127365}{doi:10.5281/zenodo.22127365}.
+
+\end{thebibliography}
+\endgroup
+
+\end{document}

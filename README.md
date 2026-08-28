@@ -3,10 +3,17 @@
 MathExplore Notes is a collection of AI-assisted mathematical research results,
 including manuscripts and reproducible verification materials.
 
+## Featured result
+
+[The minimum degree of nonnegative multiples of cyclotomic polynomials](research/cyclotomic-minimum-degree-all-orders/README.md)
+proves Conjecture 1 in Steinberger's 2012 paper for every integer `n>1`, with
+an exact minimum degree and a complete classification of the equality case.
+
 ## Research index
 
 | Entry | Areas | Contribution | Public version | Status |
 | --- | --- | --- | --- | --- |
+| [The minimum degree of nonnegative multiples of cyclotomic polynomials](research/cyclotomic-minimum-degree-all-orders/README.md)<br>[PDF](research/cyclotomic-minimum-degree-all-orders/cyclotomic-minimum-degree-all-orders.pdf) · [BibTeX](research/cyclotomic-minimum-degree-all-orders/CITATION.bib) | Cyclotomic polynomials, nonnegative coefficients, roots of unity, trigonometric separation | Proves for every $n>1$ that the minimum degree is $(p-1)n/p$, where $p$ is the smallest prime divisor, with equality only for positive scalar multiples of the regular $p$-gon polynomial | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Proper transposed sesqui arrays at all Sylvester--Hadamard powers](research/proper-sesqui-all-powers/README.md)<br>[PDF](research/proper-sesqui-all-powers/proper-sesqui-all-powers.pdf) · [BibTeX](research/proper-sesqui-all-powers/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22059003) | Combinatorial designs, finite fields, finite geometry, algebraic curves | Constructs an exact-parameter proper transposed sesqui array for every power of two | v0.3-beta | Internally verified candidate proof; external review pending |
 | [Paley two-edge switching for proper transposed sesqui arrays](research/paley-two-edge-switching/README.md)<br>[PDF](research/paley-two-edge-switching/paley-two-edge-switching.pdf) · [BibTeX](research/paley-two-edge-switching/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22059004) | Combinatorial designs, finite fields, elliptic curves | Constructs an exact-parameter proper transposed sesqui array for every odd prime power $q\equiv3\pmod4$, $q\geq11$ | v0.3-beta | Internally verified candidate proof; external review pending |
 | [Spectral separation and the nSSP for looped double paths](research/nssp-looped-double-paths/README.md)<br>[PDF](research/nssp-looped-double-paths/nssp-looped-double-paths.pdf) · [BibTeX](research/nssp-looped-double-paths/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22059007) | Inverse eigenvalue problems, graph patterns, Jacobi matrices | Classifies exactly which looped double paths allow the non-symmetric strong spectral property | v0.2-beta | Internally verified candidate proof; external review pending |
