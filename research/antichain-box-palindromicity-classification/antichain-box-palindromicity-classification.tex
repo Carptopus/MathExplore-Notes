@@ -1,0 +1,1121 @@
+% Generated from the audited Markdown source; responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{needspace}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\numberwithin{equation}{section}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Palindromicity of antichain-box polynomials}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\setlength{\emergencystretch}{4em}
+\urlstyle{same}
+
+\title{Palindromicity of antichain polynomials\\
+of three-dimensional boxes}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{29 August 2026}
+
+\hypersetup{
+  pdftitle={Palindromicity of antichain polynomials of three-dimensional boxes},
+  pdfauthor={Carptopus},
+  pdfsubject={Complete palindromicity classification for antichain generating polynomials of three-dimensional box posets},
+  pdfkeywords={antichain generating polynomial, palindromicity, gamma-positivity, minuscule poset, last passage, lattice path, vertex separator}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fcolorbox{black!35}{black!4}{\parbox{0.88\textwidth}{\centering\small
+Internal candidate manuscript, version 0.1-beta. The mathematical proof and the
+complete Markdown manuscript have passed project-internal zero-trust audits.
+External mathematical review and formal peer review are pending.}}
+\end{center}
+
+\begin{abstract}
+
+
+For positive integers $a,b,c$, let
+
+\nopagebreak[4]
+\[
+N_{a,b,c}(x)=\sum_A x^{|A|}
+\]
+
+be the antichain generating polynomial of the product poset
+$[a]\times[b]\times[c]$. We prove that, after sorting
+$a\le b\le c$,
+
+\nopagebreak[4]
+\[
+N_{a,b,c}(x)\ \text{is palindromic}
+\quad\Longleftrightarrow\quad
+(a,b,c)=(1,r,r)\ \text{or}\ (2,r,r+1).
+\]
+
+The new part is the exclusion of all boxes with $a,b,c\ge3$. We use the
+last-passage representation of antichains by nonnegative matrices. In the
+monic parameter range
+
+\nopagebreak[4]
+\[
+c=a+b-1-2d,
+\]
+
+we classify all binary supports one below maximum and all possible weight
+increments. For $d\ge1$ this gives the exact coefficient
+
+\nopagebreak[4]
+\[
+[x^{w-1}]N_{a,b,c}(x)
+=ab+2+(a-d)(a-d-1)+(b-d)(b-d-1),
+\]
+
+where $w=ab-d(d+1)$. This coefficient is strictly smaller than
+$[x]N_{a,b,c}(x)=abc$. The remaining case $d=0$ has an explicit coefficient
+strictly larger than $abc$. Thus the first and next-to-leading coefficients
+exclude palindromicity in every genuine higher-layer case. Combined with the
+known two-layer classification, this proves the rectangular minuscule branch
+of a conjecture of Ding and Dong.
+
+\end{abstract}
+
+\section{Introduction}
+
+
+For a finite poset $P$, its antichain generating polynomial is
+
+\nopagebreak[4]
+\[
+N_P(x)=\sum_{A\in\mathcal A(P)}x^{|A|},
+\]
+
+where $\mathcal A(P)$ denotes the set of antichains of $P$. Ding and Dong
+studied palindromicity, real-rootedness, and gamma-positivity of these
+polynomials for minuscule posets \cite{ding2019}. Their Conjecture B states that, for a
+connected minuscule poset $P$, palindromicity of
+$N_{[k]\times P}(x)$ implies strict gamma-positivity.
+
+The rectangular minuscule family takes
+
+\nopagebreak[4]
+\[
+P=[b]\times[c],
+\]
+
+so the relevant polynomial is that of the three-dimensional box
+$[a]\times[b]\times[c]$. The one-layer case is elementary. The two-layer
+case was recently classified together with a proof of real-rootedness and
+strict gamma-positivity \cite{carptopus2026}. The purpose of this paper is to settle every
+remaining number of layers.
+
+Because the three factors are symmetric, we always sort
+
+\nopagebreak[4]
+\[
+a\le b\le c.
+\]
+
+Our main result is the following.
+
+\Needspace{0.25\textheight}
+\begin{theorem}
+
+For positive integers $a\le b\le c$, the polynomial $N_{a,b,c}(x)$ is
+palindromic if and only if
+
+\nopagebreak[4]
+\[
+(a,b,c)=(1,r,r)
+\quad\text{or}\quad
+(a,b,c)=(2,r,r+1).
+\]
+
+\end{theorem}
+
+The genuinely new assertion is:
+
+\Needspace{0.25\textheight}
+\begin{theorem}
+
+If $3\le a\le b\le c$, then $N_{a,b,c}(x)$ is not palindromic.
+
+\end{theorem}
+
+The proof needs only two coefficients, but obtaining the second one requires
+a structural classification. Amanov and Yeliussizov \cite{amanov2023} give a last-passage
+correspondence between plane partitions and nonnegative matrices. Under this
+correspondence, the size of an antichain becomes the number of positive
+matrix entries. A near-maximum antichain is therefore a near-maximum support
+subject to a last-passage constraint.
+
+The complement of the maximum support consists of two triangular end regions.
+Removing points from these triangles creates path deficits. We quantify the
+minimum cost of compensating those deficits inside the central band. A
+frontier recurrence first forces all removals to form one interval on the
+outermost diagonal of one end. A minimum-separator theorem then shows that the
+only compensation is the adjacent shadow, apart from two full cross-end
+exchanges. This yields exactly $ab+2$ binary near-maximum supports. A separate
+dominator argument classifies all supports that can carry one additional
+unit of weight.
+
+Section 2 recalls the last-passage model and the monic parameter reduction.
+Sections 3--5 prove the path-compensation classification. Section 6 classifies
+weight increments and obtains the next-to-leading coefficient for $d\ge1$.
+Section 7 treats $d=0$. Section 8 proves the complete classification.
+
+\section{Last passage and the monic parameter range}
+
+
+Write
+
+\nopagebreak[4]
+\[
+Q=[0,a-1]\times[0,b-1].
+\]
+
+For a nonnegative integer matrix $M=(M_{ij})_{(i,j)\in Q}$, let $L(M)$ be
+the maximum of
+
+\nopagebreak[4]
+\[
+\sum_{(i,j)\in P}M_{ij}
+\]
+
+over all northeast lattice paths $P$ from $(0,0)$ to $(a-1,b-1)$.
+
+Amanov and Yeliussizov [2, Theorem 3.1, equation (3), Corollary 3.2(i),
+Lemma 3.4, and Lemma 4.2] give a bijection under which
+
+\nopagebreak[4]
+\[
+N_{a,b,c}(x)
+=\sum_{\substack{M\in\mathbb Z_{\ge0}^{a\times b}\\L(M)\le c}}
+x^{|\operatorname{supp}M|}.
+\tag{2.1}
+\]
+
+Indeed, their inverse map satisfies
+
+\nopagebreak[4]
+\[
+M_{ij}>0
+\quad\Longleftrightarrow\quad
+(i,j,\pi_{ij})
+\text{ is a top corner of the corresponding plane partition}.
+\]
+
+The top corners are the maximal elements of the corresponding order ideal,
+and hence form its antichain of maximal elements. This proves (2.1).
+
+The constant term of $N_{a,b,c}(x)$ is $1$. Consequently, a palindromic
+polynomial must be monic. Ding and Dong \cite[Lemma~2.3(a)]{ding2019} classify the monic
+parameters. In the sorted range $a\le b\le c$, their condition is equivalent
+to
+
+\nopagebreak[4]
+\[
+c=a+b-1-2d,
+\qquad
+0\le d\le\left\lfloor\frac{a-1}{2}\right\rfloor.
+\tag{2.2}
+\]
+
+For these parameters, put
+
+\nopagebreak[4]
+\[
+H=a+b-2
+\]
+
+and
+
+\nopagebreak[4]
+\[
+B_d=\{(i,j)\in Q:d\le i+j\le H-d\}.
+\tag{2.3}
+\]
+
+The unique maximum support is $B_d$, and its size is
+
+\nopagebreak[4]
+\[
+w=|B_d|=ab-d(d+1).
+\tag{2.4}
+\]
+
+Thus non-monic parameters are already excluded. We shall compare
+$[x]N_{a,b,c}(x)$ and $[x^{w-1}]N_{a,b,c}(x)$ throughout the monic range.
+The first coefficient is immediate:
+
+\nopagebreak[4]
+\[
+[x]N_{a,b,c}(x)=abc.
+\tag{2.5}
+\]
+
+\section{Path compensation}
+
+
+Assume in this section that
+
+\nopagebreak[4]
+\[
+1\le d\le\left\lfloor\frac{a-1}{2}\right\rfloor.
+\]
+
+Let
+
+\nopagebreak[4]
+\[
+T_0=Q\setminus B_d.
+\]
+
+Every full northeast path contains exactly $2d$ points of $T_0$. Let $S$ be
+a binary support of size $w-1$, and write its complement uniquely as
+
+\nopagebreak[4]
+\[
+Q\setminus S=(T_0\setminus R)\cup A,
+\tag{3.1}
+\]
+
+where
+
+\nopagebreak[4]
+\[
+R\subseteq T_0,\qquad A\subseteq B_d,\qquad |A|=|R|+1.
+\tag{3.2}
+\]
+
+The binary matrix $\mathbf1_S$ satisfies $L(\mathbf1_S)\le c$ if and only if
+
+\nopagebreak[4]
+\[
+|P\cap A|\ge |P\cap R|
+\quad\text{for every full northeast path }P.
+\tag{3.3}
+\]
+
+We call $(R,A)$ a path-compensation pair.
+
+For $0\le r\le H$, define the rank diagonal
+
+\nopagebreak[4]
+\[
+D_r=\{(i,j)\in Q:i+j=r\}
+\]
+
+and, for $0\le r\le d$, enumerate it as
+
+\nopagebreak[4]
+\[
+D_r=\{x_{r,0},\ldots,x_{r,r}\}.
+\]
+
+Let
+
+\nopagebreak[4]
+\[
+R^-=R\cap(D_0\cup\cdots\cup D_{d-1}).
+\]
+
+For $x_{r,k}$ define
+
+\nopagebreak[4]
+\[
+v_r(k)=
+\max_P |P\cap R^-|,
+\tag{3.4}
+\]
+
+where $P$ ranges over paths from $(0,0)$ to $x_{r,k}$. Then
+
+\nopagebreak[4]
+\[
+v_r(k)=\mathbf1_{x_{r,k}\in R^-}
++\max\{v_{r-1}(k-1),v_{r-1}(k)\},
+\tag{3.5}
+\]
+
+with nonexistent predecessors omitted. Define
+
+\nopagebreak[4]
+\[
+G^-(R^-)=\sum_{k=0}^{d}v_d(k).
+\tag{3.6}
+\]
+
+\Needspace{0.25\textheight}
+\begin{lemma}
+
+If $r_0$ is the lowest nonempty rank of $R^-$, then
+
+\nopagebreak[4]
+\[
+G^-(R^-)\ge |R^-|+(d-r_0).
+\tag{3.7}
+\]
+
+Moreover,
+
+\nopagebreak[4]
+\[
+G^-(R^-)=|R^-|+1
+\tag{3.8}
+\]
+
+if and only if $R^-$ is a nonempty consecutive interval in $D_{d-1}$.
+
+\end{lemma}
+
+\begin{proof}
+
+For a nonnegative vector $u=(u_0,\ldots,u_m)$, set
+
+\nopagebreak[4]
+\[
+E(u)=
+(u_0,\max(u_0,u_1),\ldots,\max(u_{m-1},u_m),u_m).
+\]
+
+Then
+
+\nopagebreak[4]
+\[
+\sum E(u)-\sum u
+=u_m+\sum_{j=0}^{m-1}(u_j-u_{j+1})_+.
+\tag{3.9}
+\]
+
+Starting at the lowest occupied rank and applying (3.5)--(3.9) at every
+subsequent rank proves (3.7). If $r_0<d-1$, at least two strict frontier
+expansions occur. If the lowest occupied rank has more than one consecutive
+component, the first expansion already creates at least two new frontier
+units. Any additional removal on a higher outer rank creates another unit in
+(3.5). Hence (3.8) forces a single interval in $D_{d-1}$. Conversely, an
+interval of length $\ell$ in $D_{d-1}$ produces an interval of length
+$\ell+1$ on $D_d$, so equality holds.
+\end{proof}
+
+
+Rotating the rectangle through $180$ degrees gives the analogous high-end
+quantities $R^+$ and $G^+(R^+)$.
+
+\Needspace{0.25\textheight}
+\begin{lemma}
+
+Every path-compensation pair satisfies
+
+\nopagebreak[4]
+\[
+|A|\ge G^-(R^-)+G^+(R^+).
+\tag{3.10}
+\]
+
+Consequently, $R^-$ and $R^+$ cannot both be nonempty.
+
+\end{lemma}
+
+\begin{proof}
+
+Write
+
+\nopagebreak[4]
+\[
+y_p=(p,d-p),\qquad
+z_p=(a-1-d+p,b-1-p),
+\qquad 0\le p\le d.
+\]
+
+The inequality $2d\le a-1\le b-1$ gives $y_p\le z_p$. Use one fixed step
+word between each pair $(y_p,z_p)$. Its $d+1$ translates form pairwise
+vertex-disjoint central channels.
+
+At $y_p$, attach a low-end prefix attaining $v_d(p)$; at $z_p$, attach a
+high-end suffix attaining the corresponding rotated maximum. Applying
+(3.3) to these $d+1$ full paths and summing, every point of $A\subseteq B_d$
+is counted at most once, while the right side is exactly
+$G^-(R^-)+G^+(R^+)$. This proves (3.10).
+
+If both ends contain removals, Lemma 3.1 and its rotation give
+
+\nopagebreak[4]
+\[
+|A|\ge |R^-|+|R^+|+2=|R|+2,
+\]
+
+contrary to (3.2).
+\end{proof}
+
+
+\section{Minimum separators in the central band}
+
+
+We next classify the minimum vertex separators used to compensate a single
+end interval.
+
+\Needspace{0.25\textheight}
+\begin{lemma}
+
+Let $U\subseteq D_{d+1}$ with $|U|=q\le d+1$. There are $q$ pairwise
+vertex-disjoint northeast paths joining the points of $U$ to $q$ distinct
+points of $D_{H-d}$.
+
+\end{lemma}
+
+\begin{proof}
+
+Proceed one rank at a time. Before the final rank, every intermediate
+diagonal in the central band has at least $d+2$ points. For a proper subset
+$Y$ of any such diagonal, its complete upper shadow has size at least
+$|Y|$. The only way a shadow can lose one point is for $Y$ to fill an entire
+diagonal in the shrinking part of the rectangle. This cannot happen because
+there are only $q\le d+1$ active points.
+
+Thus the bipartite graph between the current points and their successors on
+the next diagonal satisfies Hall's condition. Choose a matching at each
+rank. Composing the matchings gives the required disjoint paths.
+\end{proof}
+
+
+\Needspace{0.25\textheight}
+\begin{corollary}
+
+Let $\varnothing\ne X\subseteq D_d$ with $|X|=k\le d$. Any vertex set
+disjoint from $X$ that meets every path from $X$ to $D_{H-d}$ has at least
+$k+1$ points.
+
+\end{corollary}
+
+\begin{proof}
+
+The complete upper shadow of $X$ satisfies
+
+\nopagebreak[4]
+\[
+|\partial^+X|
+=|X|+\#\{\text{consecutive components of }X\}
+\ge k+1.
+\]
+
+Choose $k+1$ shadow points and apply Lemma 4.1. Extend the resulting paths
+down by one edge to $X$. They can share starting points in $X$, but outside
+$X$ they are pairwise vertex-disjoint. A separator disjoint from $X$ must
+therefore use at least one distinct point on each path.
+\end{proof}
+
+
+\Needspace{0.25\textheight}
+\begin{lemma}
+
+Let $J\subseteq D_d$ be a nonempty consecutive interval of size $m$, and
+let $A\subseteq B_d$ meet every path from $J$ to $D_{H-d}$. If $|A|=m$,
+then
+
+\nopagebreak[4]
+\[
+A=J,
+\tag{4.1}
+\]
+
+except that when $J=D_d$ one may also have
+
+\nopagebreak[4]
+\[
+A=D_{H-d}.
+\tag{4.2}
+\]
+
+\end{lemma}
+
+\begin{proof}
+
+Put $X=J\setminus A$. If $X$ is nonempty and $|X|=k\le d$, then $A\cap J$
+uses $m-k$ points, while Corollary 4.2 forces at least $k+1$ further points.
+This exceeds the budget $m$. Therefore, if $m<d+1$, one must have $A=J$.
+
+Now let $m=d+1$, so $J=D_d$. The preceding argument shows that $A$ either
+equals $D_d$ or avoids $D_d$ completely. If $A$ uses a nonempty proper
+subset of $D_{H-d}$, apply the rotated Corollary 4.2 to
+$D_{H-d}\setminus A$; the same budget contradiction results. Thus $A$ is
+the whole upper boundary or avoids both boundaries.
+
+In the latter case, apply the rank-by-rank Hall argument to the full
+$D_{d+1}$ and $D_{H-d-1}$. It gives $d+2$ internally disjoint paths. After
+extending them to the two boundary diagonals, they can share vertices only
+on boundaries that $A$ avoids. Hence an internal separator needs at least
+$d+2$ points, again a contradiction.
+\end{proof}
+
+
+\section{Binary supports one below maximum}
+
+
+\Needspace{0.25\textheight}
+\begin{theorem}
+
+Suppose $d\ge1$. The binary supports $S\subseteq Q$ satisfying
+
+\nopagebreak[4]
+\[
+|S|=w-1,\qquad L(\mathbf1_S)\le c
+\]
+
+are exactly the following:
+
+\begin{enumerate}
+\item $S=B_d\setminus\{z\}$ for $z\in B_d$;
+\item at either end, let $I$ be a nonempty consecutive interval in the outer
+diagonal of $T_0$, and let $J(I)$ be its complete shadow on the adjacent
+inner diagonal; then
+
+\nopagebreak[4]
+\[
+S=Q\setminus\bigl((T_0\setminus I)\cup J(I)\bigr);
+\]
+
+\item the two cross-end full-diagonal exchanges
+
+\nopagebreak[4]
+\[
+S=Q\setminus\bigl((T_0\setminus D_{d-1})\cup D_{H-d}\bigr)
+\]
+
+and
+
+\nopagebreak[4]
+\[
+S=Q\setminus\bigl((T_0\setminus D_{H-d+1})\cup D_d\bigr).
+\]
+
+\end{enumerate}
+
+Their total number is
+
+\nopagebreak[4]
+\[
+ab+2.
+\tag{5.1}
+\]
+
+\end{theorem}
+
+\begin{proof}
+
+Use the complement representation (3.1). If $R=\varnothing$, then
+$|A|=1$, giving the first family.
+
+Assume $R\ne\varnothing$. Lemma 3.2 puts all removals at one end.
+Lemma 3.1 and $|A|=|R|+1$ force $R$ to be a single consecutive interval
+$I$ in the outermost diagonal $D_{d-1}$, with no other removals.
+
+Let
+
+\nopagebreak[4]
+\[
+J=\partial^+I\subseteq D_d.
+\]
+
+Every path from $J$ to $D_{H-d}$ can be extended downward through a point
+of $I$ and then to the source. Condition (3.3) therefore says that $A$ is a
+separator for all such paths. Moreover,
+
+\nopagebreak[4]
+\[
+|A|=|I|+1=|J|.
+\]
+
+Lemma 4.3 gives $A=J$, except that when $I=D_{d-1}$ it also permits
+$A=D_{H-d}$. These are the same-end exchanges and one cross-end exchange.
+Rotation gives the high-end versions and the other cross-end exchange.
+Every listed pair directly satisfies (3.3).
+
+There are $w$ supports in the first family. At each end, the number of
+nonempty intervals in a diagonal of length $d$ is
+
+\nopagebreak[4]
+\[
+\sum_{\ell=1}^{d}(d-\ell+1)=\frac{d(d+1)}2.
+\]
+
+Adding both ends and the two cross-end exchanges gives
+
+\nopagebreak[4]
+\[
+w+d(d+1)+2=ab+2.
+\]
+
+This proves (5.1).
+\end{proof}
+
+
+\section{Weight increments and the coefficient for \texorpdfstring{$d\ge1$}{d >= 1}}
+
+
+A matrix counted by $[x^{w-1}]N_{a,b,c}(x)$ may have entries larger than
+one. We now classify all such possibilities.
+
+First consider
+
+\nopagebreak[4]
+\[
+S=B_d\setminus\{z\}.
+\]
+
+Increasing the entry at $u\in S$ from $1$ to $2$ is legal if and only if
+every saturated central-band path through $u$ also passes through $z$.
+Equivalently, $z$ dominates every source-to-$u$ path or every
+$u$-to-sink path in the directed grid induced by $B_d$.
+
+\Needspace{0.25\textheight}
+\begin{lemma}
+
+The legal ordered pairs $(z,u)$ are exactly those on one of the four exposed
+boundary chains, with $z$ separating the corresponding boundary endpoint
+from $u$. Their number is
+
+\nopagebreak[4]
+\[
+(a-d)(a-d-1)+(b-d)(b-d-1).
+\tag{6.1}
+\]
+
+No matrix with two incremented points or an increment of at least two is
+legal.
+
+\end{lemma}
+
+\begin{proof}
+
+If $u\in D_d$, there is no central-band point of smaller rank that can
+dominate it. If $\operatorname{rank}(u)>d$ and $u$ is not on a source-side
+exposed chain, two adjacent points of $D_d$ reach $u$ along two paths that
+meet only at $u$. Hence no $z\ne u$ lies on every source-to-$u$ path. On an
+exposed chain, the path from its unique reachable boundary endpoint to $u$
+is forced, and its intermediate points are precisely the dominators.
+Rotation gives the sink-side statement, including the top boundary rank.
+
+The four chain lengths are
+
+\nopagebreak[4]
+\[
+a-d,\quad a-d,\quad b-d,\quad b-d.
+\]
+
+Counting separated ordered pairs gives
+
+\nopagebreak[4]
+\[
+2\binom{a-d}{2}+2\binom{b-d}{2},
+\]
+
+which is (6.1).
+
+For fixed $z$, every legal $u$ lies on one exposed chain. Any two such points
+occur together on a path that, after deleting $z$, has only $c-1$ basic
+support points. Two unit increments, or two units at one point, raise its
+weight to $c+1$. Thus no further increment is possible.
+\end{proof}
+
+
+\Needspace{0.25\textheight}
+\begin{lemma}
+
+Every point of every exchange support in Theorem 5.1 lies on a path with
+exactly $c$ support points. Hence exchange supports admit no positive weight
+increment.
+
+\end{lemma}
+
+\begin{proof}
+
+Consider a low-end interval exchange. Let
+
+\nopagebreak[4]
+\[
+I\subseteq D_{d-1},
+\qquad
+J=\partial^+I\subseteq D_d.
+\]
+
+If $u\in I$, extend a prefix through $u$ to $J$ and then to the sink; the
+path meets both $I$ and $J$ once. If $u\in D_d\setminus J$, enter $u$ from
+a predecessor in $D_{d-1}\setminus I$; the path avoids both sets.
+
+Finally, suppose $\operatorname{rank}(u)>d$. The points of $D_d$ that can
+reach $u$ form an interval. If this interval meets $J$, enter through an
+intersection point and one of its predecessors in $I$. If it does not meet
+$J$, enter through a point outside $J$ and a predecessor outside $I$. The
+resulting path still passes through $u$ and meets $I,J$ equally.
+
+Thus every support point lies on a path satisfying
+
+\nopagebreak[4]
+\[
+|P\cap I|=|P\cap J|.
+\]
+
+Such a path has exactly $c$ support points after the exchange. The high-end
+case follows by rotation. For a cross-end full exchange, every full path
+meets the removed and added diagonals once, so every path is already
+saturated.
+\end{proof}
+
+
+Combining Theorem 5.1 and Lemmas 6.1--6.2 yields the exact coefficient.
+
+\Needspace{0.25\textheight}
+\begin{theorem}
+
+For
+
+\nopagebreak[4]
+\[
+3\le a\le b,\qquad
+1\le d\le\left\lfloor\frac{a-1}{2}\right\rfloor,
+\]
+
+put
+
+\nopagebreak[4]
+\[
+c=a+b-1-2d,\qquad w=ab-d(d+1).
+\]
+
+Then
+
+\nopagebreak[4]
+\[
+\boxed{
+[x^{w-1}]N_{a,b,c}(x)
+=ab+2+(a-d)(a-d-1)+(b-d)(b-d-1).
+}
+\tag{6.2}
+\]
+
+Moreover,
+
+\nopagebreak[4]
+\[
+[x^{w-1}]N_{a,b,c}(x)<abc.
+\tag{6.3}
+\]
+
+\end{theorem}
+
+\begin{proof}
+
+Theorem 5.1 counts $ab+2$ binary supports. Lemma 6.1 contributes the two
+families of single increments in (6.1), and Lemma 6.2 excludes increments
+on every other support. This proves (6.2).
+
+Expanding the difference gives
+
+\nopagebreak[4]
+\[
+\begin{aligned}
+abc-[x^{w-1}]N
+={}&(a-1)b^2+(a-1)(a-1-2d)b\\
+&-(a-d)^2-d^2+a-2d-2.
+\end{aligned}
+\tag{6.4}
+\]
+
+The second term is nonnegative. Since
+
+\nopagebreak[4]
+\[
+(a-d)^2+d^2\le a^2,\qquad
+2d\le a-1,\qquad b\ge a,
+\]
+
+we obtain
+
+\nopagebreak[4]
+\[
+abc-[x^{w-1}]N
+\ge(a-2)a^2-1>0.
+\]
+
+This proves (6.3).
+\end{proof}
+
+
+\section{The zero-depth case}
+
+
+It remains to treat the monic parameter
+
+\nopagebreak[4]
+\[
+d=0,\qquad c=a+b-1,\qquad w=ab.
+\]
+
+A support of size $ab-1$ is $Q\setminus\{z\}$. Put weight $1$ on this
+support and denote all additional weights by $E$. For every full path $P$,
+the constraint is
+
+\nopagebreak[4]
+\[
+\sum_{u\in P}E_u\le\mathbf1_{z\in P}.
+\tag{7.1}
+\]
+
+If $z$ is the source or sink, every path contains $z$. The nonzero support
+of $E$ may then be any nonempty antichain other than $\{z\}$. The number of
+antichains in an $a$ by $b$ rectangle is
+
+\nopagebreak[4]
+\[
+\binom{a+b}{a}.
+\]
+
+Thus each endpoint contributes
+
+\nopagebreak[4]
+\[
+\binom{a+b}{a}-2
+\]
+
+additional matrices beyond the binary matrix.
+
+For non-endpoint $z$, an increment is possible only on the same exposed
+outer boundary, with $z$ separating the endpoint from the incremented
+point. As in Lemma 6.1, no two increments and no larger increment are
+possible. The four boundary contributions total
+
+\nopagebreak[4]
+\[
+2\binom{a-1}{2}+2\binom{b-1}{2}.
+\]
+
+Including the $ab$ binary supports gives:
+
+\Needspace{0.25\textheight}
+\begin{proposition}
+
+For $3\le a\le b$,
+
+\nopagebreak[4]
+\[
+\begin{aligned}
+[x^{ab-1}]N_{a,b,a+b-1}(x)
+={}&ab+2\left(\binom{a+b}{a}-2\right)\\
+&+(a-1)(a-2)+(b-1)(b-2)\\
+={}&2\binom{a+b}{a}+a^2+b^2+ab-3a-3b.
+\end{aligned}
+\tag{7.2}
+\]
+
+This coefficient satisfies
+
+\nopagebreak[4]
+\[
+[x^{ab-1}]N_{a,b,a+b-1}(x)>ab(a+b-1).
+\tag{7.3}
+\]
+
+\end{proposition}
+
+\begin{proof}
+
+Only (7.3) remains. Its left side minus right side is
+
+\nopagebreak[4]
+\[
+2\binom{a+b}{a}-(a+b)(ab-a-b+3).
+\tag{7.4}
+\]
+
+Set
+
+\nopagebreak[4]
+\[
+R_{a,b}=
+\frac{2\binom{a+b}{a}}
+{(a+b)((a-1)(b-1)+2)}.
+\]
+
+For fixed $a\ge3$, comparison of consecutive ratios gives
+
+\nopagebreak[4]
+\[
+\begin{aligned}
+&\frac{\binom{a+b+1}{a}}{\binom{a+b}{a}}
+-\frac{(a+b+1)((a-1)b+2)}
+{(a+b)((a-1)(b-1)+2)}\\
+&\qquad=
+\frac{(a-2)(a-1)(b-1)(a+b+1)}
+{(a+b)(b+1)(ab-a-b+3)}>0.
+\end{aligned}
+\]
+
+Thus $R_{a,b}$ increases with $b$. On the diagonal, let
+
+\nopagebreak[4]
+\[
+L_a=2\binom{2a}{a},
+\qquad
+U_a=2a((a-1)^2+2).
+\]
+
+The base case is $L_3=40>36=U_3$, and
+
+\nopagebreak[4]
+\[
+\frac{L_{a+1}}{L_a}-\frac{U_{a+1}}{U_a}
+=
+\frac{(a-1)^2(3a^2-2a-2)}
+{a(a+1)(a^2-2a+3)}>0.
+\]
+
+Hence $R_{a,b}>1$ for all $3\le a\le b$, which is precisely (7.3).
+\end{proof}
+
+
+\section{Proof of the classification}
+
+
+\begin{proof}[Proof of Theorem 1.2]
+
+If $N_{a,b,c}(x)$ is not monic, it cannot be palindromic. In the monic
+range, write $c=a+b-1-2d$ as in (2.2).
+
+If $d=0$, Proposition 7.1 gives
+
+\nopagebreak[4]
+\[
+[x^{w-1}]N_{a,b,c}(x)>[x]N_{a,b,c}(x).
+\]
+
+If $d\ge1$, Theorem 6.3 gives the strict reverse inequality. In either case,
+the coefficients paired by palindromicity are unequal. Therefore
+$N_{a,b,c}(x)$ is not palindromic.
+\end{proof}
+
+
+\begin{proof}[Proof of Theorem 1.1]
+
+When $a=1$, the number of $k$-element antichains in
+$[b]\times[c]$ is
+
+\nopagebreak[4]
+\[
+\binom{b}{k}\binom{c}{k}.
+\]
+
+After sorting $b\le c$, its top coefficient is $\binom{c}{b}$, so the
+polynomial is monic, and hence possibly palindromic, only when $b=c$.
+For $b=c=r$, the coefficients are $\binom{r}{k}^2$ and are palindromic.
+
+When $a=2$, the complete classification in \cite{carptopus2026} states that the polynomial is
+palindromic exactly when $c=b+1$. When $a\ge3$, Theorem 1.2 excludes every
+parameter. This proves the stated list.
+\end{proof}
+
+
+\Needspace{0.25\textheight}
+\begin{corollary}
+
+Ding--Dong Conjecture B holds for the complete rectangular minuscule family.
+
+\end{corollary}
+
+\begin{proof}
+
+Theorem 1.1 lists all palindromic cases. For the one-layer square, Ding and
+Dong \cite[Proposition~2.4]{ding2019} give the gamma expansion
+
+\nopagebreak[4]
+\[
+\sum_{k=0}^{r}\binom{r}{k}^2x^k
+=
+\sum_{j=0}^{\lfloor r/2\rfloor}
+\frac{r!}{j!\,j!\,(r-2j)!}\,
+x^j(1+x)^{r-2j}.
+\]
+
+Every allowed gamma coefficient is strictly positive. Reference \cite{carptopus2026} proves
+strict gamma-positivity for every palindromic two-layer case. There are no
+palindromic higher-layer cases.
+\end{proof}
+
+
+\section{Scope and verification}
+
+
+The proof is an all-parameter argument. Finite computation was used only for
+calibration and adversarial testing:
+
+\begin{enumerate}
+\item the Ding--Dong transfer recurrence reproduces their published example and
+scans small monic parameters;
+\item direct complement enumeration verifies the binary support count and every
+possible single-cell unit increment for several $d=1,2$ cases, and retains
+a $d=3$ negative control that disproved an earlier incomplete formula;
+\item an independent row-frontier dynamic program verifies the binary support
+count in four $d=3$ cases and obtains the value $75$ for $(7,7,7)$ under
+the entry bound $0,1,2$.
+
+\end{enumerate}
+
+These checks do not replace Lemmas 3.1--6.2. In particular, solver timeouts or
+finite absence of counterexamples are not used as existence or nonexistence
+proofs. Entries at least $3$ and simultaneous increments are excluded by
+Lemmas 6.1--6.2, not by the finite scripts.
+
+The result settles only the rectangular minuscule branch of Conjecture B. It
+does not claim a classification for the other connected minuscule posets.
+
+\section*{Acknowledgement of AI assistance}
+
+
+The author used Codex as an AI-assisted research and writing tool for
+literature organization, symbolic and finite verification, adversarial proof
+audits, and drafting. Carptopus is the sole author and assumes responsibility
+for every statement and proof.
+
+\begin{thebibliography}{9}
+\footnotesize
+\raggedright
+
+\bibitem{ding2019}
+J.~Ding and C.-P.~Dong,
+\emph{Antichain generating polynomials of posets},
+arXiv:1905.06692v1 (2019).
+\href{https://arxiv.org/abs/1905.06692}{arXiv:1905.06692}.
+
+\bibitem{amanov2023}
+A.~Amanov and D.~Yeliussizov,
+\emph{MacMahon's statistics on higher-dimensional partitions},
+Forum Math. Sigma 11 (2023), e63.
+\href{https://doi.org/10.1017/fms.2023.61}{doi:10.1017/fms.2023.61}.
+
+\bibitem{carptopus2026}
+Carptopus,
+\emph{Real-rootedness, palindromicity, and gamma-positivity of antichain
+polynomials for $[2]\times[m]\times[n]$},
+v0.2-beta (2026).
+\href{https://doi.org/10.5281/zenodo.22112708}{doi:10.5281/zenodo.22112708}.
+
+\end{thebibliography}
+
+\end{document}
