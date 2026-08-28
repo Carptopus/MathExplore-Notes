@@ -5,7 +5,8 @@
 - [Read or download the PDF](cyclotomic-minimum-degree-all-orders.pdf)
 - [LaTeX source](cyclotomic-minimum-degree-all-orders.tex)
 - [BibTeX citation](CITATION.bib)
-- DOI: pending Zenodo synchronization
+- Current version DOI: [10.5281/zenodo.22137382](https://doi.org/10.5281/zenodo.22137382)
+- Concept DOI: [10.5281/zenodo.22137381](https://doi.org/10.5281/zenodo.22137381)
 - [Destructive verification suite](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
