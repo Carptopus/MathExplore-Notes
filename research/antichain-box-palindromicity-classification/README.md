@@ -5,7 +5,8 @@
 - [Read or download the PDF](antichain-box-palindromicity-classification.pdf)
 - [LaTeX source](antichain-box-palindromicity-classification.tex)
 - [BibTeX citation](CITATION.bib)
-- DOI: pending Zenodo publication
+- Current version DOI: [10.5281/zenodo.22149210](https://doi.org/10.5281/zenodo.22149210)
+- Concept DOI: [10.5281/zenodo.22149209](https://doi.org/10.5281/zenodo.22149209)
 - [Exact finite verification](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
