@@ -1,0 +1,1096 @@
+% Generated from the audited Markdown source; author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{needspace}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}
+\allowdisplaybreaks[2]
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Fano half-rank profiles}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\setlength{\emergencystretch}{4em}
+\urlstyle{same}
+
+\title{Realizability and minimum dimension\\
+of Fano half-rank profiles over \texorpdfstring{$\mathbb F_2$}{F2}}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{30 August 2026}
+
+\hypersetup{
+  pdftitle={Realizability and minimum dimension of Fano half-rank profiles over F2},
+  pdfauthor={Carptopus},
+  pdfsubject={A classification of realizable Fano half-rank profiles and their minimum ambient dimensions over F2},
+  pdfkeywords={alternating bilinear form, alternating matrix space, Fano plane, rank profile, finite field, Hilbert basis, minimum dimension, Reed-Muller code}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fcolorbox{black!35}{black!4}{\parbox{0.88\textwidth}{\centering\small
+Public Beta manuscript, version 0.1-beta. The mathematical proof and the
+complete integrated manuscript have passed project-internal zero-trust audits.
+External mathematical review and formal peer review are pending.}}
+\end{center}
+
+\begin{abstract}
+
+
+Let $V$ be a finite-dimensional vector space over $\mathbb F_2$ and let
+
+\nopagebreak[4]
+\[
+B:\mathbb F_2^3\longrightarrow \mathrm{Alt}(V)
+\]
+
+be a linear family of alternating bilinear forms. Its half-rank profile is the
+integer-valued function
+
+\nopagebreak[4]
+\[
+h(a)=\frac{1}{2}\mathrm{rank}(B_a),
+\qquad a\in\mathbb F_2^3\setminus\{0\}.
+\]
+
+We classify these labelled seven-point profiles in two senses. First, we
+determine exactly which nonnegative integer functions on the Fano plane occur in
+some finite dimension. The triangle inequalities are sufficient except for
+seven primitive line jumps and seven infinite parity cosets supported on
+singleton faces. Second, for every realizable profile $h$ we determine the
+minimum possible dimension $\mu(h)$ of $V$. If $t=\max h$, then
+$\mu(h)\in\{2t,2t+1\}$, and we give a complete description of the profiles that
+require the extra dimension: two height-one orbits, three height-two orbits,
+and one explicit infinite family $E_t$.
+
+The nonrealizability arguments use Pfaffian parity, a simultaneous decomposition
+of commuting self-adjoint idempotents, and a rank-two Pfaffian update identity.
+The sufficiency proofs are computer assisted only at finite, exact interfaces:
+an integral Hilbert-basis certificate and a conductor reduction to a verified
+collection of profiles of height at most six.
+
+\end{abstract}
+
+\section{Introduction}
+
+
+Rank distributions of linear spaces of alternating matrices arise in finite
+geometry, coding theory, and the study of bilinear and quadratic forms. The
+two-dimensional parameter case asks for the ranks of a triple
+$(A,B,A+B)$. It has been studied in a precise enumerative form, for example by
+Pott, Schmidt, and Zhou \cite{pott2016}. Passing from a two-dimensional parameter space to a
+three-dimensional one replaces the three nonzero parameters by the seven points
+of the Fano plane. The resulting seven ranks are not independent: each Fano line
+is a two-dimensional subfamily and therefore satisfies rank subadditivity.
+
+The purpose of this paper is to answer two natural questions for this first
+seven-point case over $\mathbb F_2$.
+
+\begin{enumerate}
+\item Which labelled seven-tuples occur as the half-ranks of a linear net of
+   alternating forms in some finite dimension?
+\item For a realizable profile, what is the least dimension in which it occurs?
+
+\end{enumerate}
+
+The answer to the first question is almost, but not quite, the integral metric
+cone of the Fano plane. There are two kinds of holes. One is finite: a primitive
+profile that jumps from one off a line to two on the line. The other consists of
+seven infinite parity cosets on four-generated faces of the cone. Both
+obstructions have structural explanations rather than being artifacts of a
+bounded search.
+
+The answer to the second question is unexpectedly rigid. The evident lower
+bound is twice the largest half-rank. Every realizable profile meets this bound
+or misses it by exactly one. The profiles that miss it form a short finite list
+in heights one and two and a single infinite family obtained by repeatedly
+adding one Fano cut.
+
+Our classification is a classification of labelled rank profiles, not of
+alternating-matrix spaces up to isomorphism. Eisenbud and Koh classified
+three-dimensional spaces of $4\times4$ and $5\times5$ alternating matrices over
+an algebraically closed field \cite{eisenbud1994}. Gow obtained dimension bounds for spaces with
+restricted rank sets over finite fields \cite{gow2017}, while Qiao studied the enumeration
+of alternating-matrix spaces with explicit coordinates \cite{qiao2021}. These results are
+closely related in language but have a different output. Here the field is fixed
+to $\mathbb F_2$, the matrix size is arbitrary, and the output is a complete
+seven-point realizability and minimum-dimension criterion.
+
+The proof has two finite exact components. We certify the Hilbert basis of the
+Fano triangle cone and later certify a finite conductor for sharp-dimensional
+realizability. Both certificates use integer or binary arithmetic; their role
+and logical boundary are stated explicitly in Sections 3, 7, and 8.
+
+\section{Definitions and basic properties}
+
+
+Throughout, $V$ is a finite-dimensional vector space over $\mathbb F_2$.
+Write $\mathrm{Alt}(V)$ for the vector space of alternating bilinear forms on
+$V$. Equivalently, after choosing a basis, its elements are symmetric matrices
+with zero diagonal. Their ranks are even. We use
+$\mathbb N=\{0,1,2,\ldots\}$.
+
+Let
+
+\nopagebreak[4]
+\[
+P=\mathbb F_2^3\setminus\{0\}.
+\]
+
+The seven elements of $P$ are the labelled points of the Fano plane. Its lines
+are the triples
+
+\nopagebreak[4]
+\[
+\{a,b,a+b\},\qquad a,b\in P,\ a\ne b.
+\]
+
+An alternating net is a linear map
+
+\nopagebreak[4]
+\[
+B:\mathbb F_2^3\longrightarrow\mathrm{Alt}(V).
+\]
+
+Its half-rank profile is the function $h_B:P\to\mathbb N$ given by
+
+\nopagebreak[4]
+\[
+h_B(a)=\frac{1}{2}\mathrm{rank}(B_a).
+\tag{2.1}
+\]
+
+We call $h$ realizable if $h=h_B$ for some $V$ and some alternating net $B$.
+The realizable profiles form an additive semigroup: orthogonal direct sum of
+nets adds profiles coordinatewise.
+
+For a Fano line $L$ define the cut profile $c_L$ and the line jump $\ell_L$ by
+
+\nopagebreak[4]
+\[
+c_L(x)=
+\begin{cases}
+0,&x\in L,\\
+1,&x\notin L,
+\end{cases}
+\qquad
+\ell_L(x)=
+\begin{cases}
+2,&x\in L,\\
+1,&x\notin L.
+\end{cases}
+\tag{2.2}
+\]
+
+For $p\in P$, define the singleton jump
+
+\nopagebreak[4]
+\[
+s_p(x)=
+\begin{cases}
+2,&x=p,\\
+1,&x\ne p.
+\end{cases}
+\tag{2.3}
+\]
+
+Rank subadditivity gives, on every Fano line,
+
+\nopagebreak[4]
+\[
+h(a+b)\le h(a)+h(b).
+\tag{2.4}
+\]
+
+Let $C_{\mathbb Z}$ be the semigroup of all nonnegative integer functions on
+$P$ satisfying the three versions of (2.4) on each line. We call it the
+integral Fano triangle cone.
+
+The effective dimension of a realizable profile is
+
+\nopagebreak[4]
+\[
+\mu(h)=\min\{\dim V:h=h_B\text{ for a net on }V\}.
+\tag{2.5}
+\]
+
+Adding a common radical does not change the profile. Consequently, once $h$ is
+realizable in dimension $\mu(h)$, it is realizable in every dimension at least
+$\mu(h)$.
+
+\section{The integral Fano triangle cone}
+
+
+The cone $C_{\mathbb Z}$ provides the necessary inequalities and the finite
+additive framework used in the realizability proof.
+
+\Needspace{0.28\textheight}
+\begin{lemma}[extreme rays and Hilbert basis]
+
+The rational cone underlying $C_{\mathbb Z}$ has fourteen primitive extreme
+rays: the seven cut profiles $c_L$ and the seven line jumps $\ell_L$.
+Its integral Hilbert basis has 78 elements. Of these, 64 are realizable in
+dimension at most four. The remaining fourteen are precisely the seven
+$s_p$ and the seven $\ell_L$.
+
+\subsubsection*{Exact certificate}
+
+
+There are 28 defining inequalities: seven nonnegativity inequalities and three
+triangle inequalities on each of seven lines. The program
+\nolinkurl{verify_fano_triangle_extreme_rays.cpp} examines every six-subset of the 28
+inequalities, computes its generalized cross product over the integers, and
+retains the primitive feasible rays. It finds exactly the fourteen profiles
+above.
+
+The program \nolinkurl{verify_fano_triangle_hilbert_basis.py} reconstructs the facet
+incidences, forms an exact pulling triangulation with twelve simplicial cones,
+and enumerates their half-open fundamental parallelepipeds. Every determinant,
+adjugate, divisibility test, and decomposability test is exact. The union gives
+the stated 78-element Hilbert basis. The alternating-net witnesses for the
+realizable atoms are reconstructed and checked over $\mathbb F_2$ by
+\nolinkurl{verify_realized_strengthened_fano_atoms.py}.
+
+The lemma is therefore a finite computer-assisted lemma. It does not infer a
+general statement from a numerical bound.
+
+\end{lemma}
+
+\Needspace{0.28\textheight}
+\begin{lemma}[multiples of missing atoms]
+
+For every point $p$ and every line $L$,
+
+\nopagebreak[4]
+\[
+2s_p=\sum_{K:p\notin K}c_K.
+\tag{3.1}
+\]
+
+Moreover, $m\ell_L$ is realizable for every $m\ge2$.
+
+\end{lemma}
+
+\begin{proof}
+
+There are four Fano lines avoiding $p$, and direct evaluation gives (3.1).
+Each $c_K$ is realized on a two-dimensional symplectic space, so $2s_p$ is
+realizable by orthogonal direct sum.
+
+For the line jump, explicit matrix spaces give
+
+\nopagebreak[4]
+\[
+2\ell_L=(4,4,4,2,2,2,2),
+\qquad
+3\ell_L=(6,6,6,3,3,3,3),
+\tag{3.2}
+\]
+
+after a suitable labelling with $L$ in the first three coordinates. The
+matrices and all seven ranks are checked in
+\nolinkurl{verify_fano_43_counterexample.py}. Every integer $m\ge2$ is a nonnegative
+combination of 2 and 3, so orthogonal direct sums finish the proof.
+\end{proof}
+
+
+\section{The realizability semigroup}
+
+
+We now identify the two genuine boundaries left by Lemma 3.1.
+
+\Needspace{0.28\textheight}
+\begin{lemma}[rank-additive reduction]
+
+Let $A,C:V\to V^*$ be linear maps. If
+
+\nopagebreak[4]
+\[
+\mathrm{rank}(A+C)=\mathrm{rank}(A)+\mathrm{rank}(C),
+\tag{4.1}
+\]
+
+then
+
+\nopagebreak[4]
+\[
+\mathrm{im}(A)\cap\mathrm{im}(C)=0,
+\qquad
+\ker(A+C)=\ker(A)\cap\ker(C).
+\tag{4.2}
+\]
+
+\end{lemma}
+
+\begin{proof}
+
+The image of $A+C$ is contained in $\mathrm{im}(A)+\mathrm{im}(C)$.
+Equality of dimensions in (4.1) forces the latter sum to be direct and forces
+$\mathrm{im}(A+C)$ to equal it. If $(A+C)x=0$, then $Ax=Cx$ lies in the
+intersection of the two images and hence both terms vanish. The reverse kernel
+inclusion is immediate.
+\end{proof}
+
+
+\Needspace{0.28\textheight}
+\begin{proposition}[primitive line jumps are not realizable]
+
+For every Fano line $L$, the profile $\ell_L$ is not realizable.
+
+\end{proposition}
+
+\begin{proof}
+
+Write $L=\{u,v,u+v\}$ and choose $w\notin L$. Suppose $\ell_L$ were realized.
+Then $P=B_u$ has rank four, while
+
+\nopagebreak[4]
+\[
+B_w,\ B_{w+u},\ B_{w+v},\ B_{w+u+v}
+\]
+
+all have rank two. Both decompositions
+
+\nopagebreak[4]
+\[
+P=B_w+B_{w+u}=B_{w+v}+B_{w+u+v}
+\tag{4.3}
+\]
+
+are rank additive. Lemma 4.1 shows that $\mathrm{rad}(P)$ lies in the radical
+of each of the four rank-two forms. The other two forms on $L$ are sums of
+these forms, so the entire net descends to $V/\mathrm{rad}(P)$, which has
+dimension four.
+
+On a four-dimensional space an alternating form is nondegenerate exactly when
+its maximal Pfaffian is nonzero. The Pfaffian of the net is a zero-constant
+Boolean polynomial of degree at most two in the three parameters. Every such
+function has even Hamming weight on $\mathbb F_2^3$: each monomial of degree
+less than three has even total weight, and the value at zero is zero. The
+profile $\ell_L$, however, requires the Pfaffian to be nonzero exactly on the
+three points of $L$. This odd weight is impossible.
+\end{proof}
+
+
+\Needspace{0.28\textheight}
+\begin{proposition}[the singleton face]
+
+Fix $p\in P$. Suppose a realizable profile $h$ satisfies equality in all three
+triangle inequalities whose opposite point is $p$; equivalently,
+
+\nopagebreak[4]
+\[
+h(p)=h(a)+h(a+p)
+\tag{4.4}
+\]
+
+for the three unordered pairs $\{a,a+p\}$ in $P\setminus\{p\}$. Then
+
+\nopagebreak[4]
+\[
+h\in\mathbb N\{c_L:p\notin L\}.
+\tag{4.5}
+\]
+
+Conversely, every profile in the semigroup on the right is realizable and
+satisfies (4.4).
+
+\end{proposition}
+
+\begin{proof}
+
+Let $P_0=B_p$. Lemma 4.1 applied to each equality in (4.4) shows that all forms
+descend to $V/\mathrm{rad}(P_0)$. We may therefore suppose that $P_0$ is
+nondegenerate.
+
+Choose two other parameter directions and write the corresponding forms as
+
+\nopagebreak[4]
+\[
+A=P_0T,
+\qquad
+C=P_0S.
+\]
+
+We use the following elementary observation. If an endomorphism $T$ satisfies
+
+\nopagebreak[4]
+\[
+\mathrm{rank}(T)+\mathrm{rank}(I+T)=\dim V,
+\tag{4.6}
+\]
+
+then $T$ is idempotent. Indeed,
+$\mathrm{im}(T)+\mathrm{im}(I+T)=V$, so (4.6) makes the sum direct. The vector
+$(I+T)Tx=T(I+T)x$ lies in both summands and must vanish.
+
+The three equalities (4.4) imply that $T$, $S$, and $T+S$ satisfy (4.6), hence
+are idempotent. Alternation of $A$ and $C$ says that $T$ and $S$ are
+self-adjoint with respect to $P_0$. In characteristic two,
+
+\nopagebreak[4]
+\[
+(T+S)^2=T+S
+\]
+
+together with $T^2=T$ and $S^2=S$ gives $TS=ST$.
+
+Thus $V$ is the direct sum of the four simultaneous eigenspaces $V_{ij}$ for
+$(T,S)$. Self-adjointness makes distinct eigenspaces orthogonal for $P_0$.
+Since $P_0$ is nondegenerate, its restriction to each $V_{ij}$ is
+nondegenerate; consequently every $V_{ij}$ has even dimension.
+
+On $V_{ij}$ each parameter form is a scalar linear function on
+$\mathbb F_2^3$ times the fixed symplectic form $P_0|_{V_{ij}}$. That scalar is
+one at $p$, so its zero set is a line avoiding $p$. If
+$\dim V_{ij}=2m_{ij}$, this block contributes $m_{ij}$ times the corresponding
+cut profile. Summing the four blocks proves (4.5). The converse follows from
+the standard two-dimensional realizations of the cuts.
+\end{proof}
+
+
+\Needspace{0.28\textheight}
+\begin{corollary}[singleton parity cosets are holes]
+
+For every $p\in P$, no profile in
+
+\nopagebreak[4]
+\[
+s_p+\mathbb N\{c_L:p\notin L\}
+\tag{4.7}
+\]
+
+is realizable.
+
+\end{corollary}
+
+\begin{proof}
+
+All profiles in (4.7) satisfy the equalities (4.4). The four cut vectors in
+(4.5) are linearly independent on that face. Identity (3.1) says that $s_p$ is
+the nontrivial order-two lattice coset represented by half their sum. Hence the
+coset (4.7) is disjoint from the semigroup (4.5), while Proposition 4.3 places
+every realizable profile on the face in (4.5).
+\end{proof}
+
+
+The remaining sufficiency step is finite once the Hilbert basis is known.
+
+\Needspace{0.28\textheight}
+\begin{lemma}[finite coupling certificate]
+
+Let $H$ be the 78-element Hilbert basis from Lemma 3.1, and let
+
+\nopagebreak[4]
+\[
+M=\{s_p:p\in P\}\cup\{\ell_L:L\text{ a Fano line}\}
+\]
+
+be its fourteen nonrealizable atoms. There is a finite exact witness library
+with the following properties.
+
+\begin{enumerate}
+\item Every sum of two atoms in $M$ is realizable.
+\item Every sum of three atoms in $M$ is realizable, except $3s_p$.
+\item The sum of any $\ell_L$ and any atom of $H\setminus M$ is realizable.
+\item The sum $s_p+g$, for $g\in H\setminus M$, is nonrealizable exactly when
+   $g=c_L$ for a line $L$ avoiding $p$.
+
+\end{enumerate}
+
+\subsubsection*{Exact certificate}
+
+
+The program \nolinkurl{verify_fano_profile_two_saturation.py} reconstructs 218 profiles
+with separately checked alternating-net witnesses, closes them additively in
+the finite target box, and verifies all 105 unordered pairs, 560 unordered
+triples, and 896 mixed targets. It reports precisely the four rules above. All
+profile additions and rank checks are exact.
+
+\end{lemma}
+
+\Needspace{0.28\textheight}
+\begin{theorem}[realizability classification]
+
+A profile $h:P\to\mathbb N$ is realizable in some finite dimension if and only
+if $h\in C_{\mathbb Z}$ and neither of the following holds:
+
+\begin{enumerate}
+\item $h=\ell_L$ for a Fano line $L$;
+\item for some $p\in P$,
+
+\nopagebreak[4]
+\[
+   h\in s_p+\mathbb N\{c_L:p\notin L\}.
+   \tag{4.8}
+\]
+
+\end{enumerate}
+
+\end{theorem}
+
+\begin{proof}
+
+Necessity of the triangle inequalities follows from rank subadditivity.
+Proposition 4.2 and Corollary 4.4 prove necessity of the two exclusions.
+
+Conversely, decompose $h$ into elements of the Hilbert basis $H$. The elements
+of $H\setminus M$ are realizable. It remains to absorb the multiset of missing
+atoms.
+
+If its size is even, pair the missing atoms and use Lemma 4.5(1). If its size is
+odd and at least three, a mixed triple can first be realized by Lemma 4.5(2),
+after which the rest can be paired. The only unmixed cases require separate
+attention. Repeated line jumps are realizable from multiplicity two onward by
+Lemma 3.2. Repeated singleton jumps are realizable in even multiplicity by
+(3.1), while an odd multiplicity reduces to one $s_p$ plus cuts avoiding $p$;
+this is exactly the excluded coset (4.8).
+
+Finally, if one singleton atom remains together with good Hilbert atoms,
+Lemma 4.5(4) says that failure occurs exactly when all additions preserve the
+same singleton face, again giving (4.8). A remaining line jump is absorbed by
+Lemma 4.5(3), unless it is the primitive line jump itself. Thus every profile
+not in the two excluded families is realizable.
+\end{proof}
+
+
+\subsection*{Regression check}
+
+
+As a destructive check, \nolinkurl{probe_fano_profile_semigroup_holes.py} enumerates all
+61,075 points of $C_{\mathbb Z}$ with $\max h\le6$. The witness semigroup
+contains 60,578 of them. The remaining 497 profiles agree point for point with
+the two families in Theorem 4.6. This bounded enumeration is not used to infer
+the theorem.
+
+\section{Minimum effective dimension}
+
+
+For a nonzero realizable profile $h$, set
+
+\nopagebreak[4]
+\[
+t=\max_{a\in P}h(a).
+\tag{5.1}
+\]
+
+Every realization has dimension at least $2t$. We now classify exactly when
+one additional dimension is necessary.
+
+Choose linearly independent points $a,b,c\in P$, and put
+$s=a+b+c$. For $t\ge3$, define $E_{t;a,b,c}$ by
+
+\nopagebreak[4]
+\[
+E_{t;a,b,c}(x)=
+\begin{cases}
+t,&x\in\{a,b,c\},\\
+t-1,&x=s,\\
+1,&x\in\{a+b,a+c,b+c\}.
+\end{cases}
+\tag{5.2}
+\]
+
+The group $\mathrm{GL}(3,2)$ has one orbit of these profiles, of labelled size
+28 for each $t$.
+
+\Needspace{0.28\textheight}
+\begin{theorem}[minimum-dimension classification]
+
+Let $h$ be a nonzero realizable profile and let $t=\max h$. Then
+
+\nopagebreak[4]
+\[
+\mu(h)=2t+\varepsilon(h),
+\qquad \varepsilon(h)\in\{0,1\}.
+\tag{5.3}
+\]
+
+The value $\varepsilon(h)=1$ occurs exactly in the following cases.
+
+\begin{enumerate}
+\item \textbf{Height one.} The profile is constant one, or it has one zero coordinate
+   and six coordinates equal to one.
+\item \textbf{Height two.} Every coordinate is positive, and the set
+   $\{x:h(x)=2\}$ is a noncollinear three-set, the complement of a two-set, or
+   all seven points.
+\item \textbf{The infinite family.} The profile is $E_{t;a,b,c}$ for some $t\ge3$ and
+   some linearly independent $a,b,c$.
+
+\end{enumerate}
+
+The zero profile satisfies $\mu(0)=0$.
+
+We prove necessity of the three exceptional families first.
+
+\end{theorem}
+
+\Needspace{0.28\textheight}
+\begin{proposition}[height one]
+
+The two height-one profiles in Theorem 5.1 have minimum dimension three. Every
+other realizable height-one profile is a cut and has minimum dimension two.
+
+\end{proposition}
+
+\begin{proof}
+
+On a two-dimensional space, $\mathrm{Alt}(V)$ is one-dimensional. The set of
+parameters giving the unique nonzero form is the complement of the kernel of a
+linear functional, hence is the complement of a Fano line. These are exactly
+the cuts.
+
+On a three-dimensional space every nonzero alternating form has rank two.
+A rank-two linear map from $\mathbb F_2^3$ to $\mathrm{Alt}(\mathbb F_2^3)$
+with a prescribed one-dimensional kernel gives the single-zero profile, while
+an isomorphism gives the constant-one profile.
+\end{proof}
+
+
+\Needspace{0.28\textheight}
+\begin{proposition}[height two]
+
+The three height-two orbits in Theorem 5.1 have minimum dimension five.
+
+\end{proposition}
+
+\begin{proof}
+
+In dimension four, the set of full-rank directions is the support on $P$ of the
+maximal Pfaffian, a zero-constant Boolean polynomial of degree at most two.
+As in Proposition 4.2, its weight is even. The three stated orbits have,
+respectively, 3, 5, and 7 full-rank directions, so none occurs in dimension
+four.
+
+Exact five-dimensional alternating-net witnesses exist for every member of
+the three orbits. They are included in the verified low-layer construction
+library; \nolinkurl{probe_n5_profile_saturation.cpp} reconstructs the complete target set
+and checks the ranks over $\mathbb F_2$. Hence the minimum is five.
+\end{proof}
+
+
+\Needspace{0.28\textheight}
+\begin{lemma}[rank-two Pfaffian update]
+
+Let $A$ and $X$ be alternating forms on a $2t$-dimensional space. For fixed
+$A$, there is a linear functional $\lambda_A$ on $\mathrm{Alt}(V)$ such that
+
+\nopagebreak[4]
+\[
+\mathrm{Pf}(A+X)=\mathrm{Pf}(A)+\lambda_A(X)
+\tag{5.4}
+\]
+
+whenever $\mathrm{rank}(X)\le2$.
+
+\end{lemma}
+
+\begin{proof}
+
+The principal-minor expansion of the Pfaffian is
+
+\nopagebreak[4]
+\[
+\mathrm{Pf}(A+X)
+=\sum_{I\subseteq[2t],\ |I|\text{ even}}
+ \mathrm{Pf}(X_I)\mathrm{Pf}(A_{I^c}).
+\tag{5.5}
+\]
+
+If $\mathrm{rank}(X)\le2$, then every principal submatrix $X_I$ of order at
+least four is singular, so its Pfaffian vanishes. Only the empty set and the
+two-element subsets remain. The empty set gives $\mathrm{Pf}(A)$, and the
+two-element terms are linear in the entries of $X$. Their sum is a single
+linear functional $\lambda_A$ that works simultaneously for every rank-two
+$X$.
+\end{proof}
+
+
+\Needspace{0.28\textheight}
+\begin{proposition}[the family $E_t$]
+
+For every $t\ge3$,
+
+\nopagebreak[4]
+\[
+\mu(E_{t;a,b,c})=2t+1.
+\tag{5.6}
+\]
+
+\end{proposition}
+
+\begin{proof}
+
+Suppose first that $E_t$ were realized in dimension $2t$. Use a full-rank
+direction as an origin and write the forms in three full-rank directions as
+
+\nopagebreak[4]
+\[
+A,\qquad A+R,\qquad A+Q.
+\]
+
+The three pair-sum directions in (5.2) have rank two, so
+$R,Q,R+Q$ all have rank two. Over $\mathbb F_2$, a nondegenerate alternating
+form has Pfaffian one. Lemma 5.4 and nondegeneracy of $A+R$ and $A+Q$ imply
+
+\nopagebreak[4]
+\[
+\lambda_A(R)=\lambda_A(Q)=0.
+\]
+
+Linearity gives $\lambda_A(R+Q)=0$, and hence $A+R+Q$ is also nondegenerate.
+But the direction $s$ in (5.2) is required to have rank $2t-2$. This is a
+contradiction, so $\mu(E_t)\ge2t+1$.
+
+An exact seven-dimensional witness realizes $E_3$. Let
+
+\nopagebreak[4]
+\[
+L=\{a+b,a+c,b+c\}.
+\]
+
+Then coordinatewise
+
+\nopagebreak[4]
+\[
+E_{t+1}=E_t+c_L.
+\tag{5.7}
+\]
+
+Taking an orthogonal direct sum with the two-dimensional realization of $c_L$
+therefore realizes $E_t$ in dimension $2t+1$ for every $t\ge3$.
+\end{proof}
+
+
+\section{Sharp realizations and the conductor theorem}
+
+
+Call a realizable profile $h$ \textbf{sharp} if it is realizable in dimension
+$2\max h$; in particular, the zero profile is sharp in dimension zero.
+Propositions 5.2, 5.3, and 5.5 show that the listed exceptional
+profiles are not sharp. To prove that there are no others, we reduce every
+height to a finite exact calculation.
+
+By the action of $\mathrm{GL}(3,2)$, choose an anchor point labelled $1$ at
+which $h$ attains its maximum. Consider the chamber
+
+\nopagebreak[4]
+\[
+C_1=\{h\in C_{\mathbb Z}:h(1)\ge h(x)\text{ for all }x\in P\}.
+\tag{6.1}
+\]
+
+\Needspace{0.28\textheight}
+\begin{lemma}[sharp chamber generators]
+
+The cone $C_1$ has 30 primitive rays. Replace them by the following scaled
+profiles:
+
+\begin{itemize}
+\item leave each cut ray unchanged;
+\item multiply each of the six anchored single-zero height-one rays by two;
+\item multiply the constant height-one ray by three;
+\item multiply each primitive line-jump ray by two;
+\item leave every other primitive ray unchanged.
+
+\end{itemize}
+
+Every resulting profile is sharp, and all have the same anchor as a maximum
+coordinate. Consequently, every nonnegative integer sum of them is sharp.
+
+\end{lemma}
+
+\begin{proof}
+
+The cut constructions are two-dimensional. For the two exceptional scaled
+height-one rays, explicit sharp witnesses are required rather than direct sums
+of the three-dimensional realizations in Proposition 5.2. In dimension four,
+the alternating edge-mask triple $(12,0,22)$ has profile
+
+\nopagebreak[4]
+\[
+(2,0,2,2,2,2,2),
+\]
+
+and Fano relabelling gives all doubled single-zero rays. In dimension six, let
+$K=\mathbb F_8$ and put $V=K\oplus K$. The trace-pairing forms
+
+\nopagebreak[4]
+\[
+B_a((x,y),(x',y'))=\mathrm{Tr}_{K/\mathbb F_2}
+\bigl(a(xy'+x'y)\bigr)
+\]
+
+are nondegenerate for every $a\ne0$. Restricting $a$ to a three-dimensional
+$\mathbb F_2$-basis of $K$ gives the constant profile $(3,3,3,3,3,3,3)$.
+Both constructions are reconstructed by
+\nolinkurl{verify_scaled_chamber_ray_witnesses.py}.
+
+Lemma 3.2 gives sharp realizations of doubled line jumps. The remaining rays
+have exact sharp witnesses in the low-layer library.
+
+For orthogonal direct sums, profiles add and dimensions add. Since the chosen
+anchor is maximal in every summand, its coordinate equals the sum of the
+individual maxima. Thus the resulting dimension is twice the maximum of the
+sum profile.
+\end{proof}
+
+
+The factor three for the constant ray is essential: the constant-two profile is
+one of the height-two exceptions.
+
+\Needspace{0.28\textheight}
+\begin{lemma}[finite conductor certificate]
+
+Every lattice point of $C_1$ is exactly one of the following:
+
+\begin{enumerate}
+\item a sharp profile;
+\item a nonrealizable profile excluded by Theorem 4.6;
+\item one of the height-one or height-two exceptions of Theorem 5.1;
+\item a member of the family $E_t$.
+
+\end{enumerate}
+
+\subsubsection*{Exact certificate and reduction}
+
+
+The completeness of the 30 primitive chamber rays is independently certified
+before the conductor calculation. The program
+\nolinkurl{verify_fano_anchor_cone_extreme_rays.cpp} constructs all 34 inequalities
+(nonnegativity, Fano triangles, and six anchor inequalities), examines all
+1,344,904 six-subsets, and proves that their primitive feasible null rays are
+exactly the 30 rays used by the conductor.
+
+The 30 scaled rays in Lemma 6.1 then have a pulling triangulation into 81
+full-dimensional simplicial cones. Their determinant distribution is
+
+\nopagebreak[4]
+\[
+\{8:24,\ 16:36,\ 24:18,\ 48:3\}.
+\tag{6.2}
+\]
+
+The union of their half-open fundamental parallelepipeds contains 226 integer
+residue profiles, all of height at most six. In any fixed simplicial cone, every
+lattice point has a unique decomposition
+
+\nopagebreak[4]
+\[
+h=r+\sum_i m_i g_i,
+\qquad m_i\in\mathbb N,
+\tag{6.3}
+\]
+
+where $r$ is the residue and the $g_i$ are the seven scaled rays of that cone.
+
+The exact transition table has five kinds of residues. A sharp residue remains
+sharp after additions. A height-two exception is exceptional only with no
+addition; the first addition reaches a verified sharp base. A height-one
+exception either becomes sharp, passes once through a height-two exception, or
+follows one repeated cut and generates $E_3,E_4,\ldots$. A nonrealizable
+singleton-face residue either stays in its forbidden coset or leaves the face
+and reaches a sharp base. The zero residue is generated directly by the rays.
+
+All resulting sharp bases have height at most six. There are 812 distinct such
+bases. \nolinkurl{verify_fano_graded_conductor.py} certifies the 81 cones, 226 residues,
+and every transition using exact integer arithmetic. The normalized list of 812
+bases is frozen in \nolinkurl{verification/results/required_sharp_bases.tsv};
+\nolinkurl{verify_fano_graded_required_bases.py} regenerates the conductor output and
+checks exact set equality with that file.
+
+The witness side is fail closed. Complete five- and six-dimensional low layers
+are reconstructed by \nolinkurl{probe_n5_profile_saturation.cpp} and
+\nolinkurl{probe_n6_profile_saturation.cpp}; the exceptional $E_3$ witness is checked by
+\nolinkurl{probe_n7_noncollinear_full_exception.cpp}. The dimension-eight boundary is
+constructed by exact binary-rank searches plus a fixed targeted witness. The
+remaining height-five and height-six representatives are checked by the
+finite-field trace and explicit matrix scripts in the verification package.
+Every search uses a fixed seed and exits nonzero unless its entire stated target
+set is covered.
+
+Finally, \nolinkurl{verify_fano_graded_excess_bound.cpp} reconstructs the complete
+low-height chamber from these witness-certified generators and checks every one
+of the frozen 812 bases at sharp dimension. It reports
+
+\begin{quote}\small\raggedright
+\texttt{REFINED\_\allowbreak{}CLASSIFICATION errors=0}\par
+\texttt{REQUIRED\_\allowbreak{}BASE\_\allowbreak{}COVER bases=812 errors=0}\par
+\end{quote}
+
+
+Randomized routines were used only to discover some matrices. They have fixed
+seeds, and every retained matrix is checked by exact Gaussian elimination. A
+failure to find a matrix is never used as a proof of nonrealizability.
+
+\end{lemma}
+
+\begin{proof}[Proof of Theorem 5.1]
+
+The lower bound $\mu(h)\ge2t$ follows from the definition of $t$. The zero
+profile is realized on the zero space. Propositions 5.2, 5.3, and 5.5 prove that
+every listed exception has minimum dimension $2t+1$.
+
+For any other realizable profile, apply a Fano automorphism so that it lies in
+$C_1$. Lemma 6.2 says it is sharp. Therefore it is realized in dimension $2t$.
+Undoing the relabelling preserves dimension and proves (5.3) for every
+realizable profile.
+\end{proof}
+
+
+\section{Computational proof boundary}
+
+
+The two main theorems combine ordinary proofs with finite exact certificates.
+For clarity, the logical division is as follows.
+
+\subsection*{General arguments independent of computation}
+
+
+\begin{itemize}
+\item rank subadditivity and the triangle inequalities;
+\item nonrealizability of primitive line jumps by four-dimensional descent and
+\end{itemize}
+
+  Pfaffian parity;
+\begin{itemize}
+\item the exact singleton-face semigroup by commuting self-adjoint idempotents;
+\item the lower bounds for the height-one and height-two exceptions;
+\item the arbitrary-dimensional rank-two Pfaffian update identity;
+\item nonsharpness of every $E_t$ and its propagation by Fano cuts;
+\item orthogonal-sum propagation once a finite witness is available.
+
+\end{itemize}
+
+\subsection*{Finite exact certificates}
+
+
+\begin{itemize}
+\item completeness of the fourteen extreme rays and the 78-element Hilbert basis;
+\item realization of the finite atom and coupling libraries;
+\item completeness of the 30 primitive rays of the anchored chamber;
+\item the 81-cone triangulation and its 226 residue classes;
+\item exact equality of the conductor's 812 required bases with the frozen list;
+\item sharp witness coverage of all 812 bases;
+\item explicit low-dimensional witnesses used by the conductor.
+
+\end{itemize}
+
+The core reproduction command is
+
+\begin{quote}\small\raggedright
+\texttt{pwsh -NoProfile -File research/\allowbreak{}fano-half-rank-profiles/\allowbreak{}verification/\allowbreak{}run\_\allowbreak{}all.ps1}\par
+\end{quote}
+
+
+It uses Python with SymPy and a C++17 compiler and writes binaries only below
+the operating system's temporary directory. The source hashes are recorded in
+\nolinkurl{verification/SHA256SUMS}.
+
+The bounded check with $\max h\le6$ and the fixed-seed witness searches are
+regressions and construction tools. They are not substituted for the general
+nonrealizability arguments.
+
+\section{Relation to prior work and limits of the result}
+
+
+Pott, Schmidt, and Zhou \cite{pott2016} count pairs of alternating matrices according to the
+three ranks of $(A,B,A+B)$. This is the two-dimensional, three-point precursor
+of the present seven-point profile. Their result does not give the compatibility
+semigroup or minimum effective dimension for a three-dimensional parameter
+space.
+
+Eisenbud and Koh \cite{eisenbud1994} classify three-dimensional spaces of $4\times4$ and
+$5\times5$ alternating matrices over an algebraically closed field. Gow \cite{gow2017}
+studies rank-related dimension bounds for subspaces of bilinear forms, and Qiao
+\cite{qiao2021} enumerates alternating-matrix spaces over finite fields. The present result
+does not refine those works as an orbit classification. Instead, it forgets the
+isomorphism type and retains the seven labelled ranks, allowing arbitrary
+ambient dimension over $\mathbb F_2$.
+
+The following statements are outside the scope of the paper.
+
+\begin{enumerate}
+\item We do not classify alternating nets up to equivalence or count the nets with
+   a given profile.
+\item We do not treat arbitrary finite fields or odd characteristic.
+\item We do not classify affine linear terms, Walsh signs, common zero-fibre
+   histograms, or supports of three-dimensional subcodes of second-order
+   Reed--Muller codes.
+\item We do not infer formal peer-review status or global priority from the current
+   literature search. The comparison above records the nearest public sources
+   checked for this draft.
+
+\end{enumerate}
+
+\section{Conclusion}
+
+
+The seven half-ranks of a three-parameter alternating net over $\mathbb F_2$
+are governed by a nearly saturated Fano triangle semigroup. Its failure of
+saturation has exactly two forms: primitive line jumps and singleton-face parity
+cosets. After realizability is settled, the minimum effective dimension is even
+and sharp except for a complete list of finite low-height orbits and one
+cut-generated infinite family.
+
+The result illustrates a useful division of labor. Pfaffian and idempotent
+arguments explain the infinite obstructions, while finite exact polyhedral
+certificates close the additive sufficiency problem. Neither bounded enumeration
+nor unsuccessful search is used to assert a general theorem.
+
+\begin{thebibliography}{9}
+\footnotesize
+\raggedright
+
+\bibitem{pott2016}
+A.~Pott, K.-U.~Schmidt, and Y.~Zhou,
+\emph{Pairs of quadratic forms over finite fields},
+Electron. J. Combin. 23(2) (2016), Paper 2.8.
+\href{https://doi.org/10.37236/4072}{doi:10.37236/4072}.
+
+\bibitem{eisenbud1994}
+D.~Eisenbud and J.~Koh,
+\emph{Nets of alternating matrices and the linear syzygy conjectures},
+Adv. Math. 106 (1994), 1--35.
+\href{https://doi.org/10.1006/aima.1994.1047}{doi:10.1006/aima.1994.1047}.
+
+\bibitem{gow2017}
+R.~Gow,
+\emph{Rank-related dimension bounds for subspaces of bilinear forms over finite fields},
+arXiv:1703.07266 (2017).
+\href{https://arxiv.org/abs/1703.07266}{arXiv:1703.07266}.
+
+\bibitem{qiao2021}
+Y.~Qiao,
+\emph{Enumerating alternating matrix spaces over finite fields with explicit coordinates},
+Discrete Math. 344 (2021), 112580.
+\href{https://doi.org/10.1016/j.disc.2021.112580}{doi:10.1016/j.disc.2021.112580}.
+
+\end{thebibliography}
+
+\section*{AI-assisted research and writing disclosure}
+
+The author used OpenAI Codex for exploratory computation, proof checking, and
+language editing. The author reviewed the mathematical claims and assumes
+responsibility for the manuscript.
+
+\end{document}
