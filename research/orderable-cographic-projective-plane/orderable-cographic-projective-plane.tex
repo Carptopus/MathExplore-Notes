@@ -1,0 +1,261 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array,microtype}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\RP}{\mathbb{RP}}
+\title{Projective-plane triangulations yield\\orderable cographic matroids}
+\author{Carptopus\\\small\texttt{carptopus@163.com}}
+\date{Version 0.1-beta, 30 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Crenshaw and Oxley conjectured that every 3-connected orderable binary matroid
+is graphic. We give a topological construction that disproves this conjecture.
+If $T$ is a finite simplicial triangulation of the real projective plane and
+$G$ is its 1-skeleton, then the cographic matroid $M^*(G)$ is orderable. The
+ordering is induced by face corners. For every bond of $G$, the resulting
+2-regular adjacency graph is identified with a piecewise-linear separating
+level set. An Euler-characteristic argument shows that this level set has one
+component. Starting from the six-vertex triangulation with 1-skeleton $K_6$
+and repeatedly applying stellar subdivision to triangular faces gives
+infinitely many 3-connected, regular, non-graphic, orderable binary matroids.
+We also give the explicit $K_6$ certificate and an exact finite checker as a
+reproducibility aid.
+\end{abstract}
+
+\section{Introduction}
+
+An ordering of a matroid assigns a reversible cyclic ordering to every
+circuit. It is \emph{consistent} when common adjacent pairs are treated
+compatibly across the circuit family; a matroid admitting such an assignment
+is \emph{orderable}~\cite{crenshaw-oxley}. Crenshaw and Oxley proved strong
+structural restrictions on orderable matroids and conjectured that every
+3-connected orderable binary matroid is graphic
+\cite[Conjecture~4]{crenshaw-oxley}. Their theorem for 4-connected regular
+matroids leaves the exact 3-connected boundary open.
+
+We show that this boundary contains a natural infinite family of
+counterexamples. The triangular faces of a projective-plane triangulation
+define a single global adjacency relation on the edges of its 1-skeleton. On
+each bond this relation has degree two. The main point is connectedness. The
+bond can be realized as the mid-level set of a two-valued piecewise-linear
+function on the surface. Because both sides of a bond are connected, the two
+complementary subsurfaces are connected. The positive Euler characteristic of
+the real projective plane then forces the common boundary to be one circle.
+
+The six-vertex triangulation makes the smallest member especially concrete:
+its 1-skeleton is $K_6$, so $M^*(K_6)$ itself is an orderable, regular, binary,
+3-connected, non-graphic matroid. Repeated face subdivisions produce the
+infinite family.
+
+\section{Definitions and a global-adjacency criterion}
+
+All graphs and simplicial complexes are finite. For a connected graph $G$, the
+circuits of the cographic matroid $M^*(G)$ are the bonds of $G$, that is, the
+inclusion-minimal nonempty edge cuts. For a nonempty proper vertex set
+$S\subset V(G)$, the cut $\delta(S)$ is a bond exactly when both induced
+subgraphs $G[S]$ and $G[V(G)\setminus S]$ are connected.
+
+We use the following immediate sufficient form of consistency.
+
+\begin{lemma}[Global adjacency]\label{lem:global}
+Let $M$ be a matroid. Suppose that a simple graph $\Lambda$ on $E(M)$ has the
+property that, for every circuit $C$ of $M$, the induced graph $\Lambda[C]$ is
+a single cycle. Reading that cycle in either direction gives consistent
+reversible cyclic orderings of all circuits. In particular, $M$ is orderable.
+\end{lemma}
+
+\begin{proof}
+All circuit orderings are restrictions of the same unordered adjacency
+relation. Hence an adjacent pair shared by two circuits is adjacent in both
+induced cycles, which is the required consistency.
+\end{proof}
+
+\section{The projective-plane theorem}
+
+\begin{theorem}\label{thm:rp2}
+Let $T$ be a finite simplicial triangulation of $\RP^2$, and let
+$G=T^{(1)}$ be its 1-skeleton. Then $M^*(G)$ is orderable.
+\end{theorem}
+
+\begin{proof}
+Define a simple graph $\Lambda_T$ on $E(G)$ as follows. Two edges of $G$ are
+adjacent in $\Lambda_T$ when they are distinct edges of a common triangular
+face of $T$. Since $T$ is simplicial, a pair of incident edges belongs to at
+most one common face, so this is a well-defined global adjacency relation.
+
+Fix a bond $B=\delta(S)$. Every edge $uv\in B$ belongs to exactly two
+triangular faces. In a face $uvw$, the third vertex $w$ lies on exactly one
+side of the cut. Consequently exactly one of $uw,vw$ is another edge of $B$,
+and that edge is adjacent to $uv$ in $\Lambda_T$. The two faces incident with
+$uv$ have different third vertices, so they supply two different neighbors.
+Thus $\Lambda_T[B]$ is 2-regular and hence is a disjoint union of cycles.
+
+It remains to show that there is only one cycle. Define a piecewise-linear map
+\[
+h:|T|\longrightarrow[0,1]
+\]
+by setting $h(v)=0$ for $v\in S$, $h(v)=1$ for $v\notin S$, and extending
+affinely over every simplex. Put
+\[
+C=h^{-1}(1/2),\qquad
+N_0=h^{-1}([0,1/2]),\qquad
+N_1=h^{-1}([1/2,1]).
+\]
+In every mixed triangular face, $C$ is the segment joining the midpoints of
+its two crossing edges. These segments join across common edges and form a
+disjoint union of simple closed curves. Their combinatorial adjacency graph is
+precisely $\Lambda_T[B]$. Since $1/2$ is not the value of any vertex, the same
+triangle-by-triangle local model shows that $N_0,N_1$ are compact surfaces and
+that $C=\partial N_0=\partial N_1$.
+
+The subspace $N_0$ strongly deformation retracts onto the full induced
+subcomplex $T[S]$. Indeed, in each simplex let $p$ be the sum of the
+barycentric coordinates at vertices in $S$. On $N_0$ we have $p\ge 1/2$.
+Join each point by the straight-line homotopy to the point obtained by dividing
+its $S$-coordinates by $p$ and setting the remaining coordinates to zero.
+Along this homotopy the sum of the $S$-coordinates is
+$(1-t)p+t\ge1/2$, so the homotopy stays in $N_0$; the simplexwise formulas
+agree on common faces. The same argument applies to $N_1$ and
+$T[V(G)\setminus S]$. Since $B$ is a bond, the
+1-skeleta $G[S]$ and $G[V(G)\setminus S]$ are connected. Therefore $N_0$ and
+$N_1$ are connected compact surfaces with common boundary $C$.
+
+Let $b$ be the number of components of $C$. A connected compact surface with
+$b$ boundary components has Euler characteristic at most $2-b$, in both the
+orientable and nonorientable cases. If $b\ge2$, then $\chi(N_0)\le0$ and
+$\chi(N_1)\le0$. Because $C$ is a union of circles, $\chi(C)=0$, and additivity
+gives
+\[
+1=\chi(\RP^2)=\chi(N_0)+\chi(N_1)-\chi(C)\le0,
+\]
+a contradiction. Hence $b=1$. Thus $\Lambda_T[B]$ is one cycle for every bond
+$B$, and Lemma~\ref{lem:global} proves that $M^*(G)$ is orderable.
+\end{proof}
+
+\section{An infinite family of counterexamples}
+
+On vertex set $\{0,1,2,3,4,5\}$, take the ten faces
+\[
+013,014,024,025,035,123,125,145,234,345.
+\]
+Every edge occurs in exactly two faces, every vertex link is a 5-cycle, and
+$6-15+10=1$. This is a triangulation of $\RP^2$ whose 1-skeleton is $K_6$.
+
+\begin{corollary}\label{cor:k6}
+The matroid $M^*(K_6)$ is 3-connected, regular, binary, non-graphic, and
+orderable. Hence it is a counterexample to Crenshaw--Oxley Conjecture~4.
+\end{corollary}
+
+\begin{proof}
+Theorem~\ref{thm:rp2} gives orderability. Cographic matroids are regular and
+binary. The simple 3-connected graph $K_6$ has a 3-connected cycle matroid,
+and duality preserves matroid 3-connectivity. Finally, a cographic matroid of
+a 3-connected graph is graphic only when the graph is planar; $K_6$ is
+nonplanar~\cite{oxley}.
+\end{proof}
+
+Start with this triangulation $T_0$. Given a triangular face $abc$, insert a
+new vertex $x$ in its interior and replace $abc$ by $abx,bcx,cax$. Denote the
+resulting stellar subdivision by $T_{m+1}$, and write $G_m=T_m^{(1)}$.
+
+\begin{theorem}\label{thm:family}
+The matroids $M^*(G_m)$, $m\ge0$, are infinitely many pairwise nonisomorphic
+3-connected, regular, binary, non-graphic, orderable matroids. Every member is
+a counterexample to Crenshaw--Oxley Conjecture~4.
+\end{theorem}
+
+\begin{proof}
+Stellar subdivision preserves the underlying surface and the simplicial
+triangulation, so Theorem~\ref{thm:rp2} applies at every stage. We prove
+3-connectivity of $G_m$ by induction. The new vertex $x$ has the three
+neighbors $a,b,c$, while every old edge is retained. After deleting at most
+two vertices, the surviving old graph is connected by the induction
+hypothesis. If $x$ survives, at least one of $a,b,c$ also survives, so $x$ lies
+in the same component. Thus $G_{m+1}$ is 3-connected.
+
+Every $G_m$ contains the initial $K_6$ as a subgraph, and is therefore
+nonplanar. The standard graphic--cographic planarity criterion, together with
+3-connectivity, implies that $M^*(G_m)$ is non-graphic. It is cographic and
+hence regular and binary, and its matroid 3-connectivity follows from that of
+$G_m$. Finally, each subdivision adds three edges, so the ground-set sizes are
+distinct.
+\end{proof}
+
+\section{The explicit $K_6$ certificate and verification boundary}
+
+For reproducibility, the six vertex links, written as cyclic orders of the
+other endpoints, are
+\[
+\begin{array}{c|c}
+0&(1,3,5,2,4)\\
+1&(0,3,2,5,4)\\
+2&(0,4,3,1,5)\\
+3&(0,1,2,4,5)\\
+4&(0,1,5,3,2)\\
+5&(0,2,1,4,3).
+\end{array}
+\]
+Declaring two $K_6$-edges adjacent when they occur at a common face corner
+gives 30 global adjacent pairs. The 31 bonds of $K_6$ split by cut type as six
+of size 5, fifteen of size 8, and ten of size 9. The accompanying checker
+reconstructs the binary cographic representation, all circuits, the global
+adjacency relation, and matroid connectivity, and verifies that every induced
+bond adjacency is a single cycle. A second checker performs stellar
+subdivisions through a finite calibration range.
+
+These computations are not used to prove the general theorem or the infinite
+family. They are exact positive controls for the smallest example and the
+implementation. No timeout or failed search is used as mathematical evidence.
+
+\section{Scope and prior-work boundary}
+
+The result disproves the stated 3-connected binary conjecture, but it does not
+conflict with the 4-connected regular theorem of Crenshaw and Oxley. Every
+$G_m$ retains triangles of the initial $K_6$; such a triangle is a
+three-element cocircuit of $M^*(G_m)$, and together with 3-connectivity this
+gives an exact 3-separation. We do not classify all
+orderable cographic matroids or all surface triangulations that yield them.
+The Euler-characteristic argument is specific to the positive Euler
+characteristic of $\RP^2$; it does not assert an analogous theorem on the
+torus or on higher-genus surfaces.
+
+The literature search checked the published and arXiv versions of
+\cite{crenshaw-oxley} and searched directly for the $M^*(K_6)$, cographic,
+orderable, and projective-plane-triangulation combination. No direct prior
+statement of the theorem or counterexample was located. This is a documented
+search boundary, not a claim of exhaustive worldwide priority. The manuscript
+is an internally verified candidate proof and has not undergone external peer
+review.
+
+\section*{AI-assisted research disclosure}
+
+Carptopus is the responsible author and takes responsibility for the claims,
+proofs, source use, and released artifacts. OpenAI Codex was used for
+AI-assisted literature organization, proof development and stress testing,
+exact verification, adversarial auditing, and manuscript preparation.
+
+\begin{thebibliography}{9}
+\bibitem{crenshaw-oxley}
+S. Crenshaw and J. Oxley,
+\emph{Ordering circuits of matroids},
+Electronic Journal of Combinatorics 29 (2022), no.~4, Paper P4.31.
+\url{https://doi.org/10.37236/11117}.
+
+\bibitem{oxley}
+J. Oxley,
+\emph{Matroid Theory}, second edition,
+Oxford University Press, 2011.
+
+\bibitem{mohar-thomassen}
+B. Mohar and C. Thomassen,
+\emph{Graphs on Surfaces},
+Johns Hopkins University Press, 2001.
+\end{thebibliography}
+
+\end{document}

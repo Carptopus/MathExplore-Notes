@@ -13,6 +13,7 @@ an exact minimum degree and a complete classification of the equality case.
 
 | Entry | Areas | Contribution | Public version | Status |
 | --- | --- | --- | --- | --- |
+| [Projective-plane triangulations yield orderable cographic matroids](research/orderable-cographic-projective-plane/README.md)<br>[PDF](research/orderable-cographic-projective-plane/orderable-cographic-projective-plane.pdf) · [BibTeX](research/orderable-cographic-projective-plane/CITATION.bib) | Matroid theory, cographic matroids, graph embeddings, projective-plane triangulations | Proves that every projective-plane triangulation yields an orderable cographic matroid and constructs infinitely many 3-connected regular non-graphic counterexamples to Crenshaw--Oxley Conjecture 4 | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Realizability and minimum dimension of Fano half-rank profiles over F2](research/fano-half-rank-profiles/README.md)<br>[PDF](research/fano-half-rank-profiles/fano-half-rank-profiles.pdf) · [BibTeX](research/fano-half-rank-profiles/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22164877) | Alternating bilinear forms, Fano plane, rank profiles, finite fields, Hilbert bases | Classifies every realizable seven-point half-rank profile of a three-parameter alternating net over $\mathbb F_2$ and determines its exact minimum ambient dimension | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Exact regions and low-polar-rank recursion in the third support spectrum of binary second-order Reed--Muller codes](research/rm2-third-support-regions/README.md)<br>[PDF](research/rm2-third-support-regions/rm2-third-support-regions.pdf) · [BibTeX](research/rm2-third-support-regions/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22165319) | Coding theory, higher support spectra, quadratic Boolean functions, alternating pencils | Determines two sharp all-dimensional spectrum gaps, the exact spectra through nine variables, the complete near-full interval, a finite low-rank recursion, and an infinite forbidden support ray | v0.1-beta | Internally verified candidate proof; external review pending |
 | [The minimum degree of nonnegative multiples of cyclotomic polynomials](research/cyclotomic-minimum-degree-all-orders/README.md)<br>[PDF](research/cyclotomic-minimum-degree-all-orders/cyclotomic-minimum-degree-all-orders.pdf) · [BibTeX](research/cyclotomic-minimum-degree-all-orders/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22137382) | Cyclotomic polynomials, nonnegative coefficients, roots of unity, trigonometric separation | Proves for every $n>1$ that the minimum degree is $(p-1)n/p$, where $p$ is the smallest prime divisor, with equality only for positive scalar multiples of the regular $p$-gon polynomial | v0.1-beta | Internally verified candidate proof; external review pending |
@@ -43,6 +44,16 @@ an exact minimum degree and a complete classification of the equality case.
 | [Tail-projection certificates for cyclotomic minimum-degree polynomials beyond the reciprocal condition](research/cyclotomic-tail-projection-families/README.md)<br>[PDF](research/cyclotomic-tail-projection-families/cyclotomic-tail-projection-families.pdf) · [BibTeX](research/cyclotomic-tail-projection-families/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22127365) | Cyclotomic polynomials, nonnegative coefficients, CRT tensor projections, prime tuples | Gives an explicit sufficient condition for every fixed number of at least four prime factors and proves infinite families beyond Steinberger's reciprocal condition | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
+
+### Orderable cographic matroids from the projective plane
+
+For every finite simplicial triangulation `T` of the real projective plane,
+with 1-skeleton `G`, the manuscript proves that `M*(G)` is orderable. Repeated
+stellar subdivisions of the six-vertex triangulation produce infinitely many
+3-connected, regular, non-graphic, orderable binary matroids, disproving
+Crenshaw--Oxley Conjecture 4.
+
+- [Manuscript and verification materials](research/orderable-cographic-projective-plane/README.md)
 
 ### Sylvester--Hadamard powers
 
