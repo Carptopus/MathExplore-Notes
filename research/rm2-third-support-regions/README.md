@@ -5,6 +5,8 @@
 - [Read or download the PDF](rm2-third-support-regions.pdf)
 - [LaTeX source](rm2-third-support-regions.tex)
 - [BibTeX citation](CITATION.bib)
+- Current version DOI: [10.5281/zenodo.22165319](https://doi.org/10.5281/zenodo.22165319)
+- Concept DOI: [10.5281/zenodo.22165318](https://doi.org/10.5281/zenodo.22165318)
 - [Exact verification](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
@@ -84,4 +86,3 @@ statement.
 Reed--Muller codes; higher support spectra; quadratic Boolean functions; Walsh
 transforms; alternating pencils; Fano plane; Pfaffians; Kronecker blocks;
 computer-assisted proof; AI-assisted mathematics.
-
