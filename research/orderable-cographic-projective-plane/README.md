@@ -5,6 +5,8 @@
 - [Read or download the PDF](orderable-cographic-projective-plane.pdf)
 - [LaTeX source](orderable-cographic-projective-plane.tex)
 - [BibTeX citation](CITATION.bib)
+- Current version DOI: [10.5281/zenodo.22165775](https://doi.org/10.5281/zenodo.22165775)
+- Concept DOI: [10.5281/zenodo.22165774](https://doi.org/10.5281/zenodo.22165774)
 - [Exact verification](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
@@ -71,4 +73,3 @@ contains the complete disclosure and responsibility statement.
 Matroid theory; orderable matroids; cographic matroids; binary matroids;
 regular matroids; graph embeddings; real projective plane; simplicial
 triangulations; stellar subdivision; counterexamples; AI-assisted mathematics.
-
