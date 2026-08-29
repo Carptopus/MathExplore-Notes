@@ -1,0 +1,1105 @@
+% Generated from the audited Markdown source; author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{needspace}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{fact}[theorem]{Fact}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}
+\allowdisplaybreaks[2]
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Third support regions of binary $RM_2$ codes}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.42em}
+\setlength{\emergencystretch}{4em}
+\urlstyle{same}
+
+\title{Exact regions and low-polar-rank recursion\\
+in the third support spectrum of binary\\
+second-order Reed--Muller codes}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{30 August 2026}
+
+\hypersetup{
+  pdftitle={Exact regions and low-polar-rank recursion in the third support spectrum of binary second-order Reed-Muller codes},
+  pdfauthor={Carptopus},
+  pdfsubject={Exact regions, finite low-rank recursion, and a forbidden ray in the three-dimensional support spectrum of binary second-order Reed-Muller codes},
+  pdfkeywords={Reed-Muller code, higher support spectrum, quadratic Boolean function, Walsh transform, alternating pencil, Fano plane, Kronecker block}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fcolorbox{black!35}{black!4}{\parbox{0.88\textwidth}{\centering\small
+Public Beta manuscript, version 0.1-beta. The mathematical proof and the
+complete integrated manuscript passed project-internal zero-trust audits.
+External mathematical review and formal peer review are pending.}}
+\end{center}
+
+\begin{abstract}
+
+
+Let \(\mathcal S_n^{(3)}\) be the set of support sizes of three-dimensional
+subcodes of the binary second-order Reed--Muller code \(RM_2(2,n)\). We determine
+several exact all-parameter regions of this spectrum. First, for every \(n\ge4\),
+the minimum value \(7\cdot2^{n-4}\) is isolated and the next possible support is
+at least \(2^{n-1}\). Second, for every \(n\ge7\), a nonfull support is at most
+\(2^n-2^{n-6}\), and this bound is sharp. We determine \(\mathcal S_n^{(3)}\)
+exactly for \(2\le n\le9\), and for every \(n\ge8\) we classify the complete
+near-full interval corresponding to a nonempty common zero fibre smaller than
+\(2^{n-5}\). We also prove that the support
+\(493\cdot2^{n-9}\) is impossible for every \(n\ge12\).
+
+The structural part of the paper gives a finite sound-and-complete recursion
+whenever one nonzero output combination has nonzero zero-frequency Walsh
+coefficient and polar rank two or four. The recursion uses the canonical
+decomposition of a binary alternating pencil, exact affine mask and sign
+transitions for all Kronecker, degenerate regular, and nondegenerate regular
+blocks, and an explicit independence filter. It is constructive: every accepted
+state can be traced back to a three-dimensional quadratic subcode. We do not
+determine the complete third support spectrum; the Walsh-zero low-rank layer and
+the layer in which every nonzero Walsh component has polar rank at least six
+remain outside the theorem.
+
+\end{abstract}
+
+\section{Introduction}
+
+
+For a linear code \(C\subseteq\mathbb F_2^N\), the support of a subcode
+\(D\le C\) is the union of the supports of its codewords. The generalized
+Hamming weights retain only the smallest support in each subcode dimension.
+The corresponding higher support spectrum asks for every attainable support
+size, and is usually much less understood. Even for Reed--Muller codes, complete
+higher spectra are known only in restricted parameter ranges; see Ghorpade,
+Johnsen, Ludhani, and Pratihar \cite{ghorpade2026} for recent results and a survey of this
+distinction.
+
+We study three-dimensional subcodes of
+
+\[
+RM_2(2,n)=\{\text{Boolean functions on }\mathbb F_2^n
+\text{ of degree at most two}\}.
+\]
+
+Write
+
+\[
+\mathcal S_n^{(3)}=
+\{|\mathrm{Supp}(D)|:D\le RM_2(2,n),\ \dim D=3\}.
+\]
+
+The analogous two-dimensional support-position problem has an all-dimensional
+classification \cite{carptopus2026}. Passing from a quadratic pencil to a three-parameter
+quadratic net changes the structure substantially. Seven nonzero codewords must
+be compatible on a Fano parameter plane, while their affine Walsh data come
+from one common three-dimensional system. This prevents the ordinary quadratic
+weight spectrum from being used independently in each of the seven directions.
+
+The present paper does not solve the complete three-dimensional spectrum.
+Instead, it closes five natural and mutually reinforcing parts of it.
+
+\begin{enumerate}
+\item Two sharp all-dimensional gaps are determined at the minimum and at full
+support.
+\item The exact spectra are determined for \(2\le n\le9\).
+\item The entire near-full interval below twice the degree-six minimum weight is
+classified for every \(n\ge8\).
+\item A new infinite forbidden ray is proved:
+\(493\cdot2^{n-9}\notin\mathcal S_n^{(3)}\) for \(n\ge12\).
+\item All systems having a nonzero-Walsh direction of polar rank two or four are
+described by a finite complete canonical-pencil recursion.
+\end{enumerate}
+
+
+The first three parts combine classical Reed--Muller weight restrictions with
+Fano-plane rank geometry and explicit slice constructions. The last two require
+affine information on alternating pencils, rather than only their polar ranks.
+The canonical classification itself is classical \cite{plut2015,macariorat2013}. Our contribution is an
+exact quotient of every canonical block into the masks, sign functions, and
+relation kernels needed for a common zero fibre, valid for arbitrary block
+length and compatible with constructive dynamic programming.
+
+The proofs mix ordinary arguments with finite exact certificates. We separate
+their roles explicitly in Section 8. In particular, a finite computation is
+never used to extrapolate a theorem to unbounded \(n\).
+
+\section{Quadratic systems, support, and Walsh data}
+
+
+Let
+
+\[
+F=(f_1,f_2,f_3):\mathbb F_2^n\longrightarrow\mathbb F_2^3
+\]
+
+have linearly independent components of degree at most two, and put
+
+\[
+Z(F)=|F^{-1}(0)|.
+\]
+
+The corresponding subcode \(D=\langle f_1,f_2,f_3\rangle\) satisfies
+
+\[
+|\mathrm{Supp}(D)|=2^n-Z(F).                    \tag{2.1}
+\]
+
+For \(a\in\mathbb F_2^3\setminus\{0\}\), set \(f_a=a\cdot F\), and write
+
+\[
+W_a=\sum_{x\in\mathbb F_2^n}(-1)^{f_a(x)}.
+\]
+
+Pointwise, each nonzero value of \(F(x)\) is detected by exactly four of the
+seven functions \(f_a\). Consequently
+
+\[
+|\mathrm{Supp}(D)|
+=\frac14\sum_{a\ne0}\mathrm{wt}(f_a)
+=7\,2^{n-3}-\frac18\sum_{a\ne0}W_a,             \tag{2.2}
+\]
+
+and Fourier inversion gives
+
+\[
+8Z(F)=2^n+\sum_{a\ne0}W_a.                      \tag{2.3}
+\]
+
+The polar form of a quadratic function \(f\) is
+
+\[
+B_f(x,y)=f(x+y)+f(x)+f(y)+f(0).
+\]
+
+It is alternating. If its rank is \(r\), then \(r\) is even and
+
+\[
+W_f(0)\in\{0,\pm2^{n-r/2}\}.                    \tag{2.4}
+\]
+
+The coefficient is zero precisely when the affine linear part does not vanish
+on the radical. If it is nonzero, its sign is the value of the induced
+nondegenerate quadratic form after completing the square.
+
+Equation (2.4) yields the divisibility
+
+\[
+2^{\max(0,\lceil(n-6)/2\rceil)}\mid Z(F).        \tag{2.5}
+\]
+
+Indeed, in even dimension \(n=2m\), every nonzero Walsh coefficient is divisible
+by \(2^m\); in odd dimension \(n=2m+1\), it is divisible by \(2^{m+1}\). Apply
+this to (2.3), including the small-dimensional boundary separately.
+
+We use two classical facts about Reed--Muller weights.
+
+\Needspace{0.23\textheight}
+\begin{fact}[minimum and next weight]
+A nonzero Boolean polynomial of degree at
+most \(r\) has weight at least \(2^{n-r}\). For \(2\le r\le n-2\), a weight
+strictly between \(2^{n-r}\) and \(3\cdot2^{n-r-1}\) does not occur.
+\end{fact}
+
+
+\Needspace{0.23\textheight}
+\begin{fact}[weights below twice the minimum]
+If
+\(p\in RM_2(r,n)\) has
+\end{fact}
+
+
+\[
+0<\mathrm{wt}(p)<2^{n-r+1},
+\]
+
+then
+
+\[
+\mathrm{wt}(p)=2^{n-r+1}-2^i
+\]
+
+for some integer \(i\). This is the low-weight theorem of Berlekamp and Sloane
+\cite{berlekamp1969}, with its stated boundary included.
+
+For the upper edge we use Warning's second theorem in its fibre form: a nonempty
+common zero set of polynomials whose degree sum is \(d<n\) has at least
+\(2^{n-d}\) points \cite{asgarli2018}.
+
+\section{Two all-dimensional gaps and the exact spectra through nine variables}
+
+
+\subsection{The isolated minimum}
+
+
+\Needspace{0.23\textheight}
+\begin{theorem}
+For every \(n\ge4\) and every three-dimensional
+\(D\le RM_2(2,n)\),
+\end{theorem}
+
+
+\[
+|\mathrm{Supp}(D)|=7\cdot2^{n-4}
+\quad\text{or}\quad
+|\mathrm{Supp}(D)|\ge2^{n-1}.                  \tag{3.1}
+\]
+
+Both values are attained.
+
+\begin{proof}
+A nonzero word of \(RM_2(2,n)\) has minimum weight \(2^{n-2}\), and
+every nonminimum nonzero word has weight at least \(3\cdot2^{n-3}\). If at most
+five of the seven nonzero words in \(D\) have minimum weight, their average in
+(2.2) already gives \(|\mathrm{Supp}(D)|\ge2^{n-1}\).
+
+Suppose that six words have minimum weight. Their six polar matrices have rank
+two. Every \(4\times4\) Pfaffian of the three-parameter polar net restricts to a
+homogeneous quadratic function on \(\mathbb F_2^3\). Such a function cannot be
+nonzero at exactly one of the seven nonzero parameter points. Hence all
+Pfaffians also vanish at the seventh point, whose polar rank is therefore at
+most two. If the seventh word is not minimum, its weight is at least
+\(2^{n-1}\), and the same average again gives the second alternative in (3.1).
+Otherwise all seven words are minimum and equality holds in the first
+alternative.
+
+The subcode \(x_1\langle x_2,x_3,x_4\rangle\) attains the minimum. The subcode
+\(\langle x_1,x_1x_2,x_1x_3\rangle\) attains \(2^{n-1}\), after adjoining dummy
+variables as needed.
+\end{proof}
+
+
+\subsection{The last nonfull support}
+
+
+\Needspace{0.23\textheight}
+\begin{theorem}
+For every \(n\ge7\), if
+\(D\le RM_2(2,n)\) is three-dimensional and does not have full support, then
+\end{theorem}
+
+
+\[
+|\mathrm{Supp}(D)|\le2^n-2^{n-6}.               \tag{3.2}
+\]
+
+The bound and full support are both attained.
+
+\begin{proof}
+The complement of the support is the common zero set of three
+quadratic functions. If nonempty, Warning's second theorem gives at least
+\(2^{n-6}\) points. For equality, on six distinct variables take
+
+\[
+f_1=x_1x_2+x_1+x_2,\quad
+f_2=x_3x_4+x_3+x_4,\quad
+f_3=x_5x_6+x_5+x_6.
+\]
+
+Their common zero set fixes the first six variables to zero and has size
+\(2^{n-6}\). A subcode containing the constant function one has full support.
+\end{proof}
+
+
+\subsection{Exact small spectra}
+
+
+We first record the rank geometry used by the finite arithmetic certificate.
+Identify an alternating form \(A\) with the linear map \(V\to V^*\) that it
+induces, and put \(\operatorname{Ess}(A)=\operatorname{im}A\). For rank two this
+is the two-dimensional essential support; equivalently, if \(A=u\wedge v\),
+then \(\operatorname{Ess}(A)=\langle u,v\rangle\).
+
+\Needspace{0.23\textheight}
+\begin{lemma}[Fano rank rules]
+Let
+\(T:\mathbb F_2^3\to\operatorname{Alt}(V)\) be linear, and evaluate the ranks of
+\(T\) at the seven nonzero parameter points.
+\end{lemma}
+
+
+\begin{enumerate}
+\item If \(T\) is not injective, one of the seven images is zero and, after one
+zero image is removed, every rank occurs with even multiplicity.
+\item If at least four parameter points have rank two, then every image of \(T\)
+has rank at most four.
+\item Suppose exactly three parameter points have rank two and some image has
+rank eight. Then \(T\) is injective, the three rank-two points form a line
+\(\{A,B,A+B\}\), and all four points outside that line have rank at least
+six. If \(\dim V\in\{8,9\}\), at least two of those four points have rank
+eight.
+\item Suppose exactly two parameter points \(A,B\) have rank two, \(T\) is
+injective, and an outside point \(C\) has rank eight. Then \(A+B\) has rank
+four and \(C,C+A,C+B\) have rank at least six.
+\item If six parameter points have rank two, then the seventh has rank at most
+two.
+\end{enumerate}
+
+
+\begin{proof}
+If \(T\) has a kernel of dimension one, the three nonzero elements of
+its two-dimensional image each have two preimages among the seven nonzero
+parameters, while the nonzero kernel point maps to zero. If the kernel has
+dimension two, the remaining zero rank has multiplicity two and the unique
+nonzero image rank has multiplicity four; if \(T=0\), the remaining zero rank
+has multiplicity six. This proves part 1.
+
+For part 2, first suppose that \(T\) is not injective. Its image has dimension
+at most two; image dimension at most one is immediate, while in dimension two
+part 1 forces two independent nonzero image forms to have rank two. Their sum
+has rank at most four, so all images have rank at most four. Now suppose that
+\(T\) is injective. Choose
+three independent rank-two forms \(A,B,C\) among four such points. Relative to
+this basis the fourth is either a pairwise sum or \(A+B+C\). In the first case,
+say \(A+B\) has rank two. Rank-two alternating forms are decomposable, and the
+sum of two such forms is decomposable only when their essential two-planes
+meet. Thus the essential supports of \(A,B,C\) span at most five dimensions.
+In the second case, if the three essential supports were in direct sum then
+\(A+B+C\) would have rank six, so again their span has dimension at most five.
+Every image of \(T\) is supported there and therefore has even rank at most
+four.
+
+For part 3, part 1 makes \(T\) injective. If the three rank-two points were not
+collinear, they would form a basis and all image forms would be supported on at
+most six dimensions, contradicting the rank-eight point. Hence they are
+\(A,B,A+B\). Rank subadditivity gives
+\(\operatorname{rank}(C+L)\ge6\) for every point \(L\) on this line. When
+\(\dim V\) is eight or nine, let \(P(X)\) denote respectively the maximal
+Pfaffian or the vector of maximal principal Pfaffians. The three decomposable
+forms on the line have a common wedge factor, so the matching expansion has no
+repeated-update or mixed-update terms and gives
+
+\[
+P(C+A)+P(C+B)+P(C+A+B)=P(C).
+\]
+
+The right-hand side is nonzero. At least one updated form therefore also has
+rank eight, proving the last assertion.
+
+For part 4, injectivity and the assumption that there are exactly two
+rank-two points show that \(A+B\) is nonzero and not rank two; rank
+subadditivity makes its rank at most four, hence exactly four. The same
+inequality applied to \(C=(C+A)+A=(C+B)+B\) gives the two rank-six lower
+bounds.
+
+Finally, restrict any four-dimensional principal Pfaffian to the Fano parameter
+plane. It is a homogeneous quadratic Boolean function. Such a function cannot
+vanish at six nonzero points and be nonzero only at the seventh: its truth-set
+size is even. Thus every four-dimensional Pfaffian also vanishes at the seventh
+point, proving part 5.
+\end{proof}
+
+
+\Needspace{0.23\textheight}
+\begin{theorem}
+The exact support-position sets for \(2\le n\le9\) are
+\end{theorem}
+
+
+\[
+\begin{aligned}
+\mathcal S_2^{(3)}&=\{3,4\},\\
+\mathcal S_3^{(3)}&=\{4,5,6,7,8\},\\
+\mathcal S_4^{(3)}&=\{7,8,\ldots,16\},\\
+\mathcal S_5^{(3)}&=\{14\}\cup\{16,17,\ldots,32\},\\
+\mathcal S_6^{(3)}&=\{28,32,34\}\cup\{36,37,\ldots,64\},\\
+\mathcal S_7^{(3)}&=\{56,64,68\}\cup\{72,74,\ldots,128\},
+\end{aligned}                                                    \tag{3.3}
+\]
+
+where the last progression contains even values only, and
+
+\[
+\begin{aligned}
+\mathcal S_8^{(3)}={}&
+\{112,128,136,144,148,152,156,160,164\}\\
+&\cup\{166,168,\ldots,252\}\cup\{256\},\\
+\mathcal S_9^{(3)}={}&2\mathcal S_8^{(3)}.
+\end{aligned}                                                    \tag{3.4}
+\]
+
+Again, the progression in \(\mathcal S_8^{(3)}\) has step two.
+
+We give the proof in a form that separates general exclusions from finite
+positive certificates.
+
+For \(n=2\), a three-dimensional subcode is a hyperplane in
+\(\mathbb F_2^4\), so its support is three or four. For \(n=3\), the code is the
+even-weight code of length eight. A full-support three-dimensional even code
+of each length \(4,\ldots,8\) is obtained from nonzero columns of
+\(\mathbb F_2^3\) with zero column sum and full span. For \(n=4\), Theorem 3.1
+leaves the isolated value seven and the interval from eight to sixteen; a
+fixed four-variable polar net realizes every affine-orbit support in that
+interval.
+
+For the higher small dimensions we use the following slice identity. If
+\(F,L:\mathbb F_2^m\to\mathbb F_2^3\), with \(F\) quadratic and \(L\) affine,
+then
+
+\[
+H(x,t)=F(x)+tL(x)
+\quad\Longrightarrow\quad
+|\mathrm{Supp}(H)|=|\mathrm{Supp}(F)|+|\mathrm{Supp}(F+L)|.       \tag{3.5}
+\]
+
+Three fixed polar nets have affine-orbit support sets
+
+\[
+\begin{aligned}
+R_4&=\{8,9,\ldots,16\},\\
+R_5&=\{17\}\cup\{19,20,\ldots,32\},\\
+R_7&=\{78,82,86\}\cup\{88,90,\ldots,124,128\}.
+\end{aligned}                                                    \tag{3.6}
+\]
+
+Their three polar components are linearly independent. Explicit quadratic
+parts for these nets and an exhaustive enumeration of all vector-valued affine
+offsets are included in the verification package. Thus
+\(R_4+R_4=[16,32]\),
+\(R_5+R_5=\{34\}\cup[36,64]\), and the sumset of \(R_7\), together with
+doubling from dimension seven, realizes every retained value in (3.4).
+
+It remains to justify the exclusions. In dimensions six and seven, the only
+arithmetic candidates not constructed are respectively \(33,35\) and
+\(66,70\). Each would require at least four rank-two points together with a
+polar form of rank at least six in the same Fano parameter plane. This is
+impossible: if the polar map is noninjective, the image has dimension at most
+two and the third nonzero image has rank at most four; if it is injective, four
+rank-two points force the combined support of a basis of rank-two forms into at
+most five dimensions.
+
+In dimensions eight and nine, every seven-word weight multiset for an
+unconstructed arithmetic candidate is enumerated, with every balanced word
+branched over its possible even polar ranks. Lemma 3.3 reduces the
+candidate lists to zero except for the apparent nine-dimensional pattern
+
+\[
+(2,2,2,6,6,6,8).                                \tag{3.7}
+\]
+
+The three rank-two points must be collinear. If \(A,B,A+B\) are the forms on
+that line and \(C\) has rank eight, the vector of maximal Pfaffians satisfies
+
+\[
+P(C+A)+P(C+B)+P(C+A+B)=P(C).                    \tag{3.8}
+\]
+
+This holds in dimensions eight and nine: the rank-two line has a common wedge
+factor, so the Pfaffian expansion has neither repeated-update nor mixed-update
+terms. Since \(P(C)\ne0\), at least one updated form also has rank eight,
+contradicting (3.7). Finally, the apparent supports \(254\) and \(508\) would
+leave only two or four common zeros, respectively, contrary to Theorem 3.2.
+The verification program exhausts all seven-word quadratic-weight multisets,
+branches over every even polar rank compatible with a balanced word, and then
+applies only Lemma 3.3 and (3.8). Its finite output is therefore an arithmetic
+certificate rather than an unproved rank-geometry oracle. This proves
+(3.3)--(3.4).
+\hfill$\square$
+
+
+\section{The exact near-full interval}
+
+
+The common-zero indicator is
+
+\[
+\mathbf1_{F=0}=(1+f_1)(1+f_2)(1+f_3),           \tag{4.1}
+\]
+
+a Boolean polynomial of degree at most six.
+
+\Needspace{0.23\textheight}
+\begin{theorem}
+Put \(M=2^{n-6}\). For every \(n\ge8\),
+\end{theorem}
+
+
+\[
+0<Z(F)<2M
+\]
+
+holds if and only if
+
+\[
+Z(F)=2M-2^i,
+\qquad
+\left\lceil\frac{n-6}{2}\right\rceil\le i\le n-6.              \tag{4.2}
+\]
+
+Equivalently, all supports strictly between \(2^n-2^{n-5}\) and \(2^n\) are
+
+\[
+2^n-\left(2^{n-5}-2^{n-\mu-5}\right),
+\qquad
+1\le\mu\le\left\lfloor\frac{n-4}{2}\right\rfloor.             \tag{4.3}
+\]
+
+\begin{proof}
+Apply Fact 2.2 to (4.1). It gives
+\(Z(F)=2M-2^i\). Divisibility (2.5) forces
+\(i\ge\lceil(n-6)/2\rceil\), while positivity and the strict upper bound force
+\(i\le n-6\).
+
+For sufficiency, use disjoint variable blocks and set
+
+\[
+g_1=x_1x_2,\qquad g_2=x_3x_4,
+\qquad
+g_3=y_1y_2+\cdots+y_{2\mu-1}y_{2\mu}.
+\]
+
+The third form is nondegenerate of positive type and has
+\(2^{2\mu-1}-2^{\mu-1}\) ones. Take \(f_j=1+g_j\) and add dummy variables.
+The three polar parts lie on disjoint blocks and are linearly independent, and
+
+\[
+Z(F)=\mathrm{wt}(g_1g_2g_3)
+=2^{n-5}-2^{n-\mu-5}.
+\]
+
+The substitution \(i=n-\mu-5\) gives precisely the range in (4.2).
+\end{proof}
+
+
+The strict boundary is important. The value \(Z=2M\) is attained by systems
+having no minimum quadratic factor and is not classified by Theorem 4.1.
+
+\section{Arithmetic forcing for the \texorpdfstring{$19/8$}{19/8} ray}
+
+
+We now study
+
+\[
+Z(F)=19\cdot2^{n-9}.                             \tag{5.1}
+\]
+
+The proof first forces a low-polar-rank negative Walsh direction, and then uses
+the complete recursions of Section 6.
+
+\subsection{The rank-two case}
+
+
+Suppose a negative-Walsh rank-two direction occurs. After an output change of
+basis, its indicator factor has minimum weight and may be normalized to
+\(x_1x_2\). Restricting to its codimension-two affine support reduces (5.1) to
+the intersection of the one-sets of two quadratic functions \(a,b\) in
+\(m=n-2\) variables. Fourier inversion gives
+
+\[
+4|\{a=b=1\}|=2^m-W_a-W_b+W_{a+b}.               \tag{5.2}
+\]
+
+At the target (5.1), division by \(2^{m-5}\) asks for three signed powers of two
+whose sum is \(13\). Negative exponents cannot occur. Indeed, at the least
+negative exponent exactly two of the three nonzero terms occur; opposite signs
+cancel and leave the impossible single power \(13\), while equal signs combine
+one level higher and either demand \(12\) or \(14\), or reduce to zero or a
+single signed power. Among integer powers, the only possibilities, up to order,
+are
+
+\[
+16-2-1,\qquad 16-4+1,\qquad 8+4+1.             \tag{5.3}
+\]
+
+Their polar-rank multisets are \(\{2,8,10\}\), \(\{2,6,10\}\), and
+\(\{4,6,10\}\). The middle case violates rank subadditivity. In each remaining
+case the largest rank equals the sum of the other two. Their polar images are
+therefore disjoint, and Fourier convolution at zero gives
+
+\[
+W_{a+b}(0)=2^{-m}W_a(0)W_b(0).                  \tag{5.4}
+\]
+
+The signs required by (5.3) have negative product, contradicting (5.4). Thus
+the target cannot contain a negative-Walsh rank-two direction.
+
+\subsection{Forcing rank two or four}
+
+
+Normalize the seven Walsh coefficients by
+
+\[
+c_a=\frac{W_a}{2^{n-6}}.
+\]
+
+Equation (2.3) and (5.1) give \(\sum_{a\ne0}c_a=-45\), where every nonzero
+coefficient is \(\pm2^{6-r_a/2}\). The endpoints \(+64\) and \(-64\) are
+impossible: the former makes an output combination zero, and the latter makes
+it one and hence forces \(Z=0\).
+
+Assume neither \(-32\) nor \(-16\) occurs. Nonzero fractional terms cannot
+occur: one fractional term cannot give an integer sum, while \(k\ge2\) such
+terms give a total strictly greater than
+
+\[
+-k-8(7-k)=-56+7k\ge-42.
+\]
+
+Positive \(16\) or \(32\) is also impossible because the remaining six terms,
+even if all \(-8\), do not reach \(-45\). Starting from seven copies of \(-8\),
+the required increase is \(11\). The only admissible decomposition is
+\(11=4+7\), so the coefficient multiset must be
+
+\[
+(-8,-8,-8,-8,-8,-4,-1).                        \tag{5.5}
+\]
+
+Through the rank-twelve point, two of the three Fano lines have rank multiset
+\((12,6,6)\). Equality in rank subadditivity again forces the Walsh sign of the
+rank-twelve member to be the product of the two rank-six signs, contrary to all
+three signs being negative. We have proved:
+
+\Needspace{0.23\textheight}
+\begin{lemma}
+Every system satisfying (5.1) has a negative-Walsh direction of
+polar rank two or four.
+\end{lemma}
+
+
+Section 6 gives a complete finite recurrence for both ranks. The rank-two case
+has already been excluded above. The rank-four recurrence excludes every
+remaining state and therefore closes the ray in Section 7.
+
+\section{A finite complete recursion for nonzero-Walsh polar rank two or four}
+
+
+\subsection{Core reduction}
+
+
+Choose a nonzero output combination \(f_0\) with \(W_{f_0}(0)\ne0\) and polar
+rank \(2\rho\), where \(\rho\in\{1,2\}\). After an affine change of variables,
+the factor \(q_0=1+f_0\) is the pullback from \(U\) of one of the two
+nonsingular quadrics
+
+\[
+T\subseteq U=\mathbb F_2^{2\rho},
+\qquad
+|T|=2^{2\rho-1}\pm2^{\rho-1}.                  \tag{6.1}
+\]
+
+Thus \(|T|\) is one or three for \(\rho=1\), and six or ten for \(\rho=2\).
+Write the ambient space as \(U\oplus R\), \(m=\dim R\). The restrictions to
+\(R\) of the other two polar forms constitute an alternating pencil. Their
+cross terms with \(U\), affine parts, and constants vary with \(u\in U\).
+
+For each canonical block of the pencil, and for each of the three nonzero
+combinations of the two residual quadratic functions, record:
+
+\begin{itemize}
+\item a mask \(M_i\subseteq U\) on which the Walsh coefficient is nonzero;
+\item an exponent \(e_i\) giving its absolute value \(2^{e_i}\);
+\item a set \(N\subseteq M_1\cap M_2\cap M_3\) on which the product of the three
+nonzero Walsh signs is negative;
+\item a relation kernel \(\Lambda\le\mathbb F_2^2\) recording linear relations
+between the two noncore residual functions.
+\end{itemize}
+
+
+A state is therefore
+
+\[
+\Sigma=(m;e_1,e_2,e_3;M_1,M_2,M_3;N;\Lambda).  \tag{6.2}
+\]
+
+Orthogonal direct sum gives the exact composition law
+
+\[
+\begin{aligned}
+m''&=m+m',& e_i''&=e_i+e_i',\\
+M_i''&=M_i\cap M_i',&
+N''&=(N\mathbin\triangle N')\cap M_1''\cap M_2''\cap M_3'',\\
+\Lambda''&=\Lambda\cap\Lambda'.
+\end{aligned}                                                     \tag{6.3}
+\]
+
+\subsection{Canonical blocks and affine-product classes}
+
+
+Let \(\mathcal A_U\) be the truth masks of affine functions on \(U\), and let
+\(\mathcal Q_2(U)\) denote the Boolean functions on \(U\) of algebraic degree
+at most two. Also put
+
+\[
+\mathcal P_r(U)=
+\left\{\mathop{\triangle}_{j=1}^r(A_j\cap B_j):
+A_j,B_j\in\mathcal A_U\right\},
+\qquad \mathcal P_0(U)=\{\varnothing\}.         \tag{6.4}
+\]
+
+The alternating-pencil canonical decomposition consists of the following
+blocks \cite{plut2015,macariorat2013}.
+
+\textbf{Singular Kronecker block \(K_k\).} In dimension \(2k+1\),
+
+\[
+Q_1=\sum_{i=0}^{k-1}x_iy_i,
+\qquad
+Q_2=\sum_{i=0}^{k-1}x_{i+1}y_i.                \tag{6.5}
+\]
+
+For \(k\ge1\), the three masks independently range over \(\mathcal A_U\), all
+exponents are \(k+1\), and, on their common mask \(C\),
+
+\[
+N=P\cap C,\qquad P\in\mathcal P_{k-1}(U).      \tag{6.6}
+\]
+
+The two residual polar generators are independent. The block \(K_0\) is a
+one-dimensional common radical. For affine zero masks \(A,B\), its masks are
+
+\[
+(A,B,U\setminus(A\mathbin\triangle B)),
+\]
+
+its product sign is positive, and its relation kernel is read directly from
+the two affine coefficients.
+
+\textbf{Degenerate regular chain \(D_k^{(j)}\).} In dimension \(2k\), one of the
+three pencil points is degenerate. Its mask lies in \(\mathcal P_1(U)\), the
+other two masks are all of \(U\), its exponent is \(k+1\), and the other two
+exponents are \(k\). On the common mask, (6.6) again holds. Only the length-one
+case with an identically zero degenerate residual function contributes a
+nontrivial relation line.
+
+\textbf{Nondegenerate regular part \(R_d\).} Every component on which the three
+rational pencil points are nondegenerate has, after local coordinates,
+
+\[
+Q_1=x^{\mathsf T}y,
+\qquad Q_2=x^{\mathsf T}Cy,
+\qquad C,I+C\text{ invertible}.                 \tag{6.7}
+\]
+
+All three masks are \(U\), all exponents are \(d\), and
+\(N\in\mathcal P_d(U)\). This transfer depends only on the total half-dimension
+\(d\), not on the elementary divisors of \(C\).
+
+The last assertion follows from the exact factorization of the product-sign
+control matrix. Put \(D=C^{\mathsf T}\) and \(A=(I+D)^{-1}\). Then
+
+\[
+M_C=
+\begin{pmatrix}I+A&A\\A&D^{-1}+A\end{pmatrix}
+=\begin{pmatrix}D\\I\end{pmatrix}
+A
+\begin{pmatrix}I&D^{-1}\end{pmatrix},           \tag{6.8}
+\]
+
+which has rank \(d\). The analogous control ranks for \(K_k\) and \(D_k\) are
+both \(k-1\). Explicit triangular elimination gives, for all block lengths,
+
+\[
+P_K=\sum_{i=0}^{k-2}(p_i+s_{i+1})
+\left(\sum_{j=i+1}^{k-1}r_j+\sum_{j=i}^{k-2}t_j\right),          \tag{6.9}
+\]
+
+and
+
+\[
+P_D=\sum_{i=1}^{k-1}\bigl((p_1)_i+(p_2)_{i-1}\bigr)
+\left(\sum_{j=0}^{i-1}(r_1)_j+\sum_{j=1}^{i}(r_2)_j\right).     \tag{6.10}
+\]
+
+The left and right factors in each sum can be specified independently of the
+nonzero masks. Equations (6.8)--(6.10), rather than a bounded block table, prove
+the arbitrary-length transition formulas.
+
+\subsection{Terminal output and independence}
+
+
+For each \(\rho\in\{1,2\}\) and each of the two choices of \(T\), set
+\(m=n-2\rho\). Starting with the empty state, append every canonical block
+transition whose accumulated dimension does not exceed \(m\), using (6.3).
+Retain only block sequences whose accumulated dimension is exactly \(m\);
+these and only these states are terminal. Take the union of their outputs.
+There are finitely many states for fixed \(m\), because every block parameter
+is bounded by its dimension.
+
+For a terminal state and \(u\in U\), let
+
+\[
+a_i(u)=
+\begin{cases}
+2^{e_i},&u\in M_i,\\
+0,&u\notin M_i,
+\end{cases}
+\]
+
+and reverse the sign of \(a_3(u)\) for \(u\in N\). If the two pure core
+quadratic functions take values \(c_1(u),c_2(u)\), the residual pair-intersection
+number is
+
+\[
+L_u=\frac{2^m-(-1)^{c_1(u)}a_1(u)-(-1)^{c_2(u)}a_2(u)
++(-1)^{c_1(u)+c_2(u)}a_3(u)}4.                  \tag{6.11}
+\]
+
+Enumerate the two actual functions \(c_1,c_2\in\mathcal Q_2(U)\) and sum (6.11) over
+\(u\in T\). The resulting system is three-dimensional precisely when, for every
+nonzero \((b_1,b_2)\in\Lambda\),
+
+\[
+b_1f_1^U+b_2f_2^U\notin\{0,f_0\}.              \tag{6.12}
+\]
+
+This condition is essential on the three-point and ten-point quadrics; removing
+it admits false outputs coming from dependent generators.
+
+\Needspace{0.23\textheight}
+\begin{theorem}[finite low-rank recursion]
+Fix \(n\). Among all
+three-dimensional systems \(F\) having a nonzero output combination with
+nonzero zero-frequency Walsh coefficient and polar rank two or four, the
+attainable values of \(Z(F)\) are exactly the values produced by the finite
+recursion (6.2)--(6.12). Each accepted value comes with a reconstructible
+quadratic witness.
+\end{theorem}
+
+
+\begin{proof}
+For necessity, normalize the selected direction and decompose the
+restricted alternating pencil on its radical into canonical \(K_k\),
+\(D_k^{(j)}\), and regular primary components. Equations (6.6)--(6.10) give the
+exact transition of every block; (6.3) is Walsh multiplication under orthogonal
+sum; and (6.11) is Fourier inversion on each core slice. Hence every system
+reaches a terminal state and output accepted by (6.12).
+
+For sufficiency, every block transition has explicit affine coefficients.
+Control-matrix factorization reconstructs the prescribed sign mask, and
+orthogonal sum reconstructs the terminal state. The chosen core functions
+produce (6.11), while (6.12) removes exactly the possible generator relations.
+Parent pointers, block parameters, affine-product factors, and core functions
+therefore reconstruct a linearly independent triple realizing every accepted
+value.
+\end{proof}
+
+
+The theorem deliberately requires a \emph{nonzero} Walsh coefficient. There are
+infinite systems with rank profile \((2,2,0,2,0,0,2)\) for which all seven
+zero-frequency Walsh coefficients vanish. They are a boundary control, not an
+input to Theorem 6.1.
+
+\section{An infinite forbidden support ray}
+
+
+\Needspace{0.23\textheight}
+\begin{theorem}
+For every \(n\ge12\),
+\end{theorem}
+
+
+\[
+19\cdot2^{n-9}\notin\{Z(F):F\text{ has three independent quadratic components}\}.
+\]
+
+Equivalently,
+
+\[
+493\cdot2^{n-9}\notin\mathcal S_n^{(3)}.         \tag{7.1}
+\]
+
+\begin{proof}
+Lemma 5.1 forces a negative-Walsh direction of polar rank two or four.
+Section 5.1 excludes the rank-two case.
+
+For rank four, specialize Theorem 6.1. If \(m=n-4\) and
+\(\delta_i\) are the three residual pencil half-ranks, the normalized target
+equation is
+
+\[
+\sum_{i=1}^3 c_i2^{5-\delta_i}=-116,
+\qquad
+c_i\in\{-6,-4,-3,-2,-1,0,1,2,3,4,6\}.          \tag{7.2}
+\]
+
+Together with the half-rank triangle inequalities, (7.2) leaves only
+
+\[
+(0,3,3),(0,4,4),(0,5,5),(1,2,3),
+(1,3,3),(1,3,4),(1,4,4).                        \tag{7.3}
+\]
+
+Thus, apart from \(K_0\), only \(K_1,D_1,D_2\) can occur. Their integer
+decompositions give nine bounded canonical cores. Multiple \(K_0\) layers
+stabilize after two blocks under the intersection law (6.3), so it is enough to
+check zero, one, and at least two common-radical blocks for each core. Substituting
+the exact masks and sign classes from Section 6 into (6.11) excludes (7.2) in
+every case. This is a finite exact consequence of the arbitrary-length block
+theorem, not a scan over bounded \(n\).
+\end{proof}
+
+
+At \(n=12\), an independent enumeration of all 65 residual pencil exponent
+profiles and 27 surviving canonical decompositions gives the same exclusion.
+The only state surviving an artificial independent-sign relaxation requires a
+five-point negative mask omitted by the exact length-two \(D_2\) transfer. This
+provides a useful destructive control for the sign coupling in the proof.
+
+\section{Computational proof boundary and reproducibility}
+
+
+The main results use finite exact certificates at several explicitly identified
+interfaces.
+
+\subsection{General arguments independent of finite enumeration}
+
+
+\begin{itemize}
+\item the support/Walsh identities (2.1)--(2.3) and divisibility (2.5);
+\item Theorems 3.1 and 3.2;
+\item the explicit constructions in Theorem 4.1;
+\item the signed-dyadic and rank-equality arguments in Section 5;
+\item canonical-pencil completeness and the arbitrary-length transition formulas
+(6.8)--(6.10);
+\item termination, soundness, completeness, and witness reconstruction in
+Theorem 6.1;
+\item the dimension-independent reduction (7.2)--(7.3).
+\end{itemize}
+
+
+\subsection{Finite exact certificates}
+
+
+\begin{itemize}
+\item affine-orbit support sets of the three explicit polar nets in (3.6), their
+polar-component independence, and the corresponding slice sumsets;
+\item all seven-word weight and polar-rank patterns used for the \(n=8,9\)
+exclusions, including noninjective polar maps and the maximal-Pfaffian
+negative control;
+\item exact formula checks for \(K_k,D_k,R_d\), tested on representative block
+lengths and regular companion matrices;
+\item finite state composition, relation-kernel intersection, one/three/six/ten-point
+terminal output, and independence positive and negative controls;
+\item the nine rank-four cores and stabilized \(K_0\) layers in Theorem 7.1.
+\end{itemize}
+
+
+The verification runner recomputes every retained certificate using exact
+integer, rational, or \(\mathbb F_2\) arithmetic. One fixed-seed routine samples
+regular matrices only as a regression for the symbolic factorization (6.8);
+the sample is not used to infer generality. A failed search and a solver timeout
+are never used as nonexistence evidence.
+
+\section{Relation to prior work and limits}
+
+
+Ghorpade, Johnsen, Ludhani, and Pratihar \cite{ghorpade2026} determine higher support spectra for
+\(RM_q(2,2)\), where the number of variables is fixed and the field varies. The
+present problem fixes \(q=2\), lets the number of variables vary, and studies
+three-dimensional subcodes. The results are adjacent but neither specializes
+to the other.
+
+Berlekamp and Sloane \cite{berlekamp1969} provide the ordinary low-weight restriction used as a
+necessary input in Theorem 4.1. Ordinary codeword weights do not supply the
+compatibility or sufficiency of a common three-quadratic zero fibre. The latter
+is provided here by explicit independent constructions.
+
+The alternating-pencil decompositions of Plût, Fouque, and Macario-Rat \cite{plut2015} and
+Macario-Rat, Plût, and Gilbert \cite{macariorat2013} are structural inputs to Theorem 6.1. We do
+not claim a new canonical classification. The new part is the exact affine
+Walsh quotient of each block, the arbitrary-length product-sign formulas, and
+the complete common-zero recursion with independence filtering.
+
+The previously published two-dimensional support-position classification \cite{carptopus2026}
+is a precursor, not a proof of the present results. A three-dimensional system
+contains seven coupled directions and requires the Fano and canonical-pencil
+mechanisms developed here.
+
+The following questions remain outside the scope of this paper.
+
+\begin{enumerate}
+\item We do not determine the complete set \(\mathcal S_n^{(3)}\) for every \(n\).
+\item The low-polar-rank recursion excludes Walsh-zero selected directions; the
+all-high-rank layer is also open.
+\item We do not count subcodes of a given support size or classify quadratic nets
+up to equivalence.
+\item We make no claim over odd characteristic or arbitrary finite fields.
+\item The current literature search found no direct coverage of the frozen
+theorems, but it does not establish global priority or external acceptance.
+\end{enumerate}
+
+
+\section{Conclusion}
+
+
+The third support spectrum of \(RM_2(2,n)\) is not a free seven-fold combination
+of ordinary quadratic weights. Nevertheless, several natural regions admit
+exact structure. The two spectrum edges have sharp universal gaps; all spectra
+through nine variables can be closed; the complete near-full interval follows
+from a classical low-weight theorem plus a compatible three-factor construction;
+and the \(19/8\) common-zero ray is uniformly forbidden.
+
+The canonical-pencil recursion explains why low polar rank remains tractable.
+After fixing one rank-two or rank-four direction, the remaining wild-looking net
+becomes an alternating pencil on the radical. Full marked-module orbits are not
+needed: affine masks, product-sign classes, and a five-valued relation kernel
+form a finite sufficient quotient. The unresolved part is therefore sharply
+located in the Walsh-zero low-rank boundary and in nets whose every nonzero
+Walsh direction has polar rank at least six.
+
+\begin{thebibliography}{9}
+\footnotesize
+\raggedright
+
+\bibitem{carptopus2026}
+Carptopus,
+\emph{Attainable second support weights of binary second-order Reed--Muller codes},
+MathExplore Notes, Public Beta v0.2 (2026).
+\href{https://doi.org/10.5281/zenodo.22059063}{doi:10.5281/zenodo.22059063}.
+
+\bibitem{ghorpade2026}
+S.~R. Ghorpade, T. Johnsen, R. Ludhani, and R. Pratihar,
+\emph{Betti Numbers and Higher Weight Spectra of Reed--Muller Codes $RM_q(2,2)$},
+arXiv:2408.02548v3 (2026).
+\href{https://arxiv.org/abs/2408.02548v3}{arXiv:2408.02548v3}.
+
+\bibitem{berlekamp1969}
+E.~R. Berlekamp and N.~J.~A. Sloane,
+\emph{Restrictions on Weight Distribution of Reed--Muller Codes},
+Information and Control 14 (1969), 442--456.
+\href{https://doi.org/10.1016/S0019-9958(69)90150-8}{doi:10.1016/S0019-9958(69)90150-8}.
+
+\bibitem{asgarli2018}
+S. Asgarli,
+\emph{A new proof of Warning's second theorem},
+American Mathematical Monthly 125 (2018), 548--552.
+\href{https://doi.org/10.1080/00029890.2018.1449555}{doi:10.1080/00029890.2018.1449555}.
+
+\bibitem{plut2015}
+J. Pl\^ut, P.-A. Fouque, and G. Macario-Rat,
+\emph{Solving the Isomorphism of Polynomials with Two Secrets Problem for all Pairs of Quadratic Forms},
+arXiv:1406.3163v3 (2015).
+\href{https://arxiv.org/abs/1406.3163v3}{arXiv:1406.3163v3}.
+
+\bibitem{macariorat2013}
+G. Macario-Rat, J. Pl\^ut, and H. Gilbert,
+\emph{New Insight into the Isomorphism of Polynomial Problem IP1S and Its Use in Cryptography},
+IACR Cryptology ePrint Archive, Report 2013/799 (2013).
+\href{https://eprint.iacr.org/2013/799}{ePrint 2013/799}.
+
+\end{thebibliography}
+
+\section*{AI-assisted research and writing disclosure}
+
+The author used OpenAI Codex for exploratory computation, proof checking, and
+language editing. The author reviewed the mathematical claims and assumes
+responsibility for the manuscript.
+
+\end{document}

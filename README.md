@@ -14,6 +14,7 @@ an exact minimum degree and a complete classification of the equality case.
 | Entry | Areas | Contribution | Public version | Status |
 | --- | --- | --- | --- | --- |
 | [Realizability and minimum dimension of Fano half-rank profiles over F2](research/fano-half-rank-profiles/README.md)<br>[PDF](research/fano-half-rank-profiles/fano-half-rank-profiles.pdf) · [BibTeX](research/fano-half-rank-profiles/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22164877) | Alternating bilinear forms, Fano plane, rank profiles, finite fields, Hilbert bases | Classifies every realizable seven-point half-rank profile of a three-parameter alternating net over $\mathbb F_2$ and determines its exact minimum ambient dimension | v0.1-beta | Internally verified candidate proof; external review pending |
+| [Exact regions and low-polar-rank recursion in the third support spectrum of binary second-order Reed--Muller codes](research/rm2-third-support-regions/README.md)<br>[PDF](research/rm2-third-support-regions/rm2-third-support-regions.pdf) · [BibTeX](research/rm2-third-support-regions/CITATION.bib) | Coding theory, higher support spectra, quadratic Boolean functions, alternating pencils | Determines two sharp all-dimensional spectrum gaps, the exact spectra through nine variables, the complete near-full interval, a finite low-rank recursion, and an infinite forbidden support ray | v0.1-beta | Internally verified candidate proof; external review pending |
 | [The minimum degree of nonnegative multiples of cyclotomic polynomials](research/cyclotomic-minimum-degree-all-orders/README.md)<br>[PDF](research/cyclotomic-minimum-degree-all-orders/cyclotomic-minimum-degree-all-orders.pdf) · [BibTeX](research/cyclotomic-minimum-degree-all-orders/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22137382) | Cyclotomic polynomials, nonnegative coefficients, roots of unity, trigonometric separation | Proves for every $n>1$ that the minimum degree is $(p-1)n/p$, where $p$ is the smallest prime divisor, with equality only for positive scalar multiples of the regular $p$-gon polynomial | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Proper transposed sesqui arrays at all Sylvester--Hadamard powers](research/proper-sesqui-all-powers/README.md)<br>[PDF](research/proper-sesqui-all-powers/proper-sesqui-all-powers.pdf) · [BibTeX](research/proper-sesqui-all-powers/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22059003) | Combinatorial designs, finite fields, finite geometry, algebraic curves | Constructs an exact-parameter proper transposed sesqui array for every power of two | v0.3-beta | Internally verified candidate proof; external review pending |
 | [Paley two-edge switching for proper transposed sesqui arrays](research/paley-two-edge-switching/README.md)<br>[PDF](research/paley-two-edge-switching/paley-two-edge-switching.pdf) · [BibTeX](research/paley-two-edge-switching/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22059004) | Combinatorial designs, finite fields, elliptic curves | Constructs an exact-parameter proper transposed sesqui array for every odd prime power $q\equiv3\pmod4$, $q\geq11$ | v0.3-beta | Internally verified candidate proof; external review pending |
@@ -152,6 +153,25 @@ $\mathcal S_{2m+1}=2\mathcal S_{2m}$. The result determines support positions,
 not their multiplicities.
 
 - [Manuscript and verification materials](research/rm2-second-support-spectrum/README.md)
+
+### Third support regions of binary second-order Reed--Muller codes
+
+For three-dimensional subcodes of $RM_2(2,n)$, this manuscript determines two
+sharp all-dimensional spectrum gaps, the exact spectra for $2\le n\le9$, and
+the complete near-full interval below $2^{n-5}$ common zeros. It also gives a
+finite sound-and-complete canonical-pencil recursion when one nonzero direction
+has nonzero zero-frequency Walsh coefficient and polar rank two or four.
+
+Together with arithmetic forcing, the recursion yields the infinite forbidden support ray
+
+$$
+493\cdot2^{n-9}\notin\mathcal S_n^{(3)},\qquad n\ge12.
+$$
+
+The result is not a complete classification of the third support spectrum; the
+Walsh-zero low-rank boundary and the all-high-rank layer remain open.
+
+- [Manuscript and verification materials](research/rm2-third-support-regions/README.md)
 
 ### Acyclic component hypotheses for total cut complexes
 
