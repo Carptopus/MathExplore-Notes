@@ -5,6 +5,8 @@
 - [Read or download the PDF](fano-half-rank-profiles.pdf)
 - [LaTeX source](fano-half-rank-profiles.tex)
 - [BibTeX citation](CITATION.bib)
+- Current version DOI: [10.5281/zenodo.22164877](https://doi.org/10.5281/zenodo.22164877)
+- Concept DOI: [10.5281/zenodo.22164876](https://doi.org/10.5281/zenodo.22164876)
 - [Exact verification](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
