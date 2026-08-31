@@ -1,0 +1,307 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,microtype}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\shat}{\mathcal{G}}
+
+\title{Weighted recursive constructions for\\
+shattering triples with six permutations}
+\author{Carptopus\\\small\texttt{carptopus@163.com}}
+\date{Version 0.1-beta, 31 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $F_3(n)$ be the maximum number of triples of an $n$-element set that can
+be shattered by six permutations, and let
+$c_3=\lim_{n\to\infty}F_3(n)/\binom n3$.  \v{C}ern\'a, Kielak and Volec
+recently proved
+\[
+\frac{482}{975}\le c_3\le\frac12.
+\]
+We give a weighted recursive construction that applies to every finite
+six-permutation template.  If $G$ is the set of triples shattered by a
+template on $[N]$, and $w_1,\ldots,w_N$ is a probability vector with at least
+two positive entries, put
+\[
+A=6\sum_{\{i,j,k\}\in G}w_iw_jw_k,
+\qquad B=\sum_{i=1}^Nw_i^3.
+\]
+We prove that $c_3\ge A/(1-B)$.  Uniform weights recover the standard
+iterated blow-up bound.  Applying the weighted construction to the published
+26-point template of \v{C}ern\'a, Kielak and Volec gives
+\[
+\boxed{c_3\ge\frac{1288385}{2599242}
+=0.495677201276\ldots}.
+\]
+The proof uses independent infinite words to define six lexicographic orders;
+conditioning on their first letters gives the renewal identity $D=A+BD$.
+All arithmetic for the 26-point application is verified by an accompanying
+exact certificate.
+\end{abstract}
+
+\section{Introduction}
+
+A family of permutations of a finite set \emph{shatters} a subset when every
+relative ordering of that subset occurs in the family.  This is a permutation
+analogue of classical shattering in extremal set theory.  Johnson and Wickes
+introduced the problem of maximizing the number of $k$-sets shattered by a
+fixed number of permutations~\cite{johnson-wickes}.  In the first nontrivial
+complete case, six permutations attempt to realize all $3!=6$ orders on as
+many triples as possible.
+
+Write $F_3(n)$ for the maximum number of triples of $[n]$ shattered by six
+permutations, and put
+\[
+f_3(n)=\frac{F_3(n)}{\binom n3}.
+\]
+Johnson and Wickes proved that the limit
+\[
+c_3=\lim_{n\to\infty}f_3(n)
+\]
+exists and developed a finite-template recursion.  \v{C}ern\'a, Kielak and
+Volec subsequently used flag algebras for the upper bound and a 26-point
+recursive construction for the lower bound
+\[
+\frac{482}{975}\le c_3\le\frac12
+\]
+\cite{cerna-kielak-volec}.  Their lower construction iterates the finite
+template uniformly.
+
+We allow the template classes to have unequal asymptotic masses.  The main
+result is a weighted recursion theorem for an arbitrary finite template.  Its
+proof uses independent infinite words over the template alphabet.  Each of
+the six template permutations defines a lexicographic order on the words.
+For three sampled words, either their first letters form a shattered template
+triple, all three first letters coincide and the problem restarts on the
+tails, or the triple cannot be shattered.  This gives an exact renewal
+equation.
+
+For the 26-point template in \cite{cerna-kielak-volec}, a rational weight
+vector improves the published uniform bound from
+$482/975=0.494358974359\ldots$ to
+$1288385/2599242=0.495677201276\ldots$.  The general weighted theorem is the
+structural part of the result; the numerical bound is an exact application to
+the strongest publicly available finite template that we could verify.
+
+The new lower bound remains below $1/2$, and no equality or matching upper
+bound is claimed.  The authors of \cite{cerna-kielak-volec} continue to work
+on this problem, so we compare only with their accessible published
+construction.
+
+\section{Templates and weighted lexicographic recursion}
+
+Let
+\[
+\Pi=(\pi_1,\ldots,\pi_6)
+\]
+be six rank-map permutations of $[N]$.  We write
+$a<_{\pi_r}b$ if and only if $\pi_r(a)<\pi_r(b)$.  A triple
+$T=\{i,j,k\}\subset[N]$ is \emph{shattered by} $\Pi$ if its restrictions in
+the six induced orders realize all six linear orders of $T$.  Denote the set of shattered triples by
+$\shat(\Pi)$.
+
+Let $w=(w_1,\ldots,w_N)$ satisfy
+\[
+w_i\ge0,
+\qquad \sum_{i=1}^Nw_i=1,
+\]
+and suppose at least two $w_i$ are positive.  Define
+\[
+A(\Pi,w)=6\sum_{\{i,j,k\}\in\shat(\Pi)}w_iw_jw_k,
+\qquad
+B(w)=\sum_{i=1}^Nw_i^3.
+\]
+The first quantity is the probability that three independent $w$-letters
+are pairwise distinct and form a shattered template triple.  The second is
+the probability that all three letters coincide.
+
+\begin{theorem}[Weighted recursion]\label{thm:weighted}
+For every $n\ge3$, there exist six permutations of $[n]$ that shatter at
+least
+\[
+\frac{A(\Pi,w)}{1-B(w)}\binom n3
+\]
+triples.  Consequently,
+\[
+\boxed{c_3\ge\frac{A(\Pi,w)}{1-B(w)}}.
+\]
+\end{theorem}
+
+\begin{proof}
+Let $X_1,\ldots,X_n$ be independent infinite words over $[N]$, with every
+letter in every coordinate independently distributed according to $w$.  For
+each $r\in[6]$, order the alphabet $[N]$ by $\pi_r$, and order the words
+lexicographically using this alphabet order.
+
+For two independent words, the probability that their first $m$ letters
+agree is
+\[
+\left(\sum_{i=1}^Nw_i^2\right)^m.
+\]
+At least two weights are positive, so $\sum_iw_i^2<1$.  Hence two infinite
+words coincide with probability zero.  Since only finitely many words are
+sampled, almost surely every lexicographic order is a permutation of the
+sample indices.
+
+Fix three sample indices, and let $D$ be the probability that their triple is
+shattered by the six lexicographic orders.  Classify the three first letters.
+If they are pairwise distinct and their unordered set lies in $\shat(\Pi)$,
+the template realizes all six relative orders.  This event has probability
+$A(\Pi,w)$.
+
+If all three first letters are equal, their relative orders are determined by
+the independent tails.  Conditional on this event, the probability of being
+shattered is again $D$.  The event has probability $B(w)$.
+
+If exactly two first letters agree, the word with the different first letter
+lies on the same side of the other two whenever the relative order of the two
+alphabet letters is fixed.  Thus all six orders cannot occur.  If the first
+letters are pairwise distinct but their template triple is not shattered,
+later coordinates cannot change their relative order, so the sampled triple
+again fails.
+
+The cases are exhaustive, and therefore
+\[
+D=A(\Pi,w)+B(w)D.
+\]
+Since at least two weights are positive, $B(w)<1$, and hence
+\[
+D=\frac{A(\Pi,w)}{1-B(w)}.
+\]
+Every triple of sample indices has the same probability $D$ of being
+shattered.  The expected number of shattered triples is therefore
+$D\binom n3$, so at least one finite sample attains at least this value.  If
+$D>0$, any six orders shattering a triple are necessarily distinct.  If
+$D=0$, choose any six distinct permutations, which is possible for $n\ge3$.
+This proves the finite statement, and taking the limiting maximum gives the
+asserted bound on $c_3$.
+\end{proof}
+
+\section{Uniform recursion as a special case}
+
+Suppose $w_i=1/N$ for every $i$, and let $s=|\shat(\Pi)|$.  Then
+\[
+A=\frac{6s}{N^3},
+\qquad
+B=\frac1{N^2},
+\]
+and Theorem~\ref{thm:weighted} becomes
+\[
+c_3\ge\frac{6s}{N(N^2-1)}.
+\]
+This is the standard uniform finite-template bound used in
+\cite{johnson-wickes,cerna-kielak-volec}.  Thus the weighted theorem extends
+the known recursion rather than replacing it with a different limiting
+object.
+
+For a fixed template, the theorem gives the finite-dimensional optimization
+problem
+\[
+\Phi_{\Pi}(w)
+=\frac{6\sum_{\{i,j,k\}\in\shat(\Pi)}w_iw_jw_k}
+{1-\sum_iw_i^3}
+\]
+over the probability simplex.  Numerical optimization can suggest a weight
+vector, but every claimed lower bound can be certified with rational weights
+and exact arithmetic.
+
+\section{The 26-point certificate}
+
+\v{C}ern\'a, Kielak and Volec give six permutations of $[26]$ that shatter
+1446 of the 2600 triples~\cite[Table~2]{cerna-kielak-volec}.  Uniform
+recursion yields
+\[
+\frac{6\cdot1446}{26(26^2-1)}=\frac{482}{975}.
+\]
+For the same template, take $w_i=q_i/250$, where
+\[
+\begin{aligned}
+(q_1,\ldots,q_{26})={}&(12,7,7,8,9,14,9,9,9,16,16,9,12,\\
+&10,6,6,8,7,7,12,8,14,8,9,9,9).
+\end{aligned}
+\]
+The entries are positive integers with sum 250.  Exact summation over the
+1446 shattered triples gives
+\[
+A=\frac{773031}{1562500},
+\qquad
+B=\frac{7387}{3906250}.
+\]
+
+\begin{corollary}\label{cor:new-bound}
+The limiting proportion of triples shattered by six permutations satisfies
+\[
+\boxed{
+c_3\ge\frac{1288385}{2599242}
+=0.495677201276\ldots }.
+\]
+\end{corollary}
+
+The improvement over the published uniform construction is exact:
+\[
+\frac{1288385}{2599242}-\frac{482}{975}
+=\frac{1113577}{844753650}
+=0.001318226917\ldots>0.
+\]
+
+The accompanying checker stores the six rank maps printed in
+\cite{cerna-kielak-volec}, enumerates all $\binom{26}{3}=2600$ triples,
+confirms the count 1446, and evaluates $A$, $B$, the weighted density and the
+difference above using rational arithmetic.  It also converts the rank-map
+convention to equivalent order lists and checks that both representations
+give the same shattered triples.  This conversion is an implementation
+cross-check, not an independent source for the template.
+
+\section{Scope and reproducibility}
+
+The result supplies a general weighted construction and a strict improvement
+of the lower bound obtained from the accessible published 26-point template.
+It does not prove $c_3=1/2$, classify optimal templates, or improve the flag
+algebra upper bound in \cite{cerna-kielak-volec}.  Continuous optimization was
+used only to locate the displayed integer vector; the theorem and final
+numerical comparison are exact.
+
+Our literature check covered the journal and arXiv versions of
+\cite{johnson-wickes}, the EUROCOMB'25 extended abstract
+\cite{cerna-kielak-volec}, the authors' public publication pages, and direct
+searches for weighted blow-ups and the exact constant.  The accessible texts
+use uniform recursion and do not state Theorem~\ref{thm:weighted} or
+Corollary~\ref{cor:new-bound}.  This records the checked boundary; it is not a
+claim that unpublished or unindexed parallel work does not exist.
+
+The verification script is supplementary evidence for the finite template
+and arithmetic.  The proof of Theorem~\ref{thm:weighted} does not depend on
+the script.
+
+\section*{AI-assisted research disclosure}
+
+Carptopus is the responsible author and takes responsibility for the claims,
+proofs, source use, and released artifacts.  OpenAI Codex was used for
+AI-assisted literature organization, proof development and stress testing,
+exact verification, adversarial auditing, and manuscript preparation.
+
+\begin{thebibliography}{9}
+
+\bibitem{johnson-wickes}
+J. Robert Johnson and Belinda Wickes,
+\emph{Shattering $k$-sets with permutations},
+Order 41 (2024), 419--436.
+\url{https://doi.org/10.1007/s11083-023-09637-7}.
+
+\bibitem{cerna-kielak-volec}
+Daniela \v{C}ern\'a, Bart{\l}omiej Kielak and Jan Volec,
+\emph{On shattering triples with six permutations},
+in \emph{Proceedings of the 13th European Conference on Combinatorics,
+Graph Theory and Applications (EUROCOMB'25)},
+Alfr\'ed R\'enyi Institute of Mathematics, 2025, pp.~245--249.
+
+\end{thebibliography}
+
+\end{document}
