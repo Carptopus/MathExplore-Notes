@@ -5,6 +5,8 @@
 - [Read or download the PDF](six-permutation-weighted-shattering.pdf)
 - [LaTeX source](six-permutation-weighted-shattering.tex)
 - [BibTeX citation](CITATION.bib)
+- Current version DOI: [10.5281/zenodo.22187970](https://doi.org/10.5281/zenodo.22187970)
+- Concept DOI: [10.5281/zenodo.22187969](https://doi.org/10.5281/zenodo.22187969)
 - [Exact verification](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
@@ -90,4 +92,3 @@ contains the complete disclosure and responsibility statement.
 Permutation shattering; extremal combinatorics; weighted blow-ups;
 lexicographic recursion; probabilistic method; exact certificates;
 AI-assisted mathematics.
-
