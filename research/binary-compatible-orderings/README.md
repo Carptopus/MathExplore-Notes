@@ -5,6 +5,8 @@
 - [Read or download the PDF](binary-compatible-orderings.pdf)
 - [LaTeX source](binary-compatible-orderings.tex)
 - [BibTeX citation](CITATION.bib)
+- Current version DOI: [10.5281/zenodo.22193534](https://doi.org/10.5281/zenodo.22193534)
+- Concept DOI: [10.5281/zenodo.22193533](https://doi.org/10.5281/zenodo.22193533)
 - [Exact four-dimensional verification](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
