@@ -1,0 +1,502 @@
+{
+  "method": "complete prefix-automaton DFS with first-independent-basis GL(4,2) symmetry breaking",
+  "ordered_fano_orbit_types": 30,
+  "canonical_gl4_orbit_count": 4,
+  "labelled_orders_with_zero_fixed_minimum": 80640,
+  "labelled_orders_with_zero_extremal": 161280,
+  "gl4_order": 20160,
+  "records": [
+    {
+      "target_signature": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "canonical_solution_count": 1,
+      "search_nodes": 16,
+      "solutions": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ]
+      ]
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        6
+      ],
+      "canonical_solution_count": 1,
+      "search_nodes": 16,
+      "solutions": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5,
+          7,
+          6,
+          8,
+          9,
+          11,
+          10,
+          14,
+          15,
+          13,
+          12
+        ]
+      ]
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        5,
+        7
+      ],
+      "canonical_solution_count": 0,
+      "search_nodes": 10,
+      "solutions": []
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        5
+      ],
+      "canonical_solution_count": 0,
+      "search_nodes": 10,
+      "solutions": []
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        3,
+        4,
+        7,
+        5,
+        6
+      ],
+      "canonical_solution_count": 0,
+      "search_nodes": 10,
+      "solutions": []
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        3,
+        4,
+        7,
+        6,
+        5
+      ],
+      "canonical_solution_count": 0,
+      "search_nodes": 10,
+      "solutions": []
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        4,
+        3,
+        5,
+        6,
+        7
+      ],
+      "canonical_solution_count": 0,
+      "search_nodes": 6,
+      "solutions": []
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        4,
+        3,
+        5,
+        7,
+        6
+      ],
+      "canonical_solution_count": 0,
+      "search_nodes": 6,
+      "solutions": []
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        4,
+        3,
+        6,
+        5,
+        7
+      ],
+      "canonical_solution_count": 0,
+      "search_nodes": 6,
+      "solutions": []
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        4,
+        3,
+        6,
+        7,
+        5
+      ],
+      "canonical_solution_count": 0,
+      "search_nodes": 6,
+      "solutions": []
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        4,
+        3,
+        7,
+        5,
+        6
+      ],
+      "canonical_solution_count": 0,
+      "search_nodes": 6,
+      "solutions": []
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        4,
+        3,
+        7,
+        6,
+        5
+      ],
+      "canonical_solution_count": 0,
+      "search_nodes": 6,
+      "solutions": []
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        4,
+        5,
+        3,
+        6,
+        7
+      ],
+      "canonical_solution_count": 0,
+      "search_nodes": 6,
+      "solutions": []
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        4,
+        5,
+        3,
+        7,
+        6
+      ],
+      "canonical_solution_count": 0,
+      "search_nodes": 6,
+      "solutions": []
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        3,
+        7
+      ],
+      "canonical_solution_count": 0,
+      "search_nodes": 6,
+      "solutions": []
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        3
+      ],
+      "canonical_solution_count": 0,
+      "search_nodes": 6,
+      "solutions": []
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        4,
+        5,
+        7,
+        3,
+        6
+      ],
+      "canonical_solution_count": 0,
+      "search_nodes": 6,
+      "solutions": []
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        4,
+        5,
+        7,
+        6,
+        3
+      ],
+      "canonical_solution_count": 0,
+      "search_nodes": 6,
+      "solutions": []
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        4,
+        6,
+        3,
+        5,
+        7
+      ],
+      "canonical_solution_count": 0,
+      "search_nodes": 6,
+      "solutions": []
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        4,
+        6,
+        3,
+        7,
+        5
+      ],
+      "canonical_solution_count": 0,
+      "search_nodes": 6,
+      "solutions": []
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        4,
+        6,
+        5,
+        3,
+        7
+      ],
+      "canonical_solution_count": 0,
+      "search_nodes": 6,
+      "solutions": []
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        4,
+        6,
+        5,
+        7,
+        3
+      ],
+      "canonical_solution_count": 0,
+      "search_nodes": 6,
+      "solutions": []
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        4,
+        6,
+        7,
+        3,
+        5
+      ],
+      "canonical_solution_count": 0,
+      "search_nodes": 6,
+      "solutions": []
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        4,
+        6,
+        7,
+        5,
+        3
+      ],
+      "canonical_solution_count": 0,
+      "search_nodes": 6,
+      "solutions": []
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        4,
+        7,
+        3,
+        5,
+        6
+      ],
+      "canonical_solution_count": 0,
+      "search_nodes": 90,
+      "solutions": []
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        4,
+        7,
+        3,
+        6,
+        5
+      ],
+      "canonical_solution_count": 0,
+      "search_nodes": 90,
+      "solutions": []
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        4,
+        7,
+        5,
+        3,
+        6
+      ],
+      "canonical_solution_count": 0,
+      "search_nodes": 89,
+      "solutions": []
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        4,
+        7,
+        5,
+        6,
+        3
+      ],
+      "canonical_solution_count": 1,
+      "search_nodes": 95,
+      "solutions": [
+        [
+          1,
+          2,
+          4,
+          7,
+          8,
+          11,
+          13,
+          14,
+          9,
+          10,
+          12,
+          15,
+          5,
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        4,
+        7,
+        6,
+        3,
+        5
+      ],
+      "canonical_solution_count": 0,
+      "search_nodes": 89,
+      "solutions": []
+    },
+    {
+      "target_signature": [
+        1,
+        2,
+        4,
+        7,
+        6,
+        5,
+        3
+      ],
+      "canonical_solution_count": 1,
+      "search_nodes": 95,
+      "solutions": [
+        [
+          1,
+          2,
+          4,
+          7,
+          8,
+          11,
+          13,
+          14,
+          15,
+          12,
+          10,
+          9,
+          6,
+          5,
+          3
+        ]
+      ]
+    }
+  ]
+}

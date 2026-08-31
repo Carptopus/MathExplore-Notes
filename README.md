@@ -13,6 +13,7 @@ an exact minimum degree and a complete classification of the equality case.
 
 | Entry | Areas | Contribution | Public version | Status |
 | --- | --- | --- | --- | --- |
+| [Compatible orderings of binary vector spaces](research/binary-compatible-orderings/README.md)<br>[PDF](research/binary-compatible-orderings/binary-compatible-orderings.pdf) · [BibTeX](research/binary-compatible-orderings/CITATION.bib) | Finite geometry, binary vector spaces, general linear groups, ordered Fano planes | Classifies every compatible total order on $\mathbb F_2^n$ for all $n$: for $n\ge4$ there are exactly eight $\mathrm{GL}(n,2)$-orbits and $8|\mathrm{GL}(n,2)|$ labelled orders | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Weighted recursive constructions for shattering triples with six permutations](research/six-permutation-weighted-shattering/README.md)<br>[PDF](research/six-permutation-weighted-shattering/six-permutation-weighted-shattering.pdf) · [BibTeX](research/six-permutation-weighted-shattering/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22187970) | Extremal combinatorics, permutation shattering, weighted blow-ups, probabilistic recursion | Proves a weighted recursion theorem for every finite six-permutation template and applies it to the published 26-point template to obtain the exact lower bound $c_3\ge1288385/2599242$, strictly improving its uniform-recursion bound $482/975$ | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Projective-plane triangulations yield orderable cographic matroids](research/orderable-cographic-projective-plane/README.md)<br>[PDF](research/orderable-cographic-projective-plane/orderable-cographic-projective-plane.pdf) · [BibTeX](research/orderable-cographic-projective-plane/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22165775) | Matroid theory, cographic matroids, graph embeddings, projective-plane triangulations | Proves that every projective-plane triangulation yields an orderable cographic matroid and constructs infinitely many 3-connected regular non-graphic counterexamples to Crenshaw--Oxley Conjecture 4 | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Realizability and minimum dimension of Fano half-rank profiles over F2](research/fano-half-rank-profiles/README.md)<br>[PDF](research/fano-half-rank-profiles/fano-half-rank-profiles.pdf) · [BibTeX](research/fano-half-rank-profiles/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22164877) | Alternating bilinear forms, Fano plane, rank profiles, finite fields, Hilbert bases | Classifies every realizable seven-point half-rank profile of a three-parameter alternating net over $\mathbb F_2$ and determines its exact minimum ambient dimension | v0.1-beta | Internally verified candidate proof; external review pending |
@@ -45,6 +46,26 @@ an exact minimum degree and a complete classification of the equality case.
 | [Tail-projection certificates for cyclotomic minimum-degree polynomials beyond the reciprocal condition](research/cyclotomic-tail-projection-families/README.md)<br>[PDF](research/cyclotomic-tail-projection-families/cyclotomic-tail-projection-families.pdf) · [BibTeX](research/cyclotomic-tail-projection-families/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22127365) | Cyclotomic polynomials, nonnegative coefficients, CRT tensor projections, prime tuples | Gives an explicit sufficient condition for every fixed number of at least four prime factors and proves infinite families beyond Steinberger's reciprocal condition | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
+
+### Compatible orderings of binary vector spaces
+
+A total order on a finite vector space is compatible when the unique
+order-preserving bijection between any two subspaces of the same dimension is
+linear. For every $n\ge4$, this manuscript proves that compatible total orders
+on $\mathbb F_2^n$ form exactly eight orbits under $\mathrm{GL}(n,2)$, and
+therefore their labelled number is
+
+$$
+8|\mathrm{GL}(n,2)|
+=8\prod_{i=0}^{n-1}(2^n-2^i).
+$$
+
+An exhaustive, symmetry-broken four-dimensional classification supplies the
+only computer-assisted base lemma. A local line condition then forces an
+initial complete flag, and a unique-lift theorem propagates the two surviving
+ordered Fano types through every higher dimension.
+
+- [Manuscript and exact verification](research/binary-compatible-orderings/README.md)
 
 ### Weighted recursion for six-permutation shattering
 
@@ -593,3 +614,5 @@ Gaussian binomial coefficients; translation nets; correction notes.
 Middle runner conjecture; dynamical algebraic combinatorics; circular runners;
 order statistics; periodic trajectories; continuous counterexamples;
 piecewise integration.
+Compatible orderings; binary vector spaces; ordered Fano planes; general
+linear groups; finite-geometry classification; flag orders.

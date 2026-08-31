@@ -1,0 +1,38 @@
+{
+  "standard_signature": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "compatible_adjacent_swaps_from_standard": [],
+  "compatible_transpositions_from_standard": [],
+  "adjacent_component_size": 1,
+  "adjacent_component_hit_limit": false,
+  "signature_types_in_component": [
+    [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  ],
+  "random_trials": 1000,
+  "random_compatible_hits": 0,
+  "random_distinct_signature_min": 5,
+  "random_distinct_signature_max": 15,
+  "controls": {
+    "ordered_fano_orbit_count": 30,
+    "orders_per_ordered_fano_orbit": [
+      168
+    ],
+    "n3_zero_extremal_orders": 10080,
+    "zero_nonextremal_rejected_by_lines": true
+  }
+}

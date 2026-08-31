@@ -1,0 +1,353 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,microtype}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\title{Compatible orderings of binary vector spaces}
+\author{Carptopus\\\small\texttt{carptopus@163.com}}
+\date{Draft, 31 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A total order on a finite vector space is called compatible when the unique
+order-preserving bijection between any two subspaces of the same dimension is
+linear. Cameron asked for the number of compatible orders on $V(n,q)$ and
+observed that the answer was known only in dimensions one and two. We solve the
+problem over the binary field. For every $n\ge4$, compatible total orders on
+$\mathbb F_2^n$ form exactly eight orbits under $\mathrm{GL}(n,2)$, and
+therefore their number is
+\[
+8|\mathrm{GL}(n,2)|=8\prod_{i=0}^{n-1}(2^n-2^i).
+\]
+Four orbits have zero as their least element. They are represented by two
+explicit flag orders and by reversing the nonzero parts of those orders; the
+remaining four are obtained by reversing the full order. The proof has one
+finite computer-assisted base lemma: an exhaustive, symmetry-broken
+classification in dimension four, checked by two implementations using
+different invariants of ordered Fano planes. A local line condition then
+forces an initial complete flag, and a uniqueness lemma shows that each of the
+two relevant three-dimensional types has at most one lift in every higher
+dimension. The counts in dimensions $1,2,3$ are respectively $2,12,10080$.
+\end{abstract}
+
+\section{Introduction}
+
+Let $V=V(n,q)$ be an $n$-dimensional vector space over $\mathbb F_q$. A
+total order $\prec$ on $V$ is \emph{compatible} if, whenever $U,W\le V$ have
+the same dimension, the unique bijection from $U$ to $W$ that preserves their
+induced orders is a linear isomorphism. Cameron introduced this condition
+while studying monotone elements in inverse semigroups of partial linear
+isomorphisms~\cite{cameron-notes}. Lexicographic orders give compatible orders
+over every finite field. Cameron also determined the possible position of
+zero, classified dimensions one and two, and noted that over $\mathbb F_2$
+every order with zero extremal is compatible in dimension three. The counting
+problem was restated as Problem~30.7 of the BCC30 problem collection, where the
+answer was recorded as known only for $n=1,2$~\cite{bcc30}.
+
+We give a complete answer for $q=2$. The binary case is rigid for two related
+reasons. First, the one-dimensional condition forces zero to be the least or
+greatest vector. Second, an ordered three-dimensional subspace is an ordered
+Fano plane, so its linear type can be encoded by the positions of its seven
+lines. An exhaustive four-dimensional base classification leaves four types
+with zero least. Two of them satisfy a local condition saying that the first
+three nonzero vectors in every three-space form a line; the other two are
+obtained by reversing all nonzero vectors. The local condition forces the
+initial segments of sizes $2^r-1$ to be subspaces. Once this flag is present,
+the order outside its initial hyperplane is uniquely determined by the common
+ordered Fano type.
+
+The computer calculation is confined to dimension four. Searches in
+dimensions five through seven were useful during discovery, but they are not
+used to infer the general theorem. The general step is the local-to-global
+flag argument and the unique-lift lemma proved below.
+
+\section{Compatible orders and two explicit families}
+
+Write vectors in coordinates $(x_1,\ldots,x_n)$ and identify a binary vector
+with the integer $\sum_{i=1}^n2^{i-1}x_i$. For $x\ne0$, let
+\[
+h(x)=\max\{i:x_i=1\}.
+\]
+Define two total orders with zero first. In $L_n$, nonzero vectors are ordered
+first by increasing $h(x)$ and then, within a fixed layer, by increasing key
+\[
+\lambda_h(x)=\sum_{i<h}2^{i-1}x_i.
+\]
+In $R_n$, the layers are again ordered by increasing $h(x)$, but
+$\lambda_h(x)$ is decreasing inside each layer. Let $\rho$ keep zero first
+and reverse the order of all nonzero vectors. Let $\iota$ reverse the full
+total order.
+
+For example, the nonzero parts in dimension four begin
+\[
+L_4=(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)
+\]
+and
+\[
+R_4=(1,3,2,7,6,5,4,15,14,13,12,11,10,9,8).
+\]
+After the standard $\mathrm{GL}(4,2)$ normalization by the first four
+independent vectors, the second sequence becomes
+\[
+(1,2,3,4,5,7,6,8,9,11,10,14,15,13,12).
+\]
+
+\begin{proposition}\label{prop:explicit}
+The orders $L_n,R_n,\rho L_n,\rho R_n$ and their full reversals are compatible
+for every $n$.
+\end{proposition}
+
+\begin{proof}
+Let $W\le\mathbb F_2^n$ have dimension $d$. Choose its reduced echelon basis
+$w_1,\ldots,w_d$ using the highest nonzero coordinate as pivot, with the pivot
+positions strictly increasing. The coordinate map
+\[
+\phi_W:\sum_{i=1}^dc_iw_i\longmapsto(c_1,\ldots,c_d)
+\]
+is linear. The highest nonzero coordinate of a linear combination is the
+pivot belonging to the largest index $i$ with $c_i=1$. If two combinations
+have the same largest active pivot, their highest differing lower coordinate
+is the pivot belonging to the largest lower coefficient on which they differ.
+It follows that $\phi_W$ carries the order induced by $L_n$ to $L_d$ and the
+order induced by $R_n$ to $R_d$.
+
+For two $d$-subspaces $U,W$, the order-preserving bijection is therefore
+$\phi_W^{-1}\phi_U$, hence is linear. Reversing the nonzero parts of the
+induced orders on both subspaces leaves the same rank-matching bijection, and
+reversing both full orders does the same. Thus all eight displayed orders are
+compatible.
+\end{proof}
+
+\section{The four-dimensional base classification}
+
+The next lemma is the only computer-assisted component.
+
+\begin{lemma}[Four-dimensional base]\label{lem:four}
+With zero fixed as the least element, compatible total orders on
+$\mathbb F_2^4$ form exactly four $\mathrm{GL}(4,2)$-orbits, represented by
+\[
+L_4,\quad R_4,\quad \rho L_4,\quad \rho R_4.
+\]
+\end{lemma}
+
+\begin{proof}[Certificate and proof method]
+An ordering of the seven nonzero points of $\mathbb F_2^3$ is classified up
+to $\mathrm{GL}(3,2)$ by the set of position triples whose vectors sum to
+zero. This line-position code is complete because a bijection of the Fano
+plane that preserves its lines is linear. The $7!$ orders split into
+$7!/168=30$ types.
+
+For an order of the 15 nonzero vectors of $\mathbb F_2^4$, global linear
+symmetry is removed by sending the first four independent vectors to
+$1,2,4,8$. For each of the 30 possible ordered Fano types, a prefix search
+adds vectors one at a time. Every hyperplane prefix must remain extendible to
+that same Fano type. This is exhaustive after the stated symmetry breaking.
+It gives the four normalized sequences
+\begin{center}
+\begin{tabular}{l}
+\texttt{1 2 3 4 5 6 7 8 9 10 11 12 13 14 15}\\
+\texttt{1 2 3 4 5 7 6 8 9 11 10 14 15 13 12}\\
+\texttt{1 2 4 7 8 11 13 14 9 10 12 15 5 6 3}\\
+\texttt{1 2 4 7 8 11 13 14 15 12 10 9 6 5 3}.
+\end{tabular}
+\end{center}
+
+The first implementation compares hyperplane-coordinate orbit prefixes. A
+second implementation shares the first-independent-basis normalization and
+prefix-search architecture, but independently implements the finite-field
+operations and compares Fano line-position prefixes directly. Both return
+exactly these four sequences. This is a cross-check of the invariant
+implementation, not a fully independent search design.
+
+In the first two types, the first three nonzero vectors in every
+three-dimensional subspace form a two-dimensional subspace. In the last two
+types, the corresponding statement holds for the last three nonzero vectors.
+The first two types induce distinct ordered Fano types.
+\end{proof}
+
+The finite lemma can also be viewed recursively: in dimension four,
+compatibility is equivalent to requiring all hyperplanes to have one common
+ordered Fano type. Every binary order in dimension three with zero extremal
+is itself compatible, so no lower-dimensional condition is omitted.
+
+\section{From a local line to a global flag}
+
+\begin{lemma}[Initial flag]\label{lem:flag}
+Let $n\ge3$, and let
+\[
+p_1\prec p_2\prec\cdots\prec p_{2^n-1}
+\]
+order the nonzero vectors of $V=\mathbb F_2^n$. Suppose that in every
+three-dimensional subspace, the first three nonzero vectors form a
+two-dimensional subspace. Then, for every $1\le r\le n$, the first $2^r-1$
+nonzero vectors form an $r$-dimensional subspace.
+\end{lemma}
+
+\begin{proof}
+The assertion is immediate for $r=1$. The vectors $p_1,p_2$ are distinct and
+therefore independent. For any $x\notin\langle p_1,p_2\rangle$, the first two
+vectors in $\langle p_1,p_2,x\rangle$ are $p_1,p_2$. Its third vector must
+complete their two-dimensional subspace, so it is $p_1+p_2$. Hence the first
+three global vectors form a two-space.
+
+Assume the first $2^r-1$ vectors form an $r$-space $E_r$. Let $p$ be the next
+vector and set $E_{r+1}=E_r+\langle p\rangle$. For $y\notin E_{r+1}$ and
+$0\ne u\in E_r$, consider
+\[
+S=\langle u,p,y\rangle.
+\]
+Because $y\notin E_r+\langle p\rangle$, one has
+$S\cap E_r=\langle u\rangle$. Thus $u$ is the first nonzero vector of $S$,
+and $p$ is the second: every other point outside $E_r$ occurs no earlier than
+the globally first such point $p$. The local hypothesis forces the third
+point of $S$ to be $u+p$. Consequently $u+p\prec y$ for every nonzero
+$u\in E_r$ and every $y\notin E_{r+1}$. Together with $p\prec y$, the whole
+coset $p+E_r$ precedes every vector outside $E_{r+1}$. Hence the first
+$2^{r+1}-1$ vectors are exactly $E_{r+1}\setminus\{0\}$. Induction completes
+the proof.
+\end{proof}
+
+\section{Unique lifting and the classification}
+
+\begin{lemma}[Unique lift]\label{lem:lift}
+Fix an ordered Fano type $T$ whose first three points form a line. For every
+$n\ge3$, there is at most one $\mathrm{GL}(n,2)$-orbit of orders on
+$\mathbb F_2^n\setminus\{0\}$ satisfying both:
+\begin{enumerate}
+\item every three-dimensional subspace induces type $T$;
+\item for every $r$, the first $2^r-1$ vectors form an $r$-subspace.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We induct on $n$. Suppose two candidate orders have initial hyperplanes
+$E,E'$. By the induction hypothesis, a linear isomorphism identifies their
+induced orders on these hyperplanes. Let $p,p'$ be the first vectors outside
+$E,E'$. Extend the hyperplane isomorphism linearly by sending $p$ to $p'$.
+We may therefore assume that both candidates agree on $E$, have the same $p$,
+and are defined on the same vector space.
+
+Take two vectors $p+u,p+v$ in the outside coset. Choose a two-dimensional
+subspace $K\le E$ containing $u$ and $v$; if $u,v$ span a smaller space,
+extend it to such a $K$. Put $S=K\oplus\langle p\rangle$. Since every
+nonzero vector of $E$ precedes $p$, the first three nonzero vectors of $S$
+are precisely the three points of $K$, in the same order in both candidates,
+and the fourth is $p$. Both restrictions have type $T$. Their
+order-preserving linear isomorphism therefore fixes two basis vectors of $K$
+and fixes $p$, hence is the identity on $S$. In particular, the relative
+order of $p+u$ and $p+v$ is the same in both candidates. This holds for every
+pair in the outside coset, so the two full orders agree.
+\end{proof}
+
+\begin{theorem}\label{thm:main}
+For every $n\ge4$, compatible total orders on $\mathbb F_2^n$ form exactly
+eight orbits under $\mathrm{GL}(n,2)$. Representatives are
+\[
+L_n,R_n,\rho L_n,\rho R_n,
+\iota L_n,\iota R_n,\iota\rho L_n,\iota\rho R_n.
+\]
+Consequently, the number of labelled compatible total orders is
+\[
+\boxed{8|\mathrm{GL}(n,2)|
+=8\prod_{i=0}^{n-1}(2^n-2^i)}.
+\]
+\end{theorem}
+
+\begin{proof}
+The one-dimensional subspaces show that zero has the same rank in every
+two-point subspace. Hence zero is globally least or greatest. Reverse the
+full order if necessary and assume zero is least.
+
+All four-dimensional subspaces have one common ordered linear type. By
+Lemma~\ref{lem:four} this type is one of
+$L_4,R_4,\rho L_4,\rho R_4$. If it is one of the last two, apply $\rho$ to
+the global order. Every three-dimensional subspace is contained in a
+four-dimensional one, so in the resulting order its first three nonzero
+vectors form a line. Lemma~\ref{lem:flag} supplies a complete initial flag.
+
+The common ordered Fano type is now one of the two distinct types induced by
+$L_4$ and $R_4$. Lemma~\ref{lem:lift} gives at most one orbit above each
+type, while Proposition~\ref{prop:explicit} supplies $L_n$ and $R_n$.
+Undoing $\rho$ gives exactly four orbits with zero least. Full reversal gives
+four with zero greatest.
+
+Finally, the action of $\mathrm{GL}(n,2)$ on total orders is free. A linear
+map preserving a finite total order fixes each vector in its position and is
+therefore the identity. Every orbit has size $|\mathrm{GL}(n,2)|$, proving
+the formula.
+\end{proof}
+
+\begin{corollary}
+The numbers in dimensions one, two and three are
+\[
+2,\qquad 2\cdot3!=12,\qquad 2\cdot7!=10080,
+\]
+respectively.
+\end{corollary}
+
+\begin{proof}
+Zero must be extremal. For $n=1$ there are two orders. For $n=2$, any
+ordering of the three nonzero vectors is compatible. The same is true for the
+seven nonzero vectors when $n=3$: the only nontrivial proper subspaces are
+Fano lines, and every bijection between two binary two-spaces that fixes zero
+is linear.
+\end{proof}
+
+\section{Reproducibility and scope}
+
+The four-dimensional certificate is supplied by \texttt{classify\_n4.py},
+the hyperplane-coordinate prefix search, and
+\texttt{verify\_n4\_independent.py}, the line-position-prefix verifier. The
+corresponding JSON result files have SHA256 hashes
+\begin{center}
+\begin{tabular}{l}
+\texttt{32b5a7c748270696372f57e5df890c963a4aef09cf583bd9c5e95cc2a642663a}\\
+\texttt{cb682eb6e88009f7cda3b8c127f7fc323ac30c6a7910a0c0886e6ae328c3753f}.
+\end{tabular}
+\end{center}
+The first result was made deterministic by excluding wall-clock timing from
+the certificate. Finite recursive searches in dimensions five through seven
+guided the discovery of the unique-lift lemma, but no claim from those
+searches is used in the manuscript or included in this certificate.
+
+The theorem answers the BCC30 counting problem over $\mathbb F_2$. It does
+not classify compatible orders for $q>2$, where zero need not be extremal and
+each projective point contains more than one nonzero vector. Our literature
+check covered Cameron's original notes, the BCC30 restatement, and direct
+searches using the definition and the expected counting formula. We found no
+source that states the binary classification. This records the checked
+boundary and is not a claim that unpublished or unindexed parallel work
+cannot exist.
+
+\section*{AI-assisted research disclosure}
+
+Carptopus is the responsible author and takes responsibility for the claims,
+proofs, source use, and released artifacts. OpenAI Codex was used for
+AI-assisted literature organization, proof development and stress testing,
+exact verification, adversarial auditing, and manuscript preparation.
+
+\begin{thebibliography}{9}
+
+\bibitem{cameron-notes}
+Peter J. Cameron,
+\emph{Combinatorics of inverse semigroups}, expository notes.
+\url{https://webspace.maths.qmul.ac.uk/p.j.cameron/csgnotes/invsemi.pdf}.
+
+\bibitem{bcc30}
+Peter J. Cameron (ed.),
+\emph{Problems from BCC30},
+arXiv:2409.07216v1 (2024), Problem~30.7.
+\url{https://arxiv.org/abs/2409.07216}.
+
+\end{thebibliography}
+
+\end{document}
