@@ -1,0 +1,519 @@
+% Generated deterministically from the audited Markdown source.
+% Responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{xurl}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\numberwithin{equation}{section}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Thue--Morse run separation}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.42em}
+\setlength{\emergencystretch}{4em}
+
+\title{Exact first separation in the\\Thue--Morse run-length sequence}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{Manuscript, 2 September 2026}
+
+\hypersetup{
+  pdftitle={Exact first separation in the Thue-Morse run-length sequence},
+  pdfauthor={Carptopus},
+  pdfsubject={Exact first separation of ratio-four kernel subsequences},
+  pdfkeywords={Thue-Morse sequence, run length, Jacobsthal representation, 2-kernel, automatic sequence, first separation}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fcolorbox{black!35}{black!4}{\parbox{0.88\textwidth}{\centering\small
+Internally verified candidate manuscript, version 0.1-beta. The mathematical claims have passed
+project-internal zero-trust proof and manuscript audits; external review is pending.}}
+\end{center}
+
+\begin{abstract}
+
+
+Let $d=(d(n))_{n\geq0}$ be the adjacent-run-length sequence of the Thue--Morse word, equivalently
+the fixed point beginning in $1$ of $1\mapsto121$, $2\mapsto12221$. For $q\geq2$, we determine
+exactly the first position at which the two kernel subsequences $d(2^{q+2}n)$ and $d(2^qn)$
+differ. Writing
+
+\[
+E_q=\begin{cases}2^{q+1}-2,&q\text{ even},\\2^{q+1}+1,&q\text{ odd},\end{cases}
+\]
+
+we prove that the first position is $\lfloor2^{E_q}/9\rfloor$. The proof combines the canonical
+Jacobsthal representation with a scale-stability lemma and an extremal alternating-binary-digit
+argument. We extend the result to arbitrary distances in the same $4$-scale chain and derive
+double-exponential lower bounds when the odd part of the multiplier is fixed and its 2-adic
+valuation grows, with an exact infinite family governed by multiplicative orders.
+
+\end{abstract}
+
+\section{Main results}
+
+
+Let
+
+\[
+N_q=\min\{n\geq1:d(2^{q+2}n)\neq d(2^qn)\}.
+\]
+
+\begin{theorem}
+
+
+For every $q\geq2$,
+
+\[
+N_q=M_q:=\left\lfloor\frac{2^{E_q}}9\right\rfloor,
+\qquad
+E_q=\begin{cases}2^{q+1}-2,&q\text{ even},\\2^{q+1}+1,&q\text{ odd}.\end{cases}
+\tag{1}
+\]
+
+\end{theorem}
+
+The cases $q=3,4$, giving $14563$ and $119304647$, were recorded by Allouche, Allouche and
+Shallit. The contribution of Theorem 1 is the exact all-$q$ formula and its minimality proof, not
+the discovery of those individual values or the eventual separation of kernel subsequences.
+
+For $r\geq1$, define in the extended positive integers, with $\inf\varnothing=+\infty$,
+
+\[
+R_r(b)=\inf\{n\geq1:d(4^{r+1}bn)\neq d(4bn)\}.
+\]
+
+\begin{theorem}
+
+
+Write $b=2^ju$, where $u$ is odd, and set $q=j+2$. Then for every $r\geq1$,
+
+\[
+R_r(2^ju)\geq\left\lceil\frac{M_q}{u}\right\rceil.
+\tag{2}
+\]
+
+If $u\mid M_q$, equality holds. Moreover, a fixed odd $u$ divides $M_q$ for infinitely many
+even $q$ if and only if
+
+\[
+\nu_2(\mathrm{ord}_{9u}(2))\leq1.
+\tag{3}
+\]
+
+\end{theorem}
+
+\section{Two encodings of the sequence}
+
+
+Let
+
+\[
+V=\{v\geq1:\nu_2(v)\equiv0\pmod2\},\qquad F(x)=|V\cap[1,x]|,
+\]
+
+and define
+
+\[
+e(x)=3F(x)-2x,\qquad H(x)=2x-F(x)=\frac{4x-e(x)}3.
+\]
+
+Then $H$ is strictly increasing and
+
+\[
+e(2x)=-e(x),\qquad e(2x+1)=1-e(x).
+\tag{4}
+\]
+
+The Thue--Morse word changes between positions $n-1$ and $n$ exactly when $\nu_2(n)$ is even.
+Hence, if $v_1<v_2<\cdots$ lists $V$, then $d(k)=v_{k+1}-v_k$. A direct counting argument shows
+
+\[
+d(k)=2\quad\Longleftrightarrow\quad k\in H(V).
+\tag{5}
+\]
+
+If $x=\sum_j\epsilon_j2^j$, recursion (4) gives
+
+\[
+e(x)=\sum_j(-1)^j\epsilon_j.
+\tag{6}
+\]
+
+This converts separation of two values of $d$ into instability of membership in $H(V)$ under
+multiplication or division by four.
+
+The equivalent Jacobsthal encoding uses $J_i=(2^i-(-1)^i)/3$. For a binary word
+$w=b_m\cdots b_1$, put $[w]_J=\sum b_iJ_i$. Lemma 3.7 of
+Allouche--Allouche--Shallit gives a unique representation that starts in $1$ and ends in an even
+(possibly zero) number of $1$'s; we call it canonical. Their Theorem 3.8 states, in our indexing
+convention, that $d(n)=1$ exactly for $n=0$ or when a Jacobsthal representation beginning in $1$
+ends in a positive even number of $0$'s or a positive even number of $1$'s; otherwise $d(n)=2$.
+If $B(w)=\sum b_i2^{i-1}$ and $S(w)=\sum b_i(-1)^i$, then
+
+\[
+3[w]_J=2B(w)-S(w),\qquad [w00]_J=4[w]_J+S(w).
+\tag{7}
+\]
+
+\section{Explicit witnesses}
+
+
+When $q$ is even, set
+
+\[
+w_q=(10)^{2^q-2}1^q,\qquad z_q=(10)^{2^q}0^{q-2}.
+\]
+
+When $q$ is odd, set
+
+\[
+w_q=(10)^{2^q}0^{q-1},\qquad z_q=(10)^{2^q-1}0100\,1^{q-1}.
+\]
+
+Each displayed word is canonical under Lemma 3.7: for even $q$, $w_q$ ends in $q$ ones and
+$z_q$ ends in zero ones; for odd $q$, $w_q$ ends in zero ones and $z_q$ ends in $q-1$ ones.
+Summing the geometric progressions in (7) gives
+
+\[
+[w_q]_J=2^qM_q,\qquad[z_q]_J=2^{q+2}M_q.
+\]
+
+For even $q$, the terminal constant blocks have lengths $q$ and $q-1$; for odd $q$, they again
+have lengths $q$ and $q-1$, in the opposite symbols. Thus Theorem 3.8 gives
+
+\[
+d(2^qM_q)\neq d(2^{q+2}M_q).
+\]
+
+Thus $N_q\leq M_q$.
+
+\section{Scale stability}
+
+
+\begin{lemma}
+
+
+Let $v\in V$.
+
+\begin{enumerate}
+\item If $2^r\mid H(v)$, $r\geq2$, and $|e(v)|<2^r$, then $4H(v)\in H(V)$.
+\item If $2^r\mid H(v)$, $r\geq4$, and $|e(v)|<2^{r-2}$, then $H(v)/4\in H(V)$.
+
+\end{enumerate}
+
+\end{lemma}
+
+\begin{proof}
+
+
+Write $e=e(v)$. Since $3H(v)=4v-e$ and $2^r\mid H(v)$, we have $4\mid e$.
+First suppose $e>0$. Write
+
+\[
+v=3\cdot2^{r-2}a+e/4.
+\]
+
+Because $0\leq e/4<2^{r-2}$, this is a carry-free high/low binary decomposition. Put
+
+\[
+T=3\cdot2^ra+e/4=4v-3e/4.
+\]
+
+Thus $T$ is obtained from $v$ by inserting two zeroes between the two blocks. Equation (6) and
+the unchanged trailing-zero count give $e(T)=e(v)$ and $T\in V$, while
+
+\[
+H(T)=\frac{4T-e(T)}3=4H(v).
+\]
+
+If $e=-4b<0$, set $k=r-2$ and write
+
+\[
+v=2^k(3a-1)+(2^k-b),\qquad
+T=2^{k+2}(3a-1)+(2^{k+2}-b).
+\]
+
+For $0<b<2^k$, the identity
+
+\[
+e(2^k-b)=e(2^k-1)-e(b-1)
+\]
+
+shows that the two low blocks have the same alternating digit sum because $k$ and $k+2$ have the
+same parity; both also have 2-adic valuation $\nu_2(b)$. Hence again $e(T)=e(v)$, $T\in V$, and
+$H(T)=4H(v)$. For $e=0$, take $T=4v$. This proves the first assertion.
+
+For the second assertion, $|e|/4<2^{r-4}$ leaves two genuine separating zeroes that can be
+deleted. Precisely, put
+
+\[
+R=(v+3e/4)/4.
+\]
+
+If $e=4b>0$, then
+
+\[
+v=3\cdot2^{r-2}a+b,\qquad R=3\cdot2^{r-4}a+b,
+\]
+
+with $0<b<2^{r-4}$. If $e=-4b<0$, then
+
+\[
+v=2^{r-2}(3a-1)+(2^{r-2}-b),\qquad
+R=2^{r-4}(3a-1)+(2^{r-4}-b).
+\]
+
+The same identity, now with exponents $r-2$ and $r-4$, gives $e(R)=e(v)$ and
+$\nu_2(R)\equiv\nu_2(v)\pmod2$. For $e=0$, simply take $R=v/4$. Thus $R\in V$ in every
+case and $H(v)=4H(R)$, proving the second assertion.
+\end{proof}
+
+
+It follows that if $2^q\mid x$ and $d(4x)\neq d(x)$, then the member side $x=H(v)$ or
+$4x=H(v)$ must satisfy
+
+\[
+|e(v)|\geq2^q.
+\tag{8}
+\]
+
+\section{The extremal alternating-digit argument}
+
+
+Let
+
+\[
+U_m=(10)^{m-1}1=\frac{4^m-1}{3}.
+\]
+
+Then $e(U_m)=m$. Among $L$ binary positions there are only $\lceil L/2\rceil$ positive-sign
+positions and $\lfloor L/2\rfloor$ negative-sign positions in (6); therefore every positive
+integer with $|e(x)|\geq m$ needs at least $2m-1$ binary digits. Equality with positive sign is
+attained uniquely by $U_m$.
+
+Set $m=2^q$ and
+
+\[
+v_q=2^{s_q}U_m,\qquad
+s_q=\begin{cases}q-2,&q\text{ even},\\q-1,&q\text{ odd}.\end{cases}
+\tag{9}
+\]
+
+The congruence $e(v)\equiv4v\pmod{2^r}$, together with the digit-length bound, proves the
+following extremal statement.
+
+\begin{lemma}
+
+
+If $v\in V$, $|e(v)|\geq2^q$, and $2^q\mid H(v)$, then $v\geq v_q$. Under the
+stronger divisibility $2^{q+2}\mid H(v)$, the same minimum holds for even $q$; for odd $q$,
+every candidate on that member side satisfies $H(v)/4>H(v_q)$.
+
+\end{lemma}
+
+\begin{proof}
+
+
+We use
+
+\[
+e(v)\equiv4v\pmod {2^r}.
+\tag{10}
+\]
+
+First assume $2^q\mid H(v)$ and, for a contradiction, $v<v_q$. The digit-length bound reduces the
+possibilities to
+
+\[
+e(v)=m+4a\quad\text{or}\quad e(v)=-m-4a,
+\tag{11}
+\]
+
+where $a\geq0$. For $q\geq3$, the available number of positive or negative digit positions gives
+$4a\leq(q+1)/2<2^q$, and hence $a<2^{q-2}$; when $q=2$, only $a=0$ remains. Put
+$k=q-2$.
+
+In the positive branch with $a>0$, congruence (10) gives $v=2^kA+a$, hence
+
+\[
+e(v)=(-1)^ke(A)+e(a).
+\]
+
+The assumed bound $v<v_q$ leaves at most $2m-1$ digits in $A$ when $q$ is even and at most
+$2m$ when $q$ is odd. In both cases $(-1)^ke(A)\leq m$, so
+
+\[
+e(v)\leq m+e(a)\leq m+a<m+4a,
+\]
+
+a contradiction. If $a=0$, then $2^{q-2}\mid v$. Since $v\in V$, its trailing-zero count is at
+least $s_q$; deleting those even-many zeroes leaves an integer with alternating digit sum at least
+$m$, hence no smaller than $U_m$. Therefore $v\geq v_q$.
+
+In the negative branch, $a=0$ is impossible: after deleting the forced trailing zeroes, the core
+has at most $2m-1$ digits and starts in a positive-sign position, so its alternating digit sum
+cannot be $-m$. If $a>0$, then
+
+\[
+v=2^kA+(2^k-a),\qquad
+e(2^k-a)=e(2^k-1)-e(a-1).
+\]
+
+Here $e(2^k-1)$ is zero for even $q$ and one for odd $q$. Combining this with the same bound on
+$A$ gives
+
+\[
+e(v)\geq-m-a+2>-m-4a,
+\]
+
+again a contradiction. This proves the first assertion.
+
+Now assume $2^{q+2}\mid H(v)$. For even $q$, again suppose $v<v_q$, but split off the low $q$
+bits in (10). In the positive branch, the low block is $2^{q-2}+a$, contributing $1+e(a)$,
+while the high block has at most $2m-3$ digits and contributes at most $m-1$. Thus $a>0$
+again gives $e(v)<m+4a$. When $a=0$, equality forces the high block to be $U_{m-1}$, and
+
+\[
+2^qU_{m-1}+2^{q-2}=2^{q-2}U_m=v_q.
+\]
+
+In the negative branch, the low block is $3\cdot2^{q-2}-a$. Its contribution is zero for
+$a=0$ and at least $-a$ for $a>0$, while the high block contributes at least $-(m-2)$.
+Neither case reaches $-m-4a$. Hence the even-$q$ minimum is still $v_q$.
+
+Finally let $q$ be odd and suppose $v\leq4v_q$. Then $v$ has at most $2m+q$ digits, so
+
+\[
+|e(v)|\leq m+(q+1)/2.
+\]
+
+Together with (11), this implies $a<2^{q-2}$. In the positive branch, the low $q$ bits are
+$2^{q-2}+a$ and contribute $-1+e(a)$, while the high block contributes at most $m$; hence
+
+\[
+e(v)\leq m-1+e(a)<m+4a.
+\]
+
+In the negative branch, $a=0$ would force $\nu_2(v)=q-2$, which is odd and contradicts
+$v\in V$. For $a>0$,
+
+\[
+e(3\cdot2^{q-2}-a)=2-e(a-1)\geq3-a,
+\]
+
+so $e(v)\geq-m+3-a>-m-4a$. Thus $v>4v_q$. Since $H$ is strictly increasing and
+$H(4v_q)=4H(v_q)+m$, we obtain $H(v)/4>H(v_q)$. This proves Lemma 4.
+\end{proof}
+
+
+We now spell out the four member-side cases needed for the lower bound. Put $x=2^qn$ and suppose
+$d(4x)\neq d(x)$. By (5), exactly one side belongs to $H(V)$.
+
+\begin{itemize}
+\item If $x=H(v)$ and $q$ is odd, Lemma 4 gives
+$x\geq H(v_q)=2^qM_q$.
+\item If $x=H(v)$ and $q$ is even, it gives
+$x\geq H(v_q)=2^{q+2}M_q>2^qM_q$.
+\item If $4x=H(v)$ and $q$ is even, the strong-divisibility part gives
+$x=H(v)/4\geq H(v_q)/4=2^qM_q$.
+\item If $4x=H(v)$ and $q$ is odd, it gives
+$x=H(v)/4>H(v_q)=2^qM_q$.
+
+\end{itemize}
+
+Consequently $n\geq M_q$ in every case. The witnesses in Section 3 give the reverse inequality,
+proving Theorem 1. Explicitly,
+
+\[
+M_q=\begin{cases}
+(4^{2^q-1}-1)/9,&q\text{ even},\\
+(2\cdot4^{2^q}-5)/9,&q\text{ odd}.
+\end{cases}
+\]
+
+\section{Arbitrary distances and multipliers}
+
+
+The values $M_q,M_{q+2},M_{q+4},\ldots$ are strictly increasing. For $n<M_q$, no adjacent
+pair in
+
+\[
+d(2^qn),d(2^{q+2}n),\ldots,d(2^{q+2r}n)
+\]
+
+has separated. At $n=M_q$, the first pair separates while all later adjacent pairs remain equal.
+Therefore
+
+\[
+\min\{n\geq1:d(2^{q+2r}n)\neq d(2^qn)\}=M_q
+\]
+
+for every $r\geq1$. Substituting $b=2^ju$ proves (2), and $u\mid M_q$ gives the exact witness
+$n=M_q/u$.
+
+For even $q$, $M_q=(2^{E_q}-1)/9$. If $L=\mathrm{ord}_{9u}(2)$, then
+
+\[
+u\mid M_q\quad\Longleftrightarrow\quad L\mid2(2^q-1).
+\]
+
+This has infinitely many even solutions $q$ exactly when the 2-adic valuation of $L$ is at most
+one. Indeed, write $L=2^as$ with $s$ odd. Necessity follows because
+$\nu_2(2(2^q-1))=1$. Conversely, if $a\leq1$, choose $q$ divisible by
+$\operatorname{lcm}(2,\operatorname{ord}_s(2))$; then $q$ is even and
+$s\mid2^q-1$, so $L\mid2(2^q-1)$. When $s=1$, any even $q$ works. Taking arbitrary positive
+multiples of the chosen $q$ gives infinitely many solutions and proves (3).
+
+\section{Scope}
+
+
+Theorems 1 and 2 solve an infinite ratio-four subfamily of the general first-separation question.
+They do not determine the exact answer when $u\nmid M_q$, nor do they solve the problem for two
+arbitrary multipliers. In the nondivisibility case, the natural finite-state descriptions retain all
+residue classes modulo $u$, and no parameter-independent second-minimum theorem is presently known.
+
+\begin{thebibliography}{9}
+\footnotesize
+\raggedright
+
+\bibitem{aas2006}
+G.~Allouche, J.-P.~Allouche, and J.~Shallit,
+\emph{Kolam indiens, dessins sur le sable aux \^iles Vanuatu, courbe de Sierpi\'nski et morphismes de mono\"ides},
+Annales de l'Institut Fourier \textbf{56} (2006), 2115--2130.
+\href{https://doi.org/10.5802/aif.2235}{doi:10.5802/aif.2235}.
+
+\bibitem{sloane}
+N.~J.~A.~Sloane,
+\emph{The On-Line Encyclopedia of Integer Sequences}, sequence A015565.
+\href{https://oeis.org/A015565}{OEIS A015565}.
+
+\bibitem{shallit-open}
+J.~Shallit,
+\emph{Open Problems in Automata Theory and Formal Languages}, Open Problem 7.
+\url{https://cs.uwaterloo.ca/~shallit/Talks/open10r.pdf}.
+
+\end{thebibliography}
+
+\paragraph{AI-assisted research and writing disclosure.}
+Carptopus is the author responsible for the mathematical claims and the public version of this
+manuscript. OpenAI Codex was used as an AI-assisted tool for literature organization, proof
+development and stress testing, exact verification, adversarial auditing, and manuscript
+preparation.
+
+\end{document}

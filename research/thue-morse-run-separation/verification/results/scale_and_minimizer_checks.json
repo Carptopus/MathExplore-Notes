@@ -1,0 +1,69 @@
+{
+  "status": "PASS_FOR_STATED_FINITE_CHECKS",
+  "scope_warning": "Finite destructive checks only; the parametric proof is in S2.",
+  "morphism_vs_h_of_v_membership_checked_through": 100000,
+  "scale_lemma_v_checked_through": 300000,
+  "scale_implications_checked": 59151,
+  "binary_minimizers": [
+    {
+      "q": 2,
+      "weak_scale_matches_formula": true,
+      "weak_e": 4,
+      "weak_v2": 0,
+      "strong_scale_matches_formula_when_q_even": true,
+      "strong_e": 4,
+      "strong_v2": 0,
+      "odd_q_opposite_direction_is_later": null
+    },
+    {
+      "q": 3,
+      "weak_scale_matches_formula": true,
+      "weak_e": 8,
+      "weak_v2": 2,
+      "strong_scale_matches_formula_when_q_even": null,
+      "strong_e": 12,
+      "strong_v2": 0,
+      "odd_q_opposite_direction_is_later": true
+    },
+    {
+      "q": 4,
+      "weak_scale_matches_formula": true,
+      "weak_e": 16,
+      "weak_v2": 2,
+      "strong_scale_matches_formula_when_q_even": true,
+      "strong_e": 16,
+      "strong_v2": 2,
+      "odd_q_opposite_direction_is_later": null
+    },
+    {
+      "q": 5,
+      "weak_scale_matches_formula": true,
+      "weak_e": 32,
+      "weak_v2": 4,
+      "strong_scale_matches_formula_when_q_even": null,
+      "strong_e": 36,
+      "strong_v2": 0,
+      "odd_q_opposite_direction_is_later": true
+    },
+    {
+      "q": 6,
+      "weak_scale_matches_formula": true,
+      "weak_e": 64,
+      "weak_v2": 4,
+      "strong_scale_matches_formula_when_q_even": true,
+      "strong_e": 64,
+      "strong_v2": 4,
+      "odd_q_opposite_direction_is_later": null
+    },
+    {
+      "q": 7,
+      "weak_scale_matches_formula": true,
+      "weak_e": 128,
+      "weak_v2": 6,
+      "strong_scale_matches_formula_when_q_even": null,
+      "strong_e": 132,
+      "strong_v2": 0,
+      "odd_q_opposite_direction_is_later": true
+    }
+  ]
+}

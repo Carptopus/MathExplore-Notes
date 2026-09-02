@@ -13,6 +13,7 @@ an exact minimum degree and a complete classification of the equality case.
 
 | Entry | Areas | Contribution | Public version | Status |
 | --- | --- | --- | --- | --- |
+| [Exact first separation in the Thue--Morse run-length sequence](research/thue-morse-run-separation/README.md)<br>[PDF](research/thue-morse-run-separation/exact-first-separation-thue-morse.pdf) · [BibTeX](research/thue-morse-run-separation/CITATION.bib) | Automatic sequences, Thue--Morse sequence, Jacobsthal representations, 2-kernels | Determines for every $q\ge2$ the exact first separation of $d(2^{q+2}n)$ and $d(2^qn)$, extends it along arbitrary ratio-four scale distances, and gives an exact infinite multiplier family governed by multiplicative orders | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Counterexamples to unimodality of the connected set polynomial](research/connected-set-polynomial-counterexamples/README.md)<br>[PDF](research/connected-set-polynomial-counterexamples/connected-set-polynomial-counterexamples.pdf) · [BibTeX](research/connected-set-polynomial-counterexamples/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22250860) | Graph polynomials, connected induced subgraphs, unimodality, graph enumeration | Constructs four pairwise nonisomorphic counterexample families for every order $n\ge8$, proves the common coefficient formula, and completely classifies the four minimum-order counterexamples | v0.1-beta | Internally verified candidate proof; external review pending |
 | [A complete log-concavity classification for higher-order Stirling cycle rows](research/higher-order-stirling-cycle-logconcavity/README.md)<br>[PDF](research/higher-order-stirling-cycle-logconcavity/higher-order-stirling-cycle-logconcavity.pdf) · [BibTeX](research/higher-order-stirling-cycle-logconcavity/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22244404) | Enumerative combinatorics, associated Stirling numbers, log-concavity, Fourier--Edgeworth estimates | Proves that every higher-order Stirling cycle row is log-concave for every row index exactly for orders $1\le r\le5$, settling the previously open $r=3,4,5$ layers, and proves log-concavity of the factorial-normalized rows for every $r\ge2$ | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Compatible orderings of binary vector spaces](research/binary-compatible-orderings/README.md)<br>[PDF](research/binary-compatible-orderings/binary-compatible-orderings.pdf) · [BibTeX](research/binary-compatible-orderings/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22193534) | Finite geometry, binary vector spaces, general linear groups, ordered Fano planes | Classifies every compatible total order on $\mathbb F_2^n$ for all $n$: for $n\ge4$ there are exactly eight $\mathrm{GL}(n,2)$-orbits and $8|\mathrm{GL}(n,2)|$ labelled orders | v0.1-beta | Internally verified candidate proof; external review pending |
@@ -48,6 +49,23 @@ an exact minimum degree and a complete classification of the equality case.
 | [Tail-projection certificates for cyclotomic minimum-degree polynomials beyond the reciprocal condition](research/cyclotomic-tail-projection-families/README.md)<br>[PDF](research/cyclotomic-tail-projection-families/cyclotomic-tail-projection-families.pdf) · [BibTeX](research/cyclotomic-tail-projection-families/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22127365) | Cyclotomic polynomials, nonnegative coefficients, CRT tensor projections, prime tuples | Gives an explicit sufficient condition for every fixed number of at least four prime factors and proves infinite families beyond Steinberger's reciprocal condition | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
+
+### Exact Thue--Morse run separation
+
+Let $d$ be the adjacent-run-length sequence of the Thue--Morse word. For every $q\ge2$, the
+manuscript proves that the first position at which $d(2^{q+2}n)$ and $d(2^qn)$ differ is
+
+$$
+\left\lfloor\frac{2^{E_q}}9\right\rfloor,
+\qquad
+E_q=\begin{cases}2^{q+1}-2,&q\text{ even},\\2^{q+1}+1,&q\text{ odd}.
+\end{cases}
+$$
+
+It also treats arbitrary distances in the same ratio-four scale chain and gives an exact infinite
+multiplier family characterized by a multiplicative-order condition.
+
+- [Manuscript and verification materials](research/thue-morse-run-separation/README.md)
 
 ### Connected-set polynomial counterexamples
 
