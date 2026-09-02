@@ -1,0 +1,1418 @@
+% Mechanically converted from the audited Markdown manuscript.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{fancyhdr}
+
+\numberwithin{equation}{section}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Higher-order Stirling cycle rows}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.42em}
+\setlength{\emergencystretch}{4em}
+
+\title{A complete log-concavity classification\\
+for higher-order Stirling cycle rows}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{Manuscript, 2 September 2026}
+
+\hypersetup{
+  pdftitle={A complete log-concavity classification for higher-order Stirling cycle rows},
+  pdfauthor={Carptopus},
+  pdfsubject={Log-concavity of higher-order associated Stirling cycle rows},
+  pdfkeywords={associated Stirling numbers, log-concavity, recurrence, Fourier--Edgeworth estimate, computer-assisted proof}
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+
+Let $[N,k]_{\ge r}$ denote the number of permutations of $N$ elements having exactly $k$
+cycles, every cycle of length at least $r$, and define the higher-order Stirling cycle rows
+
+\[
+C_r(n,k)=[n+(r-1)k,k]_{\ge r},\qquad 0\le k\le n.
+\]
+
+Deb and Sokal proved that these rows are log-concave for $r=2$ and asked whether the same
+holds for $r=3,4,5$. We prove all three remaining cases. Together with the elementary
+$r=1$ case, this gives a complete classification: every row $C_r(n,\cdot)$ is log-concave
+for every $n$ if and only if $1\le r\le5$. The cutoff is already visible in the row $n=3$;
+an explicit ratio is strictly decreasing in $r$, is greater than one at $r=5$, and is less
+than one at $r=6$.
+
+The proofs use three different mechanisms. The case $r=3$ follows from Sagan's inductive
+criterion. For $r=4$ we introduce a factorial normalization and prove that the recurrence
+preserves the narrower weighted log-concavity cone determined by the removed factorials.
+For $r=5$ we combine two exact parameter wedges, a certified finite prefix of $5,754,989$
+inequalities, and an effective fifth-order Fourier--Edgeworth estimate on the remaining
+compact band. We also prove a uniform structural result valid for every $r\ge2$: the
+normalized rows
+
+\[
+\frac{k!\,C_r(n,k)}{(n+(r-1)k)!}
+\]
+
+are log-concave.
+
+\end{abstract}
+
+\section{Introduction}
+
+
+For integers $r\ge1$, let $[N,k]_{\ge r}$ be the signless $r$-associated Stirling number
+of the first kind. Thus $[N,k]_{\ge r}$ counts permutations of an $N$-element set having
+$k$ cycles, with every cycle of length at least $r$. The higher-order Stirling cycle
+triangle studied by Deb and Sokal \cite{deb-sokal} has entries
+
+\[
+C_r(n,k)=[n+(r-1)k,k]_{\ge r}.
+\tag{1.1}
+\]
+
+The unusual feature of (1.1) is that the size of the ground set changes with $k$ along a
+fixed row. Consequently, real-rootedness results for the polynomial
+$\sum_k[N,k]_{\ge r}x^k$ with fixed $N$ do not imply log-concavity of the rows in (1.1).
+Indeed, Deb and Sokal showed that the row-generating polynomials in (1.1) generally have
+nonreal zeros when $r\ge3$ \cite{deb-sokal}.
+
+Deb and Sokal proved row log-concavity for $r=2$ and conjectured it for $r=3,4,5$
+\cite[Conjecture 1.3(c)]{deb-sokal}. The same three cases were recorded as Problem 30.9 in the BCC30
+problem collection \cite{bcc30}. Our main result settles those remaining parameter layers and also
+locates the exact cutoff.
+
+\textbf{Theorem 1.1 (complete classification).} For an integer $r\ge1$, the sequence
+
+\[
+C_r(n,0),C_r(n,1),\ldots,C_r(n,n)
+\]
+
+is log-concave for every $n\ge0$ if and only if $1\le r\le5$.
+
+Here and below, entries outside $0\le k\le n$ are zero. The positive part of each row is
+contiguous, so the usual adjacent inequalities are sufficient.
+
+The proof naturally separates into four pieces. The ordinary case $r=1$ follows from
+
+\[
+\sum_k [n,k]_{\ge1}x^k=x(x+1)\cdots(x+n-1),
+\]
+
+and $r=2$ is due to Deb and Sokal. Section 3 proves $r=3$ by applying Sagan's
+log-concavity-preserving recurrence criterion \cite{sagan}. Section 4 proves $r=4$ by preserving a
+weighted cone rather than the full cone of log-concave sequences. Sections 6--10 give the
+$r=5$ proof. Section 5 shows that every $r\ge6$ fails already for $n=3$.
+
+One structural result applies at every order and explains why factorial normalization is
+useful even when the original rows cease to be log-concave.
+
+\textbf{Theorem 1.2 (normalized rows).} Let $r\ge2$ and put
+
+\[
+H_r(n,k)=\frac{k!\,C_r(n,k)}{(n+(r-1)k)!}.
+\tag{1.2}
+\]
+
+For every $n\ge0$, the sequence $H_r(n,0),\ldots,H_r(n,n)$ is log-concave.
+
+The $r=5$ part of Theorem 1.1 is computer-assisted. Its finite and symbolic components use
+exact rational arithmetic or decimal arithmetic with a proved relative-rounding bound. The analytic tail is
+reduced to explicit rational inequalities. Section 11 records the verification boundary and
+the reproducibility entry points.
+
+\section{Recurrences and an all-order normalization}
+
+
+Write $p=r-1$ and
+
+\[
+N=n+pk.
+\]
+
+The standard insertion recurrence for associated Stirling numbers becomes
+
+\[
+C_r(n,k)
+=(N-1)C_r(n-1,k)+(N-1)_{r-1}C_r(n-1,k-1),
+\tag{2.1}
+\]
+
+where $(x)_j=x(x-1)\cdots(x-j+1)$. The first term inserts the new element into an
+existing cycle. The second term forms a new $r$-cycle from the new element and $r-1$
+additional elements.
+
+After the normalization (1.2), all falling factorials cancel and (2.1) becomes
+
+\[
+H_r(n,k)=a_kH_r(n-1,k)+b_kH_r(n-1,k-1),
+\tag{2.2}
+\]
+
+with
+
+\[
+a_k=\frac{n+pk-1}{n+pk},
+\qquad
+b_k=\frac{k}{n+pk}.
+\tag{2.3}
+\]
+
+We use the following form of Sagan's criterion [3, Theorem 1]. Suppose a nonnegative
+triangular array satisfies
+
+\[
+y_k=d_kx_k+c_kx_{k-1}.
+\]
+
+If $c_k$ and $d_k$ are log-concave in $k$ and
+
+\[
+2c_kd_k\ge c_{k-1}d_{k+1}+c_{k+1}d_{k-1},
+\tag{2.4}
+\]
+
+then the transformation preserves log-concavity. Although Sagan states the theorem for
+nonnegative integer arrays, its proof uses only addition, multiplication, and nonnegative
+inequalities, so it applies without change to nonnegative rational arrays.
+
+\textbf{Proof of Theorem 1.2.} For the coefficients in (2.3), direct simplification gives, for
+$n\ge2$ and $1\le k\le n-1$,
+
+\[
+a_k^2-a_{k-1}a_{k+1}
+=\frac{p^2(2kp+2n-1)}{(kp+n)^2(kp+n-p)(kp+n+p)},
+\tag{2.5}
+\]
+
+\[
+b_k^2-b_{k-1}b_{k+1}
+=\frac{n(2kp+n)}{(kp+n)^2(kp+n-p)(kp+n+p)},
+\tag{2.6}
+\]
+
+and
+
+\[
+2a_kb_k-a_{k-1}b_{k+1}-a_{k+1}b_{k-1}
+=\frac{2p(knp+kp+n^2)}{(kp+n)^2(kp+n-p)(kp+n+p)}.
+\tag{2.7}
+\]
+
+All three quantities are nonnegative in the stated range. The zero boundaries are immediate,
+and the initial row consists only of $H_r(0,0)=1$. Sagan's criterion applied successively to
+(2.2) proves the theorem. $\square$
+
+The removed factor
+
+\[
+W_r(n,k)=\frac{(n+pk)!}{k!}
+\tag{2.8}
+\]
+
+is generally log-convex in $k$. Theorem 1.2 therefore does not imply log-concavity of
+$C_r(n,\cdot)$, but it provides the common base sequence used in the $r=4$ argument.
+
+\section{The third-order rows}
+
+
+\textbf{Theorem 3.1.} For every $n\ge0$, the row $C_3(n,\cdot)$ is log-concave.
+
+\textbf{Proof.} In (2.1), put $r=3$ and
+
+\[
+L=n+2k-1.
+\]
+
+Then
+
+\[
+C_3(n,k)=L C_3(n-1,k)+L(L-1)C_3(n-1,k-1).
+\tag{3.1}
+\]
+
+In Sagan's notation, take
+
+\[
+c_k=L(L-1),\qquad d_k=L.
+\]
+
+The sequence $d_k$ is a nonnegative arithmetic progression. The sequence $c_k$ is the
+pointwise product of two nonnegative arithmetic progressions. Both are log-concave on the
+required index range. The mixed defect in (2.4) is
+
+\[
+2d_kc_k-d_{k-1}c_{k+1}-d_{k+1}c_{k-1}=8(L-1)\ge0.
+\tag{3.2}
+\]
+
+The initial row and the zero boundaries satisfy the claim, so induction using Sagan's
+criterion completes the proof. $\square$
+
+\section{The fourth-order rows}
+
+
+The direct use of Sagan's criterion fails at $r=4$: its mixed coefficient defect has the
+wrong sign. We retain the factorial normalization but impose the stronger inequality needed
+after restoring the weights.
+
+For this section set $p=3$, $N=n+3k$, and write
+
+\[
+W(n,k)=\frac{N!}{k!},
+\qquad
+H(n,k)=\frac{C_4(n,k)}{W(n,k)}.
+\]
+
+The original row is log-concave exactly when
+
+\[
+H(n,k)^2\ge T(n,k)H(n,k-1)H(n,k+1),
+\tag{4.1}
+\]
+
+where
+
+\[
+T(n,k)=\frac{W(n,k-1)W(n,k+1)}{W(n,k)^2}
+=\frac{k}{k+1}\prod_{i=1}^{3}\frac{N+i}{N-3+i}.
+\tag{4.2}
+\]
+
+\textbf{Theorem 4.1.} For every $n\ge0$, the row $C_4(n,\cdot)$ is log-concave.
+
+\textbf{Proof.} Assume the preceding row $x_j=H(n-1,j)$ satisfies (4.1). First work on four
+consecutive entries in its positive support and set
+
+\[
+\rho_j=\frac{x_j}{x_{j-1}}.
+\]
+
+At positive entries, two adjacent weighted inequalities give
+
+\[
+\rho_{k-1}\ge T(n-1,k-1)\rho_k,
+\qquad
+\rho_{k+1}\le\frac{\rho_k}{T(n-1,k)}.
+\tag{4.3}
+\]
+
+The recurrence (2.2) has
+
+\[
+a_j=\frac{n+3j-1}{n+3j},
+\qquad
+b_j=\frac{j}{n+3j}.
+\]
+
+After dividing the desired defect in row $n$ by $x_{k-1}^2$, its right-hand side is
+increasing in $1/\rho_{k-1}$ and in $\rho_{k+1}$. Thus the two equality cases in (4.3)
+give the worst possible value. With $\rho=\rho_k$, it is enough to prove
+
+\[
+(a_k\rho+b_k)^2\ge T(n,k)\rho
+\left(a_{k-1}+\frac{b_{k-1}}{T(n-1,k-1)\rho}\right)
+\left(\frac{a_{k+1}\rho}{T(n-1,k)}+b_{k+1}\right).
+\tag{4.4}
+\]
+
+Put $M=n+3k$. Clearing the positive denominator
+
+\[
+M^2(M-3)^2(M-2)^2(M-1)^2
+\]
+
+turns the left side minus the right side of (4.4) into a quadratic polynomial
+$P(\rho)$. Its leading coefficient is
+
+\[
+9(M-3)^2(M-2)^2(M-1)^2>0,
+\]
+
+and its discriminant is
+
+\[
+-972k^2(M-4)^2(M-3)^2(M-2)^3(M-1)^2(M+2)<0.
+\tag{4.5}
+\]
+
+Hence $P(\rho)>0$ for every $\rho>0$. This proves the internal inequalities for
+$n\ge3$ and $2\le k\le n-1$. The case $k=1$ is immediate because $C_4(n,0)=0$.
+At the left endpoint, the same expanded inequality is obtained as the limit
+$x_0\downarrow0$, for which $1/\rho_1\downarrow0$; this remains below the upper bound in
+(4.3). At the right endpoint, the limit $x_n\downarrow0$ gives $\rho_n\downarrow0$, again
+no larger than the worst-case substitution. The short
+initial rows are direct. Induction proves the theorem. $\square$
+
+The negative discriminant in (4.5) is specific to the weighted cone at $p=3$. At $p=4$
+the analogous discriminant is positive, and actual rows enter the interval where the
+quadratic is negative. The fifth-order case therefore needs a different argument.
+
+\section{The sharp cutoff after order five}
+
+
+The first nontrivial three-term row already determines the failure side of the classification.
+
+\textbf{Proposition 5.1.} For $r\ge2$, the row $C_r(3,\cdot)$ is log-concave if and only if
+$2\le r\le5$. In particular, the assertion that every row is log-concave fails for every
+$r\ge6$.
+
+\textbf{Proof.} The three positive entries are
+
+\[
+C_r(3,1)=(r+1)!,
+\]
+
+\[
+C_r(3,2)=\frac{(2r+1)!}{r(r+1)},
+\]
+
+and
+
+\[
+C_r(3,3)=\frac{(3r)!}{6r^3}.
+\]
+
+Thus the only nontrivial log-concavity ratio is
+
+\[
+R(r)=\frac{C_r(3,2)^2}{C_r(3,1)C_r(3,3)}
+=\frac{6r(2r+1)!^2}{(r+1)^2(3r)!(r+1)!}.
+\tag{5.1}
+\]
+
+Its adjacent ratio is
+
+\[
+\frac{R(r+1)}{R(r)}
+=\frac{4(r+1)^4(2r+3)^2}{3r(r+2)^3(3r+1)(3r+2)}.
+\tag{5.2}
+\]
+
+The denominator of (5.2) minus its numerator equals
+
+\[
+11r^6+77r^5+168r^4+80r^3-136r^2-144r-36.
+\]
+
+After substituting $r=s+1$, this becomes
+
+\[
+11s^6+143s^5+718s^4+1742s^3+2047s^2+947s+20,
+\]
+
+which is positive for $s\ge0$. Hence $R(r)$ is strictly decreasing for $r\ge1$. Finally,
+
+\[
+R(5)=\frac{55}{39}>1,
+\qquad
+R(6)=\frac{5148}{5831}<1.
+\]
+
+This proves the proposition. $\square$
+
+Deb and Sokal's positive conjecture stops at $r=5$. Proposition 5.1 does not refute a
+claim they made for $r\ge6$; it shows that their stated endpoint is the sharp endpoint of
+the all-row phenomenon.
+
+\section{Reduction of the fifth-order case}
+
+
+It remains to prove the last positive layer.
+
+\textbf{Theorem 6.1.} For every $n\ge0$, the row $C_5(n,\cdot)$ is log-concave. At every
+internal index for which the three terms are positive, the inequality is strict.
+
+Write
+
+\[
+d=n-k,
+\qquad
+f(z)=\sum_{j\ge0}\frac{z^j}{j+5},
+\qquad
+B(k,d)=[z^d]f(z)^k.
+\tag{6.1}
+\]
+
+The exponential formula for permutations by cycles gives
+
+\[
+C_5(n,k)=\frac{(5k+d)!}{k!}B(k,d).
+\tag{6.2}
+\]
+
+For $k\ge2$, put
+
+\[
+\mu=\frac{d}{k},\qquad q=\frac1k.
+\]
+
+After substituting (6.2) at $k-1,k,k+1$, the required inequality is equivalent to
+
+\[
+B(k,d)^2\ge T_k(\mu)B(k-1,d+1)B(k+1,d-1),
+\tag{6.3}
+\]
+
+where
+
+\[
+T_k(\mu)=\frac{1}{1+q}
+\prod_{i=1}^{4}
+\frac{\mu+5+iq}{\mu+5-(i-1)q}.
+\tag{6.4}
+\]
+
+The proof of (6.3) divides the parameter plane into two exact wedges and one compact band.
+
+\section{Two exact wedges}
+
+
+Define
+
+\[
+Q_d(k)=d!\,5^kB(k,d).
+\tag{7.1}
+\]
+
+The identity
+
+\[
+(1-z)\bigl(zf'(z)+5f(z)\bigr)=1
+\]
+
+implies
+
+\[
+Q_d(k)=
+\frac{d(5k+d-1)}{5k+d}Q_{d-1}(k)
++\frac{5k}{5k+d}Q_d(k-1).
+\tag{7.2}
+\]
+
+To state the two-step lemma with the correct row index, put
+
+\[
+q_n(k)=Q_{n-k}(k).
+\tag{7.3}
+\]
+
+Then (7.2) is the triangular recurrence
+
+\[
+q_n(k)=A(n,k)q_{n-1}(k)+D(n,k)q_{n-1}(k-1),
+\tag{7.4}
+\]
+
+where
+
+\[
+A(n,k)=\frac{(n-k)(n+4k-1)}{n+4k},
+\qquad
+D(n,k)=\frac{5k}{n+4k}.
+\tag{7.5}
+\]
+
+\textbf{Lemma 7.1 (two-step preservation).} Two successive applications of (7.4), from the
+row indexed by $n-2$ to the row indexed by $n$, preserve
+log-concavity at every internal index with $k\ge2$ and $d=n-k\ge3$. The boundary
+defects corresponding to $d=1,2$ are strictly positive. Starting from the short initial
+rows, every row $q_n(\cdot)$ is therefore log-concave.
+
+\textbf{Proof certificate.} Write the two-step map as
+
+\[
+y_k=\alpha_kx_k+\beta_kx_{k-1}+\gamma_kx_{k-2}.
+\]
+
+For a log-concave input, write four consecutive ratios as $u\ge v\ge w\ge t$. Direct
+differentiation of the output defect shows that its minimum occurs at $u=v$ and $t=w$.
+Put $v=w+h$ with $h\ge0$. After substituting $k=K+2$ and $d=D+3$, the numerator of the
+defect has exactly twelve monomials in $(h,w)$. Eleven coefficients are coefficientwise
+nonnegative in $(K,D)$. In the $h$-free part, the only coefficient not individually
+nonnegative is the coefficient $c_1$ of $w$; the exact identity
+
+\[
+4c_0c_2-c_1^2\ge0
+\]
+
+is coefficientwise nonnegative in $(K,D)$. Since the coefficient $c_2$ and the common
+denominator are positive, the quadratic $c_0+c_1w+c_2w^2$ is nonnegative for $w>0$.
+This establishes the internal part of the lemma over exact rational functions. For
+$d=1,2$, the defects are respectively
+
+\[
+\frac{5(33k+2)}{252}
+\]
+
+and
+
+\[
+\frac{25(1155k^3+2426k^2+1435k+168)}{63504}.
+\]
+
+The full twelve-coefficient expansion and the shifted polynomial
+$4c_0c_2-c_1^2$ are regenerated exactly by the verification program listed in
+Section 11. This is a finite symbolic certificate for the displayed algebraic reduction,
+not a sample of $(n,k)$ values.
+
+We next connect Lemma 7.1 to (6.3). Since $d=n-k$,
+
+\[
+q_n(k)^2\ge q_n(k-1)q_n(k+1)
+\]
+
+is exactly
+
+\[
+Q_d(k)^2\ge Q_{d+1}(k-1)Q_{d-1}(k+1).
+\tag{7.6}
+\]
+
+Using (7.1), inequality (6.3) follows from (7.6) whenever
+
+\[
+W(k,d)=\frac{d}{d+1}T_k(d/k)\le1.
+\tag{7.7}
+\]
+
+Explicitly,
+
+\[
+W(k,d)=
+\frac{dk(d+5k+1)(d+5k+2)(d+5k+3)(d+5k+4)}
+{(d+1)(k+1)(d+5k)(d+5k-1)(d+5k-2)(d+5k-3)}.
+\tag{7.8}
+\]
+
+Let $P(k,d)$ be the numerator of $1-W(k,d)$ after clearing the positive denominator.
+The three substitutions needed below give polynomials with nonnegative coefficients:
+
+\[
+\begin{aligned}
+P(2(U+1)+1+S,U+1)
+={}&625S^5+5375S^4U+8375S^4\\
+&+17450S^3U^2+54100S^3U+41925S^3\\
+&+25630S^2U^3+117810S^2U^2+180885S^2U+93025S^2\\
+&+15125SU^4+89540SU^3+200255SU^2+201630SU+77450S\\
+&+1331U^5+6655U^4+11495U^3+7865U^2+2054U+600,
+\end{aligned}
+\tag{7.9}
+\]
+
+\[
+\begin{aligned}
+P(2(U+12),U+12)
+={}&1331U^5+64735U^4+1185415U^3\\
+&+9744665U^2+31222854U+8690040,
+\end{aligned}
+\tag{7.10}
+\]
+
+and, for $k=K+3$, $d=12(K+3)+S$,
+
+\[
+\begin{aligned}
+P(k,d)
+={}&142477K^5+93925K^4S+1754230K^4
++18530K^3S^2\\
+&+1032920K^3S+8228255K^3+1610K^2S^3
++158220K^2S^2\\
+&+4225545K^2S+17796230K^2+65KS^4+9320KS^3\\
+&+449165KS^2+7608500KS+16368048K\\
+&+S^5+190S^4+13475S^3+423830S^2+5076504S+3630240.
+\end{aligned}
+\tag{7.11}
+\]
+
+Thus $W<1$ for $k\ge2d+1$, for the boundary $k=2d$ when $d\ge12$, and for
+$d\ge12k$ when $k\ge3$. The remaining points on $k=2d$ have $d\le11$ and are covered
+by exact all-$k$ strip certificates through $d=18$.
+
+The low-density wedge also needs the internal index $k=2$, which is not supplied by
+(7.11). We record its direct proof.
+
+\textbf{Lemma 7.2 (the $k=2$ line).} The fifth-order row inequality at $k=2$ holds for every
+$n\ge3$.
+
+\textbf{Proof.} Put
+
+\[
+A=\sum_{j=5}^{n+3}\frac1j,
+\qquad
+e=\sum_{j=n+4}^{n+7}\frac1j.
+\]
+
+Cycle decomposition gives
+
+\[
+C_5(n,1)=(n+3)!,
+\qquad
+C_5(n,2)=(n+7)!\,A,
+\]
+
+and
+
+\[
+C_5(n,3)=(n+11)!\,S_3,
+\]
+
+where
+
+\[
+S_3=\sum_{\substack{5\le i<j\le n+7\\j-i\ge5}}\frac1{ij}.
+\]
+
+Dropping the separation condition gives
+
+\[
+S_3<\frac{(A+e)^2}{2}.
+\]
+
+Consequently, the desired inequality follows from
+
+\[
+2A^2\ge R(A+e)^2,
+\qquad
+R=\prod_{j=0}^{3}\frac{n+8+j}{n+4+j}.
+\tag{7.12}
+\]
+
+Set $x=n+4$. For $x\ge29$,
+
+\[
+A\ge\log(x/5),
+\qquad
+e\le\frac4x,
+\qquad
+\sqrt R\le\left(1+\frac4x\right)^2.
+\]
+
+The two factors in
+
+\[
+\left(1+\frac4x\right)^2
+\left(1+\frac{4}{x\log(x/5)}\right)
+\]
+
+decrease with $x$. At $x=29$, use $\log(29/5)>7/4$ and $\sqrt2>7/5$ to obtain
+
+\[
+\left(\frac{33}{29}\right)^2
+\left(1+\frac{16}{203}\right)
+=\frac{238491}{170723}<\frac75<\sqrt2.
+\]
+
+This is (7.12) for every $n\ge25$. The logarithmic bound follows from a rational Taylor
+upper bound for $\exp(7/4)$; the cases $3\le n\le24$ are checked exactly over the
+rationals. $\square$
+
+\textbf{Lemma 7.3 (exact wedges).} Inequality (6.3) holds strictly in each of the following
+regions:
+
+\[
+k\ge2d,
+\tag{7.13}
+\]
+
+and
+
+\[
+d\ge12k.
+\tag{7.14}
+\]
+
+For the first wedge, (7.9) handles $k\ge2d+1$, (7.10) handles $k=2d$ for $d\ge12$,
+and the strip certificates handle the remaining boundary points. For the second wedge,
+(7.11) handles $k\ge3$, $k=1$ is a zero-boundary inequality, and Lemma 7.2 handles
+$k=2$. In each symbolic region $W<1$, so positivity of the neighboring $Q$-entries makes
+the original inequality strict. All boundary exceptions are therefore included rather than
+inferred from an asymptotic estimate.
+
+The only region left after Lemma 7.3 is
+
+\[
+\frac12<\mu<12.
+\tag{7.15}
+\]
+
+\section{A common saddle point and the compact-band margin}
+
+
+For each $\mu$ in (7.5), there is a unique $z\in(0,1)$ satisfying
+
+\[
+\mu=\frac{zf'(z)}{f(z)}.
+\tag{8.1}
+\]
+
+Define a span-one probability distribution by
+
+\[
+\Pr_z(J=j)=\frac{z^j}{(j+5)f(z)},\qquad j\ge0.
+\tag{8.2}
+\]
+
+Let $\sigma^2$ and $\kappa_s$ be its variance and cumulants. If $S_m$ is a sum of $m$
+independent copies of $J$, then
+
+\[
+B(k,d)=f(z)^kz^{-d}\Pr_z(S_k=d).
+\tag{8.3}
+\]
+
+The same $z$ works for all three coefficients in (6.3). The central term $S_k=d$ is at
+its mean. The other two probabilities have displacements
+
+\[
+S_{k-1}=d+1:\quad \mu+1,
+\qquad
+S_{k+1}=d-1:\quad -(\mu+1)
+\tag{8.4}
+\]
+
+from their respective means. All exponential saddle factors in (8.3) therefore cancel.
+
+Put
+
+\[
+\Delta(k,\mu)=
+\log\frac{B(k,d)^2}
+{T_k(\mu)B(k-1,d+1)B(k+1,d-1)}.
+\tag{8.5}
+\]
+
+The first-order coefficient in the common-saddle expansion is
+
+\[
+M(\mu)=\frac{(\mu+1)^2}{\sigma^2}+1-\frac{16}{\mu+5}.
+\tag{8.6}
+\]
+
+It is positive precisely because the saddle variance satisfies
+
+\[
+\sigma^2(11-\mu)<(\mu+1)^2(\mu+5).
+\tag{8.7}
+\]
+
+The verification of (8.7) reduces, after writing $f$ as its elementary logarithmic
+expression, to a rational inequality whose differentiated remainder is a nonnegative
+square. On the full compact band, a rational Bernstein certificate sharpens it to
+
+\[
+M(\mu)>\frac3{100}.
+\tag{8.8}
+\]
+
+Expanding the three local probabilities through order five gives
+
+\[
+\Delta(k,\mu)=
+\frac{M}{k}+\frac{C_2}{k^2}+\frac{C_3}{k^3}
++\frac{C_4}{k^4}+\frac{C_5}{k^5}+R_k.
+\tag{8.9}
+\]
+
+Each $C_j$ is a rational expression in $z$, $f(z)$, and the cumulants through order ten.
+Exact two-variable Bernstein certificates on the complete saddle band prove
+
+\[
+C_2>-2M,
+\qquad
+C_3>0,
+\qquad
+C_4>-4M,
+\qquad
+C_5>0.
+\tag{8.10}
+\]
+
+Hence the retained part of (8.9) is at least
+
+\[
+\frac3{100}\left(\frac1k-\frac2{k^2}-\frac4{k^4}\right).
+\tag{8.11}
+\]
+
+\section{Effective Fourier control for the infinite tail}
+
+
+We now give the effective local expansion used to bound $R_k$. Let
+
+\[
+\phi_z(t)=\frac{f(ze^{it})}{f(z)},
+\qquad
+\psi_z(t)=e^{-i\mu t}\phi_z(t),
+\]
+
+and normalize the lattice probabilities by
+
+\[
+\overline p_m(b)=
+\sigma\sqrt{2\pi m}\,\Pr_z(S_m=m\mu+b).
+\tag{9.1}
+\]
+
+Fourier inversion with
+
+\[
+u=\sigma\sqrt m\,t,
+\qquad
+\varepsilon=m^{-1/2}
+\]
+
+gives
+
+\[
+\overline p_m(b)=\frac1{\sqrt{2\pi}}
+\int_{-\pi\sigma\sqrt m}^{\pi\sigma\sqrt m}
+e^{-ibu/(\sigma\sqrt m)}
+\psi_z\!\left(\frac{u}{\sigma\sqrt m}\right)^m\,du.
+\tag{9.2}
+\]
+
+The Gaussian term must be extracted before estimating the correction. On the local
+analytic disk,
+
+\[
+e^{-ibu/(\sigma\sqrt m)}
+\psi_z\!\left(\frac{u}{\sigma\sqrt m}\right)^m
+=e^{-u^2/2}
+\exp\left(\sum_{j\ge1}E_j(u,b)\varepsilon^j\right),
+\tag{9.3}
+\]
+
+where
+
+\[
+E_1(u,b)=-\frac{ibu}{\sigma}+\frac{\kappa_3(iu)^3}{6\sigma^3},
+\]
+
+and, for $2\le j\le8$,
+
+\[
+E_j(u,b)=\frac{\kappa_{j+2}(iu)^{j+2}}{(j+2)!\sigma^{j+2}}.
+\tag{9.4}
+\]
+
+The three displacements needed in (8.5) satisfy $|b|\le\mu+1$. Exact rational
+certificates over the saddle band prove
+
+\[
+\frac{\mu+1}{\sigma}<\frac74
+\]
+
+and the termwise bounds
+
+\[
+|E_j(u,b)|\le A_j(u),
+\tag{9.5}
+\]
+
+where
+
+\[
+\begin{aligned}
+A_1&=\frac74|u|+\frac{11}{20}|u|^3,&
+A_2&=\frac{13}{20}|u|^4,\\
+A_3&=\frac{17}{20}|u|^5,&
+A_4&=\frac65|u|^6,\\
+A_5&=\frac74|u|^7,&
+A_6&=\frac52|u|^8,\\
+A_7&=\frac{15}{4}|u|^9,&
+A_8&=\frac{11}{2}|u|^{10}.
+\end{aligned}
+\tag{9.6}
+\]
+
+Define the exact local polynomials $H_s(u,b)$ by
+
+\[
+\exp\left(\sum_{j=1}^{8}E_j(u,b)\varepsilon^j\right)
+=\sum_{s\ge0}H_s(u,b)\varepsilon^s.
+\]
+
+Equating coefficients gives the recurrence
+
+\[
+sH_s=\sum_{j=1}^{\min(8,s)}jE_jH_{s-j}.
+\tag{9.7}
+\]
+
+The five probability coefficients used in Section 8 are therefore
+
+\[
+p_j(b)=\frac1{\sqrt{2\pi}}
+\int_{\mathbb R}e^{-u^2/2}H_{2j}(u,b)\,du,
+\qquad 1\le j\le5.
+\tag{9.8}
+\]
+
+The odd integrated terms vanish. Substituting $b=0,\mu+1,-(\mu+1)$ at sample sizes
+$k,k-1,k+1$, expanding $(k\pm1)^{-j}$ in $1/k$, and including the normalizing and
+target-weight terms produces exactly the coefficients $M,C_2,\ldots,C_5$ in (8.9).
+
+To control cumulants above order ten, write
+
+\[
+5f(z)=\frac1{1-C(z)},
+\qquad
+C(z)=\sum_{\ell\ge1}c_\ell z^\ell,
+\]
+
+where $c_\ell>0$ and $\sum_{\ell\ge1}c_\ell=1$. Define
+
+\[
+\log(5f(z))=\sum_{\ell\ge1}\beta_\ell z^\ell,
+\]
+
+For completeness, both assertions about $C$ follow directly from the defining function.
+Differentiation gives
+
+\[
+z(1-z)C'(z)=5(1-C(z))(z-C(z)).
+\]
+
+Writing $C(z)=\sum_{m\ge1}c_mz^m$ yields
+
+\[
+(m+5)c_m=(m-6)c_{m-1}
++5\sum_{i=1}^{m-1}c_ic_{m-i},
+\qquad m\ge2.
+\tag{9.9}
+\]
+
+The first five coefficients are
+
+\[
+\frac56,\quad \frac5{252},\quad \frac5{378},\quad
+\frac{605}{63504},\quad \frac{1381}{190512}.
+\]
+
+They are positive. For $m=6$ the convolution in (9.9) is positive, and for $m\ge7$
+both terms on the right are nonnegative with a positive convolution. Induction proves
+$c_m>0$ for every $m$. Finally, $5f(z)\to\infty$ as $z\uparrow1$, so
+$C(z)=1-1/(5f(z))\uparrow1$; hence $\sum_{m\ge1}c_m=1$.
+
+Moreover,
+
+\[
+z\frac{d}{dz}\log(5f(z))=\frac{5(z-C(z))}{1-z}.
+\]
+
+Comparing coefficients gives
+
+\[
+\ell\beta_\ell=5\sum_{j>\ell}c_j,
+\qquad
+0<\beta_\ell\le\frac5\ell.
+\tag{9.10}
+\]
+
+Thus (8.2) is compound Poisson. Together with $(1-z)\sigma>8/15$, equation (9.10)
+gives the all-order envelope as follows. The compound-Poisson cumulants satisfy
+
+\[
+\kappa_s=\sum_{\ell\ge1}\ell^s\beta_\ell z^\ell
+\le5\sum_{\ell\ge1}\ell^{s-1}z^\ell
+\le\frac{5(s-1)!}{(1-z)^s}.
+\]
+
+After division by $s!\sigma^s$, this is
+
+\[
+0<\frac{\kappa_s}{s!\sigma^s}
+\le\frac5s\left(\frac{15}{8}\right)^s.
+\tag{9.11}
+\]
+
+We also need two characteristic-function estimates. The integral representation
+
+\[
+f(w)=\int_0^1\frac{x^4}{1-wx}\,dx
+\]
+
+implies that $|\phi_z(t)|$ decreases strictly on $[0,\pi]$. Indeed, after symmetrizing
+the double integral and putting $q=zx$, $r=zy$, and $y_0=\cos t$, the derivative of
+the kernel with respect to $y_0$ has numerator
+
+\[
+(1-q)(1-r)\mathcal Q(q,r)
++8qr(1-q)(1-r)(1-y_0)+4qr(q+r)(1-y_0)^2,
+\]
+
+where
+
+\[
+\mathcal Q(q,r)=
+(q+r)\left(1-\frac{q+r}{2}\right)^2
++\frac{(q-r)^2(8-q-r)}4\ge0.
+\]
+
+The same rational saddle-band certificate proves, for the centered fourth moment
+$\mu_4$,
+
+\[
+\mu_4<18\sigma^4.
+\tag{9.12}
+\]
+
+For an independent copy $J'$, this gives
+
+\[
+\mathbb E(J-J')^4=2\mu_4+6\sigma^4<42\sigma^4.
+\]
+
+Using $1-\cos x\ge x^2/2-x^4/24$, for $|t|\le1/(2\sigma)$ we obtain
+
+\[
+1-|\phi_z(t)|^2
+\ge\sigma^2t^2-\frac{42\sigma^4t^4}{24}
+\ge\frac9{16}\sigma^2t^2.
+\tag{9.13}
+\]
+
+Hence, in the variable $u=\sigma\sqrt m\,t$,
+
+\[
+|\phi_z(t)|^m\le e^{-9u^2/32}.
+\tag{9.14}
+\]
+
+At $t_0=1/(2\sigma)$, (9.13) gives
+
+\[
+1-|\phi_z(t_0)|^2\ge\frac9{64}.
+\]
+
+Monotonicity therefore yields
+
+\[
+|\phi_z(t)|^2\le\frac{55}{64},
+\qquad
+t_0\le|t|\le\pi.
+\tag{9.15}
+\]
+
+Now take the moving cutoff
+
+\[
+U(m)=6\left(\frac{m}{1000}\right)^{1/16}.
+\tag{9.16}
+\]
+
+For a polynomial $P$, write
+
+\[
+\langle P\rangle_G=
+\frac1{\sqrt{2\pi}}\int_{\mathbb R}e^{-u^2/2}|P(u)|\,du.
+\]
+
+Let $\widehat H_s(u)$ be the positive formal majorants generated by
+
+\[
+\exp\left(\sum_{j=1}^{8}A_j(u)\varepsilon^j\right)
+=\sum_{s\ge0}\widehat H_s(u)\varepsilon^s.
+\]
+
+They satisfy the same recurrence (9.7) with $E_j$ replaced by $A_j$, and dominate the
+absolute coefficients of the exact $H_s(u,b)$.
+
+The normalized error in (9.2) is divided into the following six explicit majorants:
+
+\[
+E_{\mathrm{core}}(m)=
+\sum_{\substack{12\le s\le40\\s\ \mathrm{even}}}
+m^{-s/2}\langle \widehat H_s\rangle_G,
+\tag{9.17}
+\]
+
+\[
+E_{\mathrm{point}}(m)\le
+\frac{4U(m)}5
+\left[
+\exp\left(\sum_{j=1}^{8}A_j(U(m))m^{-j/2}\right)
+-\sum_{s=0}^{40}\widehat H_s(U(m))m^{-s/2}
+\right],
+\tag{9.18}
+\]
+
+and
+
+\[
+E_{\ge11}(m)\le
+\frac{20}{11(1-q_m)}
+\left(\frac{15}{8}\right)^{11}
+m^{-9/2}\mathbb E|Z|^{11},
+\qquad
+q_m=\frac{15U(m)}{8\sqrt m}.
+\tag{9.19}
+\]
+
+Here $Z$ is standard normal. The retained polynomial outside the core is bounded by
+
+\[
+E_{\mathrm{poly}}(m)\le
+\sum_{j=0}^{5}m^{-j}
+\sum_{\ell}|h_{2j,\ell}|
+\frac{2}{\sqrt{2\pi}}\int_{U(m)}^\infty
+u^\ell e^{-u^2/2}\,du,
+\tag{9.20}
+\]
+
+where $\widehat H_{2j}(u)=\sum_\ell h_{2j,\ell}u^\ell$. On $6\le|u|\le8$, the certified
+cumulant bounds sharpen (9.14) to $e^{-111u^2/250}$. Thus the remaining local Fourier
+tail is at most
+
+\[
+E_{\mathrm{near}}(m)\le
+\frac{2}{\sqrt{2\pi}}
+\left[
+\int_{U(m)}^{8}e^{-111u^2/250}\,du
++\int_{\max(U(m),8)}^\infty e^{-9u^2/32}\,du
+\right],
+\tag{9.21}
+\]
+
+with an empty first integral when $U(m)\ge8$. Finally, (9.15) and $\sigma<17$ give
+
+\[
+E_{\mathrm{far}}(m)\le
+\sigma\sqrt{2\pi m}\left(\frac{55}{64}\right)^{m/2}.
+\tag{9.22}
+\]
+
+All exponentials and Gaussian tails in (9.17)--(9.22) are bounded by rational Taylor or
+Mills majorants in the certificate. At $m=1000$, the contributions to a bound of the
+form $C/m$ are respectively
+
+\begin{center}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular}{@{}l r@{}}
+\toprule
+component & contribution to $C$ \\
+\midrule
+$E_{\mathrm{core}}$ & $0.0003482608957161$ \\
+$E_{\mathrm{point}}$ & $0.0005681456909691$ \\
+$E_{\ge11}$ & $0.0002847773304812$ \\
+$E_{\mathrm{poly}}$ & $0.0002761906358576$ \\
+first integral in $E_{\mathrm{near}}$ & $0.0000171697025750$ \\
+second integral in $E_{\mathrm{near}}$ & $0.0002701459962718$ \\
+$E_{\mathrm{far}}$ & $<2.1\times10^{-27}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The displayed entries are decimal approximations to exact rational upper bounds; their
+exact sum is $0.001764690251870703\ldots<0.001764690252$.
+
+The moving cutoff makes these endpoint bounds uniform. For (9.17), multiplying by $m$
+leaves powers $m^{1-s/2}$ with $s\ge12$. For the point tail, every omitted order
+$s\ge41$ has degree at most $3s$, so its worst scaling exponent after multiplication by
+$m$ is
+
+\[
+\frac{17}{16}-\frac{5s}{16}<0.
+\]
+
+In (9.19), $q_m$ is proportional to $m^{-7/16}$. For the polynomial Gaussian tail,
+the monomial $m^{-j}u^\ell$ has $\ell\le6j$. After multiplication by $m$, its worst
+logarithmic scaling exponent at the base cutoff $U=6$ is
+
+\[
+1-j+\frac{\ell-1}{16}-\frac{36}{16}
+\le\frac{-21-10j}{16}<0.
+\]
+
+The Mills bounds for (9.21) have the form $mU^{-1}e^{-cU^2}$ and decrease from
+$U=6$ or $U=8$; the transition occurs at
+
+\[
+m=\left\lceil1000(4/3)^{16}\right\rceil.
+\]
+
+The far bound decreases because its exponential factor dominates the square-root
+prefactor. These exact exponent checks prove
+
+\[
+\left|
+\overline p_m(b)-\left(1+\sum_{j=1}^{5}\frac{p_j(b)}{m^j}\right)
+\right|
+\le\frac{C}{m},
+\qquad
+C<0.001764690252,
+\tag{9.23}
+\]
+
+for every $m\ge1000$ and each of the three displacements.
+
+The retained probability polynomial differs from one by less than $0.009085849$, so the
+passage to logarithms increases the absolute probability error by less than a factor two.
+The absolute weights in the logarithmic combination are $2+1+1=4$, and the smallest
+sample size is $k-1$; the Fourier contribution is therefore at most $8C/(k-1)$. The
+tails from the logarithm series, re-expansion of $(k\pm1)^{-j}$, normalizing factors, and
+(6.4) all begin at order $k^{-6}$ and are separately bounded by rational geometric
+majorants. At $k=1001$ their total, together with the Fourier contribution, is
+
+\[
+|R_k|<1.419319083\times10^{-5}.
+\tag{9.24}
+\]
+
+The right side of (8.11) is greater than
+
+\[
+2.991014967\times10^{-5}.
+\tag{9.25}
+\]
+
+After multiplication by $k$, every error term just listed is nonincreasing, whereas
+(8.11) is increasing. Therefore $\Delta(k,\mu)>0$ throughout the compact band for every
+$k\ge1001$.
+
+\section{Certified finite prefix and completion of the proof}
+
+
+It remains to cover the compact band for $2\le k\le1000$. Let
+
+\[
+c(k,d)=5^kB(k,d).
+\]
+
+It satisfies the positive recurrence
+
+\[
+(d+5k)c(k,d)=(d-1+5k)c(k,d-1)+5k\,c(k-1,d),
+\qquad
+c(k,0)=1.
+\tag{10.1}
+\]
+
+A 40-digit decimal computation with an explicit relative-error recurrence checks every
+point
+
+\[
+2\le k\le1000,
+\qquad
+\frac{k}{2}<d<12k.
+\tag{10.2}
+\]
+
+There are $5,754,989$ such inequalities. The propagated relative distortion is less than
+$10^{-30}$. The smallest computed relative margin is
+
+\[
+0.000032205417799388957039776739958609472
+\]
+
+at $(k,d)=(1000,1868)$, which is larger than both the rounding budget and the acceptance
+threshold $10^{-25}$. Thus every inequality in (10.2) is strict.
+
+We can now prove Theorem 6.1. The region $k\ge2d$ is covered by (7.13), and the region
+$d\ge12k$ by (7.14). The remaining compact band is covered by the certified finite prefix
+when $k\le1000$ and by the effective Fourier estimate when $k\ge1001$. The cases
+$k=0,1$, $d=0$, and the right boundary are elementary; $k=2$ is included by its
+independent exact proof. These regions contain every admissible pair $(n,k)$ and give
+strictness whenever all three neighboring terms are positive. $\square$
+
+Combining Theorems 3.1, 4.1, and 6.1 with the known $r=1,2$ cases proves the positive
+direction of Theorem 1.1. Proposition 5.1 proves the converse.
+
+\section{Reproducibility and proof boundary}
+
+
+The proof has three kinds of evidence, which should not be conflated.
+
+\begin{enumerate}
+\item Sections 2--5 are ordinary symbolic proofs. The accompanying scripts independently
+regenerate the rational identities and coefficient signs.
+\item Lemmas 7.1--7.3 and the coefficient inequalities (8.8)--(8.10) are finite symbolic
+certificates. Their programs reconstruct the relevant rational functions and verify all
+shifted monomial or Bernstein coefficients exactly.
+\item Section 10 is an exhaustive finite computation with a proved rounding budget. It is
+used only for the explicit prefix (10.2). Section 9 proves the infinite remainder.
+
+\end{enumerate}
+
+The complete internal verification map, interpreter versions, commands, expected terminal
+markers, and SHA-256 hashes are recorded in
+\texttt{verification/README.md}. The entry points are:
+
+\begin{itemize}
+\item \texttt{verification/\allowbreak{}verify\_\allowbreak{}normalized\_\allowbreak{}logconcavity.py};
+\item \texttt{verification/\allowbreak{}verify\_\allowbreak{}r4\_\allowbreak{}weighted\_\allowbreak{}cone.py};
+\item \texttt{verification/\allowbreak{}verify\_\allowbreak{}two\_\allowbreak{}step\_\allowbreak{}lc\_\allowbreak{}preserver.py};
+\item \texttt{verification/\allowbreak{}verify\_\allowbreak{}small\_\allowbreak{}excess\_\allowbreak{}strips.py};
+\item \texttt{verification/\allowbreak{}verify\_\allowbreak{}sparse\_\allowbreak{}cycle\_\allowbreak{}k2.py};
+\item \texttt{verification/\allowbreak{}verify\_\allowbreak{}saddle\_\allowbreak{}curvature.py};
+\item \texttt{verification/\allowbreak{}verify\_\allowbreak{}bulk\_\allowbreak{}edgeworth\_\allowbreak{}margin.py};
+\item \texttt{verification/\allowbreak{}verify\_\allowbreak{}bulk\_\allowbreak{}second\_\allowbreak{}order\_\allowbreak{}margin.py};
+\item \texttt{verification/\allowbreak{}verify\_\allowbreak{}bulk\_\allowbreak{}third\_\allowbreak{}order\_\allowbreak{}margin.py};
+\item \texttt{verification/\allowbreak{}verify\_\allowbreak{}bulk\_\allowbreak{}fourth\_\allowbreak{}order\_\allowbreak{}margin.py};
+\item \texttt{verification/\allowbreak{}verify\_\allowbreak{}bulk\_\allowbreak{}fifth\_\allowbreak{}order\_\allowbreak{}margin.py};
+\item \texttt{verification/\allowbreak{}verify\_\allowbreak{}renewal\_\allowbreak{}reformulation.py};
+\item \texttt{verification/\allowbreak{}verify\_\allowbreak{}low\_\allowbreak{}cumulant\_\allowbreak{}envelope.py};
+\item \texttt{verification/\allowbreak{}verify\_\allowbreak{}characteristic\_\allowbreak{}tail\_\allowbreak{}constants.py};
+\item \texttt{verification/\allowbreak{}verify\_\allowbreak{}effective\_\allowbreak{}fourier\_\allowbreak{}remainder.py};
+\item \texttt{verification/\allowbreak{}verify\_\allowbreak{}bulk\_\allowbreak{}finite\_\allowbreak{}prefix.py}.
+
+\end{itemize}
+
+The reference environment is CPython 3.13.11 with SymPy 1.14.0. The aggregate PowerShell
+runner accepts an explicit Python interpreter and executes every program from the published
+\texttt{verification} directory.
+The fifth-order Bernstein certificate is the slowest symbolic step and required about
+27 minutes in the recorded audit environment. Runtime is not part of the mathematical
+claim.
+
+The machine checks establish the stated algebraic and finite inequalities, conditional on
+the correctness of the reductions and implementations. Sections 7 and 9 state the human
+reductions that connect those inequalities to Theorem 6.1; the programs reconstruct their
+rational certificates. These remain separate audit obligations. No claim of real-rootedness,
+total positivity, or Hankel-total positivity for the $r=3,4,5$ rows is made here.
+
+\section{AI-assisted research and writing disclosure}
+
+
+Carptopus is the author and is responsible for the mathematical claims, source selection,
+verification materials, and publication decisions. OpenAI Codex was used to assist with
+symbolic exploration, exact verification programs, proof checking, literature searches, and
+drafting. All theorem statements and proof dependencies were reviewed against the archived
+source and verification materials before this draft was prepared.
+
+\begin{thebibliography}{9}
+
+\bibitem{deb-sokal}
+B.~Deb and A.~D. Sokal,
+\emph{Higher-order Stirling cycle and subset triangles: Total positivity,
+continued fractions and real-rootedness},
+arXiv:2507.18959v1 (2025).
+\href{https://arxiv.org/abs/2507.18959}{arXiv:2507.18959}.
+
+\bibitem{bcc30}
+P.~J. Cameron, ed.,
+\emph{Problems from BCC30}, Problem 30.9,
+arXiv:2409.07216 (2024).
+\href{https://arxiv.org/abs/2409.07216}{arXiv:2409.07216}.
+
+\bibitem{sagan}
+B.~E. Sagan,
+\emph{Inductive and injective proofs of log concavity results},
+Discrete Mathematics \textbf{68} (1988), 281--292.
+\href{https://doi.org/10.1016/0012-365X(88)90116-4}{doi:10.1016/0012-365X(88)90116-4}.
+
+\end{thebibliography}
+
+\end{document}
