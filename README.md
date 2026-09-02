@@ -13,6 +13,7 @@ an exact minimum degree and a complete classification of the equality case.
 
 | Entry | Areas | Contribution | Public version | Status |
 | --- | --- | --- | --- | --- |
+| [Small exact values and a dense-anchor bound for weak cube saturation](research/small-exact-values-dense-anchor-weak-cube-saturation/README.md)<br>[PDF](research/small-exact-values-dense-anchor-weak-cube-saturation/small-exact-values-dense-anchor-weak-cube-saturation.pdf) · [BibTeX](research/small-exact-values-dense-anchor-weak-cube-saturation/CITATION.bib) | Weak saturation, hypercubes, extremal graph theory, exhaustive enumeration | Determines `wsat(K8,Q3)=15`, `wsat(K9,Q3)=16`, and `wsat(K10,Q3)=18`; corrects the reported order-nine value, disproves the associated `2n-1` proposal, and proves the general upper bound `wsat(K_n,Q3)<=floor((7n+2)/4)` for `n>=9` | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Finite-field basis obstructions for zero link Turán density](research/finite-field-basis-obstructions-zero-link-turan-density/README.md)<br>[PDF](research/finite-field-basis-obstructions-zero-link-turan-density/finite-field-basis-obstructions-zero-link-turan-density.pdf) · [BibTeX](research/finite-field-basis-obstructions-zero-link-turan-density/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22253788) | Hypergraph Turán theory, link Turán density, finite fields, hypergraph homomorphisms | Proves a general finite-field basis-homomorphism obstruction giving an explicit positive link Turán density, and constructs two six-vertex three-graphs whose vertex links are all tripartite but whose link Turán densities are positive | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Connected Peck posets with non-log-concave antichain polynomials](research/connected-peck-antichain-counterexamples/README.md)<br>[PDF](research/connected-peck-antichain-counterexamples/connected-peck-antichain-counterexamples.pdf) · [BibTeX](research/connected-peck-antichain-counterexamples/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22252966) | Posets, Peck posets, antichain polynomials, log-concavity | Constructs an infinite family of finite connected height-one Peck posets with non-log-concave antichain polynomials for every parameter $a\ge7$, disproving Ding--Dong Conjecture C | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Exact first separation in the Thue--Morse run-length sequence](research/thue-morse-run-separation/README.md)<br>[PDF](research/thue-morse-run-separation/exact-first-separation-thue-morse.pdf) · [BibTeX](research/thue-morse-run-separation/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22251625) | Automatic sequences, Thue--Morse sequence, Jacobsthal representations, 2-kernels | Determines for every $q\ge2$ the exact first separation of $d(2^{q+2}n)$ and $d(2^qn)$, extends it along arbitrary ratio-four scale distances, and gives an exact infinite multiplier family governed by multiplicative orders | v0.1-beta | Internally verified candidate proof; external review pending |
@@ -51,6 +52,33 @@ an exact minimum degree and a complete classification of the equality case.
 | [Tail-projection certificates for cyclotomic minimum-degree polynomials beyond the reciprocal condition](research/cyclotomic-tail-projection-families/README.md)<br>[PDF](research/cyclotomic-tail-projection-families/cyclotomic-tail-projection-families.pdf) · [BibTeX](research/cyclotomic-tail-projection-families/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22127365) | Cyclotomic polynomials, nonnegative coefficients, CRT tensor projections, prime tuples | Gives an explicit sufficient condition for every fixed number of at least four prime factors and proves infinite families beyond Steinberger's reciprocal condition | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
+
+### Small exact values and a dense-anchor bound for weak cube saturation
+
+For the three-dimensional cube `Q3`, the manuscript proves
+
+$$
+\mathrm{wsat}(K_8,Q_3)=15,
+\qquad
+\mathrm{wsat}(K_9,Q_3)=16,
+\qquad
+\mathrm{wsat}(K_{10},Q_3)=18.
+$$
+
+The order-nine value corrects a reported value of 17 and disproves the associated proposal
+`wsat(K_n,Q3)=2n-1`. A certified 28-edge graph on 11 vertices with a complete seven-vertex anchor
+gives a four-vertex extension of cost seven and hence
+
+$$
+\mathrm{wsat}(K_n,Q_3)
+\le \left\lfloor\frac{7n+2}{4}\right\rfloor
+\qquad(n\ge9).
+$$
+
+The verification package includes complete normalized enumerations, independent graph-structural
+checks, and four edge-by-edge activation certificates.
+
+- [Manuscript and verification materials](research/small-exact-values-dense-anchor-weak-cube-saturation/README.md)
 
 ### Finite-field basis obstructions for zero link Turán density
 

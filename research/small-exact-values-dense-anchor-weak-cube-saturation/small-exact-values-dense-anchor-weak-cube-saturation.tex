@@ -1,0 +1,315 @@
+% Generated deterministically from the audited Markdown source.
+% Responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor}
+\usepackage{fvextra}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{xurl}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\numberwithin{equation}{section}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Weak cube saturation}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.42em}
+\setlength{\emergencystretch}{4em}
+\urlstyle{same}
+
+\title{Small exact values and a dense-anchor bound\\for weak cube saturation}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{Manuscript, 2 September 2026}
+
+\hypersetup{
+  pdftitle={Small exact values and a dense-anchor bound for weak cube saturation},
+  pdfauthor={Carptopus},
+  pdfsubject={Exact weak saturation values for Q3 and a dense-anchor recurrence},
+  pdfkeywords={weak saturation, hypercube, Q3, complete graph, exhaustive enumeration, dense-anchor gluing}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fcolorbox{black!35}{black!4}{\parbox{0.88\textwidth}{\centering\small
+Internally verified candidate manuscript, version 0.1-beta. The mathematical claims and the
+complete manuscript have passed project-internal zero-trust audits; external review is pending.}}
+\end{center}
+
+\begin{abstract}
+
+
+We study the weak saturation number of the three-dimensional cube $Q_3$ in the complete graph. By
+normalizing the first activated copy of $Q_3$, we determine
+
+\[
+\mathrm{wsat}(K_8,Q_3)=15,\qquad
+\mathrm{wsat}(K_9,Q_3)=16,\qquad
+\mathrm{wsat}(K_{10},Q_3)=18.
+\]
+
+The value at $n=9$ corrects a reported value of 17 and disproves the associated conjecture
+$\mathrm{wsat}(K_n,Q_3)=2n-1$. We also give an explicit 28-edge weakly saturated graph on 11
+vertices containing a complete seven-vertex anchor. It yields
+
+\[
+\mathrm{wsat}(K_{N+4},Q_3)\leq\mathrm{wsat}(K_N,Q_3)+7
+\]
+
+and hence $\mathrm{wsat}(K_n,Q_3)\leq\lfloor(7n+2)/4\rfloor$ for $n\geq9$. Combined with a
+known combinatorial lower bound, this gives $11/7\leq c_{Q_3}\leq7/4$.
+
+\end{abstract}
+
+\section{Weak saturation and the first cube}
+
+
+A spanning subgraph $H\subseteq K_n$ is weakly $Q_3$-saturated if the missing edges can be added
+one at a time so that each added edge completes a new copy of $Q_3$. Let
+$\mathrm{wsat}(K_n,Q_3)$ be the minimum initial number of edges.
+We use the standard convention that the initial graph need not be $Q_3$-free. Our explicit upper
+witnesses satisfy the stronger free condition, while the lower-bound searches do not assume it;
+therefore the values below are unchanged under the stricter convention.
+
+Consider the first edge in any valid activation order. Before it is added, the initial graph already
+contains all eleven other edges of a copy of $Q_3$. Since $Q_3$ is edge-transitive, this first
+$Q_3-e$ witness may be fixed, up to isomorphism, on eight labelled vertices. Therefore an exact
+search at a proposed edge count only needs to enumerate choices outside one fixed 11-edge core.
+
+\begin{theorem}
+
+
+\[
+\mathrm{wsat}(K_8,Q_3)=15,\qquad
+\mathrm{wsat}(K_9,Q_3)=16,\qquad
+\mathrm{wsat}(K_{10},Q_3)=18.
+\tag{1}
+\]
+
+\end{theorem}
+
+\begin{proof}
+
+
+For $n=8$, exhaustive enumeration of the normalized 11-edge core plus zero through three
+additional edges rules out edge counts 11 through 14; a 15-edge witness closes to $K_8$.
+
+For $n=9$, all normalized candidates through 15 edges were checked, and none closes. A 16-edge
+witness has a 20-step activation certificate closing it to $K_9$.
+
+For $n=10$, any weakly saturated initial graph must be biconnected: adding an edge inside a copy of
+$Q_3-e$ cannot merge distinct blocks because $Q_3-e$ is biconnected, while the final graph is
+biconnected. Filtering by this necessary condition, all normalized candidates through 17 edges were
+exhausted. None closes, while an independently verified 18-edge witness closes to $K_{10}$.
+
+The evidence layers are separate. The normalized candidate enumeration is implemented once by
+{\small\path{exact_first_cube_enumeration.py}}; the cube edge orbit and the biconnectivity condition are checked
+independently with NetworkX; and the $K_9$, $K_{10}$, $K_{11}/K_7$ and $K_{12}$ upper witnesses
+are stored as edge-by-edge certificates and replayed by a second NetworkX implementation. In
+particular, the 18-edge $K_{10}$ witness has a 27-step certificate closing it to all 45 edges.
+This establishes (1).
+\end{proof}
+
+
+A 2025 PCMI report~\cite{pcmi-q3} gave the correct value 15 at $n=8$ but reported 17 at $n=9$ and conjectured
+$2n-1$ for all $n\geq8$. The certified 16-edge graph corrects that value and disproves the
+conjecture. We do not identify the unreported program error.
+
+\section{Dense-anchor gluing}
+
+
+\begin{lemma}
+
+
+Let $B$ be weakly $Q_3$-saturated on $b$ vertices, and let $A\subseteq V(B)$ have size
+$s\geq2$. Put
+
+\[
+c(B,A)=|E(B)|-|E(B[A])|.
+\]
+
+For every $N\geq\max\{8,s\}$,
+
+\[
+\mathrm{wsat}(K_{N+b-s},Q_3)
+\leq\mathrm{wsat}(K_N,Q_3)+c(B,A).
+\tag{2}
+\]
+
+\end{lemma}
+
+\begin{proof}
+
+
+Identify $A$ with $s$ vertices of a weakly saturated graph on the old $N$ vertices. Add the
+$b-s$ new vertices and precisely the edges of $B$ having at least one new endpoint. First close the
+old graph to $K_N$. All edges inside $A$ are then available, so the copy of $B$ can be closed to
+$K_b$.
+
+Choose distinct anchors $a_1,a_2\in A$. For a new vertex $p$ and an old vertex $x$ still not
+adjacent to it, use $p$ as one cube vertex and $x,a_1,a_2$ as its three neighbours. Four further
+old vertices complete a cube. Every required edge except $px$ is already present, because the old
+vertices form a clique and $pa_1,pa_2$ are present after the $K_b$ closure. Thus all cross edges
+may be added. The number of initially paid edges is $c(B,A)$.
+\end{proof}
+
+
+\section{A seven-edge four-vertex extension}
+
+
+Let $A=\{0,1,\ldots,6\}$ span $K_7$. Add four new vertices $7,8,9,10$, the path
+
+\[
+7-8-9-10,
+\]
+
+and the four spokes
+
+\[
+3-7,\qquad4-8,\qquad0-9,\qquad5-10.
+\]
+
+Together with the 21 anchor edges, this is a 28-edge graph $B\subset K_{11}$. An explicit
+edge-by-edge certificate verifies that it is weakly $Q_3$-saturated and initially $Q_3$-free.
+Here $b=11$, $s=7$, and $c(B,A)=7$. Lemma 2 gives
+
+\[
+\mathrm{wsat}(K_{N+4},Q_3)
+\leq\mathrm{wsat}(K_N,Q_3)+7
+\qquad(N\geq8).
+\tag{3}
+\]
+
+Using the exact seeds at $n=9,10$, a 19-edge seed at $n=11$, and a certified 21-edge seed at
+$n=12$, the four residue classes in (3) yield:
+
+\begin{theorem}
+
+
+For every $n\geq9$,
+
+\[
+\mathrm{wsat}(K_n,Q_3)
+\leq\left\lfloor\frac{7n+2}{4}\right\rfloor.
+\tag{4}
+\]
+
+In particular,
+
+\[
+c_{Q_3}:=\lim_{n\to\infty}\frac{\mathrm{wsat}(K_n,Q_3)}n\leq\frac74.
+\]
+
+\end{theorem}
+
+Terekhov and Zhukovskii's Theorem~2.1~\cite{tz-combinatorial} uses the costs
+
+\[
+(e_1,\ldots,e_7)=(2,4,6,7,9,10,11)
+\]
+
+for $Q_3$. Its minimum additive closure has period seven: if $n-8=7q+r$ with
+$0\leq r<7$, then
+
+\[
+\mathrm{wsat}(K_n,Q_3)\geq11+11q+h_r,
+\qquad(h_0,\ldots,h_6)=(0,2,4,6,7,9,10).
+\]
+
+The standard gluing/subadditivity argument recorded in their Section 2 gives the existence of
+$c_{Q_3}$. The seven-periodic formula follows by checking the seven residue classes in the
+min-plus recurrence for the costs $e_i$; taking $q$ parts of size seven and one remainder part
+attains the resulting lower bound. Hence the displayed specialization yields
+$c_{Q_3}\geq11/7$, and
+
+\[
+\frac{11}{7}\leq c_{Q_3}\leq\frac74.
+\tag{5}
+\]
+
+The lower bound in (5) is prior work, not a contribution of this note.
+
+\section{Reproducibility}
+
+
+The checks use Python 3.13.11 and NetworkX 3.6.1 from the project environment. From the project
+root, the exact lower-bound searches are
+
+\begin{Verbatim}[fontsize=\scriptsize,breaklines=true,breakanywhere=true]
+.venv\Scripts\python.exe loops\MATH-DIR-0053\verification\exact_first_cube_enumeration.py --n 8 --maximum-edges 15
+.venv\Scripts\python.exe loops\MATH-DIR-0053\verification\exact_first_cube_enumeration.py --n 9 --maximum-edges 16
+.venv\Scripts\python.exe loops\MATH-DIR-0053\verification\exact_first_cube_enumeration.py --n 10 --maximum-edges 17 --structural-filter
+\end{Verbatim}
+
+
+Through the last excluded edge count, these enumerate respectively 697, 12,951 and 1,391,842
+normalized candidates; in the $n=10$ case the proved biconnectivity filter leaves 301,000 candidates
+for closure testing. The complete result files are {\small\path{exact-first-cube-n8.json}},
+{\small\path{exact-first-cube-n9.json}}, and {\small\path{exact-first-cube-n10.json}} in
+{\small\path{loops/MATH-DIR-0053/verification/results/}}.
+
+The $K_9$, $K_{10}$, $K_{11}/K_7$, and $K_{12}$ upper certificates are independently replayed by
+
+\begin{Verbatim}[fontsize=\scriptsize,breaklines=true,breakanywhere=true]
+.venv\Scripts\python.exe loops\MATH-DIR-0053\verification\audit_activation_certificate.py <certificate.json>
+\end{Verbatim}
+
+
+using the four certificate files in the same results directory. The complete command list and the
+logical boundary between exhaustive search, structure checks, and certificate replay are recorded
+in {\small\path{loops/MATH-DIR-0053/verification/README.md}}.
+
+\section{Scope}
+
+
+The note does not determine $\mathrm{wsat}(K_n,Q_3)$ for every $n$, nor the exact asymptotic
+constant. Overlapping-block gluing is also present in earlier weak-saturation work; the claimed
+increment is the concrete complete-anchor lemma, the certified $K_{11}/K_7$ block, the resulting
+$7/4$ upper bound, and the corrected exact values.
+
+An attempted extension did not improve either side of (5). In particular, the standard
+single-interface reuse of the certified 21-edge $K_{12}$ seed costs two edges per new vertex, and a
+uniform sparsity-matroid lower-bound scheme is capped at slope $11/7$. These are stopping results,
+not stronger bounds.
+
+\begin{thebibliography}{9}
+\footnotesize
+\raggedright
+
+\bibitem{tz-combinatorial}
+N.~Terekhov and M.~Zhukovskii,
+\emph{Weak saturation in graphs: a combinatorial approach},
+Journal of Combinatorial Theory, Series B \textbf{172} (2025), 146--167.
+\href{https://arxiv.org/abs/2305.11043}{arXiv:2305.11043}.
+
+\bibitem{tz-rank}
+N.~Terekhov and M.~Zhukovskii,
+\emph{Weak saturation rank: a failure of linear algebraic approach to weak saturation},
+\href{https://arxiv.org/abs/2405.17857}{arXiv:2405.17857}.
+
+\bibitem{pcmi-q3}
+T.~Trakulthongchai, D.~Xu and K.~Zhu,
+\emph{Weak saturation number of the 3-cube in the complete graph},
+Park City Mathematics Institute, Summer 2025.
+\url{https://www.ias.edu/sites/default/files/Trakulthongchai_Xu_Zhu.pdf}.
+
+\end{thebibliography}
+
+\paragraph{AI-assisted research and writing disclosure.}
+Carptopus is the author responsible for the mathematical claims and the public version of this
+manuscript. OpenAI Codex was used as an AI-assisted tool for literature organization, proof
+development and stress testing, exact verification, adversarial auditing, and manuscript
+preparation.
+
+\end{document}
