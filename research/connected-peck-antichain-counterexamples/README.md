@@ -9,7 +9,9 @@
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
 - Contact: [carptopus@163.com](mailto:carptopus@163.com)
-- Candidate version: v0.1-beta (2 September 2026)
+- Public version: v0.1-beta (2 September 2026)
+- DOI: [10.5281/zenodo.22252966](https://doi.org/10.5281/zenodo.22252966)
+- Concept DOI: [10.5281/zenodo.22252965](https://doi.org/10.5281/zenodo.22252965)
 - Public repository: [MathExplore-Notes](https://github.com/Carptopus/MathExplore-Notes/tree/master/research/connected-peck-antichain-counterexamples)
 - Manuscript and documentation license: [CC BY 4.0](LICENSE.md)
 - Verification-code license: [MIT](verification/LICENSE-CODE-MIT.txt)
