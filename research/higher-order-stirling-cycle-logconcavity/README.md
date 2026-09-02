@@ -5,7 +5,8 @@
 - [Read or download the PDF](higher-order-stirling-cycle-logconcavity.pdf)
 - [LaTeX source](higher-order-stirling-cycle-logconcavity.tex)
 - [BibTeX citation](CITATION.bib)
-- DOI: pending publication deposit
+- Current version DOI: [10.5281/zenodo.22244404](https://doi.org/10.5281/zenodo.22244404)
+- Concept DOI: [10.5281/zenodo.22244403](https://doi.org/10.5281/zenodo.22244403)
 - [Verification programs](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
