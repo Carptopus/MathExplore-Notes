@@ -9,12 +9,16 @@
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
 - Contact: [carptopus@163.com](mailto:carptopus@163.com)
-- Candidate version: v0.1-beta (2 September 2026)
+- Public version: v0.1-beta (2 September 2026)
+- DOI: [10.5281/zenodo.22251625](https://doi.org/10.5281/zenodo.22251625)
+- Concept DOI: [10.5281/zenodo.22251624](https://doi.org/10.5281/zenodo.22251624)
+- Public repository: [MathExplore-Notes](https://github.com/Carptopus/MathExplore-Notes/tree/master/research/thue-morse-run-separation)
 - Manuscript and documentation license: [CC BY 4.0](LICENSE.md)
 - Verification-code license: [MIT](verification/LICENSE-CODE-MIT.txt)
 
-Status: internally verified v0.1-beta release candidate; manuscript audit, complete verification
-rerun, and seven-page PDF artifact audit PASS. External publication is not authorized.
+Status: internally verified public Beta v0.1; manuscript audit, complete verification rerun,
+seven-page PDF artifact audit, GitHub remote audit, and Zenodo post-publication audit PASS.
+External review remains pending.
 
 ## Main result
 
