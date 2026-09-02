@@ -1,0 +1,485 @@
+% Generated deterministically from the audited Markdown source.
+% Responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{xurl}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Odd-dimensional RM2 descent obstructions}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.42em}
+\setlength{\emergencystretch}{4em}
+\urlstyle{same}
+
+\title{Odd-dimensional descent obstructions\\
+in the third support spectrum of binary second-order Reed--Muller codes}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{Manuscript, 2 September 2026}
+
+\hypersetup{
+  pdftitle={Odd-dimensional descent obstructions in the third support spectrum of binary second-order Reed-Muller codes},
+  pdfauthor={Carptopus},
+  pdfsubject={A local parity band and infinite descent obstructions in the third RM2 support spectrum},
+  pdfkeywords={Reed-Muller codes, higher support spectrum, quadratic Boolean functions, Walsh transform, Fano plane, Pfaffian}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fcolorbox{black!35}{black!4}{\parbox{0.88\textwidth}{\centering\small
+Internally verified candidate manuscript, version 0.1-beta. The mathematical claims and the
+complete manuscript have passed project-internal zero-trust audits; external review is pending.}}
+\end{center}
+
+\begin{abstract}
+
+
+Let $\mathcal S_n^{(3)}$ be the support spectrum of three-dimensional subcodes of the binary
+second-order Reed--Muller code $RM_2(2,n)$. We prove that the tempting descent relation
+$\mathcal S_{2m+1}^{(3)}=2\mathcal S_{2m}^{(3)}$ fails for every $m\geq5$, by an explicit
+infinite family. More generally, after normalizing the seven zero-frequency Walsh coefficients of
+a quadratic net, we classify an exponentially widening band around the aggregate value
+$3\cdot2^{m-1}$. For every $m\geq6$ and every odd $c$ with $|c|<2^{m-4}$, the value
+$3\cdot2^{m-1}+c$ is attainable in odd dimension if and only if
+$c\in\{\pm1,\pm3,\pm5\}$, and no value in the same band is attainable in even dimension.
+The proof combines explicit quadratic nets with Fano-plane half-rank propagation and scalar and
+vector maximal-Pfaffian identities. This is a local parity classification, not a determination of
+the complete third support spectrum.
+
+\end{abstract}
+
+\section{Introduction}
+
+
+For a binary linear code $C\subseteq\mathbb F_2^N$ and a subcode $D\leq C$, the support of $D$
+is the union of the supports of its codewords. Put
+
+\[
+\mathcal S_n^{(3)}=
+\{|\operatorname{Supp}(D)|:D\leq RM_2(2,n),\ \dim D=3\}.
+\]
+
+Earlier work determined several exact regions of this spectrum, including the values for
+$2\leq n\leq9$, two sharp all-dimensional gaps, a near-full interval, and a low-polar-rank
+recursion \cite{rm2regions}. A second companion paper classifies the labelled Fano half-rank profiles of
+three-parameter alternating nets and their minimum dimensions \cite{fanoprofiles}; for the wider higher-weight
+spectrum context, see \cite{higherweights}. The systems isolated below all contain nonzero-Walsh polar-rank-two
+directions and therefore lie inside the complete finite recursion of \cite[Theorem 6.1]{rm2regions}. The new
+increment is not a previously uncovered stratum: it is a closed-form all-parameter extraction from
+that recursion, together with a direct proof, an exact local parity band and an infinite descent
+obstruction. Neither earlier paper states these conclusions.
+
+The first new phenomenon is an infinite family of odd-dimensional supports whose halves are
+forbidden one dimension lower. The stronger result shows that this is not an isolated ray: in a
+band whose width grows exponentially with dimension, exactly six odd-dimensional offsets survive
+once $m\geq7$, whereas the entire even-dimensional band is empty. At $m=6$, the band itself
+contains four of them and a separate endpoint argument supplies the remaining two.
+
+\section{Walsh aggregates and support sizes}
+
+
+Let $D=\langle f_1,f_2,f_3\rangle$ be a three-dimensional quadratic subcode and write
+
+\[
+f_a=a_1f_1+a_2f_2+a_3f_3,
+\qquad a\in\mathbb F_2^3\setminus\{0\}.
+\]
+
+For a Boolean function $f$ on $\mathbb F_2^n$, let
+
+\[
+W_f(0)=\sum_{x\in\mathbb F_2^n}(-1)^{f(x)}.
+\]
+
+Character orthogonality gives
+
+\[
+|\operatorname{Supp}(D)|
+=7\cdot2^{n-3}-\frac18\sum_{a\ne0}W_{f_a}(0).
+\tag{1}
+\]
+
+For even and odd dimensions define
+
+\[
+\begin{aligned}
+\mathcal K_m^{\rm ev}
+&=\left\{\sum_{a\ne0}2^{-m}W_{f_a}(0):
+ D\leq RM_2(2,2m),\ \dim D=3\right\},\\
+\mathcal K_m^{\rm odd}
+&=\left\{\sum_{a\ne0}2^{-(m+1)}W_{f_a}(0):
+ D\leq RM_2(2,2m+1),\ \dim D=3\right\}.
+\end{aligned}
+\tag{2}
+\]
+
+Thus the same normalized aggregate $K$ gives the odd support
+
+\[
+7\cdot2^{2m-2}-2^{m-2}K
+\tag{3}
+\]
+
+and, if attainable, the even support
+
+\[
+7\cdot2^{2m-3}-2^{m-3}K,
+\tag{4}
+\]
+
+which is exactly half of (3).
+
+Let $B_a$ be the polar form of $f_a$ and put
+$h_a=\operatorname{rank}(B_a)/2$. On every Fano line $\{a,b,a+b\}$,
+
+\[
+|h_a-h_b|\leq h_{a+b}\leq h_a+h_b.
+\tag{5}
+\]
+
+When equality holds on the right and all three Walsh sums are nonzero, quadratic Gauss-sum
+multiplication fixes their relative signs. In the normalization (2), every coordinate lies in
+
+\[
+E_m=\{0,-2^m\}\cup\{\pm2^j:0\leq j<m\}.
+\tag{6}
+\]
+
+The value $+2^m$ would come from the zero Boolean function. It cannot occur at a nonzero parameter
+$a$ because $f_1,f_2,f_3$ are linearly independent; the constant-one function accounts for the
+possible value $-2^m$.
+
+These elementary restrictions are the input to the classification below.
+
+\section{The local parity band}
+
+
+Put $A=2^{m-1}$.
+
+\begin{theorem}
+
+
+For every $m\geq6$ and every odd integer $c$ satisfying $|c|<A/8$,
+
+\[
+3A+c\in\mathcal K_m^{\rm odd}
+\quad\Longleftrightarrow\quad
+c\in\{-5,-3,-1,1,3,5\},
+\tag{7}
+\]
+
+whereas
+
+\[
+3A+c\notin\mathcal K_m^{\rm ev}
+\tag{8}
+\]
+
+for every such $c$.
+
+We first reduce all possible seven-coordinate patterns.
+
+\end{theorem}
+
+\begin{lemma}
+
+
+Suppose seven values in $E_m$ have sum $3A+c$, satisfy (5) and the equality-sign rule, and
+$m\geq6$, $c$ is odd, and $|c|<A/8$. Then exactly three coordinates equal $+A$; they form a
+Fano line. The other four coordinates lie in $\{0,\pm1,\pm2\}$, and consequently
+$c\in\{\pm1,\pm3,\pm5,\pm7\}$.
+
+\end{lemma}
+
+\begin{proof}
+
+
+Let $q$ be the number of coordinates equal to $+A$.
+
+If $q=0$, let $r$ count the $+A/2$ coordinates. For $r\leq4$ the total is at most
+$11A/4<3A+c$. For $r=5$, the remaining two coordinates can reach the required total only at the
+excluded central value $c=0$; dropping either coordinate to the next binary layer loses at least
+$A/8$. If $r=6$, the last coordinate would equal the odd number $c$, so only $c=\pm1$ is
+compatible with (6). Its half-rank is $m$, while the other six have half-rank two; expressing the
+exceptional Fano point as a sum of two of the other points contradicts (5). The case $r=7$ is
+immediate.
+
+If $q=1$, call the unique point $p$. Translation by $p$ partitions the remaining six points into
+three pairs. Their total is the odd number $2A+c$, so one pair contains a coordinate of absolute
+value one. That pair contributes at most three, while each other pair contributes at most $A$.
+If $c>3$, this upper bound is already smaller than $2A+c$. If $c\leq3$, the hypothesis
+$|c|<A/8$ forces the four points in the two high pairs to equal $+A/2$;
+otherwise one binary-layer drop is already too large. The two cross-sums of these points form the
+third pair and have half-rank at most four, contradicting the full-rank coordinate in that pair.
+
+If $q=2$, the sum of the two $+A$ points has half-rank at most two and contributes at most $A/2$.
+The complementary affine plane contains a full-rank point, and repeated use of (5) bounds the sum
+of the absolute values on that plane by nine. But $A/2+9<A+c$ for $A\geq32$, a contradiction.
+
+If $q\geq4$, four rank-two points and their pairwise sums cover the Fano plane. Hence every
+half-rank is at most two and the total is divisible by $A/2$, contrary to the odd offset $c$.
+
+It remains that $q=3$. Any additional coordinate of half-rank at most one would again propagate
+to four low-rank points and force the preceding divisibility contradiction. If the three $+A$
+points are not collinear, all four remaining values are multiples of $A/4$, again impossible for
+odd $c$. They therefore form a line. Any two points in the complementary affine plane sum to a
+point of this line, so their half-ranks differ by at most one. Since their sum $c$ is odd, one is
+full rank; all four half-ranks are consequently $m-1$ or $m$, and their values belong to
+$\{0,\pm1,\pm2\}$. Their odd sum has absolute value at most eight, giving the asserted eight
+possibilities.
+\end{proof}
+
+
+Two Pfaffian identities eliminate the two extreme offsets and separate the parities. In even
+dimension, if $R,S,R+S$ all have rank at most two, the maximal Pfaffian restricted to the affine
+plane $C+\langle R,S\rangle$ is affine linear. It is therefore nonzero at zero, two, or four
+points. In odd dimension $2m+1$, define the maximal-Pfaffian vector
+
+\[
+P(C)=\bigl(\operatorname{Pf}(C_{\widehat i})\bigr)_{i=1}^{2m+1}.
+\]
+
+The same rank-two update argument, applied coordinatewise, gives
+
+\[
+P(C+R)+P(C+S)+P(C+R+S)=P(C).
+\tag{9}
+\]
+
+Moreover $P(C)\ne0$ exactly when $C$ has rank $2m$. Hence an affine plane cannot contain exactly
+one maximal-rank form.
+
+In even dimension a full-rank quadratic function has nonzero Walsh sum. The number of full-rank
+coordinates among the complementary four points is therefore the number of entries of absolute
+value one, which has the same parity as odd $c$. The scalar Pfaffian restriction says this number
+must be zero, two, or four, a contradiction. This proves (8).
+
+In odd dimension, the offsets $c=7$ and $c=-7$ force respectively the multisets
+$\{1,2,2,2\}$ and $\{-2,-2,-2,-1\}$. Each has exactly one maximal-rank polar form, contradicting
+(9). Lemma 2 has already excluded every other odd offset outside
+$\{\pm1,\pm3,\pm5\}$. It remains only to construct these six values.
+
+\section{Six explicit odd-dimensional families}
+
+
+On five variables define
+
+\[
+\begin{aligned}
+q_1={}&x_0x_3+x_1x_2+x_1x_3+x_2x_3+x_2x_4+x_3x_4,\\
+q_2={}&x_0x_1+x_0x_2+x_0x_3+x_0x_4+x_1x_4+x_2x_4+x_3x_4,\\
+q_3={}&x_0x_1+x_0x_2+x_0x_3+x_0x_4+x_1x_2+x_1x_3+x_1x_4.
+\end{aligned}
+\tag{10}
+\]
+
+Encode an affine function on these variables by a six-bit mask, with the constant term first.
+The following masks give the listed normalized seven-coordinate Walsh signatures. Coordinates are
+ordered by the binary parameters $a=1,2,\ldots,7$, with the least significant bit multiplying the
+first generator.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{r l l}
+\toprule
+$c$ & $(\ell_1,\ell_2,\ell_3)$ & base signature \\
+\midrule
+$-5$ & $(1,2,2)$ & $(-1,2,-1,2,-1,2,-2)$ \\
+$-3$ & $(1,2,63)$ & $(-1,2,-1,2,-1,2,0)$ \\
+$-1$ & $(1,28,4)$ & $(-1,2,0,2,0,2,0)$ \\
+$1$ & $(4,2,63)$ & $(0,2,0,2,1,2,0)$ \\
+$3$ & $(0,2,63)$ & $(1,2,1,2,1,2,0)$ \\
+$5$ & $(0,2,2)$ & $(1,2,1,2,1,2,2)$ \\
+\bottomrule
+\end{tabular}
+\caption{Affine masks and normalized base signatures for the six explicit families.}
+\end{table}
+
+
+For $m\geq3$, set
+
+\[
+\begin{aligned}
+F_{m,c,1}&=q_1+\ell_1+\sum_{j=0}^{m-3}x_{5+2j}x_{6+2j},\\
+F_{m,c,2}&=q_2+\ell_2,\\
+F_{m,c,3}&=q_3+\ell_3.
+\end{aligned}
+\tag{11}
+\]
+
+Each added hyperbolic pair multiplies the seven normalized coordinates by
+$(1,2,1,2,1,2,1)$. Hence the three even-position coordinates grow from two to $A$, while the
+other four retain sum $c$. Thus
+
+\[
+\sum_{a\ne0}2^{-(m+1)}W_{F_{m,c,a}}(0)=3A+c.
+\tag{12}
+\]
+
+Here $F_{m,c,a}=a_1F_{m,c,1}+a_2F_{m,c,2}+a_3F_{m,c,3}$.
+
+The three polar components are linearly independent, so these are genuine three-dimensional
+subcodes. Equations (7) and (8) now follow from (12) and the preceding exclusions, completing the
+proof of Theorem 1.
+
+\section{Endpoint completion and descent failure}
+
+
+For $c\in\{\pm1,\pm3,\pm5\}$ define
+
+\[
+s_{m,c}=2^{m-2}(11A-c).
+\tag{13}
+\]
+
+For $m\geq7$, all six offsets satisfy $|c|<A/8$, so Theorem 1 immediately gives the following
+six-family statement. The excluded endpoints at $m=6$ require a short boundary check.
+
+\begin{proposition}
+
+
+For every $m\geq6$ and $c\in\{\pm1,\pm3,\pm5\}$,
+
+\[
+s_{m,c}\in\mathcal S_{2m+1}^{(3)},
+\qquad
+s_{m,c}/2\notin\mathcal S_{2m}^{(3)}.
+\tag{14}
+\]
+
+\end{proposition}
+
+\begin{proof}
+
+
+Theorem 1 and the constructions in Section 4 prove the claim for $m\geq7$ and for
+$m=6$, $c=\pm1,\pm3$. It remains to exclude $K=3A\pm5$ in even dimension when
+$m=6$, so $A=32$; odd attainability is already given by (11).
+
+Repeat the $q$-partition from Lemma 2. For $q=0$, if at most four coordinates equal $+16$, the
+total is below $91$. With five such coordinates, the last two would have to sum to $21$ or $11$;
+the first exceeds their maximum $16$, while the second is not a sum of two signed powers of two
+from $\{0,\pm1,\pm2,\pm4,\pm8\}$. With six such coordinates the last value would be $\pm5$,
+which is not in $E_6$, and seven give the wrong total.
+
+For $q=1$, the full-rank pair contributes at most three. The offset $+5$ exceeds the resulting
+upper bound. For the offset $-5$, equality in the only remaining layer budget would force three
+of the four high coordinates to be $+16$, the fourth to be $+8$, and the full-rank pair to be
+$\{1,2\}$. The four high half-ranks are $2,2,2,3$; each point of the remaining pair is a sum of
+two of them and hence has half-rank at most five, contradicting the required half-rank six.
+The $q=2$, $q\geq4$, and $q=3$ arguments of Lemma 2 use only the inequalities
+$A/2+9<A-5$, divisibility, and Pfaffian parity, respectively, and apply unchanged. Thus both
+endpoints are even-dimensionally impossible.
+\end{proof}
+
+
+The offset $c=5$ begins one dimension pair earlier. We record the missing endpoint explicitly.
+
+\begin{proposition}
+
+
+For every $m\geq5$, with
+
+\[
+s_m=2^{m-2}(11\cdot2^{m-1}-5),
+\]
+
+we obtain
+
+\[
+s_m\in\mathcal S_{2m+1}^{(3)},
+\qquad
+s_m/2\notin\mathcal S_{2m}^{(3)}
+\quad(m\geq5).
+\tag{15}
+\]
+
+\end{proposition}
+
+\begin{proof}
+
+
+For $m\geq6$ this is Proposition 3. The construction (11) for $c=5$ is valid already at
+$m=5$, so only even-dimensional exclusion remains. Here $A=16$ and the target aggregate is 53.
+
+Let $q$ again count the $+A$ coordinates. If $q=0$, at most five $+8$ coordinates give total at
+most $5\cdot8+2\cdot4=48$; six would require the last coordinate to equal five, and seven sum to
+56. If $q=1$, the three translated pairs contribute at most $3+16+16=35$ beyond the unique
+$16$, below 53. If $q=2$, the sum point contributes at most eight and the complementary affine
+plane at most nine in absolute value, below the required residual 21. If $q\geq4$, the total is a
+multiple of eight. Hence $q=3$.
+
+The three $+16$ points must form a Fano line. The equality-sign rule and the half-rank triangle
+inequalities leave only the complementary multisets $\{0,1,2,2\}$ and
+$\{1,1,1,2\}$. They contain respectively one and three full-rank forms. The scalar maximal
+Pfaffian on that affine plane is affine linear, so the number of full-rank points must be zero, two,
+or four. Both patterns are impossible. This proves the $m=5$ exclusion.
+\end{proof}
+
+
+In particular $\mathcal S_{2m+1}^{(3)}\ne2\mathcal S_{2m}^{(3)}$ for every $m\geq5$.
+
+\section{Scope and verification}
+
+
+Theorem 1 is exact only inside the band $|c|<2^{m-4}$ around $3\cdot2^{m-1}$. It does not
+classify the full difference $\mathcal K_m^{\rm odd}\setminus\mathcal K_m^{\rm ev}$, determine
+the complete support spectrum, or give a finite recursion for all quadratic nets. The bandwidth is
+a clean sufficient range for the layer-gap argument and is not claimed optimal.
+
+The source Loop directories contain exact regression checks for the explicit signatures, support
+formula and finite parameter compression. In particular,
+{\small\path{verify_six_endpoint_families.py}} reuses the Walsh-transform helpers developed during the earlier
+RM2 investigation, while {\small\path{verify_local_slope_three_band.py}} checks the finite compressed cases used
+to discover and calibrate the local band. These are not independent implementations of the whole
+argument, and the Pfaffian exclusions are proved in the manuscript rather than certified by those
+scripts. The all-$m$ conclusions therefore depend on the proofs above, not on bounded enumeration.
+
+\begin{thebibliography}{9}
+\footnotesize
+\raggedright
+
+\bibitem{rm2regions}
+Carptopus,
+\emph{Exact regions and low-polar-rank recursion in the third support spectrum of binary
+second-order Reed--Muller codes}, Public Beta v0.1 (2026).
+\href{https://doi.org/10.5281/zenodo.22165319}{doi:10.5281/zenodo.22165319}.
+
+\bibitem{fanoprofiles}
+Carptopus,
+\emph{Realizability and minimum dimension of Fano half-rank profiles over $\mathbb F_2$},
+Public Beta v0.1 (2026).
+\href{https://doi.org/10.5281/zenodo.22164877}{doi:10.5281/zenodo.22164877}.
+
+\bibitem{higherweights}
+S.~R. Ghorpade, T. Johnsen, A.~R. Ludhani and P. Pratihar,
+\emph{Higher weight spectra of codes},
+\href{https://arxiv.org/abs/2408.02548}{arXiv:2408.02548}.
+
+\end{thebibliography}
+
+\paragraph{AI-assisted research and writing disclosure.}
+Carptopus is the author responsible for the mathematical claims and the public version of this
+manuscript. OpenAI Codex was used as an AI-assisted tool for literature organization, proof
+development and stress testing, exact verification, adversarial auditing, and manuscript
+preparation.
+
+\end{document}

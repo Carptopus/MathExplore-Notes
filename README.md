@@ -13,6 +13,7 @@ an exact minimum degree and a complete classification of the equality case.
 
 | Entry | Areas | Contribution | Public version | Status |
 | --- | --- | --- | --- | --- |
+| [Odd-dimensional descent obstructions in the third support spectrum of binary second-order Reed--Muller codes](research/rm2-odd-descent-obstructions/README.md)<br>[PDF](research/rm2-odd-descent-obstructions/odd-dimensional-descent-obstructions-rm2-third-support.pdf) · [BibTeX](research/rm2-odd-descent-obstructions/CITATION.bib) | Coding theory, Reed--Muller codes, higher support spectra, quadratic Boolean functions, Walsh spectra | Classifies an exponentially widening local parity band for three-dimensional subcodes and proves an infinite family of odd-to-even support descent obstructions | v0.1-beta | Internally verified public Beta; external review pending |
 | [Small exact values and a dense-anchor bound for weak cube saturation](research/small-exact-values-dense-anchor-weak-cube-saturation/README.md)<br>[PDF](research/small-exact-values-dense-anchor-weak-cube-saturation/small-exact-values-dense-anchor-weak-cube-saturation.pdf) · [BibTeX](research/small-exact-values-dense-anchor-weak-cube-saturation/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22254558) | Weak saturation, hypercubes, extremal graph theory, exhaustive enumeration | Determines `wsat(K8,Q3)=15`, `wsat(K9,Q3)=16`, and `wsat(K10,Q3)=18`; corrects the reported order-nine value, disproves the associated `2n-1` proposal, and proves the general upper bound `wsat(K_n,Q3)<=floor((7n+2)/4)` for `n>=9` | v0.1-beta | Internally verified public Beta; external review pending |
 | [Finite-field basis obstructions for zero link Turán density](research/finite-field-basis-obstructions-zero-link-turan-density/README.md)<br>[PDF](research/finite-field-basis-obstructions-zero-link-turan-density/finite-field-basis-obstructions-zero-link-turan-density.pdf) · [BibTeX](research/finite-field-basis-obstructions-zero-link-turan-density/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22253788) | Hypergraph Turán theory, link Turán density, finite fields, hypergraph homomorphisms | Proves a general finite-field basis-homomorphism obstruction giving an explicit positive link Turán density, and constructs two six-vertex three-graphs whose vertex links are all tripartite but whose link Turán densities are positive | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Connected Peck posets with non-log-concave antichain polynomials](research/connected-peck-antichain-counterexamples/README.md)<br>[PDF](research/connected-peck-antichain-counterexamples/connected-peck-antichain-counterexamples.pdf) · [BibTeX](research/connected-peck-antichain-counterexamples/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22252966) | Posets, Peck posets, antichain polynomials, log-concavity | Constructs an infinite family of finite connected height-one Peck posets with non-log-concave antichain polynomials for every parameter $a\ge7$, disproving Ding--Dong Conjecture C | v0.1-beta | Internally verified candidate proof; external review pending |
@@ -52,6 +53,19 @@ an exact minimum degree and a complete classification of the equality case.
 | [Tail-projection certificates for cyclotomic minimum-degree polynomials beyond the reciprocal condition](research/cyclotomic-tail-projection-families/README.md)<br>[PDF](research/cyclotomic-tail-projection-families/cyclotomic-tail-projection-families.pdf) · [BibTeX](research/cyclotomic-tail-projection-families/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22127365) | Cyclotomic polynomials, nonnegative coefficients, CRT tensor projections, prime tuples | Gives an explicit sufficient condition for every fixed number of at least four prime factors and proves infinite families beyond Steinberger's reciprocal condition | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
+
+### Odd-dimensional descent obstructions in the third RM2 support spectrum
+
+For three-dimensional subcodes of the binary second-order Reed--Muller code, the manuscript
+classifies an exponentially widening local band around the normalized aggregate
+`3*2^(m-1)`. For every `m>=6`, exactly the offsets `+-1,+-3,+-5` occur in odd dimension,
+while no offset in the same band occurs in even dimension. One explicit family starts at `m=5`
+and proves that odd-to-even support descent fails for every `m>=5`.
+
+This is a local parity classification and an infinite obstruction family, not a complete
+determination of the third support spectrum.
+
+- [Manuscript and verification materials](research/rm2-odd-descent-obstructions/README.md)
 
 ### Small exact values and a dense-anchor bound for weak cube saturation
 
