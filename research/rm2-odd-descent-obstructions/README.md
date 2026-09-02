@@ -13,7 +13,10 @@ already published `RM2-Third-Support-Regions` and `Fano-Half-Rank-Profiles` pape
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
 - Contact: [carptopus@163.com](mailto:carptopus@163.com)
-- Candidate version: v0.1-beta (2 September 2026)
+- Public version: v0.1-beta (2 September 2026)
+- DOI: [10.5281/zenodo.22255441](https://doi.org/10.5281/zenodo.22255441)
+- Concept DOI: [10.5281/zenodo.22255440](https://doi.org/10.5281/zenodo.22255440)
+- Public repository: [MathExplore-Notes](https://github.com/Carptopus/MathExplore-Notes/tree/master/research/rm2-odd-descent-obstructions)
 - Manuscript and documentation license: [CC BY 4.0](LICENSE.md)
 - Verification-code license: [MIT](verification/LICENSE-CODE-MIT.txt)
 
