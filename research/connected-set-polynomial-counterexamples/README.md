@@ -5,6 +5,8 @@
 - [Read or download the PDF](connected-set-polynomial-counterexamples.pdf)
 - [LaTeX source](connected-set-polynomial-counterexamples.tex)
 - [BibTeX citation](CITATION.bib)
+- Current version DOI: [10.5281/zenodo.22250860](https://doi.org/10.5281/zenodo.22250860)
+- Concept DOI: [10.5281/zenodo.22250859](https://doi.org/10.5281/zenodo.22250859)
 - [Verification program](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
