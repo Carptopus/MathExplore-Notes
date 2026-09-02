@@ -13,6 +13,7 @@ an exact minimum degree and a complete classification of the equality case.
 
 | Entry | Areas | Contribution | Public version | Status |
 | --- | --- | --- | --- | --- |
+| [Counterexamples to unimodality of the connected set polynomial](research/connected-set-polynomial-counterexamples/README.md)<br>[PDF](research/connected-set-polynomial-counterexamples/connected-set-polynomial-counterexamples.pdf) · [BibTeX](research/connected-set-polynomial-counterexamples/CITATION.bib) | Graph polynomials, connected induced subgraphs, unimodality, graph enumeration | Constructs four pairwise nonisomorphic counterexample families for every order $n\ge8$, proves the common coefficient formula, and completely classifies the four minimum-order counterexamples | v0.1-beta | Internally verified candidate proof; external review pending |
 | [A complete log-concavity classification for higher-order Stirling cycle rows](research/higher-order-stirling-cycle-logconcavity/README.md)<br>[PDF](research/higher-order-stirling-cycle-logconcavity/higher-order-stirling-cycle-logconcavity.pdf) · [BibTeX](research/higher-order-stirling-cycle-logconcavity/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22244404) | Enumerative combinatorics, associated Stirling numbers, log-concavity, Fourier--Edgeworth estimates | Proves that every higher-order Stirling cycle row is log-concave for every row index exactly for orders $1\le r\le5$, settling the previously open $r=3,4,5$ layers, and proves log-concavity of the factorial-normalized rows for every $r\ge2$ | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Compatible orderings of binary vector spaces](research/binary-compatible-orderings/README.md)<br>[PDF](research/binary-compatible-orderings/binary-compatible-orderings.pdf) · [BibTeX](research/binary-compatible-orderings/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22193534) | Finite geometry, binary vector spaces, general linear groups, ordered Fano planes | Classifies every compatible total order on $\mathbb F_2^n$ for all $n$: for $n\ge4$ there are exactly eight $\mathrm{GL}(n,2)$-orbits and $8|\mathrm{GL}(n,2)|$ labelled orders | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Weighted recursive constructions for shattering triples with six permutations](research/six-permutation-weighted-shattering/README.md)<br>[PDF](research/six-permutation-weighted-shattering/six-permutation-weighted-shattering.pdf) · [BibTeX](research/six-permutation-weighted-shattering/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22187970) | Extremal combinatorics, permutation shattering, weighted blow-ups, probabilistic recursion | Proves a weighted recursion theorem for every finite six-permutation template and applies it to the published 26-point template to obtain the exact lower bound $c_3\ge1288385/2599242$, strictly improving its uniform-recursion bound $482/975$ | v0.1-beta | Internally verified candidate proof; external review pending |
@@ -47,6 +48,16 @@ an exact minimum degree and a complete classification of the equality case.
 | [Tail-projection certificates for cyclotomic minimum-degree polynomials beyond the reciprocal condition](research/cyclotomic-tail-projection-families/README.md)<br>[PDF](research/cyclotomic-tail-projection-families/cyclotomic-tail-projection-families.pdf) · [BibTeX](research/cyclotomic-tail-projection-families/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22127365) | Cyclotomic polynomials, nonnegative coefficients, CRT tensor projections, prime tuples | Gives an explicit sufficient condition for every fixed number of at least four prime factors and proves infinite families beyond Steinberger's reciprocal condition | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
+
+### Connected-set polynomial counterexamples
+
+For every order $n\ge8$, the manuscript constructs four pairwise nonisomorphic connected graphs
+with at least as many edges as vertices whose connected set polynomials are not unimodal. A common
+rooted-block formula proves the fixed coefficient pattern $10,11,10$. A complete scan of all
+11,117 connected eight-vertex graph classes shows that eight is the minimum counterexample order
+and that the four first family members are exactly all minimum-order counterexamples.
+
+- [Manuscript and verification materials](research/connected-set-polynomial-counterexamples/README.md)
 
 ### Higher-order Stirling cycle row log-concavity
 

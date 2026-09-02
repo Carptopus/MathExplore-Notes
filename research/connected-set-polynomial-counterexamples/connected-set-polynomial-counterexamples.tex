@@ -1,0 +1,205 @@
+% Mechanically converted from the audited Markdown manuscript.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{xurl}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}
+\numberwithin{equation}{section}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Connected-set polynomial counterexamples}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.42em}
+\setlength{\emergencystretch}{4em}
+
+\title{Counterexamples to unimodality\\of the connected set polynomial}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{Manuscript, 2 September 2026}
+
+\hypersetup{
+  pdftitle={Counterexamples to unimodality of the connected set polynomial},
+  pdfauthor={Carptopus},
+  pdfsubject={Infinite counterexample families and the complete minimum-order classification},
+  pdfkeywords={connected set polynomial, unimodality, graph polynomial, connected induced subgraph, counterexample, graph enumeration}
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For a finite graph $G$, let $C(G;x)=\sum_{k\geq1}c_k(G)x^k$, where $c_k(G)$ counts the
+$k$-vertex subsets inducing a connected subgraph. A question of Mol asks whether $C(G;x)$ is
+unimodal whenever $G$ is connected and $|E(G)|\geq|V(G)|$. For every order $n\geq8$, we give
+four explicit pairwise nonisomorphic counterexamples, with edge counts
+$n+1,n+2,n+2,n+3$. Their polynomials follow from a common rooted-block decomposition and exhibit
+the fixed local pattern $10,11,10$. We also enumerate all connected graphs of order eight
+satisfying the edge condition and prove that exactly four isomorphism classes are counterexamples;
+they are precisely the first members of our four families. No eligible graph of smaller order is a
+counterexample. Thus the minimum counterexample order is eight.
+\end{abstract}
+
+\section{Introduction}
+
+The connected set polynomial of a finite simple graph $G$ is
+\begin{equation}
+C(G;x)=\sum_{k=1}^{|V(G)|}c_k(G)x^k,
+\end{equation}
+where $c_k(G)$ is the number of $k$-element sets whose induced subgraph is connected. This
+polynomial is the one-component part of the induced-subgraph component polynomial introduced by
+Tittmann, Averbouch and Makowsky~\cite{tittmann}, and its coefficients are closely related to node
+reliability.
+
+Mol asked whether the coefficient sequence is always unimodal for a connected $n$-vertex graph
+with at least $n$ edges; the same paragraph reports a computational check through order eight.
+The statement appears in the conclusion chapter, under ``Connected Set Polynomial,'' of the 2016
+thesis cited below~\cite{mol}. The theorem below answers the question negatively and determines the
+complete minimum-order boundary.
+
+\begin{theorem}\label{thm:main}
+For every $n\geq8$, there are four pairwise nonisomorphic connected $n$-vertex graphs with at
+least $n$ edges whose connected set polynomials are not unimodal. Their edge counts are
+\[
+n+1,\qquad n+2,\qquad n+2,\qquad n+3.
+\]
+Among all connected eight-vertex graphs with at least eight edges, exactly four isomorphism classes
+have a nonunimodal connected set polynomial, and they are the four order-eight graphs in these
+families. No eligible graph of order at most seven is a counterexample.
+\end{theorem}
+
+\section{Four rooted-block families}
+
+Fix $d\geq2$. Join rooted graphs $L$ and $R$ by a path of length $d$, identifying its endpoints
+with the roots $u\in L$ and $v\in R$.
+
+For the left block choose either $D=K_4-e$, rooted at a vertex of degree three, or $K=K_4$. For
+the right block choose either $S=K_{1,2}$, rooted at its centre, or $T=K_3$. Denote the four
+resulting graphs by
+\[
+G_d^{D,S},\qquad G_d^{D,T},\qquad G_d^{K,S},\qquad G_d^{K,T}.
+\]
+Let $\varepsilon$ be one when the left block is $K$ and zero otherwise, and let $\eta$ be one when
+the right block is $T$ and zero otherwise. Every graph has
+\[
+n=d+6,\qquad m=n+1+\varepsilon+\eta.
+\]
+The four graphs are pairwise nonisomorphic. Their block decompositions recover whether the left
+nontrivial block is $K_4-e$ or $K_4$, and whether the right endpoint lies in a triangle.
+
+\section{Rooted decomposition}
+
+For a rooted graph $(H,r)$, let $A_H(x)$ count the nonempty connected induced vertex sets
+containing $r$. In both left blocks the root is adjacent to all three other vertices, so
+\[
+A_L(x)=x(1+x)^3.
+\]
+Similarly, both right blocks satisfy
+\[
+A_R(x)=x(1+x)^2.
+\]
+The sum of the two ordinary connected set polynomials is
+\[
+C(L;x)+C(R;x)=7x+(7+\varepsilon+\eta)x^2+5x^3+x^4.
+\]
+
+We partition a connected induced set according to whether it lies in an endpoint block, lies wholly
+inside the $d-1$ internal path vertices, meets one endpoint block and an initial path segment, or
+meets both endpoint blocks. These classes are disjoint and exhaustive. Consequently,
+\begin{align}
+C(G_d;x)={}&7x+(7+\varepsilon+\eta)x^2+5x^3+x^4
+ +\sum_{k=1}^{d-1}(d-k)x^k \notag\\
+&+(A_L(x)+A_R(x))(x+x^2+\cdots+x^{d-1})
+ +A_L(x)A_R(x)x^{d-1}.
+\tag{3.1}
+\end{align}
+Expanding (3.1) yields
+\begin{align}
+C(G_d;x)={}&nx+(n+1+\varepsilon+\eta)x^2+(n+3)x^3 \notag\\
+&+\sum_{k=4}^{d+2}(n+6-k)x^k
+ +11x^{d+3}+10x^{d+4}+5x^{d+5}+x^{d+6}.
+\tag{3.2}
+\end{align}
+The sequence decreases after $c_3=n+3$, reaches $c_{d+2}=10$, and then rises to
+$c_{d+3}=11$. Hence all four polynomials are nonunimodal. Since $d=n-6$, this proves the
+infinite-family part of Theorem~\ref{thm:main}.
+
+\section{The minimum-order classification}
+
+At $d=2$, equation (3.2) becomes
+\[
+(8,\ 9+\varepsilon+\eta,\ 11,\ 10,\ 11,\ 10,\ 5,\ 1).
+\]
+We checked Brendan McKay's complete \texttt{graph8c.g6} catalogue of 11,117 nonisomorphic connected
+graphs of order eight. Exactly 11,094 have at least eight edges, and exactly four of these have a
+nonunimodal connected set polynomial. This is a complete catalogue scan, not a generated sample.
+Their graph6 encodings are
+\begin{flushleft}
+\ttfamily
+G?B@vG\\
+G?\textasciigrave{}crg\\
+G?aJeW\\
+GCQRTg
+\end{flushleft}
+Isomorphism tests identify them with the four $d=2$ constructions above. An independent scan of
+the NetworkX graph atlas finds no eligible counterexample of order at most seven. The connected-set
+coefficients were computed by two independent routines: direct subset connectivity and boundary
+expansion. They agree on every tested graph. This proves the finite classification in
+Theorem~\ref{thm:main}.
+
+The catalogue is available from
+\url{https://users.cecs.anu.edu.au/~bdm/data/graph8c.g6}. Its expected SHA-256 digest is
+\begin{center}
+\small\ttfamily
+0002354F1AB3344A2706626A037AD15367BF23A2163AA68F552C3A169CA9A036.
+\end{center}
+The verification used Python 3 and NetworkX 3.6.1. The supplied verification directory records the
+complete command and the logical boundary between the formula checks, the atlas scan and the full
+order-eight catalogue scan.
+
+\section{Scope}
+
+The theorem does not classify all graphs with nonunimodal connected set polynomials. In particular,
+we do not claim that four is the number of counterexamples in orders greater than eight, or that no
+counterexample with exactly $n$ edges exists. The result identifies four explicit infinite
+families and completely settles only the minimum-order boundary.
+
+{\small
+\begin{thebibliography}{9}
+
+\bibitem{dossou}
+A.~Dossou-Olory,
+\emph{Graphs and unicyclic graphs with extremal number of connected induced subgraphs},
+arXiv:1812.02422.
+
+\bibitem{mol}
+L.~Mol,
+\emph{On Connectedness and Graph Polynomials},
+PhD thesis, Dalhousie University, 2016, conclusion chapter, ``Connected Set Polynomial'' subsection;
+\href{https://central.bac-lac.gc.ca/.item?app=Library&id=TC-NSHD-71408&oclc_number=1033184059&op=pdf}{stable thesis record and PDF}.
+
+\bibitem{tittmann}
+P.~Tittmann, I.~Averbouch and J.~A.~Makowsky,
+\emph{The Enumeration of Vertex Induced Subgraphs with respect to the Number of Components},
+European Journal of Combinatorics 32 (2011), arXiv:0812.4147.
+
+\end{thebibliography}
+}
+
+\paragraph{AI-assisted research and writing disclosure.}
+Carptopus is the author responsible for the mathematical claims and the public version of this
+manuscript. OpenAI Codex was used as an AI-assisted tool for literature organization, proof
+development and stress testing, exact verification, adversarial auditing, and manuscript
+preparation.
+
+\end{document}
+
