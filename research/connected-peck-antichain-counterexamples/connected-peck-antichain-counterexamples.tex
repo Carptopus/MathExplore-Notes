@@ -1,0 +1,221 @@
+% Generated deterministically from the audited Markdown source.
+% Responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{xurl}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}
+\numberwithin{equation}{section}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Connected Peck counterexamples}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.42em}
+\setlength{\emergencystretch}{4em}
+
+\title{Connected Peck posets with\\non-log-concave antichain polynomials}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{Manuscript, 2 September 2026}
+
+\hypersetup{
+  pdftitle={Connected Peck posets with non-log-concave antichain polynomials},
+  pdfauthor={Carptopus},
+  pdfsubject={An infinite counterexample family to Ding and Dong Conjecture C},
+  pdfkeywords={Peck poset, antichain polynomial, log-concavity, Sperner property, independence polynomial, counterexample}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fcolorbox{black!35}{black!4}{\parbox{0.88\textwidth}{\centering\small
+Internally verified candidate manuscript, version 0.1-beta. The mathematical claims have passed
+project-internal zero-trust proof and manuscript audits; external review is pending.}}
+\end{center}
+
+\begin{abstract}
+
+
+Ding and Dong conjectured that the antichain generating polynomial of every finite connected Peck
+poset is log-concave. We give an infinite family of height-one counterexamples. For integers
+$a,c\geq 1$, the poset $P_{a,c}$ has two equally sized ranks and a connected bipartite Hasse graph
+with a perfect matching. We prove that it is Peck and that its antichain polynomial is
+
+\[
+\mathcal N_{P_{a,c}}(x)=(1+2x)^a+2(1+x)^{a+c}-2(1+x)^a.
+\]
+
+For every $a\geq 7$, the specialization $P_{a,2}$ violates log-concavity. The first member on this
+parameter line has 18 elements and log-concavity defect $-72$.
+
+\end{abstract}
+
+\section{Construction and statement}
+
+
+Ding and Dong state as Conjecture C that the antichain generating polynomial of every finite
+connected Peck poset is log-concave. Here ``height one'' means that maximal chains have one cover
+edge, or equivalently two rank levels; Ding and Dong number those levels as ranks 1 and 2.
+
+Our construction was motivated by Bhattacharyya and Kahn's nonunimodal independence-polynomial
+construction for a bipartite graph. Their two bipartition classes have unequal sizes, so that graph
+does not directly give a rank-symmetric Peck poset. The balanced rank layers, the added perfect
+matching, and the closed formula below are the features used here to obtain a connected Peck
+counterexample family.
+
+Let $a,c\geq 1$. Define a two-rank poset $P_{a,c}$ with lower and upper ranks
+
+\[
+L=A\sqcup W,\qquad R=B\sqcup C,
+\]
+
+where
+
+\[
+|A|=|C|=a,\qquad |W|=|B|=c.
+\]
+
+The cover relations are all pairs in $A\times B$, the matching pairs $A_i<C_i$, and all pairs in
+$W\times(B\sqcup C)$.
+
+\begin{theorem}
+
+
+For all $a,c\geq 1$, the poset $P_{a,c}$ is a finite connected Peck poset and
+
+\[
+\mathcal N_{P_{a,c}}(x)=(1+2x)^a+2(1+x)^{a+c}-2(1+x)^a.
+\tag{1}
+\]
+
+For every $a\geq 7$, the coefficient sequence of $\mathcal N_{P_{a,2}}(x)$ is not log-concave.
+Consequently, the connected-Peck log-concavity conjecture is false.
+
+\end{theorem}
+
+\section{The Peck property}
+
+
+The Hasse graph is connected because $a,c\geq 1$. Both ranks have size $a+c$, so the poset is
+rank-symmetric and rank-unimodal. The edges
+
+\[
+\{A_iC_i:1\leq i\leq a\}\cup\{W_jB_j:1\leq j\leq c\}
+\]
+
+form a perfect matching. By K\H{o}nig's theorem, the maximum independent-set size of the bipartite
+Hasse graph is $a+c$. Antichains are exactly independent sets of this graph, while either rank is
+an antichain of size $a+c$; hence $P_{a,c}$ is Sperner.
+
+Every element has a neighbour in the other rank, and no chain contains three elements. Thus all
+maximal chains have two elements. For $k\geq 2$, the whole $2(a+c)$-element poset is a maximum
+$k$-family and its size equals the sum of the two largest rank sizes. Therefore $P_{a,c}$ is
+strongly Sperner. It is consequently Peck under the definition used by Ding and Dong.
+
+\section{The antichain polynomial}
+
+
+We count independent sets according to whether they meet $W$. If no vertex of $W$ is chosen, the
+remaining graph consists of the complete bipartite graph between $A$ and $B$, together with the
+matching from $A$ to $C$. Its independence polynomial is
+
+\[
+(1+2x)^a+(1+x)^{a+c}-(1+x)^a.
+\]
+
+Indeed, the first term counts choices that use no vertex of $B$, while the second counts choices
+that use no vertex of $A$; their overlap consists of arbitrary subsets of $C$ and is exactly
+$(1+x)^a$, which explains the subtraction.
+
+If a nonempty subset of $W$ is chosen, no vertex of $B\sqcup C$ may be chosen, while the vertices
+of $A$ remain arbitrary. This contributes
+
+\[
+((1+x)^c-1)(1+x)^a=(1+x)^{a+c}-(1+x)^a.
+\]
+
+Their sum is (1).
+
+\section{An infinite family of failures}
+
+
+Set $c=2$, and write $p_i=[x^i]\mathcal N_{P_{a,2}}(x)$. The top three coefficients are
+
+\[
+p_{a+2}=2,\qquad p_{a+1}=2(a+2),\qquad
+p_a=2^a-2+(a+2)(a+1).
+\]
+
+Log-concavity at position $a+1$ would require
+
+\[
+2^{a+1}\leq 2(a+2)(a+3)+4.
+\tag{2}
+\]
+
+Define
+
+\[
+F(a)=2^{a+1}-2(a+2)(a+3)-4.
+\]
+
+Then $F(7)=72>0$, and
+
+\[
+F(a+1)-F(a)=2^{a+1}-4(a+3)>0
+\]
+
+for every $a\geq 7$. Thus (2) fails for all $a\geq 7$.
+
+At $a=7$, the polynomial is
+
+\[
+1+18x+114x^2+378x^3+742x^4+882x^5+602x^6+198x^7+18x^8+2x^9,
+\]
+
+and the final internal log-concavity defect is
+
+\[
+18^2-198\cdot2=-72.
+\]
+
+Direct enumeration of all $2^{18}$ vertex subsets agrees coefficientwise with (1). The same
+verification for $a=1,\ldots,6$ shows that $a=7$ is the first failure on the $c=2$ parameter
+line. We do not claim global minimality among all connected Peck posets.
+
+\begin{thebibliography}{9}
+\footnotesize
+\raggedright
+
+\bibitem{bhattacharyya-kahn}
+A.~Bhattacharyya and J.~Kahn,
+\emph{A bipartite graph with non-unimodal independent set sequence},
+Electronic Journal of Combinatorics \textbf{20} (2013), Paper 11.
+\href{https://www.combinatorics.org/ojs/index.php/eljc/article/view/v20i4p11}{journal page}.
+
+\bibitem{ding-dong}
+C.~Ding and P.~Dong,
+\emph{Antichain generating polynomials of posets},
+arXiv:1905.06692 (2019).
+\href{https://arxiv.org/abs/1905.06692}{arXiv:1905.06692}.
+
+\end{thebibliography}
+
+\paragraph{AI-assisted research and writing disclosure.}
+Carptopus is the author responsible for the mathematical claims and the public version of this
+manuscript. OpenAI Codex was used as an AI-assisted tool for literature organization, proof
+development and stress testing, exact verification, adversarial auditing, and manuscript
+preparation.
+
+\end{document}
