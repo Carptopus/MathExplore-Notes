@@ -13,6 +13,7 @@ an exact minimum degree and a complete classification of the equality case.
 
 | Entry | Areas | Contribution | Public version | Status |
 | --- | --- | --- | --- | --- |
+| [Finite-field basis obstructions for zero link Turán density](research/finite-field-basis-obstructions-zero-link-turan-density/README.md)<br>[PDF](research/finite-field-basis-obstructions-zero-link-turan-density/finite-field-basis-obstructions-zero-link-turan-density.pdf) · [BibTeX](research/finite-field-basis-obstructions-zero-link-turan-density/CITATION.bib) | Hypergraph Turán theory, link Turán density, finite fields, hypergraph homomorphisms | Proves a general finite-field basis-homomorphism obstruction giving an explicit positive link Turán density, and constructs two six-vertex three-graphs whose vertex links are all tripartite but whose link Turán densities are positive | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Connected Peck posets with non-log-concave antichain polynomials](research/connected-peck-antichain-counterexamples/README.md)<br>[PDF](research/connected-peck-antichain-counterexamples/connected-peck-antichain-counterexamples.pdf) · [BibTeX](research/connected-peck-antichain-counterexamples/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22252966) | Posets, Peck posets, antichain polynomials, log-concavity | Constructs an infinite family of finite connected height-one Peck posets with non-log-concave antichain polynomials for every parameter $a\ge7$, disproving Ding--Dong Conjecture C | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Exact first separation in the Thue--Morse run-length sequence](research/thue-morse-run-separation/README.md)<br>[PDF](research/thue-morse-run-separation/exact-first-separation-thue-morse.pdf) · [BibTeX](research/thue-morse-run-separation/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22251625) | Automatic sequences, Thue--Morse sequence, Jacobsthal representations, 2-kernels | Determines for every $q\ge2$ the exact first separation of $d(2^{q+2}n)$ and $d(2^qn)$, extends it along arbitrary ratio-four scale distances, and gives an exact infinite multiplier family governed by multiplicative orders | v0.1-beta | Internally verified candidate proof; external review pending |
 | [Counterexamples to unimodality of the connected set polynomial](research/connected-set-polynomial-counterexamples/README.md)<br>[PDF](research/connected-set-polynomial-counterexamples/connected-set-polynomial-counterexamples.pdf) · [BibTeX](research/connected-set-polynomial-counterexamples/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22250860) | Graph polynomials, connected induced subgraphs, unimodality, graph enumeration | Constructs four pairwise nonisomorphic counterexample families for every order $n\ge8$, proves the common coefficient formula, and completely classifies the four minimum-order counterexamples | v0.1-beta | Internally verified candidate proof; external review pending |
@@ -50,6 +51,24 @@ an exact minimum degree and a complete classification of the equality case.
 | [Tail-projection certificates for cyclotomic minimum-degree polynomials beyond the reciprocal condition](research/cyclotomic-tail-projection-families/README.md)<br>[PDF](research/cyclotomic-tail-projection-families/cyclotomic-tail-projection-families.pdf) · [BibTeX](research/cyclotomic-tail-projection-families/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22127365) | Cyclotomic polynomials, nonnegative coefficients, CRT tensor projections, prime tuples | Gives an explicit sufficient condition for every fixed number of at least four prime factors and proves infinite families beyond Steinberger's reciprocal condition | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
+
+### Finite-field basis obstructions for zero link Turán density
+
+For a finite $r$-uniform hypergraph $H$, a prime power $q$, and $m\ge0$, let
+$B_{q,m}(r)$ be the $r$-graph of linearly independent $r$-sets in
+$\mathbb F_q^{r+m}$, with the zero vector isolated. The manuscript proves that
+the absence of a homomorphism $H\to B_{q,m}(r)$ implies
+
+$$
+\pi_\infty(H)\ge \prod_{j=m+1}^{\infty}(1-q^{-j})>0.
+$$
+
+It then constructs a six-vertex three-graph and its dual for which every
+vertex link is tripartite, while both have link Turán density at least
+$\prod_{j\ge1}(1-2^{-j})\approx0.288788$. Thus local tripartite links do not
+suffice for zero link Turán density.
+
+- [Manuscript and verification materials](research/finite-field-basis-obstructions-zero-link-turan-density/README.md)
 
 ### Exact Thue--Morse run separation
 

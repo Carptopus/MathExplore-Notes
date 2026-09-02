@@ -1,0 +1,259 @@
+% Generated deterministically from the audited Markdown source.
+% Responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{xurl}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\numberwithin{equation}{section}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Finite-field basis obstructions}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.42em}
+\setlength{\emergencystretch}{4em}
+
+\title{Finite-field basis obstructions\\for zero link Tur\'an density}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{Manuscript, 2 September 2026}
+
+\hypersetup{
+  pdftitle={Finite-field basis obstructions for zero link Turan density},
+  pdfauthor={Carptopus},
+  pdfsubject={A finite homomorphism obstruction and two six-vertex applications},
+  pdfkeywords={hypergraph Turan density, link Turan density, finite fields, hypergraph homomorphisms, basis hypergraphs, suspensions}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fcolorbox{black!35}{black!4}{\parbox{0.88\textwidth}{\centering\small
+Internally verified candidate manuscript, version 0.1-beta. The mathematical claims have passed
+project-internal zero-trust proof and manuscript audits; external review is pending.}}
+\end{center}
+
+\begin{abstract}
+
+
+For an $r$-uniform hypergraph $H$, let $H_k$ be obtained by adjoining the same $k$-vertex stem to
+every edge, and let $\pi_\infty(H)=\lim_{k\to\infty}\pi_{r+k}(H_k)$. We formulate a finite
+homomorphism obstruction that forces $\pi_\infty(H)>0$. For a prime power $q$ and $m\geq0$, let
+$B_{q,m}(r)$ have vertex set $\mathbb F_q^{r+m}$ and edges the linearly independent $r$-sets. If
+$H$ has no homomorphism to $B_{q,m}(r)$, then
+
+\[
+\pi_\infty(H)\geq\prod_{j=m+1}^{\infty}(1-q^{-j})>0.
+\]
+
+We apply the criterion to a six-vertex three-graph and its dual. Every vertex link of either
+three-graph is tripartite, but both have link Tur\'an density at least
+$\prod_{j\geq1}(1-2^{-j})\approx0.288788$. Thus tripartiteness of every vertex link is not
+sufficient for zero link Tur\'an density.
+
+\end{abstract}
+
+\section{Suspensions and basis hypergraphs}
+
+
+Let $H$ be a finite nonempty $r$-uniform hypergraph, $r\geq2$. For $k\geq0$, its $k$-fold
+suspension $H_k$ is the $(r+k)$-uniform hypergraph obtained by adding the same new $k$ vertices to
+every edge. Define
+
+\[
+\pi_\infty(H)=\lim_{k\to\infty}\pi_{r+k}(H_k).
+\]
+
+The limit exists because the sequence is nonincreasing: every vertex link in an
+$H_{k+1}$-free $(r+k+1)$-graph is $H_k$-free, and averaging links gives
+
+\[
+\pi_{r+k+1}(H_{k+1})\leq\pi_{r+k}(H_k).
+\]
+
+For a prime power $q$ and $m\geq0$, let $B_{q,m}(r)$ be the $r$-graph on
+$\mathbb F_q^{r+m}$ whose edges are the linearly independent unordered $r$-sets.
+The zero vector is therefore an isolated vertex of $B_{q,m}(r)$; deleting it does not change any
+edge or any homomorphism from a nonempty edge of $H$.
+
+\begin{theorem}
+
+
+If there is no hypergraph homomorphism
+
+\[
+H\longrightarrow B_{q,m}(r),
+\]
+
+then
+
+\[
+\pi_\infty(H)\geq\beta_{q,m}:=
+\prod_{j=m+1}^{\infty}(1-q^{-j})>0.
+\tag{1}
+\]
+
+Consequently, $\pi_\infty(H)=0$ implies that $H$ admits a homomorphism to $B_{q,0}(r)$ for every
+prime power $q$.
+
+\end{theorem}
+
+\section{Proof of the obstruction theorem}
+
+
+Set $R=r+k$. On $\mathbb F_q^{R+m}\setminus\{0\}$, let $G_{R,m}$ be the $R$-uniform
+hypergraph of linearly independent $R$-sets. It has
+
+\[
+|E(G_{R,m})|=\frac1{R!}\prod_{i=0}^{R-1}(q^{R+m}-q^i)
+\]
+
+edges. A balanced blow-up of $G_{R,m}$ has limiting edge density
+
+\[
+\begin{aligned}
+d_{R,m}(q)
+&=\frac{R!|E(G_{R,m})|}{(q^{R+m}-1)^R}\\
+&=\frac{\prod_{j=m+1}^{m+R}(1-q^{-j})}
+{(1-q^{-(R+m)})^R}.
+\end{aligned}
+\tag{2}
+\]
+
+The denominator in (2) tends to one, and the numerator tends to $\beta_{q,m}$. The infinite
+product is positive because $\sum_{j\geq m+1}q^{-j}<\infty$.
+
+It remains to show that the blow-ups are $H_k$-free. Suppose a copy of $H_k$ in a blow-up is
+compressed to the vertex classes of $G_{R,m}$. The common stem lies in every suspended edge; the
+image of any one suspended edge is a linearly independent $R$-set, so its $k$ stem vectors are
+linearly independent. Let $W$ be their span. Quotienting by $W$ sends the image of every original
+$H$-edge to $r$ independent vectors in
+
+\[
+\mathbb F_q^{R+m}/W\cong\mathbb F_q^{r+m}.
+\]
+
+This gives a homomorphism $H\to B_{q,m}(r)$, contrary to the hypothesis. Nonadjacent vertices may
+be identified, which is precisely why the statement uses homomorphisms; isolated vertices may be
+mapped arbitrarily.
+
+Thus $\pi_{r+k}(H_k)\geq d_{r+k,m}(q)$ for every $k$. Taking the limit in (2) proves (1).
+
+\section{A six-vertex application}
+
+
+Let the vertex set be
+
+\[
+\{c\}\sqcup A\sqcup B,\qquad |A|=3,\quad |B|=2.
+\]
+
+Define the three-graph $H_*$ by the eight edges
+
+\[
+\{c,a,b\}\quad(a\in A,\ b\in B),\qquad \{c\}\cup B,\qquad A.
+\]
+
+\begin{proposition}
+
+
+There is no homomorphism $H_*\to B_{2,0}(3)$.
+
+\end{proposition}
+
+\begin{proof}
+
+
+Suppose $\phi$ were a homomorphism and put $x=\phi(c)$. Modulo $\langle x\rangle$, the two
+vertices of $B$ occupy two distinct nonzero points of the two-dimensional quotient, because
+$\{c\}\cup B$ maps to a basis. Every edge $\{c,a,b\}$ forces the image of each $a\in A$ to avoid
+those two quotient points. The projective line over $\mathbb F_2$ has only three points, so all
+three $A$-images lie over the remaining point and hence inside one two-dimensional subspace
+$\langle x,u\rangle$. They cannot form a basis, contradicting that $A$ is an edge.
+\end{proof}
+
+
+Theorem 1 gives
+
+\[
+\pi_\infty(H_*)\geq\prod_{j=1}^{\infty}(1-2^{-j})\approx0.288788.
+\tag{3}
+\]
+
+Every vertex link of $H_*$ is tripartite. The link at $c$ is $K_{3,2}$ together with the edge on
+$B$, with parts $A,\{b_1\},\{b_2\}$. A link at a vertex of $A$ is the disjoint union of a
+two-leaf star and an edge, and a link at a vertex of $B$ is a star.
+
+The dual three-graph $H_*^*$ has edges $A$, $\{c\}\cup B$, and
+$A'\cup\{b\}$ for every $b\in B$ and every two-set $A'\subset A$. If the images of $A$ form the
+basis $u_1,u_2,u_3$, then the image of either $b\in B$ must have all three coordinates nonzero,
+hence equals $u_1+u_2+u_3$. The two $B$ vertices then have the same image, contradicting that
+$\{c\}\cup B$ maps to a basis. Thus the same lower bound (3) holds for $H_*^*$. Its links are
+also tripartite by direct inspection.
+
+Neither $H_*$ nor $H_*^*$ is the basis hypergraph of a matroid. In $H_*$, the edges
+$X=\{c,a_1,b_1\}$ and $Y=A$ violate basis exchange at $c\in X\setminus Y$; duality gives the
+corresponding statement for $H_*^*$.
+
+\section{Scope and provenance}
+
+
+The parameter $\pi_\infty$ and the question of which three-graphs have zero link Tur\'an density are
+stated in Calbet's problem in \emph{Problems from BCC30}, Section 30.5 [1]. Finite-field independent-set
+hosts, their Euler-product densities, and their use for daisies occur in Ellis--Ivan--Leader,
+especially Theorem 4 [2]. The relation between suspension, contraction and matroid basis
+hypergraphs is developed by van der Pol--Walsh--Wigal in Proposition 2.2, Corollary 2.3 and
+Section 7.1 [3].
+
+The contribution claimed here is limited to the homomorphism formulation for arbitrary finite
+uniform $H$ and to the pair $H_*,H_*^*$, which pass every local tripartite-link test but still have
+positive link Tur\'an density. The cited ingredients and their matroid and daisy applications are not
+claimed as new.
+
+This does not classify the three-graphs of zero link Tur\'an density, and the general formulation may
+still be recognizable to specialists as a folklore abstraction of the finite-field blow-up
+construction.
+
+\begin{thebibliography}{9}
+\footnotesize
+\raggedright
+
+\bibitem{bcc30}
+P.~J.~Cameron (editor),
+\emph{Problems from BCC30}, Section 30.5, problem of A.~Calbet,
+arXiv:2409.07216.
+\href{https://arxiv.org/abs/2409.07216}{arXiv:2409.07216}.
+
+\bibitem{ellis-ivan-leader}
+D.~Ellis, M.-R.~Ivan and I.~Leader,
+\emph{Tur\'an Densities for Daisies and Hypercubes},
+Theorem 4, arXiv:2401.16289v6.
+\href{https://arxiv.org/abs/2401.16289}{arXiv:2401.16289}.
+
+\bibitem{van-der-pol-walsh-wigal}
+J.~van der Pol, Z.~Walsh and M.~C.~Wigal,
+\emph{Tur\'an densities for matroid basis hypergraphs},
+Proposition 2.2, Corollary 2.3 and Section 7.1, arXiv:2502.03673v2.
+\href{https://arxiv.org/abs/2502.03673}{arXiv:2502.03673}.
+
+\end{thebibliography}
+
+\paragraph{AI-assisted research and writing disclosure.}
+Carptopus is the author responsible for the mathematical claims and the public version of this
+manuscript. OpenAI Codex was used as an AI-assisted tool for literature organization, proof
+development and stress testing, exact verification, adversarial auditing, and manuscript
+preparation.
+
+\end{document}
