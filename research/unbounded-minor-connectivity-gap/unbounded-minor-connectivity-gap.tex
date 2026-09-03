@@ -1,0 +1,916 @@
+% Generated deterministically from the audited Markdown source.
+% Responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{xurl}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Minor-connectivity ceiling gaps}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.42em}
+\setlength{\emergencystretch}{4em}
+
+\title{An unbounded gap between minimum degree\\
+and the minor-connectivity ceiling}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{3 September 2026}
+
+\hypersetup{
+  pdftitle={An unbounded gap between minimum degree and the minor-connectivity ceiling},
+  pdfauthor={Carptopus},
+  pdfsubject={Exact connectivity ceilings for independent blow-ups of the Mader graph},
+  pdfkeywords={graph minor, vertex connectivity, minimum degree, Mader graph, graph blow-up, Barát conjecture}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fcolorbox{black!35}{black!4}{\parbox{0.88\textwidth}{\centering\small
+Public Beta manuscript, version 0.1-beta. The mathematical claims and reproducibility artifacts
+have passed project-internal audits; external mathematical review is pending.}}
+\end{center}
+
+\begin{abstract}
+
+
+For a nonempty finite simple graph $G$, let
+
+\nopagebreak[4]
+\[
+\kappa^*(G)=\max\{\kappa(H):H\text{ is a nonempty minor of }G\},
+\]
+
+where $\kappa$ denotes vertex connectivity. We determine this parameter exactly
+on the independent blow-ups of the twelve-vertex Mader graph $M_{12}$. For every
+integer $t\geq2$,
+
+\nopagebreak[4]
+\[
+\kappa^*\bigl(M_{12}[\overline K_t]\bigr)
+=\left\lfloor\frac{9t}{2}\right\rfloor,
+\qquad
+\delta\bigl(M_{12}[\overline K_t]\bigr)=5t.
+\]
+
+Consequently, the difference between minimum degree and the largest
+connectivity of a minor is unbounded, giving infinitely many counterexamples
+to a conjecture of Barát. For context, we also prove the elementary identity
+$\kappa^*(K_s\vee G)=s+\kappa^*(G)$; applied to $M_{12}$, it already answers
+negatively the question whether sufficiently large minimum degree guarantees
+$\kappa^*(G)\geq\delta(G)$, but only with constant deficit. The independent
+blow-ups make that deficit unbounded. Their lower bound is supplied by an
+explicit uniform minor model. For the upper bound, a two-fibre separator
+localizes every relevant minor to a torso that is the join of three elementary
+graphs. Separating mixed and pure branch sets then reduces the problem to three
+sharp full-quotient profiles and an anticomplete-shores formula for
+connectivity. The proof is theoretical; accompanying computations only check
+the construction.
+
+\end{abstract}
+
+\section{Introduction}
+
+
+All ambient graphs in this paper are nonempty, finite and simple; auxiliary
+graphs in decompositions may be empty. For a nonempty graph $G$, define the
+minor-monotone ceiling of vertex connectivity by
+
+\nopagebreak[4]
+\[
+\kappa^*(G)=\max\{\kappa(H):H\preccurlyeq G,\ |V(H)|\geq1\}. \tag{1}
+\]
+
+where $H\preccurlyeq G$ means that $H$ is a minor of $G$. We use the convention
+$\kappa(K_n)=n-1$. The parameter in (1) is denoted $\lceil\kappa\rceil$ in the
+minor-monotone ceiling literature.
+
+Barát conjectured that every graph of minimum degree at least $k+1$ contains a
+$k$-connected minor. Equivalently, the conjecture asserts
+
+\nopagebreak[4]
+\[
+\kappa^*(G)\geq\delta(G)-1                                  \tag{2}
+\]
+
+for every nonempty graph \cite{barat}. Barioli, Barrett, Fallat, Hall, Hogben, Shader, van
+den Driessche and van der Holst studied minor-monotone ceilings and recorded a
+twelve-vertex graph $M_{12}$ with
+
+\nopagebreak[4]
+\[
+\delta(M_{12})=5,
+\qquad
+\kappa^*(M_{12})=4.                                         \tag{3}
+\]
+
+Thus $M_{12}$ attains equality in (2), rather than contradicting it \cite{barioli2013}. More
+recently, Barioli, Fallat, Gupta and Li used the same example when asking \cite{barioli2026}
+whether there is a universal constant $c$ such that
+
+\nopagebreak[4]
+\[
+\kappa^*(G)\geq\delta(G)                                    \tag{4}
+\]
+
+whenever $\delta(G)\geq c$.
+
+There is a simple first amplification of (3). Proposition~\ref{prop:join} below shows that
+joining a graph with a clique increases its connectivity ceiling and minimum
+degree by the clique order. Thus $K_s\vee M_{12}$ has arbitrarily large minimum
+degree but retains deficit one, already answering (4) negatively. Our main
+result is stronger: independent blow-ups of $M_{12}$ have an exact connectivity
+ceiling and a deficit that grows linearly.
+
+\begin{theorem}
+\label{thm:main}
+
+For every integer $t\geq2$, let
+
+\nopagebreak[4]
+\[
+G_t=M_{12}[\overline K_t].
+\]
+
+Then
+
+\nopagebreak[4]
+\[
+\kappa^*(G_t)=\left\lfloor\frac{9t}{2}\right\rfloor.        \tag{5}
+\]
+
+Since $\delta(G_t)=5t$, Theorem~\ref{thm:main} gives
+
+\nopagebreak[4]
+\[
+\delta(G_t)-\kappa^*(G_t)=\left\lceil\frac t2\right\rceil. \tag{6}
+\]
+
+In particular, (2) fails for every $t\geq3$, and the difference in (6) is
+unbounded. This strengthens the fixed-deficit obstruction supplied by clique
+joins.
+
+The proof has two complementary parts. The lower bound in (5) comes from a
+balanced family of explicit branch sets in the original graph. For the upper
+bound, the natural $2t$-vertex separator of $G_t$ localizes any more than
+$2t$-connected minor to a $7t$-vertex torso. That torso has a three-factor join
+decomposition. Every branch set meeting two factors becomes universal in the
+quotient, while branch sets contained in one factor are controlled by simple
+full-quotient profiles. The resulting capacity inequalities give the matching upper
+bound.
+
+\end{theorem}
+
+\section{A baseline amplification by clique joins}
+
+
+The ordinary connectivity formula for graph joins is classical. Barrett,
+Fallat, Hall and Hogben used it in their study of the connectivity ceiling \cite{barrett2013}.
+For that ceiling it gives the following exact identity.
+
+\begin{proposition}
+\label{prop:join}
+
+For every nonempty finite simple graph $G$ and every integer $s\geq0$,
+
+\nopagebreak[4]
+\[
+\kappa^*(K_s\vee G)=s+\kappa^*(G).                          \tag{J1}
+\]
+
+Moreover,
+
+\nopagebreak[4]
+\[
+\delta(K_s\vee G)=s+\delta(G).                              \tag{J2}
+\]
+
+\end{proposition}
+
+\begin{proof}
+
+Choose a minor $F$ of $G$ with $\kappa(F)=\kappa^*(G)$. The graph
+$K_s\vee F$ is a minor of $K_s\vee G$, and the join-connectivity formula gives
+
+\nopagebreak[4]
+\[
+\kappa(K_s\vee F)=s+\kappa(F).
+\]
+
+This proves the lower bound in (J1).
+
+For the reverse inequality, take a nonempty minor $H$ of $K_s\vee G$ and a
+branch-set model for it. Retain every touching edge between branch sets, thereby
+obtaining a supergraph $H^+$ of $H$. Suppose that $r$ branch sets meet the
+$K_s$ side. Then $r\leq s$, each of these branch sets is universal in $H^+$,
+and the remaining branch sets form a full branch-set quotient $F$ in $G$. If
+$F$ is nonempty, then
+
+\nopagebreak[4]
+\[
+\kappa(H)\leq\kappa(H^+)
+=r+\kappa(F)
+\leq s+\kappa^*(G).
+\]
+
+If $F$ is empty, then $H^+=K_r$ with $r\geq1$, so
+$\kappa(H)\leq r-1\leq s+\kappa^*(G)$. Maximizing over $H$ proves (J1).
+
+For (J2), old vertices acquire $s$ new neighbours, while each new clique vertex
+has degree $s-1+|V(G)|$. Since $\delta(G)\leq|V(G)|-1$, their minimum is
+$s+\delta(G)$.
+\end{proof}
+
+
+Applying Proposition~\ref{prop:join} to (3) gives
+
+\nopagebreak[4]
+\[
+\delta(K_s\vee M_{12})=s+5,
+\qquad
+\kappa^*(K_s\vee M_{12})=s+4.                              \tag{J3}
+\]
+
+Thus the minimum degree in (J3) is unbounded while the deficit stays equal to
+one. This already disproves the existence of a threshold in (4). The remainder
+of the paper proves the stronger unbounded-deficit statement.
+
+\section{The graph \texorpdfstring{$M_{12}$}{M12} and its independent blow-ups}
+
+
+We give a labelled definition so that the construction does not depend on a
+drawing. Take two disjoint copies of $C_4\vee K_2$. In the first copy, let the
+cycle vertices be $x_0,x_1,x_2,x_3$ in cyclic order and let $a_x,b_x$ be the
+two adjacent vertices joined to the entire cycle. In the second copy use
+$y_0,y_1,y_2,y_3,a_y,b_y$. Add the six cross edges
+
+\nopagebreak[4]
+\[
+x_0y_i\quad\text{and}\quad y_0x_i
+\qquad (i=1,2,3).                                            \tag{7}
+\]
+
+The resulting graph is $M_{12}$. We use the numerical labels
+
+\nopagebreak[4]
+\[
+\begin{aligned}
+0,1,2,3,4,5&=x_0,x_1,x_2,x_3,a_x,b_x,\\
+6,7,8,9,10,11&=y_0,y_1,y_2,y_3,a_y,b_y.
+\end{aligned}                                                \tag{8}
+\]
+
+The graph has 12 vertices and 32 edges. Its vertices $0$ and $6$ have degree
+seven and all other vertices have degree five. The set $\{0,6\}$ is a separator;
+after its deletion, the two components have vertex sets $\{1,2,3,4,5\}$ and
+$\{7,8,9,10,11\}$.
+
+For an integer $t\geq1$, the independent blow-up
+$G_t=M_{12}[\overline K_t]$ has vertex set
+$V(M_{12})\times\{0,\ldots,t-1\}$. Distinct vertices $(u,i)$ and $(v,j)$ are
+adjacent precisely when $uv\in E(M_{12})$. Thus
+
+\nopagebreak[4]
+\[
+|V(G_t)|=12t,
+\qquad
+|E(G_t)|=32t^2,
+\qquad
+\delta(G_t)=5t.                                              \tag{9}
+\]
+
+The $t$ vertices above one base vertex will be called a fibre. We write
+$I_m=\overline K_m$ for the independent graph on $m$ vertices.
+
+\section{Two elementary connectivity tools}
+
+
+For a graph $J$, define
+
+\nopagebreak[4]
+\[
+\beta(J)=\max\bigl(\{0\}\cup\{|X|+|Y|:
+X,Y\ne\varnothing,\ X\cap Y=\varnothing,\ E_J(X,Y)=\varnothing\}\bigr).
+                                                                    \tag{10}
+\]
+
+Thus $\beta(J)=0$ for every complete graph, including the empty graph and the
+one-vertex graph. The next formula will only be used when $J$ is not complete.
+
+\begin{lemma}
+\label{lem:beta}
+
+If $J$ is a noncomplete graph on $n$ vertices, then
+
+\nopagebreak[4]
+\[
+\kappa(J)=n-\beta(J).                                       \tag{11}
+\]
+
+\end{lemma}
+
+\begin{proof}
+
+If $X$ and $Y$ are nonempty anticomplete sets, deleting all other vertices
+disconnects $J$, so $\kappa(J)\leq n-|X|-|Y|$. Conversely, delete a minimum
+vertex cut and partition the components that remain into two nonempty unions
+$X$ and $Y$. These sets are anticomplete and have total size
+$n-\kappa(J)$. Maximizing over $X,Y$ gives (11).
+\end{proof}
+
+
+Recall that the join $J_1\vee J_2$ is obtained from disjoint copies of $J_1$
+and $J_2$ by adding every edge between them. In a join of several graphs,
+anticomplete shores must lie in a single factor. Consequently, if
+
+\nopagebreak[4]
+\[
+J=K_u\vee J_1\vee\cdots\vee J_m
+\]
+
+is noncomplete, then
+
+\nopagebreak[4]
+\[
+\kappa(J)=u+\sum_{i=1}^m |V(J_i)|-\max_i\beta(J_i).          \tag{12}
+\]
+
+Given pairwise disjoint connected branch sets in a graph $F$, their \textbf{full branch-set quotient} has one vertex per branch set and an edge for every pair
+of branch sets that touch in $F$. It is a minor of $F$ obtained without a final
+edge-deletion step. The distinction matters: the following profiles are false
+for arbitrary minors after unrestricted edge deletion, but hold for the full
+quotients used in our upper-bound argument. For connected noncomplete graphs,
+the identity (11), in an equivalent complement-biclique form, also appears in
+Barrett, Fallat, Hall and Hogben \cite{barrett2013}.
+
+We need three elementary full-quotient profiles.
+
+\begin{lemma}
+\label{lem:profiles}
+
+Let $t,B\geq1$ be integers, and let $J_i$ be a full branch-set quotient of the
+indicated graph.
+
+\begin{enumerate}
+\item If $J_1$ comes from $K_t\sqcup I_t$, then either $J_1$ is complete and
+   $|V(J_1)|\leq t$, or $\beta(J_1)=|V(J_1)|$.
+\item If $J_2$ comes from $I_{2t}$ and $\beta(J_2)\leq B$, then
+   $|V(J_2)|\leq B$.
+\item If $J_3$ comes from $K_t\sqcup K_{t,t}$, then one of the following holds:
+   $J_3$ is empty; both components contribute vertices and
+   $\beta(J_3)=|V(J_3)|$; only the $K_t$ component contributes and $J_3$ is
+   complete of order at most $t$; or only the $K_{t,t}$ component contributes
+   and
+
+\nopagebreak[4]
+\[
+   |V(J_3)|\leq\min\{2t,t+B\}                               \tag{13}
+\]
+
+   whenever $\beta(J_3)\leq B$.
+
+\end{enumerate}
+
+\end{lemma}
+
+\begin{proof}
+
+A branch set cannot join different components of a graph. Because every
+touching edge is retained, a full quotient of $K_t\sqcup I_t$ is a clique
+together with isolated vertices. If it is not complete, its vertices can be
+partitioned into two nonempty anticomplete shores, proving the first assertion.
+The second assertion is immediate because a full quotient of an independent
+graph is independent.
+
+For the third assertion, the empty case is immediate, and only the last case
+needs proof. We have
+
+\nopagebreak[4]
+\[
+\mathrm{tw}(K_{t,t})=t.                                    \tag{14}
+\]
+
+Taking one bipartition class together with each vertex of the other class
+gives a tree decomposition of width $t$. In the opposite direction,
+contracting $t-1$ disjoint cross edges and retaining the two unmatched
+vertices gives a $K_{t+1}$ minor. Treewidth is minor-monotone, and vertex
+connectivity is at most treewidth. Hence every minor of $K_{t,t}$ has
+connectivity at most $t$, and every complete minor has order at most $t+1$.
+
+If $J_3$ is noncomplete, Lemma~\ref{lem:beta} gives
+
+\nopagebreak[4]
+\[
+|V(J_3)|-\beta(J_3)=\kappa(J_3)\leq t.
+\]
+
+If $J_3$ is complete, then $|V(J_3)|\leq t+1\leq t+B$.
+Together with the trivial bound $|V(J_3)|\leq2t$, this proves (13).
+
+\end{proof}
+
+
+\section{A uniform lower-bound model}
+
+
+Fix $t\geq2$ and put
+
+\nopagebreak[4]
+\[
+a=\left\lfloor\frac t2\right\rfloor,
+\qquad
+b=\left\lceil\frac t2\right\rceil.                         \tag{15}
+\]
+
+Using the labels in (8), form the following $t$ connected branch sets in
+$G_t$:
+
+\nopagebreak[4]
+\[
+\begin{aligned}
+A_i&=\{(0,i),(6,i),(7,i),(10,i),(11,i)\}
+&& (0\leq i<a),\\
+B_j&=\{(1,j),(6,a+j)\}
+&& (0\leq j<b).
+\end{aligned}                                                \tag{16}
+\]
+
+Add as singleton branch sets all unused vertices in the six fibres above
+$0,1,2,3,4,5$. There are $t$ branch sets in (16) and $5t$ singletons, hence
+$6t$ branch sets in total.
+
+The sets $A_i$ are connected by the edges represented by (7) and the two
+copies of $C_4\vee K_2$; each $B_j$ is connected by the edge $1\,6$. The sets
+are pairwise disjoint. Moreover, every branch set in (16) is adjacent to every
+other branch set in the quotient. Thus the corresponding $t$ quotient
+vertices are universal.
+
+Let $Q_t$ be the full branch-set quotient. In the complement of $Q_t$, the
+$t$ universal vertices are isolated. The four nontrivial components have
+orders
+
+\nopagebreak[4]
+\[
+t,\qquad t,\qquad 2t-a,\qquad 2t-b.                          \tag{17}
+\]
+
+Each component is complete. The two larger components join the remaining
+vertices above $0$ to the fibre above $2$, and the remaining vertices above
+$1$ to the fibre above $3$; the other two components are the fibres above $4$
+and $5$. Hence the largest complete bipartite subgraph in $\overline{Q_t}$ has
+total shore size
+
+\nopagebreak[4]
+\[
+\max\{t,2t-a,2t-b\}=\left\lceil\frac{3t}{2}\right\rceil.
+\]
+
+Equivalently, the maximum total size of two anticomplete shores in $Q_t$ is
+$\lceil3t/2\rceil$. Lemma~\ref{lem:beta} now gives
+
+\nopagebreak[4]
+\[
+\kappa(Q_t)
+=6t-\left\lceil\frac{3t}{2}\right\rceil
+=\left\lfloor\frac{9t}{2}\right\rfloor.                    \tag{18}
+\]
+
+Since $Q_t$ is a minor of $G_t$,
+
+\nopagebreak[4]
+\[
+\kappa^*(G_t)\geq\left\lfloor\frac{9t}{2}\right\rfloor.    \tag{19}
+\]
+
+\section{Localization to a torso}
+
+
+Let $S_t$ be the $2t$ vertices in the fibres above $0$ and $6$. The graph
+$G_t-S_t$ has two components of order $5t$. Fix the component above
+$\{1,2,3,4,5\}$ and call it $C_t$. Let $T_t$ be obtained from
+$G_t[C_t\cup S_t]$ by completing $S_t$ to a clique. Thus $T_t$ has $7t$
+vertices.
+
+\begin{lemma}
+\label{lem:torso}
+
+If $G_t$ has an $r$-connected minor with $r>2t$, then $T_t$ has an
+$r$-connected minor.
+
+\end{lemma}
+
+\begin{proof}
+
+Let $H$ be an $r$-connected minor of $G_t$, represented by pairwise disjoint
+connected branch sets. Let $X\subseteq V(H)$ index the branch sets that meet
+$S_t$. Since the branch sets are disjoint,
+
+\nopagebreak[4]
+\[
+|X|\leq|S_t|=2t<r.
+\]
+
+The graph $H-X$ is connected and has at least two vertices. Every branch set
+indexed by $V(H)\setminus X$ lies in one component of $G_t-S_t$. As there are
+no edges between those two components, all these branch sets lie on the same
+side; by symmetry, take that side to be $C_t$.
+
+Restrict each branch set meeting $S_t$ to $C_t\cup S_t$. The restricted set is
+nonempty. Any excursion through the discarded component enters and leaves at
+vertices of $S_t$, so an added clique edge in $T_t[S_t]$ replaces that
+excursion. The same clique restores any adjacency between two restricted
+branch sets that was realized through the discarded side. Adjacencies to pure
+branch sets in $C_t$ remain present. The restricted sets therefore form an
+$H$-minor model in $T_t$.
+\end{proof}
+
+
+Since $\lfloor9t/2\rfloor+1>2t$, Lemma~\ref{lem:torso} shows that the upper bound in Theorem
+1 follows once we prove
+
+\nopagebreak[4]
+\[
+\kappa^*(T_t)\leq\left\lfloor\frac{9t}{2}\right\rfloor.     \tag{20}
+\]
+
+\section{The three-factor torso}
+
+
+Partition the seven fibres of $T_t$ into
+
+\nopagebreak[4]
+\[
+F_1=\{0,2\},
+\qquad
+F_2=\{1,3\},
+\qquad
+F_3=\{6,4,5\}.
+\]
+
+The definition of $M_{12}$ and the completion of $S_t$ give
+
+\nopagebreak[4]
+\[
+\begin{aligned}
+F_1&\cong K_t\sqcup I_t,\\
+F_2&\cong I_{2t},\\
+F_3&\cong K_t\sqcup K_{t,t},
+\end{aligned}
+\]
+
+and every vertex in one factor is adjacent to every vertex in either other
+factor. Therefore
+
+\nopagebreak[4]
+\[
+T_t=(K_t\sqcup I_t)\vee I_{2t}\vee(K_t\sqcup K_{t,t}).      \tag{21}
+\]
+
+Consider an arbitrary minor model in $T_t$ and retain every edge of its full
+branch-set quotient. Adding these edges cannot decrease vertex connectivity,
+so it suffices to bound the connectivity of the full quotient.
+
+Call a branch set mixed if it meets at least two of the three factors in (21),
+and pure otherwise. Every mixed branch set becomes a universal quotient
+vertex. Indeed, given another branch set, one of the factors met by the mixed
+set differs from a factor met by the other set, and a join edge supplies the
+required adjacency. The same argument shows that two mixed branch sets are
+adjacent.
+
+Let $u$ be the number of mixed branch sets. For $i=1,2,3$, the pure branch sets
+contained in $F_i$ form a full branch-set quotient $H_i$ of that factor, and in
+particular a minor of it; write $n_i=|V(H_i)|$. The full quotient is
+
+\nopagebreak[4]
+\[
+H=K_u\vee H_1\vee H_2\vee H_3.                             \tag{22}
+\]
+
+Each mixed branch set uses at least two vertices, and each pure branch set uses
+at least one. Since $|V(T_t)|=7t$,
+
+\nopagebreak[4]
+\[
+2u+n_1+n_2+n_3\leq7t.                                     \tag{23}
+\]
+
+\section{The general upper bound}
+
+
+We now prove (20). First suppose that the quotient $H$ in (22) is not complete.
+Set
+
+\nopagebreak[4]
+\[
+B=\max_{1\leq i\leq3}\beta(H_i),
+\qquad
+s=n_1+n_2+n_3.
+\]
+
+Then $B\geq1$, and (12), (22) and (23) give
+
+\nopagebreak[4]
+\[
+\begin{aligned}
+\kappa(H)
+&=u+s-B\\
+&\leq\frac{7t-s}{2}+s-B
+=\frac{7t}{2}+\frac{s}{2}-B.
+\end{aligned}
+\tag{24}
+\]
+
+We distinguish the possible contributions to $H_3$.
+
+\paragraph{Case 1: both components of $F_3$ contribute.}
+
+
+Lemma~\ref{lem:profiles} gives $B\geq n_3$. Hence
+
+\nopagebreak[4]
+\[
+\kappa(H)\leq u+n_1+n_2.
+\]
+
+Every mixed branch set uses at least one vertex of $F_1\cup F_2$, and each
+pure branch set counted by $n_1+n_2$ uses a different vertex there. Since
+$|F_1\cup F_2|=4t$,
+
+\nopagebreak[4]
+\[
+u+n_1+n_2\leq4t
+\leq\left\lfloor\frac{9t}{2}\right\rfloor.                 \tag{25}
+\]
+
+\paragraph{Case 2: only the $K_t$ component of $F_3$ contributes, or $H_3$ is empty.}
+
+
+Here $n_3\leq t$. If $H_1$ is noncomplete, Lemma~\ref{lem:profiles} gives
+$n_1,n_2\leq B$, and therefore $s\leq t+2B$. Equation (24) yields
+
+\nopagebreak[4]
+\[
+\kappa(H)\leq4t.                                           \tag{26}
+\]
+
+If $H_1$ is complete, then $n_1\leq t$ and $n_2\leq B$, so
+$s\leq2t+B$. Hence
+
+\nopagebreak[4]
+\[
+\kappa(H)\leq\frac{9t}{2}-\frac B2
+\leq\left\lfloor\frac{9t}{2}\right\rfloor.                \tag{27}
+\]
+
+The final inequality uses $B\geq1$ and the integrality of $\kappa(H)$.
+
+\paragraph{Case 3: only the $K_{t,t}$ component of $F_3$ contributes.}
+
+
+Suppose first that $H_1$ is noncomplete. Lemma~\ref{lem:profiles} gives
+
+\nopagebreak[4]
+\[
+s\leq2B+\min\{2t,t+B\}.                                    \tag{28}
+\]
+
+If $B\leq t$, then $s\leq t+3B$, and (24) gives
+
+\nopagebreak[4]
+\[
+\kappa(H)\leq4t+\frac B2\leq\frac{9t}{2}.
+\]
+
+If $B\geq t$, then $s\leq2t+2B$, and (24) again gives
+$\kappa(H)\leq9t/2$.
+
+It remains to suppose that $H_1$ is complete. Now
+
+\nopagebreak[4]
+\[
+s\leq t+B+\min\{2t,t+B\}.                                  \tag{29}
+\]
+
+For $B\leq t$, this gives $s\leq2t+2B$ and
+$\kappa(H)\leq9t/2$. For $B\geq t$, it gives $s\leq3t+B$ and
+
+\nopagebreak[4]
+\[
+\kappa(H)\leq5t-\frac B2\leq\frac{9t}{2}.
+\]
+
+In every subcase, integrality yields
+
+\nopagebreak[4]
+\[
+\kappa(H)\leq\left\lfloor\frac{9t}{2}\right\rfloor.       \tag{30}
+\]
+
+The three cases are mutually exclusive and exhaustive for a noncomplete
+quotient.
+
+Finally suppose that $H$ is complete. Every nonempty $H_i$ must be complete.
+Lemma~\ref{lem:profiles} gives
+
+\nopagebreak[4]
+\[
+n_1\leq t,
+\qquad
+n_2\leq1,
+\qquad
+n_3\leq t+1,
+\]
+
+and thus $s\leq2t+2$. By (23),
+
+\nopagebreak[4]
+\[
+|V(H)|=u+s
+\leq\frac{7t+s}{2}
+\leq\frac{9t+2}{2}.
+\]
+
+Since $\kappa(H)=|V(H)|-1$, the same parity check gives
+
+\nopagebreak[4]
+\[
+\kappa(H)\leq\left\lfloor\frac{9t}{2}\right\rfloor.       \tag{31}
+\]
+
+Equations (30) and (31) prove (20). Lemma~\ref{lem:torso} transfers this upper bound to
+$G_t$, and (19) supplies equality. This completes the proof of Theorem~\ref{thm:main}.
+
+\section{Consequences}
+
+
+\begin{corollary}
+\label{cor:unbounded}
+
+There is no constant $C$ such that
+
+\nopagebreak[4]
+\[
+\kappa^*(G)\geq\delta(G)-C
+\]
+
+for every nonempty finite simple graph $G$.
+
+\end{corollary}
+
+\begin{proof}
+
+For $G_t$, the deficit is $\lceil t/2\rceil$ by (6), and hence is unbounded.
+
+\end{proof}
+
+
+\begin{corollary}
+\label{cor:threshold}
+
+There is no constant $c$ such that every nonempty graph $G$ with
+$\delta(G)\geq c$
+satisfies $\kappa^*(G)\geq\delta(G)$.
+
+\end{corollary}
+
+\begin{proof}
+
+This already follows from (J3). It also follows from the stronger family
+$G_t$: the minimum degrees $\delta(G_t)=5t$ are unbounded, while (6) is
+positive for every $t\geq2$.
+\end{proof}
+
+
+For $t\geq3$, let $k=5t-1$. Then $G_t$ has minimum degree $k+1$ but
+
+\nopagebreak[4]
+\[
+\kappa^*(G_t)=\left\lfloor\frac{9t}{2}\right\rfloor<5t-1=k.
+\]
+
+Thus the family gives infinitely many counterexamples to Barát's conjecture.
+The first member covered by this strict inequality is the 36-vertex graph
+$G_3$, for which $\delta(G_3)=15$ and $\kappa^*(G_3)=13$.
+
+The formula also gives $\kappa^*(G_2)=9$ and $\kappa^*(G_4)=18$. The previously
+known value $\kappa^*(M_{12})=4$ is consistent with the same rounded expression
+at $t=1$, although Theorem~\ref{thm:main} is stated only for $t\geq2$.
+
+\section{Reproducibility and evidence boundary}
+
+
+The proof of Theorem~\ref{thm:main} is independent of exhaustive computation. The
+accompanying verification program reconstructs the branch sets in (16), checks
+that they are nonempty, disjoint and connected in the original graph, builds
+their full quotient, and computes its vertex connectivity. From the repository
+root, run
+
+\begin{quote}\small
+
+\noindent{\small\ttfamily .\textbackslash{}\allowbreak{}.venv\textbackslash{}\allowbreak{}Scripts\textbackslash{}\allowbreak{}python.exe\ \allowbreak{}research\textbackslash{}\allowbreak{}M12-Minor-Connectivity-Gap\textbackslash{}\allowbreak{}verification\textbackslash{}\allowbreak{}verify\_general\_lower\_model.py\par}
+\end{quote}
+
+
+The frozen output covers $t=2,\ldots,8$ and reports the connectivities
+
+\nopagebreak[4]
+\[
+9,13,18,22,27,31,36.
+\]
+
+This finite calculation checks the stated construction and its implementation;
+it is not used to infer the universal quantifier in Theorem~\ref{thm:main}. The upper bound
+is entirely theoretical.
+
+\section{Prior work and novelty boundary}
+
+
+Barát's thesis records the conjecture leading to (2) \cite{barat}. The graph $M_{12}$
+originates in Mader's 1968 work \cite{mader1968}; Barioli et al. later introduced the relevant
+minor-monotone ceiling notation and established (3) for this graph \cite{barioli2013}. Barrett,
+Fallat, Hall and Hogben developed nearby connectivity tools \cite{barrett2013},
+including an equivalent form of (11) and the ordinary join-connectivity
+formula. Fijav\v{z} and Wood studied broader relations between graph minors and
+minimum degree \cite{fijavz2010}. Barioli, Fallat, Gupta and Li subsequently used $M_{12}$ \cite{barioli2026} to
+show that $\kappa^*(G)\geq\delta(G)$ does not hold for every graph and asked
+whether it holds above a universal minimum-degree threshold; Proposition~\ref{prop:join}
+gives a negative answer, while Theorem~\ref{thm:main} supplies the new independent-blow-up
+formula, makes the deficit unbounded, and yields infinitely many counterexamples
+to Barát's conjecture.
+
+A targeted search did not locate the exact formula (5) or this independent
+blow-up family in prior work. This is a candidate novelty statement rather
+than proof of global priority. No claim of first discovery is made, and the
+historical assessment remains subject to specialist review and searches of
+sources not indexed in the databases consulted.
+
+\section*{AI-assisted research and writing disclosure}
+
+
+Carptopus is the sole author and is responsible for the mathematical claims,
+source selection, revisions and public version of this manuscript. OpenAI
+Codex was used as an AI-assisted tool for literature discovery, proof
+exploration, exact verification, adversarial auditing and manuscript drafting.
+
+\begin{thebibliography}{9}
+\footnotesize
+\raggedright
+
+\bibitem{barat}
+J.~Bar\'at,
+\emph{Width-type graph parameters},
+PhD thesis, University of Szeged, submitted 2000 and defended 2001,
+Conjecture 6.2.
+\url{https://doktori.bibl.u-szeged.hu/id/eprint/4651/}.
+
+\bibitem{barioli2013}
+F.~Barioli, W.~Barrett, S.~M.~Fallat, H.~T.~Hall, L.~Hogben, B.~Shader,
+P.~van den Driessche, and H.~van der Holst,
+\emph{Parameters related to tree-width, zero forcing, and maximum nullity of a graph},
+Journal of Graph Theory \textbf{72} (2013), no.~2, 146--177.
+\href{https://doi.org/10.1002/jgt.21637}{doi:10.1002/jgt.21637}.
+
+\bibitem{barioli2026}
+F.~Barioli, S.~M.~Fallat, H.~Gupta, and Z.~Li,
+\emph{The weak version of the graph complement conjecture and partial results for the delta conjecture},
+Discrete Mathematics \textbf{349} (2026), no.~3, 114861.
+\href{https://doi.org/10.1016/j.disc.2025.114861}{doi:10.1016/j.disc.2025.114861}.
+
+\bibitem{barrett2013}
+W.~Barrett, S.~M.~Fallat, H.~T.~Hall, and L.~Hogben,
+\emph{Note on Nordhaus--Gaddum problems for Colin de Verdi\`ere type parameters},
+Electronic Journal of Combinatorics \textbf{20} (2013), no.~3, P56.
+\url{https://www.combinatorics.org/ojs/index.php/eljc/article/view/v20i3p56}.
+
+\bibitem{mader1968}
+W.~Mader,
+\emph{Homomorphies\"atze f\"ur Graphen},
+Mathematische Annalen \textbf{178} (1968), 154--168.
+\href{https://doi.org/10.1007/BF01350657}{doi:10.1007/BF01350657}.
+
+\bibitem{fijavz2010}
+G.~Fijav\v{z} and D.~R.~Wood,
+\emph{Graph minors and minimum degree},
+Electronic Journal of Combinatorics \textbf{17} (2010), R151.
+\href{https://doi.org/10.37236/423}{doi:10.37236/423}.
+
+\end{thebibliography}
+
+\end{document}

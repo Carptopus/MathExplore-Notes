@@ -1,0 +1,8 @@
+negative_controls=PASS
+t=2 branch_sets=12 quotient_edges=58 connectivity=9 expected=9
+t=3 branch_sets=18 quotient_edges=131 connectivity=13 expected=13
+t=4 branch_sets=24 quotient_edges=234 connectivity=18 expected=18
+t=5 branch_sets=30 quotient_edges=366 connectivity=22 expected=22
+t=6 branch_sets=36 quotient_edges=528 connectivity=27 expected=27
+t=7 branch_sets=42 quotient_edges=719 connectivity=31 expected=31
+t=8 branch_sets=48 quotient_edges=940 connectivity=36 expected=36

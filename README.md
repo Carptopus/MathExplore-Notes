@@ -13,6 +13,7 @@ an exact minimum degree and a complete classification of the equality case.
 
 | Entry | Areas | Contribution | Public version | Status |
 | --- | --- | --- | --- | --- |
+| [An unbounded gap between minimum degree and the minor-connectivity ceiling](research/unbounded-minor-connectivity-gap/README.md)<br>[PDF](research/unbounded-minor-connectivity-gap/unbounded-minor-connectivity-gap.pdf) · [BibTeX](research/unbounded-minor-connectivity-gap/CITATION.bib) · DOI pending | Graph minors, vertex connectivity, minimum degree, Mader graph, graph blow-ups | Proves $\kappa^*(M_{12}[\overline K_t])=\lfloor9t/2\rfloor$ for every $t\ge2$, yielding an unbounded gap $\delta-\kappa^*=\lceil t/2\rceil$ and infinitely many counterexamples to Barát's conjectured additive-one bound | v0.1-beta | Internally verified public Beta; external review pending |
 | [Every two-vertex premaniplex is the symmetry type graph of a finite abstract polytope](research/two-vertex-polytopality/README.md)<br>[PDF](research/two-vertex-polytopality/two-vertex-polytopality.pdf) · [BibTeX](research/two-vertex-polytopality/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22274310) | Abstract polytopes, maniplexes, symmetry type graphs, voltage constructions | Proves that every connected two-vertex premaniplex of every rank at least three is realized as the full symmetry type graph of a finite abstract polytope | v0.1-beta | Internally verified public Beta; external review pending |
 | [Odd-dimensional descent obstructions in the third support spectrum of binary second-order Reed--Muller codes](research/rm2-odd-descent-obstructions/README.md)<br>[PDF](research/rm2-odd-descent-obstructions/odd-dimensional-descent-obstructions-rm2-third-support.pdf) · [BibTeX](research/rm2-odd-descent-obstructions/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22255441) | Coding theory, Reed--Muller codes, higher support spectra, quadratic Boolean functions, Walsh spectra | Classifies an exponentially widening local parity band for three-dimensional subcodes and proves an infinite family of odd-to-even support descent obstructions | v0.1-beta | Internally verified public Beta; external review pending |
 | [Small exact values and a dense-anchor bound for weak cube saturation](research/small-exact-values-dense-anchor-weak-cube-saturation/README.md)<br>[PDF](research/small-exact-values-dense-anchor-weak-cube-saturation/small-exact-values-dense-anchor-weak-cube-saturation.pdf) · [BibTeX](research/small-exact-values-dense-anchor-weak-cube-saturation/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22254558) | Weak saturation, hypercubes, extremal graph theory, exhaustive enumeration | Determines `wsat(K8,Q3)=15`, `wsat(K9,Q3)=16`, and `wsat(K10,Q3)=18`; corrects the reported order-nine value, disproves the associated `2n-1` proposal, and proves the general upper bound `wsat(K_n,Q3)<=floor((7n+2)/4)` for `n>=9` | v0.1-beta | Internally verified public Beta; external review pending |
@@ -54,6 +55,23 @@ an exact minimum degree and a complete classification of the equality case.
 | [Tail-projection certificates for cyclotomic minimum-degree polynomials beyond the reciprocal condition](research/cyclotomic-tail-projection-families/README.md)<br>[PDF](research/cyclotomic-tail-projection-families/cyclotomic-tail-projection-families.pdf) · [BibTeX](research/cyclotomic-tail-projection-families/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22127365) | Cyclotomic polynomials, nonnegative coefficients, CRT tensor projections, prime tuples | Gives an explicit sufficient condition for every fixed number of at least four prime factors and proves infinite families beyond Steinberger's reciprocal condition | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
+
+### Unbounded minor-connectivity gap
+
+For the independent $t$-fold blow-up of Mader's 12-vertex graph, the manuscript proves the exact
+formula
+
+$$
+\kappa^*(M_{12}[\overline K_t])=\left\lfloor\frac{9t}{2}\right\rfloor
+\qquad(t\ge2).
+$$
+
+Since its minimum degree is $5t$, the gap between minimum degree and the largest connectivity of a
+minor equals $\lceil t/2\rceil$ and is unbounded. This supplies infinitely many counterexamples to
+Barát's conjectured universal bound $\kappa^*(G)\ge\delta(G)-1$. The proof combines an explicit
+uniform minor model with a three-factor torso classification and an anticomplete-shores argument.
+
+- [Manuscript and verification materials](research/unbounded-minor-connectivity-gap/README.md)
 
 ### Two-vertex polytopality
 
