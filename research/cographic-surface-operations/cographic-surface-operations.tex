@@ -1,0 +1,567 @@
+% Generated deterministically from the audited Markdown source.
+% Responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{needspace}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{xurl}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Cographic surface operations}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.44em}
+\setlength{\emergencystretch}{4em}
+\urlstyle{same}
+
+\title{Triangle sums, peripheral cycles, and contractions\\
+for orderable cographic matroids}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{4 September 2026}
+
+\hypersetup{
+  pdftitle={Triangle sums, peripheral cycles, and contractions for orderable cographic matroids},
+  pdfauthor={Carptopus},
+  pdfsubject={Structural operations for face-adjacency orderings of cographic matroids},
+  pdfkeywords={orderable matroid, cographic matroid, surface triangulation, triangle sum, edge contraction, peripheral cycle}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fcolorbox{black!35}{black!4}{\parbox{0.88\textwidth}{\centering\small
+Internally verified candidate manuscript, version 0.1-beta. The mathematical proof and
+complete manuscript have passed project-internal zero-trust audits. External mathematical
+review and formal peer review are pending.}}
+\end{center}
+
+\begin{abstract}
+
+
+For a finite simplicial triangulation $T$ of a closed surface, let
+$\Lambda_T$ be the graph on the edges of the $1$-skeleton in which two edges
+are adjacent when they lie in a common triangular face. We study the property
+$U(T)$ that $\Lambda_T[B]$ is connected for every bond $B$ of the
+$1$-skeleton. The induced graph is automatically $2$-regular, so $U(T)$
+provides a consistent ordering of the circuits of the cographic matroid.
+
+We first prove a graph-theoretic gluing theorem for cographic matroids with a
+compatible rooted triangle. In the surface setting this becomes an exact
+connected-sum theorem:
+
+\[
+U(T_1\mathbin{\#_\triangle}T_2)
+\quad\Longleftrightarrow\quad
+U(T_1)\ \text{and}\ U(T_2).
+\]
+
+Together with the projective-plane theorem proved in an earlier paper, this
+gives infinitely many $3$-connected, regular, non-graphic, orderable
+cographic matroids on every closed nonorientable surface. We then establish
+two complementary structural restrictions. A nonfacial induced cycle whose
+vertex deletion leaves the graph connected must be one-sided, and $U(T)$
+descends under every legal edge contraction. Consequently, existence on a
+fixed surface reduces to its finite set of irreducible triangulations. We also
+give an explicit Klein-bottle example showing that $U$ is not preserved by
+general vertex splitting. These results provide composition, obstruction, and
+reduction mechanisms without claiming a classification of all orderable
+cographic matroids or all surface triangulations satisfying $U$.
+
+\end{abstract}
+
+\section{Introduction}
+
+
+Crenshaw and Oxley introduced \emph{orderable matroids}: matroids whose circuits
+admit reversible cyclic orderings that agree on every shared adjacent pair
+\cite{crenshaw-oxley-published}. Graphic matroids are naturally orderable, while the binary case is
+structurally difficult. Their current author manuscript proves that every
+$4$-connected regular orderable matroid is graphic \cite[Theorem~1.5]{crenshaw-oxley-v12}. The exact
+$3$-connected boundary is different. An earlier paper \cite{carptopus-rp2} proved that every
+finite simplicial triangulation of the real projective plane gives an
+orderable cographic matroid, yielding infinitely many $3$-connected regular
+non-graphic examples.
+
+The earlier proof used a particular global adjacency relation: two graph
+edges are adjacent when they meet in a triangular face. Restricted to any
+bond, this relation is a disjoint union of cycles, and a topological argument
+on the projective plane forces a single cycle. The present paper asks which
+operations preserve this stronger, specified ordering and what its failure
+reveals about the topology of a triangulation.
+
+The results have three layers. First, Section 3 gives a graph-theoretic
+triangle-rooted gluing theorem that is not restricted to surface
+triangulations. Second, Section 4 proves that the surface property is preserved
+and reflected by simplicial connected sum along a triangular face. This
+extends \cite{carptopus-rp2} from the projective plane to explicit infinite families on every
+closed nonorientable surface. Third, Sections 5 and 6 give a topological
+obstruction and a contraction theorem. The obstruction limits peripheral
+cycles in any positive example; the contraction theorem reduces the existence
+question on each fixed surface to finitely many irreducible triangulations.
+
+The specified property studied here is stronger than abstract orderability:
+$U(T)$ implies that $M^*(T^{(1)})$ is orderable, but an abstract consistent
+ordering need not arise from the triangular faces of the given embedding. We
+keep this distinction throughout.
+
+\section{Definitions and the face-adjacency property}
+
+
+All graphs and simplicial complexes are finite. If $G$ is connected, the
+circuits of its cographic matroid $M^*(G)$ are the bonds of $G$. Equivalently,
+for a nonempty proper set $S\subset V(G)$, the cut $\delta_G(S)$ is a bond
+exactly when both $G[S]$ and $G[V(G)\setminus S]$ are connected.
+
+We use the following sufficient form of consistency.
+
+\textbf{Lemma 2.1 (global adjacency).} Let $M$ be a matroid. Suppose that a simple
+graph $A$ on $E(M)$ has the property that $A[C]$ is a cycle for every circuit
+$C$ of $M$. Reading each cycle in either direction gives a consistent family
+of reversible cyclic orderings. Hence $M$ is orderable.
+
+\textbf{Proof.} Whether two elements are adjacent is determined by the single
+global graph $A$. Thus, whenever two circuits contain the same pair, that pair
+is adjacent in one induced ordering if and only if it is adjacent in the
+other. $\square$
+
+Let $T$ be a simplicial triangulation of a closed connected surface, let
+$G=T^{(1)}$, and define the \emph{face-adjacency graph} $\Lambda_T$ on $E(G)$ by
+joining two distinct graph edges when they belong to a common triangular
+face. For a cut $B$, each triangular face contains either zero or two edges
+of $B$. Moreover, each cut edge lies in two faces. It follows that
+$\Lambda_T[B]$ is $2$-regular.
+
+We say that $T$ has the \emph{single-boundary property}, denoted by $U(T)$, when
+$\Lambda_T[B]$ is connected for every bond $B$ of $G$. Thus $U(T)$ is
+equivalent to the statement that this particular face-adjacency relation
+induces a cycle on every bond. By Lemma 2.1,
+
+\[
+U(T)\quad\Longrightarrow\quad M^*(T^{(1)})\text{ is orderable}.
+\]
+
+There is also a useful topological interpretation. Give the vertices on the
+two sides of a cut the values $0$ and $1$, extend affinely over each simplex,
+and take the level set at $1/2$. Its segments through the mixed faces form a
+disjoint union of circles, and their combinatorial adjacency graph is exactly
+$\Lambda_T[B]$. Thus $U(T)$ says that the level set associated with every
+bond has one component.
+
+\section{A triangle-rooted gluing theorem}
+
+
+The first result is independent of surface topology.
+
+Let $H$ be a graph containing a triangle $R$ with edges $r_1,r_2,r_3$.
+Suppose $M^*(H)$ has a consistent ordering represented by a global adjacency
+graph $A_H$ as in Lemma 2.1. We call this ordering *compatible with the rooted
+triangle $R$* when
+
+\[
+A_H[\{r_1,r_2,r_3\}]=K_3.
+\]
+
+This does not require $R$ to be a bond or a face in a specified embedding.
+
+\textbf{Theorem 3.1 (triangle-rooted gluing).} Let $H_1$ and $H_2$ be finite simple
+$3$-connected graphs whose intersection is exactly a common triangle $R$:
+
+\[
+V(H_1)\cap V(H_2)=V(R),
+\qquad
+E(H_1)\cap E(H_2)=E(R).
+\]
+
+Assume that each $M^*(H_i)$ has a global consistent adjacency graph $A_i$
+compatible with $R$. If $G=H_1\cup_R H_2$, with the three edges of $R$
+retained, then $M^*(G)$ is orderable.
+
+\textbf{Proof.} Form a graph $A$ on $E(G)$ by taking $A_1\cup A_2$ and deleting
+the three adjacencies between pairs of root edges. We prove that $A[B]$ is a
+cycle for every bond $B$ of $G$.
+
+Use the two sides of $B$ to color $V(G)$ with two colors. If the three
+vertices of $R$ are monochromatic, the opposite color cannot occur in the
+interiors of both factors, since those vertices would have no same-colored
+route between the factors. In the active factor, every component of the
+root-colored side meets $R$, and the monochromatic triangle $R$ joins all
+such components. Thus $B$ lies entirely in one factor, where it is a bond and
+contains no root edge. The deletion of root-root adjacencies does not affect
+it, so $A[B]=A_i[B]$ is a cycle.
+
+Suppose instead that $R$ is bichromatic. Exactly two root edges, say $r_a$
+and $r_b$, cross the cut. In either factor, every component induced by one
+color must meet $R$, since otherwise it could not connect through the other
+factor. The same-colored vertices of $R$ are adjacent within the triangle, so
+each color induces a connected subgraph in each factor. Therefore
+$B_i=B\cap E(H_i)$ is a bond of $H_i$ and contains $r_a,r_b$.
+
+Compatibility makes $r_ar_b$ an edge of the cycle $A_i[B_i]$. Deleting that
+adjacency leaves a Hamilton path $P_i$ from $r_a$ to $r_b$. Since a
+$3$-connected graph has no bond of size two, each path contains a non-root
+element. The paths have only their endpoints in common, and
+$P_1\cup P_2=A[B]$ is a cycle through every element of $B$. Lemma 2.1 now
+proves the result. $\square$
+
+If $H_i$ is the $1$-skeleton of a closed surface triangulation satisfying
+$U$, the face-adjacency graph supplies such a rooted ordering at every
+triangular face. The theorem also applies beyond triangulations. For example,
+a $3$-connected plane graph with a triangular face has a compatible cographic
+ordering coming from its planar dual and can be glued to any other compatible
+factor.
+
+\section{Simplicial triangle sums}
+
+
+Let $T_1,T_2$ be closed connected simplicial triangulations, with chosen
+triangular faces $F_1,F_2$. Delete the interiors of those faces and identify
+their boundary triangles by a vertex bijection. Assume that the interiors of
+the two complexes are otherwise disjoint. Write the resulting triangulation
+as $T_1\mathbin{\#_\triangle}T_2$. The identified triangle is retained in the
+$1$-skeleton but is no longer a face; we call it the \emph{seam}.
+
+\textbf{Theorem 4.1 (triangle-sum equivalence).}
+
+\[
+U(T_1\mathbin{\#_\triangle}T_2)
+\quad\Longleftrightarrow\quad
+U(T_1)\ \text{and}\ U(T_2).
+\]
+
+\textbf{Proof.} The forward construction in Theorem 3.1 applies to the
+face-adjacency graphs of the factors. Equivalently, consider a bond in the
+sum. If the seam vertices are monochromatic, the bond lies in one factor. If
+they are bichromatic, its restriction to either factor is a bond containing
+the same two seam edges. In each capped factor the corresponding boundary is
+one circle. Removing the chosen face turns that circle into an arc between
+the midpoints of the two crossing seam edges, and the two arcs glue to one
+circle. Hence $U(T_1)$ and $U(T_2)$ imply $U(T_1\mathbin{\#_\triangle}T_2)$.
+
+For the converse, suppose that $T_1$ fails $U$. Choose a bond of its
+$1$-skeleton whose face-adjacency boundary has $k\geq2$ components and use
+its sides to color the vertices. If the chosen face is monochromatic, give
+all non-seam vertices of $T_2$ that same color. The cut remains a bond in the
+sum and retains all $k$ boundary components.
+
+If the chosen face is bichromatic, give every non-seam vertex of $T_2$ the
+majority color on the seam. The minority-colored side in $T_2$ is a single
+seam vertex. The other side is connected because the $1$-skeleton of a closed
+simplicial triangulation is $3$-connected and remains connected after that
+vertex is deleted. Thus the extended cut is again a bond. In the punctured
+$T_2$, the boundary around the minority seam vertex is one arc. It glues only
+to the component of the original boundary that crossed the deleted face; the
+remaining $k-1$ circles persist. The sum therefore fails $U$. The same
+argument applies with the factors reversed. $\square$
+
+The equivalence iterates along any tree of triangle sums. In particular, a
+triangulation decomposed along separating nonfacial triangles satisfies $U$
+if and only if every capped leaf factor does. The statement does not require
+uniqueness of the chosen decomposition tree.
+
+\textbf{Corollary 4.2 (triangular disk replacement).} Let $D$ be a simplicial
+triangulated disk with triangular boundary, whose interior vertices and edges
+are disjoint from a closed triangulation $T$. Replacing a triangular face of
+$T$ by $D$ preserves and reflects $U$.
+
+\textbf{Proof.} If $D$ is one triangle there is nothing to prove. Otherwise, cap
+$D$ with a new triangular face. The result is a sphere triangulation, which
+satisfies $U$: in the planar dual, every bond of the primal graph corresponds
+to one dual cycle, with exactly the face-adjacency order. Apply Theorem 4.1.
+$\square$
+
+\subsection{Infinite families in every nonorientable genus}
+
+
+Let $N_h$ denote the closed nonorientable surface with $h$ crosscaps. The
+earlier projective-plane theorem \cite{carptopus-rp2} says that every finite simplicial
+triangulation of $N_1=\mathbb{RP}^2$ satisfies $U$.
+
+\textbf{Theorem 4.3.} For every integer $h\geq1$, take any $h$ finite simplicial
+triangulations of $\mathbb{RP}^2$ and join them successively along triangular
+faces. The resulting triangulation $T$ of $N_h$ satisfies $U(T)$. For every
+$h$, this construction yields infinitely many pairwise nonisomorphic
+$3$-connected, regular, non-graphic, orderable cographic matroids.
+
+\textbf{Proof.} The first assertion follows by repeated application of Theorem
+4.1. The $1$-skeleton of a closed simplicial triangulation is $3$-connected.
+It can also be seen directly here: after deleting at most two vertices, each
+factor remains connected and every seam retains a vertex joining its two
+sides.
+
+If the triangulation has $n$ vertices and $m$ edges, Euler's formula gives
+
+\[
+m=3n-6+3h>3n-6.
+\]
+
+Its $1$-skeleton is therefore nonplanar. Its cographic matroid is regular and
+binary, is $3$-connected, and is non-graphic by the graphic-cographic
+planarity criterion for $3$-connected graphs. It is orderable by $U(T)$ and
+Lemma 2.1. Finally, repeated stellar subdivision of a triangular face is a
+special case of Corollary 4.2 and increases the ground-set size, giving
+infinitely many pairwise nonisomorphic matroids. $\square$
+
+\section{A peripheral-cycle obstruction and a failed inverse operation}
+
+
+The connected-sum theorem supplies positive constructions. The next result is
+a necessary condition for an arbitrary triangulation to satisfy $U$.
+
+\textbf{Theorem 5.1 (peripheral-cycle obstruction).} Let $T$ be a closed connected
+simplicial triangulation satisfying $U(T)$, with $G=T^{(1)}$. If $C$ is an
+induced cycle of $G$, $G-V(C)$ is connected, and $C$ is not a triangular face
+of $T$, then $C$ is one-sided in the surface.
+
+\textbf{Proof.} Since $G[V(C)]=C$ and $G-V(C)$ are connected,
+$\delta_G(V(C))$ is a bond. Because $C$ is induced and nonfacial, the full
+subcomplex of $T$ induced by $V(C)$ is the circle $C$, rather than a disk.
+In every simplex, the lower half of the two-valued piecewise-linear function
+associated with the cut collapses linearly onto its face spanned by the
+vertices of $C$. These simplexwise collapses agree on common faces. The
+standard derived-neighborhood criterion therefore identifies the lower half
+as a PL regular neighborhood of the full induced subcomplex $C$ \cite{mohar-thomassen}. Its
+boundary components are precisely the components of
+$\Lambda_T[\delta_G(V(C))]$.
+
+If $C$ is two-sided, its regular neighborhood is an annulus and has two
+boundary components, contradicting $U(T)$. A one-sided cycle has a Möbius-band
+neighborhood and one boundary component, so it is the only remaining
+possibility. $\square$
+
+\textbf{Corollary 5.2.} Every two-sided nonfacial induced cycle in a triangulation
+satisfying $U$ is vertex-separating. In particular, every two-sided nonfacial
+triangle is a $3$-vertex separator.
+
+The inverse of edge contraction is vertex splitting. It is natural to ask
+whether arbitrary legal vertex splits preserve $U$, which would turn finite
+irreducible triangulations into generators for all positive examples. The
+answer is no.
+
+\textbf{Proposition 5.3.} The property $U$ is not preserved by general legal vertex
+splitting, even for $3$-connected triangulations of the Klein bottle.
+
+\textbf{Proof.} Begin with the following nine-vertex Klein-bottle triangulation,
+obtained as the triangle sum of two six-vertex projective-plane
+triangulations:
+
+\begin{verbatim}
+014 017 024 025 035 038 067 068 123
+125 136 145 168 178 234 345 367 378
+\end{verbatim}
+
+
+It satisfies $U$ by Theorem 4.1. The link of vertex $0$ in cyclic order is
+
+\begin{verbatim}
+1 4 2 5 3 8 6 7.
+\end{verbatim}
+
+
+Split the two link arcs at positions $1$ and $5$, introducing vertex $9$.
+The resulting faces are
+
+\begin{verbatim}
+014 017 049 067 068 089 123 125 136 145
+168 178 234 249 259 345 359 367 378 389.
+\end{verbatim}
+
+
+This is a closed $3$-connected Klein-bottle triangulation and has no
+separating nonfacial triangle. For $S=\{0,3,4,6\}$, the cut
+$B=\delta(S)$ is a bond. Its $17$ edges are partitioned by face adjacency
+into the following two cycles:
+
+\begin{verbatim}
+01 07 67 37 38 39 35 45 14
+08 09 49 24 23 13 16 68
+\end{verbatim}
+
+
+Thus $\Lambda_T[B]$ is disconnected and the split triangulation fails $U$.
+$\square$
+
+An exact exhaustive check of all $90$ nontrivial single splits of the same
+labelled base triangulation gives $63$ positive operations retaining a
+separating nonfacial triangle and $27$ negative operations with no such
+triangle. These operations produce $78$ distinct labelled face sets: $52$
+positive and $26$ negative. This finite table is a calibration around one
+base example, not a classification up to isomorphism and not a general
+equivalence between seams and $U$.
+
+\section{Descent under legal edge contraction}
+
+
+Although $U$ need not survive the inverse operation, it always descends under
+legal edge contraction.
+
+Let $e=uv$ be an edge of a closed simplicial triangulation $T$ satisfying the
+usual link condition, so that contracting $e$ gives another simplicial
+triangulation $T'=T/e$ of the same surface. Let $w$ be the image of $u,v$.
+
+\textbf{Theorem 6.1 (contraction descent).}
+
+\[
+U(T)\quad\Longrightarrow\quad U(T/e).
+\]
+
+\textbf{Proof.} Let $B'=\delta_{T'^{(1)}}(S')$ be a bond and color its two sides.
+Lift the coloring to $T$ by giving both $u$ and $v$ the color of $w$. The
+resulting cut $B$ is a bond. Indeed, a monochromatic path in $T'$ lifts
+directly except possibly when it enters $w$ through an edge incident only
+with $u$ and leaves through an edge incident only with $v$; in that case the
+monochromatic edge $uv$ joins the two lifted pieces. Hence both color classes
+remain connected.
+
+By the link condition, the common neighbors of $u$ and $v$ are exactly the
+third vertices $a,b$ of the two faces incident with $uv$. Away from $uv$, the
+only edge identifications under contraction are
+
+\[
+ua,va\mapsto wa,
+\qquad
+ub,vb\mapsto wb.
+\]
+
+The full link condition also prevents two distinct surviving faces from
+colliding under these identifications. Thus, after the two incident faces
+$uva$ and $uvb$ disappear, every other face of $T$ corresponds uniquely to a
+face of $T'$.
+
+For $z\in\{a,b\}$ of the same color as $u,v$, neither $uz$ nor $vz$ belongs
+to $B$, so no cut-edge identification occurs. If $z$ has the opposite color,
+then $uz,vz\in B$ and those two edges are adjacent in $\Lambda_T[B]$ through
+the disappearing mixed face $uvz$; contraction replaces them by the single
+edge $wz$. All other mixed faces and their induced adjacencies correspond
+bijectively before and after contraction. Consequently
+$\Lambda_{T'}[B']$ is obtained from the connected graph $\Lambda_T[B]$ by
+contracting zero, one, or two of these specified adjacency edges. It is
+therefore connected. As in Section 2 it is also $2$-regular, so it is a single
+cycle. Since $B'$ was arbitrary, $U(T')$ holds. $\square$
+
+A triangulation is \emph{irreducible} if no edge can be legally contracted while
+remaining a triangulation of the same surface.
+
+\textbf{Corollary 6.2 (finite irreducible reduction).} Every closed surface
+triangulation satisfying $U$ contracts through $U$-preserving steps to an
+irreducible triangulation of the same surface. Hence a fixed closed surface
+has a triangulation satisfying $U$ if and only if one of its irreducible
+triangulations satisfies $U$.
+
+\textbf{Proof.} Repeatedly apply Theorem 6.1 until no legal contraction remains.
+The reverse implication in the existence statement takes the irreducible
+triangulation itself. Each fixed closed surface has only finitely many
+irreducible triangulations \cite{joret-wood}. $\square$
+
+The corollary is an existence reduction, not a classification of all positive
+triangulations. Proposition 5.3 shows exactly why the reduction cannot simply
+be reversed by allowing arbitrary vertex splits. Complete irreducible lists
+are known for several low-genus surfaces \cite{sulanke}, but those enumerations are not
+used in the proof.
+
+\section{Verification and scope}
+
+
+The source package contains three separate finite checks. They are independent
+of the general proofs but share a common exact implementation of graph bonds
+and face adjacency:
+
+\begin{enumerate}
+\item they build iterated triangle sums of the six-vertex projective-plane
+   triangulation and exhaust all bonds through nonorientable genus five;
+\item they reconstruct Proposition 5.3, check the topology and
+   $3$-connectivity of every split result, and exhaust every bond in all $90$
+   split operations;
+\item they check a bounded collection of two-step splits as a diagnostic for a
+   possible stronger seam theorem.
+\end{enumerate}
+
+
+The corresponding entry points are
+\texttt{verify\_nonorientable\_triangle\_sum\_family.py},
+\texttt{check\_vertex\_split\_nonclosure.py}, and
+\texttt{probe\_two\_step\_seam\_persistence.py}. The first two support statements
+recorded in this manuscript. The third returned no positive prime example in
+its bounded search, but that \texttt{NO\_HIT} is not used as evidence for an
+existence, nonexistence, or classification theorem. The proofs of Theorems
+3.1, 4.1, 4.3, 5.1, and 6.1 are general and do not depend on the finite
+checks. The release artifact will record the exact commands, shared
+dependency, and file hashes.
+
+We make no claim that every orderable cographic matroid arises from a surface
+triangulation, that every abstract ordering is a face-adjacency ordering, or
+that the prime triangulations satisfying $U$ have been classified. We also do
+not claim that the rooted compatibility condition in Theorem 3.1 is
+necessary. Every constructed example contains triangular cycles, which give
+three-element cocircuits and exact $3$-separations; for $h\geq2$, the seam
+triangles give additional such separations. The examples therefore do not
+contradict the $4$-connected result of Crenshaw and Oxley \cite{crenshaw-oxley-v12}.
+
+The current literature check covered the published paper \cite{crenshaw-oxley-published}, the latest
+author manuscript \cite{crenshaw-oxley-v12}, the preceding projective-plane construction \cite{carptopus-rp2}, and
+the standard irreducible-triangulation sources \cite{sulanke,joret-wood}. No direct statement of
+the triangle-rooted gluing theorem, the triangle-sum equivalence, the
+peripheral obstruction, or the contraction-descent theorem was located. This
+records the search boundary; it is not a claim of exhaustive worldwide
+priority. The present manuscript is an internally developed candidate and has
+not undergone external peer review.
+
+\Needspace{0.16\textheight}
+\section*{AI-assisted research disclosure}
+
+
+Carptopus is the responsible author and takes responsibility for the claims,
+proofs, source use, and released artifacts. OpenAI Codex was used for
+AI-assisted literature organization, proof development and stress testing,
+exact verification, adversarial auditing, and manuscript preparation.
+
+\begin{thebibliography}{9}
+\footnotesize
+\raggedright
+
+\bibitem{crenshaw-oxley-published}
+C.~Crenshaw and J.~Oxley,
+\emph{Ordering circuits of matroids},
+Electronic Journal of Combinatorics \textbf{29} (2022), no.~4, Paper P4.31.
+\href{https://doi.org/10.37236/11117}{doi:10.37236/11117}.
+
+\bibitem{crenshaw-oxley-v12}
+C.~Crenshaw and J.~Oxley,
+\emph{Ordering circuits of matroids}, author manuscript, version 12.
+\url{https://www.math.lsu.edu/~oxley/Orderability_v12.pdf}.
+
+\bibitem{carptopus-rp2}
+Carptopus,
+\emph{Projective-plane triangulations yield orderable cographic matroids},
+version 0.1-beta (2026).
+\href{https://doi.org/10.5281/zenodo.22165775}{doi:10.5281/zenodo.22165775}.
+
+\bibitem{sulanke}
+T.~Sulanke,
+\emph{Irreducible triangulations of low genus surfaces},
+arXiv:math/0606690 (2006).
+\url{https://arxiv.org/abs/math/0606690}.
+
+\bibitem{joret-wood}
+G.~Joret and D.~R.~Wood,
+\emph{Irreducible triangulations are small},
+arXiv:0907.1421 (2009).
+\url{https://arxiv.org/abs/0907.1421}.
+
+\bibitem{mohar-thomassen}
+B.~Mohar and C.~Thomassen,
+\emph{Graphs on Surfaces}, Johns Hopkins University Press, 2001.
+
+\end{thebibliography}
+
+\end{document}

@@ -13,6 +13,7 @@ an exact minimum degree and a complete classification of the equality case.
 
 | Entry | Areas | Contribution | Public version | Status |
 | --- | --- | --- | --- | --- |
+| [Triangle sums, peripheral cycles, and contractions for orderable cographic matroids](research/cographic-surface-operations/README.md)<br>[PDF](research/cographic-surface-operations/cographic-surface-operations.pdf) · [BibTeX](research/cographic-surface-operations/CITATION.bib) | Matroid theory, cographic matroids, surface triangulations, graph embeddings | Proves a rooted gluing theorem, an exact triangle-sum criterion, infinite orderable families on every nonorientable genus, a peripheral-cycle obstruction, vertex-split nonclosure, and legal-contraction descent | v0.1-beta | Internally verified public Beta; external review pending |
 | [Log-concavity of reduced composition polynomials via adjacent B-spline refinement columns](research/reduced-composition-polynomial-logconcavity/README.md)<br>[PDF](research/reduced-composition-polynomial-logconcavity/reduced-composition-polynomial-logconcavity.pdf) · [BibTeX](research/reduced-composition-polynomial-logconcavity/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22284639) | Enumerative combinatorics, composition polynomials, discrete B-splines, total positivity | Proves that the coefficient sequence of the Ardila--Doker reduced composition polynomial is log-concave, and hence unimodal, for every positive integer composition | v0.1-beta | Internally verified public Beta; external review pending |
 | [An unbounded gap between minimum degree and the minor-connectivity ceiling](research/unbounded-minor-connectivity-gap/README.md)<br>[PDF](research/unbounded-minor-connectivity-gap/unbounded-minor-connectivity-gap.pdf) · [BibTeX](research/unbounded-minor-connectivity-gap/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22281553) | Graph minors, vertex connectivity, minimum degree, Mader graph, graph blow-ups | Proves $\kappa^*(M_{12}[\overline K_t])=\lfloor9t/2\rfloor$ for every $t\ge2$, yielding an unbounded gap $\delta-\kappa^*=\lceil t/2\rceil$ and infinitely many counterexamples to Barát's conjectured additive-one bound | v0.1-beta | Internally verified public Beta; external review pending |
 | [Every two-vertex premaniplex is the symmetry type graph of a finite abstract polytope](research/two-vertex-polytopality/README.md)<br>[PDF](research/two-vertex-polytopality/two-vertex-polytopality.pdf) · [BibTeX](research/two-vertex-polytopality/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22274310) | Abstract polytopes, maniplexes, symmetry type graphs, voltage constructions | Proves that every connected two-vertex premaniplex of every rank at least three is realized as the full symmetry type graph of a finite abstract polytope | v0.1-beta | Internally verified public Beta; external review pending |
@@ -56,6 +57,18 @@ an exact minimum degree and a complete classification of the equality case.
 | [Tail-projection certificates for cyclotomic minimum-degree polynomials beyond the reciprocal condition](research/cyclotomic-tail-projection-families/README.md)<br>[PDF](research/cyclotomic-tail-projection-families/cyclotomic-tail-projection-families.pdf) · [BibTeX](research/cyclotomic-tail-projection-families/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22127365) | Cyclotomic polynomials, nonnegative coefficients, CRT tensor projections, prime tuples | Gives an explicit sufficient condition for every fixed number of at least four prime factors and proves infinite families beyond Steinberger's reciprocal condition | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
+
+### Cographic surface operations
+
+For closed simplicial surface triangulations, the manuscript proves a general
+triangle-rooted gluing theorem for compatible cographic orderings and an exact
+if-and-only-if criterion for triangle sums. It constructs infinite 3-connected
+regular non-graphic orderable cographic families on every nonorientable genus,
+gives a peripheral-cycle obstruction and explicit vertex-split nonclosure
+example, and proves descent under legal edge contraction to finitely many
+irreducible bases on each fixed surface.
+
+- [Manuscript and verification materials](research/cographic-surface-operations/README.md)
 
 ### Log-concavity of reduced composition polynomials
 
