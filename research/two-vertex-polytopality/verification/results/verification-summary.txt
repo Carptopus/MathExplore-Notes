@@ -1,0 +1,24 @@
+Public-package verification run: PASS
+Date: 2026-09-03
+Python: MathExplore project environment
+SymPy: 1.14.0
+
+torus_rank4_probe.py
+- exit code: 0
+- elapsed time: 11.18 seconds
+- peak process-tree private memory: 66.1 MiB
+- negative_control_wrong_top_voltage_passed=False
+
+independent_schreier_verifier.py
+- exit code: 0
+- elapsed time: 4.97 seconds
+- peak process-tree private memory: 58.3 MiB
+- independent_schreier_verifier=PASS
+
+Resource-guard destructive test
+- configured memory limit: 1 MiB
+- expected failure observed: yes
+- complete process tree terminated: yes
+- residual Python processes: none
+
+The two reconstruction models share SymPy's deterministic Schreier--Sims membership kernel.
