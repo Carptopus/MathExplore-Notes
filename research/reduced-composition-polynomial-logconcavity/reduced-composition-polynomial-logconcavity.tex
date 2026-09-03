@@ -1,0 +1,706 @@
+% Generated deterministically from the audited Markdown source.
+% Responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{needspace}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{xurl}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Reduced composition polynomials}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.44em}
+\setlength{\emergencystretch}{4em}
+\urlstyle{same}
+
+\title{Log-concavity of reduced composition polynomials\\
+via adjacent B-spline refinement columns}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{4 September 2026}
+
+\hypersetup{
+  pdftitle={Log-concavity of reduced composition polynomials via adjacent B-spline refinement columns},
+  pdfauthor={Carptopus},
+  pdfsubject={Log-concavity and unimodality of Ardila-Doker reduced composition polynomials},
+  pdfkeywords={composition polynomial, log-concavity, unimodality, discrete B-spline, knot refinement, total positivity}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fcolorbox{black!35}{black!4}{\parbox{0.88\textwidth}{\centering\small
+Internal candidate manuscript, version 0.1-beta. The mathematical proof and complete
+Markdown manuscript have passed project-internal zero-trust audits. External mathematical
+review and formal peer review are pending.}}
+\end{center}
+
+\begin{abstract}
+
+
+Ardila and Doker associated a reduced composition polynomial $f_c(q)$ with every positive integer
+composition $c$. They proved positivity of its coefficients and asked whether those coefficients are
+unimodal or, more strongly, log-concave. We prove the stronger assertion for every composition.
+The first ingredient identifies the coefficient vector, up to a positive scalar, with a column of a
+B-spline knot-refinement matrix. Total nonnegativity, constant reproduction, and variation
+diminution then give unimodality. For log-concavity, deleting the first or last endpoint of the
+composition produces two adjacent columns of a lower-degree refinement matrix. Their adjacent
+$2\times2$ minors are nonnegative. An exact identity converts those minors into the log-concavity
+defects of $f_c$, with the remaining sign case closed by unimodality. Thus both the unimodality
+question and the stronger log-concavity question have affirmative answers.
+
+\end{abstract}
+
+\section{Introduction}
+
+
+Let $c=(d_1,\ldots,d_r)$ be a composition of $n$ into positive parts. Ardila and Doker introduced a
+composition polynomial $g_c(q)$ in their study of subdivisions of lifted generalized permutahedra
+\cite{ardila-doker}. They showed that
+
+\[
+g_c(q)=(1-q)^r f_c(q),
+\]
+
+where the reduced composition polynomial $f_c(q)$ has positive coefficients. Their Question 7.5
+asks whether these coefficients are unimodal; immediately afterwards they ask whether the stronger
+property of log-concavity always holds. The original paper verified the expected shape in a large
+finite family but left both questions open.
+
+Novelli and Thibon later gave a combinatorial interpretation of $n!f_c(q)$ as a generating
+polynomial for a statistic on permutitions \cite{novelli-thibon}. That interpretation explains coefficient
+integrality and positivity for the scaled polynomial $n!f_c(q)$, but it does not by itself provide
+the required second-order coefficient inequalities.
+
+Our proof uses a different interface. The explicit coefficient formula for $f_c$ is a
+rising-factorial divided difference. This is exactly the formula for a discrete B-spline, or
+equivalently for one column of a B-spline knot-refinement matrix \cite{cohen-lyche-riesenfeld}. The one-column consequence is
+unimodality. The stronger result comes from looking at two columns at once: the reduced polynomials
+obtained by deleting the final and initial parts of $c$ form adjacent refinement columns, so total
+nonnegativity controls their adjacent determinants. A short identity turns this determinant
+inequality into log-concavity of the original coefficient sequence.
+
+\Needspace{0.18\textheight}
+\begin{theorem}
+\label{thm:main}
+
+For every positive integer composition $c$, the coefficient sequence of the reduced composition
+polynomial $f_c(q)$ is log-concave. In particular, it is unimodal.
+
+\end{theorem}
+
+Here a finite nonnegative sequence $(a_i)$ is log-concave when
+
+\[
+a_i^2\geq a_{i-1}a_{i+1}
+\]
+
+at every internal index. All coefficient sequences below are extended by zero outside their natural
+support.
+
+The spline results used here are classical. The contribution is the exact identification of the
+composition-polynomial coefficients with refinement columns and the adjacent-column determinant
+argument that proves Theorem~\ref{thm:main}. In particular, the log-concavity of a continuous B-spline as a
+function on its support \cite{floater} is distinct from the discrete coefficient log-concavity proved here.
+
+\section{Reduced composition polynomials and discrete B-splines}
+
+
+Let
+
+\[
+c=(d_1,\ldots,d_r),\qquad n=d_1+\cdots+d_r,
+\]
+
+and write its partial sums as
+
+\[
+0=\beta_0<\beta_1<\cdots<\beta_r=n.
+\]
+
+Write
+
+\[
+f_c(q)=\sum_{i=0}^{n-r}F_iq^i.
+\]
+
+Ardila and Doker's coefficient formula is
+
+\[
+F_i=
+\sum_{\substack{0\leq j\leq r\\ \beta_j\leq i}}
+\frac{(-1)^j}{[\beta_j]}
+\binom{r+i-\beta_j-1}{r-1},
+\qquad
+[\beta_j]=\prod_{\ell\ne j}|\beta_\ell-\beta_j|.
+\tag{2.1}
+\]
+
+We now place (2.1) in the discrete-spline setting. For strictly increasing integer knots
+$z_0<\cdots<z_s$, define the unnormalized discrete B-spline of degree $s-1$ and unit mesh by
+
+\[
+U^{s-1}(x;z_0,\ldots,z_s)
+=(-1)^s
+\bigl[(x-\,\cdot\,)^{\overline{s-1}}\mathbf 1_{x>\,\cdot\,}
+\bigr][z_0,\ldots,z_s],
+\tag{2.2}
+\]
+
+where $y^{\overline m}=y(y+1)\cdots(y+m-1)$ and the final brackets denote a divided difference in
+the knot variable. Its normalized version is
+
+\[
+V^{s-1}(x;z_0,\ldots,z_s)
+=(z_s-z_0)U^{s-1}(x;z_0,\ldots,z_s).
+\tag{2.3}
+\]
+
+\Needspace{0.18\textheight}
+\begin{lemma}
+\label{lem:discrete-column}
+
+For $0\leq i\leq n-r$,
+
+\[
+V^{r-1}(i+1;\beta_0,\ldots,\beta_r)=n(r-1)!F_i.
+\tag{2.4}
+\]
+
+The values on the left vanish on the surrounding integer grid outside this index range.
+
+\end{lemma}
+
+\begin{proof}
+
+The divided-difference denominator at $\beta_j$ has sign $(-1)^{r-j}$ and absolute value
+$[\beta_j]$. Moreover,
+
+\[
+\frac{(i+1-\beta_j)^{\overline{r-1}}}{(r-1)!}
+=\binom{r+i-\beta_j-1}{r-1}.
+\]
+
+Substituting the knots $\beta_0,\ldots,\beta_r$ into (2.2), and then using (2.3), gives (2.4)
+term by term from (2.1).
+
+It remains to verify that the divided difference in (2.4) is a refinement coefficient, rather than
+merely a formally similar discrete-spline value. Embed the local knot window in
+
+\[
+\tau=(-r,\ldots,-1,\beta_0,\ldots,\beta_r,n+1,\ldots,n+r)
+\]
+
+and refine to the unit knot vector
+
+\[
+t=(-r,-r+1,\ldots,n+r).
+\]
+
+At a fine-grid left endpoint $i$, the refinement formula is the divided difference of a truncated
+polynomial kernel. More precisely, Theorem 1 and equations (3.20)--(3.23) of
+Cohen--Lyche--Riesenfeld \cite{cohen-lyche-riesenfeld}, specialized to degree $r-1$, unit fine mesh, and the selected coarse
+window, give its refinement coefficient as
+
+\[
+\alpha_i
+=n[\beta_0,\ldots,\beta_r]
+\left(
+\mathbf1_{y>i}\prod_{h=1}^{r-1}(y-i-h)
+\right),
+\tag{2.5}
+\]
+
+where the divided difference is taken in $y$. Put $x=i+1$ and
+
+\[
+R(y)=(x-y)^{\overline{r-1}}.
+\]
+
+At every integer knot,
+
+\[
+\prod_{h=1}^{r-1}(y-i-h)=(-1)^{r-1}R(y).
+\tag{2.6}
+\]
+
+The polynomial $R$ has degree $r-1$, so its order-$r$ divided difference on the $r+1$ knots is
+zero. On integer knots, $y>i$ and $x>y$ are complementary conditions. When $r>1$, the possible
+boundary value $y=x$ vanishes because $R(x)=0$; when $r=1$, strict complementarity holds directly.
+Therefore
+
+\[
+[\beta_0,\ldots,\beta_r](\mathbf1_{y>i}R)
+=-[\beta_0,\ldots,\beta_r](\mathbf1_{x>y}R).
+\tag{2.7}
+\]
+
+Substitution of (2.6)--(2.7) into (2.5) gives
+
+\[
+\alpha_i=V^{r-1}(i+1;\beta_0,\ldots,\beta_r),
+\]
+
+including its sign and normalization. Finally, if $i<0$, the truncated kernel in (2.5) agrees at
+all coarse knots with one polynomial of degree $r-1$, so its order-$r$ divided difference vanishes.
+If $i>n-r$, every potentially nonzero term contains a zero factor. Hence the nonzero core has
+precisely the indices in (2.4).
+\end{proof}
+
+
+\section{Knot refinement and unimodality}
+
+
+We recall only the refinement properties needed below. Suppose a coarse knot vector is refined by
+successive knot insertions, without changing the spline degree. If $p$ is the coarse control vector
+and $d$ the refined control vector, write
+
+\[
+d=Kp.
+\]
+
+For one knot insertion, every new control coefficient is either copied from an old coefficient or
+is a convex combination of two adjacent old coefficients. In the convention above, the rows of
+$K$ are fine indices and its columns are coarse indices. A one-step matrix is therefore a
+nonnegative bidiagonal matrix with row sums one. It is totally nonnegative, and products preserve
+total nonnegativity and row sums.
+
+For a real vector $v$, let $S^-(v)$ be the number of sign changes after its zero entries are deleted.
+We use the standard variation-diminishing theorem for totally nonnegative matrices \cite[Chapter~3]{pinkus}:
+
+\[
+S^-(Kv)\leq S^-(v).
+\tag{3.1}
+\]
+
+\Needspace{0.18\textheight}
+\begin{lemma}
+\label{lem:unimodal-column}
+
+Every column of a finite B-spline knot-refinement matrix, with zeros retained outside its local
+support, is unimodal.
+
+\end{lemma}
+
+\begin{proof}
+
+Let $\alpha=Ke_s$ be a column and choose $0<\lambda<1$. Since $K\mathbf 1=\mathbf 1$,
+
+\[
+\alpha-\lambda\mathbf 1=K(e_s-\lambda\mathbf 1).
+\tag{3.2}
+\]
+
+The vector on the right before applying $K$ has sign pattern
+
+\[
+-\;\cdots\;-\;+\;-\;\cdots\;-,
+\]
+
+so it has at most two sign changes. Equation (3.1) gives the same upper bound for the left side of
+(3.2).
+
+If $\alpha$ were not unimodal, two higher values would be separated by a strictly lower value.
+Choose $\lambda$ strictly between the valley and the smaller of the two higher values. Including
+the zero entries on the two sides of the local support, $\alpha-\lambda\mathbf1$ would then have a
+subpattern
+
+\[
+-,+,-,+,-,
+\]
+
+and hence at least four sign changes, a contradiction.
+\end{proof}
+
+
+\Needspace{0.18\textheight}
+\begin{corollary}
+\label{cor:unimodal}
+
+For every positive integer composition $c$, the coefficient sequence of $f_c(q)$ is unimodal.
+
+\end{corollary}
+
+\begin{proof}
+
+By Lemma~\ref{lem:discrete-column}, the coefficient sequence is a positive scalar multiple of one refinement column.
+Apply Lemma~\ref{lem:unimodal-column}.
+\end{proof}
+
+
+Thus the first part of Ardila--Doker Question 7.5 follows from a one-column shape property. To reach
+log-concavity we use two neighboring columns.
+
+\section{Adjacent endpoint-deletion columns}
+
+
+Assume for now that $r\geq2$. Define
+
+\[
+A(q)=f_{(d_1,\ldots,d_{r-1})}(q),
+\qquad
+B(q)=q^{d_1}f_{(d_2,\ldots,d_r)}(q),
+\tag{4.1}
+\]
+
+and write their zero-padded coefficients as $A_i$ and $B_i$. The shift in $B(q)$ places both
+sequences on the global unit grid determined by $0,1,\ldots,n$.
+
+The two knot windows
+
+\[
+(\beta_0,\ldots,\beta_{r-1})
+\quad\text{and}\quad
+(\beta_1,\ldots,\beta_r)
+\tag{4.2}
+\]
+
+are adjacent windows in a common degree-$(r-2)$ coarse B-spline basis. Refine the padded coarse knot
+vector
+
+\[
+\tau=(-(r-1),\ldots,-1,\beta_0,\ldots,\beta_r,n+1,\ldots,n+r-1)
+\]
+
+to the unit grid
+
+\[
+t=(-(r-1),-(r-2),\ldots,n+r-1).
+\]
+
+Lemma~\ref{lem:discrete-column}, applied to the two shorter compositions, identifies the corresponding adjacent columns
+as
+
+\[
+\alpha_i^L=\beta_{r-1}(r-2)!A_i,
+\qquad
+\alpha_i^R=(n-\beta_1)(r-2)!B_i.
+\tag{4.3}
+\]
+
+Both factors are strictly positive. The refinement matrix is totally nonnegative, and its rows and
+columns in (4.3) are in increasing order. Consequently every adjacent $2\times2$ minor gives
+
+\[
+M_i:=A_iB_{i+1}-A_{i+1}B_i\geq0.
+\tag{4.4}
+\]
+
+The orientation in (4.4) is important: rows are consecutive fine-grid indices, and the left window
+in (4.2) precedes the right window.
+
+\section{The determinant identity}
+
+
+Continue to write
+
+\[
+F(q)=f_c(q)=\sum_iF_iq^i,
+\]
+
+with $F_i=0$ outside the natural support, and set
+
+\[
+\Delta_i=F_i-F_{i-1},
+\qquad
+L_i=F_i^2-F_{i-1}F_{i+1}.
+\tag{5.1}
+\]
+
+The quantity $L_i$ is the log-concavity defect at $i$.
+
+\Needspace{0.18\textheight}
+\begin{lemma}
+\label{lem:endpoint}
+
+The endpoint-deletion polynomials satisfy
+
+\[
+A(q)-B(q)=n(1-q)F(q)
+\tag{5.2}
+\]
+
+and
+
+\[
+B(q)=q\bigl(rF(q)-(1-q)F'(q)\bigr).
+\tag{5.3}
+\]
+
+Equivalently, with $k=r-1$,
+
+\[
+A_i-B_i=n\Delta_i,
+\qquad
+B_i=(k+i)F_{i-1}-iF_i.
+\tag{5.4}
+\]
+
+\end{lemma}
+
+\begin{proof}
+
+The explicit partial-fraction formula of Ardila--Doker is
+
+\[
+g_c(q)=\sum_{j=0}^r\frac{(-1)^jq^{\beta_j}}{[\beta_j]}.
+\tag{5.5}
+\]
+
+Its endpoint-deletion formulas (Corollary 7.3 of \cite{ardila-doker}) read
+
+\[
+g_{(d_1,\ldots,d_{r-1})}(q)
+=\sum_{j=0}^r
+\frac{(-1)^j(n-\beta_j)q^{\beta_j}}{[\beta_j]},
+\tag{5.6}
+\]
+
+and
+
+\[
+q^{d_1}g_{(d_2,\ldots,d_r)}(q)
+=-\sum_{j=0}^r
+\frac{(-1)^j\beta_jq^{\beta_j}}{[\beta_j]}.
+\tag{5.7}
+\]
+
+Adding the right side of (5.6) to the negative of the right side of (5.7) gives $ng_c(q)$.
+Since $g_c=(1-q)^rF$, while the two truncated polynomials in (5.6)--(5.7) have $r-1$ parts,
+division by $(1-q)^{r-1}$ gives (5.2).
+
+Equations (5.7) and (5.5) also give
+
+\[
+q^{d_1}g_{(d_2,\ldots,d_r)}(q)=-qg_c'(q).
+\]
+
+Differentiating $g_c(q)=(1-q)^rF(q)$ therefore gives
+
+\[
+(1-q)^{r-1}B(q)
+=q(1-q)^{r-1}\bigl(rF(q)-(1-q)F'(q)\bigr),
+\]
+
+which proves (5.3). Extracting coefficients from (5.2) and (5.3) yields (5.4).
+\end{proof}
+
+
+\Needspace{0.18\textheight}
+\begin{lemma}
+\label{lem:determinant}
+
+For every integer $i$,
+
+\[
+M_i=n\bigl(kL_i-\Delta_i\Delta_{i+1}\bigr),
+\qquad k=r-1.
+\tag{5.8}
+\]
+
+\end{lemma}
+
+\begin{proof}
+
+Using $A_i=B_i+n\Delta_i$ in (4.4) gives
+
+\[
+M_i=n\bigl(\Delta_iB_{i+1}-\Delta_{i+1}B_i\bigr).
+\]
+
+Substitute the second identity in (5.4), once at $i$ and once at $i+1$. Expanding and collecting
+the coefficients of $F_{i-1}F_i$, $F_i^2$, and $F_iF_{i+1}$ yields
+
+\[
+\Delta_iB_{i+1}-\Delta_{i+1}B_i
+=k(F_i^2-F_{i-1}F_{i+1})
+-(F_i-F_{i-1})(F_{i+1}-F_i),
+\]
+
+which is (5.8).
+\end{proof}
+
+
+\section{Proof of the main theorem}
+
+
+We first treat $r\geq2$. By Corollary~\ref{cor:unimodal}, $(F_i)$ is a nonnegative unimodal sequence. Hence its
+first differences can change sign only from nonnegative to nonpositive; a negative difference can
+never be followed later by a positive one.
+
+Fix an internal index $i$. If
+
+\[
+\Delta_i\Delta_{i+1}\geq0,
+\]
+
+then (4.4) and (5.8) imply
+
+\[
+kL_i\geq\Delta_i\Delta_{i+1}\geq0.
+\]
+
+Because $k=r-1>0$, this gives $L_i\geq0$.
+
+It remains to consider $\Delta_i\Delta_{i+1}<0$. Unimodality excludes
+$\Delta_i<0<\Delta_{i+1}$, so necessarily
+
+\[
+\Delta_i>0>\Delta_{i+1}.
+\]
+
+Thus $F_i$ is strictly larger than both neighboring coefficients. Since all coefficients are
+nonnegative,
+
+\[
+F_i^2>F_{i-1}F_{i+1},
+\]
+
+and again $L_i\geq0$.
+
+When $r=1$, one has directly
+
+\[
+f_{(n)}(q)=\frac{1+q+\cdots+q^{n-1}}{n},
+\]
+
+whose coefficients are log-concave. If $r\geq2$ but $n-r\leq1$, the support has at most two terms
+and there is no internal inequality to check. With zero padding, the two endpoint inequalities are
+also immediate. This proves Theorem~\ref{thm:main} for every positive integer composition.
+\hfill$\square$
+
+
+\section{Examples and scope}
+
+
+For $n=4$, scaled reduced composition polynomials listed by Novelli--Thibon include
+
+\[
+4!f_{(4)}(q)=6+6q+6q^2+6q^3,
+\]
+
+\[
+4!f_{(3,1)}(q)=2+4q+6q^2,
+\]
+
+and
+
+\[
+4!f_{(2,2)}(q)=3+6q+3q^2.
+\]
+
+The first is flat, the second is increasing, and the third has an interior peak; all three are
+log-concave. The proof above treats these patterns uniformly. It also permits equality in the
+log-concavity inequalities, so no strictness assertion is intended.
+
+The result concerns the coefficient sequence of $f_c(q)$. It does not assert real-rootedness,
+ultra-log-concavity, or a Pólya-frequency property. Nor does it claim that arbitrary columns of an
+arbitrary nonnegative or stochastic matrix are log-concave. The determinant argument uses the
+specific pair of adjacent endpoint-deletion columns together with the exact identity (5.8).
+
+\section{Computational verification}
+
+
+The proof is symbolic and does not depend on finite computation. The exact-arithmetic script
+\texttt{test\_truncation\_pencil.py} uses (2.1) to construct the coefficients; it does not independently
+prove that source formula. For all $8{,}178$ nontrivial compositions of total size at most $13$,
+it checked:
+
+\begin{itemize}
+\item the coefficient form of (5.2), including the zero-padded endpoint shifts;
+\item $53{,}157$ adjacent-column determinants $M_i\geq0$;
+\item the same $53{,}157$ instances of identity (5.8);
+\item $36{,}813$ internal log-concavity defects.
+
+\end{itemize}
+
+No failure occurred. This finite calculation is an algebraic regression test, not a substitute for
+the general proof.
+
+The separate script \texttt{verify\_composition\_unimodality.py} checked positivity, unimodality, and
+log-concavity in $75{,}535$ test instances, representing $74{,}913$ distinct compositions. It also
+compared the explicit coefficients with actual SciPy knot insertions on $199$ distinct fixed-seed
+samples and included deliberately shifted and reversed negative controls. Those checks support the
+implementation of Lemma~\ref{lem:discrete-column} but are likewise not used as a logical premise of Theorem~\ref{thm:main}.
+
+\section{Relation to prior work}
+
+
+Ardila--Doker \cite{ardila-doker} introduced the polynomials, proved coefficient positivity, and posed unimodality
+and log-concavity as questions. Their Corollary 9.2 also proves log-concavity of the linear-extension
+numbers $N_j$ in a Bernstein-basis expansion of $g_c(q)$. That is a different coefficient sequence
+in a different basis from the power-basis coefficients $F_i$ of $f_c(q)$ treated here.
+Novelli--Thibon \cite{novelli-thibon} supplied a combinatorial interpretation through permutitions and noncommutative
+symmetric functions. Cohen--Lyche--Riesenfeld \cite{cohen-lyche-riesenfeld} developed the discrete B-spline refinement
+formulas and subdivision machinery used in Lemma~\ref{lem:discrete-column}. Floater \cite{floater} proved log-concavity of continuous
+B-spline functions; that theorem concerns function values on a continuous support rather than the
+discrete refinement coefficients considered here. The variation-diminishing implication used in
+Section 3 is the standard total-positivity result recorded, for example, by Pinkus \cite{pinkus}.
+
+The one-column refinement argument proves unimodality. The two-column argument then strictly
+strengthens it to log-concavity. These are therefore presented as one result rather than as two
+independent contributions.
+
+A targeted literature refresh through September 3, 2026 found no publication directly proving
+log-concavity for all reduced composition polynomials. This is a bounded novelty search, not a claim
+that all unindexed or unpublished work has been excluded.
+
+\section*{AI-assisted research and writing disclosure}
+
+
+The author used OpenAI Codex as an AI-assisted tool for literature organization, proof exploration,
+exact verification, adversarial auditing, and manuscript drafting. Carptopus is responsible for the
+content of the manuscript.
+
+\begin{thebibliography}{9}
+\footnotesize
+\raggedright
+
+\bibitem{ardila-doker}
+F.~Ardila and J.~Doker,
+\emph{Lifted generalized permutahedra and composition polynomials},
+Advances in Applied Mathematics \textbf{50} (2013), 607--633.
+\href{https://doi.org/10.1016/j.aam.2013.01.005}{doi:10.1016/j.aam.2013.01.005}.
+
+\bibitem{cohen-lyche-riesenfeld}
+E.~Cohen, T.~Lyche, and R.~Riesenfeld,
+\emph{Discrete B-splines and subdivision techniques in computer-aided geometric design and computer graphics},
+Computer Graphics and Image Processing \textbf{14} (1980), 87--111.
+\href{https://doi.org/10.1016/0146-664X(80)90040-4}{doi:10.1016/0146-664X(80)90040-4}.
+
+\bibitem{floater}
+M.~S.~Floater,
+\emph{Log-concavity of B-splines},
+Journal of Approximation Theory \textbf{300} (2024), 106042.
+\href{https://doi.org/10.1016/j.jat.2024.106042}{doi:10.1016/j.jat.2024.106042}.
+
+\bibitem{novelli-thibon}
+J.-C.~Novelli and J.-Y.~Thibon,
+\emph{On composition polynomials},
+Journal of Combinatorial Theory, Series A \textbf{152} (2017), 1--9.
+\href{https://doi.org/10.1016/j.jcta.2017.06.005}{doi:10.1016/j.jcta.2017.06.005}.
+
+\bibitem{pinkus}
+A.~Pinkus,
+\emph{Totally Positive Matrices},
+Cambridge Tracts in Mathematics 181, Cambridge University Press, 2010.
+\href{https://doi.org/10.1017/CBO9780511691713}{doi:10.1017/CBO9780511691713}.
+
+\end{thebibliography}
+
+\end{document}

@@ -13,6 +13,7 @@ an exact minimum degree and a complete classification of the equality case.
 
 | Entry | Areas | Contribution | Public version | Status |
 | --- | --- | --- | --- | --- |
+| [Log-concavity of reduced composition polynomials via adjacent B-spline refinement columns](research/reduced-composition-polynomial-logconcavity/README.md)<br>[PDF](research/reduced-composition-polynomial-logconcavity/reduced-composition-polynomial-logconcavity.pdf) · [BibTeX](research/reduced-composition-polynomial-logconcavity/CITATION.bib) · DOI pending | Enumerative combinatorics, composition polynomials, discrete B-splines, total positivity | Proves that the coefficient sequence of the Ardila--Doker reduced composition polynomial is log-concave, and hence unimodal, for every positive integer composition | v0.1-beta | Internally verified public Beta; external review pending |
 | [An unbounded gap between minimum degree and the minor-connectivity ceiling](research/unbounded-minor-connectivity-gap/README.md)<br>[PDF](research/unbounded-minor-connectivity-gap/unbounded-minor-connectivity-gap.pdf) · [BibTeX](research/unbounded-minor-connectivity-gap/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22281553) | Graph minors, vertex connectivity, minimum degree, Mader graph, graph blow-ups | Proves $\kappa^*(M_{12}[\overline K_t])=\lfloor9t/2\rfloor$ for every $t\ge2$, yielding an unbounded gap $\delta-\kappa^*=\lceil t/2\rceil$ and infinitely many counterexamples to Barát's conjectured additive-one bound | v0.1-beta | Internally verified public Beta; external review pending |
 | [Every two-vertex premaniplex is the symmetry type graph of a finite abstract polytope](research/two-vertex-polytopality/README.md)<br>[PDF](research/two-vertex-polytopality/two-vertex-polytopality.pdf) · [BibTeX](research/two-vertex-polytopality/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22274310) | Abstract polytopes, maniplexes, symmetry type graphs, voltage constructions | Proves that every connected two-vertex premaniplex of every rank at least three is realized as the full symmetry type graph of a finite abstract polytope | v0.1-beta | Internally verified public Beta; external review pending |
 | [Odd-dimensional descent obstructions in the third support spectrum of binary second-order Reed--Muller codes](research/rm2-odd-descent-obstructions/README.md)<br>[PDF](research/rm2-odd-descent-obstructions/odd-dimensional-descent-obstructions-rm2-third-support.pdf) · [BibTeX](research/rm2-odd-descent-obstructions/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22255441) | Coding theory, Reed--Muller codes, higher support spectra, quadratic Boolean functions, Walsh spectra | Classifies an exponentially widening local parity band for three-dimensional subcodes and proves an infinite family of odd-to-even support descent obstructions | v0.1-beta | Internally verified public Beta; external review pending |
@@ -55,6 +56,16 @@ an exact minimum degree and a complete classification of the equality case.
 | [Tail-projection certificates for cyclotomic minimum-degree polynomials beyond the reciprocal condition](research/cyclotomic-tail-projection-families/README.md)<br>[PDF](research/cyclotomic-tail-projection-families/cyclotomic-tail-projection-families.pdf) · [BibTeX](research/cyclotomic-tail-projection-families/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22127365) | Cyclotomic polynomials, nonnegative coefficients, CRT tensor projections, prime tuples | Gives an explicit sufficient condition for every fixed number of at least four prime factors and proves infinite families beyond Steinberger's reciprocal condition | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
+
+### Log-concavity of reduced composition polynomials
+
+For every positive integer composition $c$, the coefficient sequence of the Ardila--Doker reduced
+composition polynomial $f_c(q)$ is log-concave and hence unimodal. The proof identifies the
+coefficients with a discrete B-spline refinement column, realizes the two endpoint deletions as
+adjacent columns of a common refinement matrix, and converts their nonnegative $2\times2$ minors
+into the required coefficient inequalities by an exact determinant identity.
+
+- [Manuscript and verification materials](research/reduced-composition-polynomial-logconcavity/README.md)
 
 ### Unbounded minor-connectivity gap
 
