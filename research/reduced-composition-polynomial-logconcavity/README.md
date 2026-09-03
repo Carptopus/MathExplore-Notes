@@ -5,7 +5,8 @@
 - [Read or download the PDF](reduced-composition-polynomial-logconcavity.pdf)
 - [LaTeX source](reduced-composition-polynomial-logconcavity.tex)
 - [BibTeX citation](CITATION.bib)
-- Current version DOI: pending
+- Current version DOI: [10.5281/zenodo.22284639](https://doi.org/10.5281/zenodo.22284639)
+- Concept DOI: [10.5281/zenodo.22284638](https://doi.org/10.5281/zenodo.22284638)
 - [Verification programs](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
