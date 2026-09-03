@@ -11,7 +11,8 @@ independent blow-up of the 12-vertex Mader graph.
 - Author: Carptopus
 - Contact: [carptopus@163.com](mailto:carptopus@163.com)
 - Public version: v0.1-beta (3 September 2026)
-- DOI: pending
+- DOI: [10.5281/zenodo.22281553](https://doi.org/10.5281/zenodo.22281553)
+- Concept DOI: [10.5281/zenodo.22281552](https://doi.org/10.5281/zenodo.22281552)
 - Public repository: [MathExplore-Notes](https://github.com/Carptopus/MathExplore-Notes/tree/master/research/unbounded-minor-connectivity-gap)
 - Manuscript and documentation license: [CC BY 4.0](LICENSE.md)
 - Verification-code license: [MIT](verification/LICENSE-CODE-MIT.txt)
