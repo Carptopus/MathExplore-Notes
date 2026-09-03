@@ -12,6 +12,8 @@ abstract polytope.
 - Author: Carptopus
 - Contact: [carptopus@163.com](mailto:carptopus@163.com)
 - Public version: v0.1-beta (3 September 2026)
+- DOI: [10.5281/zenodo.22274310](https://doi.org/10.5281/zenodo.22274310)
+- Concept DOI: [10.5281/zenodo.22274309](https://doi.org/10.5281/zenodo.22274309)
 - Public repository: [MathExplore-Notes](https://github.com/Carptopus/MathExplore-Notes/tree/master/research/two-vertex-polytopality)
 - Manuscript and documentation license: [CC BY 4.0](LICENSE.md)
 - Verification-code license: [MIT](verification/LICENSE-CODE-MIT.txt)
