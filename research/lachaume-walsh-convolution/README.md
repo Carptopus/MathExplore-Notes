@@ -7,11 +7,14 @@ theorem then settles Lachaume's Conjectures 4 and 5 in every degree.
 - [PDF manuscript](lachaume-walsh-convolution.pdf)
 - [LaTeX source](lachaume-walsh-convolution.tex)
 - [BibTeX citation](CITATION.bib)
+- Current version DOI: [10.5281/zenodo.22299983](https://doi.org/10.5281/zenodo.22299983)
+- Concept DOI: [10.5281/zenodo.22299982](https://doi.org/10.5281/zenodo.22299982)
 - [Verification program](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
 - Contact: [carptopus@163.com](mailto:carptopus@163.com)
 - Public version: v0.1-beta (4 September 2026)
+- Public repository: [MathExplore-Notes](https://github.com/Carptopus/MathExplore-Notes/tree/master/research/lachaume-walsh-convolution)
 - Manuscript and documentation license: [CC BY 4.0](LICENSE.md)
 - Verification-code license: [MIT](verification/LICENSE-CODE-MIT.txt)
 - Status: internally verified public Beta; external mathematical review pending.
