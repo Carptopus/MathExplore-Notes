@@ -6,11 +6,14 @@ of real-rootedness for Ehrhart `h*`-polynomials of matroid base polytopes.
 - [PDF manuscript](rank-two-matroid-hstar-size-three.pdf)
 - [LaTeX source](rank-two-matroid-hstar-size-three.tex)
 - [BibTeX citation](CITATION.bib)
+- Current version DOI: [10.5281/zenodo.22305179](https://doi.org/10.5281/zenodo.22305179)
+- Concept DOI: [10.5281/zenodo.22305178](https://doi.org/10.5281/zenodo.22305178)
 - [Verification program](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
 - Contact: [carptopus@163.com](mailto:carptopus@163.com)
 - Public version: v0.1-beta (4 September 2026)
+- Public repository: [MathExplore-Notes](https://github.com/Carptopus/MathExplore-Notes/tree/master/research/rank-two-matroid-hstar-size-three)
 - Manuscript and documentation license: [CC BY 4.0](LICENSE.md)
 - Verification-code license: [MIT](verification/LICENSE-CODE-MIT.txt)
 - Status: internally verified public Beta; external mathematical review pending.
@@ -67,4 +70,3 @@ preparation. The manuscript contains the complete disclosure and responsibility 
 
 Matroid base polytopes; Ehrhart h-star polynomials; real-rootedness; rank-two matroids; parallel
 classes; log-concavity; Sturm sequences; reproducible mathematics; AI-assisted mathematics.
-
