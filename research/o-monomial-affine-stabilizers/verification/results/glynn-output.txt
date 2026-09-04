@@ -1,0 +1,2 @@
+NEGATIVE_CONTROL_PASS: shifted first-index prediction was rejected
+PASS: Glynn-I zero weights, cycle parity, gaps, and finite coefficients agree

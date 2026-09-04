@@ -1,0 +1,523 @@
+% Generated deterministically from the audited Markdown source.
+% Responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{needspace}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{xurl}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Affine stabilizers of o-monomial value sets}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.44em}
+\setlength{\emergencystretch}{4em}
+\urlstyle{same}
+
+\title{Affine stabilizers of two o-monomial value sets}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{4 September 2026}
+
+\hypersetup{
+  pdftitle={Affine stabilizers of two o-monomial value sets},
+  pdfauthor={Carptopus},
+  pdfsubject={Trivial affine stabilizers for the overline-Segre and Glynn I value sets},
+  pdfkeywords={o-monomial, o-polynomial, hyperoval, finite field, affine stabilizer, value-set polynomial}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fcolorbox{black!35}{black!4}{\parbox{0.88\textwidth}{\centering\small
+Public Beta manuscript, version 0.1-beta. The mathematical proof and complete
+manuscript have passed project-internal zero-trust audits. External mathematical review
+and formal peer review are pending.}}
+\end{center}
+
+\begin{abstract}
+
+
+Let \(q=2^m\), where \(m\ge 5\) is odd, and let
+
+\[
+J_e=\{x^e+x:x\in\mathbb F_q\}.
+\]
+
+Ding and Tang asked whether the stabilizer of \(J_e\) in the one-dimensional
+general affine group is trivial for every nontranslation o-monomial \(x^e\).
+Their argument settled the known families whose exponents are sums of two powers
+of two and left two known families untreated. We prove triviality for both of
+those families: the \(\overline{\mathrm{Segre}}\) family \(e=q-6\) and the
+Glynn I family \(e=3\cdot2^{(m+1)/2}+4\). The first proof uses a general
+criterion involving the first three coefficients of the value-set polynomial.
+The second locates the first nonzero coefficient by expressing a circulant
+determinant as a parity count of directed cycle covers. Consequently, the
+conjectured stabilizer property holds for every currently known nontranslation
+o-monomial family. This does not classify hypothetical unknown o-monomials.
+
+\end{abstract}
+
+\section{Introduction}
+
+
+An o-polynomial over \(\mathbb F_q\), with \(q\) even, represents a hyperoval in
+the Desarguesian projective plane. When the o-polynomial is a monomial \(x^e\),
+the map \(x\mapsto x^e+x\) is two-to-one, and hence its image \(J_e\) has size
+\(q/2\).
+
+Ding and Tang \cite{ding-tang} use the orbit of \(J_e\) under the general affine group
+
+\[
+\mathrm{GA}_1(\mathbb F_q)
+=\{x\mapsto ux+v:u\in\mathbb F_q^*,\ v\in\mathbb F_q\}
+\]
+
+to construct \(3\)-designs. The orbit size, and therefore the design parameters,
+depend on the affine stabilizer of \(J_e\). Their Conjecture 2 predicts that this
+stabilizer is trivial for every nontranslation o-monomial. They proved the claim
+for the known two-power-sum exponents and explicitly left the
+\(\overline{\mathrm{Segre}}\) and Glynn I families open \cite[after Corollary~30]{ding-tang}.
+
+This note treats both remaining known families. Its two main ingredients are:
+
+\begin{enumerate}
+\item a low-coefficient criterion that detects a trivial affine stabilizer for a
+half-size subset of \(\mathbb F_q\); and
+\item a cycle-cover calculation that determines the first nonzero coefficient of
+the Glynn I value-set polynomial.
+
+\end{enumerate}
+
+Kölsch and Kyureghyan \cite{kolsch-kyureghyan} subsequently established an equivalence between the
+classification of o-monomials and that of two-to-one binomials. Their result
+clarifies the classification boundary but does not determine the affine
+stabilizer of the fixed image set \(J_e\). Thus the conclusion here concerns all
+currently known nontranslation families, not all possible future o-monomials.
+
+All polynomial coefficients below lie in \(\mathbb F_q\). Since the
+characteristic is two, signs in elementary symmetric functions and determinants
+disappear. Throughout the remainder of the paper, \(q=2^m\) with odd
+\(m\ge5\), unless explicitly stated otherwise.
+
+Maschietti \cite{maschietti} relates the nonzero part of these value sets to cyclic difference
+sets. Our proofs require finer value-set coefficient information rather than
+only the difference-set parameters.
+
+\section{A value-set coefficient criterion}
+
+
+Let \(J\subseteq\mathbb F_q\) have size \(k=q/2\), and write its monic root
+polynomial as
+
+\[
+P_J(T)=\prod_{y\in J}(T+y)
+=T^k+c_1T^{k-1}+c_2T^{k-2}+c_3T^{k-3}+\cdots.
+\]
+
+\Needspace{0.18\textheight}
+\begin{lemma}
+\label{lem:criterion}
+
+Suppose that \(m\ge5\) is odd and
+
+\[
+c_1=c_2=0,\qquad c_3\ne0.
+\]
+
+Then the stabilizer of \(J\) in \(\mathrm{GA}_1(\mathbb F_q)\) is trivial.
+
+\end{lemma}
+
+\begin{proof}
+
+Assume that \(uJ+v=J\), where \(u\ne0\). Equality of the corresponding monic
+root polynomials gives
+
+\[
+P_J(T)=u^kP_J\!\left(\frac{T+v}{u}\right).
+\tag{2.1}
+\]
+
+Because \(k\) is a power of two, \((T+v)^k=T^k+v^k\). Comparing the
+coefficient of \(T^{k-3}\) in (2.1) yields \(c_3=u^3c_3\), so \(u^3=1\).
+Since \(m\) is odd, \(\gcd(3,q-1)=1\), and therefore \(u=1\).
+
+Now \(P_J(T)=P_J(T+v)\). Comparing the coefficient of \(T^{k-4}\), the two
+copies of \(c_4\) cancel and the term \(c_3(T+v)^{k-3}\) contributes
+\(c_3v\), because \(k-3\) is odd. Hence \(v=0\). The assumption \(m\ge5\)
+ensures that this comparison is above the constant term.
+\end{proof}
+
+
+\section{The overline-Segre family}
+
+
+Set \(e=q-6\) and
+
+\[
+J=\{x^{q-6}+x:x\in\mathbb F_q\}.
+\]
+
+The monomial \(x^{q-6}\) is the
+\(\overline{\mathrm{Segre}}\) o-monomial in the parameter range under
+consideration \cite[Theorem~12 and the following identities]{ding-tang}. Thus
+\(x\mapsto x^{q-6}+x\) is two-to-one and \(|J|=q/2\).
+
+\Needspace{0.18\textheight}
+\begin{theorem}
+\label{thm:bar-segre}
+
+For every odd \(m\ge5\), the stabilizer of \(J\) in
+\(\mathrm{GA}_1(\mathbb F_q)\) is trivial.
+
+\end{theorem}
+
+\begin{proof}
+
+Write \(k=q/2\) and
+
+\[
+P(T)=\prod_{y\in J}(T+y)
+=T^k+c_1T^{k-1}+c_2T^{k-2}+c_3T^{k-3}+\cdots.
+\]
+
+The two-to-one property gives the multiset identity
+
+\[
+P(T)^2=\prod_{x\in\mathbb F_q}(T+x^{q-6}+x).
+\tag{3.1}
+\]
+
+For \(x\ne0\), put \(z_x=x+x^{-5}\), and let \(E_r\) be the \(r\)-th
+elementary symmetric function of the \(z_x\), indexed by
+\(\mathbb F_q^*\). Equation (3.1) implies
+
+\[
+c_1^2=E_2,\qquad c_2^2=E_4,\qquad c_3^2=E_6.
+\tag{3.2}
+\]
+
+Expand a term of \(E_r\) by choosing \(x\) from \(a\) factors and \(x^{-5}\)
+from the remaining \(r-a\) factors. Multiplication of every selected field
+element by \(t\in\mathbb F_q^*\) multiplies the resulting subsum by
+
+\[
+t^{\,6a-5r}.
+\]
+
+As this multiplication permutes the indexing subsets, that subsum is zero
+unless \(q-1\mid 6a-5r\). For \(r=2\) and \(r=4\), all possible weights are
+nonzero and have absolute value less than \(q-1\ge31\), so \(E_2=E_4=0\).
+For \(r=6\), only \(a=5\) has weight zero. Consequently,
+
+\[
+E_6=\sum_{b\in\mathbb F_q^*}b^{-5}
+e_5(\mathbb F_q^*\setminus\{b\}).
+\]
+
+Since, for a formal indeterminate \(Z\),
+
+\[
+\prod_{x\in\mathbb F_q^*}(1+Zx)=1+Z^{q-1},
+\]
+
+division by \(1+Zb\) shows that
+\(e_5(\mathbb F_q^*\setminus\{b\})=b^5\). Hence
+
+\[
+E_6=\sum_{b\in\mathbb F_q^*}1=q-1=1
+\]
+
+in characteristic two. By (3.2), \(c_1=c_2=0\) and \(c_3=1\). Lemma~\ref{lem:criterion}
+completes the proof.
+\end{proof}
+
+
+\section{The Glynn I family}
+
+
+Let
+
+\[
+e=3\cdot2^{(m+1)/2}+4
+\]
+
+be the Glynn I exponent. Put
+
+\[
+h=\frac{m-1}{2},\qquad A=2^h,\qquad
+N=q-1=2A^2-1,\qquad D=e-1=3(2A+1),
+\]
+
+and let \(k=q/2=A^2\). Define
+
+\[
+J_e=\{x^e+x:x\in\mathbb F_q\},\qquad
+P(T)=\prod_{y\in J_e}(T+y)
+=T^k+c_1T^{k-1}+c_2T^{k-2}+\cdots.
+\]
+
+Again the o-monomial property gives
+
+\[
+P(T)^2=\prod_{x\in\mathbb F_q}(T+x^e+x).
+\tag{4.1}
+\]
+
+The o-monomial property used here is Glynn's construction \cite{glynn}, recorded in
+\cite[Theorem~13]{ding-tang}.
+
+\Needspace{0.18\textheight}
+\begin{lemma}
+\label{lem:glynn-coefficient}
+
+The first nonzero coefficient after the leading term of \(P\) is \(c_j=1\),
+where
+
+\[
+j=
+\begin{cases}
+2^{(m-3)/2},&m\equiv1\pmod4,\\[4pt]
+3\cdot2^{(m-3)/2}-1,&m\equiv3\pmod4.
+\end{cases}
+\tag{4.2}
+\]
+
+Moreover, \(\gcd(j,N)=1\). In the case \(m\equiv1\pmod4\), one also has
+
+\[
+c_{j+1}=\cdots=c_{2j-1}=0.
+\tag{4.3}
+\]
+
+\end{lemma}
+
+\begin{proof}
+
+Let \(E_R\) denote the \(R\)-th elementary symmetric function on the multiset
+\((x^e+x)_{x\in\mathbb F_q^*}\). From (4.1),
+
+\[
+c_i^2=E_{2i}.
+\tag{4.4}
+\]
+
+In an expanded term of \(E_R\), suppose \(b\) factors contribute \(x^e\) and
+the other \(R-b\) factors contribute \(x\). Scaling the selected field elements
+shows that the corresponding subsum vanishes unless
+
+\[
+N\mid R+bD,\qquad 0\le b\le R.
+\tag{4.5}
+\]
+
+The least positive \(R\) satisfying (4.5) is
+
+\[
+(R_0,b_0)=
+\begin{cases}
+\left(A,(A-1)/3\right),&h\text{ even},\\[4pt]
+\left(3A-2,(7A-5)/3\right),&h\text{ odd}.
+\end{cases}
+\tag{4.6}
+\]
+
+For completeness, if \(h\) is even, then \(A\equiv1\pmod3\),
+\(N\equiv A\pmod D\), and the bound \(R(1+D)<3N\) for \(R<A\) leaves only
+the residues \(A\) and \(2A\). If \(h\) is odd, then \(A\equiv2\pmod3\),
+\(N\equiv3A+1\pmod D\), and \(R(1+D)<9N\) for \(R<3A-2\). The least positive
+residues of \(tN\pmod D\), \(1\le t\le8\), first enter the permitted range at
+\(t=7\), where the residue is \(3A-2\). The displayed \(b_0\) then follows by
+solving \(R_0+b_0D=tN\). Also \(R_0<N\) for \(A\ge4\), and
+\(\gcd(D,N)=1\), so this \(b_0\) is unique in \(0\le b\le R_0\).
+
+It remains to show that the surviving subsum at \(R_0\) equals one. Let \(S\)
+be the \(N\times N\) cyclic shift matrix. Its eigenvalues are the elements of
+\(\mathbb F_q^*\), and therefore
+
+\[
+\prod_{x\in\mathbb F_q^*}(1+Ux^e+Vx)
+=\det(I+US^e+VS).
+\tag{4.7}
+\]
+
+The coefficient of \(U^bV^{R-b}\) is the parity of cycle covers having \(b\)
+steps of size \(e\), \(R-b\) steps of size \(1\), and all remaining vertices
+fixed. Minimality of \(R_0\) implies that a cover with \(R_0\) nonfixed edges
+contains exactly one nontrivial cycle. No proper consecutive subword of a step
+word can sum to zero modulo \(N\), again by minimality. Hence the number of such
+cycles is
+
+\[
+\frac{N}{R_0}\binom{R_0}{b_0}.
+\tag{4.8}
+\]
+
+One has \(\gcd(N,R_0)=1\): this is immediate when \(R_0=A\), while for
+\(R_0=3A-2\) it follows from \(9N\equiv-1\pmod{R_0}\). Kummer's theorem gives
+
+\[
+v_2\!\binom{R_0}{b_0}=v_2(R_0).
+\tag{4.9}
+\]
+
+For \(h\) even, \(R_0=A\) and \(b_0=(A-1)/3\) is odd, giving valuation \(h\).
+For \(h\) odd, put \(c_0=R_0-b_0=(2A-1)/3\). The alternating binary
+expansions give
+
+\[
+s_2(c_0)=\frac{h+1}{2},\qquad
+s_2(b_0)=\frac{h+1}{2},\qquad
+s_2(R_0)=h.
+\]
+
+Kummer's digit-sum formula therefore gives
+\(v_2\binom{R_0}{b_0}=1=v_2(R_0)\). Thus (4.8) is odd, so \(E_{R_0}=1\).
+Equations (4.4) and (4.6) yield (4.2), and the formulas also give
+\(\gcd(j,N)=1\).
+
+Finally suppose \(m\equiv1\pmod4\). Then \(R_0=A\) and \(j=A/2\). For
+\(j<i<2j\), the degree \(R=2i\) lies strictly between \(A\) and \(2A\).
+Using \(R(1+D)<7N\), the possible residues \(tN\pmod D\), \(1\le t\le6\),
+are \(A,2A,\ldots,6A\), so none lies in this open interval. This proves (4.3).
+
+\end{proof}
+
+
+\Needspace{0.18\textheight}
+\begin{theorem}
+\label{thm:glynn}
+
+For every odd \(m\ge5\), the stabilizer of the Glynn I value set \(J_e\) in
+\(\mathrm{GA}_1(\mathbb F_q)\) is trivial.
+
+\end{theorem}
+
+\begin{proof}
+
+Suppose \(uJ_e+v=J_e\). As in (2.1),
+
+\[
+P(T)=u^kP\!\left(\frac{T+v}{u}\right)
+=\sum_{i\ge0}c_i u^i(T+v)^{k-i},\qquad c_0=1.
+\tag{4.10}
+\]
+
+At degree \(T^{k-j}\), Lemma~\ref{lem:glynn-coefficient} gives \(1=u^j\). Since
+\(\gcd(j,q-1)=1\), we have \(u=1\).
+
+If \(m\equiv3\pmod4\), then \(j\) is odd. Comparing the coefficient of
+\(T^{k-j-1}\) in \(P(T)=P(T+v)\) gives \(v=0\).
+
+If \(m\equiv1\pmod4\), then \(j=A/2\). By (4.3), comparison at
+\(T^{k-2j}\) leaves only
+
+\[
+\binom{k-j}{j}v^j=0.
+\]
+
+The lowest nonzero binary digit of \(k-j=A^2-A/2\) is precisely \(j\), so
+Lucas' theorem gives \(\binom{k-j}{j}\equiv1\pmod2\). Hence \(v=0\) in this
+case as well.
+\end{proof}
+
+
+\section{Consequence and scope}
+
+
+Combining Theorems 3.1 and 4.2 with Ding and Tang's Lemma 29 proves the
+conjectured trivial-stabilizer property for every nontranslation o-monomial
+family currently listed in the classification literature. In particular, the
+two known families explicitly left open in \cite{ding-tang} are now covered
+\cite[Lemma~29 and after Corollary~30]{ding-tang}; \cite[Section~2]{kolsch-kyureghyan}.
+
+This statement has a deliberate boundary. The classification of o-monomials is
+itself open \cite{kolsch-kyureghyan}. We neither classify unknown families nor prove a theorem that
+automatically covers every hypothetical o-monomial. Accordingly, the result is
+not presented as a solution of Conjecture 2 in its unrestricted logical form.
+
+\section{Computational checks}
+
+
+The proofs above are symbolic. From the repository root, two exact Python
+programs provide finite checks of the formulas:
+
+\begin{itemize}
+\item \texttt{loops/MATH-\allowbreak{}DIR-\allowbreak{}0048/verification/verify\_\allowbreak{}bar\_\allowbreak{}segre\_\allowbreak{}value\_\allowbreak{}polynomial.py}
+reconstructs the overline-Segre
+value-set polynomial for \(m=5,7,9,11\) and checks
+\((c_1,c_2,c_3)=(0,0,1)\);
+\item \texttt{loops/MATH-\allowbreak{}DIR-\allowbreak{}0049/verification/verify\_\allowbreak{}glynn\_\allowbreak{}cycle\_\allowbreak{}cover\_\allowbreak{}arithmetic.py}
+checks the zero-weight formulas,
+Kummer valuations, coefficient gap, and the first finite value-set
+polynomials.
+
+\end{itemize}
+
+On Windows with the project environment, run:
+
+\begin{quote}\footnotesize\ttfamily
+.\textbackslash{}\allowbreak{}.venv\textbackslash{}\allowbreak{}Scripts\textbackslash{}\allowbreak{}python.exe\ \allowbreak{}loops\textbackslash{}\allowbreak{}MATH-\allowbreak{}DIR-\allowbreak{}0048\textbackslash{}\allowbreak{}verification\textbackslash{}\allowbreak{}verify\_\allowbreak{}bar\_\allowbreak{}segre\_\allowbreak{}value\_\allowbreak{}polynomial.py\par
+\end{quote}
+
+\begin{quote}\footnotesize\ttfamily
+.\textbackslash{}\allowbreak{}.venv\textbackslash{}\allowbreak{}Scripts\textbackslash{}\allowbreak{}python.exe\ \allowbreak{}loops\textbackslash{}\allowbreak{}MATH-\allowbreak{}DIR-\allowbreak{}0049\textbackslash{}\allowbreak{}verification\textbackslash{}\allowbreak{}verify\_\allowbreak{}glynn\_\allowbreak{}cycle\_\allowbreak{}cover\_\allowbreak{}arithmetic.py\par
+\end{quote}
+
+
+These calculations test the implementation and small admissible parameters;
+they are not substitutes for the general arguments.
+
+\section*{AI-assisted research and writing disclosure}
+
+
+AI tools were used to assist with exploratory computation, proof checking,
+literature search, and drafting. Carptopus is the sole author and takes
+responsibility for the mathematical claims and the final text.
+
+\begin{thebibliography}{9}
+\footnotesize
+\raggedright
+
+\bibitem{ding-tang}
+C.~Ding and C.~Tang,
+\emph{Infinite families of 3-designs from o-polynomials},
+Advances in Mathematics of Communications \textbf{15} (2021), 557--573.
+\href{https://doi.org/10.3934/amc.2020082}{doi:10.3934/amc.2020082}.
+
+\bibitem{maschietti}
+A.~Maschietti,
+\emph{Difference set and hyperovals},
+Designs, Codes and Cryptography \textbf{14} (1998), 89--98.
+\href{https://doi.org/10.1023/A:1008264606494}{doi:10.1023/A:1008264606494}.
+
+\bibitem{kolsch-kyureghyan}
+L.~K\"olsch and G.~Kyureghyan,
+\emph{The classifications of o-monomials and of 2-to-1 binomials are equivalent},
+Designs, Codes and Cryptography \textbf{93} (2025), 961--970.
+\href{https://doi.org/10.1007/s10623-024-01463-1}{doi:10.1007/s10623-024-01463-1}.
+
+\bibitem{glynn}
+D.~G.~Glynn,
+\emph{Two new sequences of ovals in finite Desarguesian planes of even order},
+in: Combinatorial Mathematics X, Lecture Notes in Mathematics \textbf{1036},
+Springer, 1983, 217--229.
+\href{https://doi.org/10.1007/BFb0071521}{doi:10.1007/BFb0071521}.
+
+\end{thebibliography}
+
+\end{document}

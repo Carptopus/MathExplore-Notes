@@ -1,0 +1,6 @@
+m=5: degree=16, (c1,c2,c3)=(0,0,1)
+m=7: degree=64, (c1,c2,c3)=(0,0,1)
+m=9: degree=256, (c1,c2,c3)=(0,0,1)
+m=11: degree=1024, (c1,c2,c3)=(0,0,1)
+NEGATIVE_CONTROL_PASS: excluded m=3 has a nontrivial affine stabilizer
+PASS: exact finite reconstructions agree with the symbolic lemma
