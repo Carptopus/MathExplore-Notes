@@ -1,0 +1,1 @@
+PASS: symbolic certificate, n=9 Sturm certificate, 31 small connected partitions, and 6 disconnected cases

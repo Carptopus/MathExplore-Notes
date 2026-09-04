@@ -13,6 +13,7 @@ an exact minimum degree and a complete classification of the equality case.
 
 | Entry | Areas | Contribution | Public version | Status |
 | --- | --- | --- | --- | --- |
+| [Real-rooted h-star polynomials of rank-two matroids with parallel classes of size at most three](research/rank-two-matroid-hstar-size-three/README.md)<br>[PDF](research/rank-two-matroid-hstar-size-three/rank-two-matroid-hstar-size-three.pdf) · [BibTeX](research/rank-two-matroid-hstar-size-three/CITATION.bib) | Matroid theory, Ehrhart theory, matroid base polytopes, real-rootedness | Proves real-rootedness for every rank-two matroid whose nonloop parallel classes have size at most three, extending the sparse-paving boundary from two to three | v0.1-beta | Internally verified public Beta; external review pending |
 | [A Walsh-convolution proof of two conjectures of Lachaume](research/lachaume-walsh-convolution/README.md)<br>[PDF](research/lachaume-walsh-convolution/lachaume-walsh-convolution.pdf) · [BibTeX](research/lachaume-walsh-convolution/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22299983) | Polynomial convolutions, real-rootedness, root location, hyperbolic polynomials | Identifies Lachaume's derivative convolution exactly with a rescaled Walsh symmetric additive convolution, proving Conjectures 4 and 5 and a complex convex-hull root-location statement | v0.1-beta | Internally verified public Beta; external review pending |
 | [Affine stabilizers of two o-monomial value sets](research/o-monomial-affine-stabilizers/README.md)<br>[PDF](research/o-monomial-affine-stabilizers/o-monomial-affine-stabilizers.pdf) · [BibTeX](research/o-monomial-affine-stabilizers/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22297838) | Finite geometry, finite fields, o-monomials, hyperovals, affine stabilizers | Proves trivial affine stabilizers for the $\overline{\mathrm{Segre}}$ and Glynn I value sets for every odd $m\ge5$, completing the two families left untreated among all currently known nontranslation o-monomials | v0.1-beta | Internally verified public Beta; external review pending |
 | [Parallel-support rank and a one-sided Merino--Welsh inequality](research/parallel-support-rank-merino-welsh/README.md)<br>[PDF](research/parallel-support-rank-merino-welsh/parallel-support-rank-merino-welsh.pdf) · [BibTeX](research/parallel-support-rank-merino-welsh/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22296382) | Matroid theory, Tutte polynomial, parallel and series classes, basis activities | Proves the one-sided inequality $T_M(0,2)\ge T_M(1,1)$ whenever the nontrivial parallel classes span all but at most one rank direction, with strictness, complete equality classification, dual and graphic forms, and a sharp rank threshold | v0.1-beta | Internally verified public Beta; external review pending |
@@ -60,6 +61,16 @@ an exact minimum degree and a complete classification of the equality case.
 | [Tail-projection certificates for cyclotomic minimum-degree polynomials beyond the reciprocal condition](research/cyclotomic-tail-projection-families/README.md)<br>[PDF](research/cyclotomic-tail-projection-families/cyclotomic-tail-projection-families.pdf) · [BibTeX](research/cyclotomic-tail-projection-families/CITATION.bib) · [DOI](https://doi.org/10.5281/zenodo.22127365) | Cyclotomic polynomials, nonnegative coefficients, CRT tensor projections, prime tuples | Gives an explicit sufficient condition for every fixed number of at least four prime factors and proves infinite families beyond Steinberger's reciprocal condition | v0.1-beta | Internally verified candidate proof; external review pending |
 
 ## Current results
+
+### Rank-two matroid h-star real-rootedness at parallel-class size three
+
+For every rank-two matroid whose nonloop parallel classes have size at most three, the Ehrhart
+`h*`-polynomial of its base polytope has only real zeros and therefore has log-concave, unimodal
+coefficients. The result advances the known sparse-paving boundary from parallel-class size two
+to size three. A uniform analytic estimate handles every ground-set size `n>=10`; exact Sturm and
+finite checks settle the complete smaller boundary.
+
+- [Manuscript and verification materials](research/rank-two-matroid-hstar-size-three/README.md)
 
 ### Affine stabilizers of two o-monomial value sets
 

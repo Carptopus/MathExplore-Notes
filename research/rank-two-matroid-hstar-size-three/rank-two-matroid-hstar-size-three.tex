@@ -1,0 +1,570 @@
+% Generated deterministically from the audited Markdown source.
+% Responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{needspace}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{xurl}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Rank-two matroid $h^*$-polynomials}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.42em}
+\setlength{\emergencystretch}{4em}
+\urlstyle{same}
+
+\title{Real-rooted $h^*$-polynomials of rank-two matroids\\
+with parallel classes of size at most three}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{4 September 2026}
+
+\hypersetup{
+  pdftitle={Real-rooted h-star polynomials of rank-two matroids with parallel classes of size at most three},
+  pdfauthor={Carptopus},
+  pdfsubject={Ehrhart h-star real-rootedness for rank-two matroid base polytopes},
+  pdfkeywords={matroid base polytope, Ehrhart h-star polynomial, real-rootedness, rank-two matroid, parallel class}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fcolorbox{black!35}{black!4}{\parbox{0.88\textwidth}{\centering\small
+Public Beta manuscript, version 0.1-beta. The mathematical proof and
+complete manuscript have passed project-internal zero-trust audits. External
+mathematical review and formal peer review are pending.}}
+\end{center}
+
+\begin{abstract}
+
+
+Ferroni, Jochemko and Schröter proved that the Ehrhart $h^*$-polynomial of
+the base polytope of a rank-two sparse paving matroid is real-rooted. After
+loops are deleted, their rank-two hypothesis says that every parallel class
+has size at most two. We extend their result to parallel classes of size at
+most three. The
+new ingredient is a uniform estimate for the cubic correction term
+$p^*_{3,n}$ in their explicit $h^*$-formula. After the substitution
+$x=-\tan^2\theta$, this estimate preserves the alternating signs used in
+their proof. We prove the estimate analytically for $n\ge 10$, settle
+$n=9$ by an exact Sturm certificate, and check the finitely many smaller
+connected and disconnected cases exactly. Consequently the $h^*$-vector is
+log-concave and unimodal. We also identify the necessary Laguerre-polynomial
+inequality suggested by the scaling limit of the same method for an
+arbitrary fixed bound on parallel-class size.
+
+\end{abstract}
+
+\section{Introduction}
+
+
+For a matroid $M$ on a finite ground set, let $P(M)$ denote its base
+polytope and let $h^*(P(M),x)$ be the numerator of its Ehrhart series. Ferroni
+conjectured that the $h^*$-polynomial of every matroid base polytope is
+real-rooted \cite{ferroni-minimal}. Ferroni, Jochemko and Schröter subsequently proved this for
+rank-two sparse paving matroids \cite{fjs}. They also gave an explicit formula for
+every rank-two matroid and proposed a precise analytic estimate as a possible
+route beyond the sparse paving case.
+
+In a loopless rank-two matroid the rank-one flats are exactly the parallel
+classes. Sparse paving is therefore equivalent in this setting to requiring
+every parallel class to have size at most two. Our main result advances this
+boundary by one full structural layer.
+
+\Needspace{0.16\textheight}
+\begin{theorem}
+\label{thm:main}
+
+Let $M$ be a rank-two matroid. If every nonloop parallel class of $M$ has
+size at most three, then $h^*(P(M),x)$ has only real zeros. Consequently its
+coefficient sequence is log-concave and unimodal.
+\end{theorem}
+
+The proof is computer-assisted only at the finite boundary $n\le 9$: the
+$n=9$ estimate is certified by exact Sturm arithmetic, and the 31 connected
+types on at most eight nonloop elements and the six disconnected types are
+checked exactly. All larger ground sets are covered by one analytic argument.
+
+The theorem does not settle the conjecture for all rank-two matroids. The
+largest parallel class is bounded by three, whereas a general rank-two matroid
+may have a parallel class of arbitrary size. Section 6 records the exact
+uniform inequality that remains for extending the method.
+
+\section{The rank-two formula}
+
+
+Deleting the loops of $M$ removes coordinates that are identically zero on
+$P(M)$, so it preserves the lattice-isomorphism type of the base polytope.
+We may therefore assume that $M$ is loopless and write $n$ for the number
+of its remaining elements.
+
+Suppose first that $M$ is connected. Its parallel classes form a partition
+of the ground set, say with sizes $a_1,\ldots,a_s$, where $s\ge 3$ and
+
+\[
+a_1+\cdots+a_s=n.
+\]
+
+Ferroni, Jochemko and Schröter \cite[Proposition~5.1]{fjs} proved
+
+\[
+h^*(P(M),x)
+=\sum_{j=0}^{\lfloor n/2\rfloor}\binom{n}{2j}x^j
+-\sum_{i=1}^s p^*_{a_i,n}(x),                                      \tag{2.1}
+\]
+
+where
+
+\[
+p^*_{a,n}(x)
+=\sum_{k=1}^{a}\sum_{j\ge1}
+  \binom{k}{j}\binom{n-k-1}{j-1}x^j.                               \tag{2.2}
+\]
+
+They established \cite[Lemma~5.3]{fjs}, for $a\in\{1,2\}$, $n\ge9$, and
+$0<y\le1$,
+
+\[
+\left|y^{n/2}p^*_{a,n}\!\left(\frac{y-1}{y}\right)\right|<\frac an.
+                                                                        \tag{2.3}
+\]
+
+Our new ingredient is the next case.
+
+\Needspace{0.16\textheight}
+\begin{lemma}
+\label{lem:a3}
+
+For every $n\ge9$ and $0<y\le1$,
+\end{lemma}
+
+\[
+\left|y^{n/2}p^*_{3,n}\!\left(\frac{y-1}{y}\right)\right|<\frac3n.
+                                                                        \tag{2.4}
+\]
+
+Directly from (2.2),
+
+\[
+p^*_{3,n}(x)
+=6x+(4n-15)x^2+\frac{(n-4)(n-5)}2x^3.                                \tag{2.5}
+\]
+
+We prove Lemma 2.1 in the next two sections.
+
+\section{The uniform estimate for \texorpdfstring{$n\ge10$}{n >= 10}}
+
+
+Put
+
+\[
+u=n\frac{1-y}{y}\ge0,
+\qquad y=\left(1+\frac un\right)^{-1}.
+\]
+
+After substituting (2.5), inequality (2.4) is equivalent to
+
+\[
+|P_n(u)|<3\left(1+\frac un\right)^{n/2},                              \tag{3.1}
+\]
+
+where
+
+\[
+P_n(u)=-6u+\left(4-\frac{15}{n}\right)u^2
+-\frac12\left(1-\frac9n+\frac{20}{n^2}\right)u^3.                  \tag{3.2}
+\]
+
+Let $T_{5,n}(u)$ be the Taylor polynomial of degree five at zero of
+$(1+u/n)^{n/2}$. For $n\ge10$, its sixth-order Taylor remainder is
+nonnegative on $u\ge0$; this includes $n=10$, when the remainder vanishes.
+Thus
+
+\[
+\left(1+\frac un\right)^{n/2}\ge T_{5,n}(u).                         \tag{3.3}
+\]
+
+It is therefore enough to prove
+$3T_{5,n}(u)-P_n(u)>0$ and $3T_{5,n}(u)+P_n(u)>0$.
+
+For the upper inequality, direct expansion gives
+
+\[
+3T_{5,n}(u)-P_n(u)
+=3+\frac{15}{2}u-A_nu^2+B_nu^3+E_nu^4+F_nu^5,                       \tag{3.4}
+\]
+
+where
+
+\[
+A_n=\frac{29n-114}{8n},\qquad
+B_n=\frac{3(n-4)(3n-14)}{16n^2},
+\]
+
+\[
+E_n=\frac{(n-6)(n-4)(n-2)}{128n^3},\qquad
+F_n=\frac{(n-8)(n-6)(n-4)(n-2)}{1280n^4}.
+\]
+
+All four quantities are positive for $n\ge10$, and
+
+\[
+30B_n-A_n^2
+=\frac{239n^2-2748n+7164}{64n^2}>0.                              \tag{3.5}
+\]
+
+Indeed, on writing $n=9+v$, the numerator in (3.5) becomes
+$239v^2+1554v+1791$. For $u>0$, the arithmetic--geometric mean
+inequality and (3.5) yield
+
+\[
+\frac{15}{2}u+B_nu^3
+\ge 2\sqrt{\frac{15B_n}{2}}u^2>A_nu^2.
+\]
+
+Equation (3.4) is therefore positive; at $u=0$ this is immediate.
+
+For the lower inequality, write
+
+\[
+3T_{5,n}(u)+P_n(u)=3-\frac92u+u^2R_n(u),                             \tag{3.6}
+\]
+
+where
+
+\[
+R_n(u)=C_n-D_nu+E_nu^2+F_nu^3,
+\]
+
+\[
+C_n=\frac{7(5n-18)}{8n},\qquad
+D_n=\frac{(n-4)(7n-38)}{16n^2}.                                    \tag{3.7}
+\]
+
+The discriminant of the cubic $R_n-1$ is
+
+\[
+-\frac{(n-6)(n-4)^2(n-2)}{104857600n^{10}}Q(n),                    \tag{3.8}
+\]
+
+and, with $n=9+v$,
+
+\[
+\begin{aligned}
+Q(9+v)={}&8703v^6+204112v^5+1743391v^4+6933784v^3\\
+&+13118701v^2+10391512v+2399413.
+\end{aligned}
+\]
+
+Hence the discriminant in (3.8) is negative. The cubic $R_n-1$ has
+positive leading coefficient and
+
+\[
+(R_n-1)(0)=\frac{27n-126}{8n}>0.
+\]
+
+It has exactly one real zero, which must therefore be negative. Consequently
+
+\[
+R_n(u)>1\qquad (u\ge0).                                             \tag{3.9}
+\]
+
+If $u\ge37/10$, equations (3.6) and (3.9) give
+
+\[
+3T_{5,n}(u)+P_n(u)>3-\frac92u+u^2>0,
+\]
+
+because the final quadratic is increasing on this interval and equals
+$1/25$ at $u=37/10$.
+
+If $0\le u\le37/10$, then $C_n\ge21/8$, $D_n\le7/16$, and
+$E_n,F_n\ge0$. Thus
+
+\[
+3T_{5,n}(u)+P_n(u)
+\ge q(u):=3-\frac92u+\frac{21}{8}u^2-\frac7{16}u^3.                 \tag{3.10}
+\]
+
+The two stationary points of $q$ are $2\pm2\sqrt7/7$, where its
+values are $1\mp\sqrt7/7$. Together with
+$q(0)=3$ and $q(37/10)=2009/16000$, this proves that $q$ is positive
+on the entire interval. Equations (3.3)--(3.10) prove (3.1) for $n\ge10$.
+
+\section{The finite boundary}
+
+
+For $n=9$, let $D=(1+u/9)^{9/2}$. Exact expansion gives
+
+\[
+9D^2-P_9(u)^2=\frac{N(u)}{43046721},                                \tag{4.1}
+\]
+
+where
+
+\[
+\begin{aligned}
+N(u)={}&u^9+81u^8+2916u^7-594864u^6+25627266u^5\\
+&-290698227u^4+1249949232u^3-1377495072u^2\\
+&+387420489u+387420489.
+\end{aligned}
+\]
+
+The exact Sturm chain of $N$ has degree profile
+
+\[
+(9,8,6,5,4,3,2,1,0).
+\]
+
+Its signs at zero and at positive infinity are respectively
+
+\[
+(+,+,0,-,-,+,-,-,-),
+\qquad (+,+,+,-,-,-,+,+,-).
+\]
+
+After zeros are omitted, both sequences have three sign variations. Hence
+$N$ has no positive zero. Since $N(0)>0$, equation (4.1) is positive for
+all $u\ge0$, proving $|P_9(u)|<3D$ and therefore Lemma 2.1 for $n=9$.
+
+For $3\le n\le8$, a connected loopless rank-two matroid is determined up
+to isomorphism by an integer partition of $n$ into at least three parts.
+Restricting each part to size at most three leaves, for
+$n=3,4,5,6,7,8$, respectively
+
+\[
+1,\ 2,\ 4,\ 6,\ 8,\ 10
+\]
+
+possibilities. The accompanying exact verifier constructs (2.1) for all 31
+partitions, factors off repeated factors, and uses Sturm root counts to place
+every zero, with multiplicity, in $(-\infty,0)$. It also uses SymPy's exact
+algebraic-root routine as a second check within the same computer-algebra
+system.
+
+\section{Proof of the main theorem}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+
+Assume first that $M$ is connected and $n\ge9$. Set
+
+\[
+x=-\tan^2\theta,\qquad 0\le\theta<\frac{\pi}{2}.
+\]
+
+The classical identity
+
+\[
+\sum_j\binom n{2j}(-\tan^2\theta)^j
+=\frac{\cos(n\theta)}{\cos^n\theta}                                \tag{5.1}
+\]
+
+turns (2.1) into
+
+\[
+h^*(P(M),-\tan^2\theta)=\frac{q(\theta)}{\cos^n\theta},             \tag{5.2}
+\]
+
+where
+
+\[
+q(\theta)=\cos(n\theta)
+-\sum_{i=1}^s\cos^n\theta\,
+  p^*_{a_i,n}(-\tan^2\theta).                                      \tag{5.3}
+\]
+
+Put $y=\cos^2\theta$. For $a_i=1,2$, use (2.3), and for $a_i=3$,
+use Lemma 2.1. Since the $a_i$ sum to $n$, equations (5.3) and the strict
+estimates give
+
+\[
+|q(\theta)-\cos(n\theta)|
+<\sum_{i=1}^s\frac{a_i}{n}=1.                                     \tag{5.4}
+\]
+
+At the points $\theta_j=j\pi/n$, equation (5.4) makes $q(\theta_j)$
+strictly positive for even $j$ and strictly negative for odd $j$.
+
+When $n$ is odd, all points with
+$0\le j\le\lfloor n/2\rfloor$ lie below $\pi/2$. When $n=2m$ is
+even, the last point is the endpoint $\pi/2$, outside the domain of (5.4).
+In this case every correction in (5.3) is a linear combination of terms
+
+\[
+(-1)^j\sin^{2j}\theta\cos^{n-2j}\theta,
+\qquad 1\le j\le3.
+\]
+
+Since $n\ge10$, the exponent $n-2j$ is at least four. All corrections
+therefore tend to zero at the endpoint, and $q$ extends continuously with
+
+\[
+q(\pi/2)=\cos(n\pi/2)=(-1)^m.
+\]
+
+Thus, in both parity cases, $q$ has a zero in each of the
+$\lfloor n/2\rfloor$ consecutive open intervals between the sign-test
+points. Under the injective map
+$\theta\mapsto-\tan^2\theta$, these become distinct negative zeros of
+$h^*(P(M),x)$.
+
+The first sum in (2.1) has degree $\lfloor n/2\rfloor$, while every
+correction has degree at most three. For $n\ge9$, the former degree is at
+least four, so its positive leading term cannot be cancelled. Hence the
+number of zeros found equals the degree, and all zeros are real. The smaller
+connected cases were settled in Section 4.
+
+It remains to treat disconnected matroids. After loops are deleted, a
+disconnected rank-two matroid is $U_{1,a}\oplus U_{1,b}$, where $a,b\ge1$.
+Under our hypothesis $a,b\le3$, and $P(M)$ is the product
+$\Delta_{a-1}\times\Delta_{b-1}$. For the six unordered pairs
+
+\[
+(1,1),(1,2),(1,3),(2,2),(2,3),(3,3),
+\]
+
+the corresponding $h^*$-polynomials are
+
+\[
+1,\quad1,\quad1,\quad1+x,\quad1+2x,\quad1+4x+x^2.
+\]
+
+They are all real-rooted. This completes the proof of Theorem 1.1. The
+log-concavity and unimodality conclusions follow from Newton's inequalities
+and the nonnegativity of Ehrhart $h^*$-coefficients.
+\end{proof}
+
+
+\section{The boundary of the method}
+
+
+Ferroni, Jochemko and Schröter \cite[Section~6.1]{fjs} suggested proving, for every
+fixed $a$, that for all sufficiently large $n$,
+
+\[
+\left|y^{n/2}p^*_{a,n}\!\left(\frac{y-1}{y}\right)\right|<\frac an.
+                                                                        \tag{6.1}
+\]
+
+The same sign-interlacing argument would then cover rank-two matroids whose
+parallel classes have size at most $a$, subject to the degree condition.
+A useful necessary asymptotic test is visible in the scaling used above. For
+fixed $a$, the hockey-stick identity gives
+
+\[
+\lim_{n\to\infty} n\,p^*_{a,n}(-u/n)
+=\sum_{j=1}^a(-1)^j\binom{a+1}{j+1}\frac{u^j}{(j-1)!}
+=-uL_{a-1}^{(2)}(u),                                                 \tag{6.2}
+\]
+
+where $L_m^{(2)}$ is a generalized Laguerre polynomial. Since
+$(1+u/n)^{-n/2}\to e^{-u/2}$, pointwise passage to the limit in (6.1)
+would require the non-strict inequality
+
+\[
+\sup_{u\ge0}|u e^{-u/2}L_{a-1}^{(2)}(u)|\le a.                       \tag{6.3}
+\]
+
+Numerical evidence suggests the stronger strict inequality, which would give
+a useful pointwise margin. Even that strict bound would not by itself imply
+the finite-$n$ estimate (6.1) on the unbounded interval $u\ge0$: a uniform
+convergence argument and separate tail control would still be needed.
+Standard Laguerre bounds are too weak after multiplication by $u$, and
+treating $a=4,5,\ldots$ by separate increasingly high-degree polynomial
+certificates would not supply a uniform mechanism. The present note therefore
+stops at the natural $a=3$ boundary.
+
+\section{Verification and reproducibility}
+
+
+The supplementary Python script uses integer and rational arithmetic through
+SymPy. It performs the following checks:
+
+\begin{enumerate}
+\item derives (2.5) directly from (2.2);
+\item reconstructs both Taylor expansions in Section 3 and verifies their
+coefficient, discriminant, stationary-point and endpoint certificates;
+\item reconstructs $N(u)$ in (4.1), its Sturm profile and endpoint signs;
+\item includes a positive-root negative control for the Sturm routine;
+\item checks all 31 small connected partitions using exact Sturm counts and
+an additional exact algebraic-root check in the same SymPy stack;
+\item derives and checks all six disconnected cases.
+\end{enumerate}
+
+All failure conditions are explicit exceptions, not Python \texttt{assert}
+statements, so the checks remain active under \texttt{python -O}. The script is a
+reproducibility aid and supplies the exact finite portion of the proof; it
+does not replace the analytic argument for $n\ge10$.
+
+The audited environment used Python 3.13.11 and SymPy 1.14.0. The SHA-256 of
+the audited script is
+\texttt{00FA0B2A2A7481B6B7E562EDC5EFF2DD4DD63ED776F3BA1E39FCFCED7EFEF9C9}.
+
+\section{Prior-work and novelty boundary}
+
+
+Ferroni, Jochemko and Schröter \cite{fjs} supplied both the general rank-two formula
+and the sign-interlacing method, and proved the case in which parallel classes
+have size at most two. They explicitly identified (6.1) as a possible route
+to any fixed upper bound. Our contribution is limited to proving the next
+structural case $a=3$, including all finite and disconnected boundaries, and
+to identifying the Laguerre scaling limit and the additional uniformity
+obligations for a parameter-uniform extension.
+
+Jiang \cite{jiang} later gave combinatorial formulas for the $h^*$-polynomials of all
+positroid polytopes. Since every rank-two matroid is isomorphic to a positroid
+\cite[Corollary~6.2]{fjs}, that work gives a broader formula-level context, but it
+does not state the real-rootedness theorem proved here.
+
+Targeted searches completed on 4 September 2026 found no paper directly
+covering parallel classes of size at most three. This supports candidate
+novelty but does not establish global priority. We do not claim to settle
+real-rootedness for all rank-two matroids or for all matroid base polytopes.
+
+\section*{AI-assisted research disclosure}
+
+
+Carptopus is the responsible author and takes responsibility for the claims,
+proofs, source use and released artifacts. OpenAI Codex was used for
+AI-assisted literature organization, proof development and stress testing,
+exact verification, adversarial auditing and manuscript preparation.
+
+\begin{thebibliography}{9}
+\footnotesize
+\raggedright
+
+\bibitem{ferroni-minimal}
+L.~Ferroni,
+\emph{On the Ehrhart polynomial of minimal matroids},
+Discrete \& Computational Geometry \textbf{68} (2022), 255--273.
+\href{https://doi.org/10.1007/s00454-021-00313-4}{doi:10.1007/s00454-021-00313-4}.
+
+\bibitem{fjs}
+L.~Ferroni, K.~Jochemko and B.~Schr\"oter,
+\emph{Ehrhart polynomials of rank two matroids},
+Advances in Applied Mathematics \textbf{141} (2022), 102410.
+\href{https://doi.org/10.1016/j.aam.2022.102410}{doi:10.1016/j.aam.2022.102410}.
+
+\bibitem{jiang}
+Y.~Jiang,
+\emph{The Ehrhart $h^*$-polynomials of positroid polytopes},
+arXiv:2410.01743v3 (2025).
+\url{https://arxiv.org/abs/2410.01743}.
+
+\end{thebibliography}
+
+\end{document}
