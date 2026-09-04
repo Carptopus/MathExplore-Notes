@@ -6,11 +6,14 @@ the two known nontranslation o-monomial families left untreated in Ding--Tang's 
 - [PDF manuscript](o-monomial-affine-stabilizers.pdf)
 - [LaTeX source](o-monomial-affine-stabilizers.tex)
 - [BibTeX citation](CITATION.bib)
+- Current version DOI: [10.5281/zenodo.22297838](https://doi.org/10.5281/zenodo.22297838)
+- Concept DOI: [10.5281/zenodo.22297837](https://doi.org/10.5281/zenodo.22297837)
 - [Verification programs](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
 - Contact: [carptopus@163.com](mailto:carptopus@163.com)
 - Version: v0.1-beta (4 September 2026)
+- Public repository: [MathExplore-Notes](https://github.com/Carptopus/MathExplore-Notes/tree/master/research/o-monomial-affine-stabilizers)
 - Manuscript and documentation license: [CC BY 4.0](LICENSE.md)
 - Verification-code license: [MIT](verification/LICENSE-CODE-MIT.txt)
 - Status: internally verified public Beta; external mathematical review pending.
