@@ -1,0 +1,284 @@
+% Generated deterministically from the audited Markdown source.
+% Responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{needspace}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{xurl}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{A Walsh-convolution proof}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.44em}
+\setlength{\emergencystretch}{4em}
+\urlstyle{same}
+
+\title{A Walsh-convolution proof of two conjectures of Lachaume}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{4 September 2026}
+
+\hypersetup{
+  pdftitle={A Walsh-convolution proof of two conjectures of Lachaume},
+  pdfauthor={Carptopus},
+  pdfsubject={Lachaume's derivative convolution as a Walsh symmetric additive convolution},
+  pdfkeywords={Walsh convolution, symmetric additive convolution, real-rootedness, root location, hyperbolic polynomials}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fcolorbox{black!35}{black!4}{\parbox{0.88\textwidth}{\centering\small
+Public Beta manuscript, version 0.1-beta. The mathematical proof and complete
+manuscript have passed project-internal zero-trust audits. External mathematical review
+and formal peer review are pending.}}
+\end{center}
+
+\begin{abstract}
+
+
+For degree-\(p\) polynomials \(P\) and \(Q\), consider
+
+\[
+\mathcal D_p(P,Q)(x)=\sum_{k=0}^{p}P^{(k)}(x)Q^{(p-k)}(x).
+\]
+
+Lachaume conjectured that this polynomial is real-rooted when \(P\) and \(Q\)
+are real-rooted, and more generally that every zero of \(\mathcal D_p(P,Q)\)
+lies in the convex hull of the zeros of \(P\) and \(Q\). We observe the exact
+identity
+
+\[
+\mathcal D_p(P,Q)(x)=p!\,(P\boxplus_p Q)(2x),
+\]
+
+where \(\boxplus_p\) is the classical Walsh symmetric additive convolution.
+Walsh's root-location theorem then proves both assertions in every degree.
+Through Lachaume's equivalences, this also establishes the corresponding
+semi-symmetric hyperbolicity statement. The convolution and its root-location
+theorem are classical; the purpose of this note is to record their direct
+application to Lachaume's questions.
+
+\end{abstract}
+
+\section{The derivative sum}
+
+
+For complex polynomials \(P,Q\) of degree at most \(p\), where \(p\ge 1\),
+define
+
+\[
+\mathcal D_p(P,Q)(x)
+=\sum_{k=0}^{p}P^{(k)}(x)Q^{(p-k)}(x).
+\]
+
+The degree-\(p\) Walsh symmetric additive convolution, in the normalization of
+Marcus, Spielman and Srivastava \cite{mss}, is
+
+\[
+(P\boxplus_p Q)(y)
+=\frac1{p!}\sum_{k=0}^{p}P^{(k)}(y)Q^{(p-k)}(0).
+\]
+
+\Needspace{0.16\textheight}
+\begin{theorem}
+\label{thm:identity}
+
+For all complex polynomials \(P,Q\) of degree at most \(p\),
+
+\[
+\mathcal D_p(P,Q)(x)=p!\,(P\boxplus_pQ)(2x).
+\]
+
+\end{theorem}
+
+\begin{proof}
+
+Fix \(x\) and set
+
+\[
+F(t)=\sum_{k=0}^{p}P^{(k)}(x+t)Q^{(p-k)}(x-t).
+\]
+
+Differentiating gives
+
+\[
+\begin{aligned}
+F'(t)
+&=\sum_{k=0}^{p}P^{(k+1)}(x+t)Q^{(p-k)}(x-t)\\
+&\quad-\sum_{k=0}^{p}P^{(k)}(x+t)Q^{(p-k+1)}(x-t)=0.
+\end{aligned}
+\]
+
+The interior terms cancel after shifting the index, while the two endpoint
+terms vanish because the \((p+1)\)-st derivatives are zero. Hence \(F\) is
+constant. Evaluating at \(t=0\) and \(t=x\) yields
+
+\[
+\mathcal D_p(P,Q)(x)
+=\sum_{k=0}^{p}P^{(k)}(2x)Q^{(p-k)}(0)
+=p!\,(P\boxplus_pQ)(2x).
+\]
+
+\end{proof}
+
+\section{Root location}
+
+
+The classical Walsh theorem says that if the zeros of \(P\) and \(Q\) lie in
+closed discs \(C_1\) and \(C_2\), respectively, then every zero of
+\(P\boxplus_pQ\) lies in the Minkowski sum \(C_1+C_2\). Leake and Ryder
+\cite[p.~1]{leake-ryder} state this complex-disc form explicitly and trace the convolution
+to Walsh \cite{walsh}.
+
+\Needspace{0.16\textheight}
+\begin{theorem}
+\label{thm:root-location}
+
+Let \(P,Q\in\mathbb C[X]\) have degree \(p\). Every zero of
+\(\mathcal D_p(P,Q)\) lies in the convex hull of all zeros of \(P\) and \(Q\).
+
+\end{theorem}
+
+\begin{proof}
+
+Let \(S\) be the union of the two finite zero multisets, and let \(C\) be any
+closed disc containing \(S\). Walsh's theorem puts every zero of
+\(P\boxplus_pQ\) in \(2C=C+C\). Theorem~\ref{thm:identity} therefore puts every zero of
+\(\mathcal D_p(P,Q)\) in \(C\).
+
+The intersection of all closed discs containing a finite planar set \(S\) is
+its convex hull. One inclusion follows from convexity. For the other, strictly
+separate any point outside \(\operatorname{conv}(S)\) by a line, then
+approximate the half-plane containing \(S\) by a sufficiently large disc whose
+center recedes along the opposite normal. Thus every zero of
+\(\mathcal D_p(P,Q)\) belongs to \(\operatorname{conv}(S)\).
+\end{proof}
+
+
+\Needspace{0.16\textheight}
+\begin{corollary}
+\label{cor:real-rooted}
+
+If \(P\) and \(Q\) are real-rooted, then \(\mathcal D_p(P,Q)\) is real-rooted.
+
+\end{corollary}
+
+\begin{proof}
+
+All input zeros lie on the real line, so their convex hull is a real interval.
+\end{proof}
+
+
+\section{Lachaume's conjectures}
+
+
+Lachaume \cite[Theorem~4.9]{lachaume} states that his Conjecture 4 is equivalent to
+Corollary~\ref{cor:real-rooted} for every degree \(p\). Therefore Conjecture 4 holds for all
+\(p\ge1\). By \cite[Theorem~4.8]{lachaume}, this proves the corresponding hyperbolicity of
+the semi-symmetric polynomials \(s_{n,p}\) for every admissible \(n\ge p\).
+
+Lachaume's Conjecture 5 is precisely Theorem~\ref{thm:root-location} and hence also holds for every
+\(p\ge1\). The paper further records that Conjecture 4 implies Conjecture 2 in
+its stated nonnegative-coefficient setting. This concavity implication is not
+new: Lachaume's later Lovelock-gravity paper explicitly records the
+real-rooted diagonal criterion as an application of Walsh's theorem
+\cite[Theorem~2.7(d)]{lachaume-lovelock}. If Lachaume's diagonal
+restriction polynomial \(\bar f_{\vec a}\) has actual degree \(q<p\) because
+its leading coefficients vanish, the degree-\(q\) result gives concavity of
+\(f^{1/q}\); composing with the increasing concave map
+\(u\mapsto u^{q/p}\) gives concavity of \(f^{1/p}\). The positive constant
+case is immediate. The identically zero function lies outside Lachaume's
+strict positive-value definition of \(\mu\)-concavity; it is concave only
+under the usual extended nonnegative-function convention.
+
+These implications do not address Lachaume's Conjectures 1 or 3.
+
+\section{Scope and prior work}
+
+
+Walsh introduced the symmetric additive convolution and proved its classical
+root-location property \cite{walsh}. Marcus, Spielman and Srivastava \cite[Definition~1.1 and Theorem~1.3]{mss} use the same convolution with a \(1/p!\) normalization and
+record its real-rootedness preservation. Leake and Ryder \cite{leake-ryder} use the
+unnormalized convention and explicitly recall the Minkowski-sum statement for
+complex discs. Multiplication by \(p!\) does not affect zeros.
+
+Lachaume's later paper \cite[Theorem~2.7(d)]{lachaume-lovelock} already invokes Walsh's theorem to
+deduce concavity from real-rootedness of a diagonal restriction. Thus the
+broad Lachaume--Walsh connection is prior work. Theorem~\ref{thm:identity} is an elementary
+expression of translation covariance, not a new convolution theorem. The
+contribution of this note is limited to the explicit identity with its exact
+scaling, its application to Lachaume's Conjectures 4 and 5, and the complex
+convex-hull deduction. Searches completed on 4 September 2026 found no earlier
+source stating this identity or using it to settle both conjectures. That
+search result does not establish global priority, and no claim of priority for
+Walsh's theorem is made.
+
+\section*{Computational check}
+
+
+The accompanying symbolic script verifies Theorem~\ref{thm:identity}, the telescoping
+certificate, and the apolar coefficient identity for generic polynomials of
+degrees \(1\) through \(8\). It also contains a destructive control obtained by
+deleting one endpoint term. The script is supplementary evidence; the proof
+above is independent of it.
+
+\section*{AI-assisted research disclosure}
+
+
+Carptopus is the responsible author and takes responsibility for the claims,
+proofs, source use, and released artifacts. OpenAI Codex was used for
+AI-assisted literature organization, proof development and stress testing,
+exact verification, adversarial auditing, and manuscript preparation.
+
+\begin{thebibliography}{9}
+\footnotesize
+\raggedright
+
+\bibitem{lachaume}
+X.~Lachaume,
+\emph{On the concavity of a sum of elementary symmetric polynomials},
+arXiv:1712.10327v1 (2017).
+\url{https://arxiv.org/abs/1712.10327}.
+
+\bibitem{mss}
+A.~W. Marcus, D.~A. Spielman and N.~Srivastava,
+\emph{Finite free convolutions of polynomials},
+Probability Theory and Related Fields \textbf{182} (2022), 807--848.
+\href{https://doi.org/10.1007/s00440-021-01058-2}{doi:10.1007/s00440-021-01058-2}.
+
+\bibitem{leake-ryder}
+J.~Leake and N.~Ryder,
+\emph{Connecting the q-multiplicative convolution and the finite difference convolution},
+Advances in Mathematics \textbf{374} (2020), 107332.
+\href{https://doi.org/10.1016/j.aim.2020.107332}{doi:10.1016/j.aim.2020.107332}.
+
+\bibitem{walsh}
+J.~L. Walsh,
+\emph{On the location of the roots of certain types of polynomials},
+Transactions of the American Mathematical Society \textbf{24} (1922), 163--180.
+
+\bibitem{lachaume-lovelock}
+X.~Lachaume,
+\emph{The constraint equations of Lovelock gravity theories: a new
+$\sigma_k$-Yamabe problem},
+Journal of Mathematical Physics \textbf{59} (2018), 072501.
+\href{https://doi.org/10.1063/1.5023758}{doi:10.1063/1.5023758}.
+
+\end{thebibliography}
+
+\end{document}

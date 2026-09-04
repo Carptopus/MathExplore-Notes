@@ -1,0 +1,1 @@
+PASS: derivative/Walsh identity for generic degrees 1..8, telescoping and apolar certificates, destructive control
