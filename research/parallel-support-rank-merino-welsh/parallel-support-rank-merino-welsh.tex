@@ -1,0 +1,679 @@
+% Generated deterministically from the audited Markdown source.
+% Responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{needspace}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{xurl}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Parallel-support rank}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.44em}
+\setlength{\emergencystretch}{4em}
+\urlstyle{same}
+
+\title{Parallel-support rank and a one-sided Merino--Welsh inequality}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{4 September 2026}
+
+\hypersetup{
+  pdftitle={Parallel-support rank and a one-sided Merino-Welsh inequality},
+  pdfauthor={Carptopus},
+  pdfsubject={A one-sided Merino-Welsh inequality controlled by parallel-support rank},
+  pdfkeywords={matroid, Tutte polynomial, Merino-Welsh conjecture, parallel class, basis activity}
+}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fcolorbox{black!35}{black!4}{\parbox{0.88\textwidth}{\centering\small
+Internal candidate manuscript, version 0.1-beta. The mathematical proof and complete
+manuscript have passed project-internal zero-trust audits. External mathematical review
+and formal peer review are pending.}}
+\end{center}
+
+\begin{abstract}
+
+
+Let \(M\) be a finite matroid without loops or coloops, and let \(P(M)\) be
+the union of its nontrivial parallel classes. We prove that
+
+\[
+r_M(P(M))\ge r(M)-1
+\quad\Longrightarrow\quad
+T_M(0,2)\ge T_M(1,1).
+\]
+
+The inequality is strict when \(r_M(P(M))=r(M)-1\), and equality in the
+whole stated class occurs exactly for direct sums of copies of \(U_{1,2}\).
+The dual statement holds for nontrivial series classes. In the graphic case,
+the hypothesis says that the vertex-spanning subgraph formed by parallel-edge
+bundles has at most two connected components. The proof combines an exact
+basis-activity formula for parallel extensions with deletion--contraction and
+an exponential surplus matching in the terminal two-element cocircuit core.
+The rank threshold is sharp if no further hypothesis is imposed: a binary
+rank-three matroid with parallel-support rank one violates the inequality.
+We also record a connected five-element counterexample at the same threshold,
+showing that connectivity alone does not extend the result to corank two.
+
+\end{abstract}
+
+\section{Introduction}
+
+
+For a finite matroid \(M\), the evaluations
+
+\[
+T_M(2,0),\qquad T_M(0,2),\qquad T_M(1,1)
+\]
+
+are central quantities in the Merino--Welsh family of inequalities. The last
+evaluation is the number of bases. In the graphic case, the three evaluations
+count acyclic orientations, totally cyclic orientations, and spanning trees,
+respectively. The original graph conjecture asks whether a loopless,
+2-connected graph satisfies \cite{merino-welsh}
+
+\[
+\max\{T_M(2,0),T_M(0,2)\}\ge T_M(1,1).
+\]
+
+The corresponding assertion for all loopless, coloopless matroids is false,
+as are its additive and multiplicative variants \cite{beke-et-al}. Important positive
+results are nevertheless known for such classes as series--parallel graphs
+\cite{noble-royle}, split matroids \cite{ferroni-schroeter}, paving matroids \cite{chavez-lomeli-et-al}, and matroids satisfying suitable
+density or cocircuit hypotheses \cite{kung}. The graph problem remains open.
+
+This paper studies a one-sided inequality controlled by parallel structure.
+Write \(P(M)\) for the union of all parallel classes of size at least two. If
+\(P(M)\) spans \(M\), every rank direction has a parallel substitute, and a
+direct activity comparison proves \(T_M(0,2)\ge T_M(1,1)\). The main point is
+that one complete rank direction may be left outside that support. The
+remaining singleton elements need not be parallel to one another, and their
+number is unrestricted.
+
+Our main theorem is the following.
+
+\Needspace{0.18\textheight}
+\begin{theorem}
+\label{thm:main}
+
+Let \(M\) be a finite matroid without loops or coloops. If
+
+\[
+r_M(P(M))\ge r(M)-1,
+\]
+
+then
+
+\[
+T_M(0,2)\ge T_M(1,1).                         \tag{1.1}
+\]
+
+If \(r_M(P(M))=r(M)-1\), then (1.1) is strict. Equality in the full class of
+Theorem~\ref{thm:main} occurs exactly when
+
+\[
+M\cong\bigoplus_{i=1}^{r(M)}U_{1,2},           \tag{1.2}
+\]
+
+with the empty direct sum allowed in rank zero.
+
+\end{theorem}
+
+By duality, the analogous statement holds when the nontrivial series classes
+span all but at most one rank direction in \(M^*\), with \(T_M(2,0)\) in
+place of \(T_M(0,2)\).
+
+The proof has two parts. First, we calculate the total contribution to
+\(T_M(0,2)\) of all bases projecting to a fixed basis of the simplification.
+Second, we induct on singleton parallel classes. At the final hyperplane core,
+bases with zero activity contribution are grouped with bases having several
+externally active parallel classes; the elementary inequality
+
+\[
+2^K\ge 1+K
+\]
+
+pays for the entire group.
+
+The threshold is exact for a condition depending only on
+\(r_M(P(M))\). Section 5 gives a rank-three binary counterexample with
+\(r_M(P(M))=r(M)-2\), and also a connected counterexample of order five.
+The latter shows that connectivity is not the missing hypothesis. A separate
+bounded analysis reduces a possible cosimple extension to three rank-two
+four-element quotient cores, but does not settle them; no corank-two or
+two-disjoint-bases theorem is claimed here.
+
+\section{Parallel classes and activities}
+
+
+Let \(N=\operatorname{si}(M)\) be the simplification of a loopless matroid
+\(M\). For each \(e\in E(N)\), let \(k_e\ge1\) be the size of the parallel
+class of \(M\) represented by \(e\). Fix an order on \(E(N)\), order the
+parallel classes accordingly, and within the class represented by \(e\) write
+
+\[
+e_1<e_2<\cdots<e_{k_e}.
+\]
+
+For a basis \(B\) of \(N\), write \(I(B)\) and \(E(B)\) for its internally
+and externally active elements with respect to the chosen order.
+
+\Needspace{0.18\textheight}
+\begin{lemma}
+\label{lem:activity-block}
+
+The bases of \(M\) projecting to \(B\) contribute
+
+\[
+C_B=
+2^{\sum_{f\in E(B)}k_f}
+\prod_{e\in I(B)}(2^{k_e}-2)
+\prod_{e\in B\setminus I(B)}(2^{k_e}-1)        \tag{2.1}
+\]
+
+to \(T_M(0,2)\). The number of such bases is
+
+\[
+W_B=\prod_{e\in B}k_e.                         \tag{2.2}
+\]
+
+\end{lemma}
+
+\begin{proof}
+
+A lifted basis is obtained by choosing one copy \(e_{j_e}\) from each class
+represented in \(B\). Basic circuits and cocircuits behave uniformly inside
+a parallel class:
+
+\begin{itemize}
+\item if \(e\in I(B)\), then the chosen copy is internally active exactly when
+  \(j_e=1\);
+\item if \(e\notin I(B)\), no chosen copy is internally active;
+\item the \(j_e-1\) smaller unchosen copies in a selected class are externally
+  active;
+\item if \(f\in E(B)\), every copy in the unselected class represented by \(f\)
+  is externally active.
+\end{itemize}
+
+
+At \((x,y)=(0,2)\), a basis with an internally active element contributes
+zero, while a basis with \(j\) externally active elements contributes
+\(2^j\). Summing independently over the copy chosen in each selected class
+gives
+
+\[
+\sum_{j=2}^{k_e}2^{j-1}=2^{k_e}-2
+\]
+
+for an internally active class and
+
+\[
+\sum_{j=1}^{k_e}2^{j-1}=2^{k_e}-1
+\]
+
+for a non-internally-active class. The unselected externally active classes
+give the leading power of two in (2.1). Formula (2.2) is immediate.
+\end{proof}
+
+
+\Needspace{0.18\textheight}
+\begin{proposition}
+\label{prop:all-heavy}
+
+If every parallel class of a loopless matroid \(M\) has size at least two,
+then
+
+\[
+T_M(0,2)\ge T_M(1,1),                          \tag{2.3}
+\]
+
+with equality exactly for direct sums of copies of \(U_{1,2}\).
+
+\end{proposition}
+
+\begin{proof}
+
+For every integer \(k\ge2\),
+
+\[
+2^k-2\ge k,\qquad 2^k-1>k.
+\]
+
+Lemma~\ref{lem:activity-block} therefore gives \(C_B\ge W_B\) for every basis \(B\) of the
+simplification. Summing over \(B\) proves (2.3).
+
+For equality, every selected class in every basis must be internally active,
+every class size must be two, and no basis may have an externally active
+element. An ordered matroid with more than one basis has a basis that is not
+entirely internally active. Thus the simplification has a unique basis. Since
+the matroid is loopless, its simplification is free, and (1.2) follows. The
+converse is immediate from multiplicativity of the Tutte polynomial.
+\end{proof}
+
+
+\section{A spanning parallel support}
+
+
+We first allow singleton classes while assuming that the nontrivial classes
+still span.
+
+\Needspace{0.18\textheight}
+\begin{proposition}
+\label{prop:spanning-support}
+
+Let \(M\) be a finite loopless matroid. If \(P(M)\) spans \(M\), then
+
+\[
+T_M(0,2)\ge T_M(1,1).
+\]
+
+If \(M\) has a singleton parallel class, the inequality is strict.
+
+\end{proposition}
+
+\begin{proof}
+
+Induct on the number of singleton parallel classes. Proposition~\ref{prop:all-heavy} is the
+base case. Choose a singleton element \(e\). Since the nontrivial parallel
+classes span, \(e\) is neither a loop nor a coloop. Deletion preserves the
+spanning parallel support. Contraction creates no loop because \(e\) has no
+parallel mate; the images of the old nontrivial classes still span, and some
+classes may merge. Both minors have fewer singleton classes, so
+deletion--contraction and induction prove the inequality.
+
+It remains to justify strictness in the only potentially marginal step. If
+there is exactly one singleton \(e\) and \(M\setminus e\) is an equality case,
+then \(M\setminus e\) is a direct sum of binary parallel classes. A fundamental
+circuit of \(e\) meets at least two of those classes. If it meets exactly two,
+contracting \(e\) merges them into a parallel class of size at least four; if
+it meets at least three, the simplification of \(M/e\) has a circuit. In either
+case \(M/e\) is not an equality case of Proposition~\ref{prop:all-heavy}. The contraction term
+is therefore strict. Strong induction gives strictness whenever a singleton
+class is present.
+\end{proof}
+
+
+\section{Parallel support of corank one}
+
+
+We now prove Theorem~\ref{thm:main}. The spanning case is Proposition~\ref{prop:spanning-support}, so assume
+
+\[
+r_M(P(M))=r(M)-1.
+\]
+
+Put
+
+\[
+F=\operatorname{cl}_M(P(M)).
+\]
+
+Then \(F\) is a hyperplane. Since \(M\) has no coloops,
+\(E(M)\setminus F\) has at least two elements.
+
+We again induct on the number of singleton parallel classes.
+
+\subsection{Removing singleton classes inside the hyperplane}
+
+
+Suppose first that \(e\in F\) is a singleton. It is neither a loop nor a
+coloop. Since \(e\in\operatorname{cl}_M(P(M))\), deletion leaves the old
+nontrivial classes with rank \(r(M)-1\). No element of \(F\) becomes a coloop:
+the nontrivial classes still span \(F\). Nor does an element outside \(F\)
+become a coloop, because at least two such elements remain and each extends
+the hyperplane.
+
+After contracting \(e\), the old nontrivial classes have rank \(r(M)-2\) in
+the rank-\(r(M)-1\) matroid \(M/e\). Contraction creates no loop because
+\(e\) was a singleton, and contraction preserves the absence of coloops.
+Thus both minors satisfy the hypothesis of Theorem~\ref{thm:main} and have fewer
+singleton classes. The deletion minor remains in the corank-one layer, so its
+inductive inequality is strict.
+
+We may therefore assume that every element of \(F\) belongs to a nontrivial
+parallel class.
+
+\subsection{Removing surplus elements outside the hyperplane}
+
+
+Every element outside \(F\) is a singleton, since a nontrivial parallel class
+would be contained in \(P(M)\subseteq F\). If there are at least three such
+elements, choose \(e\notin F\). Deleting \(e\) leaves at least two elements
+outside \(F\), so the deletion minor remains loopless, coloopless, and in the
+corank-one layer. In \(M/e\), the image of \(F\) has full rank, so Proposition
+3.1 applies. Induction and deletion--contraction prove the result, and the
+deletion term is strict.
+
+It remains only to treat
+
+\[
+E(M)\setminus F=\{p,q\},                       \tag{4.1}
+\]
+
+with every class in \(F\) nontrivial.
+
+\subsection{The terminal core}
+
+
+Order all classes in \(F\) before \(p<q\). Let \(A\) be a basis of the
+simplification restricted to \(F\). Both \(A\cup\{p\}\) and
+\(A\cup\{q\}\) are bases.
+
+For \(A\cup\{p\}\), the element \(p\) is internally active: the only
+possible replacement outside the hyperplane is \(q\), which is later. Hence
+the whole lifted basis block contributes zero to \(T_M(0,2)\). For
+\(A\cup\{q\}\), the earlier element \(p\) replaces \(q\), and Lemma~\ref{lem:activity-block}
+shows that the block contribution is at least its basis weight. It remains to
+pay for the zero block associated with \(A\cup\{p\}\).
+
+Take the fundamental circuit of \(q\) with respect to \(A\cup\{p\}\). It
+contains \(p\), since \(A\cup\{q\}\) is a basis. It also contains a class
+from \(F\), because \(p\) and \(q\) cannot be parallel. Let \(h(A)\) be the
+least such class and put
+
+\[
+B(A)=A\setminus\{h(A)\}\cup\{p,q\}.            \tag{4.2}
+\]
+
+Basic exchange shows that \(B(A)\) is a basis. Relative to this basis,
+\(h(A)\) is externally active, and both \(p\) and \(q\) fail to be internally
+active because either may be replaced through \(h(A)\).
+
+Fix a basis \(B\) containing \(p,q\), and let \(X_B\) be the set of classes
+\(h(A)\) from all bases \(A\) mapped to \(B\). Write
+
+\[
+W_B=\prod_{e\in B\cap F}k_e,
+\qquad
+K_B=\sum_{h\in X_B}k_h.
+\]
+
+All classes in \(X_B\) are externally active at \(B\). Lemma~\ref{lem:activity-block} therefore
+gives
+
+\[
+C_B\ge 2^{K_B}W_B.                             \tag{4.3}
+\]
+
+The basis \(B\) itself and all zero blocks mapped to it contain altogether
+
+\[
+W_B+\sum_{h\in X_B}k_hW_B=(1+K_B)W_B           \tag{4.4}
+\]
+
+bases. Since \(2^{K_B}\ge1+K_B\), (4.3) pays for (4.4). If
+\(X_B\ne\varnothing\), then \(K_B\ge2\), and the inequality is strict.
+
+A basis containing \(p,q\) with no preimage is also paid for by its own
+activity block. Indeed, its \(F\)-part has size \(r(M)-2\) and can be completed
+to a basis of \(F\) by an earlier class; that class can replace either \(p\)
+or \(q\), so neither singleton is internally active. Lemma~\ref{lem:activity-block} gives
+\(C_B\ge W_B\).
+
+All basis blocks have now been paid for, and at least one block of the form
+(4.2) occurs. The core inequality is strict. This completes the induction and
+the proof of Theorem~\ref{thm:main}.
+\hfill$\square$
+
+
+\section{Equality, duality, and sharpness}
+
+
+The corank-one case is always strict. In the spanning case, Proposition~\ref{prop:spanning-support}
+and Proposition~\ref{prop:all-heavy} show that equality occurs precisely for (1.2). This proves
+the equality statement in Theorem~\ref{thm:main}.
+
+The identity
+
+\[
+T_{M^*}(x,y)=T_M(y,x)
+\]
+
+applied to Theorem~\ref{thm:main} gives the dual theorem for nontrivial series classes.
+
+The rank threshold cannot be lowered using only the rank of \(P(M)\). Over
+\(\operatorname{GF}(2)\), consider the column matroid of
+
+\[
+\begin{pmatrix}
+1&0&1&0&0\\
+0&1&1&0&0\\
+0&0&0&1&1
+\end{pmatrix}.
+\]
+
+This matroid is \(U_{2,3}\oplus U_{1,2}\). It is loopless and coloopless,
+has rank three, and its only nontrivial parallel class has rank one. Hence
+
+\[
+r_M(P(M))=1=r(M)-2,
+\]
+
+but
+
+\[
+T_M(0,2)=4<6=T_M(1,1).                         \tag{5.1}
+\]
+
+Connectivity alone does not repair (5.1). Duplicate one element of
+\(U_{3,4}\); equivalently, take the binary column matroid
+
+\[
+\begin{pmatrix}
+1&1&0&0&1\\
+0&0&1&0&1\\
+0&0&0&1&1
+\end{pmatrix}.
+\]
+
+It is connected, loopless, and coloopless, with parallel-support rank one.
+Deletion--contraction along a member of the parallel pair gives
+
+\[
+T_M(x,y)=x^3+x^2+x+y+x^2y+xy+y^2,
+\]
+
+so
+
+\[
+T_M(0,2)=6<7=T_M(1,1).                         \tag{5.2}
+\]
+
+This second example is not cosimple: its three singleton elements form
+two-element cocircuits in pairs.
+
+For context, suppose that \(F=\operatorname{cl}_M(P(M))\) has rank
+\(r(M)-2\) and that \(M\) is cosimple. The cocircuits of the rank-two quotient
+\(Q=M/F\) are the cocircuits of \(M\) contained in \(E(M)\setminus F\), so
+\(Q\) is cosimple. In a rank-two matroid, the complement of each parallel
+class is a cocircuit. A direct case split on the number of parallel classes
+therefore gives two disjoint bases of \(Q\): choose from four classes if there
+are at least four; with three classes, cosimplicity supplies two classes with
+two available elements; with two classes, each class has at least three
+elements. A basis of \(F\) can be chosen inside \(P(M)\), and replacing each
+member by a parallel mate gives a disjoint second basis of \(F\). Combining
+these pairs lifts the two disjoint bases of \(Q\) to two disjoint bases of
+\(M\).
+
+This observation also gives a finite structural reduction. The induction is
+made in the larger class of loopless, coloopless matroids with corank-two
+parallel support for which \(Q\) contains two disjoint bases; cosimplicity is
+not imposed on the minors. Fix two such bases of \(Q\). If \(|E(Q)|>4\), choose
+an element \(e\) outside their union. Their lifts give two disjoint bases of
+\(M\) avoiding \(e\), so \(M\setminus e\) retains full rank, has no coloop,
+and remains in the same corank-two support class. Also \(e\notin F\), hence it
+is a singleton and \(M/e\) is loopless; contraction preserves colooplessness.
+The old parallel support has rank \(r(M)-2\) in \(M/e\), one less than the new
+matroid rank, so Theorem~\ref{thm:main} controls the contraction term. Induction and
+deletion--contraction therefore reduce a possible theorem for this layer to
+four-element rank-two quotients. Their relevant parallel types are
+\(U_{2,4}\), \((2,1,1)\), and \((2,2)\). The required quantitative activity
+matching in those cores remains open in the present work. Thus (5.2) is used
+only to show the sharpness of the rank-only and connectivity extensions; no
+cosimple corank-two or two-disjoint-bases result is asserted.
+
+\section{Graphic interpretation}
+
+
+Let \(H\) be a connected loopless multigraph. Form a simple graph \(D(H)\)
+on the same vertex set by retaining an edge \(uv\) exactly when \(H\) has at
+least two parallel edges between \(u\) and \(v\). The rank of the union of
+nontrivial parallel classes in the cycle matroid is
+
+\[
+|V(H)|-c(D(H)),
+\]
+
+where \(c(D(H))\) is the number of connected components, including isolated
+vertices. Since \(r(M(H))=|V(H)|-1\), Theorem~\ref{thm:main} gives the following.
+
+\Needspace{0.18\textheight}
+\begin{corollary}
+\label{cor:graphic}
+
+If \(H\) is connected and bridgeless and \(D(H)\) has at most two connected
+components, then the number of totally cyclic orientations of \(H\) is at
+least its number of spanning trees. If \(D(H)\) has exactly two components,
+the inequality is strict.
+
+\end{corollary}
+
+In particular, one may start with an arbitrary connected simple graph, select
+a spanning forest with at most two components, and duplicate every edge of
+that forest. All remaining edges may retain multiplicity one or be thickened
+arbitrarily. The resulting bridgeless multigraph satisfies the one-sided
+Merino--Welsh inequality whenever the stated no-bridge condition holds.
+
+The connected counterexample (5.2) is graphic: it is a four-cycle with one
+edge duplicated. Its heavy-edge support has three components, so the
+two-component threshold in Corollary~\ref{cor:graphic} is also sharp under connectivity
+alone.
+
+\section{Computational checks}
+
+
+The proof is symbolic. The accompanying exact Python verifier checks the
+parallel-class activity formula, the corank-one induction interfaces, equality
+controls, and both corank-two counterexamples on finite low-rank instances.
+It uses explicit failures rather than Python assertions, so optimization mode
+does not remove the checks.
+
+From the published verification directory, run:
+
+\begin{quote}\footnotesize\ttfamily
+python\ \allowbreak{}-\allowbreak{}B\ \allowbreak{}verify\_\allowbreak{}corank\_\allowbreak{}one\_\allowbreak{}parallel\_\allowbreak{}support.py\par
+\end{quote}
+
+\begin{quote}\footnotesize\ttfamily
+python\ \allowbreak{}-\allowbreak{}B\ \allowbreak{}-\allowbreak{}O\ \allowbreak{}verify\_\allowbreak{}corank\_\allowbreak{}one\_\allowbreak{}parallel\_\allowbreak{}support.py\par
+\end{quote}
+
+
+These computations test formulas and boundary examples; they are not a proof
+of Theorem~\ref{thm:main}.
+
+\section{Scope and prior work}
+
+
+Noble and Royle proved the multiplicative Merino--Welsh inequality for
+series--parallel graphs \cite{noble-royle}. Ferroni and Schröter proved it for split matroids
+\cite{ferroni-schroeter}. The class in Theorem~\ref{thm:main} is not contained in either class: for example,
+doubling every edge of \(K_5\) satisfies the spanning-support hypothesis, is
+not series--parallel, and has \(M(K_5)\) as a minor; since split matroids are
+minor closed and \(M(K_5)\) is not split, this example is not split.
+
+Kung's density and cocircuit conditions \cite{kung} cover some dense or large-cocircuit
+subfamilies but not the full sparse class considered here. Csikvári recently
+improved a related Tutte-evaluation inequality used in this area \cite{csikvari}. The activity
+and deletion--contraction methods are standard; the proposed contribution is the
+parallel-support rank threshold, its strict corank-one form, the complete
+equality classification, and the sharp rank-two-support boundary.
+
+The theorem proves only the one-sided inequality \(T_M(0,2)\ge T_M(1,1)\)
+on the stated class. It does not prove the additive or multiplicative
+strengthenings. In fact, the uniformly doubled matroids used by Beke,
+Csáji, Csikvári and Pituk \cite{beke-et-al} belong to the spanning-support layer and show
+that the multiplicative inequality cannot be added to Theorem~\ref{thm:main} in general.
+Nor does this paper prove the full graph conjecture or the general conjecture
+for matroids with two disjoint bases.
+
+Directed searches completed on 4 September 2026 found no source stating the
+same parallel-support rank theorem. This is a bounded novelty assessment, not
+a guarantee of global priority or a substitute for external peer review.
+
+\section*{AI-assisted research disclosure}
+
+
+Carptopus is the responsible author and takes responsibility for the claims,
+proofs, source use, and released artifacts. OpenAI Codex was used for
+AI-assisted literature organization, proof development and stress testing,
+exact verification, adversarial auditing, and manuscript preparation.
+
+\begin{thebibliography}{9}
+\footnotesize
+\raggedright
+
+\bibitem{merino-welsh}
+C.~Merino and D.~J.~A.~Welsh,
+\emph{Forests, colourings and acyclic orientations of the square lattice},
+Annals of Combinatorics \textbf{3} (1999), 417--429.
+\href{https://doi.org/10.1007/s000260050019}{doi:10.1007/s000260050019}.
+
+\bibitem{noble-royle}
+S.~D.~Noble and G.~F.~Royle,
+\emph{The Merino--Welsh conjecture holds for series--parallel graphs},
+European Journal of Combinatorics \textbf{38} (2014), 24--35.
+\href{https://arxiv.org/abs/1303.6416}{arXiv:1303.6416}.
+
+\bibitem{ferroni-schroeter}
+L.~Ferroni and B.~Schr\"oter,
+\emph{The Merino--Welsh conjecture for split matroids},
+Annals of Combinatorics \textbf{27} (2023), 737--748.
+\href{https://arxiv.org/abs/2204.07132}{arXiv:2204.07132}.
+
+\bibitem{beke-et-al}
+C.~Beke, G.~K.~Cs\'aji, P.~Csikv\'ari, and S.~Pituk,
+\emph{The Merino--Welsh conjecture is false for matroids},
+Advances in Mathematics \textbf{446} (2024), 109674.
+\href{https://arxiv.org/abs/2311.01932}{arXiv:2311.01932}.
+
+\bibitem{chavez-lomeli-et-al}
+L.~E.~Ch\'avez-Lomel\'i, C.~Merino, S.~D.~Noble, and M.~Ram\'irez-Ib\'a\~nez,
+\emph{Some inequalities for the Tutte polynomial},
+European Journal of Combinatorics \textbf{32} (2011), 422--433.
+\href{https://arxiv.org/abs/1004.2639}{arXiv:1004.2639}.
+
+\bibitem{kung}
+J.~P.~S.~Kung,
+\emph{Inconsequential results on the Merino--Welsh conjecture for Tutte polynomials},
+Australasian Journal of Combinatorics \textbf{79} (2021), 12--15.
+\href{https://arxiv.org/abs/2105.01825}{arXiv:2105.01825}.
+
+\bibitem{csikvari}
+P.~Csikv\'ari,
+\emph{Around the Merino--Welsh conjecture: improving Jackson's inequality},
+arXiv:2502.19196 (2025).
+\href{https://arxiv.org/abs/2502.19196}{arXiv:2502.19196}.
+
+\end{thebibliography}
+
+\end{document}
