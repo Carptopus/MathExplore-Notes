@@ -6,14 +6,17 @@ inequality for a natural class of finite matroids controlled by their nontrivial
 - [Read or download the PDF](parallel-support-rank-merino-welsh.pdf)
 - [LaTeX source](parallel-support-rank-merino-welsh.tex)
 - [BibTeX citation](CITATION.bib)
+- Current version DOI: [10.5281/zenodo.22296382](https://doi.org/10.5281/zenodo.22296382)
+- Concept DOI: [10.5281/zenodo.22296381](https://doi.org/10.5281/zenodo.22296381)
 - [Verification program](verification/README.md)
 - [SHA-256 checksums](SHA256SUMS.txt)
 - Author: Carptopus
 - Contact: [carptopus@163.com](mailto:carptopus@163.com)
 - Version: v0.1-beta (4 September 2026)
+- Public repository: [MathExplore-Notes](https://github.com/Carptopus/MathExplore-Notes/tree/master/research/parallel-support-rank-merino-welsh)
 - Manuscript and documentation license: [CC BY 4.0](LICENSE.md)
 - Verification-code license: [MIT](verification/LICENSE-CODE-MIT.txt)
-- Status: internally verified Beta; external mathematical review pending.
+- Status: internally verified public Beta; external mathematical review pending.
 
 ## Main result
 
