@@ -2,6 +2,8 @@
 
 Carptopus · carptopus@163.com · v0.1-beta
 
+Published 2026-09-06. Version DOI: [10.5281/zenodo.22486582](https://doi.org/10.5281/zenodo.22486582). Concept DOI: [10.5281/zenodo.22486581](https://doi.org/10.5281/zenodo.22486581).
+
 [Manuscript PDF](positive-jacobi-complete-bipartite-sep.pdf) · [LaTeX](positive-jacobi-complete-bipartite-sep.tex) · [BibTeX](CITATION.bib) · [Verification](verification/README.md)
 
 This preprint proves the canonical-line property for the Ehrhart polynomial of the type-A symmetric edge polytope of every complete bipartite graph $K_{m,n}$ with $\min(m,n)\leq5$. The new families are $K_{4,n}$ and $K_{5,n}$, obtained by explicit positive Jacobi path extensions; the smaller families are prior work.
