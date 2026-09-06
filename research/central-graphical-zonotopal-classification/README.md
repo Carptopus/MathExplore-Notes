@@ -2,6 +2,8 @@
 
 Carptopus · carptopus@163.com · v0.1-beta
 
+Version DOI: [10.5281/zenodo.22542289](https://doi.org/10.5281/zenodo.22542289) · [All versions](https://doi.org/10.5281/zenodo.22542288)
+
 [Manuscript PDF](central-graphical-zonotopal-classification.pdf) · [LaTeX](central-graphical-zonotopal-classification.tex) · [BibTeX](CITATION.bib) · [Verification](verification/README.md)
 
 For every finite connected loopless multigraph over the real numbers, this preprint proves that its central graphical zonotopal algebra determines, and is determined by, its bridge-deleted graphical matroid. Algebra isomorphisms need not preserve the grading. The statement includes trees, bridges, parallel edges and disconnected bridge-free matroids.
