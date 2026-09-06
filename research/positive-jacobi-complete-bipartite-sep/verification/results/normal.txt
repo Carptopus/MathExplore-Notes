@@ -1,0 +1,22 @@
+RUN check_k4n_jacobi.py
+PASS: symbolic K_{4,n} Jacobi identity and positive tail weights
+OK check_k4n_jacobi.py: 0.84s
+RUN check_k5n_jacobi.py
+PASS: symbolic K_{5,n} Jacobi identity and positive tail weights
+OK check_k5n_jacobi.py: 1.01s
+RUN verify_second_tail_positive_kernel.py
+CERTIFICATE i=0,1<=j<r: numerator 274 terms, degree 11; denominator 58 terms; all positive.
+CERTIFICATE 1<=i<=j<r: numerator 1346 terms, degree 12; denominator 206 terms; all positive.
+CERTIFICATE i=0,j=r: numerator 34 terms, degree 8; denominator 7 terms; all positive.
+CERTIFICATE 1<=i<j=r: numerator 165 terms, degree 9; denominator 21 terms; all positive.
+CERTIFICATE i=j=r: numerator 21 terms, degree 6; denominator 2 terms; all positive.
+CERTIFICATE 0..2 block,r>=3: numerator 116 terms, degree 17; denominator 77 terms; all positive.
+CERTIFICATE r=2 full block: numerator 4 terms, degree 3; denominator 3 terms; all positive.
+PASS: 7 independent Euclid comparisons and negative controls.
+PASS: positive-kernel certificates for all r>=2,q>=1. Only w_1 is certified; this is not the full CL conjecture.
+OK verify_second_tail_positive_kernel.py: 30.42s
+RUN check_original_ehrhart.py
+PASS: 6 original h*-to-Ehrhart comparisons and 6 last-edge negative controls; finite regression only
+OK check_original_ehrhart.py: 1.45s
+PASS: all four fixed entries; general claims have the scope stated in the manuscript
+

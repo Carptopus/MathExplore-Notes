@@ -1,0 +1,522 @@
+% Local preprint candidate; upload and publication are separate operations.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=23mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,mathtools}
+\usepackage{longtable,array,graphicx,fancyvrb}
+\usepackage[colorlinks=true,urlcolor=blue!60!black]{hyperref}
+\usepackage{xcolor,xurl,fancyhdr}
+\pagestyle{fancy}\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\thepage}\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}\setlength{\parskip}{0.4em}
+\setlength{\emergencystretch}{4em}\urlstyle{same}
+\newsavebox{\mathbox}
+\newcommand{\fitmath}[2]{\begin{equation*}
+\sbox{\mathbox}{$\displaystyle #1$}
+\ifdim\wd\mathbox>0.91\linewidth
+\resizebox{0.91\linewidth}{!}{\usebox{\mathbox}}
+\else\usebox{\mathbox}\fi #2\end{equation*}}
+\hypersetup{pdfauthor={Carptopus},pdftitle={Positive Jacobi realizations for complete-bipartite symmetric edge polytopes}}
+\begin{document}
+
+\begin{center}{\LARGE\bfseries Positive Jacobi realizations for complete-bipartite symmetric edge polytopes\par}\end{center}
+
+Carptopus\\
+carptopus@163.com
+
+Preprint, version 0.1-beta. Internally reviewed; not externally peer reviewed.
+
+\section*{Abstract}
+
+Let $E_{m,n}$ be the Ehrhart polynomial of the symmetric edge polytope of the complete bipartite graph $K_{m,n}$. We construct explicit positive, zero-diagonal Jacobi realizations of the centered polynomials for $m\in\{4,5\}$ and $n\geq m$. Together with the known cases $m\leq3$ and symmetry, this proves that every zero of $E_{m,n}$ has real part $-1/2$ whenever $\min(m,n)\leq5$. The construction retains the Jacobi path associated with a cross-polytope and appends three or four edges. We also prove positivity of the first two inverse tail coefficients for all integers $3\leq m\leq n$. The second coefficient is treated by an exact rational-polynomial certificate, combining a telescoping identity with a three-index block. This additional result is computer-assisted; it does not establish positivity of the remaining coefficients or settle the complete-bipartite canonical-line conjecture.
+
+Keywords: Ehrhart polynomial; symmetric edge polytope; complete bipartite graph; canonical line; Jacobi matrix; interlacing; exact algebraic certificate.
+
+\section*{1. Introduction and statements}
+
+For a finite simple graph $G=(V,E)$, its symmetric edge polytope is
+
+\fitmath{
+\mathcal P_G=\operatorname{conv}\{\pm(e_u-e_v):\{u,v\}\in E\}.
+}{}
+
+The lattice is the intersection of $\mathbb Z^V$ with the linear span of the polytope. For a connected graph its dimension is $|V|-1$. We use the type-A symmetric edge polytope, not the different type-B construction. Write $E_{m,n}(x)$ for the Ehrhart polynomial of $\mathcal P_{K_{m,n}}$, of degree $d=m+n-1$. A real polynomial is called \textbf{CL} when all its complex zeros lie on the canonical line $\operatorname{Re}x=-1/2$.
+
+Higashitani, Kummer and Micha\l{}ek [HKM17] proved the CL property for $K_{1,n}$, $K_{2,n}$ and $K_{3,n}$ and proposed a broader conjecture for complete multipartite graphs. The explicit $h^*$-polynomial of a complete-bipartite symmetric edge polytope was determined by Higashitani, Jochemko and Micha\l{}ek [HJM19]. Kölbl [K21, K24] investigated further recurrence relations and their use in interlacing arguments. In particular, [K21, Theorem 4.2.12] and [K24, Theorem 3.3(e)] relate the $K_{4,n}$ case to an additional interlacing condition; these results do not give an unconditional CL theorem for that family. The recurrence-generation procedure and the underlying $h^*$-formula are prior work, not contributions of this paper.
+
+Our construction changes the auxiliary polynomials used in the recurrence: we append positive edges to a cross-polytope Jacobi path instead of requiring interlacing with a specified complete-bipartite Ehrhart polynomial.
+
+\textbf{Theorem 1.1 (two complete families).} For all positive integers $m,n$ with $\min(m,n)\leq5$, the polynomial $E_{m,n}$ is CL. For $m=4,n\geq4$ and $m=5,n\geq5$, its monic centered transform is the characteristic polynomial of an explicitly given real symmetric irreducible zero-diagonal Jacobi matrix; in particular, its zeros are simple.
+
+The new parameter families in this statement are $K_{4,n}$ and $K_{5,n}$. The lower families are used with attribution to [HKM17]. The two new families use the same path-extension construction and are presented together.
+
+For a general pair, put $r=m-1$, assume $n\geq r+1$, and let $Q_{m,n}$ denote the monic centered transform defined in Section 2. Let $P_n$ be the monic centered cross-polytope polynomial. There is a unique decomposition
+
+\fitmath{
+Q_{m,n}=H P_n+B P_{n-1},\qquad \deg H=r,\quad\deg B\leq r-1.
+}{\tag{1.1}}
+
+Define $w_0=-[y^{r-1}]B$. When $w_0\ne0$, put $L=-B/w_0$ and define $w_1=-[y^{r-2}](H-yL)$. These are the coupling coefficient and the first internal coefficient of the putative Jacobi tail. This definition does not assume the existence of a positive full tail.
+
+\textbf{Theorem 1.2 (first two coefficients).} For all integers $r\geq2$ and $n\geq r+1$, decomposition (1.1) has $w_0>0$ and $w_1>0$. Moreover $H$ and $L$ have their degree parities and
+
+\fitmath{
+H=yL-w_1 N_1
+}{}
+
+with $N_1$ monic of degree $r-2$. The proof of $w_1>0$ includes exact symbolic positive-coefficient checks over rational polynomial rings.
+
+Theorem 1.2 does not assert that the subsequent Euclidean steps have the expected degrees or positive coefficients. Thus it is a partial structural result for general $m$, not a proof of CL for all $m,n$.
+
+\section*{2. From the Ehrhart polynomial to a cross-polynomial expansion}
+
+Let $C_k(x)$ be the Ehrhart polynomial of the $k$-dimensional cross-polytope, so that
+
+\fitmath{
+\sum_{\ell\geq0}C_k(\ell)t^\ell=\frac{(1+t)^k}{(1-t)^{k+1}},\qquad
+C_k(x)=\sum_{a=0}^k\binom ka\binom{x+k-a}{k}.
+}{\tag{2.1}}
+
+Its leading coefficient is $2^k/k!$. The generating identity
+
+\fitmath{
+\sum_{k\geq0}C_k(x)z^k=\frac{(1+z)^x}{(1-z)^{x+1}}
+}{}
+
+follows from (2.1), for instance first for nonnegative integer $x$ by binomial summation and then coefficientwise as a polynomial identity in $x$. Differentiating it gives
+
+\fitmath{
+k C_k(x)=(2x+1)C_{k-1}(x)+(k-1)C_{k-2}(x)\quad(k\geq2).
+}{}
+
+Consequently the monic real polynomials
+
+\fitmath{
+P_k(y)=\frac{k!}{2^k\mathrm i^k}C_k(-1/2+\mathrm i y)
+}{}
+
+satisfy
+
+\fitmath{
+P_0=1,\quad P_1=y,\quad
+P_{k+1}=yP_k-b_kP_{k-1},\qquad b_k=k^2/4.
+}{\tag{2.2}}
+
+In particular $P_k$ is the characteristic polynomial of the zero-diagonal $k$-vertex path with squared edge weights $b_1,\ldots,b_{k-1}$.
+
+Assume henceforth $m=r+1\leq n$ and $d=n+r$. The formula of [HJM19, Theorem 4.1] is
+
+\fitmath{
+h^*_{m,n}(t)=\sum_{j=0}^r\gamma_j t^j(1+t)^{d-2j},\qquad
+\gamma_j=\binom{2j}{j}\binom rj\binom{n-1}j.
+}{\tag{2.3}}
+
+Set
+
+\fitmath{
+s_j=4^{-j}\binom{2j}{j},\quad
+g_j=s_j\binom rj\binom{n-1}j,\quad
+c_i=\sum_{j=i}^r\binom ji g_j,\quad Z=c_0=\sum_{j=0}^r g_j>0.
+}{\tag{2.4}}
+
+For completeness, the gamma-to-cross change of basis can be read directly from the generating functions, without assuming root location. The identity
+
+\fitmath{
+\frac{t}{(1+t)^2}=\frac14\left(1-\frac{(1-t)^2}{(1+t)^2}\right)
+}{}
+
+and the binomial theorem turn $h^*_{m,n}(t)/(1-t)^{d+1}$ into
+
+\fitmath{
+\sum_{i=0}^r(-1)^i c_i\frac{(1+t)^{d-2i}}{(1-t)^{d-2i+1}}.
+}{}
+
+Comparing coefficients gives $E_{m,n}(x)=\sum_i(-1)^i c_i C_{d-2i}(x)$. Thus
+
+\fitmath{
+Q_{m,n}(y):=\frac{d!}{Z2^d\mathrm i^d}E_{m,n}(-1/2+\mathrm i y)
+=\sum_{i=0}^r A_iP_{d-2i}(y),
+\quad A_i=\frac{c_i}{Z}\frac{d!}{(d-2i)!4^i},\quad A_0=1.
+}{\tag{2.5}}
+
+The signs are positive in (2.5): $(-1)^i\mathrm i^{-2i}=1$. Since $d-2r=n-r\geq1$, no negative polynomial degrees or factorials occur. This also proves directly that $Q_{m,n}$ is real, monic, and has the parity of $d$.
+
+\section*{3. Positive path extensions}
+
+Starting with $R_0=P_n$ and $R_{-1}=P_{n-1}$, append squared edge weights $w_0,\ldots,w_{r-1}$ by
+
+\fitmath{
+R_{a+1}=yR_a-w_aR_{a-1}\quad(0\leq a<r).
+}{\tag{3.1}}
+
+If all $w_a>0$, $R_r$ is the characteristic polynomial of a real symmetric irreducible tridiagonal matrix of order $n+r$. Its eigenvalues are real and simple: symmetry gives reality; in the eigenvector recurrence, the first coordinate determines every other coordinate because no off-diagonal entry vanishes. Hence each eigenspace has dimension at most one, and symmetry gives simplicity.
+
+We specify identities (3.1) in the basis $P_{n+s}$, using
+
+\fitmath{
+yP_{n+s}=P_{n+s+1}+\frac{(n+s)^2}{4}P_{n+s-1}.
+}{\tag{3.2}}
+
+This reduces each fixed-length tail identity to finitely many rational identities in the indeterminate $n$, not a list of numerical values of $n$.
+
+\subsection*{3.1. Three appended edges: $K_{4,n}$}
+
+For $n\geq4$ put $D=5n^2+9n+10$. The coefficients (2.5) become
+
+\fitmath{
+\begin{aligned}
+A_1&=\frac{3(n-1)(n+1)(n+2)(5n+6)}{4D},\\
+A_2&=\frac{3n(n-2)(n-1)(n+1)(n+2)(5n+3)}{16D},\\
+A_3&=\frac{5n(n-3)(n-2)^2(n-1)^2(n+1)(n+2)}{64D}.
+\end{aligned}
+}{\tag{3.3}}
+
+Choose
+
+\fitmath{
+\begin{aligned}
+w_0&=\frac{3n(3n^2+15n+10)}{4D},\\
+w_1&=\frac{2(n+1)(8n^3+81n^2+164n+80)}{(3n^2+15n+10)D},\\
+w_2&=\frac{(n+2)(13n+11)}{4(3n^2+15n+10)}.
+\end{aligned}
+}{\tag{3.4}}
+
+All three are positive for $n>0$. To check the polynomial identity explicitly, three steps of (3.1) give
+
+\fitmath{
+R_3=(y^3-(w_1+w_2)y)P_n-w_0(y^2-w_2)P_{n-1}.
+}{\tag{3.5}}
+
+Substituting (3.4) and using (3.2) yields $R_3=P_{n+3}+A_1P_{n+1}+A_2P_{n-1}+A_3P_{n-3}$ with (3.3). Thus $R_3=Q_{4,n}$. This is a rational identity in $n$; the accompanying symbolic verifier checks each of its four coefficients.
+
+The Jacobi argument proves CL and simplicity for $n\geq4$. When $n<4$, exchange the two parts of $K_{4,n}$ and apply the known families in [HKM17].
+
+\subsection*{3.2. Four appended edges: $K_{5,n}$}
+
+For $n\geq5$ define the following positive polynomials:
+
+\fitmath{
+\begin{aligned}
+p_4&=10n^4+127n^3+527n^2+875n+420,\\
+q_4&=35n^4+290n^3+841n^2+1066n+840,\\
+r_7&=1070n^7+24299n^6+224862n^5+1117182n^4\\
+&\quad+3217969n^3+5307310n^2+4518240n+1461600,\\
+s_{10}&=18000n^{10}+596320n^9+8583924n^8+70987556n^7\\
+&\quad+373829392n^6+1306384332n^5+3048698627n^4\\
+&\quad+4643902725n^3+4356607140n^2+2235394800n+472651200.
+\end{aligned}
+}{\tag{3.6}}
+
+Choose
+
+\fitmath{
+w_0=\frac{2np_4}{q_4},\qquad
+w_1=\frac{3(n+1)r_7}{4p_4q_4},\qquad
+w_2=\frac{(n+2)s_{10}}{p_4r_7},\qquad
+w_3=\frac{(n+3)(457n^2+2378n+2632)p_4}{4r_7}.
+}{\tag{3.7}}
+
+Each numerator and denominator has nonnegative coefficients and is nonzero, so these quantities are positive for $n>0$. Four steps of (3.1) give
+
+\fitmath{
+\begin{aligned}
+R_4={}&\bigl(y^4-(w_1+w_2+w_3)y^2+w_1w_3\bigr)P_n\\
+&-w_0\bigl(y^3-(w_2+w_3)y\bigr)P_{n-1}.
+\end{aligned}
+}{\tag{3.8}}
+
+Substitute (3.7), then expand using (3.2). The coefficient of $P_{n+4-2i}$ is precisely
+
+\fitmath{
+\frac{\sum_{j=i}^4\binom ji\binom{2j}{j}\binom4j\binom{n-1}j/4^j}
+{\sum_{j=0}^4\binom{2j}{j}\binom4j\binom{n-1}j/4^j}
+\frac{(n+4)!}{(n+4-2i)!4^i},\qquad 0\leq i\leq4.
+}{\tag{3.9}}
+
+These five finite rational identities establish $R_4=Q_{5,n}$; their exact verification is specified in Section 7. The same spectral argument applies. For $n<5$, use symmetry, Section 3.1 for $n=4$, and [HKM17] for $n\leq3$. There is no circular use of the $K_{5,n}$ conclusion. This proves Theorem 1.1.
+
+\section*{4. The first two inverse coefficients}
+
+We now allow arbitrary $r\geq2$, $n\geq r+1$, and put $q=n-r\geq1$. All coefficients $A_i,Z,g_j$ are as in (2.4)--(2.5); also put $M=\sum_j jg_j$.
+
+Repeated forward and backward use of (2.2) expresses every summand of (2.5) in $P_n,P_{n-1}$. The coefficient degrees give (1.1). Adjacent $P_n,P_{n-1}$ are relatively prime: a common zero propagates backwards in (2.2), contradicting $P_0=1$. If two decompositions existed, $P_n$ would divide the difference of their $B$ coefficients, whose degree is less than $n$. Thus the decomposition is unique. It follows from parity that $H$ and $B$ have parities $r$ and $r-1$ respectively; $H$ is monic.
+
+\subsection*{4.1. Coefficient extraction for $r\geq3$}
+
+Write $P_{n+\ell}=U_\ell P_n-b_n V_{\ell-1}P_{n-1}$. The two coefficients are monic path polynomials on vertex segments $n+1,\ldots,n+\ell$ and $n+2,\ldots,n+\ell$. Consequently
+
+\fitmath{
+[y^{r-2}]U_r=-\sum_{k=1}^{r-1}b_{n+k},\qquad
+[y^{r-3}]V_{r-1}=-\sum_{k=2}^{r-1}b_{n+k}.
+}{}
+
+For the backward expansion $P_{n-h}=\alpha_hP_n+\beta_hP_{n-1}$,
+
+\fitmath{
+\beta_1=1,\quad\beta_2=y/b_{n-1},\quad
+\beta_{h+1}=\frac{y\beta_h-\beta_{h-1}}{b_{n-h}}.
+}{}
+
+Let $D_h=\prod_{k=1}^{h-1}b_{n-k}$. Induction gives leading term $y^{h-1}/D_h$ for $\beta_h$, next term $-y^{h-3}\sum_{k=1}^{h-2}b_{n-k}/D_h$ when $h\geq3$, and leading term $-y^{h-2}/D_h$ for $\alpha_h$ when $h\geq2$.
+
+Set
+
+\fitmath{
+\mathcal D=\prod_{k=1}^{r-1}b_{n-k},\quad
+\mathcal D_2=\prod_{k=1}^{r-3}b_{n-k},\quad
+\delta=A_r/\mathcal D,\quad
+S_f=\sum_{k=2}^{r-1}b_{n+k},\quad S_b=\sum_{k=1}^{r-2}b_{n-k}.
+}{}
+
+Empty products are one and empty sums zero. Only $i=0,r$ contribute to the leading coefficient of $B$; only $i=0,1,r-1,r$ contribute to its next coefficient. For $r=3$ these are four distinct indices and $\mathcal D_2=1$. Hence
+
+\fitmath{
+\begin{aligned}
+w_0&=b_n-\delta,\\
+[y^{r-3}]B&=b_nS_f-b_nA_1-\delta S_b+A_{r-1}/\mathcal D_2,\\
+[y^{r-2}]H&=-(b_{n+1}+S_f)+A_1-\delta.
+\end{aligned}
+}{\tag{4.1}}
+
+Once $w_0>0$, $L=-B/w_0$ is monic of degree $r-1$ and $w_1=[y^{r-3}]L-[y^{r-2}]H$. Formula (4.1) yields
+
+\fitmath{
+w_0w_1=w_0b_{n+1}+\delta(w_0+A_1+S_b-S_f)-A_{r-1}/\mathcal D_2.
+}{\tag{4.2}}
+
+Define
+
+\fitmath{
+K=\frac{s_r}{4r!}q\prod_{h=0}^r(q+r+h),\quad
+T=\frac{(q+1)(q+2)}4\left(r+\frac{2r^3}{(2r-1)q}\right),\quad
+C=(2n+1)(r-1)^2+4T.
+}{}
+
+Cancellation of the factorials in (2.5) gives
+
+\fitmath{
+\delta=K/Z,\quad A_1=\frac{d(d-1)M}{4Z},\quad
+A_{r-1}/\mathcal D_2=\delta T.
+}{}
+
+For the last identity one uses $g_{r-1}/g_r=2r^3/((2r-1)q)$ and $A_{r-1}/A_r=4(g_{r-1}/g_r+r)/((q+1)(q+2))$. Also $S_b-S_f=-(2n+1)r(r-2)/4$. Substitution into (4.2) gives
+
+\fitmath{
+w_0=\frac{n^2Z-4K}{4Z},\qquad
+w_1=\frac{n^2(n+1)^2Z^2+4K\{d(d-1)M-CZ\}-16K^2}
+{4Z(n^2Z-4K)}.
+}{\tag{4.3}}
+
+\subsection*{4.2. The first coefficient and the $r=2$ boundary}
+
+The sequence $s_j$ is decreasing. Vandermonde's identity therefore gives
+
+\fitmath{
+Z\geq s_r\sum_j\binom rj\binom{n-1}j
+=s_r\binom{n+r-1}r.
+}{}
+
+Directly, $4K=s_r(n^2-r^2)\binom{n+r-1}r$. Thus
+
+\fitmath{
+w_0\geq\frac{s_r r^2\binom{n+r-1}r}{4Z}>0.
+}{\tag{4.4}}
+
+For $r=2$, the backward relation $P_{n-2}=(yP_{n-1}-P_n)/b_{n-1}$ gives, without a negative-length product,
+
+\fitmath{
+H=y^2-b_{n+1}+A_1-\delta,\quad
+B=-(b_n-\delta)y,\quad \delta=A_2/b_{n-1},\quad L=y.
+}{}
+
+It follows that
+
+\fitmath{
+w_1=b_{n+1}-A_1+\delta
+=\frac{9q^2+59q+96}{12q^2+76q+128}>0.
+}{\tag{4.5}}
+
+Formula (4.3) remains valid after its direct $r=2$ substitution: here $b_nA_1=\delta T$, which follows from $g_1/g_2=16/(3q)$. This is a separate check, not an extension of $\mathcal D_2$ to a negative number of factors.
+
+\section*{5. Newton summation and a positive block}
+
+Put $B_* =\binom{d-1}r$ and
+
+\fitmath{
+t_k=\frac{s_ks_{r-k}}{s_r}\frac{\binom rk}{\binom{d-1}k}>0,\quad
+S=\sum_{k=0}^r t_k,\quad
+U=\sum_{k=0}^r\frac{-t_k}{2k-1}.
+}{\tag{5.1}}
+
+The term $k=0$ in $U$ is $1$. We need the identities
+
+\fitmath{
+Z=B_*s_rS,\qquad M=B_*s_r rU,\qquad K=B_*s_r qd/4.
+}{\tag{5.2}}
+
+Here is a finite-sum derivation. For $X$ with density $1/(\pi\sqrt{x(1-x)})$ on $(0,1)$, $s_j=\mathbb E X^j$. For $\Delta_-f(a)=f(a-1)-f(a)$ and $0\leq k\leq r$,
+
+\fitmath{
+\Delta_-^k s_r=\mathbb E[X^{r-k}(1-X)^k]
+=\frac{s_ks_{r-k}}{\binom rk}.
+}{}
+
+Newton expansion around $r$ gives $s_j=\sum_{k=0}^{r-j}\binom{r-j}k\Delta_-^k s_r$. Insert this into $Z$, use $\binom rj\binom{r-j}k=\binom rk\binom{r-k}j$, and sum over $j$ by Vandermonde. The remaining binomial ratio is
+
+\fitmath{
+\frac{\binom{d-1-k}{r-k}}{\binom{d-1}r}
+=\frac{\binom rk}{\binom{d-1}k},
+}{}
+
+which proves the first identity in (5.2). For $f(j)=js_j$ one has $\Delta_-f(r)=-s_{r-1}/2$ and, for $k\geq1$,
+
+\fitmath{
+\Delta_-^k f(r)=-\frac{r s_ks_{r-k}}{(2k-1)\binom rk}.
+}{}
+
+The same finite summation proves the identity for $M$. The expression for $K$ follows by factorial cancellation. No asymptotic approximation is used.
+
+Let $A=n^2(n+1)^2$ and $D=d(d-1)r$. Equations (4.3) and (5.2) become
+
+\fitmath{
+w_1=\frac{\Phi}{4S(n^2S-qd)},\qquad
+\Phi=AS^2+qd(DU-CS)-q^2d^2.
+}{\tag{5.3}}
+
+The denominator is positive by (4.4). Define
+
+\fitmath{
+R_k=\frac{(2k+1)(r-k)^2}{(k+1)(2r-2k-1)(d-1-k)},\quad
+h_k=1-R_k,\quad v_k=1-\frac{2(k+1)}{2k+1}R_k.
+}{\tag{5.4}}
+
+For $k<r$, $t_{k+1}=R_kt_k$; at the endpoint the displayed expression gives $R_r=0$. Consequently
+
+\fitmath{
+\sum_{k=0}^r t_kh_k=1,\qquad \sum_{k=0}^r t_kv_k=U.
+}{}
+
+Define the symmetric rational kernel
+
+\fitmath{
+\mathcal K_{ij}=A+\frac{qd}{2}\{(Dv_i-C)h_j+(Dv_j-C)h_i\}-q^2d^2h_ih_j.
+}{\tag{5.5}}
+
+Then exactly
+
+\fitmath{
+\Phi=\sum_{i,j=0}^r t_it_j\mathcal K_{ij}.
+}{\tag{5.6}}
+
+The following finite algebraic certificate is the computer-assisted part of the argument.
+
+\textbf{Lemma 5.1 (certificate).} For all integers $r\geq2,q\geq1$, (i) $\mathcal K_{ij}>0$ whenever $0\leq i,j\leq r$ and $(i,j)\ne(0,0)$; and (ii) $B_2:=\sum_{i,j=0}^2t_it_j\mathcal K_{ij}>0$.
+
+\textbf{Verification of the certificate.} By symmetry, it suffices to consider $i\leq j$. In each row below, the new variables $I,J,V,Q_0$ range over nonnegative integers. Factor the indicated rational function, substitute as specified, and expand numerator and denominator over $\mathbb Q$. Both have strictly positive constant term and all their nonzero coefficients are positive. The table gives the exact sizes of these expansions.
+
+{\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.15\linewidth}>{\raggedright\arraybackslash}p{0.43\linewidth}>{\raggedright\arraybackslash}p{0.11\linewidth}>{\raggedright\arraybackslash}p{0.1\linewidth}>{\raggedright\arraybackslash}p{0.12\linewidth}}
+\hline
+Index range & Substitution, with endpoints simplified first & Numerator terms & Total degree & Denominator terms \\
+\hline\endhead
+$i=0,1\leq j<r$ & $j=J+1,r=J+V+2,q=Q_0+1$ & 274 & 11 & 58 \\
+$1\leq i\leq j<r$ & $i=I+1,j=I+J+1,r=I+J+V+2,q=Q_0+1$ & 1346 & 12 & 206 \\
+$i=0,j=r$ & set $i=0,j=r$; then $r=V+2,q=Q_0+1$ & 34 & 8 & 7 \\
+$1\leq i<j=r$ & set $j=r$; then $i=I+1,r=I+V+2,q=Q_0+1$ & 165 & 9 & 21 \\
+$i=j=r$ & set $i=j=r$; then $r=V+2,q=Q_0+1$ & 21 & 6 & 2 \\
+\hline\end{longtable}}
+
+All original denominators in these ranges are nonzero. At $k=r$ one substitutes $R_r=0$ before interpreting signs; no internal-factor positivity assumption is extended to that endpoint. The five rows cover all required pairs except $(0,0)$.
+
+For the block, put $\tau_0=1,\tau_1=R_0,\tau_2=R_0R_1$ and
+
+\fitmath{
+S_2=\sum_{k=0}^2\tau_k,\quad H_2=\sum_{k=0}^2\tau_kh_k,\quad
+V_2=\sum_{k=0}^2\tau_kv_k.
+}{}
+
+Then
+
+\fitmath{
+B_2=AS_2^2+qd(DV_2-CS_2)H_2-q^2d^2H_2^2.
+}{\tag{5.7}}
+
+Under $r=V+3,q=Q_0+1$, its factored numerator and denominator expand with respectively 116 and 77 terms; the numerator degree is 17. All nonzero coefficients and both constant terms are positive. The remaining case is the direct identity
+
+\fitmath{
+B_2\big|_{r=2}=\frac{2(9q+32)(2q^2+17q+32)}{9(q+2)(q+3)}>0.
+}{\tag{5.8}}
+
+Section 7 specifies the exact arithmetic verifier of these identities and coefficient signs. The symbolic variables remain free throughout; this is not verification of finitely many integer parameter values. This proves the lemma by a finite rational-polynomial certificate.
+
+Now split (5.6) into the $0,1,2$ block and its complement. By Lemma 5.1 and positivity of the $t_i$,
+
+\fitmath{
+\Phi=B_2+\sum_{\max(i,j)\geq3}t_it_j\mathcal K_{ij}>0.
+}{}
+
+For $r=2$ the complement is empty. Equation (5.3) proves $w_1>0$. Since $H$ and $L$ are monic with opposite degree parities, $H-yL$ has degree at most $r-2$, and its coefficient of that degree is $-w_1$. Hence $-(H-yL)/w_1$ is monic of degree $r-2$. This proves Theorem 1.2.
+
+\section*{6. Scope and limitations}
+
+The kernel in (5.5) is not claimed to be positive semidefinite. Indeed $\mathcal K_{00}<0$ at $r=q=5$. Even the $0,1$ block is negative at $r=10,q=100$, so the three-index grouping is material to this certificate. Positivity here means that the full scalar sum admits a positive grouped expression.
+
+For arbitrary $r$, two positive coefficients do not produce a complete positive Jacobi representation: the remaining polynomials in the inverse recurrence may still fail to have the required degrees or positive coefficients. We make no CL assertion for the unhandled pairs $\min(m,n)\geq6$ and no complete-multipartite assertion. We also make no assertion about all prescribed cross-family interlacings in [HKM17, K21, K24].
+
+The contribution is the two explicit complete-bipartite families and the accompanying general first-two-coefficient result. The standard $h^*$-formula, cross-polynomial recurrence, Jacobi spectral facts, and Newton/Vandermonde identities used as tools are not claimed as new. General isospectral-flow and cofactor identities investigated during the project are not separate theorems of this manuscript.
+
+\section*{7. Exact verification materials}
+
+The accompanying verification directory contains the following Python files. Python with SymPy 1.14.0 was used for the present draft; no numerical root finder is required by the symbolic certificates.
+
+{\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.35\linewidth}>{\raggedright\arraybackslash}p{0.59\linewidth}}
+\hline
+File & Mathematical check \\
+\hline\endhead
+\nolinkurl{check_k4n_jacobi.py} & Reconstructs (2.5) from the gamma coefficients, expands (3.1) in the cross basis over $\mathbb Q(n)$, checks all four coefficients and positivity of (3.4) \\
+\nolinkurl{check_k5n_jacobi.py} & Independently specifies the five target coefficients and the four tail weights, checks their symbolic identity and positivity \\
+\nolinkurl{verify_second_tail_positive_kernel.py} & Reconstructs (5.5), checks the five index regions, the block and its $r=2$ boundary, and runs seven finite Euclidean comparisons plus negative controls \\
+\nolinkurl{probe_uniform_tail_weights.py} & Supplies the finite exact Euclidean reconstruction routine imported by the preceding verifier; only the seven specified regression pairs are accepted \\
+\nolinkurl{check_original_ehrhart.py} & Directly reconstructs the original Ehrhart polynomial for six fixed pairs, compares it with the path determinant, and detects six deliberately perturbed tails; finite regression only \\
+\hline\end{longtable}}
+
+From this directory, run:
+
+\begin{Verbatim}[fontsize=\small]
+python check_k4n_jacobi.py
+python check_k5n_jacobi.py
+python verify_second_tail_positive_kernel.py
+python check_original_ehrhart.py
+\end{Verbatim}
+
+The same entry points can be run with \texttt{python -O}: checks use explicit exceptions, not removable assertions. The coefficient-certificate algorithm is:
+
+\begin{Verbatim}[fontsize=\small]
+N, D := numerator and denominator of factor(expression)
+for F in [N, D]:
+    P := polynomial(expand(simultaneous_substitute(F)), domain=QQ)
+    require constant_coefficient(P) > 0
+    require every nonzero coefficient(P) > 0
+\end{Verbatim}
+
+The rational expressions, substitutions, endpoint simplifications and complete index partition are given in Section 5. They specify the certificate independently of a list of tested parameters. The seven finite comparisons test transcription and the connection to Euclidean recovery; they are not the justification of the general quantifiers. Negative controls reject a polynomial with a negative constant and confirm both negative kernel/block examples in Section 6.
+
+The main-family identities (3.5), (3.8)--(3.9) involve finitely many rational functions in one indeterminate and can also be checked by clearing denominators. The general second-coefficient certificate has larger expansions and presently relies on the exact symbolic implementation; it is not a formal proof-assistant verification. The accompanying verification package includes a serial runner with fixed checks and time limits; it does not search additional parameters.
+
+\section*{Acknowledgement of AI assistance}
+
+AI-assisted research and writing tools, including Codex, were used for symbolic exploration, proof development, verification code and manuscript preparation. Carptopus is responsible for the mathematical claims, source attribution and final manuscript.
+
+\section*{References}
+
+[HKM17] A. Higashitani, M. Kummer and M. Micha\l{}ek, \emph{Interlacing Ehrhart polynomials of reflexive polytopes}, Selecta Mathematica (N.S.) 23 (2017), 2977--2998. DOI: \href{https://doi.org/10.1007/s00029-017-0350-6}{10.1007/s00029-017-0350-6}.
+
+[HJM19] A. Higashitani, K. Jochemko and M. Micha\l{}ek, \emph{Arithmetic aspects of symmetric edge polytopes}, Mathematika 65 (2019), 763--784. \href{https://arxiv.org/abs/1807.07678}{arXiv:1807.07678}.
+
+[K21] M. Kölbl, \emph{Algebraic Properties of Lattice Polytopes Coming From Graphs}, Diplomarbeit, Universität Leipzig, 31 January 2021, Section 4.2, pp. 46--51. \href{https://ul.qucosa.de/landing-page/?tx_dlf\%5Bid\%5D=https\%3A\%2F\%2Ful.qucosa.de\%2Fapi\%2Fqucosa\%253A73880\%2Fmets}{Qucosa record}, URN urn:nbn:de:bsz:15-qucosa2-738802.
+
+[K24] M. Kölbl, \emph{On a Conjecture Concerning the Roots of Ehrhart Polynomials of Symmetric Edge Polytopes from Complete Multipartite Graphs}, \href{https://arxiv.org/abs/2404.02136v1}{arXiv:2404.02136v1}, 2 April 2024.
+\end{document}
