@@ -1,0 +1,218 @@
+% Generated from the hash-gated frozen manuscript; standalone TeX source.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,mathtools}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,urlcolor=blue!60!black]{hyperref}
+\usepackage{xurl,fancyhdr}
+\pagestyle{fancy}\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\thepage}\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}\setlength{\parskip}{0.4em}
+\setlength{\emergencystretch}{4em}\urlstyle{same}
+\hypersetup{pdfauthor={Carptopus},pdftitle={Circuit orderability of cographic matroids of complete and complete bipartite graphs}}
+\begin{document}
+
+\begin{center}{\LARGE\bfseries Circuit orderability of cographic matroids of complete and complete bipartite graphs\par}\end{center}
+
+Carptopus\\
+carptopus@163.com
+
+Version 0.1-beta, 7 September 2026
+
+\section*{Abstract}
+
+We classify the circuit-orderable cographic matroids associated with two complete graph families. For every integer $n\ge4$, the matroid $M^*(K_n)$ is orderable if and only if $n\in\{4,6\}$. For positive integers $r,s$, the matroid $M^*(K_{r,s})$ is orderable if and only if $\min(r,s)\le2$. The main argument shows that an arbitrary consistent circuit ordering of $M^*(K_n)$, for $n\ge5$, determines a closed simplicial surface with complete one-skeleton. Every nontrivial vertex bipartition has a single separating level curve, so every nonfacial triangle is one-sided. A mod-two face equation and a link-degree calculation then force $n=6$. The positive case $n=6$ comes from a previously published projective-plane construction. The complete bipartite classification combines known results with a three-neighbor obstruction for $K_{3,s}$.
+
+\textbf{Keywords:} orderable matroid; cographic matroid; complete graph; complete bipartite graph; simplicial surface; consistent circuit ordering.
+
+\section*{1. Introduction and contribution}
+
+An ordering of a matroid assigns a reversible cyclic ordering to each circuit. The assignment is consistent if two elements are adjacent in one circuit ordering exactly when they are adjacent in every other circuit ordering containing both elements. A matroid admitting such an assignment is called \emph{orderable} [1]. Graphic matroids are orderable, but circuit orderability is more general than graphicness.
+
+Crenshaw and Oxley classified the connected nonbinary orderable matroids and proved that every four-connected regular orderable matroid is graphic [1, Theorem 5]. They also established the nonorderability of $M^*(K_5)$ and $M^*(K_{3,3})$. Chapter 2 of Crenshaw's dissertation [2] presents this work, including the four-connected result as Theorem 2.1.5 and its proof in Section 2.5. Its classification of nonbinary matroids does not apply to the binary cographic matroids considered here.
+
+An earlier paper [3] proved that the one-skeleton of any simplicial triangulation of the real projective plane has an orderable cographic matroid. In particular, $M^*(K_6)$ is orderable. Subsequent work [4] developed triangle sums, peripheral-cycle obstructions, and contractions for specified face-induced orderings. Those results concern constructions and operations; they do not classify arbitrary consistent orderings on the two graph families studied below.
+
+\textbf{Theorem 1.1.} For every integer $n\ge4$,
+
+\[
+M^*(K_n)\text{ is orderable}\quad\Longleftrightarrow\quad n\in\{4,6\}.
+\]
+
+\textbf{Theorem 1.2.} For all positive integers $r,s$,
+
+\[
+M^*(K_{r,s})\text{ is orderable}\quad\Longleftrightarrow\quad\min(r,s)\le2.
+\]
+
+The main contribution is the uniform exclusion in Theorem 1.1: we recover a surface from an arbitrary consistent ordering and derive an algebraic restriction on its face set. The positive case $K_6$ is recalled from [3], not claimed as a new construction. For Theorem 1.2, planarity gives the positive cases, the four-connected theorem of [1] excludes $r,s\ge4$, and $K_{3,3}$ was already treated in [1]. The remaining family $K_{3,s}$ is settled by a short direct argument. We include that argument and an elementary proof for $K_{3,3}$ to make the boundary transparent.
+
+These theorems classify two graph families, not all orderable cographic matroids. The classifications do not subsume the general construction and operation results of [3,4].
+
+\section*{2. Bonds and forced adjacency}
+
+All graphs, matroids, and simplicial complexes are finite. Graphs in the two classifications are simple. For a connected graph $G$, the circuits of its cographic matroid $M^*(G)$ are the \emph{bonds}: the inclusion-minimal nonempty edge cuts. Writing $\delta_G(S)$ for the edges with exactly one endpoint in $S$, a cut is a bond precisely when $S$ is a nonempty proper vertex set and both $G[S]$ and $G[V(G)\setminus S]$ are connected.
+
+A reversible cyclic ordering is considered up to rotation and reversal. In a circuit of size at least three, each element has exactly two distinct neighbors. A singleton circuit has its unique ordering and no pair of distinct elements; in a two-element circuit the two elements are adjacent. The empty set is not a circuit. These conventions include the low-rank cases covered by [1, Proposition 8].
+
+When a consistent ordering is fixed, adjacency of an element pair that occurs in several circuits is independent of the chosen circuit. We repeatedly use this to transfer a forced adjacent pair from one bond to another. The following sufficient construction is also useful: if a simple graph on $E(G)$ induces a single cycle on every bond of size at least three, its adjacency relation gives consistent bond orderings.
+
+For $K_n$, every nonempty proper vertex set defines a bond. Put $C_u$ for the cycle ordering the $n-1$ edges incident with a vertex $u$.
+
+\textbf{Lemma 2.1 (two-vertex cuts).} Suppose $n\ge5$ and $M^*(K_n)$ has a consistent ordering. For distinct $u,v$, deleting the element $uv$ from $C_u$ and $C_v$ gives two paths. The ordering of $\delta(\{u,v\})$ consists of these two paths joined by exactly two cross adjacencies, each joining an endpoint of one path to an endpoint of the other.
+
+\textbf{Proof.} The two paths have disjoint vertex sets, each of size $n-2$. Consistency forces their $2(n-3)$ path adjacencies into the ordering of the cut, which has $2(n-2)$ elements and as many cyclic adjacencies. Exactly two adjacencies remain. Every internal path vertex already has degree two, so the remaining adjacencies pair the four endpoints. Since the full ordering is connected, both added adjacencies join the two paths. $\square$
+
+\section*{3. Recovering a surface from an ordering}
+
+\textbf{Lemma 3.1 (locality and corner completion).} Under the hypotheses of Lemma 2.1, each cross adjacency in a two-vertex cut is a pair of graph edges sharing a third vertex. Moreover, if $ux$ and $uy$ are adjacent in $C_u$, then $xu,xy$ are adjacent in $C_x$ and $yu,yx$ are adjacent in $C_y$.
+
+\textbf{Proof.} Each $C_u$ supplies $n-1$ distinct adjacent pairs, and different vertices supply different pairs: two distinct graph edges share at most one endpoint. There are therefore $n(n-1)$ such pairs in total.
+
+An adjacent pair $ux,uy$ in $C_u$ occurs in the cut $\delta(\{x,y\})$, with its two elements in different paths of Lemma 2.1. It must occupy a cross-adjacency slot in that cut. This assignment is injective. Indeed, the pair itself determines its shared vertex $u$ and its other endpoints $x,y$, hence its target cut and slot.
+
+For $n\ge5$, the $\binom n2$ two-vertex cuts are distinct: two vertex sets of a connected graph give the same cut only when they agree or are complements, and two distinct two-element sets cannot be complements here. Their total number of cross slots is $2\binom n2=n(n-1)$. The injection thus fills all slots. Every cross pair has a shared third vertex.
+
+For the second assertion, the cross adjacency $xu,yu$ in the cut associated with $\{x,y\}$ joins path endpoints. Thus $xu$ was adjacent to the removed element $xy$ in $C_x$, and $yu$ was adjacent to $yx$ in $C_y$. $\square$
+
+Define a triple $\{u,x,y\}$ to be a face when $ux,uy$ are adjacent in $C_u$. Corner completion makes this definition independent of which vertex of the triple is used.
+
+\textbf{Proposition 3.2 (surface recovery).} The faces just defined form a connected closed simplicial surface $T$ whose one-skeleton is $K_n$. For every nonempty proper vertex set $S$, the face-corner adjacency graph on $\delta(S)$ equals its original circuit-ordering cycle.
+
+\textbf{Proof.} For each edge $ux$, its two neighbors in $C_u$ give two distinct faces containing it. Corner completion shows that these are exactly its incident faces, irrespective of the endpoint used. The link of $u$ is precisely $C_u$, after identifying the edge $ux$ with the vertex $x$. All vertex links are cycles and every edge lies in two triangles. These local descriptions prove that $T$ is a closed simplicial surface. Its one-skeleton is the connected graph $K_n$, so the surface is connected.
+
+Fix $S$. Each crossing edge lies in two faces. In either face exactly one other edge crosses the cut, giving a neighbor in the face-corner adjacency graph $\Lambda_S$. The two incident faces have different third vertices, so the two neighbors are distinct. Thus $\Lambda_S$ is two-regular.
+
+Each adjacency in $\Lambda_S$ is a corner already present in a singleton ordering $C_u$. Consistency forces it into the original ordering of $\delta(S)$. Both graphs have degree two on the same vertex set, so their edge sets are equal. In particular, $\Lambda_S$ is a single cycle. $\square$
+
+Give vertices in $S$ value zero and the other vertices value one, and extend linearly over each face. The level set at $1/2$ consists of the segments connecting the midpoints of the two crossing edges in each mixed triangle. Its components correspond exactly to the cycles of $\Lambda_S$. Proposition 3.2 therefore says that this level set is always one simple closed curve.
+
+The following is the nonfacial-triangle case of the peripheral-cycle obstruction in [4, Theorem 5.1]. We include a self-contained proof after the surface recovery above.
+
+\textbf{Lemma 3.3 (nonfacial triangles).} Every nonfacial triangle in the complete one-skeleton of $T$ is one-sided in the surface.
+
+\textbf{Proof.} If $abc$ is not a face, the full induced subcomplex on $S=\{a,b,c\}$ is its three-edge circle. The PL sublevel set with values zero on $S$, one elsewhere, and threshold $1/2$ is a closed band neighborhood of that circle. This follows directly from the local pieces: a triangle meeting $S$ in one vertex contributes a corner disk, one meeting $S$ in an edge contributes a strip along that edge, and there is no triangle with all three vertices in $S$. At a vertex of the circle the pieces fill the two sectors between its incident circle edges. Gluing these disks and strips gives the usual regular neighborhood of the embedded circle.
+
+If the circle is two-sided, this neighborhood is an annulus, whose boundary has two components. But its boundary is the level set described above, which has one component. The circle must instead be one-sided. $\square$
+
+There are $n(n-1)/3$ faces, since every edge lies in two faces. For $n\ge5$ this is smaller than $\binom n3$, so nonfacial triangles do exist.
+
+\section*{4. A mod-two face equation}
+
+All cochains in this section have coefficients in $\mathbb F_2$. Regard the vertex set of $T$ as the vertex set of the full simplex $\Delta$. Let $F$ be the two-cochain indicating its triangular faces, with coordinates indexed by all three-element vertex sets. Write $\delta$ for the simplicial coboundary on $\Delta$.
+
+\textbf{Lemma 4.1.} The face vector satisfies
+
+\[
+\delta F=0.
+\]
+
+\textbf{Proof.} Choose a simplicial one-cocycle $g$ on $T$ representing the orientation character $w_1(T)$. Its value on an embedded circle is zero for a two-sided circle and one for a one-sided circle. The complete one-skeleton lets us regard $g$ as a one-cochain on $\Delta$, although it need not be a cocycle there.
+
+For a facial triangle $abc$, the sum of $g$ on its three edges is zero. For a nonfacial triangle the sum is one by Lemma 3.3. Consequently, as cochains on the full simplex,
+
+\[
+\delta g=\mathbf 1+F,
+\]
+
+where $\mathbf 1$ is the cochain equal to one on every triangle. Each four-element vertex set contains four triangles, so $\delta\mathbf 1=0$ over $\mathbb F_2$. Applying $\delta$ proves $\delta F=0$. $\square$
+
+\textbf{Lemma 4.2.} If $n\ge5$ and $M^*(K_n)$ is orderable, then $n=6$.
+
+\textbf{Proof.} Fix a vertex $\infty$. On the other $m=n-1$ vertices define
+
+\[
+q(x,y)=F(\infty,x,y),
+\]
+
+and put $q(\infty,x)=0$. The equation $\delta F=0$, evaluated on $\{\infty,x,y,z\}$, gives
+
+\[
+F(x,y,z)=q(x,y)+q(x,z)+q(y,z).
+\]
+
+The graph of pairs with $q(x,y)=1$ is the link of $\infty$, hence a cycle $C_m$.
+
+Take adjacent vertices $x,y$ in this cycle. In the link of $x$ in $T$, the vertex $y$ is adjacent to $\infty$. For any other $z$, it is adjacent to $z$ exactly when
+
+\[
+1+q(x,z)+q(y,z)=1,
+\]
+
+or equivalently when $q(x,z)=q(y,z)$. Since $m\ge4$, the other neighbor of $x$ and the other neighbor of $y$ in $C_m$ are distinct. These are the two vertices adjacent to exactly one of $x,y$. None is adjacent to both, and the remaining $m-4$ vertices are adjacent to neither. This includes $m=4$, when there are no remaining vertices. Therefore the degree of $y$ in the link of $x$ is
+
+\[
+1+(m-4)=n-4.
+\]
+
+A surface link is a cycle, so this degree is two. It follows that $n=6$. $\square$
+
+\section*{5. Positive cases and completion of Theorem 1.1}
+
+The graph $K_4$ is planar. Its cographic matroid is graphic, and is therefore orderable [1, Proposition 1]. We recall the positive $K_6$ construction of [3], including its short topological justification so that the classification does not depend on a finite search.
+
+On vertices $0,1,2,3,4,5$, take the faces
+
+\[
+013,014,024,025,035,123,125,145,234,345.
+\]
+
+Each edge is in two faces and every vertex link is a five-cycle. For example, the link of $0$ is the cycle $1,3,5,2,4$, and the other links can be checked directly from the same list. The resulting connected closed surface has Euler characteristic $6-15+10=1$, so it is the real projective plane.
+
+For a bond, the face-corner adjacency is two-regular. Its PL level set $C$ separates the surface into two connected compact subsurfaces $N_0,N_1$: each side retracts onto the full subcomplex spanned by its vertices, whose one-skeleton is connected. Explicitly, on either sublevel side one normalizes the barycentric coordinates at its own vertices and sets the others to zero; the straight-line homotopy stays on that side and agrees on simplex intersections.
+
+If $C$ had $b\ge2$ components, the surface formula $\chi(N_i)\le2-b$ would give
+
+\[
+1=\chi(\mathbb{RP}^2)=\chi(N_0)+\chi(N_1)\le4-2b\le0,
+\]
+
+a contradiction. Here $\chi(C)=0$ gives the equality. Thus the induced adjacency on each bond is a single cycle. Since all these cycles use one global face-corner relation, their orderings are consistent. This proves the positive case $n=6$.
+
+For $n\ge5$, Lemma 4.2 excludes every other value of $n$. Together with $n=4$, this proves Theorem 1.1. No infeasibility computation is used for the negative cases.
+
+\section*{6. Complete bipartite graphs}
+
+\textbf{Proof of Theorem 1.2.} If $\min(r,s)\le2$, the graph $K_{r,s}$ is planar, so its cographic matroid is graphic and orderable. This also handles the stars $K_{1,s}$: their cographic matroids are direct sums of loops, with singleton circuits, not empty circuit families.
+
+By symmetry suppose $3\le r\le s$. If $r,s\ge4$, then $K_{r,s}$ has vertex connectivity $\min(r,s)$ and girth four. The graph-to-matroid connectivity criterion [5, Corollary 8.6.5] therefore gives Tutte connectivity four for its cycle matroid. Its cycle matroid, and hence its dual, is four-connected. The cographic matroid is regular. It is not graphic, since a graph is planar if and only if its cycle matroid is cographic, and $K_{r,s}$ is nonplanar. Thus [1, Theorem 5], equivalently [2, Theorem 2.1.5], excludes orderability. These are applications of known results.
+
+It remains to treat $r=3$. Write the three-element part as $\{a,b,c\}$ and the other part as $X$.
+
+First let $s\ge4$ and suppose a consistent ordering exists. Choose $x\in X$. The singleton bond $\delta(a)$ has $s$ elements. Deleting $ax$ from its cyclic ordering leaves a path with at least three vertices, so there is an internal element $ay$, with two distinct neighbors $az,aw$. All of $y,z,w$ differ from $x$.
+
+The set $S=\{a,b,x\}$ induces the path $a,x,b$, and its complement induces the star with center $c$ and leaves $X\setminus\{x\}$. Thus $\delta(S)$ is a bond. It contains $ay,az,aw$, so its ordering must preserve the adjacencies $ay$--$az$ and $ay$--$aw$.
+
+But the singleton bond at $y$ is the three-element circuit $\{ay,by,cy\}$. All three pairs are adjacent. Since $ay$ and $by$ also belong to $\delta(S)$, consistency forces a third neighbor $by$ for $ay$ in that same bond. This is impossible in a cyclic ordering.
+
+Finally let $s=3$, with $X=\{x,y,z\}$. The same set $S=\{a,b,x\}$ gives the five-element bond
+
+\[
+\delta(S)=\{ay,az,by,bz,cx\}.
+\]
+
+The three-element singleton bonds at $a,b,y,z$ respectively force the pairs $ay$--$az$, $by$--$bz$, $ay$--$by$, and $az$--$bz$. These form a four-cycle on $\{ay,az,by,bz\}$. All four vertices already have degree two, so no cyclic ordering can include the remaining element $cx$. This reproves the known nonorderability of $M^*(K_{3,3})$ and completes the classification. $\square$
+
+\section*{7. Scope and reproducibility}
+
+The proofs above are structural. They do not extrapolate from bounded graph enumeration or solver output. The listed six-vertex complex provides a small reproducible positive example; the accompanying checker verifies its face incidences, links, and all bonds, along with the tetrahedral example. Such finite checks support the explicit examples only. They do not establish the infinite negative classifications, which follow from Sections 3, 4, and 6.
+
+The face-indicator equation is obtained here from an arbitrary ordering on a complete graph. On a general graph not every pair is an edge and not every vertex cut is a bond, so neither the slot count nor the full-simplex argument applies as stated. Likewise, the construction results of [3,4] leave many orderable cographic matroids outside the families in Theorems 1.1 and 1.2. No general cographic classification is asserted.
+
+\section*{AI-assisted research and writing}
+
+Carptopus used OpenAI Codex to assist with mathematical exploration, proof checking, literature comparison, and manuscript preparation. Carptopus is responsible for the statements, source attribution, and final manuscript. This preprint has not undergone external peer review.
+
+\section*{References}
+
+\begin{enumerate}\raggedright
+\item[1.] C. Crenshaw and J. Oxley, \emph{Ordering circuits of matroids}, Electronic Journal of Combinatorics 29(4) (2022), Paper P4.31. DOI: \href{https://doi.org/10.37236/11117}{10.37236/11117}. Theorem numbering in this paper follows the corrected \href{https://arxiv.org/abs/2203.08305v3}{arXiv version 3, 8 April 2023}.
+\item[2.] C. Crenshaw, \emph{Matroid Generalizations of Some Graph Results}, Ph.D. dissertation, Louisiana State University, 2023, Chapter 2. DOI: \href{https://doi.org/10.31390/gradschool_dissertations.6097}{10.31390/gradschool\_dissertations.6097}.
+\item[3.] Carptopus, \emph{Projective-plane triangulations yield orderable cographic matroids}, preprint, 2026. DOI: \href{https://doi.org/10.5281/zenodo.22165775}{10.5281/zenodo.22165775}.
+\item[4.] Carptopus, \emph{Triangle sums, peripheral cycles, and contractions for orderable cographic matroids}, preprint, 2026. DOI: \href{https://doi.org/10.5281/zenodo.22286132}{10.5281/zenodo.22286132}.
+\item[5.] J. Oxley, \emph{Matroid Theory}, second edition, Oxford University Press, 2011, Corollary 8.6.5, p. 328.
+\end{enumerate}
+\end{document}
