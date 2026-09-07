@@ -5,6 +5,9 @@ This paper classifies consistent reversible circuit orderings for two complete g
 - [Paper (PDF)](complete-cographic-orderability.pdf)
 - [LaTeX source](complete-cographic-orderability.tex)
 - [BibTeX citation](CITATION.bib)
+- Version DOI: [10.5281/zenodo.22597680](https://doi.org/10.5281/zenodo.22597680)
+- Concept DOI: [10.5281/zenodo.22597679](https://doi.org/10.5281/zenodo.22597679)
+- [Zenodo record](https://zenodo.org/records/22597680)
 - [Example checks](verification/README.md)
 - Author: Carptopus ([carptopus@163.com](mailto:carptopus@163.com))
 - Version: v0.1-beta, 7 September 2026
