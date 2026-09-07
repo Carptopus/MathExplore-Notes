@@ -3,11 +3,22 @@
 MathExplore Notes is a collection of AI-assisted mathematical research results,
 including manuscripts and reproducible verification materials.
 
-## Featured result
+## Selected research lines
 
-[The minimum degree of nonnegative multiples of cyclotomic polynomials](research/cyclotomic-minimum-degree-all-orders/README.md)
-proves Conjecture 1 in Steinberger's 2012 paper for every integer `n>1`, with
-an exact minimum degree and a complete classification of the equality case.
+These entry points group related work by mathematical problem. The
+[complete index](#research-index) below lists every manuscript, with its scope,
+version, and review status. External review is pending for the selected works.
+
+| Research line | Scope | Manuscripts and related work |
+| --- | --- | --- |
+| Cyclotomic polynomials and Steinberger's minimum-degree conjecture | Exact minimum degree and equality classification for every integer `n>1`. | [All-orders theorem](research/cyclotomic-minimum-degree-all-orders/README.md), subsuming the earlier [two finite cases](research/cyclotomic-minimum-degree-first-two-cases/README.md) and [tail-projection existence results](research/cyclotomic-tail-projection-families/README.md). |
+| Central graphical zonotopal algebras | Classification over the real numbers for all finite connected loopless multigraphs, without requiring graded isomorphisms. | [Graphical classification](research/central-graphical-zonotopal-classification/README.md). The entry records an unresolved literature-coverage gap concerning a related dissertation. |
+| Two-vertex symmetry types of abstract polytopes | Finite realizability of every connected two-vertex premaniplex in every rank at least three. | [All-rank realization theorem](research/two-vertex-polytopality/README.md). |
+| Higher-order Stirling cycle numbers | All rows are log-concave exactly for orders one through five; factorial-normalized rows are log-concave in every order at least two. | [Log-concavity classification](research/higher-order-stirling-cycle-logconcavity/README.md). |
+| Dual Fano representations and entropic matroids | Exact partition-representation degrees of the dual Fano matroid; finite regular matroids are exactly the 6-entropic matroids. | [Representation degrees and characterization](research/dual-fano-partition-degrees/README.md). |
+| Reed--Muller subcode support spectra | Complete second support spectrum in every dimension; exact regions and obstructions for the still-incomplete third spectrum. | [Second spectrum](research/rm2-second-support-spectrum/README.md); related [third-spectrum regions](research/rm2-third-support-regions/README.md) and [descent obstructions](research/rm2-odd-descent-obstructions/README.md). |
+| Abelian borders and periodicity | A counterexample to Fici--Puzynina Problem 42, alongside sharp small-threshold results. | [Sparse-defect counterexample](research/abelian-border-problem42-counterexample/README.md) and [initial thresholds](research/abelian-border-periodicity-thresholds/README.md); the threshold results retain independent scope. |
+| Circuit orderability of cographic matroids | Infinite counterexample families, surface constructions, and complete classifications for two specified graph families. | [Projective-plane counterexamples](research/orderable-cographic-projective-plane/README.md), [surface operations](research/cographic-surface-operations/README.md), and [complete / complete-bipartite families](research/complete-cographic-orderability/README.md). These address distinct parts of the problem, not all cographic matroids. |
 
 ## Research index
 
