@@ -1,0 +1,1238 @@
+% Deterministically generated from the frozen audited Markdown source.
+% Responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\renewcommand{\sfdefault}{\rmdefault}
+% The frozen source uses math sans only for three local polynomial labels.
+% Render those labels upright because the local offline cache lacks lmss10.pfb.
+\renewcommand{\mathsf}[1]{\mathrm{#1}}
+\usepackage{needspace}
+\usepackage{xcolor,xurl,fancyhdr}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Three-branch trees and the CSF}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.42em}
+\setlength{\emergencystretch}{4em}
+\allowdisplaybreaks
+\urlstyle{same}
+
+\title{Trees with three branch vertices are determined\\
+by their chromatic symmetric functions}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{carptopus@163.com}}
+\date{17 September 2026}
+
+\hypersetup{
+  pdftitle={Trees with three branch vertices are determined by their chromatic symmetric functions},
+  pdfauthor={Carptopus},
+  pdfsubject={Chromatic symmetric reconstruction of trees with exactly three branch vertices},
+  pdfkeywords={chromatic symmetric function, tree reconstruction, branch vertices, spider, subtree polynomial, path sequence}
+}
+
+\begin{document}
+\maketitle
+
+Internal draft, 17 September 2026. Internal pre-writing and full-manuscript mathematical reviews
+completed; external peer review pending.
+\begin{abstract}
+
+Stanley asked whether the chromatic symmetric function distinguishes nonisomorphic trees. The
+conjecture is known for several structured families, including spiders and, more recently, all trees
+with exactly two vertices of degree at least three. We prove the next complete branch-vertex layer:
+every finite tree with exactly three vertices of degree at least three is determined, among all
+finite simple graphs, by its chromatic symmetric function.
+
+The three branch vertices lie on a path. We combine a power-sum derivative of an alternating
+trunk deletion sum with the path sequence and the three-leaf part of the subtree polynomial. The
+derivative first recovers the smallest terminal starlike block and then produces a sequence of
+endpoint events. Equal terminal orders, rooted paths, simultaneous events, and the two possible
+scalar-layout exchanges require separate arguments. Their residual ambiguities reduce to explicit
+polynomial factorizations or threshold-moment systems, all of which are nonsingular or have
+classifiable degenerate cases. The resulting reconstruction is uniform in the trunk lengths, twig
+lengths, and branch degrees. Exact computations are used only as regression and boundary checks,
+not as substitutes for the general proof.
+
+\textbf{Keywords:} chromatic symmetric function; tree reconstruction; branch vertices; spider; subtree
+polynomial; path sequence
+
+\end{abstract}
+
+\section{Introduction}
+
+
+For a finite simple graph $G$, Stanley's chromatic symmetric function is
+
+\begin{equation*}
+X_G=\sum_{\kappa}\prod_{v\in V(G)}x_{\kappa(v)},
+\end{equation*}
+
+
+where the sum ranges over all proper colorings of $G$ by positive integers. Stanley asked whether
+$X_T=X_{T'}$ for two trees forces $T\cong T'$ [1]. The question remains open in general.
+
+Several infinite classes are known. Martin, Morin and Wagner proved that spiders are determined and
+extracted path, degree and subtree data from $X_T$ [2]. Crew showed that $X_T$ determines the order
+of the trunk and the multiset of twig lengths [3]. Loebl and Sereni treated caterpillars [4], Huryn
+and Chmutov treated 2-spiders [5], and later work established proper $q$-caterpillars and all trees
+of diameter at most five [6,7]. Recent multiplicity-isolation criteria cover further proper trees
+[10,11]. These families intersect the branch-vertex filtration but do not contain a whole new
+layer of it.
+
+Wang, Yu and Zhang proved that every tree with exactly two vertices of degree at least three is
+determined by its chromatic symmetric function [8]. Their proof combines a weighted
+deletion--contraction construction along the path joining the two branch vertices with a
+reconstruction lemma for pairs of spiders. They remarked that the method might extend to three
+branch vertices. We carry out that extension, including the path-rooting and simultaneous-event
+phenomena that do not occur in the two-branch layer.
+
+Call a vertex of degree at least three a \textbf{branch vertex}. Our main result is the following.
+
+\Needspace{0.13\textheight}
+\subsection*{Theorem 1.1}
+
+
+Let $T$ be a finite simple tree with exactly three branch vertices. If a finite simple graph $F$
+satisfies $X_F=X_T$, then $F\cong T$.
+
+Together with the known zero-, one-, and two-branch cases, this gives the following attributed
+corollary.
+
+\Needspace{0.13\textheight}
+\subsection*{Corollary 1.2}
+
+
+Every finite tree with at most three branch vertices is determined, among finite simple graphs, by
+its chromatic symmetric function.
+
+The new content of the paper is the exact-three layer. Four branch vertices introduce branched
+cores and new placement types, so Theorem 1.1 does not imply the next layer and does not resolve
+Stanley's conjecture.
+
+The proof has three ingredients. First, an alternating deletion sum over the trunk gives a family
+of power-sum derivatives whose lowest nonzero member recovers the smallest terminal block. Second,
+the path sequence fixes the two trunk gaps once the three rooted blocks are known. Third, the path
+sequence and the three-leaf subtree polynomial eliminate the allocation exchanges that remain when
+two derivative events occur at the same order. The technically delicate case is a smallest terminal
+block that is an unrooted path: the chromatic symmetric function of the block does not remember the
+position of its attachment vertex. Sections 5--7 give a uniform rooting argument and classify the
+only two possible changes of scalar layout.
+
+\section{Preliminaries and notation}
+
+
+We use the power sums $p_1,p_2,\ldots$. Stanley's expansion is
+
+\begin{equation*}
+X_G=\sum_{S\subseteq E(G)}(-1)^{|S|}p_{\lambda(S)},
+\tag{2.1}
+\end{equation*}
+
+
+where $\lambda(S)$ is the partition of $|V(G)|$ formed by the component orders of $(V(G),S)$
+[1]. Consequently $X_G$ determines the vertex and edge counts, the girth, the degree sequence of a
+tree, and the number of one-edge cuts of every component-order type [1,2,9]. We also use that for
+trees the chromatic symmetric function determines the path sequence and the subtree polynomial;
+the precise equivalence with generalized degree and subtree data is recorded in [9].
+
+For a tree $T$, let $P$ be the smallest subtree containing all branch vertices. Crew calls $P$ the
+\textbf{trunk} [3]. A \textbf{twig} is a component path left after removing the trunk edges, with its trunk
+endpoint retained as root; its length is its number of edges. Crew proved that $X_T$ determines
+$|P|$ and the multiset of all twig lengths [3].
+
+When $T$ has exactly three branch vertices, the trunk is a path. Orient it temporarily from left to
+right and write its branch vertices as $u,v,w$. Delete the two trunk segments while retaining their
+endpoints. The rooted starlike blocks at $u,v,w$ are denoted by $A,B,C$, and
+
+\begin{equation*}
+a=|A|,\qquad b=|B|,\qquad c=|C|.
+\end{equation*}
+
+
+Let $\alpha,\beta\geq1$ be the distances from $u$ to $v$ and from $v$ to $w$. Thus
+
+\begin{equation*}
+|T|=a+b+c+\alpha+\beta-2.
+\tag{2.2}
+\end{equation*}
+
+
+The endpoint blocks $A,C$ have at least two twigs; $B$ has at least one. Reversing the entire
+display is immaterial.
+
+For a rooted starlike block $D$ with arm-length multiset $\Lambda_D$, set
+
+\begin{equation*}
+f_D(x)=\sum_{z\in V(D)}x^{\mathrm{dist}(z,\mathrm{root}(D))}
+      =1+\sum_{\ell\in\Lambda_D}h_\ell(x),
+\qquad h_\ell(x)=x+\cdots+x^\ell.
+\tag{2.3}
+\end{equation*}
+
+
+The arm-sum map $\Lambda\mapsto\sum_{\ell\in\Lambda}h_\ell$ is injective: the coefficient of
+$x^i$ is the number of arms of length at least $i$.
+
+We write
+
+\begin{equation*}
+W_T(x)=\sum_{\{r,s\}\subseteq V(T)}x^{\mathrm{dist}(r,s)}
+\tag{2.4}
+\end{equation*}
+
+
+for the path sequence, with unordered pairs of distinct vertices. Let $S_T(x,y)$ be the subtree
+polynomial in which a connected subtree with $e$ edges and $j$ leaves contributes $x^e y^j$.
+The coefficient
+
+\begin{equation*}
+J_T(x)=[y^3]S_T(x,y)
+\tag{2.5}
+\end{equation*}
+
+
+is the three-leaf part. Both (2.4) and (2.5) are determined by $X_T$ [2,9]. For an arm multiset
+$U$, write $e_i(U)$ for the $i$th elementary symmetric polynomial in
+$\{h_\ell(x):\ell\in U\}$. A spider with arms $U$ has
+
+\begin{equation*}
+J_U(x)=e_3(U).
+\tag{2.6}
+\end{equation*}
+
+
+We use two established reconstruction results. First, a spider is determined by its chromatic
+symmetric function [2]. Second, a tree with exactly two branch vertices is determined by its
+chromatic symmetric function [8]. Whenever a rooted starlike block has at least three arms, its
+root is the unique branch vertex, so unrooted reconstruction also recovers the root. A two-arm
+block is an unrooted path, and its root position must be recovered separately.
+
+\section{The trunk complement transform}
+
+
+Let the vertices of the full trunk be $p_0,p_1,\ldots,p_m$, with the three branch vertices at
+$p_0,p_h,p_m$. Define the alternating trunk sum
+
+\begin{equation*}
+\mathcal A_P(T)=
+\sum_{\varnothing\neq I\subseteq E(P)}(-1)^{|I|-1}X_{T-I}.
+\tag{3.1}
+\end{equation*}
+
+
+The weighted deletion--contraction formula of Wang, Yu and Zhang, together with the recoverable
+trunk order and twig sequence, shows that $\mathcal A_P(T)$ is determined by $X_T$ [8].
+
+Cutting the terminal trunk edge at the left or right leaves a terminal starlike block; call these
+$L$ and $R$. Put
+
+\begin{equation*}
+u=\min\{|L|,|R|\},\qquad n=|T|,\qquad k=n-u.
+\end{equation*}
+
+
+\Needspace{0.13\textheight}
+\subsection*{Lemma 3.1 (minimal terminal extraction)}
+
+
+The value $u$ and the sum of the chromatic symmetric functions of all terminal blocks of order $u$
+are determined by $X_T$. More precisely,
+
+\begin{equation*}
+(-1)^{k-1}\frac{\partial\mathcal A_P(T)}{\partial p_k}
+=\sum_{E\in\{L,R\},\ |E|=u}X_E.
+\tag{3.2}
+\end{equation*}
+
+
+\paragraph{Proof}
+
+
+Fix a connected induced $k$-vertex subtree $H$. In the derivative of (3.1), group all terms that
+select $H$ as the $p_k$ component. Let $B_H$ be the trunk edges with one endpoint in $H$, and
+$C_H$ the trunk edges with neither endpoint in $H$. After removing $V(H)$ the integrand is
+independent of the selected edges in $B_H$. Inclusion--exclusion over $B_H$ therefore gives one if
+$B_H\neq\varnothing$ and zero if $H$ contains the entire trunk.
+
+Every twig is shorter than $k$: after deleting a twig, a terminal block of order at least $u$ and
+another branch vertex remain. Thus $H$ meets the trunk. If it does not contain the whole trunk,
+$T-V(H)$ contains a complete terminal block and has order $u$. It must therefore equal precisely a
+terminal block of minimum order. This proves (3.2). For $s<u$ the same derivative with
+$p_{n-s}$ vanishes, whereas at $s=u$ the right side of (3.2) is nonzero. Hence $u$ is recovered as
+the first nonzero index. $\square$
+
+To continue past the first coefficient, define
+
+\begin{equation*}
+q_\ell(z)=\sum_{r=0}^{\ell}X_{P_r}z^r,\qquad X_{P_0}=1,
+\quad
+Q_v(z)=\prod_{\ell\in\Lambda_v}q_\ell(z).
+\tag{3.3}
+\end{equation*}
+
+
+For a proper nonempty trunk interval $[i,j]$, let $L_i$ and $R_j$ be the full left and right
+complement blocks; an empty side has chromatic symmetric function one. Let $\lambda$ be the maximum
+twig length and set
+
+\begin{equation*}
+E_s(T)=(-1)^{n-s-1}\frac{\partial\mathcal A_P(T)}{\partial p_{n-s}}.
+\end{equation*}
+
+
+\Needspace{0.13\textheight}
+\subsection*{Lemma 3.2 (interval complement identity)}
+
+
+Truncated in degrees $s<n-\lambda$,
+
+\begin{equation*}
+\sum_sE_s(T)z^s=
+\sum_{[i,j]}
+X_{L_i}X_{R_j}z^{|L_i|+|R_j|}
+\prod_{v\in\{p_0,p_h,p_m\}\cap[i,j]}Q_v(z),
+\tag{3.4}
+\end{equation*}
+
+
+where the sum is over proper nonempty trunk intervals.
+
+\paragraph{Proof}
+
+
+A connected $(n-s)$-vertex subtree cannot lie wholly inside a twig when $n-s>\lambda$, so its
+intersection with the trunk is a nonempty interval. The full-trunk interval cancels by the same
+inclusion--exclusion as in Lemma 3.1. For a proper interval, the outside trunk pieces force the
+factors $X_{L_i}X_{R_j}$. At each branch vertex inside the interval, the connected subtree retains
+an arbitrary initial segment of every twig, leaving a terminal path forest enumerated by $Q_v$.
+The choices are independent, giving (3.4). $\square$
+
+Suppose henceforth that the left endpoint block is the unique smaller endpoint, $a<c$, and that its
+rooted arm multiset is known. Let $A^t$ denote $A$ with an extra arm of length $t$ at its root,
+where $A^0=A$. Dividing (3.4) by the known pruning series shows that the initial coefficients are the
+hypothetical chain
+
+\begin{equation*}
+X_{A^0},X_{A^1},\ldots,X_{A^{\alpha-1}}.
+\end{equation*}
+
+
+The first departure has order
+
+\begin{equation*}
+s_0=\min(a+\alpha,c)
+\tag{3.5}
+\end{equation*}
+
+
+and equals
+
+\begin{equation*}
+\Delta_{s_0}=
+\begin{cases}
+-X_{A^\alpha},&a+\alpha<c,\\
+ X_C,&c<a+\alpha,\\
+ X_C-X_{A^\alpha},&c=a+\alpha.
+\end{cases}
+\tag{3.6}
+\end{equation*}
+
+
+All three alternatives lie in the safe range of (3.4). Indeed, using (2.2), $n-s_0$ is larger
+than every twig length. If the last line cancels because $C\cong A^\alpha$, the next coefficient is
+
+\begin{equation*}
+\Delta_{c+1}=-X_{A^{\alpha+1}}-p_1X_C
++\mathbf1_{\beta\geq2}X_{C^1}
++\mathbf1_{b=2}X_{A\mathbin{-}B}.
+\tag{3.7}
+\end{equation*}
+
+
+Its principal specialization divided by $q(q-1)^{c-1}$ is one of $-q,-1,1-2q$, whereas an
+ordinary left or right first event gives $-(q-1)$ or $q-1$ and an equal-order difference gives zero.
+Thus seamless cancellation cannot hide the event across two candidates.
+
+Once $\alpha$ is known, put
+
+\begin{equation*}
+D=A\mathbin{-}_{\alpha}B,\qquad d=|D|=a+b+\alpha-1.
+\tag{3.8}
+\end{equation*}
+
+
+Subtracting the true finite left chain from (3.4), the next event at $\min(c,d)$ is respectively
+$X_C$, $X_D$, or $X_C+X_D$. The remainder of the proof separates the equal-order sum and restores
+root positions.
+
+\section{Recovering the trunk split}
+
+
+Once the rooted blocks $A,B,C$ are known, no further high-order cut data are needed.
+
+\Needspace{0.13\textheight}
+\subsection*{Lemma 4.1 (trunk split rigidity)}
+
+
+Fix the rooted blocks $A,B,C$ and the total trunk length $m=\alpha+\beta$. The path sequence
+determines $\alpha,\beta$ up to simultaneous left--right reversal.
+
+\paragraph{Proof}
+
+
+Let $g_B=f_B-1$. The part depending on the position $\alpha$ of the middle root is
+
+\begin{equation*}
+W_{T_\alpha}(x)=W_0(x)+g_B(x)H_\alpha(x),
+\tag{4.1}
+\end{equation*}
+
+
+where $W_0$ is independent of $\alpha$ and
+
+\begin{equation*}
+H_\alpha=x^\alpha f_A+x^{m-\alpha}f_C
++\sum_{i=1}^{\alpha-1}x^i+\sum_{i=1}^{m-\alpha-1}x^i.
+\tag{4.2}
+\end{equation*}
+
+
+Since $B$ has a twig, $g_B\neq0$. If $\alpha<\gamma$ and $H_\alpha=H_\gamma$, put
+$r=\gamma-\alpha$ and $\delta=m-\gamma$. Direct subtraction gives
+
+\begin{equation*}
+0=(1+x+\cdots+x^{r-1})
+\bigl[-x^\alpha G_A+x^\delta G_C\bigr],
+\tag{4.3}
+\end{equation*}
+
+
+where
+
+\begin{equation*}
+G_D=1-(1-x)f_D=(1-|\Lambda_D|)x+
+\sum_{\ell\in\Lambda_D}x^{\ell+1}.
+\end{equation*}
+
+
+The least nonzero degree of each endpoint $G_D$ is one. Equation (4.3) forces
+$\alpha=\delta=m-\gamma$ and then $G_A=G_C$. The latter equality recovers equal rooted arm
+multisets, and the two placements differ only by reversing the tree. $\square$
+
+\section{Equal terminal orders}
+
+
+Assume $a=c$. Lemma 3.1 gives $X_A+X_C$. Let $\Pi_0$ retain only power-sum monomials not divisible
+by $p_1$. At complement order $a+1$, every pruning correction contains an isolated vertex, while an
+endpoint with gap at least two can be extended by one trunk vertex. Hence
+
+\begin{equation*}
+\Pi_0E_{a+1}=
+\Pi_0\bigl(
+\mathbf1_{\alpha\geq2}X_{A^1}+
+\mathbf1_{\beta\geq2}X_{C^1}
+\bigr).
+\tag{5.1}
+\end{equation*}
+
+
+For an $M$-vertex spider with threshold numbers
+$t_i=\#\{\ell\in\Lambda:\ell\geq i\}$, the one-edge-cut counts satisfy
+
+\begin{equation*}
+d_i=t_i+t_{M-i}\quad(i<M/2),
+\qquad d_{M/2}=t_{M/2}\quad(M\text{ even}).
+\tag{5.2}
+\end{equation*}
+
+
+These counts determine every spider with at least three arms. If a long arm exists it is unique;
+two putative long-arm solutions to (5.2) could differ only by replacing
+$\{k-1,M-k\}$ with $\{\ell-1,M-\ell\}$, leaving no room for a third positive arm. Thus the only
+fold ambiguity is a two-arm path. Since $A^1$ and $C^1$ have at least three arms and contain a
+distinguished new arm of length one, (5.1) recovers every active endpoint.
+
+If both gaps are at least two, the two extended endpoint blocks give, for $i\geq2$,
+
+\begin{equation*}
+d_i=T_i+T_{a-i},\qquad e_i=T_i+T_{a+1-i},
+\tag{5.3}
+\end{equation*}
+
+
+where $T_i=t_i(A)+t_i(C)$. Successive differences recover all $T_i$. The merged arm multiset and
+$X_A+X_C$ then recover the unordered rooted pair $\{A,C\}$ as follows.
+
+\Needspace{0.13\textheight}
+\subsection*{Lemma 5.1 (equal-order endpoint pair)}
+
+
+Let $A,C$ be rooted starlike blocks of equal order. Their chromatic-symmetric-function sum, their
+forest path sequence, degree sequence, and merged arm multiset determine the unordered rooted pair.
+
+\paragraph{Proof}
+
+
+If both blocks have at least three arms, apply the two-spider reconstruction lemma of [8]. If exactly
+one is a path, its unrooted type is the unique path of the common order; subtract its chromatic
+symmetric function and recover the other spider, then recover the path root by subtracting the
+spider arms from the merged multiset. If both are paths, each rooted path consists of two positive
+arms whose lengths sum to $a-1$. The involution $r\mapsto a-1-r$ uniquely pairs the four-arm
+multiset, including the fixed-point case. $\square$
+
+If exactly one gap is at least two, (5.1) first recovers the endpoint on the long-gap side. The
+other endpoint is then recovered unless it is a path. In that remaining case, let $a(x),b(x),c(x)$
+be the arm sums at the adjacent path endpoint, middle block, and already known endpoint; let
+$u=a+b$ and let the other gap be $\beta\geq2$. The allocation-dependent part of the path sequence is
+
+\begin{equation*}
+V(a,b)=e_2(A)+e_2(B)+x(1+a)(1+b)
++x^\beta(1+b)f_C+x^{\beta+1}(1+a)f_C.
+\tag{5.4}
+\end{equation*}
+
+
+For another allocation $a',b'$ with $a+b=a'+b'=u$,
+
+\begin{equation*}
+V(a,b)-V(a',b')=(a-a')(1-x)
+\bigl[a+a'-u-x^\beta f_C\bigr].
+\tag{5.5}
+\end{equation*}
+
+
+The last factor evaluates at $x=1$ to $-|B|\neq0$. Hence $a=a'$, and injectivity of the arm-sum
+encoding fixes the rooted path.
+
+It remains to treat $\alpha=\beta=1$. Let $E(z)=\sum_sE_s z^s$ and $Q=Q_AQ_BQ_C$ in
+(3.3). Before the middle block can be crossed, formal division of (3.4) gives
+
+\begin{equation*}
+z^{-a}E(z)/Q(z)=X_A/Q_A(z)+X_C/Q_C(z)
+\pmod {z^{\min(a,b)}}.
+\tag{5.6}
+\end{equation*}
+
+
+In the coefficient of $z^k$, the only term that can contribute the power-sum monomial $p_ap_k$
+uses the unique one-component term of $X_A$ or $X_C$ and the unique one-component term of the
+inverse pruning series. Therefore
+
+\begin{equation*}
+[p_ap_k][z^k]\bigl(z^{-a}E/Q\bigr)
+=(-1)^{a+k-1}\bigl(t_k(A)+t_k(C)\bigr).
+\tag{5.7}
+\end{equation*}
+
+
+The range $k<\min(a,b)$ is sufficient: when it ends because of $a$, all endpoint thresholds are
+already zero; when it ends because of $b$, the remaining thresholds equal the known global ones.
+Thus the merged endpoint arm multiset is recovered, and Lemma 5.1 recovers $\{A,C\}$. The middle
+block is the complement in the global twig multiset, and Lemma 4.1 recovers the gaps. Hence the
+equal-terminal-order case is complete.
+
+\section{A unique minimum endpoint with known root}
+
+
+Assume $a<c$ and that rooted $A$ is known. This is automatic when $A$ has at least three arms. It
+also holds for a path endpoint outside the adjacent boundary discussed in Section 7.
+
+If the left arrival event occurs first, (3.6) recovers $\alpha$. The second event involves $C$ and
+$D=A\mathbin{-}_\alpha B$ from (3.8). When $c\neq d$, it first gives only the smaller component,
+not the unordered pair. We record the label-separation argument because it prevents an otherwise
+invalid use of the two-branch reconstruction theorem.
+
+\Needspace{0.13\textheight}
+\subsection*{Lemma 6.1 (one-sided second-event labels)}
+
+
+Suppose two candidates have the same rooted $A$, the same gaps, global arm multiset, degree
+sequence, and path sequence. A strict second-event exchange $C\cong D'$ with $c<d$ and $d'<c'$
+is impossible.
+
+\paragraph{Proof}
+
+
+Let $U$ be the arm multiset of $A$. Since $D'$ is starlike, $B'$ has one arm, say of length $t$.
+Spider reconstruction gives
+
+\begin{equation*}
+\Lambda_C=U\mathbin{\uplus}\{t+\alpha\}.
+\tag{6.1}
+\end{equation*}
+
+
+The degree sequence forces $B$ also to have one arm, say of length $v$, and $C'$ to have
+$|U|+1$ arms. Equality of the global arm multisets reduces the strict case to
+
+\begin{equation*}
+\begin{aligned}
+\Lambda_A&=U_0\mathbin{\uplus}\{t\},
+&\Lambda_B&=\{v\},
+&\Lambda_C&=U_0\mathbin{\uplus}\{t,t+\alpha\},\\
+\Lambda_{B'}&=\{t\},
+&\Lambda_{C'}&=U_0\mathbin{\uplus}\{v,t+\alpha\},
+\end{aligned}
+\tag{6.2}
+\end{equation*}
+
+
+with $U_0\neq\varnothing$. Writing $H_0=\sum_{\ell\in U_0}h_\ell$, the path-sequence difference
+factors as
+
+\begin{equation*}
+W_T-W_{T'}=(h_v-h_t)(1-x^\beta)(x^\alpha-1)H_0.
+\tag{6.3}
+\end{equation*}
+
+
+All four factors are nonzero in the strict case, a contradiction. The reverse exchange is the same
+after interchanging the candidates. $\square$
+
+When $c\neq d$, Lemma 6.1 fixes the side of the recovered smaller component. Its order and the
+known sum $b+c$ then fix the scalar layout. If the recovered component is $D$, the two-branch
+result [8] reconstructs its unrooted type. The already rooted block $A$ locates the endpoint; an
+alternative occurrence either gives the same decomposition or reverses the whole tree. If the
+recovered component is $C$, a nonpath $C$ has its root at its unique branch vertex. A path $C$ is
+rooted by Lemma 6.3 below.
+
+The equal-order event $c=d$ needs a genuine sum-separation argument. For an arm multiset $U$, use
+$e_i(U)$ as in Section 2. Let $z=x^\alpha$, $h=h_\alpha$, and let $D$ be the two-branch tree formed
+from $A,B$. A direct classification of three-leaf subtrees gives
+
+\begin{equation*}
+J_D=e_3(A)+e_3(B)+h\bigl(e_2(A)+e_2(B)\bigr)
++z\bigl(e_2(A)e_1(B)+e_1(A)e_2(B)\bigr).
+\tag{6.4}
+\end{equation*}
+
+
+\Needspace{0.13\textheight}
+\subsection*{Lemma 6.2 (equal-order $P/Q$ exchange)}
+
+
+Fix rooted $A$ and $\alpha$. If two allocations of the arms between $B$ and $C$ have the same
+global arm multiset and the same path sequence at $c=d$, then either the allocations agree or there
+are multisets $P,Q$ with equal total length such that
+
+\begin{equation*}
+\begin{aligned}
+B&=M\mathbin{\uplus}P,&C&=S\mathbin{\uplus}Q,\\
+B'&=M\mathbin{\uplus}Q,&C'&=S\mathbin{\uplus}P,
+\end{aligned}
+\tag{6.5}
+\end{equation*}
+
+
+where, if $A$ has arms $a_1,\ldots,a_r$,
+
+\begin{equation*}
+M=\{\underbrace{\alpha,\ldots,\alpha}_{r-1\text{ copies}}\},\qquad
+S=\{\alpha+a_1,\ldots,\alpha+a_r\}.
+\end{equation*}
+
+
+Moreover equality of the three-leaf subtree data forces $P=Q$.
+
+\paragraph{Proof}
+
+
+Let $a,b,c,u$ denote the arm-sum polynomials of $A,B,C,B\uplus C$, and put
+
+\begin{equation*}
+H=x^\alpha f_A+h_{\alpha-1}.
+\end{equation*}
+
+
+After deleting terms fixed by $A,\alpha,u$, the path sequence of $D\cup C$ is
+
+\begin{equation*}
+K+b^2+(H-u)b.
+\tag{6.6}
+\end{equation*}
+
+
+Equality for $b,b'$ gives
+
+\begin{equation*}
+(b-b')(b+b'+H-u)=0.
+\tag{6.7}
+\end{equation*}
+
+
+The nontrivial factor, together with
+$h_{\alpha+\ell}=h_\alpha+x^\alpha h_\ell$, gives the arm-multiplicity identity
+
+\begin{equation*}
+b'=c-S+M,
+\tag{6.8a}
+\end{equation*}
+
+
+where the same letters denote the corresponding formal sums in the free abelian group on positive
+arm lengths. Every element of $S$ is strictly larger than $\alpha$, whereas $M$ consists only of copies
+of $\alpha$. Since $b'$ has nonnegative multiplicities, (6.8a) forces $C$ to contain every
+occurrence of $S$. Moreover
+
+\begin{equation*}
+c'=u-b'=b+S-M.
+\end{equation*}
+
+
+Since $S$ has no support at length $\alpha$ and $c'$ has nonnegative multiplicities, this identity
+forces $B$ to contain every occurrence of $M$. The nonnegative remainders are respectively $Q$ and
+$P$, which gives exactly (6.5). The equality $c=d$ then yields $\sum P=\sum Q$.
+
+For the three-leaf term, expand (6.4) and the spider term (2.6). All quadratic allocation terms
+cancel, leaving
+
+\begin{equation*}
+(J_D+J_C)-(J_{D'}+J_{C'})
+=x^\alpha(1-x^\alpha)e_2(A)\bigl(e_1(P)-e_1(Q)\bigr).
+\tag{6.8}
+\end{equation*}
+
+
+The first three factors are nonzero. Equality therefore gives $e_1(P)=e_1(Q)$, and injectivity of
+the arm-sum encoding gives $P=Q$. $\square$
+
+The remaining possibility is that the right endpoint event $c$ occurs before the left chain reaches
+the middle root, so $a<c<a+\alpha$. The derivative first gives $X_C$. If $C$ is a path, write
+$\delta=c-a$ and subtract the known pruning term at the next order. The remainder is
+
+\begin{equation*}
+R=eX_{C^1}-fX_{A^{\delta+1}},
+\qquad
+e=\mathbf1_{\beta\geq2},\quad f=\mathbf1_{\alpha=\delta+1}.
+\tag{6.9}
+\end{equation*}
+
+
+Principal specialization distinguishes the boundary states except possibly when
+$X_{C^1}=X_{A^{\delta+1}}$. If $A$ is not a path, the two spiders have different degree sequences.
+If $A$ is a path, this is the special collision treated in Section 7. Once the layout is fixed, the
+following factorization roots $C$.
+
+\Needspace{0.13\textheight}
+\subsection*{Lemma 6.3 (fixed-layout path rooting)}
+
+
+Suppose $A$ and the scalar layout are known, $C$ is an unrooted path, and $c<d$. Then the path
+sequence determines the root position of $C$.
+
+\paragraph{Proof}
+
+
+Let $a(x),b(x),c(x)$ be the arm sums and set $u=b+c$, $z=x^\alpha$, $w=x^\beta$,
+$h=h_\alpha$, $g=h_\beta$. After fixed terms are removed, the path-sequence remainder is
+
+\begin{equation*}
+\begin{aligned}
+W={}&a(h+zg)+b(h+g)+c(g+wh)\\
+&+(z-1)ab+(zw-1)ac+(w-1)bc.
+\end{aligned}
+\tag{6.10}
+\end{equation*}
+
+
+For a second allocation $b'=u-c'$, subtraction gives
+
+\begin{equation*}
+W-W'=(c-c')(w-1)(za+h+u-c-c').
+\tag{6.11}
+\end{equation*}
+
+
+At $x=1$ the last factor is $d-c>0$. Thus equality forces $c=c'$, and the arm-sum injection fixes
+the rooted path. $\square$
+
+Lemmas 6.1--6.3, followed by Lemma 4.1, complete every uniquely minimal endpoint case for which the
+root of $A$ is known.
+
+\section{Rooting a uniquely minimal path endpoint}
+
+
+Assume $a<c$ and $A$ is a two-arm path. If $\alpha\geq2$ and $c\geq a+2$, the coefficient of
+order $a+1$ occurs before either event. If $\tau$ is the total number of twigs, then
+
+\begin{equation*}
+E_{a+1}=X_{A^1}+(\tau-2)p_1X_A.
+\tag{7.1}
+\end{equation*}
+
+
+The unrooted $X_A$ and $\tau$ are known, so $X_{A^1}$ is extracted. The three-arm spider $A^1$ is
+reconstructed, and deleting one added arm of length one roots $A$. The coefficient lies safely in
+(3.4) because
+
+\begin{equation*}
+n-(a+1)=b+c+\alpha+\beta-3
+\end{equation*}
+
+
+exceeds every twig length. Only the adjacent boundary
+
+\begin{equation*}
+\alpha=1\quad\text{or}\quad c=a+1
+\tag{7.2}
+\end{equation*}
+
+
+remains.
+
+\Needspace{0.13\textheight}
+\subsection*{7.1 Fixed scalar layout}
+
+
+Fix $(a,b,c,\alpha,\beta)$. In (6.10), let the numbers of arms at the three centers be $2,q,m$.
+For another allocation with the same global arm multiset, let $k\geq2$ be the first length threshold
+at which the arm counts differ, and let the differences be $\rho,\sigma,\tau$. The global sequence,
+the coefficient of $x^{k+1}$ in (6.10), and the coefficient of $x^{k+2}$ in the three-leaf
+polynomial give
+
+\begin{equation*}
+\rho+\sigma+\tau=0,
+\tag{7.3}
+\end{equation*}
+
+
+\begin{equation*}
+-(m-2)\rho+(q-m+1)\sigma=0,
+\tag{7.4}
+\end{equation*}
+
+
+\begin{equation*}
+\left(1-\binom m2\right)\rho+
+\left(\binom{q+1}2-\binom m2\right)\sigma=0.
+\tag{7.5}
+\end{equation*}
+
+
+The determinant of (7.4)--(7.5) is
+
+\begin{equation*}
+-\frac{(m-2)(q-1)(q-m+1)}2.
+\tag{7.6}
+\end{equation*}
+
+
+When it is nonzero, a first difference is impossible. In the three singular cases, the equations
+recover the merged multiset of each equal-degree class. If $q=1$, the unique middle arm is fixed by
+$b$; if $m=2$, the two endpoint paths have different total arm lengths $a-1<c-1$, which fixes the
+pairing of their four arms; if $q=m-1$, the left endpoint lies in its own degree class. Hence rooted
+$A$ is recovered.
+
+The degree sequence also permits an apparent middle/right degree swap
+
+\begin{equation*}
+q'=m-1,\qquad m'=q+1.
+\tag{7.7}
+\end{equation*}
+
+
+When $\alpha=1$, compare the coefficients $[x^3]W$, $[x^4]J$, and
+$K_5=[x^5y^4]S_T$. If $A_2,A'_2$ count endpoint arms of length at least two, the last two
+differences are
+
+\begin{equation*}
+\Delta J_4=
+\frac{(A_2-A'_2)(q-1)(m-2)}2-(m-q-1),
+\tag{7.8}
+\end{equation*}
+
+
+\begin{equation*}
+\Delta K_5=
+\frac{(A_2-A'_2)(m-2)(m+q)(q-1)}6
++\frac{(m+q)(q-m+1)}2.
+\tag{7.9}
+\end{equation*}
+
+
+Here a five-edge, four-leaf subtree is either a subdivided four-star or a double three-star, so
+
+\begin{equation*}
+K_5=\sum_r\binom{\deg(r)-1}{3}|N_2(r)|
++\sum_{rs}\binom{\deg(r)-1}{2}\binom{\deg(s)-1}{2},
+\tag{7.10}
+\end{equation*}
+
+
+where $N_2(r)$ is the set of vertices at distance two from $r$, and the second sum is over adjacent
+branch vertices. If (7.8)--(7.9) vanish, elimination gives
+$m=q+1$, so (7.7) is not an actual swap. When $c=a+1$ and $\alpha\geq2$, the derivative instead
+extracts $X_{A^1}+X_C$; its degree sequence compares $\{3,m\}$ with $\{3,q+1\}$ and again forces
+$m=q+1$. Thus a fixed scalar layout uniquely roots $A$.
+
+\Needspace{0.13\textheight}
+\subsection*{7.2 Classifying changes of scalar layout}
+
+
+Delete one edge of $T$. By (2.1), the coefficient of $p_{n-s}p_s$ counts edges whose deletion has
+component orders $\{s,n-s\}$. Subtracting the known twig-edge contributions leaves the trunk-cut
+profile. In an oriented expansion it is the sum of four interval indicators
+
+\begin{equation*}
+\begin{aligned}
+I_A&=[a,a+\alpha-1],&
+I_C&=[c,c+\beta-1],\\
+I_D&=[a+b+\alpha-1,a+b+\alpha+\beta-2],&
+I_E&=[b+c+\beta-1,b+c+\alpha+\beta-2].
+\end{aligned}
+\tag{7.11}
+\end{equation*}
+
+
+Fix $n,a,L=\alpha+\beta$ and impose (7.2). Put $N=n+1$ and
+$\phi(t)=x^t-x^{N-t}$. If $P(x)$ is the profile polynomial, then
+
+\begin{equation*}
+(1-x)P(x)=
+\phi(a)-\phi(a+\alpha)+\phi(c)-\phi(c+\beta).
+\tag{7.12}
+\end{equation*}
+
+
+This signed endpoint identity handles coincident endpoints and the half-order cut without separate
+cases. If both candidates satisfy $c=a+1$, the variable part factors as
+
+\begin{equation*}
+(1-x^{b-1})(x^{a+\alpha}+x^{a+L+1-\alpha}),
+\tag{7.13}
+\end{equation*}
+
+
+so equality permits only the original layout or the \textbf{gap exchange}
+
+\begin{equation*}
+(\alpha',\beta')=(\beta+1,\alpha-1).
+\tag{7.14}
+\end{equation*}
+
+
+If both have $\alpha=1$, the variable part is
+
+\begin{equation*}
+(1-x^\beta)(x^c+x^{N-\beta-c}),
+\tag{7.15}
+\end{equation*}
+
+
+so equality permits only the original layout or the \textbf{$C/D$ exchange}
+
+\begin{equation*}
+(b',c')=(c-a,a+b),\qquad\beta'=\beta.
+\tag{7.16}
+\end{equation*}
+
+
+If the two candidates lie in different pure branches of (7.2), the coefficient of $x^{a+1}$ in
+(7.12) has opposite signs. Thus (7.14)--(7.16) exhaust all cross-layout collisions.
+
+\Needspace{0.13\textheight}
+\subsection*{7.3 Closing the two exchanges}
+
+
+For the $C/D$ exchange, the first-threshold equations (7.3)--(7.6) remain valid. If $q=1$ and
+$m>2$, equations (7.4)--(7.5) force $\tau=0$. Hence $C=C'$ threshold by threshold, while the
+three-arm multiset $A\mathbin{\uplus}B=A'\mathbin{\uplus}B'$ is fixed. Since $B,B'$ each consist
+of one arm and $A,A'$ are two-arm paths of the same total length, two equal-sum two-submultisets of
+the same three-element multiset cannot differ: if they share an occurrence, their other occurrences
+agree, and disjointness is impossible. Thus $A=A'$.
+
+If $m=2$ and $q>1$, equation (7.4) forces $\sigma=0$, so $B=B'$ and
+$A\mathbin{\uplus}C=A'\mathbin{\uplus}C'$. Two different equal-sum pairs in the same four-element
+multiset must be complements. That would make the arm sums of $A$ and $C$ equal, contradicting
+$a<c$. Hence again $A=A'$. If $q=m-1>1$, equation (7.4) directly gives $\rho=0$, so threshold
+induction gives $A=A'$. In their common intersection $q=1,m=2$, any nontrivial arm allocation has
+the form
+
+\begin{equation*}
+\begin{aligned}
+A&=\{p,t-p\},&B&=\{v\},&C&=\{t-v,\ell\},\\
+A'&=\{v,t-v\},&B'&=\{p\},&C'&=\{t-p,\ell\},
+\end{aligned}
+\qquad \ell=p+v+1.
+\tag{7.17}
+\end{equation*}
+
+
+With $P=x^p,V=x^v,T=x^t,w=x^\beta$, the path difference is
+
+\begin{equation*}
+W-W'=\frac{x^2(P-V)}{PV(x-1)^2}N,
+\tag{7.18}
+\end{equation*}
+
+
+\begin{equation*}
+N=(PV-T)w(1-x)(1-PVx)+T(1-P)(1-V)x(1-w).
+\tag{7.19}
+\end{equation*}
+
+
+If $p\neq v$, the polynomial $N$ is nonzero: for $0<x<1$ its two terms are positive when
+$t\geq p+v$; when $t<p+v$ its lowest term is positive, with $\beta=1$ handled after removing
+$x(1-x)$. A degree-position swap is eliminated by the same pair (7.8)--(7.9). Once $A$ is fixed,
+Lemma 6.1 rules out the remaining one-sided event-label exchange. Hence (7.16) is trivial.
+
+For the gap exchange, put $r=\alpha-1<s=\beta$. At order $a+1=c$, (3.4) extracts
+
+\begin{equation*}
+X_{A^1}+X_C+(\tau-2)p_1X_A.
+\tag{7.20}
+\end{equation*}
+
+
+The last term is known. For a $d$-arm spider, the highest-leaf subtree term is
+
+\begin{equation*}
+[y^d]S_T(x,y)=\prod_{\ell\in\Lambda}h_\ell(x),
+\tag{7.21}
+\end{equation*}
+
+
+which recovers the arm multiset by cyclotomic divisibility and downward inversion. Except when the
+right block has three arms, (7.20)--(7.21) already separate $A^1$ and $C$. Write
+$\mathsf a,\mathsf b,\mathsf c$ for the arm-sum polynomials of $A,B,C$. The path difference then
+factors as
+
+\begin{equation*}
+\Delta W=\mathsf b(x^r-x^s)\bigl(x(\mathsf a+1)-\mathsf c\bigr),
+\tag{7.22}
+\end{equation*}
+
+
+whose last factor has $x$-coefficient $1-m\neq0$.
+
+It remains to record why the three-arm degeneracies cannot cancel (7.22). Let $k$ be the first
+threshold at which the assignments differ, with differences $\rho,\sigma,\tau$. Before the shorter
+gap exponent $r$ is reached, the path and three-leaf equations are (7.4)--(7.5). If the assignments
+remain equal until the scalar exchange appears, the first path contribution is $q(1-m)$. At the
+border $k=r+1$, the next three-leaf contribution is
+
+\begin{equation*}
+-q\binom m2-\binom{q+1}2(m-1).
+\tag{7.23}
+\end{equation*}
+
+
+For $m=3,q\geq3$, simultaneous cancellation would give
+$\rho=2q/(q-1)>2$, impossible for a two-arm $A$. If $q=1$, the single middle arm is fixed and the
+two components in (7.20) are either fixed or exchanged. In the exchanged case, write $U,V$ for
+the arm-sum polynomials of the two candidate left path blocks. The exact path difference is
+
+\begin{equation*}
+(x-1)\mathsf b(x^rU-x^sV)+x(U-V)(x^{r+s+1}-1),
+\tag{7.24}
+\end{equation*}
+
+
+whose first possible coefficient has absolute contribution two against at most one from the second
+term. If $q=2$, let $D(x)$ be the difference between the arm-count polynomials of the two event
+forests and put $N_0=a$. Expanding the three factors in (7.21) gives the reciprocity
+
+\begin{equation*}
+D(x)=x^{N_0}D(x^{-1}).
+\end{equation*}
+
+
+The global arm multiset says that the same $D$ is the negative of the difference between the two
+middle two-arm blocks, hence also
+
+\begin{equation*}
+D(x)=x^{b-1}D(x^{-1}).
+\end{equation*}
+
+
+If $b-1\neq N_0$, the two identities force $D=0$ by comparing the least and greatest nonzero
+degrees, reducing to the already separated fixed-component or exchanged-component cases. Thus the
+only remaining possibility is
+
+\begin{equation*}
+m=3,\qquad b=c=a+1.
+\tag{7.25}
+\end{equation*}
+
+
+Here the same seven arms are partitioned into a two-set of sum $a-1$, a two-set of sum $a$, and a
+three-set of sum $a$. At the first changed threshold the two-set of sum $a-1$ must change; otherwise
+complementary arm transfer forces an earlier change. Thus $\rho\neq0$. If $k\leq r$, the path
+coefficient is $-\rho$; if $k\geq r+2$, the scalar term is $-4$; if $k=r+1$, their sum is
+$-\rho-4$, nonzero since $|\rho|\leq2$. This closes (7.25).
+
+Finally consider the apparent collision in (6.9) when both $A$ and $C$ are paths. Spider
+reconstruction forces
+
+\begin{equation*}
+A=\{1,\eta\},\qquad C=\{\eta,\delta+1\},
+\tag{7.26}
+\end{equation*}
+
+
+and the competing layouts are
+
+\begin{equation*}
+(\alpha,\beta)=(\delta+1,s),\qquad
+(\alpha',\beta')=(s+\delta,1).
+\tag{7.27}
+\end{equation*}
+
+
+Let the first candidate have $q$ middle arms; let the second candidate have $q'$ middle arms and
+$m'$ right arms. Equality of the global arm count gives
+
+\begin{equation*}
+q+2=q'+m'.
+\end{equation*}
+
+
+Let $c_2,c'_2$ be the numbers of arms of length at least two in $C,C'$, and let $u_2$ be the
+number of such arms in $B\mathbin{\uplus}C$. The coefficient of $x^2$ in the path difference is
+
+\begin{equation*}
+(2-m')(m'-q-1).
+\tag{7.28}
+\end{equation*}
+
+
+When this vanishes, either $m'=2$ or $m'=q+1$. In the first case $q'=q$, and the coefficient of
+$x^3$ is
+
+\begin{equation*}
+(q-1)(c'_2-c_2)-q.
+\tag{7.29}
+\end{equation*}
+
+
+Both $C$ and $C'$ are two-arm paths of order at least five, so $c_2,c'_2\in\{1,2\}$. If
+$c'_2-c_2\leq0$, (7.29) is negative; if the difference is one, it equals $-1$. Thus it is never
+zero.
+
+In the second case $q'=1$, and the coefficient of $x^3$ is
+
+\begin{equation*}
+(q-1)(u_2-c_2-c'_2)-1.
+\tag{7.30}
+\end{equation*}
+
+
+The case $q=1$ already belongs to $m'=2$. If $q\geq3$, (7.30) is congruent to $-1$ modulo
+$q-1$ and cannot vanish. It remains only to check $q=2$. Write the first candidate's middle arms as
+$B=\{u,v\}$. The second candidate has the single middle arm $u+v$. Equality of the global arm
+multisets says that this length occurs in
+
+\begin{equation*}
+\{u,v,\eta,\delta+1\}.
+\end{equation*}
+
+
+It is larger than $u$ and $v$, so it equals $\eta$ or $\delta+1$. If $u+v=\eta$, then
+$C'=\{u,v,\delta+1\}$; if $u+v=\delta+1$, then $C'=\{u,v,\eta\}$. In either case
+$u_2-c_2-c'_2\leq0$, so (7.30) is at most $-1$. Hence the right-first cross-layout collision is
+also impossible.
+
+Sections 7.1--7.3 prove that a uniquely smallest path endpoint is rooted and that its scalar layout
+is unique. Lemmas 6.1--6.3 recover the remaining blocks, and Lemma 4.1 recovers the gaps.
+
+\section{Proof of the main theorem}
+
+
+Let $F$ be a finite simple graph with $X_F=X_T$. The two graphs have the same vertex count, edge
+count, and girth. Since $T$ is a tree, $F$ is acyclic and has $|V(F)|-1$ edges; hence $F$ is
+connected and is itself a tree. Their degree sequences agree, so $F$ also has exactly three branch
+vertices. Their trunk orders and global twig multisets agree by [3].
+
+Apply Lemma 3.1 to both trees. It recovers the minimum endpoint order and the sum of the endpoint
+chromatic symmetric functions attaining it.
+
+If the endpoint orders are equal, Section 5 recovers the unordered rooted pair of endpoint blocks
+for every pair of gaps, including rooted-path cases and $\alpha=\beta=1$. The middle block is the
+complement in the global twig multiset, and Lemma 4.1 recovers the two gaps up to global reversal.
+
+If the minimum endpoint is unique, orient the display so that it is $A$. When $A$ has at least three
+arms, its root is the unique branch vertex and Section 6 reconstructs $B,C,\alpha,\beta$. When $A$
+is a path, equation (7.1) handles the nonadjacent range, while Section 7 handles exactly the
+remaining boundary $\alpha=1$ or $c=a+1$ and the possible right-first collision. In every case the
+three rooted blocks and both gaps are recovered, with global reversal as the only ambiguity.
+
+Thus $F$ and $T$ have identical rooted block data and trunk placement, so $F\cong T$. $\square$
+
+\section{Exact controls and proof boundary}
+
+
+The proof is structural and applies to arbitrary positive arm and trunk lengths. Seventeen exact
+Python controls accompany the proof-development record. They independently expand (2.1), verify
+the derivative and event identities, enumerate small scalar layouts, check the threshold formulas,
+and include destructive tests for two invalid shortcuts: extending a two-spider lemma verbatim to a
+path--spider pair, and treating the first recovered second-event component as if the complete
+unordered component pair were already known.
+
+The final regression run passed all seventeen controls. The largest classification guard examined
+$1,215,450$ scalar descriptions, and the one-sided label-swap guard checked $16,320$ factor cases.
+These computations test formulas and boundary coverage only. The conclusion of Theorem 1.1 rests on
+the general arguments in Sections 3--8, not on finite enumeration.
+
+The theorem closes the natural layer of exactly three branch vertices. It does not cover arbitrary
+trees or trees with four branch vertices. With four branch vertices the branch core need not be a
+path, and the three-block allocation and two-gap exchange classification used here no longer
+exhaust the possibilities.
+
+\section{Relation to prior work}
+
+
+The closest direct predecessor is Wang, Yu and Zhang [8], who proved the exact-two-branch layer and
+suggested that their path-trunk method might extend to three. The present proof uses their weighted
+deletion--contraction and two-spider reconstruction results, but the full three-branch layer requires
+new endpoint-event, path-rooting, threshold-moment, and exchange-separation arguments.
+
+Other known families overlap the theorem without covering it. Caterpillars [4], 2-spiders [5],
+proper $q$-caterpillars [6], and diameter-at-most-five trees [7] each include some trees with three
+branch vertices. The multiplicity-isolated proper-tree criteria of Zeng and Awan [10,11] cover
+further subfamilies under weight-separation hypotheses. Theorem 1.1 imposes none of those subclass
+conditions, but conversely does not contain all trees treated by those works. Aliste-Prieto, Martin,
+Wagner and Zamora [9] provide the generalized-degree and subtree-polynomial framework used to
+identify which weaker polynomial data can safely be extracted from $X_T$. Loehr and Warrington's
+rooted chromatic symmetric function distinguishes rooted trees [12], but it is an additional rooted
+invariant; the rooting steps in Sections 5--7 are instead extracted from the ordinary $X_T$.
+
+\section*{References}
+\begin{enumerate}
+\footnotesize
+
+\item R. P. Stanley, ``A symmetric function generalization of the chromatic polynomial of a graph,'' \emph{Advances in Mathematics} \textbf{111} (1995), 166--194. \url{https://doi.org/10.1006/aima.1995.1020}
+\item J. L. Martin, M. Morin, and J. D. Wagner, ``On distinguishing trees by their chromatic symmetric functions,'' \emph{Journal of Combinatorial Theory, Series A} \textbf{115} (2008), 237--253. \url{https://doi.org/10.1016/j.jcta.2007.05.008}
+\item L. Crew, ``A note on distinguishing trees with the chromatic symmetric function,'' \emph{Discrete Mathematics} \textbf{345} (2022), 112682. \url{https://doi.org/10.1016/j.disc.2021.112682}
+\item M. Loebl and J.-S. Sereni, ``Isomorphism of weighted trees and Stanley's isomorphism conjecture for caterpillars,'' \emph{Annales de l'Institut Henri Poincaré D} \textbf{6} (2019), 357--384. \url{https://doi.org/10.4171/aihpd/74}
+\item J. Huryn and S. Chmutov, ``A few more trees the chromatic symmetric function can distinguish,'' \emph{Involve} \textbf{13} (2020), 109--116. \url{https://doi.org/10.2140/involve.2020.13.109}
+\item A. Ganesan, N. Narayanan, B. V. R. Rao, and S. S. Sawant, ``Proper $q$-caterpillars are distinguished by their chromatic symmetric functions,'' \emph{Discrete Mathematics} \textbf{347} (2024), 114162. \url{https://doi.org/10.1016/j.disc.2024.114162}
+\item M. Gonzalez, R. Orellana, and M. Tomba, ``The chromatic symmetric function in the star-basis,'' \emph{Discrete Mathematics} \textbf{349} (2026), 114691. \url{https://doi.org/10.1016/j.disc.2025.114691}
+\item Y. Wang, X. Yu, and X.-D. Zhang, ``A class of trees determined by their chromatic symmetric functions,'' \emph{Discrete Mathematics} \textbf{347} (2024), 114096. \url{https://doi.org/10.1016/j.disc.2024.114096}
+\item J. Aliste-Prieto, J. L. Martin, J. D. Wagner, and J. Zamora, ``Chromatic symmetric functions and polynomial invariants of trees,'' \emph{Bulletin of the London Mathematical Society} \textbf{56} (2024), 3452--3476. \url{https://doi.org/10.1112/blms.13144}
+\item Z. Zeng, ``Multiplicity-isolated cores and chromatic symmetric reconstruction of trees,'' arXiv preprint, 2026. \url{https://arxiv.org/abs/2608.18179}
+\item S. A. Awan, ``First-derivative chromatic symmetric reconstruction for proper trees,'' arXiv preprint, 2026. \url{https://arxiv.org/abs/2609.13464}
+\item N. A. Loehr and G. S. Warrington, ``A rooted variant of Stanley's chromatic symmetric function,'' \emph{Discrete Mathematics} \textbf{347} (2024), 113805. \url{https://doi.org/10.1016/j.disc.2023.113805}
+
+\end{enumerate}
+
+\section*{AI-assisted research and writing disclosure}
+
+
+Carptopus is the author and is responsible for the mathematical claims, source selection, and
+public release. OpenAI Codex was used as an AI-assisted tool for symbolic exploration, exact
+verification, adversarial proof review, manuscript drafting, and editing.
+
+\section*{License}
+
+
+This manuscript is licensed under the \href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International License (CC BY 4.0)}.
+
+\end{document}
