@@ -2,7 +2,7 @@
 
 Carptopus · carptopus@163.com · v0.1-beta
 
-Version DOI: pending · All versions: pending
+Version DOI: [10.5281/zenodo.22813491](https://doi.org/10.5281/zenodo.22813491) · [All versions](https://doi.org/10.5281/zenodo.22813490)
 
 [Manuscript PDF](three-branch-tree-csf.pdf) · [LaTeX](three-branch-tree-csf.tex) · [BibTeX](CITATION.bib) · [Verification](verification/README.md)
 
