@@ -2,7 +2,7 @@
 
 Carptopus · carptopus@163.com · v0.2-beta
 
-[All versions](https://doi.org/10.5281/zenodo.22542288) · Version DOI pending publication
+Version DOI: [10.5281/zenodo.23058037](https://doi.org/10.5281/zenodo.23058037) · [All versions](https://doi.org/10.5281/zenodo.22542288)
 
 [Manuscript PDF](central-graphical-zonotopal-classification.pdf) · [LaTeX](central-graphical-zonotopal-classification.tex) · [BibTeX](CITATION.bib) · [Verification](verification/README.md)
 
