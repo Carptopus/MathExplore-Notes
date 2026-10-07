@@ -2,6 +2,8 @@
 
 Author: Carptopus · Version 0.1-beta · 8 October 2026
 
+Published preprint: [Version DOI](https://doi.org/10.5281/zenodo.23219123). The Zenodo archive preserves the first fixed public package; this repository additionally backfills its DOI in the README and BibTeX without changing the accepted manuscript, TeX or PDF.
+
 This is one unified manuscript, combining the complete-profile starting examples with arbitrary-matroid structure, laminar optimization, paving boundaries, and graphic/simple-binary sharpness. It is not a proof of a general hypergraph domination conjecture.
 
 - [Manuscript](manuscript.md)
