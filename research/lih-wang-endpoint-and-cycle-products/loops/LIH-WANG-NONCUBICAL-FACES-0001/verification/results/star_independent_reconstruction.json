@@ -1,0 +1,19 @@
+{
+  "continuous_certificates": 10,
+  "exact_coefficients": 255,
+  "original_matrix_reconstruction": "PASS",
+  "corruption_controls": 10,
+  "thresholds": [
+    {
+      "n": 7,
+      "threshold": "30475/537824",
+      "q": "3125/46656"
+    },
+    {
+      "n": 8,
+      "threshold": "516083/16777216",
+      "q": "46656/823543"
+    }
+  ],
+  "scope": "N_LE_6_CONTINUOUS_CERTIFICATES_AND_N7_N8_THRESHOLD_ONLY"
+}

@@ -1,0 +1,5 @@
+/tmp/
+/loops/LIH-WANG-NONCUBICAL-FACES-0001/verification/results/reproduced-*.json
+*.aux
+*.log
+*.out

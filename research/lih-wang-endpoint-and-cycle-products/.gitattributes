@@ -1,0 +1,6 @@
+# Preserve frozen source, verifier and certificate byte hashes.
+manuscript.md -text
+supplement.md -text
+loops/** -text
+paper/** -text
+LICENSE-CODE-MIT.txt -text

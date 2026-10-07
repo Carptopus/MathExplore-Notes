@@ -1,0 +1,1464 @@
+{
+  "scope": "COMPLETE_N3_TO_7_NONSTAR_STRUCTURES_WITH_EQUAL_SHORT_GROUPS",
+  "status": "COMPUTATIONAL_CERTIFICATES_ONLY_REQUIRES_PROOF_AUDIT",
+  "probe_sha256": "5545637366434598fa7a78e12a23c3c36b8ff4260ff22d1c9c99f313b8057e73",
+  "cases": [
+    {
+      "case": {
+        "n": 4,
+        "lengths": [
+          2,
+          3
+        ],
+        "fixed": 0
+      },
+      "certificate": {
+        "lengths": [
+          2,
+          3
+        ],
+        "fixed": 0,
+        "n": 4,
+        "degrees": [
+          4,
+          2,
+          3
+        ],
+        "coefficients": 60,
+        "minimum": "-11/96",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 25,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 13,
+        "leaf_packet_sha256": "cfede5afb6ea1575dfe61fa08f67bb1f9d592907ad0d952734edaedf275e9d97",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "NO_GROUP_RESTRICTION",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 0.808,
+        "tree_private_peak": 50769920,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 5,
+        "lengths": [
+          2,
+          3
+        ],
+        "fixed": 1
+      },
+      "certificate": {
+        "lengths": [
+          2,
+          3
+        ],
+        "fixed": 1,
+        "n": 5,
+        "degrees": [
+          4,
+          2,
+          4
+        ],
+        "coefficients": 75,
+        "minimum": "-63/1000",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 13,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 7,
+        "leaf_packet_sha256": "fcd419b6478365f9284480d475dd02d0cc4b04f79006b3e72a70c9aff79c6d73",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "NO_GROUP_RESTRICTION",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 0.81,
+        "tree_private_peak": 50819072,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 5,
+        "lengths": [
+          2,
+          2,
+          3
+        ],
+        "fixed": 0
+      },
+      "certificate": {
+        "lengths": [
+          2,
+          2,
+          3
+        ],
+        "fixed": 0,
+        "n": 5,
+        "degrees": [
+          5,
+          3,
+          4
+        ],
+        "coefficients": 120,
+        "minimum": "-3859/80000",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 3,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 2,
+        "leaf_packet_sha256": "a69d4066aa842bb9824d464d8b461860985f81e5c3ae2ff68c9aae98a877aef5",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "REQUIRES_SYMMETRY_PROOF",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 0.862,
+        "tree_private_peak": 51056640,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 5,
+        "lengths": [
+          2,
+          4
+        ],
+        "fixed": 0
+      },
+      "certificate": {
+        "lengths": [
+          2,
+          4
+        ],
+        "fixed": 0,
+        "n": 5,
+        "degrees": [
+          5,
+          2,
+          4
+        ],
+        "coefficients": 90,
+        "minimum": "-63/1000",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 17,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 9,
+        "leaf_packet_sha256": "7065798e465156724e8f094c179126c6af0f2eb2fcdbffe268a7aa3de52d9959",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "NO_GROUP_RESTRICTION",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 0.861,
+        "tree_private_peak": 50872320,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 5,
+        "lengths": [
+          3,
+          3
+        ],
+        "fixed": 0
+      },
+      "certificate": {
+        "lengths": [
+          3,
+          3
+        ],
+        "fixed": 0,
+        "n": 5,
+        "degrees": [
+          4,
+          2,
+          4
+        ],
+        "coefficients": 75,
+        "minimum": "-2039/3750",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 41,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 21,
+        "leaf_packet_sha256": "76dc546dbe4b8b8acb07fa30e0be09128d4a7c0e829b66b5403f2dcff0e54369",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "NO_GROUP_RESTRICTION",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 0.808,
+        "tree_private_peak": 50573312,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 6,
+        "lengths": [
+          2,
+          3
+        ],
+        "fixed": 2
+      },
+      "certificate": {
+        "lengths": [
+          2,
+          3
+        ],
+        "fixed": 2,
+        "n": 6,
+        "degrees": [
+          4,
+          2,
+          5
+        ],
+        "coefficients": 90,
+        "minimum": "-373/10368",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 27,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 14,
+        "leaf_packet_sha256": "9764fec8546cf388f7c0a658ef4ff23ee39e9636b7c97d252903e5448670c43e",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "NO_GROUP_RESTRICTION",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 0.862,
+        "tree_private_peak": 51081216,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 6,
+        "lengths": [
+          2,
+          2,
+          3
+        ],
+        "fixed": 1
+      },
+      "certificate": {
+        "lengths": [
+          2,
+          2,
+          3
+        ],
+        "fixed": 1,
+        "n": 6,
+        "degrees": [
+          5,
+          3,
+          5
+        ],
+        "coefficients": 144,
+        "minimum": "-569/20736",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 3,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 2,
+        "leaf_packet_sha256": "c581978979f8761d189e0573ca337ff6d1c2952b8f96667a38d1efeb22fd3335",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "REQUIRES_SYMMETRY_PROOF",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 0.912,
+        "tree_private_peak": 50880512,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 6,
+        "lengths": [
+          2,
+          4
+        ],
+        "fixed": 1
+      },
+      "certificate": {
+        "lengths": [
+          2,
+          4
+        ],
+        "fixed": 1,
+        "n": 6,
+        "degrees": [
+          5,
+          2,
+          5
+        ],
+        "coefficients": 108,
+        "minimum": "-373/10368",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 21,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 11,
+        "leaf_packet_sha256": "404477df50f01e2e5440a3809537e0099a6276af9d1903d385cc31cfa4dd077f",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "NO_GROUP_RESTRICTION",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 0.911,
+        "tree_private_peak": 51089408,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 6,
+        "lengths": [
+          3,
+          3
+        ],
+        "fixed": 1
+      },
+      "certificate": {
+        "lengths": [
+          3,
+          3
+        ],
+        "fixed": 1,
+        "n": 6,
+        "degrees": [
+          4,
+          2,
+          5
+        ],
+        "coefficients": 90,
+        "minimum": "-13507/25920",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 35,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 18,
+        "leaf_packet_sha256": "5c42d1e12c8577b6dadc2513bc0587e96d3de09791a9581f79586ddb2295de31",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "NO_GROUP_RESTRICTION",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 0.861,
+        "tree_private_peak": 51068928,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 6,
+        "lengths": [
+          2,
+          2,
+          2,
+          3
+        ],
+        "fixed": 0
+      },
+      "certificate": {
+        "lengths": [
+          2,
+          2,
+          2,
+          3
+        ],
+        "fixed": 0,
+        "n": 6,
+        "degrees": [
+          6,
+          4,
+          5
+        ],
+        "coefficients": 210,
+        "minimum": "-2153/155520",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 3,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 2,
+        "leaf_packet_sha256": "533a05d0f5df13109c2ec8b8383cae7a9bc63a01db8cbddc33963ba4f657d0ef",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "REQUIRES_SYMMETRY_PROOF",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 0.962,
+        "tree_private_peak": 50913280,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 6,
+        "lengths": [
+          2,
+          2,
+          4
+        ],
+        "fixed": 0
+      },
+      "certificate": {
+        "lengths": [
+          2,
+          2,
+          4
+        ],
+        "fixed": 0,
+        "n": 6,
+        "degrees": [
+          6,
+          3,
+          5
+        ],
+        "coefficients": 168,
+        "minimum": "-325/10368",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 3,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 2,
+        "leaf_packet_sha256": "3f3c2fb87e1e0d82f21406539194ad0a8887b8a60ce5f52860710fa1dc320b63",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "REQUIRES_SYMMETRY_PROOF",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 0.962,
+        "tree_private_peak": 50872320,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 6,
+        "lengths": [
+          2,
+          3,
+          3
+        ],
+        "fixed": 0
+      },
+      "certificate": {
+        "lengths": [
+          2,
+          3,
+          3
+        ],
+        "fixed": 0,
+        "n": 6,
+        "degrees": [
+          6,
+          4,
+          2,
+          5
+        ],
+        "coefficients": 630,
+        "minimum": "-373/10368",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 35,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 3,
+        "certified_leaf_count": 18,
+        "leaf_packet_sha256": "392f8f3b2775f1fc339d2df371c4502bc3220eb60acecefe213f9409f4694c59",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "NO_GROUP_RESTRICTION",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 1.823,
+        "tree_private_peak": 53501952,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 6,
+        "lengths": [
+          2,
+          5
+        ],
+        "fixed": 0
+      },
+      "certificate": {
+        "lengths": [
+          2,
+          5
+        ],
+        "fixed": 0,
+        "n": 6,
+        "degrees": [
+          6,
+          2,
+          5
+        ],
+        "coefficients": 126,
+        "minimum": "-373/10368",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 27,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 14,
+        "leaf_packet_sha256": "4e0c7c0e0cc0a094d15d6c537a86859d8827e6175042aa73c9986b22f12ceba6",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "NO_GROUP_RESTRICTION",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 0.913,
+        "tree_private_peak": 51298304,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 6,
+        "lengths": [
+          3,
+          4
+        ],
+        "fixed": 0
+      },
+      "certificate": {
+        "lengths": [
+          3,
+          4
+        ],
+        "fixed": 0,
+        "n": 6,
+        "degrees": [
+          6,
+          4,
+          5
+        ],
+        "coefficients": 210,
+        "minimum": "-373/10368",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 13,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 7,
+        "leaf_packet_sha256": "9f8c543d8d5dbc144906ae3282420c342284eb784af8a77af53cbf61e430e524",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "NO_GROUP_RESTRICTION",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 0.964,
+        "tree_private_peak": 52080640,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 7,
+        "lengths": [
+          2,
+          3
+        ],
+        "fixed": 3
+      },
+      "certificate": {
+        "lengths": [
+          2,
+          3
+        ],
+        "fixed": 3,
+        "n": 7,
+        "degrees": [
+          4,
+          2,
+          6
+        ],
+        "coefficients": 105,
+        "minimum": "-1527/76832",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 27,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 14,
+        "leaf_packet_sha256": "990bd3e726f896c34571be4276bcb3bb8a8c4b3643760b28bcdc0f29192785ad",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "NO_GROUP_RESTRICTION",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 0.913,
+        "tree_private_peak": 50954240,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 7,
+        "lengths": [
+          2,
+          2,
+          3
+        ],
+        "fixed": 2
+      },
+      "certificate": {
+        "lengths": [
+          2,
+          2,
+          3
+        ],
+        "fixed": 2,
+        "n": 7,
+        "degrees": [
+          5,
+          3,
+          6
+        ],
+        "coefficients": 168,
+        "minimum": "-8259/537824",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 7,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 4,
+        "leaf_packet_sha256": "9af1d3a38296a8ba77d7ee0c8173f495652be809ba4609d7edf64e633e55c185",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "REQUIRES_SYMMETRY_PROOF",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 1.014,
+        "tree_private_peak": 52277248,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 7,
+        "lengths": [
+          2,
+          4
+        ],
+        "fixed": 2
+      },
+      "certificate": {
+        "lengths": [
+          2,
+          4
+        ],
+        "fixed": 2,
+        "n": 7,
+        "degrees": [
+          5,
+          2,
+          6
+        ],
+        "coefficients": 126,
+        "minimum": "-1527/76832",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 27,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 14,
+        "leaf_packet_sha256": "895f4e3938f6a848c8fb3e04fb9aaa10fa6665af6ae01201d22a9922d1498154",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "NO_GROUP_RESTRICTION",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 0.964,
+        "tree_private_peak": 52043776,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 7,
+        "lengths": [
+          3,
+          3
+        ],
+        "fixed": 2
+      },
+      "certificate": {
+        "lengths": [
+          3,
+          3
+        ],
+        "fixed": 2,
+        "n": 7,
+        "degrees": [
+          4,
+          2,
+          6
+        ],
+        "coefficients": 105,
+        "minimum": "-23058449/45177216",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 35,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 18,
+        "leaf_packet_sha256": "ffda6a6b671514fa699c36e538cf3600635f1fd08aaced0ba376fedd9b28f60f",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "NO_GROUP_RESTRICTION",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 0.914,
+        "tree_private_peak": 50786304,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 7,
+        "lengths": [
+          2,
+          2,
+          2,
+          3
+        ],
+        "fixed": 1
+      },
+      "certificate": {
+        "lengths": [
+          2,
+          2,
+          2,
+          3
+        ],
+        "fixed": 1,
+        "n": 7,
+        "degrees": [
+          6,
+          4,
+          6
+        ],
+        "coefficients": 245,
+        "minimum": "-87823/72606240",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 3,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 2,
+        "leaf_packet_sha256": "5f622a223282a1ea6e5643b0d3f9dc81fe1c9c45d7a8d6eefdf68521526b16e0",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "REQUIRES_SYMMETRY_PROOF",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 1.065,
+        "tree_private_peak": 52047872,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 7,
+        "lengths": [
+          2,
+          2,
+          4
+        ],
+        "fixed": 1
+      },
+      "certificate": {
+        "lengths": [
+          2,
+          2,
+          4
+        ],
+        "fixed": 1,
+        "n": 7,
+        "degrees": [
+          6,
+          3,
+          6
+        ],
+        "coefficients": 196,
+        "minimum": "-1171/67228",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 3,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 2,
+        "leaf_packet_sha256": "5a6d060864aa75ddb1e0106d12ecf1ad45e4e9f112d8b5983b534cd5ab05b998",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "REQUIRES_SYMMETRY_PROOF",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 1.065,
+        "tree_private_peak": 52015104,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 7,
+        "lengths": [
+          2,
+          3,
+          3
+        ],
+        "fixed": 1
+      },
+      "certificate": {
+        "lengths": [
+          2,
+          3,
+          3
+        ],
+        "fixed": 1,
+        "n": 7,
+        "degrees": [
+          6,
+          4,
+          2,
+          6
+        ],
+        "coefficients": 735,
+        "minimum": "-1527/76832",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 33,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 3,
+        "certified_leaf_count": 17,
+        "leaf_packet_sha256": "fcf2e0e098064eeaada0a0cb769639d7014091accfcda92d5b55f2176d096b41",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "NO_GROUP_RESTRICTION",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 2.18,
+        "tree_private_peak": 54587392,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 7,
+        "lengths": [
+          2,
+          5
+        ],
+        "fixed": 1
+      },
+      "certificate": {
+        "lengths": [
+          2,
+          5
+        ],
+        "fixed": 1,
+        "n": 7,
+        "degrees": [
+          6,
+          2,
+          6
+        ],
+        "coefficients": 147,
+        "minimum": "-1527/76832",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 21,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 11,
+        "leaf_packet_sha256": "f3b8c6fda0a2d0de2cccfcb5fa8856cc7ece7d82368feecfb326a64997c1e977",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "NO_GROUP_RESTRICTION",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 1.015,
+        "tree_private_peak": 52064256,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 7,
+        "lengths": [
+          3,
+          4
+        ],
+        "fixed": 1
+      },
+      "certificate": {
+        "lengths": [
+          3,
+          4
+        ],
+        "fixed": 1,
+        "n": 7,
+        "degrees": [
+          6,
+          4,
+          6
+        ],
+        "coefficients": 245,
+        "minimum": "-1527/76832",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 9,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 5,
+        "leaf_packet_sha256": "77d251fa93207416cdcdf679c52dab20a8ab26d84d8682fb540f185a409e87a4",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "NO_GROUP_RESTRICTION",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 1.067,
+        "tree_private_peak": 52178944,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 7,
+        "lengths": [
+          2,
+          2,
+          2,
+          2,
+          3
+        ],
+        "fixed": 0
+      },
+      "certificate": {
+        "lengths": [
+          2,
+          2,
+          2,
+          2,
+          3
+        ],
+        "fixed": 0,
+        "n": 7,
+        "degrees": [
+          7,
+          5,
+          6
+        ],
+        "coefficients": 336,
+        "minimum": "2837773/4818903040",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 1,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 1,
+        "leaf_packet_sha256": "495d91aa42274dd4f5d14c7767e999d8874f395c4d072dc6d17de7a5b47314a8",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "REQUIRES_SYMMETRY_PROOF",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 1.167,
+        "tree_private_peak": 52084736,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 7,
+        "lengths": [
+          2,
+          2,
+          2,
+          4
+        ],
+        "fixed": 0
+      },
+      "certificate": {
+        "lengths": [
+          2,
+          2,
+          2,
+          4
+        ],
+        "fixed": 0,
+        "n": 7,
+        "degrees": [
+          7,
+          4,
+          6
+        ],
+        "coefficients": 280,
+        "minimum": "-6264239/508243680",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 3,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 2,
+        "leaf_packet_sha256": "42214af835c7c8e64a599c13fbf9a37469f016ad9e22d455a2c3bcca0cf9146e",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "REQUIRES_SYMMETRY_PROOF",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 1.168,
+        "tree_private_peak": 52011008,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 7,
+        "lengths": [
+          2,
+          2,
+          3,
+          3
+        ],
+        "fixed": 0
+      },
+      "certificate": {
+        "lengths": [
+          2,
+          2,
+          3,
+          3
+        ],
+        "fixed": 0,
+        "n": 7,
+        "degrees": [
+          7,
+          5,
+          3,
+          6
+        ],
+        "coefficients": 1344,
+        "minimum": "-8259/537824",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 9,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 3,
+        "certified_leaf_count": 5,
+        "leaf_packet_sha256": "bceff9372c774f6614b7277be8a99020d2036810d04ad47db72cac845c0ae4b5",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "REQUIRES_SYMMETRY_PROOF",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 3.44,
+        "tree_private_peak": 55672832,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 7,
+        "lengths": [
+          2,
+          2,
+          5
+        ],
+        "fixed": 0
+      },
+      "certificate": {
+        "lengths": [
+          2,
+          2,
+          5
+        ],
+        "fixed": 0,
+        "n": 7,
+        "degrees": [
+          7,
+          3,
+          6
+        ],
+        "coefficients": 224,
+        "minimum": "-1719/117649",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 3,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 2,
+        "leaf_packet_sha256": "a3645fcf332c824e85c45e18d2770a9c9ddfdac1a63cb49bb530a48baf038ac7",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "REQUIRES_SYMMETRY_PROOF",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 1.061,
+        "tree_private_peak": 52080640,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 7,
+        "lengths": [
+          2,
+          3,
+          4
+        ],
+        "fixed": 0
+      },
+      "certificate": {
+        "lengths": [
+          2,
+          3,
+          4
+        ],
+        "fixed": 0,
+        "n": 7,
+        "degrees": [
+          7,
+          5,
+          2,
+          6
+        ],
+        "coefficients": 1008,
+        "minimum": "-1527/76832",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 35,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 3,
+        "certified_leaf_count": 18,
+        "leaf_packet_sha256": "7c7f491908f7f58fb06059875651111c0e3dc9a5dec72e3b8ba2d80968cca2f8",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "NO_GROUP_RESTRICTION",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 3.182,
+        "tree_private_peak": 55709696,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 7,
+        "lengths": [
+          2,
+          6
+        ],
+        "fixed": 0
+      },
+      "certificate": {
+        "lengths": [
+          2,
+          6
+        ],
+        "fixed": 0,
+        "n": 7,
+        "degrees": [
+          7,
+          2,
+          6
+        ],
+        "coefficients": 168,
+        "minimum": "-1527/76832",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 25,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 13,
+        "leaf_packet_sha256": "925fa3cec57d358cb004162a951483462c04f383df0137f3364f9611152c94af",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "NO_GROUP_RESTRICTION",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 1.06,
+        "tree_private_peak": 51785728,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 7,
+        "lengths": [
+          3,
+          3,
+          3
+        ],
+        "fixed": 0
+      },
+      "certificate": {
+        "lengths": [
+          3,
+          3,
+          3
+        ],
+        "fixed": 0,
+        "n": 7,
+        "degrees": [
+          6,
+          4,
+          2,
+          6
+        ],
+        "coefficients": 735,
+        "minimum": "-23058449/45177216",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 69,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 3,
+        "certified_leaf_count": 35,
+        "leaf_packet_sha256": "e7dcc0a8fbbaaad5f18ea9b065cc5d7dc706354f4bb185d88e356affd73e5840",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "NO_GROUP_RESTRICTION",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 2.528,
+        "tree_private_peak": 54730752,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 7,
+        "lengths": [
+          3,
+          5
+        ],
+        "fixed": 0
+      },
+      "certificate": {
+        "lengths": [
+          3,
+          5
+        ],
+        "fixed": 0,
+        "n": 7,
+        "degrees": [
+          6,
+          4,
+          6
+        ],
+        "coefficients": 245,
+        "minimum": "-23797825/90354432",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 17,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 9,
+        "leaf_packet_sha256": "786c375b0da53df95fc9ccd46c868dad356e8b267df02d414d81b99c6fc62e3c",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "NO_GROUP_RESTRICTION",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 1.115,
+        "tree_private_peak": 51970048,
+        "gate": null
+      }
+    },
+    {
+      "case": {
+        "n": 7,
+        "lengths": [
+          4,
+          4
+        ],
+        "fixed": 0
+      },
+      "certificate": {
+        "lengths": [
+          4,
+          4
+        ],
+        "fixed": 0,
+        "n": 7,
+        "degrees": [
+          7,
+          4,
+          6
+        ],
+        "coefficients": 280,
+        "minimum": "-1527/76832",
+        "negative_coefficients": 0,
+        "first_negative": [],
+        "subdivision": true,
+        "visited_boxes": 11,
+        "unclosed_boxes": 0,
+        "equal_short": true,
+        "weight_groups": 2,
+        "certified_leaf_count": 6,
+        "leaf_packet_sha256": "bc4273ee00bc7429b2fc733f32c432cc67e3e065265a972a753ff068f15a2063",
+        "domain": "ALL_GROUP_SIMPLEX_WEIGHTS_AND_U_0_TO_HALF_FOR_THIS_SHAPE",
+        "equal_short_to_original": "NO_GROUP_RESTRICTION",
+        "result": "CERTIFICATE",
+        "general_shared_center": "UNPROVED"
+      },
+      "resource": {
+        "exit": 0,
+        "seconds": 1.164,
+        "tree_private_peak": 52101120,
+        "gate": null
+      }
+    }
+  ],
+  "symmetry_bridge": "REQUIRES_PROOF_AUDIT",
+  "all_short_stars": "NOT_REPROVED_HERE"
+}

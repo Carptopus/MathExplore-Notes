@@ -1,0 +1,175 @@
+% Generated deterministically from the frozen Markdown source.
+% Responsible author: Carptopus.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{graphicx}
+\usepackage{needspace}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{fancyhdr}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.44em}
+\setlength{\emergencystretch}{5em}
+\setlength{\headheight}{14pt}
+\urlstyle{same}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Lih--Wang finite certificates}
+\fancyfoot[C]{\thepage}
+
+\title{Exact finite certificates for the Lih--Wang\\
+endpoint and cycle-family results}
+\author{Carptopus}
+\date{7 October 2026}
+
+\hypersetup{
+  pdftitle={Exact finite certificates for the Lih--Wang endpoint and cycle-family results},
+  pdfauthor={Carptopus},
+  pdfsubject={Finite exact certificate supplement},
+  pdfkeywords={permanent, exact arithmetic, Bernstein certificate, verification supplement}
+}
+
+\begin{document}
+\maketitle
+\begin{center}
+\fcolorbox{black!35}{black!4}{\parbox{0.88\textwidth}{\centering\small
+Internal supplement; not peer reviewed.}}
+\end{center}
+
+This supplement states exactly what each finite computation proves. It is part
+of the proof package for the accompanying manuscript. No computation below is a
+sample of matrices or parameter values standing in for an unproved continuous
+claim.
+
+\section{Endpoint gate in orders 2 through 31}
+
+
+For each $2\le n\le31$ and $1\le j\le n$, the endpoint checker
+constructs the two rational Bernstein quantities $s_{n,j}$ and
+$d_{n,j}$ in (2.10)--(2.11) of the manuscript and proves them strictly
+positive. The zeroth Bernstein layer is an identity. Thus all 495 nontrivial
+layers of the universal one-collision envelope are closed exactly.
+
+Run from the repository root:
+
+\noindent{\scriptsize\ttfamily\raggedright\sloppy .\allowbreak{}\textbackslash{}\allowbreak{}.\allowbreak{}venv\textbackslash{}\allowbreak{}Scripts\textbackslash{}\allowbreak{}python.\allowbreak{}exe\ \allowbreak{}-\allowbreak{}X\ \allowbreak{}utf8\ \allowbreak{}loops\textbackslash{}\allowbreak{}LIH-\allowbreak{}WANG-\allowbreak{}DIRECT-\allowbreak{}SUM-\allowbreak{}GATE-\allowbreak{}0001\textbackslash{}\allowbreak{}verification\textbackslash{}\allowbreak{}endpoint\_\allowbreak{}threshold\_\allowbreak{}guard.\allowbreak{}py\par}
+
+Frozen script SHA-256:
+
+\noindent{\scriptsize\ttfamily\raggedright\sloppy 92134EF380BB170B429C1DA581B8B120525A94004D8818636831183CDA5030B5\par}
+
+Expected certificate digest:
+
+\noindent{\scriptsize\ttfamily\raggedright\sloppy 9b857ec7f67ca6319d3cabc31c2b3f8fd88690766b51898ffbb577c155a9107e\par}
+
+\section{All-transposition shared-center stars}
+
+
+For $3\le n\le6$, and every permitted star degree $2\le k<n$, the
+certificate consists of exact Bernstein coefficients on the complete interval
+$0\le a\le1/k$. The verifier reconstructs the matrix from its row
+description, recomputes the rook coefficients, checks the certificate, and then
+changes the claimed certificate to confirm that the destructive control is
+rejected. It does not import the discovery formula.
+
+\noindent{\scriptsize\ttfamily\raggedright\sloppy .\allowbreak{}\textbackslash{}\allowbreak{}.\allowbreak{}venv\textbackslash{}\allowbreak{}Scripts\textbackslash{}\allowbreak{}python.\allowbreak{}exe\ \allowbreak{}-\allowbreak{}X\ \allowbreak{}utf8\ \allowbreak{}loops\textbackslash{}\allowbreak{}LIH-\allowbreak{}WANG-\allowbreak{}NONCUBICAL-\allowbreak{}FACES-\allowbreak{}0001\textbackslash{}\allowbreak{}verification\textbackslash{}\allowbreak{}verify\_\allowbreak{}star\_\allowbreak{}certificate.\allowbreak{}py\ \allowbreak{}-\allowbreak{}-\allowbreak{}certificate\ \allowbreak{}loops\textbackslash{}\allowbreak{}LIH-\allowbreak{}WANG-\allowbreak{}NONCUBICAL-\allowbreak{}FACES-\allowbreak{}0001\textbackslash{}\allowbreak{}verification\textbackslash{}\allowbreak{}results\textbackslash{}\allowbreak{}star\_\allowbreak{}low\_\allowbreak{}degree\_\allowbreak{}certificates.\allowbreak{}json\ \allowbreak{}-\allowbreak{}-\allowbreak{}output\ \allowbreak{}tmp\textbackslash{}\allowbreak{}lih-\allowbreak{}wang-\allowbreak{}star-\allowbreak{}verification.\allowbreak{}json\par}
+
+Frozen SHA-256 values:
+
+\begin{itemize}
+\item verifier:
+\noindent{\scriptsize\ttfamily\raggedright\sloppy 6B62DABBC0E1DC8C88AF635199DC52D72A14A0CF69C981F2D281FBD227710164;\par}
+\item certificate:
+\noindent{\scriptsize\ttfamily\raggedright\sloppy 1DA27D8D7B4BA33CC2F73B5FBC876958FF806509AD2357CD967394D79D12FFA5;\par}
+\item independent reconstruction receipt:
+\noindent{\scriptsize\ttfamily\raggedright\sloppy 754D34F07532FD1F97FB00EB5A971762B85B04060626F4F5B7F2FFE758DEB4D5.\allowbreak{}\par}
+\end{itemize}
+
+Order $n=7$ is not included in these continuous certificates. It is closed
+by the analytic permanent-threshold gate used in the manuscript; the same
+verifier checks that threshold arithmetic only.
+
+\section{Shared-center orders 8 through 31}
+
+
+Two exact scalar certificates close the continuous parameter ranges left after
+the analytic endpoint and collision reductions.
+
+For $8\le n\le15$, the coupled small-mean checker verifies 92 Bernstein
+layers together with the four coupling gates and a control obtained by dropping
+the deterministic unit term:
+
+\noindent{\scriptsize\ttfamily\raggedright\sloppy .\allowbreak{}\textbackslash{}\allowbreak{}.\allowbreak{}venv\textbackslash{}\allowbreak{}Scripts\textbackslash{}\allowbreak{}python.\allowbreak{}exe\ \allowbreak{}-\allowbreak{}X\ \allowbreak{}utf8\ \allowbreak{}loops\textbackslash{}\allowbreak{}LIH-\allowbreak{}WANG-\allowbreak{}NONCUBICAL-\allowbreak{}FACES-\allowbreak{}0001\textbackslash{}\allowbreak{}verification\textbackslash{}\allowbreak{}coupled\_\allowbreak{}small\_\allowbreak{}mean\_\allowbreak{}guard.\allowbreak{}py\par}
+
+Script SHA-256:
+\noindent{\scriptsize\ttfamily\raggedright\sloppy 9F9C15EC33AC51AE7A725240E5C2D030EFFF8C75FE497F4992B1E0CC3E600DA4.\allowbreak{}\par}
+Expected digest:
+\noindent{\scriptsize\ttfamily\raggedright\sloppy fcec1ecd6696659d57cce642eaa5ca73b2736fd92c0bb8dbb0bcb60920c49a1e.\allowbreak{}\par}
+
+For $16\le n\le31$, the Poisson/Bernoulli boundary checker verifies 376
+Bernstein layers after proving the scalar split and monotonicity conditions:
+
+\noindent{\scriptsize\ttfamily\raggedright\sloppy .\allowbreak{}\textbackslash{}\allowbreak{}.\allowbreak{}venv\textbackslash{}\allowbreak{}Scripts\textbackslash{}\allowbreak{}python.\allowbreak{}exe\ \allowbreak{}-\allowbreak{}X\ \allowbreak{}utf8\ \allowbreak{}loops\textbackslash{}\allowbreak{}LIH-\allowbreak{}WANG-\allowbreak{}NONCUBICAL-\allowbreak{}FACES-\allowbreak{}0001\textbackslash{}\allowbreak{}verification\textbackslash{}\allowbreak{}poisson\_\allowbreak{}boundary\_\allowbreak{}window\_\allowbreak{}guard.\allowbreak{}py\par}
+
+Script SHA-256:
+\noindent{\scriptsize\ttfamily\raggedright\sloppy FA9B0396FE24441D9AA4A7C5A7871E31999AA79BB615DB1FFB2D323CCE8A1EBA.\allowbreak{}\par}
+Expected digest:
+\noindent{\scriptsize\ttfamily\raggedright\sloppy 7a8f89627a7afb141eefc19f9d1d60ba4eb49bbafcdcda757ebbb1bd109c82a3.\allowbreak{}\par}
+
+\section{Non-star shared-center structures in orders 3 through 7}
+
+
+After short-branch symmetrization, the complete non-star range has 32 support
+structures. The discovery packet subdivides their full stick-breaking
+parameter domains into 318 exact rational Bernstein boxes. The independent
+checker reconstructs each original matrix and every required coefficient without
+calling the discovery generator.
+
+\noindent{\scriptsize\ttfamily\raggedright\sloppy .\allowbreak{}\textbackslash{}\allowbreak{}.\allowbreak{}venv\textbackslash{}\allowbreak{}Scripts\textbackslash{}\allowbreak{}python.\allowbreak{}exe\ \allowbreak{}-\allowbreak{}X\ \allowbreak{}utf8\ \allowbreak{}loops\textbackslash{}\allowbreak{}LIH-\allowbreak{}WANG-\allowbreak{}NONCUBICAL-\allowbreak{}FACES-\allowbreak{}0001\textbackslash{}\allowbreak{}verification\textbackslash{}\allowbreak{}run\_\allowbreak{}small\_\allowbreak{}shape\_\allowbreak{}independent\_\allowbreak{}window.\allowbreak{}py\ \allowbreak{}-\allowbreak{}-\allowbreak{}packet\ \allowbreak{}loops\textbackslash{}\allowbreak{}LIH-\allowbreak{}WANG-\allowbreak{}NONCUBICAL-\allowbreak{}FACES-\allowbreak{}0001\textbackslash{}\allowbreak{}verification\textbackslash{}\allowbreak{}results\textbackslash{}\allowbreak{}small\_\allowbreak{}shape\_\allowbreak{}window\_\allowbreak{}s32\_\allowbreak{}v1.\allowbreak{}json\ \allowbreak{}-\allowbreak{}-\allowbreak{}output\ \allowbreak{}tmp\textbackslash{}\allowbreak{}lih-\allowbreak{}wang-\allowbreak{}small-\allowbreak{}shape-\allowbreak{}independent.\allowbreak{}json\par}
+
+Frozen SHA-256 values:
+
+\begin{itemize}
+\item discovery packet:
+\noindent{\scriptsize\ttfamily\raggedright\sloppy E50A431535547C10B6A08FECA98F4287A7A03731150E0E3F938B8563E574EE61;\par}
+\item independent checker:
+\noindent{\scriptsize\ttfamily\raggedright\sloppy 8D9F3C147BDB354EE103A9BEA04BD824F902BA39224CBE6C167C6097B5C4F84B;\par}
+\item window runner:
+\noindent{\scriptsize\ttfamily\raggedright\sloppy 36E693C2AC1BE509363EE9942287576BE6ADBC33F677626C3645F5B440BBBF77;\par}
+\item frozen independent receipt:
+\noindent{\scriptsize\ttfamily\raggedright\sloppy FEEA45B5E2275A75664D51E210BC8360C00C3252203241B2423477276F4231F6.\allowbreak{}\par}
+\end{itemize}
+
+The word “complete” here refers only to the enumerated shared-center support
+structures in orders $3$ through $7$, after the stated symmetrization.
+
+\section{Scope and trust boundary}
+
+
+The scripts prove the finite rational statements listed above. They do not
+prove:
+
+\begin{itemize}
+\item the universal one-collision envelope;
+\item the midpoint-equivalence theorem for $n\ge32$;
+\item the entropy lower bound or one-hot decorrelation lemma;
+\item the independent-cycle product theorem;
+\item the analytic estimates for $n\ge32$;
+\item any novelty or priority claim.
+\end{itemize}
+
+Those obligations are paid in the manuscript. The full frozen dependency list
+and source hashes are recorded in
+loops/LIH-WANG-PUBLICATION-PREP-0001/\texttt{A1-}\raisebox{-0.18em}{\includegraphics[height=1.0em]{audit-packet-cjk.png}}\texttt{.md}.
+\end{document}
