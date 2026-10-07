@@ -8,7 +8,7 @@ For every fixed rank r >= 3, all zeros of the Ehrhart h-star polynomial of every
 
 The frozen 216-file proof closure is integral mathematical supporting material, not an uncurated research archive. Follow the dossier and reproduction instructions to resolve the original relative paths. Historical workflow labels within frozen dependencies are not public review claims.
 
-The Adiprasito--Zhang uniform-matroid theorem and related analytic methods are prior work, explicitly distinguished in Section 7. No global-first claim or general all-rank real-rootedness assertion is made.
+The Adiprasito--Zhang uniform-matroid theorem and related analytic methods are prior work, explicitly distinguished in Section 7. No global-first claim or real-rootedness theorem for arbitrary matroid base polytopes is asserted.
 
 Status: internally reviewed preprint; external mathematical review and formal peer review pending.
 
