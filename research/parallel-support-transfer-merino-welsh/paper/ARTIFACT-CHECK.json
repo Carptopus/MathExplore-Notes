@@ -1,0 +1,428 @@
+{
+  "case_id": "MERINO-WELSH-PARALLEL-SUPPORT-UPGRADE-0001",
+  "source_sha256": "11DE5F36F58138091B033578A0780E72E8F620BB9E32BCB7B6135899B65D991F",
+  "conversion": {
+    "source_sha256": "11DE5F36F58138091B033578A0780E72E8F620BB9E32BCB7B6135899B65D991F",
+    "source_lines": 332,
+    "converted_body_lines": 324,
+    "math_expressions_exact": 319,
+    "equation_tags": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19"
+    ],
+    "headings": [
+      "1. Scope and principal results",
+      "Theorem 1.1",
+      "Theorem 1.2",
+      "Theorem 1.3",
+      "1.1. Relationship to earlier work",
+      "2. Parallel-class recurrences and closure facts",
+      "3. Proof of the conditional transfer theorem",
+      "Proof",
+      "4. The general corank-two structural theorem",
+      "Proof",
+      "5. Sparse paving quotients of every rank and size",
+      "5.1. The balanced endpoint",
+      "5.2. Low-rank endpoints and minor closure",
+      "6. A classical graph family calibrating the budget",
+      "7. Verification and limitations",
+      "AI-assisted research disclosure",
+      "References"
+    ],
+    "references": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "status": "Preprint. External mathematical review and formal peer review are pending.",
+    "tex_sha256": "E48594F19738A78430F5B9782D66139059346497461A044D6C5C9D10A20DEF32"
+  },
+  "page_count": 10,
+  "pages": [
+    {
+      "page": 1,
+      "image": "D:\\Codes\\MyProjects\\MathExplore\\tmp\\merino-transfer-artifacts\\page-01.png",
+      "image_sha256": "AA8A95E7F6E72440ADCA3C40DB3EA2A0ADEACF1C119CB0778E0AE708F28B83AE",
+      "width_pt": 595.280029296875,
+      "height_pt": 841.8900146484375,
+      "text_blocks_outside_page": [],
+      "links": 0,
+      "page_number_present": true
+    },
+    {
+      "page": 2,
+      "image": "D:\\Codes\\MyProjects\\MathExplore\\tmp\\merino-transfer-artifacts\\page-02.png",
+      "image_sha256": "9261F089B888C852E5117E3E9F0795AAE4A54077C842531E6885991D7540ED1A",
+      "width_pt": 595.280029296875,
+      "height_pt": 841.8900146484375,
+      "text_blocks_outside_page": [],
+      "links": 7,
+      "page_number_present": true
+    },
+    {
+      "page": 3,
+      "image": "D:\\Codes\\MyProjects\\MathExplore\\tmp\\merino-transfer-artifacts\\page-03.png",
+      "image_sha256": "FFE1A558885F9EA2768D9B1531C0F8162D0FB47E77E7CB5C23510CDE02D26A6A",
+      "width_pt": 595.280029296875,
+      "height_pt": 841.8900146484375,
+      "text_blocks_outside_page": [],
+      "links": 2,
+      "page_number_present": true
+    },
+    {
+      "page": 4,
+      "image": "D:\\Codes\\MyProjects\\MathExplore\\tmp\\merino-transfer-artifacts\\page-04.png",
+      "image_sha256": "9F8146EF47F64E9CE5EE3C2C1F838FD44E2EFFCB7135BD7C8CD5A4029999DF02",
+      "width_pt": 595.280029296875,
+      "height_pt": 841.8900146484375,
+      "text_blocks_outside_page": [],
+      "links": 0,
+      "page_number_present": true
+    },
+    {
+      "page": 5,
+      "image": "D:\\Codes\\MyProjects\\MathExplore\\tmp\\merino-transfer-artifacts\\page-05.png",
+      "image_sha256": "717D3A95E9812BC41DF5640B242B89662EEC1AC3B04AABA5AB12F8D3A2EFA23F",
+      "width_pt": 595.280029296875,
+      "height_pt": 841.8900146484375,
+      "text_blocks_outside_page": [],
+      "links": 4,
+      "page_number_present": true
+    },
+    {
+      "page": 6,
+      "image": "D:\\Codes\\MyProjects\\MathExplore\\tmp\\merino-transfer-artifacts\\page-06.png",
+      "image_sha256": "516483929899FA5D65ABC52A0494410FEEF283E0452E984178389C8189C6E95E",
+      "width_pt": 595.280029296875,
+      "height_pt": 841.8900146484375,
+      "text_blocks_outside_page": [],
+      "links": 0,
+      "page_number_present": true
+    },
+    {
+      "page": 7,
+      "image": "D:\\Codes\\MyProjects\\MathExplore\\tmp\\merino-transfer-artifacts\\page-07.png",
+      "image_sha256": "80846551AF47E98E19AEE6EC2DA38E275EFDD3821DB2EFE97A7C4BE8D74539A2",
+      "width_pt": 595.280029296875,
+      "height_pt": 841.8900146484375,
+      "text_blocks_outside_page": [],
+      "links": 2,
+      "page_number_present": true
+    },
+    {
+      "page": 8,
+      "image": "D:\\Codes\\MyProjects\\MathExplore\\tmp\\merino-transfer-artifacts\\page-08.png",
+      "image_sha256": "0C004EC1A4778F4DCD5FC6F0306004C8B69AA8C086E95A98624EA57B0EE55436",
+      "width_pt": 595.280029296875,
+      "height_pt": 841.8900146484375,
+      "text_blocks_outside_page": [],
+      "links": 3,
+      "page_number_present": true
+    },
+    {
+      "page": 9,
+      "image": "D:\\Codes\\MyProjects\\MathExplore\\tmp\\merino-transfer-artifacts\\page-09.png",
+      "image_sha256": "DFE5ABB047C8AFB29D741F9444687A8E02006550E51126D0EAEFE33EC3E0A8BE",
+      "width_pt": 595.280029296875,
+      "height_pt": 841.8900146484375,
+      "text_blocks_outside_page": [],
+      "links": 2,
+      "page_number_present": true
+    },
+    {
+      "page": 10,
+      "image": "D:\\Codes\\MyProjects\\MathExplore\\tmp\\merino-transfer-artifacts\\page-10.png",
+      "image_sha256": "452483C4B15435D90CDBB9D0996C459D1F454AB1054ED1097DB14F8419C8EBE7",
+      "width_pt": 595.280029296875,
+      "height_pt": 841.8900146484375,
+      "text_blocks_outside_page": [],
+      "links": 6,
+      "page_number_present": true
+    }
+  ],
+  "links": [
+    {
+      "page": 2,
+      "kind": 4,
+      "uri": null,
+      "target_page": 8,
+      "named_destination": "ref1"
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "uri": null,
+      "target_page": 9,
+      "named_destination": "ref2"
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "uri": null,
+      "target_page": 9,
+      "named_destination": "ref3"
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "uri": null,
+      "target_page": 9,
+      "named_destination": "ref4"
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "uri": null,
+      "target_page": 9,
+      "named_destination": "ref5"
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "uri": null,
+      "target_page": 9,
+      "named_destination": "ref4"
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "uri": null,
+      "target_page": 9,
+      "named_destination": "ref6"
+    },
+    {
+      "page": 3,
+      "kind": 4,
+      "uri": null,
+      "target_page": 9,
+      "named_destination": "ref2"
+    },
+    {
+      "page": 3,
+      "kind": 4,
+      "uri": null,
+      "target_page": 9,
+      "named_destination": "ref7"
+    },
+    {
+      "page": 5,
+      "kind": 4,
+      "uri": null,
+      "target_page": 8,
+      "named_destination": "ref1"
+    },
+    {
+      "page": 5,
+      "kind": 4,
+      "uri": null,
+      "target_page": 8,
+      "named_destination": "ref1"
+    },
+    {
+      "page": 5,
+      "kind": 4,
+      "uri": null,
+      "target_page": 8,
+      "named_destination": "ref1"
+    },
+    {
+      "page": 5,
+      "kind": 4,
+      "uri": null,
+      "target_page": 8,
+      "named_destination": "ref1"
+    },
+    {
+      "page": 7,
+      "kind": 4,
+      "uri": null,
+      "target_page": 9,
+      "named_destination": "ref4"
+    },
+    {
+      "page": 7,
+      "kind": 4,
+      "uri": null,
+      "target_page": 9,
+      "named_destination": "ref3"
+    },
+    {
+      "page": 8,
+      "kind": 4,
+      "uri": null,
+      "target_page": 8,
+      "named_destination": "ref1"
+    },
+    {
+      "page": 8,
+      "kind": 4,
+      "uri": null,
+      "target_page": 8,
+      "named_destination": "ref1"
+    },
+    {
+      "page": 8,
+      "kind": 4,
+      "uri": null,
+      "target_page": 9,
+      "named_destination": "ref3"
+    },
+    {
+      "page": 9,
+      "kind": 4,
+      "uri": null,
+      "target_page": 9,
+      "named_destination": "ref2"
+    },
+    {
+      "page": 9,
+      "kind": 2,
+      "uri": "https://doi.org/10.5281/zenodo.22296382",
+      "target_page": null,
+      "named_destination": null
+    },
+    {
+      "page": 10,
+      "kind": 2,
+      "uri": "https://www.matem.unam.mx/~merino/online_papers/inequal_matroid.pdf",
+      "target_page": null,
+      "named_destination": null
+    },
+    {
+      "page": 10,
+      "kind": 2,
+      "uri": "https://arxiv.org/abs/1004.2639",
+      "target_page": null,
+      "named_destination": null
+    },
+    {
+      "page": 10,
+      "kind": 2,
+      "uri": "https://arxiv.org/abs/1203.0090",
+      "target_page": null,
+      "named_destination": null
+    },
+    {
+      "page": 10,
+      "kind": 2,
+      "uri": "https://doi.org/10.1007/s00026-022-00628-w",
+      "target_page": null,
+      "named_destination": null
+    },
+    {
+      "page": 10,
+      "kind": 2,
+      "uri": "https://arxiv.org/abs/2609.38047",
+      "target_page": null,
+      "named_destination": null
+    },
+    {
+      "page": 10,
+      "kind": 2,
+      "uri": "https://arxiv.org/abs/2105.01825",
+      "target_page": null,
+      "named_destination": null
+    }
+  ],
+  "citation_link_count": 19,
+  "bad_citation_links": [],
+  "prose_fragments_checked": 200,
+  "missing_prose_fragments": [],
+  "source_reference_urls": [
+    "https://doi.org/10.5281/zenodo.22296382",
+    "https://www.matem.unam.mx/~merino/online_papers/inequal_matroid.pdf",
+    "https://arxiv.org/abs/1004.2639",
+    "https://arxiv.org/abs/1203.0090",
+    "https://doi.org/10.1007/s00026-022-00628-w",
+    "https://arxiv.org/abs/2609.38047",
+    "https://arxiv.org/abs/2105.01825"
+  ],
+  "missing_reference_urls": [],
+  "equation_tags_in_pdf": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18",
+    "19"
+  ],
+  "compiler_log_warnings": [
+    "Package inputenc Warning: inputenc package ignored with utf8 based engines.",
+    "Package rerunfilecheck Warning: File `main.out' has changed."
+  ],
+  "files": {
+    "build_tex.py": "47A162F35FF7505AE41CB914B5B3798E5B294083DD69F1766D4E36F774C7B655",
+    "check_artifacts.py": "E2D7EC72CD61EEA82EACDDB88C56FFF49DB52D8D7201A8D7A9C12236915500AD",
+    "main.aux": "ED86DED460D70025B8A3C74F287D24CA2D5840AE5DD193C9FB659EF9666FED06",
+    "main.log": "1BCA01A1423D80A8E3F6B1479D160562D7608641B6438372743963756B7210C1",
+    "main.pdf": "88757059A7058472F4550752C810D45789919752012FD59D69738878517828EF",
+    "main.tex": "E48594F19738A78430F5B9782D66139059346497461A044D6C5C9D10A20DEF32"
+  },
+  "commands": [
+    "& 'D:/Codes/MyProjects/MathExplore/.venv/Scripts/python.exe' 'research/Parallel-Support-Transfer-Merino-Welsh/paper/build_tex.py'",
+    "& 'D:/DevTools/Codex/resources/tectonic/tectonic.exe' --keep-logs --keep-intermediates 'research/Parallel-Support-Transfer-Merino-Welsh/paper/main.tex'",
+    "& 'D:/Codes/MyProjects/MathExplore/.venv/Scripts/python.exe' -B 'research/Parallel-Support-Transfer-Merino-Welsh/paper/check_artifacts.py' --visual-reviewed-pages 1,2,3,4,5,6,7,8,9,10"
+  ],
+  "command_working_directory": "D:\\Codes\\MyProjects\\MathExplore",
+  "visual_review": "PASS: full-page renders inspected; no clipping, garbled glyphs or formula overflow",
+  "visual_reviewed_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "visual_notes": [
+    "Page 1: title, author, date separator, preprint status and abstract checked",
+    "Page 2: all three theorem headings, hypotheses and strictness clauses checked",
+    "Pages 3-4: equations 3-8 and marked-flat intersection clause checked",
+    "Pages 5-8: proof continuation, equations 9-18 and sparse-paving conditions checked",
+    "Pages 9-10: equation 19, limitations, disclosure and all seven bibliography entries checked"
+  ],
+  "compiler_console_note": "Fontconfig default-config notice; compiler used bundled Latin Modern successfully. Initial Unicode dash/middle-dot mapping was repaired in converter; final PDF has the intended glyphs. Tectonic fetched its normal ts1-lmr12.tfm cache asset; no runtime was installed.",
+  "not_performed": [
+    "mathematical correctness audit",
+    "novelty audit",
+    "external URL network validation",
+    "publication"
+  ]
+}
