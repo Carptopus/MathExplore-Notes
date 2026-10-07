@@ -9,6 +9,10 @@ type: dataset
 repository: "https://github.com/Carptopus/MathExplore-Notes"
 url: "https://github.com/Carptopus/MathExplore-Notes"
 keywords:
+  - "base-intersection graphs"
+  - "connected domination"
+  - "cocircuits"
+  - "laminar matroids"
   - "Tutte polynomial"
   - "Merino--Welsh inequality"
   - "parallel-support transfer"

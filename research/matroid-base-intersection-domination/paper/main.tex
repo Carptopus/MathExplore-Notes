@@ -1,0 +1,899 @@
+% Hash-pinned mechanical conversion; see conversion-check.json.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,mathtools,needspace,xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{xurl,fancyhdr}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{Carptopus}\fancyhead[R]{Matroid base-intersection domination}
+\fancyfoot[C]{\thepage}\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}\setlength{\parskip}{0.44em}
+\setlength{\emergencystretch}{4em}\urlstyle{same}
+\title{Domination, component spectra, and sharp augmentation losses in matroid base-intersection graphs}
+\author{Carptopus}
+\date{8 October 2026 \textperiodcentered{} Version 0.1-beta \textperiodcentered{} Preprint; external mathematical review and formal peer review are pending}
+\hypersetup{pdfauthor={Carptopus},pdftitle={Domination, component spectra, and sharp augmentation losses in matroid base-intersection graphs}}
+\begin{document}
+\maketitle
+% source-line 6
+
+% source-line 7
+\begin{abstract}
+% source-line 8
+
+% source-line 9
+Let J(\(M\)) have the bases of a finite matroid \(M\) as vertices, with distinct bases adjacent when they intersect. For rank \(R\) at least two, we determine the minimum number of bases needed to augment any prescribed nonempty family to at most \(k\) components. A coverage-normalization theorem then expresses the global \(k\)-component domination number through the sizes and independent partition numbers of cocircuits. It also gives the complete, gap-free component spectrum of minimum dominating families. We distinguish global reoptimization from augmenting the best minimum dominating family, determine the sharp worst-case loss of the latter strategy, and realize it in graphic matroids and in an infinite family of simple binary matroids. Paving matroids and simple Fano-minor-free binary matroids have zero strategy loss. A dynamic program computes the global optimum and constructs an optimal family from an explicit laminar capacity tree. A classical hidden-circuit-hyperplane example explains why that input contract cannot be replaced by an independence oracle without an exponential deterministic query cost. Standard matroid partition, union, density bounds, and rank-two graph endpoints are credited as background; the comparison with prior work is bounded and includes specified unavailable sources.
+% source-line 10
+
+\end{abstract}
+% source-line 11
+\Needspace{8\baselineskip}
+\section*{1. Introduction and scope}
+% source-line 12
+
+% source-line 13
+Connecting a dominating set while retaining its original vertices is different from choosing a new dominating set. In a matroid base-intersection graph these two tasks admit exact formulas, but their optima need not coincide. Even after optimizing over all minimum dominating families, augmentation can be arbitrarily more expensive than global reoptimization.
+% source-line 14
+
+% source-line 15
+The central ingredient is a replacement procedure which preserves a covered element set and the number of selected bases, while reducing the number of components one at a time. This leads to a cocircuit optimization formula and a complete spectrum theorem. We then study when the augmentation strategy is optimal, how badly it can fail, and how the formula becomes an algorithm under a specified input representation.
+% source-line 16
+
+% source-line 17
+The graph used throughout is neither the usual single-element basis-exchange graph nor the graph in which disjoint bases are adjacent. In particular, coloring results for the latter graph do not by themselves determine our domination parameters. Base-intersection graphs occur in the Hamilton-cycle literature [\hyperlink{refZY13}{ZY13}, \hyperlink{refZC18}{ZC18}]; those results concern a different optimization problem.
+% source-line 18
+
+% source-line 19
+All results below belong to one unified study. Complete-profile hypergraphs, uniform matroids, and rank-two matroids are explicit specializations, not separate general theorems. The independent partition and union theorems [\hyperlink{refEF65}{EF65}, \hyperlink{refFJ18}{FJ18}], the paving partition criterion [\hyperlink{refBSY21}{BSY21}], and the Fano-exclusion growth bound [\hyperlink{refMur76}{Mur76}, \hyperlink{refMcG12}{McG12}, \hyperlink{refOx11}{Ox11}] are classical inputs. We do not claim new versions of those tools or of the standard hidden-matroid oracle argument [\hyperlink{refHLL22}{HLL22}].
+% source-line 20
+
+% source-line 21
+\Needspace{8\baselineskip}
+\subsection*{1.1 Prior-work and review boundary}
+% source-line 22
+
+% source-line 23
+The ordinary edge-domination problem in complete multipartite graphs was studied by Song et al. [\hyperlink{refSM14}{SM14}]. Rank-two ordinary domination and its connected endpoint are therefore not asserted here as new; the latter also follows from classical connected edge-domination interfaces [\hyperlink{refHM19}{HM19}]. Likewise, the rank-two equality between ordinary and independent domination follows from classical edge-domination results [\hyperlink{refYG80}{YG80}]. Our general spectrum and normalization results are stated for arbitrary finite matroids, with these endpoints included as examples.
+% source-line 24
+
+% source-line 25
+The checked sources have not yielded direct coverage of the coverage-normalization theorem, its general spectrum consequence, or the constrained laminar cocircuit optimization. This is a bounded comparison, not a guarantee of global priority. In particular, the final identity and full text of the work cited in a 2012 matroid-graph chapter as Zhang--Liu, \emph{On Properties of the Intersection Graphs of Matroids}, remain unresolved. The full text of Akkari's packing paper [\hyperlink{refAkk95}{Akk95}], Song et al. [\hyperlink{refSM14}{SM14}], and certain later versions of adjacent laminar-optimization work have not all been examined. These gaps are listed in Appendix \(B\). We do not represent inaccessible sources as having been excluded.
+% source-line 26
+
+% source-line 27
+The manuscript is AI-assisted research. Its mathematical proofs, finite checks, novelty comparison, and external peer-review status are distinct. The manuscript has undergone independent project-level review; this is not a claim of external mathematical approval or formal peer review.
+% source-line 28
+
+% source-line 29
+\Needspace{8\baselineskip}
+\section*{2. Definitions and classical tools}
+% source-line 30
+
+% source-line 31
+Let \(M\) be a finite matroid on \(E\), of rank \(R\ge2\), with base set \(B\)(\(M\)) and \(b\)=|\(B\)(\(M\))|. Loops may be deleted without changing its bases. A cocircuit is the complement of a hyperplane and contains no loop. Write \(r\) for the rank function.
+% source-line 32
+
+% source-line 33
+For a nonempty family \(D\) of distinct bases, let U(\(D\)) be its union and \(c\)(\(D\)) the number of connected components in the induced graph J(\(M\))[\(D\)]. Domination uses closed neighborhoods: a selected base dominates itself. Define
+% source-line 34
+
+% source-line 35
+\[
+% source-line 36
+q=\gamma(J(M)),\qquad
+% source-line 37
+\gamma_c^k(J(M))=\min\{|D|:D\text{ dominates }J(M),\ c(D)\le k\},
+% source-line 38
+\]
+% source-line 39
+
+% source-line 40
+where \(k\) is any positive integer. When no ambiguity arises, write \(\gamma_c^k\) for this parameter.
+% source-line 41
+
+% source-line 42
+For a loopless nonempty element set \(X\), let \(\chi(X)\) be the smallest number of independent sets in a partition of \(X\). Classical matroid partition and union give
+% source-line 43
+
+% source-line 44
+\[
+% source-line 45
+\chi(X)=\max_{\varnothing\ne Y\subseteq X}
+% source-line 46
+\left\lceil\frac{|Y|}{r(Y)}\right\rceil,
+% source-line 47
+\qquad
+% source-line 48
+r_{M^{(t)}}(X)=\min_{Y\subseteq X}\{|X\setminus Y|+t r(Y)\}.
+% source-line 49
+\]
+% source-line 50
+
+% source-line 51
+Here \(M^{(t)}\) is the union of \(t\) copies of \(M\). Its independent sets are precisely the sets partitionable into at most \(t\) independent sets of \(M\). If \(M\) has \(t\) disjoint bases, its union matroid has rank tR. Consequently every set partitionable into \(t\) independent sets extends to the union of \(t\) disjoint bases. The original partition need not be retained. These are classical interfaces [\hyperlink{refEF65}{EF65}, \hyperlink{refFJ18}{FJ18}].
+% source-line 52
+
+% source-line 53
+The element--base incidence graph of \(D\) has |U(\(D\))|+|\(D\)| vertices, \(R\)|\(D\)| edges, and \(c\)(\(D\)) components. Its cycle rank \(\beta(D)\) is therefore
+% source-line 54
+
+% source-line 55
+\[
+% source-line 56
+\beta(D)=|D|(R-1)+c(D)-|U(D)|\ge0.                 \tag{2.1}
+% source-line 57
+\]
+% source-line 58
+
+% source-line 59
+Finally, \(D\) dominates J(\(M\)) if and only if \(E\setminus U(D)\) contains no base, equivalently
+% source-line 60
+
+% source-line 61
+\[
+% source-line 62
+r(E\setminus U(D))<R,
+% source-line 63
+\quad\text{or equivalently }U(D)\text{ contains a cocircuit}.       \tag{2.2}
+% source-line 64
+\]
+% source-line 65
+
+% source-line 66
+Indeed an undominated base is exactly a base disjoint from U(\(D\)); a set of rank below \(R\) extends into a hyperplane. Extending each class of a minimum independent partition of a cocircuit to a base, and conversely assigning covered cocircuit elements to selected bases, proves
+% source-line 67
+
+% source-line 68
+\[
+% source-line 69
+q=\min_{C\text{ cocircuit}}\chi(C).                 \tag{2.3}
+% source-line 70
+\]
+% source-line 71
+
+% source-line 72
+Deduplication of the extended bases cannot destroy coverage. Equation (2.3) is an application of the classical partition interface, not a new partition theorem.
+% source-line 73
+
+% source-line 74
+\Needspace{8\baselineskip}
+\section*{3. Exact augmentation of a prescribed family}
+% source-line 75
+
+% source-line 76
+\textbf{Theorem 3.1.} For every nonempty family \(D\) of distinct bases and every \(k\ge1\), the minimum number of additional distinct bases required to obtain at most \(k\) components is
+% source-line 77
+
+% source-line 78
+\[
+% source-line 79
+\tau_k(D)=\max\left\{0,\left\lceil\frac{c(D)-k}{R-1}\right\rceil\right\}.       \tag{3.1}
+% source-line 80
+\]
+% source-line 81
+
+% source-line 82
+No domination hypothesis on \(D\) is required.
+% source-line 83
+
+% source-line 84
+\textbf{Proof.} Unions of distinct components are disjoint. A new \(R\)-element base meets at most \(R\) current components, so each addition decreases their number by at most \(R\)\ensuremath{-}1. This proves the lower bound.
+% source-line 85
+
+% source-line 86
+For the upper bound choose \(a\le R\) current components, each with a full-rank union. Select one representative element from each union, sequentially preserving independence. Before the i-th selection the chosen set has rank i\ensuremath{-}1<\(R\); the next full-rank union cannot lie in its closure. Extend the independent representatives to a base. If \(a\ge2\) this base meets two current components and hence is not already selected. It merges at least a components. Whenever \(c\)>\(k\) take a=\(\min\)(\(R\),\(c\)\ensuremath{-}\(k\)+1). Repetition achieves the required bound. Representatives cannot be chosen arbitrarily: their sequential independence is essential. \hfill\ensuremath{\square}
+% source-line 87
+
+% source-line 88
+The matroid hypothesis is substantive. The six consecutive two-element edges on seven elements have intersection graph \(P_6\). Its second and fifth vertices form a dominating set with two components, but retaining both requires adding the third and fourth vertices to connect it. Thus the rank-two-looking formula fails for general uniform hypergraphs.
+% source-line 89
+
+% source-line 90
+\Needspace{8\baselineskip}
+\section*{4. Coverage normalization and global optimization}
+% source-line 91
+
+% source-line 92
+\textbf{Theorem 4.1 (coverage normalization).} Suppose a nonempty loopless set \(C\) is covered by \(m\) distinct bases. The bases can be replaced, preserving their number and coverage of \(C\), so that the final component count is exactly
+% source-line 93
+
+% source-line 94
+\[
+% source-line 95
+\max\{1,|C|-m(R-1)\}.                             \tag{4.1}
+% source-line 96
+\]
+% source-line 97
+
+% source-line 98
+Each replacement operation below decreases the component count by exactly one until this value is reached.
+% source-line 99
+
+% source-line 100
+\textbf{Proof.} Equation (2.1) gives |\(C\)|\(\le\)\(m\)(\(R\)\ensuremath{-}1)+\(c\), proving the lower bound. Suppose \(c\)>1. Let \(U_1\),\(U_2\) be the disjoint unions of two components.
+% source-line 101
+
+% source-line 102
+If \(U\setminus C\) is nonempty, first choose \(e\) in \(U\setminus C\), let \(U_1\) be the union of its component, and choose any other component union \(U_2\). Simultaneously replace every base \(B\) in the first component containing \(e\) by \(B\)\ensuremath{-}\(e\)+\(f_B\), where \(f_B\) is in \(U_2\) but not in the closure of \(B\)\ensuremath{-}\(e\). Such an element exists because \(U_2\) has rank \(R\) and \(B\)\ensuremath{-}\(e\) has rank \(R\)\ensuremath{-}1. Always choose from the original \(U_2\). The new bases are distinct: their \(R\)\ensuremath{-}1 subsets in \(U_1\) are different; each new base meets both \(U_1\) and \(U_2\), whereas every untouched base lies in a single original component. All elements except \(e\) are retained. After deleting the incidence vertex \(e\), every remaining piece of its former component contains a base previously incident with \(e\); each such piece is attached to \(U_2\) by its replacement. Thus exactly these two components merge, the union loses one element, and \(\beta\) remains unchanged.
+% source-line 103
+
+% source-line 104
+Otherwise the union is \(C\). If \(\beta\)>0, choose a cycle-containing component as \(U_1\) and any other component as \(U_2\), then choose an incidence edge (\(B\),\(e\)) on that cycle. Removing that edge leaves the component connected and \(e\) still covered. Replace \(B\) by \(B\)\ensuremath{-}\(e\)+\(f\) with \(f\) in \(U_2\) outside the closure of \(B\)\ensuremath{-}\(e\). This base is distinct from all other bases, coverage and the union are unchanged, two components merge, and \(\beta\) decreases by one.
+% source-line 105
+
+% source-line 106
+The same second operation is available whenever \(\beta\)>0, whether or not the union is \(C\). If neither operation is available, the union equals \(C\) and \(\beta\)=0, giving \(c\)=|\(C\)|\ensuremath{-}\(m\)(\(R\)\ensuremath{-}1). More explicitly the nonnegative potential
+% source-line 107
+
+% source-line 108
+\[
+% source-line 109
+\alpha=|U\setminus C|+\beta=c-|C|+m(R-1)
+% source-line 110
+\]
+% source-line 111
+
+% source-line 112
+decreases by one at each complete operation. Stop when \(c\)=1 or alpha=0. This is exactly (4.1). The simultaneous first operation counts as one operation, not as one component reduction per individual base replacement. \hfill\ensuremath{\square}
+% source-line 113
+
+% source-line 114
+\textbf{Theorem 4.2 (cocircuit formula).} For every \(k\ge1\),
+% source-line 115
+
+% source-line 116
+\[
+% source-line 117
+\gamma_c^k=
+% source-line 118
+\min_{C\text{ cocircuit}}
+% source-line 119
+\max\left\{\chi(C),\left\lceil\frac{|C|-k}{R-1}\right\rceil\right\}.       \tag{4.2}
+% source-line 120
+\]
+% source-line 121
+
+% source-line 122
+\textbf{Proof.} A dominating family of \(m\) bases covers a cocircuit \(C\). Independent partition and (2.1) give \(m\)\(\ge\)\(\chi(C)\) and \(m\)(\(R\)\ensuremath{-}1)+\(k\)\(\ge\)|\(C\)|.
+% source-line 123
+
+% source-line 124
+For the reverse inequality fix \(C\) and let \(m\) be the displayed maximum. Extend an optimal independent partition to distinct covering bases and supplement the family to \(m\) distinct bases if necessary; Theorem 4.1 then gives at most \(k\) components. Supplementation is legitimate because \(m\le b\). To see this, J(\(M\)) is connected: intersecting bases are adjacent, and for two disjoint bases choose independent representatives from both and extend them to a base, obtaining a two-edge path. All \(b\) bases thus form a connected family whose union is the nonloops. Equation (2.1) implies |\(C\)|\(\le\)\(b\)(\(R\)\ensuremath{-}1)+1, while \(\chi(C)\)\(\le\)\(b\). Since \(k\ge1\), \(m\le b\). \hfill\ensuremath{\square}
+% source-line 125
+
+% source-line 126
+For \(q\le m\le b\) put
+% source-line 127
+
+% source-line 128
+\[
+% source-line 129
+T_m=\min\{|C|:C\text{ cocircuit},\ \chi(C)\le m\}.
+% source-line 130
+\]
+% source-line 131
+
+% source-line 132
+\textbf{Corollary 4.3.} Among dominating families of exactly \(m\) distinct bases, the minimum component count is \(\max\)(1,\(T_m\)\ensuremath{-}\(m\)(\(R\)\ensuremath{-}1)).
+% source-line 133
+
+% source-line 134
+\textbf{Proof.} The lower bound is the coverage budget; choose a cocircuit realizing \(T_m\), extend and supplement its partition to \(m\) bases, and normalize. \hfill\ensuremath{\square}
+% source-line 135
+
+% source-line 136
+The formula is not an assertion that global cocircuit selection is polynomial-time under every representation. Given a covering family, normalization uses at most \(m\)\ensuremath{-}1 component-reducing operations and O(\(m\)\textsuperscript{2}|\(E\)|) independence queries, together with polynomial incidence-graph work. This query bound concerns normalization only.
+% source-line 137
+
+% source-line 138
+\Needspace{8\baselineskip}
+\section*{5. The complete spectrum of minimum dominating families}
+% source-line 139
+
+% source-line 140
+\textbf{Theorem 5.1.} With
+% source-line 141
+
+% source-line 142
+\[
+% source-line 143
+\ell=\max\{1,T_q-q(R-1)\},
+% source-line 144
+\]
+% source-line 145
+
+% source-line 146
+the component counts of all minimum dominating families are exactly the integers \(\ell\),\(\ell\)+1,...,\(q\). There is a minimum dominating family of disjoint bases. Consequently the independent domination number of J(\(M\)) equals \(q\).
+% source-line 147
+
+% source-line 148
+\textbf{Proof.} A maximal disjoint base family dominates J(\(M\)); otherwise another base could be added to it. Thus the maximum base-packing size is at least \(q\). Choose a cocircuit \(C\) realizing \(T_q\). By the classical union-matroid extension interface, \(C\) extends to \(q\) disjoint bases, because \(\chi(C)\)=\(q\) and the union matroid has rank qR. This is a minimum dominating family with \(q\) components. Apply Theorem 4.1 while retaining \(C\): each operation reduces the count by exactly one and retains \(q\) bases, ending at \(\ell\). Every intermediate integer is realized. Corollary 4.3 supplies the lower bound and \(q\) bases supply the upper bound. \hfill\ensuremath{\square}
+% source-line 149
+
+% source-line 150
+The independent domination conclusion does not say every minimum dominating family is independent or every maximal packing has size \(q\).
+% source-line 151
+
+% source-line 152
+By Theorem 3.1 the augmentation costs over all minimum families form the entire integer interval
+% source-line 153
+
+% source-line 154
+\[
+% source-line 155
+\max\{0,\lceil(\ell-k)/(R-1)\rceil\},\ldots,
+% source-line 156
+\max\{0,\lceil(q-k)/(R-1)\rceil\}.                 \tag{5.1}
+% source-line 157
+\]
+% source-line 158
+
+% source-line 159
+Define \(F_k\)(\(M\)) as the smallest final size obtained by first choosing any size-\(q\) dominating family, then only adding bases until there are at most \(k\) components. The optimization is over all minimum families; it is not a deliberately bad initial choice. Equations (3.1) and (5.1) give
+% source-line 160
+
+% source-line 161
+\[
+% source-line 162
+F_k(M)=\max\left\{q,\left\lceil\frac{T_q-k}{R-1}\right\rceil\right\}.       \tag{5.2}
+% source-line 163
+\]
+% source-line 164
+
+% source-line 165
+The difference \(F_k\)\ensuremath{-}\(\gamma_c^k\) is called the strategy loss. Equation (4.2) shows its source: a cocircuit requiring more than \(q\) independent classes can be sufficiently smaller to make global reoptimization preferable.
+% source-line 166
+
+% source-line 167
+\Needspace{8\baselineskip}
+\section*{6. Sharp losses and natural structural boundaries}
+% source-line 168
+
+% source-line 169
+\textbf{Theorem 6.1.} Every rank-\(R\) matroid satisfies
+% source-line 170
+
+% source-line 171
+\[
+% source-line 172
+0\le F_k-\gamma_c^k\le
+% source-line 173
+\max\left\{0,\left\lceil\frac{q-k}{R-1}\right\rceil-1\right\}.          \tag{6.1}
+% source-line 174
+\]
+% source-line 175
+
+% source-line 176
+For each \(R\ge3\) and \(q\ge2\) there is one matroid attaining this bound simultaneously for all positive \(k\). For rank two the strategy loss is always zero.
+% source-line 177
+
+% source-line 178
+\textbf{Proof of the bound.} Theorem 3.1 gives \(F_k\)\(\le\)\(q\)+\(\max\)(0,\(\operatorname{ceil}\)((\(q\)\ensuremath{-}\(k\))/(\(R\)\ensuremath{-}1))). If \(\gamma_c^k\)=\(q\) a minimum family already has at most \(k\) components, so \(F_k\)=\(q\). Otherwise \(\gamma_c^k\)\(\ge\)\(q\)+1, yielding (6.1). The rank-two claim follows from Proposition 9.2 below. Sharpness follows from either the next construction or Section 7. \hfill\ensuremath{\square}
+% source-line 179
+
+% source-line 180
+\Needspace{8\baselineskip}
+\subsection*{6.1 A common truncated-partition construction}
+% source-line 181
+
+% source-line 182
+Fix \(R\ge3\), \(q\ge2\), and \(1\le a\le R-2\). On disjoint sets \(L\),A,\(P\) of respective sizes (\(R\)\ensuremath{-}1)\(q\), aq+1, \(q\)+\(R\)\ensuremath{-}1\ensuremath{-}a, truncate the direct sum of \(U_{R-1,(R-1)q}\), \(U_{a,aq+1}\), and the free matroid on \(P\) to rank \(R\). Denote it \(N_{R,q,a}\). Independence means
+% source-line 183
+
+% source-line 184
+\[
+% source-line 185
+|I|\le R,\quad |I\cap L|\le R-1,\quad |I\cap A|\le a.
+% source-line 186
+\]
+% source-line 187
+
+% source-line 188
+Its hyperplanes are exactly \(L\); the sets A union \(Q\) with \(Q\) an (\(R\)\ensuremath{-}1\ensuremath{-}a)-subset of \(L\) union \(P\); and the (\(R\)\ensuremath{-}1)-element independent sets \(Q\) with at most \(R\)\ensuremath{-}2 elements of \(L\) and at most a\ensuremath{-}1 of A. Indeed these exhaust the flats of pretruncation rank \(R\)\ensuremath{-}1: saturating \(L\) leaves no rank for another part; saturating A leaves rank \(R\)\ensuremath{-}1\ensuremath{-}a; without a saturated part closure adds no element.
+% source-line 189
+
+% source-line 190
+The complementary cocircuit sizes are respectively
+% source-line 191
+
+% source-line 192
+\[
+% source-line 193
+(a+1)q+R-a,\qquad Rq,\qquad (R+a)q+1-a.
+% source-line 194
+\]
+% source-line 195
+
+% source-line 196
+The first cocircuit has partition number \(q\)+1: A forces that lower bound, and partitioning A into \(q\)+1 classes of at most a elements and distributing \(P\) into unused rank-\(R\) capacity gives the upper bound. The second has partition number \(q\): it has Rq elements, none in A, and at least \(q\) elements of \(P\), so partition it into \(q\) \(R\)-element sets each containing a \(P\) element. The third has more than Rq elements, hence partition number at least \(q\)+1.
+% source-line 197
+
+% source-line 198
+Thus \(q\)=\(\gamma\) and every size-\(q\) dominating family exactly covers a second-type cocircuit and consists of disjoint bases. The first-type cocircuit has size at most (\(q\)+1)(\(R\)\ensuremath{-}1)+1, since the difference is (\(R\)\ensuremath{-}a\ensuremath{-}2)\(q\)+a\(\ge\)0. Theorem 4.1 therefore gives \(q\)+1 connected dominating bases. Consequently
+% source-line 199
+
+% source-line 200
+\[
+% source-line 201
+\gamma_c^k=\begin{cases}q+1,&k<q,\\q,&k\ge q,\end{cases}
+% source-line 202
+\qquad F_k=q+\max\{0,\lceil(q-k)/(R-1)\rceil\}.       \tag{6.2}
+% source-line 203
+\]
+% source-line 204
+
+% source-line 205
+This proves sharpness in (6.1). The girth is a+1, from a circuit in A. Taking a=\(R\)\ensuremath{-}2 gives girth \(R\)\ensuremath{-}1. Taking a=2 gives a simple example for every \(R\ge4\). Thus simple rank two and three have zero loss, whereas each higher rank permits the full sharp loss. Not every parameter has positive loss: the right side of (6.1) is positive only when \(q\)\ensuremath{-}\(k\)\(\ge\)\(R\).
+% source-line 206
+
+% source-line 207
+\Needspace{8\baselineskip}
+\subsection*{6.2 Paving matroids}
+% source-line 208
+
+% source-line 209
+\textbf{Theorem 6.2.} If \(M\) is paving, \(R\ge2\), and \(s\) is its smallest cocircuit size, then \(T_q\)=\(s\) and \(T_m\)=\(s\) for all \(m\ge q\). In particular
+% source-line 210
+
+% source-line 211
+\[
+% source-line 212
+\gamma_c^k=F_k=\max\{q,\lceil(s-k)/(R-1)\rceil\}.       \tag{6.3}
+% source-line 213
+\]
+% source-line 214
+
+% source-line 215
+\textbf{Proof.} Distinct hyperplanes of a paving matroid meet in at most \(R\)\ensuremath{-}2 elements. The classical partition criterion reduces to
+% source-line 216
+
+% source-line 217
+\[
+% source-line 218
+\chi(C)\le m\ \Longleftrightarrow\ |C|\le mR
+% source-line 219
+\text{ and }|C\cap B|\le m(R-1)\text{ for every hyperplane }B.       \tag{6.4}
+% source-line 220
+\]
+% source-line 221
+
+% source-line 222
+Indeed lower-rank subsets are independent, and rank-\(R\)\ensuremath{-}1 subsets lie in hyperplanes [\hyperlink{refBSY21}{BSY21}].
+% source-line 223
+
+% source-line 224
+If \(q\)=1 an independent cocircuit \(C_0\) exists and \(s\le R\). For \(s\)<\(R\) every shortest cocircuit is independent; for \(s\)=\(R\), \(C_0\) itself is shortest. Hence \(T_1\)=\(s\).
+% source-line 225
+
+% source-line 226
+Let \(q\ge2\), let \(C_0\)=\(E\)\ensuremath{-}\(H\) satisfy \(\chi(C_0)\)=\(q\), and choose a largest hyperplane A. Then |\(E\)\ensuremath{-}A|\(\le\)|\(C_0\)|\(\le\)qR. Suppose another hyperplane \(B\) has |\(B\)\ensuremath{-}A|\(\ge\)\(q\)(\(R\)\ensuremath{-}1)+1. \(H\) cannot equal A, by (6.4). \(B\) cannot equal \(H\) either, since |A|\(\ge\)|\(H\)| would imply |A\ensuremath{-}\(H\)|\(\ge\)|\(H\)\ensuremath{-}A|>\(q\)(\(R\)\ensuremath{-}1), again violating (6.4). Thus \(H\),A,\(B\) are distinct and
+% source-line 227
+
+% source-line 228
+\[
+% source-line 229
+|C_0|\ge |(A\cup B)\setminus H|
+% source-line 230
+\ge 2q(R-1)+2-2(R-2)>qR,
+% source-line 231
+\]
+% source-line 232
+
+% source-line 233
+a contradiction. All hyperplane constraints in (6.4) hold for \(E\)\ensuremath{-}A, so this shortest cocircuit is \(q\)-partitionable. Monotonicity gives \(T_m\)=\(s\) for \(m\ge q\), and (4.2),(5.2) give (6.3). \hfill\ensuremath{\square}
+% source-line 234
+
+% source-line 235
+Zero strategy loss does not imply \(\gamma_c^k\)=\(q\). The girth-\(R\)\ensuremath{-}1 examples in Section 6.1 show that the universal paving guarantee cannot be extended even one girth level below \(R\). They do not give an individual-matroid characterization of zero loss.
+% source-line 236
+
+% source-line 237
+\Needspace{14\baselineskip}
+\section*{7. Graphic and simple binary sharpness}
+% source-line 238
+
+% source-line 239
+\Needspace{8\baselineskip}
+\subsection*{7.1 Graphic matroids}
+% source-line 240
+
+% source-line 241
+\textbf{Theorem 7.1.} For every \(R\ge3\) and \(q\ge2\), a graphic matroid of rank \(R\) satisfies (6.2), and hence attains (6.1) for every \(k\).
+% source-line 242
+
+% source-line 243
+\textbf{Proof.} Take A=\{\(a_0\),\(a_1\)\} and \(B\)=\{\(b_1\),...,\(b_{R-1}\)\}. Let the crossing tree consist of \(a_0b_1\) and \(a_1b_i\) for \(1\le i\le R-1\), each with \(q\) parallel copies. Inside the parts take \(a_0a_1\) and the path \(b_1\)...\(b_{R-1}\), each with \(q\)+1 parallel copies. The graph is connected on \(R\)+1 vertices.
+% source-line 244
+
+% source-line 245
+Its bond \(C\)=\(\delta(A)\) contains Rq edges and partitions into \(q\) spanning trees, one copy of each crossing edge per tree. Any other bond contains all \(q\)+1 copies of some internal edge: if it cuts no internal edge, the connected internal graphs force its shores to be A and \(B\). No \(q\) spanning trees cover such a bond. Thus \(\gamma\)=\(q\) and every minimum dominating family must cover \(C\) exactly, making its trees pairwise disjoint.
+% source-line 246
+
+% source-line 247
+Put \(e\)=\(a_0b_1\), h=\(a_0a_1\), and let \(Q\) contain one fixed copy of each \(a_1b_i\) for \(2\le i\le R-1\). For \(1\le i\le q\) take \(Q\) union \{\(h_i\),\(e_i\)\}, and additionally \(Q\) union \{\(h_{q+1}\),\(e_1\)\}. These \(q\)+1 distinct spanning trees cover \(\delta(a_0)\) and share the nonempty set \(Q\). They form a connected dominating family, proving (6.2). \hfill\ensuremath{\square}
+% source-line 248
+
+% source-line 249
+Parallel edges are allowed. This result does not contradict the simple regular corollary below.
+% source-line 250
+
+% source-line 251
+\Needspace{8\baselineskip}
+\subsection*{7.2 A simple binary family}
+% source-line 252
+
+% source-line 253
+\textbf{Lemma 7.2 (classical affine partition and packing interface).} A full affine hyperplane A not containing zero in \(\operatorname{GF}(2)^\rho\) has \(N\)=\(2^{\rho-1}\) points, independent partition number \(\operatorname{ceil}\)(\(N/\rho\)), and \(t\) disjoint bases whenever \(t\rho\)\(\le\)\(N\).
+% source-line 254
+
+% source-line 255
+\textbf{Proof.} A rank-j subset has at most \(2^{j-1}\) points, and \(2^{j-1}\)/j is nondecreasing for \(j\ge1\). Matroid partition gives the first assertion. For \(j\ge1\), any rank-j subset \(X\) satisfies
+% source-line 256
+
+% source-line 257
+\[
+% source-line 258
+|A\setminus X|\ge N-2^{j-1}\ge N(\rho-j)/\rho\ge t(\rho-j).
+% source-line 259
+\]
+% source-line 260
+
+% source-line 261
+For j=0 the same final bound holds because \(X\) is empty. The classical union rank formula therefore has value \(t\rho\), giving \(t\) disjoint bases. \hfill\ensuremath{\square}
+% source-line 262
+
+% source-line 263
+\textbf{Theorem 7.3.} For every \(d\ge5\), set \(R\)=\(d\)+2, \(m\)=\(\operatorname{ceil}\)(\(2^{d-1}\)/\(d\)), \(q\)=\(m\)\ensuremath{-}1. There is a simple binary rank-\(R\) matroid satisfying (6.2) and attaining (6.1) for all \(k\). At \(d\)=8, \(R\)=10 and \(q\)=15, the connected strategy loss is one.
+% source-line 264
+
+% source-line 265
+\textbf{Proof.} Use coordinates (\(z\),\(y_1\),...,\(y_{d+1}\)) in \(\operatorname{GF}(2)^{d+2}\). Put \(H\)=\{\(z\)=0\}, \(H_A\)=\{\(z\)=0,\(y_{d+1}\)=0\}, \(H_B\)=\{\(z\)=0,\(y_d\)=0\}, and \(w\)=\(y_d\). The ground set's internal part consists of all nonzero vectors in \(H_A\cup H_B\), without repeats. Each subspace has dimension \(d\) and their sum is \(H\).
+% source-line 266
+
+% source-line 267
+The affine set \(E_0\)=\{\(z\)=1,\(y_d\)=0\} has \(2^d\) points and rank \(d\)+1. Since \(q\)<\(2^{d-1}\)/\(d\), \(q\)(\(d\)+1)<\(2^d\). Lemma 7.2 provides \(q\) disjoint bases \(S_i\) of \(K\)=\(\ker\)(\(w\)) from \(E_0\). Choose \(q\) distinct vectors \(e_i\) with \(z\)=1,\(y_d\)=1, and append \(C\)=(union \(S_i\)) union \{\(e_i\)\} to the internal ground set. Every \(S_i\) union \{\(e_i\)\} is a full base. Thus the resulting matroid is simple binary of rank \(R\), and \(C\) has qR elements.
+% source-line 268
+
+% source-line 269
+The internal part spans \(H\), so \(C\) is a cocircuit. Any other cocircuit is a minimal nonzero linear-functional support whose functional is nonzero on \(H\) and hence on at least one of \(H_A\),\(H_B\). It contains a full rank-\(d\) affine hyperplane of that subspace, with partition number \(m\). Therefore \(C\) is the only cocircuit coverable by \(q\) bases. Its size forces every minimum dominating family to consist of \(q\) disjoint bases.
+% source-line 270
+
+% source-line 271
+The support \(D\)=\{x:\(w\)(x)=1\} consists of the full affine hyperplane A' in \(H_A\) and the \(q\) points \(e_i\). Its complement spans \(K\), since it contains \(S_1\), so \(D\) is a cocircuit. Partition A' into \(m\) independent classes \(I_i\), attach one \(e_i\) to each of the first \(q\) classes, and leave the last without an extra point. These sets are independent because each \(e_i\) lies outside \(H_A\). Moreover \(\chi(D)\)=\(m\) by the affine lower bound.
+% source-line 272
+
+% source-line 273
+Choose a in \(H_B\setminus H_A\). It is outside the span of each augmented class: a combination landing in \(H\) must have coefficient zero on its possible \(e_i\), leaving a combination in \(H_A\). Add a to each class and extend it to a full base. The resulting \(m\) bases cover \(D\) and share a. They must be distinct, since fewer than \(m\) covering bases would contradict \(\chi(D)\)=\(m\). They form a connected dominating family of size \(q\)+1. The minimum-family argument and Theorem 3.1 give (6.2). \hfill\ensuremath{\square}
+% source-line 274
+
+% source-line 275
+The family has 3\textperiodcentered{}\(2^{d-1}\)\ensuremath{-}1+qR elements and contains a Fano restriction; it is not regular. It does not realize every rank and \(q\), nor establish the minimum rank for positive loss. Its contribution is sharpness without parallel elements, not a new affine packing theorem.
+% source-line 276
+
+% source-line 277
+\Needspace{8\baselineskip}
+\subsection*{7.3 Zero-loss binary classes}
+% source-line 278
+
+% source-line 279
+\textbf{Corollary 7.4.} Every simple binary matroid of rank \(R\ge2\) with no \(F_7\) minor has zero strategy loss for all \(k\). In particular this holds for all simple regular matroids.
+% source-line 280
+
+% source-line 281
+\textbf{Proof.} The classical Fano-exclusion growth theorem bounds the size of every rank-j restriction by j(j+1)/2 [\hyperlink{refMur76}{Mur76}, \hyperlink{refMcG12}{McG12}, \hyperlink{refOx11}{Ox11}]. Hence |\(X\)|/\(r\)(\(X\))\(\le\)(\(R\)+1)/2 for every nonempty \(X\). Matroid partition covers the entire ground set with at most \(p\)=\(\operatorname{ceil}\)((\(R\)+1)/2)\(\le\)\(R\) independent classes, which extend to a dominating family. Thus \(q\le R\) and the right side of (6.1) is zero. Regular matroids have no \(F_7\) minor by the classical excluded-minor characterization. \hfill\ensuremath{\square}
+% source-line 282
+
+% source-line 283
+The proof does not require or establish an independent cocircuit in every simple regular matroid.
+% source-line 284
+
+% source-line 285
+\textbf{Corollary 7.5.} Simple binary matroids of ranks two through six have zero strategy loss. Positive loss in a simple binary matroid therefore requires rank at least seven.
+% source-line 286
+
+% source-line 287
+\textbf{Proof.} Every cocircuit is an affine functional-one support. Its rank-j subsets have at most \(2^{j-1}\) points, so \(\chi(C)\)\(\le\)\(\operatorname{ceil}\)(\(2^{R-1}\)/\(R\)). For \(R\)=2,...,6 this upper bound is 1,2,2,4,6, respectively, and is at most \(R\). Apply (6.1). \hfill\ensuremath{\square}
+% source-line 288
+
+% source-line 289
+Neither corollary is an if-and-only-if classification. A Fano minor alone is not sufficient for positive loss, and the rank-ten example is not claimed minimal.
+% source-line 290
+
+% source-line 291
+\Needspace{8\baselineskip}
+\section*{8. Optimization from an explicit laminar capacity tree}
+% source-line 292
+
+% source-line 293
+Suppose \(M\) is given by an explicit laminar family of capacity constraints \(|I\cap A|\)\(\le\)\(b_A\), with nonnegative integer capacities \(b_A\). Delete loops, add the ground-set root and singleton leaves, and complete each internal node's children to a partition of its elements. Root capacity is the true rank \(R\); other capacities may be capped by \(R\) and their set sizes. Let \(n\) be the nonloop element count and \(p\) the number of tree nodes. Elements are explicit, not binary-encoded multiplicities.
+% source-line 294
+
+% source-line 295
+\textbf{Theorem 8.1.} From this tree, the value \(\gamma_c^k\) is computable in \(O(pR^2\log(n+1))\) integer \(\max\)/add operations, in addition to input preprocessing. An optimal family of distinct bases is constructible in polynomial time in the explicit input and output lengths. The faster displayed bound is for the value, not the entire output procedure.
+% source-line 296
+
+% source-line 297
+\textbf{Proof.} For any set \(D\), \(\chi(D)\)\(\le\)\(m\) exactly when \(|D\cap A|\)\(\le\)\(m\) \(b_A\) at every node. Necessity follows by adding capacities over the independent classes. For sufficiency order leaves by depth-first traversal, list \(D\) in that order, and assign colors cyclically modulo \(m\). Each node occupies an interval, so each color occurs at most \(\operatorname{ceil}\)(\(|D\cap A|\)/\(m\))\(\le\)\(b_A\) times.
+% source-line 298
+
+% source-line 299
+It is enough to optimize over all \(D\) with \(r\)(\(E\)\ensuremath{-}\(D\))<\(R\) rather than only cocircuits: such \(D\) contains a cocircuit, whose size and partition number cannot be larger. Put \(H\)=\(E\)\ensuremath{-}\(D\). The color constraints become \(|H\cap A|\)\(\ge\)|A|\ensuremath{-}\(m\) \(b_A\). The rank recursion is
+% source-line 300
+
+% source-line 301
+\[
+% source-line 302
+r_A(H\cap A)=\min\{b_A,\sum_{B\text{ child of }A}r_B(H\cap B)\}.
+% source-line 303
+\]
+% source-line 304
+
+% source-line 305
+For each node A and \(0\le t\le b_A\), store \(F_A(t)\), the greatest possible size of \(H\cap A\) with local rank exactly \(t\) and all descendant lower bounds satisfied. Infeasible states have value \(-\infty\). At a leaf initialize rank-zero size zero and rank-one size one, then filter by its lower bound. At an internal node start G(0)=0 and convolve its children: a pair of states \(s\),\(t\) updates the state \(\min\)(\(b_A\),\(s\)+\(t\)) by the maximum of its current value and G(\(s\))+\(F_B(t)\). Filter states with retained size below |A|\ensuremath{-}\(m\) \(b_A\).
+% source-line 306
+
+% source-line 307
+Keeping only the greatest size at a fixed rank is safe: ancestor constraints are size lower bounds and ancestor ranks use only child ranks. Once a partial rank saturates \(b_A\), further nonnegative child ranks cannot undo saturation. This proves the dynamic program's completeness inductively.
+% source-line 308
+
+% source-line 309
+At the root let \(W_m\)=\(\max_{t<R}\) \(F_E(t)\). If infeasible set \(T_m\)=\(+\infty\); otherwise \(T_m\)=\(n\)\ensuremath{-}\(W_m\). The complement of a feasible \(H\) contains a cocircuit. Conversely every \(m\)-partitionable cocircuit has a feasible complement, proving this equality. A maximum-size feasible \(H\) must be a hyperplane: if its rank is too small or it is not closed, an element can be added without reaching rank \(R\), preserving every lower bound.
+% source-line 310
+
+% source-line 311
+By (4.2), the optimum is the smallest \(m\) such that \(T_m\) is finite and \(T_m\)\(\le\)\(m\)(\(R\)\ensuremath{-}1)+\(k\). Feasibility is monotone in \(m\), and \(m\)=\(n\) is sufficient. Binary search requires \(O(\log(n+1))\) dynamic programs, each with \(O(pR^2)\) arithmetic work. Traceback gives a feasible hyperplane and cocircuit, which certify an upper bound; optimality follows from completeness or an infeasibility table at \(m\)\ensuremath{-}1, not from that witness alone.
+% source-line 312
+
+% source-line 313
+For output, cyclically partition the cocircuit and extend the nonempty classes to bases. Deduplicate, then supplement to \(m\) bases. Distinct-base generation can use include/exclude prefix search: an independent prefix I is extendible using the remaining elements precisely when their union with I has rank \(R\). Every live subtree contains a base, yielding polynomial delay. At most \(m\) already selected outputs need be skipped. Finally apply Theorem 4.1. All ranks and independence tests are computable from the tree in polynomial time, completing the output claim. \hfill\ensuremath{\square}
+% source-line 314
+
+% source-line 315
+The truncated-partition sharp examples in Section 6 are laminar. Thus this algorithm does not merely solve instances where every strategy is already optimal.
+% source-line 316
+
+% source-line 317
+\Needspace{8\baselineskip}
+\subsection*{8.1 Why the input representation matters}
+% source-line 318
+
+% source-line 319
+On 2R elements let U=\(U_{R,2R}\), and for each \(R\)-set \(H\) let \(M_H\) have all the bases of U except \(H\). It is the laminar matroid defined by |I|\(\le\)\(R\) and \(|I\cap H|\)\(\le\)\(R\)\ensuremath{-}1, and is paving. The complement \(C\)=\(E\)\ensuremath{-}\(H\) is a base dominating J(\(M_H\)), so \(\gamma_c^k\)(J(\(M_H\)))=1 for every \(k\). In U each base has a disjoint complement, but two intersecting bases differing in one element dominate; hence \(\gamma_c^k\)(J(U))=2.
+% source-line 320
+
+% source-line 321
+The independence and rank oracles of U and \(M_H\) differ only at the query \(H\). A deterministic exact algorithm on the U transcript must query all \(\binom{2R}{R}\) \(R\)-sets; otherwise an unqueried \(H\) yields the same transcript with a different answer. This is exponential in \(n\)=2R, even under the promise of laminar and paving input. The hidden instance and indistinguishability technique are classical [\hyperlink{refHLL22}{HLL22}]; here they calibrate this particular parameter and the tree-input contract. No randomized, approximation, or explicit-input NP-hardness statement is made.
+% source-line 322
+
+% source-line 323
+\Needspace{14\baselineskip}
+\section*{9. Explicit specializations and degeneracies}
+% source-line 324
+
+% source-line 325
+\Needspace{8\baselineskip}
+\subsection*{9.1 Complete-profile hypergraphs}
+% source-line 326
+
+% source-line 327
+Partition the elements into \(t\) parts of sizes \(n_j\)\(\ge\)\(d_j\)\(\ge\)1 and select exactly \(d_j\) elements in every part. These edges are the bases of the direct sum of uniform matroids, of rank \(R\)=\(\sum d_j\), and their line graph is J(\(M\)). A family dominates precisely when some part has fewer than \(d_j\) uncovered elements. Thus \(q\)=\(\min_j\) \(\operatorname{floor}\)(\(n_j\)/\(d_j\)).
+% source-line 328
+
+% source-line 329
+If \(t\ge2\), choose \(q\) disjoint \(d_j\)-subsets in a minimizing part and a fixed subset in every other part. They form a clique dominating family, so \(\gamma_c^k\)=\(q\) for every \(k\). Every component count 1,...,\(q\) is realizable by a different construction: retain the disjoint subsets in the minimizing part, group the \(q\) edges into \(c\) nonempty groups and, in another part l, share one group-specific element while keeping the other selected elements private. In every remaining part choose \(q\) pairwise disjoint subsets of its required size; thus no remaining part connects different groups. The shared part uses \(q\)(\(d_l\)\ensuremath{-}1)+\(c\)\(\le\)\(q\) \(d_l\)\(\le\)\(n_l\) elements, the other disjoint choices are feasible since \(q\) \(d_i\)\(\le\)\(n_i\), and the edges remain distinct in the minimizing part.
+% source-line 330
+
+% source-line 331
+For \(t\)=1, write \(N\)=qR+\(s_0\), \(0\le s_0<R\). All cocircuits have size \(N\)\ensuremath{-}\(R\)+1 and partition number \(q\). Hence
+% source-line 332
+
+% source-line 333
+\[
+% source-line 334
+\gamma_c^k=\max\{q,\lceil(N-R+1-k)/(R-1)\rceil\}.
+% source-line 335
+\]
+% source-line 336
+
+% source-line 337
+For a size-\(q\) family put \(\delta\)=qR\ensuremath{-}|U|. It is dominating exactly when \(\delta\)\(\le\)\(R\)\ensuremath{-}\(s_0\)\ensuremath{-}1. Its nontrivial components involve at most \(2\delta\) bases, since a component of \(h\ge2\) bases consumes at least h\ensuremath{-}1 units of \(\delta\). This describes a bounded overlap core, not a list of isomorphism types.
+% source-line 338
+
+% source-line 339
+\Needspace{8\baselineskip}
+\subsection*{9.2 All rank-two matroids}
+% source-line 340
+
+% source-line 341
+Delete loops and let the parallel class sizes be \(n_1\)\(\ge\)...\(\ge\)\(n_p\)\(\ge\)1, \(p\ge2\). Put \(N\)=\(\sum n_i\) and T=\(N\)\ensuremath{-}\(n_1\). The bases are the edges of \(K_{n_1,\ldots,n_p}\).
+% source-line 342
+
+% source-line 343
+\textbf{Proposition 9.2.} For \(p\)=2, \(q\)=\(n_2\), \(\gamma_c^k\)=\(q\), and the minimum-family component spectrum is 1,...,\(q\). For \(p\ge3\),
+% source-line 344
+
+% source-line 345
+\[
+% source-line 346
+q=\max\{\lceil T/2\rceil,n_2\},\qquad
+% source-line 347
+\gamma_c^k=F_k=\max\{q,T-k\},
+% source-line 348
+\]
+% source-line 349
+
+% source-line 350
+and the minimum-family component spectrum is T\ensuremath{-}\(q\),...,\(q\).
+% source-line 351
+
+% source-line 352
+\textbf{Proof.} The bipartite case follows from Section 9.1. For \(p\ge3\), cocircuits are complements of parallel classes. Removing a largest class minimizes both total size and the largest remaining class size. The remaining complete multipartite graph has matching number \(\min\)(\(\operatorname{floor}\)(T/2),T\ensuremath{-}\(n_2\)): match all outside vertices when one part exceeds half; otherwise order parts consecutively and pair opposite halves, deleting one vertex first if T is odd. Its independent partition number is therefore \(\max\)(\(\operatorname{ceil}\)(T/2),\(n_2\))=\(q\). Equation (2.3) gives \(q\) and \(T_q\)=T. Every cocircuit has size at least T and partition number at least \(q\); (4.2) is minimized at this one, giving the formula. Theorem 5.1 gives the spectrum, and (5.2) gives \(F_k\). \hfill\ensuremath{\square}
+% source-line 353
+
+% source-line 354
+The ordinary domination endpoint is prior work [\hyperlink{refSM14}{SM14}], and connected edge domination has classical graph interfaces [\hyperlink{refHM19}{HM19}]. Their inclusion here provides a transparent check of the general theory, not a new ordinary edge-domination claim.
+% source-line 355
+
+% source-line 356
+\Needspace{8\baselineskip}
+\subsection*{9.3 Rank one and empty families}
+% source-line 357
+
+% source-line 358
+Rank one is excluded from every formula dividing by \(R\)\ensuremath{-}1. Its bases are singleton nonloops and J(\(M\)) is edgeless. All its \(b\) vertices must be selected to dominate; a \(k\)-component dominating family exists if and only if \(k\ge b\). Theorem 3.1 assumes a nonempty prescribed family. Rank-zero matroids and empty starting families are outside the main statements.
+% source-line 359
+
+% source-line 360
+\Needspace{8\baselineskip}
+\section*{10. Verification and limitations}
+% source-line 361
+
+% source-line 362
+General results rest on the proofs, not on finite computations. The accompanying bounded Windows verification checks separate the laminar dynamic program from a finite subset-rank and base-family enumeration reference; they include positive controls for both normalization operations and deliberately corrupted controls. A larger rank-four witness is checked for feasibility, coverage, distinctness, and connectivity without enumerating all base families. Its optimum uses the general proof, not an independent exhaustive computation.
+% source-line 363
+
+% source-line 364
+The simple binary controls at \(d\)=5 and \(d\)=8 verify matrix rank, all nonzero-functional supports, cocircuit identification, covering bases, shared elements, and four deliberate corruptions using an independent row-reduction implementation. They do not independently enumerate the whole base-intersection graph or prove the general sharpness theorem by computation. Implementation size and resource gates do not restrict the mathematical quantifiers.
+% source-line 365
+
+% source-line 366
+The paper does not classify all individual zero-loss matroids, solve the corresponding problem for arbitrary uniform hypergraphs, cover weighted base costs, or supply a global polynomial algorithm for arbitrary matrix representations. Formula (4.2) is an exact reduction, not a claim that all its subproblems are easy. Full external review and a comprehensive priority assessment remain separate from internal proof and code checking.
+% source-line 367
+
+% source-line 368
+\Needspace{8\baselineskip}
+\section*{Appendix A. Optimal-family incidence budget}
+% source-line 369
+
+% source-line 370
+For any \(m\)-base family covering a cocircuit \(C\),
+% source-line 371
+
+% source-line 372
+\[
+% source-line 373
+|U\setminus C|+\beta+(k-c)=m(R-1)+k-|C|.
+% source-line 374
+\]
+% source-line 375
+
+% source-line 376
+If \(c\le k\) all left terms are nonnegative. Conversely domination means coverage of some cocircuit and the component condition is \(c\le k\). At \(m\)=\(\gamma_c^k\) this gives an incidence-budget characterization of optimal families, not a canonical isomorphism classification. For \(U_{R,N}\), the branch \(\gamma_c^k\)>\(q\) has budget at most \(R\)\ensuremath{-}2; if its budget is zero its incidence graph is a forest with exactly \(k\) components. The incidence identity itself is standard graph theory.
+% source-line 377
+
+% source-line 378
+\Needspace{8\baselineskip}
+\section*{Appendix \(B\). Bounded source comparison}
+% source-line 379
+
+% source-line 380
+The checked 2013 and 2018 Hamilton-cycle papers [\hyperlink{refZY13}{ZY13}, \hyperlink{refZC18}{ZC18}] use nonempty-intersection adjacency in their bodies and do not state the domination formulas proved here. The 2018 abstract's contrary adjacency wording is not used as a definition.
+% source-line 381
+
+% source-line 382
+The following gaps remain explicit rather than being turned into evidence of absence:
+% source-line 383
+
+\begin{itemize}
+% source-line 384
+\Needspace{4\baselineskip}\item Zhang--Liu's work cited as forthcoming in reference 18 of the 2012 chapter \emph{The Properties of Graphs of Matroids} [\hyperlink{refLL12}{LL12}]: final identity and full text unresolved. This is not a paper authored by the chapter authors Li--Liu.
+% source-line 385
+\Needspace{4\baselineskip}\item Akkari [\hyperlink{refAkk95}{Akk95}]: accessible description concerns extension of retained partial base packings under additional assumptions; its full text and possible intermediate lemmas have not been excluded against Theorem 4.1.
+% source-line 386
+\Needspace{4\baselineskip}\item Song et al. [\hyperlink{refSM14}{SM14}]: ordinary rank-two endpoint treated as prior work irrespective of missing full text.
+% source-line 387
+\Needspace{4\baselineskip}\item Weninger--Fukasawa [\hyperlink{refWF24}{WF24}]: the checked 2024 version studies minimum-cost cocircuit/interdiction interfaces, not the independent-partition constraint of Section 8; the full later published version and the associated 2026 dissertation have not all been compared.
+% source-line 388
+\Needspace{4\baselineskip}\item Later budgeted-laminar independent-set work, Vega's 2020 thesis, and Jensen--Korte's original property-query paper have only partial source coverage. No new generic tree-DP or oracle technique is claimed.
+% source-line 389
+\Needspace{4\baselineskip}\item Murty's original synopsis [\hyperlink{refMur76}{Mur76}] has not been fully examined; the density theorem used in Corollary 7.4 is a classical result reproduced in [\hyperlink{refMcG12}{McG12}, \hyperlink{refOx11}{Ox11}], not a novelty claim.
+% source-line 390
+
+\end{itemize}
+% source-line 391
+An OpenAI/math directory screen forms one additional collision check, not a proof that no unindexed or concurrent result exists. The final review record will distinguish source refresh, proof review, finite verification, and artifact checks.
+% source-line 392
+
+% source-line 393
+\begin{thebibliography}{McG12}\small\raggedright
+% source-line 394
+
+% source-line 395
+\bibitem[EF65]{refEF65}\hypertarget{refEF65}{}J. Edmonds and D. R. Fulkerson, \emph{Transversals and matroid partition}, Journal of Research of the National Bureau of Standards 69B (1965), 147--153. \href{https://nvlpubs.nist.gov/nistpubs/jres/69B/jresv69Bn3p147_A1b.pdf}{Original paper}.
+% source-line 396
+
+% source-line 397
+\bibitem[FJ18]{refFJ18}\hypertarget{refFJ18}{}G. Fan, H. Jiang, P. Li, D. B. West, D. Yang, and X. Zhu, \emph{Extensions of matroid covering and packing}, author manuscript dated 11 June 2018. \href{https://dwest.web.illinois.edu/pubs/matrunc.pdf}{Author manuscript}.
+% source-line 398
+
+% source-line 399
+\bibitem[ZY13]{refZY13}\hypertarget{refZY13}{}Y. Zhang, B. Yu, and G. Liu, \emph{Edge Disjoint Hamilton Cycles in Intersection Graphs of Bases of Matroids}, Utilitas Mathematica 90 (2013), 327--334. \href{https://yu.trubox.ca/wp-content/uploads/sites/2481/2021/03/67_Edge-disjoint-H-cycle-in-matroidUM2013Zhang-Yu.pdf}{Author copy}.
+% source-line 400
+
+% source-line 401
+\bibitem[ZC18]{refZC18}\hypertarget{refZC18}{}Y. Zhang and H. Chi, \emph{Hamilton Cycles in Intersection Graphs of Bases of Matroids}, MMSA (2018), 331--334. \href{https://doi.org/10.2991/mmsa-18.2018.73}{DOI}.
+% source-line 402
+
+% source-line 403
+\bibitem[SM14]{refSM14}\hypertarget{refSM14}{}W. Song, L. Miao, H. Wang, and Y. Zhao, \emph{Maximal matching and edge domination in complete multipartite graphs}, International Journal of Computer Mathematics 91(5) (2014), 857--862. \href{https://doi.org/10.1080/00207160.2013.818668}{DOI}. Full-text comparison incomplete.
+% source-line 404
+
+% source-line 405
+\bibitem[YG80]{refYG80}\hypertarget{refYG80}{}M. Yannakakis and F. Gavril, \emph{Edge Dominating Sets in Graphs}, SIAM Journal on Applied Mathematics 38(3) (1980), 364--372. \href{https://doi.org/10.1137/0138030}{DOI}.
+% source-line 406
+
+% source-line 407
+\bibitem[HM19]{refHM19}\hypertarget{refHM19}{}D. Hermelin, M. Mnich, E. J. van Leeuwen, and G. J. Woeginger, \emph{Domination When the Stars Are Out}, ACM Transactions on Algorithms 15(2) (2019), article 25. \href{https://dspace.library.uu.nl/bitstream/handle/1874/382146/a25_hermelin.pdf?sequence=1}{Author copy}.
+% source-line 408
+
+% source-line 409
+\bibitem[BSY21]{refBSY21}\hypertarget{refBSY21}{}K. B\'{e}rczi, T. Schwarcz, and Y. Yamaguchi, \emph{List Coloring of Two Matroids through Reduction to Partition Matroids}, SIAM Journal on Discrete Mathematics 35(3) (2021), 2192--2209. \href{https://doi.org/10.1137/20M1385615}{DOI}.
+% source-line 410
+
+% source-line 411
+\bibitem[FO17]{refFO17}\hypertarget{refFO17}{}T. Fife and J. Oxley, \emph{Laminar matroids}, author manuscript (2017). Classical presentation and closure constructions.
+% source-line 412
+
+% source-line 413
+\bibitem[DA23]{refDA23}\hypertarget{refDA23}{}I. Doron-Arad, A. Kulik, and H. Shachnai, \emph{An FPTAS for Budgeted Laminar Matroid Independent Set}, arXiv:2304.13984v1 (2023). \href{https://arxiv.org/abs/2304.13984v1}{Version checked}.
+% source-line 414
+
+% source-line 415
+\bibitem[WF24]{refWF24}\hypertarget{refWF24}{}N. Weninger and R. Fukasawa, \emph{Interdiction of minimum spanning trees and other matroid bases}, arXiv:2407.14906v1 (2024). \href{https://arxiv.org/abs/2407.14906v1}{Version checked}. Later-version comparison incomplete.
+% source-line 416
+
+% source-line 417
+\bibitem[HLL22]{refHLL22}\hypertarget{refHLL22}{}X. Huang, J. Luo, and L. Li, \emph{Quantum Speedup and Limitations on Matroid Property Problems}, arXiv:2111.12900v2 (2022). \href{https://arxiv.org/abs/2111.12900v2}{Version checked}. Classical hidden-instance overlap is expressly credited.
+% source-line 418
+
+% source-line 419
+\bibitem[Mur76]{refMur76}\hypertarget{refMur76}{}U. S. R. Murty, \emph{Extremal Matroids with Forbidden Restrictions and Minors (Synopsis)}, Congressus Numerantium XVII (1976), 463--468. Original full text not examined.
+% source-line 420
+
+% source-line 421
+\bibitem[McG12]{refMcG12}\hypertarget{refMcG12}{}S. McGuinness, \emph{An Erd\H{o}s--Gallai Theorem for Matroids}, Annals of Combinatorics 16 (2012), 107--119, Theorem 1.4. \href{https://doi.org/10.1007/s00026-011-0123-4}{DOI}.
+% source-line 422
+
+% source-line 423
+\bibitem[Ox11]{refOx11}\hypertarget{refOx11}{}J. Oxley, \emph{Matroid Theory}, second edition, Oxford University Press (2011), including Proposition 14.10.3. The cited theorem is checked through available reproductions; the entire book was not audited.
+% source-line 424
+
+% source-line 425
+\bibitem[Akk95]{refAkk95}\hypertarget{refAkk95}{}S. Akkari, \emph{Random packing by matroid bases and triangles}, Discrete Mathematics 145 (1995), 1--9. \href{https://doi.org/10.1016/0012-365X(94)00050-S}{DOI}. Full-text comparison incomplete.
+% source-line 426
+
+% source-line 427
+\bibitem[LL12]{refLL12}\hypertarget{refLL12}{}P. Li and G. Liu, \emph{The Properties of Graphs of Matroids}, IntechOpen chapter (2012), reference 18. \href{https://doi.org/10.5772/35778}{DOI}. Its forthcoming Zhang--Liu reference remains unresolved.
+% source-line 428
+
+\end{thebibliography}
+% source-line 429
+\Needspace{8\baselineskip}
+\section*{Author and assistance disclosure}
+% source-line 430
+
+% source-line 431
+AI tools assisted with research, literature comparison, verification, and writing. Carptopus is the responsible author. No external peer-review endorsement is implied.
+\end{document}

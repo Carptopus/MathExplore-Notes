@@ -1,0 +1,699 @@
+{
+  "source_sha256": "C1B38B8A70E3C98546A691F959CE28E65C14EB586F6F06825C88861BDB9BD5D2",
+  "pdf_sha256": "768FD904FB2DEC51DDA73E0D7FCFD28AB4E0FC2D337957BC477173A77805A4CA",
+  "prior_pdf_sha256": "E5FFD0DF60D047ED6A0BD851A14E377BF10D8D16D09AB850C0A7FD29EB9C1637",
+  "page_count": 14,
+  "pages": [
+    {
+      "page": 1,
+      "render": "D:\\Codes\\MyProjects\\MathExplore\\tmp\\kneser-unified-artifacts\\page-01.png",
+      "sha256": "6B5CFAD4067157680CFF8F2E710A35F8989EFECB2A249F9F099F5E872689119C",
+      "page_size_points": [
+        0.0,
+        0.0,
+        595.280029296875,
+        841.8900146484375
+      ],
+      "out_of_page_text_spans": [],
+      "page_number_present": true,
+      "link_count": 5,
+      "replacement_character_count": 0,
+      "prior_render_sha256": "6B5CFAD4067157680CFF8F2E710A35F8989EFECB2A249F9F099F5E872689119C",
+      "prior_render_pixels_identical": true
+    },
+    {
+      "page": 2,
+      "render": "D:\\Codes\\MyProjects\\MathExplore\\tmp\\kneser-unified-artifacts\\page-02.png",
+      "sha256": "656B3082C28E80777AB5A024955EB584A65C399FE41AADB4FF05CB10F81B840F",
+      "page_size_points": [
+        0.0,
+        0.0,
+        595.280029296875,
+        841.8900146484375
+      ],
+      "out_of_page_text_spans": [],
+      "page_number_present": true,
+      "link_count": 11,
+      "replacement_character_count": 0,
+      "prior_render_sha256": "656B3082C28E80777AB5A024955EB584A65C399FE41AADB4FF05CB10F81B840F",
+      "prior_render_pixels_identical": true
+    },
+    {
+      "page": 3,
+      "render": "D:\\Codes\\MyProjects\\MathExplore\\tmp\\kneser-unified-artifacts\\page-03.png",
+      "sha256": "BC12EC00651BE6DB68340E4E0854B55821FAA3CDCDA5ACED6374C38857897ED5",
+      "page_size_points": [
+        0.0,
+        0.0,
+        595.280029296875,
+        841.8900146484375
+      ],
+      "out_of_page_text_spans": [],
+      "page_number_present": true,
+      "link_count": 0,
+      "replacement_character_count": 0,
+      "prior_render_sha256": "BC12EC00651BE6DB68340E4E0854B55821FAA3CDCDA5ACED6374C38857897ED5",
+      "prior_render_pixels_identical": true
+    },
+    {
+      "page": 4,
+      "render": "D:\\Codes\\MyProjects\\MathExplore\\tmp\\kneser-unified-artifacts\\page-04.png",
+      "sha256": "2D9FDF318F550DA8581C198CB2B30BD88BE37E5BF6BAD299C01433AB80DF7BF8",
+      "page_size_points": [
+        0.0,
+        0.0,
+        595.280029296875,
+        841.8900146484375
+      ],
+      "out_of_page_text_spans": [],
+      "page_number_present": true,
+      "link_count": 0,
+      "replacement_character_count": 0,
+      "prior_render_sha256": "2D9FDF318F550DA8581C198CB2B30BD88BE37E5BF6BAD299C01433AB80DF7BF8",
+      "prior_render_pixels_identical": true
+    },
+    {
+      "page": 5,
+      "render": "D:\\Codes\\MyProjects\\MathExplore\\tmp\\kneser-unified-artifacts\\page-05.png",
+      "sha256": "FAE5E2805F9C85EF2907D8137C975440F11823EB0C20F569ADAA828EC4E896F4",
+      "page_size_points": [
+        0.0,
+        0.0,
+        595.280029296875,
+        841.8900146484375
+      ],
+      "out_of_page_text_spans": [],
+      "page_number_present": true,
+      "link_count": 0,
+      "replacement_character_count": 0,
+      "prior_render_sha256": "FAE5E2805F9C85EF2907D8137C975440F11823EB0C20F569ADAA828EC4E896F4",
+      "prior_render_pixels_identical": true
+    },
+    {
+      "page": 6,
+      "render": "D:\\Codes\\MyProjects\\MathExplore\\tmp\\kneser-unified-artifacts\\page-06.png",
+      "sha256": "7F1AD603FFCE4B9BFC667D14F0221602A26187DADDCD65BDBA582B748D33F2E9",
+      "page_size_points": [
+        0.0,
+        0.0,
+        595.280029296875,
+        841.8900146484375
+      ],
+      "out_of_page_text_spans": [],
+      "page_number_present": true,
+      "link_count": 0,
+      "replacement_character_count": 0,
+      "prior_render_sha256": "7F1AD603FFCE4B9BFC667D14F0221602A26187DADDCD65BDBA582B748D33F2E9",
+      "prior_render_pixels_identical": true
+    },
+    {
+      "page": 7,
+      "render": "D:\\Codes\\MyProjects\\MathExplore\\tmp\\kneser-unified-artifacts\\page-07.png",
+      "sha256": "BA6882D5B456E8169C76B12FF3BCF22EA86C485716B2D7929ACBE7F73A62D1DE",
+      "page_size_points": [
+        0.0,
+        0.0,
+        595.280029296875,
+        841.8900146484375
+      ],
+      "out_of_page_text_spans": [],
+      "page_number_present": true,
+      "link_count": 1,
+      "replacement_character_count": 0,
+      "prior_render_sha256": "BE406F8D26417FBD01EFF810F984FE8BA848CD786F60F5F5FB3D4A03418CE91B",
+      "prior_render_pixels_identical": false
+    },
+    {
+      "page": 8,
+      "render": "D:\\Codes\\MyProjects\\MathExplore\\tmp\\kneser-unified-artifacts\\page-08.png",
+      "sha256": "BF6A08C729954A28C183CA2D66C2CC50F5ABBB5A5B38507AA8E45966027D8B8A",
+      "page_size_points": [
+        0.0,
+        0.0,
+        595.280029296875,
+        841.8900146484375
+      ],
+      "out_of_page_text_spans": [],
+      "page_number_present": true,
+      "link_count": 0,
+      "replacement_character_count": 0,
+      "prior_render_sha256": "BF6A08C729954A28C183CA2D66C2CC50F5ABBB5A5B38507AA8E45966027D8B8A",
+      "prior_render_pixels_identical": true
+    },
+    {
+      "page": 9,
+      "render": "D:\\Codes\\MyProjects\\MathExplore\\tmp\\kneser-unified-artifacts\\page-09.png",
+      "sha256": "2CDFF353E758BB52FBC3DE41F73DAAE460F147E3AD8A503EADFE94ACE4149845",
+      "page_size_points": [
+        0.0,
+        0.0,
+        595.280029296875,
+        841.8900146484375
+      ],
+      "out_of_page_text_spans": [],
+      "page_number_present": true,
+      "link_count": 3,
+      "replacement_character_count": 0,
+      "prior_render_sha256": "2CDFF353E758BB52FBC3DE41F73DAAE460F147E3AD8A503EADFE94ACE4149845",
+      "prior_render_pixels_identical": true
+    },
+    {
+      "page": 10,
+      "render": "D:\\Codes\\MyProjects\\MathExplore\\tmp\\kneser-unified-artifacts\\page-10.png",
+      "sha256": "6630425B14E16D1C3FD5452565D2B7B6CFC8F7DBAC352FAB957E354A9F0FB0C6",
+      "page_size_points": [
+        0.0,
+        0.0,
+        595.280029296875,
+        841.8900146484375
+      ],
+      "out_of_page_text_spans": [],
+      "page_number_present": true,
+      "link_count": 1,
+      "replacement_character_count": 0,
+      "prior_render_sha256": "6630425B14E16D1C3FD5452565D2B7B6CFC8F7DBAC352FAB957E354A9F0FB0C6",
+      "prior_render_pixels_identical": true
+    },
+    {
+      "page": 11,
+      "render": "D:\\Codes\\MyProjects\\MathExplore\\tmp\\kneser-unified-artifacts\\page-11.png",
+      "sha256": "58126F53751A678CE6864B3FCCF36C7D971619119CA1FC508F2B7180FD613E80",
+      "page_size_points": [
+        0.0,
+        0.0,
+        595.280029296875,
+        841.8900146484375
+      ],
+      "out_of_page_text_spans": [],
+      "page_number_present": true,
+      "link_count": 2,
+      "replacement_character_count": 0,
+      "prior_render_sha256": "88A68EA1E1FA8CA2849D8CE5FED6D81F127B4FFBAFB45D007E18236EF41C8A59",
+      "prior_render_pixels_identical": false
+    },
+    {
+      "page": 12,
+      "render": "D:\\Codes\\MyProjects\\MathExplore\\tmp\\kneser-unified-artifacts\\page-12.png",
+      "sha256": "52B4A5D89BC637AC28DEBA2D024D44A03FD617BA0ACBDC4B18CF4F694D58996E",
+      "page_size_points": [
+        0.0,
+        0.0,
+        595.280029296875,
+        841.8900146484375
+      ],
+      "out_of_page_text_spans": [],
+      "page_number_present": true,
+      "link_count": 2,
+      "replacement_character_count": 0,
+      "prior_render_sha256": "52B4A5D89BC637AC28DEBA2D024D44A03FD617BA0ACBDC4B18CF4F694D58996E",
+      "prior_render_pixels_identical": true
+    },
+    {
+      "page": 13,
+      "render": "D:\\Codes\\MyProjects\\MathExplore\\tmp\\kneser-unified-artifacts\\page-13.png",
+      "sha256": "71E5B418F1C6F3E8F668C8BBD88C848959A3247FA463825C749D5BAA93405863",
+      "page_size_points": [
+        0.0,
+        0.0,
+        595.280029296875,
+        841.8900146484375
+      ],
+      "out_of_page_text_spans": [],
+      "page_number_present": true,
+      "link_count": 15,
+      "replacement_character_count": 0,
+      "prior_render_sha256": "71E5B418F1C6F3E8F668C8BBD88C848959A3247FA463825C749D5BAA93405863",
+      "prior_render_pixels_identical": true
+    },
+    {
+      "page": 14,
+      "render": "D:\\Codes\\MyProjects\\MathExplore\\tmp\\kneser-unified-artifacts\\page-14.png",
+      "sha256": "A2CC32BF35B9A41EA9025C134247294AA6D5AFA09BFAB90F729A3E86B157CECF",
+      "page_size_points": [
+        0.0,
+        0.0,
+        595.280029296875,
+        841.8900146484375
+      ],
+      "out_of_page_text_spans": [],
+      "page_number_present": true,
+      "link_count": 6,
+      "replacement_character_count": 0,
+      "prior_render_sha256": "A2CC32BF35B9A41EA9025C134247294AA6D5AFA09BFAB90F729A3E86B157CECF",
+      "prior_render_pixels_identical": true
+    }
+  ],
+  "fonts": {
+    "4": {
+      "name": "IHAIZV+LMRoman17-Regular",
+      "type": "Type1",
+      "embedded_bytes": 2826
+    },
+    "5": {
+      "name": "BZIVMZ+LMRoman12-Regular",
+      "type": "Type1",
+      "embedded_bytes": 4502
+    },
+    "6": {
+      "name": "IXFAWU+LMRoman12-Regular",
+      "type": "Type1",
+      "embedded_bytes": 344
+    },
+    "7": {
+      "name": "TQTHRL+LMRoman10-Bold",
+      "type": "Type1",
+      "embedded_bytes": 5146
+    },
+    "8": {
+      "name": "YEUUOC+LMRoman10-Regular",
+      "type": "Type1",
+      "embedded_bytes": 10944
+    },
+    "9": {
+      "name": "AKHCZK+LMMathItalic10-Regular",
+      "type": "Type1",
+      "embedded_bytes": 10093
+    },
+    "10": {
+      "name": "VDVGTR+LMRoman12-Bold",
+      "type": "Type1",
+      "embedded_bytes": 6748
+    },
+    "27": {
+      "name": "CAFSZL+LMRoman10-Italic",
+      "type": "Type1",
+      "embedded_bytes": 8208
+    },
+    "30": {
+      "name": "DDIEWW+LMMathSymbols10-Regular",
+      "type": "Type1",
+      "embedded_bytes": 1893
+    },
+    "31": {
+      "name": "FKPJSN+LMRoman10-Regular",
+      "type": "Type1",
+      "embedded_bytes": 3661
+    },
+    "32": {
+      "name": "PVTTLK+LMMathItalic8-Regular",
+      "type": "Type1",
+      "embedded_bytes": 4986
+    },
+    "33": {
+      "name": "JAGKKY+MSBM10",
+      "type": "Type1",
+      "embedded_bytes": 450
+    },
+    "34": {
+      "name": "NOMARO+LMMathSymbols8-Regular",
+      "type": "Type1",
+      "embedded_bytes": 564
+    },
+    "35": {
+      "name": "KPXLOM+LMRoman8-Regular",
+      "type": "Type1",
+      "embedded_bytes": 1301
+    },
+    "36": {
+      "name": "UTACNV+LMMathExtension10-Regular",
+      "type": "Type1",
+      "embedded_bytes": 1562
+    },
+    "37": {
+      "name": "FZDNHS+LMRoman6-Regular",
+      "type": "Type1",
+      "embedded_bytes": 539
+    },
+    "38": {
+      "name": "DZGKAF+LMMathItalic6-Regular",
+      "type": "Type1",
+      "embedded_bytes": 703
+    },
+    "44": {
+      "name": "GJMHKB+LMRoman8-Regular",
+      "type": "Type1",
+      "embedded_bytes": 1558
+    },
+    "45": {
+      "name": "NITCSQ+MSAM10",
+      "type": "Type1",
+      "embedded_bytes": 337
+    },
+    "62": {
+      "name": "UBBQTN+LMRoman10-Regular",
+      "type": "Type1",
+      "embedded_bytes": 386
+    },
+    "81": {
+      "name": "LPOGEQ+LMMathItalic12-Regular",
+      "type": "Type1",
+      "embedded_bytes": 493
+    }
+  },
+  "all_fonts_embedded": true,
+  "prose_source_lines_checked": [
+    9,
+    13,
+    15,
+    17,
+    19,
+    23,
+    25,
+    27,
+    31,
+    33,
+    40,
+    42,
+    51,
+    53,
+    59,
+    66,
+    72,
+    76,
+    82,
+    84,
+    86,
+    88,
+    92,
+    98,
+    100,
+    102,
+    104,
+    106,
+    112,
+    114,
+    122,
+    124,
+    126,
+    132,
+    134,
+    136,
+    140,
+    146,
+    148,
+    150,
+    152,
+    159,
+    165,
+    169,
+    176,
+    178,
+    182,
+    188,
+    190,
+    196,
+    198,
+    205,
+    209,
+    215,
+    222,
+    224,
+    226,
+    233,
+    235,
+    241,
+    243,
+    245,
+    247,
+    249,
+    253,
+    255,
+    261,
+    263,
+    265,
+    267,
+    269,
+    271,
+    273,
+    275,
+    279,
+    281,
+    283,
+    285,
+    287,
+    289,
+    293,
+    295,
+    297,
+    299,
+    305,
+    307,
+    309,
+    311,
+    313,
+    315,
+    319,
+    321,
+    327,
+    329,
+    331,
+    337,
+    341,
+    343,
+    350,
+    352,
+    354,
+    358,
+    362,
+    364,
+    366,
+    370,
+    376,
+    380,
+    382,
+    384,
+    385,
+    386,
+    387,
+    388,
+    389,
+    391,
+    395,
+    397,
+    399,
+    401,
+    403,
+    405,
+    407,
+    409,
+    411,
+    413,
+    415,
+    417,
+    419,
+    421,
+    423,
+    425,
+    427,
+    431
+  ],
+  "prose_normalized_match_failures": [
+    {
+      "source_line": 40,
+      "source": "where k is any positive integer. When no ambiguity arises, write gamma_c^k for this parameter."
+    },
+    {
+      "source_line": 165,
+      "source": "The difference F_k−gamma_c^k is called the strategy loss. Equation (4.2) shows its source: a cocircuit requiring more than q independent classes can be sufficiently smaller to make global reoptimization preferable."
+    },
+    {
+      "source_line": 178,
+      "source": "**Proof of the bound.** Theorem 3.1 gives F_k<=q+max(0,ceil((q−k)/(R−1))). If gamma_c^k=q a minimum family already has at most k components, so F_k=q. Otherwise gamma_c^k>=q+1, yielding (6.1). The rank-two claim follows from Proposition 9.2 below. Sharpness follows from either the next construction or Section 7. ∎"
+    },
+    {
+      "source_line": 235,
+      "source": "Zero strategy loss does not imply gamma_c^k=q. The girth-R−1 examples in Section 6.1 show that the universal paving guarantee cannot be extended even one girth level below R. They do not give an individual-matroid characterization of zero loss."
+    },
+    {
+      "source_line": 295,
+      "source": "**Theorem 8.1.** From this tree, the value gamma_c^k is computable in O(pR² log(n+1)) integer max/add operations, in addition to input preprocessing. An optimal family of distinct bases is constructible in polynomial time in the explicit input and output lengths. The faster displayed bound is for the value, not the entire output procedure."
+    },
+    {
+      "source_line": 319,
+      "source": "On 2R elements let U=U_(R,2R), and for each R-set H let M_H have all the bases of U except H. It is the laminar matroid defined by |I|<=R and |I H|<=R−1, and is paving. The complement C=E−H is a base dominating J(M_H), so gamma_c^k(J(M_H))=1 for every k. In U each base has a disjoint complement, but two intersecting bases differing in one element dominate; hence gamma_c^k(J(U))=2."
+    },
+    {
+      "source_line": 321,
+      "source": "The independence and rank oracles of U and M_H differ only at the query H. A deterministic exact algorithm on the U transcript must query all binom(2R,R) R-sets; otherwise an unqueried H yields the same transcript with a different answer. This is exponential in n=2R, even under the promise of laminar and paving input. The hidden instance and indistinguishability technique are classical [HLL22]; here they calibrate this particular parameter and the tree-input contract. No randomized, approximation, or explicit-input NP-hardness statement is made."
+    },
+    {
+      "source_line": 327,
+      "source": "Partition the elements into t parts of sizes n_j>=d_j>=1 and select exactly d_j elements in every part. These edges are the bases of the direct sum of uniform matroids, of rank R=sum d_j, and their line graph is J(M). A family dominates precisely when some part has fewer than d_j uncovered elements. Thus q=min_j floor(n_j/d_j)."
+    },
+    {
+      "source_line": 329,
+      "source": "If t>=2, choose q disjoint d_j-subsets in a minimizing part and a fixed subset in every other part. They form a clique dominating family, so gamma_c^k=q for every k. Every component count 1,...,q is realizable by a different construction: retain the disjoint subsets in the minimizing part, group the q edges into c nonempty groups and, in another part l, share one group-specific element while keeping the other selected elements private. In every remaining part choose q pairwise disjoint subsets of its required size; thus no remaining part connects different groups. The shared part uses q(d_l−1)+c<=q d_l<=n_l elements, the other disjoint choices are feasible since q d_i<=n_i, and the edges remain distinct in the minimizing part."
+    },
+    {
+      "source_line": 341,
+      "source": "Delete loops and let the parallel class sizes be n_1>=...>=n_p>=1, p>=2. Put N=sum n_i and T=N−n_1. The bases are the edges of K_(n_1,...,n_p)."
+    },
+    {
+      "source_line": 343,
+      "source": "**Proposition 9.2.** For p=2, q=n_2, gamma_c^k=q, and the minimum-family component spectrum is 1,...,q. For p>=3,"
+    },
+    {
+      "source_line": 376,
+      "source": "If c<=k all left terms are nonnegative. Conversely domination means coverage of some cocircuit and the component condition is c<=k. At m=gamma_c^k this gives an incidence-budget characterization of optimal families, not a canonical isomorphism classification. For U_(R,N), the branch gamma_c^k>q has budget at most R−2; if its budget is zero its incidence graph is a forest with exactly k components. The incidence identity itself is standard graph theory."
+    }
+  ],
+  "url_set_match": true,
+  "missing_urls": [],
+  "extra_urls": [],
+  "pdf_uri_annotations": [
+    "https://nvlpubs.nist.gov/nistpubs/jres/69B/jresv69Bn3p147_A1b.pdf",
+    "https://dwest.web.illinois.edu/pubs/matrunc.pdf",
+    "https://yu.trubox.ca/wp-content/uploads/sites/2481/2021/03/67_Edge-disjoint-H-cycle-in-matroidUM2013Zhang-Yu.pdf",
+    "https://doi.org/10.2991/mmsa-18.2018.73",
+    "https://doi.org/10.1080/00207160.2013.818668",
+    "https://doi.org/10.1137/0138030",
+    "https://dspace.library.uu.nl/bitstream/handle/1874/382146/a25_hermelin.pdf?sequence=1",
+    "https://doi.org/10.1137/20M1385615",
+    "https://arxiv.org/abs/2304.13984v1",
+    "https://arxiv.org/abs/2407.14906v1",
+    "https://arxiv.org/abs/2111.12900v2",
+    "https://doi.org/10.1007/s00026-011-0123-4",
+    "https://doi.org/10.1016/0012-365X(94)00050-S",
+    "https://doi.org/10.5772/35778"
+  ],
+  "overfull_boxes": [],
+  "internal_reference_links": [
+    {
+      "page": 12,
+      "target": "refZY13"
+    },
+    {
+      "page": 12,
+      "target": "refZC18"
+    },
+    {
+      "page": 12,
+      "target": "refEF65"
+    },
+    {
+      "page": 12,
+      "target": "refFJ18"
+    },
+    {
+      "page": 12,
+      "target": "refBSY21"
+    },
+    {
+      "page": 13,
+      "target": "refMur76"
+    },
+    {
+      "page": 13,
+      "target": "refMcG12"
+    },
+    {
+      "page": 13,
+      "target": "refOx11"
+    },
+    {
+      "page": 13,
+      "target": "refHLL22"
+    },
+    {
+      "page": 12,
+      "target": "refSM14"
+    },
+    {
+      "page": 12,
+      "target": "refHM19"
+    },
+    {
+      "page": 12,
+      "target": "refYG80"
+    },
+    {
+      "page": 13,
+      "target": "refAkk95"
+    },
+    {
+      "page": 12,
+      "target": "refSM14"
+    },
+    {
+      "page": 12,
+      "target": "refEF65"
+    },
+    {
+      "page": 12,
+      "target": "refFJ18"
+    },
+    {
+      "page": 12,
+      "target": "refBSY21"
+    },
+    {
+      "page": 13,
+      "target": "refMur76"
+    },
+    {
+      "page": 13,
+      "target": "refMcG12"
+    },
+    {
+      "page": 13,
+      "target": "refOx11"
+    },
+    {
+      "page": 13,
+      "target": "refHLL22"
+    },
+    {
+      "page": 12,
+      "target": "refSM14"
+    },
+    {
+      "page": 12,
+      "target": "refHM19"
+    },
+    {
+      "page": 12,
+      "target": "refZY13"
+    },
+    {
+      "page": 12,
+      "target": "refZC18"
+    },
+    {
+      "page": 13,
+      "target": "refLL12"
+    },
+    {
+      "page": 13,
+      "target": "refAkk95"
+    },
+    {
+      "page": 12,
+      "target": "refSM14"
+    },
+    {
+      "page": 13,
+      "target": "refWF24"
+    },
+    {
+      "page": 13,
+      "target": "refMur76"
+    },
+    {
+      "page": 13,
+      "target": "refMcG12"
+    },
+    {
+      "page": 13,
+      "target": "refOx11"
+    }
+  ],
+  "internal_reference_targets_resolve": true,
+  "missing_glyph_warnings": [],
+  "underfull_boxes": [],
+  "visual_inspection": "PENDING; render existence is not visual inspection",
+  "limitations": [
+    "PDF mathematical extraction is not token-equivalent to TeX; literal source/TeX displays plus rendered inspection are used.",
+    "Normalized prose matching ignores whitespace, punctuation and accents; exact line-wise conversion evidence remains primary.",
+    "No mathematics, novelty or external review audit; no online URL reachability check."
+  ]
+}
