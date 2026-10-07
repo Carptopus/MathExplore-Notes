@@ -2,6 +2,8 @@
 
 Carptopus · carptopus@163.com · v0.1-beta
 
+Version DOI: [10.5281/zenodo.23209047](https://doi.org/10.5281/zenodo.23209047) · [All versions](https://doi.org/10.5281/zenodo.23209046)
+
 [Manuscript PDF](paper/main.pdf) · [LaTeX](paper/main.tex) · [Supplement PDF](paper/supplement.pdf) · [BibTeX](CITATION.bib) · [Reproduction](REPRODUCE.md)
 
 For nonnegative row-stochastic matrices of order n >= 2, the Lih--Wang half-interval chord inequality holds whenever the permanent is at least 2^(2-n). This yields a direct-sum theorem from block permanent lower bounds and results for weighted cycle--element incidence forests: all orders with at least two components counting fixed points; all orders n >= 64; and single-cycle or shared-center families in the remaining connected small-order range.
