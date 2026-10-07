@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "Please cite this preprint using the metadata below."
+type: article
+title: "Eventual negative real-rootedness for fixed-rank paving matroid base polytopes and a growing-rank root-density theorem"
+authors:
+  - name: Carptopus
+    email: carptopus@163.com
+version: v0.1-beta
+date-released: 2026-10-07
+url: "https://github.com/Carptopus/MathExplore-Notes/tree/master/research/paving-hstar-eventual-real-rootedness"
+license: CC-BY-4.0

@@ -1,0 +1,207 @@
+% Generated deterministically from the frozen Markdown source.
+% Responsible author: Carptopus.
+\documentclass[10pt]{article}
+\usepackage[a4paper,margin=24mm]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{needspace}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage{fontspec}
+\newfontfamily\cjkfont{Microsoft YaHei}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{fancyhdr}
+
+\newenvironment{mdstatement}[1]
+  {\par\Needspace{0.16\textheight}\noindent\textbf{#1.}\ \itshape}
+  {\par\normalfont}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.42em}
+\setlength{\emergencystretch}{6em}
+\setlength{\headheight}{14pt}
+\urlstyle{same}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Paving-matroid technical proof dossier}
+\fancyfoot[C]{\thepage}
+
+\title{Technical proof dossier for\\
+\emph{Eventual real-rootedness in paving-matroid base polytopes}}
+\author{Carptopus}
+\date{7 October 2026}
+
+\hypersetup{
+  pdftitle={Technical proof dossier for Eventual real-rootedness in paving-matroid base polytopes},
+  pdfauthor={Carptopus},
+  pdfsubject={Frozen proof dependency dossier},
+  pdfkeywords={paving matroid, Ehrhart h-star polynomial, proof dossier, SHA-256 closure}
+}
+
+\begin{document}
+\maketitle
+\begin{center}
+\fcolorbox{black!35}{black!4}{\parbox{0.90\textwidth}{\centering\small
+Integral technical supplement to the accompanying manuscript; not peer reviewed.}}
+\end{center}
+
+
+This dossier is part of the manuscript, not a historical bibliography.  The main
+paper gives the definitions, exact theorem statements, and assembly arguments;
+the long uniform contour estimates and endpoint kernel arguments are supplied by
+the frozen proof records listed below.  Publication artifacts must contain this
+file, every listed record, and the ordered 216-file SHA-256 manifest
+\texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}PUBLICATION-\allowbreak{}PREP-\allowbreak{}0001/\allowbreak{}A1-\allowbreak{}{\cjkfont 证\allowbreak{}明\allowbreak{}依\allowbreak{}赖\allowbreak{}闭\allowbreak{}包}.\allowbreak{}sha256}.
+Changing any listed byte invalidates the manuscript audit.
+
+The labels \texttt{PASS}, \texttt{candidate}, and \texttt{HOLD} appearing in the dated records are
+historical workflow metadata.  They are not mathematical hypotheses and are not
+used in the proofs.  Only the displayed identities, estimates, certificates,
+and quantifiers are used.
+
+\section{Exact Ehrhart correction formula}
+
+
+\begin{itemize}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}HIGHER-\allowbreak{}RANK-\allowbreak{}CRITICAL-\allowbreak{}KERNEL-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S10-\allowbreak{}{\cjkfont 全\allowbreak{}秩\allowbreak{}内\allowbreak{}容\allowbreak{}矩\allowbreak{}阵\allowbreak{}的\allowbreak{}准\allowbreak{}确\allowbreak{}谱\allowbreak{}与\allowbreak{}复\allowbreak{}方\allowbreak{}差\allowbreak{}入\allowbreak{}口}.\allowbreak{}md}
+\item its frozen revision \texttt{S10R1}
+\item \texttt{S11-\allowbreak{}{\cjkfont 真\allowbreak{}实\allowbreak{}全\allowbreak{}容\allowbreak{}斥\allowbreak{}与\allowbreak{}低}Euler{\cjkfont 谱\allowbreak{}分\allowbreak{}离\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\end{itemize}
+
+These records prove the common-denominator formula (2.1)--(2.9), including the
+full inclusion--exclusion over every effective hyperplane and every lower Euler
+layer.  They are the algebraic input to all analytic estimates below.
+
+\section{Fixed-rank central and bounded-excess estimates}
+
+
+\begin{itemize}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}CROSS-\allowbreak{}RANK-\allowbreak{}FACT-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S18-\allowbreak{}{\cjkfont 中\allowbreak{}间\allowbreak{}小}t{\cjkfont 区\allowbreak{}的\allowbreak{}解\allowbreak{}析\allowbreak{}谱\allowbreak{}隙\allowbreak{}桥}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}CROSS-\allowbreak{}RANK-\allowbreak{}FACT-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S14-\allowbreak{}{\cjkfont 增\allowbreak{}长\allowbreak{}秩\allowbreak{}紧\allowbreak{}中\allowbreak{}带\allowbreak{}的\allowbreak{}定\allowbreak{}量\allowbreak{}谱\allowbreak{}隙\allowbreak{}与\allowbreak{}真\allowbreak{}实\allowbreak{}保\allowbreak{}号}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}CROSS-\allowbreak{}RANK-\allowbreak{}FACT-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S15-\allowbreak{}{\cjkfont 增\allowbreak{}长\allowbreak{}秩\allowbreak{}倒\allowbreak{}端\allowbreak{}移\allowbreak{}动\allowbreak{}保\allowbreak{}号\allowbreak{}的\allowbreak{}双\allowbreak{}区\allowbreak{}定\allowbreak{}量\allowbreak{}桥}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}HIGHER-\allowbreak{}RANK-\allowbreak{}CRITICAL-\allowbreak{}KERNEL-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S90-\allowbreak{}{\cjkfont 全\allowbreak{}部\allowbreak{}固\allowbreak{}定\allowbreak{}秩\allowbreak{}全\allowbreak{}缺\allowbreak{}口\allowbreak{}临\allowbreak{}界\allowbreak{}核\allowbreak{}联\allowbreak{}合\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}HIGHER-\allowbreak{}RANK-\allowbreak{}CRITICAL-\allowbreak{}KERNEL-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S59-\allowbreak{}{\cjkfont 全\allowbreak{}固\allowbreak{}定\allowbreak{}秩\allowbreak{}非\allowbreak{}负\allowbreak{}临\allowbreak{}界\allowbreak{}超\allowbreak{}额\allowbreak{}带\allowbreak{}实\allowbreak{}际\allowbreak{}全\allowbreak{}轴\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}HIGHER-\allowbreak{}RANK-\allowbreak{}CRITICAL-\allowbreak{}KERNEL-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S91-\allowbreak{}{\cjkfont 全\allowbreak{}固\allowbreak{}定\allowbreak{}秩\allowbreak{}有\allowbreak{}界\allowbreak{}临\allowbreak{}界\allowbreak{}超\allowbreak{}额\allowbreak{}的\allowbreak{}真\allowbreak{}实\allowbreak{}全\allowbreak{}轴\allowbreak{}联\allowbreak{}合\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\end{itemize}
+
+The S91 proof is independent of Proposition 3.1 outside its stated density
+range.  In the band $D_u\le s\le D_u+C$, it uses the exact fixed increment
+parameters
+
+\[
+ b_u=r\lceil n/r\rceil-n,
+ \quad \ell=\left\lceil\frac{\delta+1-b_u}{r-1}\right\rceil,
+ \quad c=\lceil n/r\rceil+\ell,
+ \quad b=b_u+r\ell,
+ \quad a=(r-1)\ell+b_u-\delta-1,
+\]
+
+and proves directly that the bounded shift of the highest cutoff changes the
+two-moving local expansion by $\exp(O(\sigma))-1=o(1)$, while the lower-Euler
+and packing errors remain (o(1/r)).  This is the input used in Lemma 5.1.
+
+\section{Fixed complement and rank-three interfaces}
+
+
+\begin{itemize}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}FIXED-\allowbreak{}OUTSIDE-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S1-\allowbreak{}{\cjkfont 固\allowbreak{}定\allowbreak{}外\allowbreak{}部\allowbreak{}数\allowbreak{}二\allowbreak{}项\allowbreak{}式\allowbreak{}矩\allowbreak{}与\allowbreak{}完\allowbreak{}整\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}FIXED-\allowbreak{}OUTSIDE-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S2-\allowbreak{}{\cjkfont 秩\allowbreak{}三\allowbreak{}真\allowbreak{}实\allowbreak{}校\allowbreak{}正\allowbreak{}与\allowbreak{}两\allowbreak{}端\allowbreak{}极\allowbreak{}限\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}MOVING-\allowbreak{}CRITICAL-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S22-\allowbreak{}{\cjkfont 秩\allowbreak{}三\allowbreak{}最\allowbreak{}终\allowbreak{}全\allowbreak{}类\allowbreak{}的\allowbreak{}联\allowbreak{}合\allowbreak{}候\allowbreak{}选\allowbreak{}与\allowbreak{}证\allowbreak{}据\allowbreak{}门}.\allowbreak{}md}
+\item its mathematical revision \texttt{S22R1-\allowbreak{}{\cjkfont 巨}H{\cjkfont 正\allowbreak{}因\allowbreak{}子\allowbreak{}依\allowbreak{}赖\allowbreak{}绑\allowbreak{}定}.\allowbreak{}md}
+\item \texttt{S24-\allowbreak{}{\cjkfont 最\allowbreak{}终\allowbreak{}秩\allowbreak{}三\allowbreak{}自\allowbreak{}然\allowbreak{}整\allowbreak{}类\allowbreak{}结\allowbreak{}算\allowbreak{}与\allowbreak{}跨\allowbreak{}秩\allowbreak{}接\allowbreak{}口}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}GIANT-\allowbreak{}H-\allowbreak{}DEPENDENCIES-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S9-\allowbreak{}{\cjkfont 全\allowbreak{}部\allowbreak{}亚\allowbreak{}线\allowbreak{}性\allowbreak{}整\allowbreak{}类\allowbreak{}与\allowbreak{}近\allowbreak{}一\allowbreak{}宏\allowbreak{}观\allowbreak{}范\allowbreak{}围\allowbreak{}全\allowbreak{}轴\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item its dependency revision \texttt{S9R1-\allowbreak{}{\cjkfont 全\allowbreak{}部\allowbreak{}亚\allowbreak{}线\allowbreak{}性\allowbreak{}完\allowbreak{}整\allowbreak{}包\allowbreak{}依\allowbreak{}赖\allowbreak{}修\allowbreak{}订}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}GIANT-\allowbreak{}H-\allowbreak{}DEPENDENCIES-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S16-\allowbreak{}{\cjkfont 临\allowbreak{}界\allowbreak{}邻\allowbreak{}域\allowbreak{}整\allowbreak{}类\allowbreak{}全\allowbreak{}轴\allowbreak{}同\allowbreak{}伦\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}GIANT-\allowbreak{}H-\allowbreak{}DEPENDENCIES-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S19-\allowbreak{}{\cjkfont 全\allowbreak{}正\allowbreak{}比\allowbreak{}例\allowbreak{}双\allowbreak{}端\allowbreak{}点\allowbreak{}间\allowbreak{}隙\allowbreak{}完\allowbreak{}整\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item its mathematical revision \texttt{S19R1-\allowbreak{}{\cjkfont 大\allowbreak{}域\allowbreak{}正\allowbreak{}因\allowbreak{}子\allowbreak{}与\allowbreak{}双\allowbreak{}端\allowbreak{}点\allowbreak{}证\allowbreak{}书\allowbreak{}修\allowbreak{}订}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}GIANT-\allowbreak{}H-\allowbreak{}DEPENDENCIES-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S20-\allowbreak{}{\cjkfont 全\allowbreak{}部\allowbreak{}巨}H{\cjkfont 依\allowbreak{}赖\allowbreak{}整\allowbreak{}类\allowbreak{}统\allowbreak{}一\allowbreak{}实\allowbreak{}际\allowbreak{}全\allowbreak{}轴\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\end{itemize}
+
+For each fixed outside size $q\ge2$, S1 proves the rank-$r\ge4$ theorem by
+an exact finite binomial-moment expansion and a three-region homotopy.  S2 gives
+the separate rank-three proof; it does not invoke the false (k=2) general
+perturbation box.  S20 supplies the all-attached-hyperplanes giant-region
+theorem.  S22 supplies the remaining rank-three failure-sequence exhaustion,
+including the continuous negative-axis certificate and the exact complex-
+circle counts.
+
+\section{Giant-hyperplane middle and endpoint estimates}
+
+
+\begin{itemize}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}TWO-\allowbreak{}MACRO-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S3-\allowbreak{}{\cjkfont 秩\allowbreak{}至\allowbreak{}少\allowbreak{}四\allowbreak{}全\allowbreak{}部\allowbreak{}宏\allowbreak{}观\allowbreak{}谱\allowbreak{}统\allowbreak{}一\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}GENERAL-\allowbreak{}RANK-\allowbreak{}GIANT-\allowbreak{}GEOMETRY-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S1-\allowbreak{}{\cjkfont 一\allowbreak{}般\allowbreak{}秩\allowbreak{}全\allowbreak{}圆\allowbreak{}最\allowbreak{}小\allowbreak{}模\allowbreak{}的\allowbreak{}角\allowbreak{}区\allowbreak{}排\allowbreak{}除\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}GENERAL-\allowbreak{}RANK-\allowbreak{}GIANT-\allowbreak{}GEOMETRY-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S2-\allowbreak{}{\cjkfont 一\allowbreak{}般\allowbreak{}秩\allowbreak{}准\allowbreak{}确\allowbreak{}累\allowbreak{}计\allowbreak{}积\allowbreak{}分\allowbreak{}与\allowbreak{}移\allowbreak{}动\allowbreak{}中\allowbreak{}央\allowbreak{}预\allowbreak{}算\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}GENERAL-\allowbreak{}RANK-\allowbreak{}GIANT-\allowbreak{}MOVING-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S3-\allowbreak{}{\cjkfont 一\allowbreak{}般\allowbreak{}秩\allowbreak{}小\allowbreak{}端\allowbreak{}分\allowbreak{}离\allowbreak{}累\allowbreak{}计\allowbreak{}完\allowbreak{}整\allowbreak{}积\allowbreak{}分\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}GENERAL-\allowbreak{}RANK-\allowbreak{}GIANT-\allowbreak{}MOVING-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S4-\allowbreak{}{\cjkfont 一\allowbreak{}般\allowbreak{}秩\allowbreak{}正\allowbreak{}紧\allowbreak{}驻\allowbreak{}点\allowbreak{}模\allowbreak{}完\allowbreak{}整\allowbreak{}积\allowbreak{}分\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}GENERAL-\allowbreak{}RANK-\allowbreak{}GIANT-\allowbreak{}MOVING-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S5-\allowbreak{}{\cjkfont 一\allowbreak{}般\allowbreak{}秩\allowbreak{}大\allowbreak{}端\allowbreak{}有\allowbreak{}界}K{\cjkfont 的\allowbreak{}完\allowbreak{}整\allowbreak{}积\allowbreak{}分\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}GENERAL-\allowbreak{}RANK-\allowbreak{}GIANT-\allowbreak{}MOVING-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S6-\allowbreak{}{\cjkfont 大\allowbreak{}端\allowbreak{}共\allowbreak{}同\allowbreak{}无\allowbreak{}界\allowbreak{}多\allowbreak{}峰\allowbreak{}相\allowbreak{}对\allowbreak{}尾\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}GENERAL-\allowbreak{}RANK-\allowbreak{}GIANT-\allowbreak{}MOVING-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S7-\allowbreak{}{\cjkfont 一\allowbreak{}般\allowbreak{}秩\allowbreak{}有\allowbreak{}界\allowbreak{}累\allowbreak{}计\allowbreak{}窗\allowbreak{}与\allowbreak{}分\allowbreak{}离\allowbreak{}域\allowbreak{}接\allowbreak{}合\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}GENERAL-\allowbreak{}RANK-\allowbreak{}GIANT-\allowbreak{}MOVING-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S8-\allowbreak{}{\cjkfont 全\allowbreak{}一\allowbreak{}般\allowbreak{}秩\allowbreak{}分\allowbreak{}离\allowbreak{}累\allowbreak{}计\allowbreak{}的\allowbreak{}联\allowbreak{}合\allowbreak{}量\allowbreak{}词\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}GENERAL-\allowbreak{}RANK-\allowbreak{}GIANT-\allowbreak{}MOVING-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S9-\allowbreak{}{\cjkfont 最\allowbreak{}高\allowbreak{}累\allowbreak{}计\allowbreak{}全\allowbreak{}移\allowbreak{}动\allowbreak{}两\allowbreak{}域\allowbreak{}接\allowbreak{}合\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}GENERAL-\allowbreak{}RANK-\allowbreak{}GIANT-\allowbreak{}ACTUAL-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S6-\allowbreak{}{\cjkfont 圆\allowbreak{}盘\allowbreak{}极\allowbreak{}化\allowbreak{}直\allowbreak{}接\allowbreak{}排\allowbreak{}除\allowbreak{}多\allowbreak{}标\allowbreak{}记\allowbreak{}谱\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}GENERAL-\allowbreak{}RANK-\allowbreak{}GIANT-\allowbreak{}ACTUAL-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S7-\allowbreak{}{\cjkfont 全\allowbreak{}部\allowbreak{}实\allowbreak{}际\allowbreak{}移\allowbreak{}动\allowbreak{}两\allowbreak{}域\allowbreak{}联\allowbreak{}合\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}GENERAL-\allowbreak{}RANK-\allowbreak{}GIANT-\allowbreak{}ACTUAL-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S8-\allowbreak{}{\cjkfont 实\allowbreak{}际\allowbreak{}移\allowbreak{}动\allowbreak{}中\allowbreak{}带\allowbreak{}结\allowbreak{}算\allowbreak{}与\allowbreak{}端\allowbreak{}层\allowbreak{}入\allowbreak{}口}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}GENERAL-\allowbreak{}RANK-\allowbreak{}GIANT-\allowbreak{}ENDPOINT-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S2-\allowbreak{}{\cjkfont 一\allowbreak{}般}Wright{\cjkfont 相\allowbreak{}位\allowbreak{}圆\allowbreak{}准\allowbreak{}确\allowbreak{}索\allowbreak{}引\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}GENERAL-\allowbreak{}RANK-\allowbreak{}GIANT-\allowbreak{}ENDPOINT-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S4-\allowbreak{}{\cjkfont 一\allowbreak{}般\allowbreak{}秩\allowbreak{}发\allowbreak{}散\allowbreak{}巨}H{\cjkfont 倒\allowbreak{}端\allowbreak{}与\allowbreak{}准\allowbreak{}确\allowbreak{}圆\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}GENERAL-\allowbreak{}RANK-\allowbreak{}GIANT-\allowbreak{}ENDPOINT-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S5-\allowbreak{}{\cjkfont 一\allowbreak{}般\allowbreak{}秩\allowbreak{}巨}H{\cjkfont 双\allowbreak{}端\allowbreak{}连\allowbreak{}续\allowbreak{}相\allowbreak{}位\allowbreak{}接\allowbreak{}合\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}GENERAL-\allowbreak{}RANK-\allowbreak{}GIANT-\allowbreak{}ENDPOINT-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S6-\allowbreak{}{\cjkfont 一\allowbreak{}般\allowbreak{}秩\allowbreak{}亚\allowbreak{}临\allowbreak{}界\allowbreak{}巨}H{\cjkfont 实\allowbreak{}际\allowbreak{}全\allowbreak{}轴\allowbreak{}联\allowbreak{}合\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}GENERAL-\allowbreak{}RANK-\allowbreak{}GIANT-\allowbreak{}CRITICAL-\allowbreak{}MOVING-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S1-\allowbreak{}{\cjkfont 全\allowbreak{}秩\allowbreak{}临\allowbreak{}界\allowbreak{}与\allowbreak{}分\allowbreak{}离\allowbreak{}基\allowbreak{}础\allowbreak{}相\allowbreak{}位\allowbreak{}符\allowbreak{}号\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}GENERAL-\allowbreak{}RANK-\allowbreak{}GIANT-\allowbreak{}CRITICAL-\allowbreak{}MOVING-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S2-\allowbreak{}{\cjkfont 全\allowbreak{}秩\allowbreak{}巨}H{\cjkfont 临\allowbreak{}界\allowbreak{}宏\allowbreak{}观\allowbreak{}基\allowbreak{}础\allowbreak{}圈\allowbreak{}准\allowbreak{}确\allowbreak{}索\allowbreak{}引\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}GENERAL-\allowbreak{}RANK-\allowbreak{}GIANT-\allowbreak{}CRITICAL-\allowbreak{}MOVING-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S3-\allowbreak{}{\cjkfont 全\allowbreak{}秩\allowbreak{}慢\allowbreak{}发\allowbreak{}散\allowbreak{}临\allowbreak{}界\allowbreak{}倒\allowbreak{}端\allowbreak{}准\allowbreak{}确\allowbreak{}相\allowbreak{}位\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}GENERAL-\allowbreak{}RANK-\allowbreak{}GIANT-\allowbreak{}CRITICAL-\allowbreak{}MOVING-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S4-\allowbreak{}{\cjkfont 全\allowbreak{}秩\allowbreak{}临\allowbreak{}界\allowbreak{}移\allowbreak{}动\allowbreak{}实\allowbreak{}际\allowbreak{}全\allowbreak{}轴\allowbreak{}联\allowbreak{}合\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\end{itemize}
+
+Together these records prove the four-parameter finite gate in Proposition 3.4,
+the exact Wright/Beta direct circles, the reciprocal factorial circles, and the
+continuity/first-hit assembly.  In particular, the endpoint counts are full
+complex-circle argument-principle counts, not deductions from a single
+negative-axis sign.
+
+\section{Rank-four exhaustion}
+
+
+\begin{itemize}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}HIGHER-\allowbreak{}RANK-\allowbreak{}CRITICAL-\allowbreak{}KERNEL-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S50-\allowbreak{}{\cjkfont 稀\allowbreak{}外\allowbreak{}部\allowbreak{}原\allowbreak{}端}B{\cjkfont 核\allowbreak{}的\allowbreak{}准\allowbreak{}确\allowbreak{}三\allowbreak{}支\allowbreak{}相\allowbreak{}位\allowbreak{}索\allowbreak{}引\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}HIGHER-\allowbreak{}RANK-\allowbreak{}CRITICAL-\allowbreak{}KERNEL-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S51-\allowbreak{}Wright{\cjkfont 原\allowbreak{}端\allowbreak{}的\allowbreak{}全\allowbreak{}扇\allowbreak{}区\allowbreak{}无\allowbreak{}穷\allowbreak{}相\allowbreak{}位\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}HIGHER-\allowbreak{}RANK-\allowbreak{}CRITICAL-\allowbreak{}KERNEL-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S52-\allowbreak{}{\cjkfont 稀\allowbreak{}外\allowbreak{}部\allowbreak{}实\allowbreak{}际\allowbreak{}全\allowbreak{}轴\allowbreak{}的\allowbreak{}准\allowbreak{}确\allowbreak{}双\allowbreak{}端\allowbreak{}计\allowbreak{}数\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}HIGHER-\allowbreak{}RANK-\allowbreak{}CRITICAL-\allowbreak{}KERNEL-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S53-\allowbreak{}{\cjkfont 巨}H{\cjkfont 固\allowbreak{}定\allowbreak{}宏\allowbreak{}观\allowbreak{}比\allowbreak{}例\allowbreak{}的\allowbreak{}原\allowbreak{}端\allowbreak{}索\allowbreak{}引\allowbreak{}与\allowbreak{}实\allowbreak{}际\allowbreak{}全\allowbreak{}轴\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}HIGHER-\allowbreak{}RANK-\allowbreak{}CRITICAL-\allowbreak{}KERNEL-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S54-\allowbreak{}{\cjkfont 临\allowbreak{}界\allowbreak{}与\allowbreak{}分\allowbreak{}离\allowbreak{}共\allowbreak{}同\allowbreak{}基\allowbreak{}础\allowbreak{}相\allowbreak{}位\allowbreak{}符\allowbreak{}号\allowbreak{}门\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}HIGHER-\allowbreak{}RANK-\allowbreak{}CRITICAL-\allowbreak{}KERNEL-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S55-\allowbreak{}{\cjkfont 全\allowbreak{}部\allowbreak{}巨}H{\cjkfont 宏\allowbreak{}观\allowbreak{}比\allowbreak{}例\allowbreak{}的\allowbreak{}基\allowbreak{}础\allowbreak{}圆\allowbreak{}准\allowbreak{}确\allowbreak{}索\allowbreak{}引\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}HIGHER-\allowbreak{}RANK-\allowbreak{}CRITICAL-\allowbreak{}KERNEL-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S56-\allowbreak{}{\cjkfont 移\allowbreak{}动\allowbreak{}临\allowbreak{}界\allowbreak{}巨}H{\cjkfont 的\allowbreak{}准\allowbreak{}确\allowbreak{}全\allowbreak{}轴\allowbreak{}计\allowbreak{}数\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}HIGHER-\allowbreak{}RANK-\allowbreak{}CRITICAL-\allowbreak{}KERNEL-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S57-\allowbreak{}{\cjkfont 完\allowbreak{}整\allowbreak{}秩\allowbreak{}四\allowbreak{}自\allowbreak{}然\allowbreak{}整\allowbreak{}类\allowbreak{}的\allowbreak{}联\allowbreak{}合\allowbreak{}穷\allowbreak{}尽\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\end{itemize}
+
+The S50--S56 records prove, respectively, the sparse-outside direct endpoint,
+Wright-sector phase, sparse-outside full axis, fixed macroscopic profile,
+critical/separated sign gate, macroscopic endpoint index, and moving-critical
+full-axis theorem.  S57 gives the exhaustive subsequence argument and the
+disconnected classification used in Theorem 1.1.
+
+\section{Growing-rank window}
+
+
+\begin{itemize}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}CROSS-\allowbreak{}RANK-\allowbreak{}FACT-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S4-\allowbreak{}{\cjkfont 增\allowbreak{}长\allowbreak{}秩\allowbreak{}真\allowbreak{}实\allowbreak{}倒\allowbreak{}端\allowbreak{}定\allowbreak{}量\allowbreak{}桥\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}CROSS-\allowbreak{}RANK-\allowbreak{}FACT-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S15-\allowbreak{}{\cjkfont 增\allowbreak{}长\allowbreak{}秩\allowbreak{}倒\allowbreak{}端\allowbreak{}移\allowbreak{}动\allowbreak{}保\allowbreak{}号\allowbreak{}的\allowbreak{}双\allowbreak{}区\allowbreak{}定\allowbreak{}量\allowbreak{}桥}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}CROSS-\allowbreak{}RANK-\allowbreak{}FACT-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S19-\allowbreak{}{\cjkfont 显\allowbreak{}式\allowbreak{}增\allowbreak{}长\allowbreak{}秩\allowbreak{}下\allowbreak{}的\allowbreak{}渐\allowbreak{}近\allowbreak{}全\allowbreak{}实\allowbreak{}根\allowbreak{}候\allowbreak{}选}.\allowbreak{}md}
+\item \texttt{loops/\allowbreak{}PAVING-\allowbreak{}HSTAR-\allowbreak{}CROSS-\allowbreak{}RANK-\allowbreak{}FACT-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S20-\allowbreak{}S17{\cjkfont 门\allowbreak{}下\allowbreak{}的\allowbreak{}完\allowbreak{}整\allowbreak{}原\allowbreak{}端\allowbreak{}保\allowbreak{}号}.\allowbreak{}md}
+\end{itemize}
+
+S19 gives the complete arithmetic assembly: the direct grid contributes
+(D-K-J) roots, the reciprocal disk contributes (K-1), and the last sign
+gap contributes one.  The reciprocal estimate is a uniform Rouché inequality
+on the whole circle, as recorded in S4; no finite negative-axis test substitutes
+for that estimate.
+
+\section{Finite exact guards}
+
+
+The manifest contains six frozen certificate programs and their exact outputs.  They
+certify only the rational inequalities and continuous box covers stated in
+their headers.  Each includes its prescribed positive, negative, or destructive
+control.  The analytic deductions from those inequalities remain in D1--D6.
+
+\end{document}

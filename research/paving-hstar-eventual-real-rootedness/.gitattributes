@@ -1,0 +1,2 @@
+# Preserve frozen source bytes and checksum identity across platforms.
+** -text

@@ -1,0 +1,1932 @@
+% Generated deterministically from the frozen Markdown source.
+% Responsible author: Carptopus.
+\documentclass[10pt]{article}
+\usepackage[a4paper,margin=24mm]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{needspace}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage{fontspec}
+\newfontfamily\cjkfont{Microsoft YaHei}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+\usepackage{fancyhdr}
+
+\newenvironment{mdstatement}[1]
+  {\par\Needspace{0.16\textheight}\noindent\textbf{#1.}\ \itshape}
+  {\par\normalfont}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.42em}
+\setlength{\emergencystretch}{6em}
+\setlength{\headheight}{14pt}
+\urlstyle{same}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Carptopus}
+\fancyhead[R]{Paving-matroid $h^*$ real-rootedness}
+\fancyfoot[C]{\thepage}
+
+\title{Eventual negative real-rootedness for fixed-rank paving matroid base polytopes\\
+and a growing-rank root-density theorem}
+\author{Carptopus}
+\date{7 October 2026}
+
+\hypersetup{
+  pdftitle={Eventual negative real-rootedness for fixed-rank paving matroid base polytopes and a growing-rank root-density theorem},
+  pdfauthor={Carptopus},
+  pdfsubject={Real-rootedness and root density for Ehrhart h-star polynomials of paving matroid base polytopes},
+  pdfkeywords={paving matroid, Ehrhart h-star polynomial, real-rootedness, hypersimplex, transfer matrix}
+}
+
+\begin{document}
+\maketitle
+\begin{center}
+\fcolorbox{black!35}{black!4}{\parbox{0.90\textwidth}{\centering\small
+Version 0.1-beta preprint; not peer reviewed. The full-text comparison with
+Adiprasito--Zhang, HAL hal-05747878v1, is recorded in Section 7.}}
+\end{center}
+
+\begin{abstract}
+
+
+Let $M$ be a paving matroid and $h_M^*(x)$ the Ehrhart $h^*$-polynomial
+of its base polytope.  We prove two complementary asymptotic results.  First,
+for every fixed rank $r\ge3$, all zeros of $h_M^*$ are simple and strictly
+negative, uniformly over all sufficiently large $n$-element rank-$r$
+paving matroids; no connectivity assumption is imposed.  Second, when the
+rank grows with the ground-set size, we give an explicit regime in which a
+connected paving matroid has $D-o(D)$ distinct strictly negative zeros,
+where $D=\deg h_M^*$.  The second theorem assumes a mild upper bound on the
+sizes of effective hyperplanes and does not classify the remaining $o(D)$
+zeros.  The proof combines the paving hyperplane-correction formula with
+uniform phase grids, endpoint scaling limits, quantitative spectral gaps, and
+packing estimates for the hyperplanes.  The two theorems concern different
+asymptotic regimes and neither implies the other.
+
+This paper is accompanied by \texttt{proof-\allowbreak{}dossier.\allowbreak{}md} and its frozen 216-file
+SHA-256 closure.  The dossier is an integral supplement: whenever a long
+uniform contour estimate is summarized in the main text, the cited dossier
+section supplies the complete inequalities, endpoint certificates, and
+quantifiers.  The theorem statements and assembly arguments do not rely on
+historical workflow labels in those records.
+
+\end{abstract}
+
+\section{Main results}
+
+
+Throughout, $M$ is a loopless rank-$r$ matroid on $[n]$, $P(M)$ is its
+base polytope in its intrinsic lattice, and
+
+\[
+ 1+\sum_{q\ge1}|qP(M)\cap\mathbb Z^n|x^q
+ =\frac{h_M^*(x)}{(1-x)^{\dim P(M)+1}}.
+\]
+
+A matroid is \textbf{paving} if every circuit has size at least its rank.  An
+effective hyperplane is a rank-$(r-1)$ hyperplane $H$ with $|H|\ge r$.
+Distinct effective hyperplanes of a paving matroid intersect in at most
+$r-2$ elements.
+We write $\mathcal H(M)$ for the effective hyperplanes and use the global
+convention
+
+\[
+ s(M)=\begin{cases}
+ \max_{H\in\mathcal H(M)}|H|,&\mathcal H(M)\ne\varnothing,\\
+ r-1,&\mathcal H(M)=\varnothing,
+ \end{cases}
+ \qquad D_u=n-\left\lceil\frac nr\right\rceil. \tag{1.0}
+\]
+
+\begin{mdstatement}{Theorem 1.1 (fixed rank)}
+
+
+For every fixed integer $r\ge3$, there is an integer $N_r$ such that, for
+every $n\ge N_r$ and every $n$-element rank-$r$ paving matroid $M$, all
+zeros of $h_M^*(x)$ are simple, strictly negative, and real.
+
+\end{mdstatement}
+
+The threshold may depend on $r$; it is not made explicit.  The theorem does
+not include rank two or assert anything for all small $n$.
+
+\begin{mdstatement}{Theorem 1.2 (growing rank)}
+
+
+Let $n_\nu\to\infty$ and $r_\nu\to\infty$.  Put
+
+\[
+ D_\nu=n_\nu-\left\lceil\frac{n_\nu}{r_\nu}\right\rceil,
+ \qquad X_\nu=\frac{n_\nu}{r_\nu^4},
+ \qquad L_\nu=\log X_\nu,
+ \qquad A_\nu=\log(2r_\nu+L_\nu).
+\]
+
+Assume
+
+\[
+ \frac{r_\nu^4A_\nu^4}{L_\nu}\longrightarrow0. \tag{1.1}
+\]
+
+Let $M_\nu$ be a connected $n_\nu$-element rank-$r_\nu$ paving matroid,
+and suppose every effective hyperplane of $M_\nu$ has size at most
+$D_\nu-1$.  Then, for all sufficiently large $\nu$,
+
+\[
+ \deg h_{M_\nu}^*=D_\nu
+\]
+
+and $h_{M_\nu}^*$ has at least
+
+\[
+ D_\nu-J_\nu,
+ \qquad J_\nu=\left\lceil r_\nu^7A_\nu^4\right\rceil, \tag{1.2}
+\]
+
+pairwise distinct strictly negative real zeros.  Moreover
+$J_\nu=o(D_\nu)$.
+
+\end{mdstatement}
+
+We do not assert that the zeros counted in Theorem 1.2 are simple, or that
+the remaining $J_\nu$ zeros are real, negative, or distinct.
+
+\section{The exact paving correction formula and the uniform phase grid}
+
+
+All analytic formulas in Sections 2--6 are first written for a connected
+matroid, so that $\dim P(M)=n-1$ and the intrinsic Ehrhart denominator is
+$(1-x)^n$.  Disconnected paving matroids are classified and reduced by an
+integral affine isomorphism at the end of the fixed-rank proof.
+
+Put $A=1-x$, $m=n-1$, and, for every polynomial $f(k)$, write
+
+\[
+ \mathcal E_n(f)=A^n\sum_{k\ge0}f(k)x^k,
+ \qquad
+ U_{\ell,n}(x)=\mathcal E_n\!\binom{\ell k+n-1}{n-1}. \tag{2.1}
+\]
+
+Here $U_{r,n}(x)$ denotes only the leading Veronese term, not the full
+uniform-matroid numerator $h_{U_{r,n}}^*(x)$.  The latter also contains
+the lower-Euler terms in the first sum of (2.5).
+To define the hyperplane correction, let
+$M_{\ell,0}(x)$ be the $\ell\times\ell$ matrix, indexed by
+$0,\ldots,\ell-1$, whose $(i,j)$-entry is $1$ if $i\ge j$ and $x$
+if $i<j$.  Choose any nonzero index $a_0$, let $D_{a_0}(u)$ have entry
+$1$ at $a_0$ and $u$ at every other diagonal position, and set
+
+\[
+ B_m^{(\ell)}(u,x)
+   =e_0^{\mathsf T}\bigl(M_{\ell,0}(x)D_{a_0}(u)\bigr)^m\mathbf 1,
+ \qquad
+ K_{\ell,m,s}(x)=\sum_{a=0}^{s-1}[u^a]B_m^{(\ell)}(u,x). \tag{2.2}
+\]
+
+We abbreviate
+$M_\ell(u,x)=M_{\ell,0}(x)D_{a_0}(u)$, and write $M(u)$ when
+$\ell,x$ are fixed.
+The choice of $a_0\ne0$ does not change the coefficient identity used here.
+Indeed,
+
+\[
+ [u^a]B_m^{(\ell)}(u,x)
+ =A^{m+1}\sum_{k\ge0}
+   \binom{(\ell-1)k+a}{a}
+   \binom{k+m-a-1}{m-a}x^k. \tag{2.3}
+\]
+
+For an effective hyperplane $H$ of size $s$, put $q=n-s$.  For
+$0\le h\le r-1$, let $\ell=r-h$ and
+
+\[
+ \begin{aligned}
+  W_h(k)&=\binom{\ell k+m-h}{m},\\
+  Q_{h,H}(k)&=\sum_{J=0}^{k-1}
+       \binom{J+q-1}{q-1}
+       \binom{\ell k-h-J+s-1}{s-1}.
+ \end{aligned} \tag{2.4}
+\]
+
+Hanely et al., Proposition 5.10 and Theorem 5.11, give the underlying Ehrhart
+polynomial formula.  Multiplying its lattice-point series by $(1-x)^n$,
+which is the intrinsic denominator in the connected case, gives the following
+full coordinate inclusion--exclusion form:
+
+\[
+ h_M^*(x)=
+ \sum_{h=0}^{r-1}(-1)^h\binom nh\mathcal E_n(W_h)
+ -\sum_H\sum_{h=0}^{r-1}(-1)^h\binom{s_H}{h}
+       \mathcal E_n(Q_{h,H}). \tag{2.5}
+\]
+
+For $0\le h\le r-2$, the exact finite-band identities are
+
+\[
+ \begin{aligned}
+  \mathcal E_n(Q_{h,H})
+    &=\sum_{j=0}^h(-1)^j\binom hj A^j
+      K_{r-h,m-j,s_H-j},\\
+  \mathcal E_n(W_h)
+    &=\sum_{j=0}^h(-1)^j\binom hj A^j
+      U_{r-h,n-j}.
+ \end{aligned} \tag{2.6}
+\]
+
+When $h=r-1$, one has $Q_{h,H}=W_h$ and
+$\mathcal E_n(W_h)=x^{r-1}$; this one-color term is kept separately.
+The $h=0$ terms in (2.5) give the exact decomposition
+
+\[
+ h_M^*(x)=U_{r,n}(x)-\sum_HK_{r,n-1,s_H}(x)+L_M(x), \tag{2.7}
+\]
+
+where $L_M$ is now defined, rather than suppressed, by the terms with
+$h\ge1$ in (2.5)--(2.6).  Distinct bad caps are disjoint in the
+coordinate-bounded domain because two simultaneous cap violations would force
+the total coordinate sum to exceed $rk$; this is the step that makes the sum
+over $H$ in (2.5) exact.
+
+We use two packing consequences repeatedly:
+
+\[
+ \sum_H\binom{s_H}{r-1}\le\binom n{r-1}, \tag{2.8}
+\]
+
+and, for every fixed $r$,
+
+\[
+ \sum_Hs_H^{r-1}\le C_r n^{r-1}. \tag{2.9}
+\]
+
+In particular, for each fixed $\delta>0$, the number of hyperplanes with
+$s_H>\delta n$ is bounded in terms of $r,\delta$, while in the growing-rank
+argument it is at most $(C/\delta)^r$.
+
+At $x=-t^r$, the unperturbed matrix in (2.2) is similar to a normal
+circulant.  Its eigenvalues are
+
+\[
+ \lambda_\omega(t)=\frac{1+t^r}{1-t e^{\pi i/r}\omega},
+ \qquad \omega^r=1. \tag{2.10}
+\]
+
+Exactly two conjugate branches, denoted $\tau_+$ and $\tau_-$, have
+maximal modulus.  We write $S_3$ for the third singular value of the
+transfer matrix and set
+
+\[
+ d_r(t)=|1-te^{-\pi i/r}|,
+ \qquad R_r(t)=\frac{1+t^r}{d_r(t)},
+ \qquad
+ 1-te^{-\pi i/r}=d_r(t)e^{i\phi_r(t)},
+ \qquad 0<\phi_r(t)<\frac{r-1}{r}\pi. \tag{2.11}
+\]
+
+The two dominant Fourier branches of the leading section $U_{r,n}$ have equal
+modulus $R_r(t)^n$.  Their phases lead to the grid
+
+\[
+ n\phi_r(t_j)=j\pi. \tag{2.12}
+\]
+
+At a grid point, the two principal branches contribute
+$2(-1)^jR_r(t_j)^n/r$.  All sign arguments below consist in showing that
+the total hyperplane correction and all lower-Euler branches cannot erase
+this alternating main term.
+
+The phase has the endpoint expansions
+
+\[
+ \phi_r(t)=t\sin(\pi/r)+O_r(t^2)\quad(t\downarrow0), \tag{2.13}
+\]
+
+and, with $p=(r-1)/r$,
+
+\[
+ p\pi-\phi_r(t)=\frac{\sin(\pi/r)}t
+ +\frac{\sin(\pi/r)\cos(\pi/r)}{t^2}
+ +O_r(t^{-3})\quad(t\to\infty). \tag{2.14}
+\]
+
+The uniform two-branch phase-grid argument follows the hypersimplex prototype
+in Adiprasito--Zhang [1, Sections 3.4--3.5].  The estimates below control the
+nonuniform paving corrections; the uniform phase mechanism itself is not
+claimed as new.
+
+\section{Quantitative sign control}
+
+
+This section packages the analytic estimates used in the growing-rank proof.
+They are also the local ingredients of the fixed-rank argument.
+
+\begin{mdstatement}{Proposition 3.0 (the ultra-small direct endpoint)}
+
+
+Let $r,n\to\infty$, put $m=n-1$, and let $t_j\le1/4$ be a phase-grid
+point.  Set $\kappa=mt_j$.  Suppose, with fixed absolute constants
+$C_*,C_1$, that
+
+\[
+ \begin{gathered}
+ \frac{\kappa}{r^8\log^2(2r)}\longrightarrow\infty,
+ \qquad
+ \frac{\kappa}{r^6\log^6(1+\kappa)}\longrightarrow\infty,\\
+ r^2+r\log(2r)=o(\log(1/t_j)),\\
+ C_*^rt_j\log(1+\kappa)=o(1/r),\qquad
+ (C_1r)^rC_*^rt_j\log(1+\kappa)=o(1/r).
+ \end{gathered} \tag{3.0}
+\]
+
+If every effective hyperplane has size at most
+$D-1=n-\lceil n/r\rceil-1$, then
+
+\[
+ (-1)^j\frac{h_M^*(-t_j^r)}{R_r(t_j)^n}\ge\frac1{2r}. \tag{3.0a}
+\]
+
+\end{mdstatement}
+
+\begin{proof}
+
+
+Take $\delta=1/[1000(r+1)]$.  The paving packing inequality gives at most
+$(C_1r)^r$ hyperplanes with $s_H>\delta n$, while
+$\sum_H(s_H)_{r-1}\le4^{r-1}n^{r-1}$.  The small hyperplanes and every
+lower-Euler layer in (2.5)--(2.6) have total normalized size
+
+\[
+ \exp\{C r^2\log(2r)\}(1+\kappa)^{2r}e^{-c\kappa}=o(1/r). \tag{3.0b}
+\]
+
+All but at most one large hyperplane are separated from the critical density.
+For each such term, the central tail, middle arc, and far arc give
+
+\[
+ C_*^rt_j\log(1+\kappa)
+ +P_r(\kappa)e^{-c\sqrt\kappa}
+ +P_r(\kappa)e^{-c\kappa/r^2+C\sqrt\kappa}
+ +P_r(\kappa)e^{-c\kappa/(r^4\log(2r))+C\sqrt\kappa}, \tag{3.0c}
+\]
+
+where $\deg P_r\le Cr$ and its coefficient height is
+$\exp(O(r^2\log(2r)))$.  The five assumptions in (3.0), including the last
+one after multiplication by $(C_1r)^r$, make their full sum $o(1/r)$.
+For the unique possible critical hyperplane, the complex Gaussian cumulative
+has modulus at most $1/2$, so its signed contribution is at most
+$1/r+o(1/r)$.  The uniform pair contributes $2/r$, proving (3.0a).
+
+\end{proof}
+
+
+\begin{mdstatement}{Proposition 3.1 (central and noncentral hyperplane estimates)}
+
+
+Let $r\ge4$, $m=n-1$, and let $s\le (r-1)m/r$.  Put
+
+\[
+ \xi=\frac{s-(r-1)m/r}{\sqrt m}.
+\]
+
+On the phase grid (2.12), the normalized highest-Euler correction has the
+central approximation
+
+\[
+ \frac{K_{r,m,s}(-t^r)}{R_r(t)^n}
+ =\frac2r\operatorname{Re}\left[
+ e^{in\phi_r(t)}
+ \Phi\left(\frac{\xi}{\sqrt{v_r(t)}}\right)
+ \right]+E_{r,n,t,s}, \tag{3.1}
+\]
+
+where
+
+\[
+ v_r(t)=\frac{(r-1)/r}{rt\,e^{\pi i/r}}, \tag{3.2}
+\]
+
+and the branch of the Gaussian distribution function satisfies
+
+\[
+ \left|\Phi\left(\frac{\xi}{\sqrt{v_r(t)}}\right)\right|\le\frac12.
+ \tag{3.3}
+\]
+
+The error in (3.1) is $o(1/r)$, uniformly in the following three regions,
+under the corresponding assumptions:
+
+\begin{enumerate}
+\item $t_-\le t\le1/4$, where
+$t_-=n^{-1/(K_0r)}$ and $r^3\log(2r)=o(\log n)$;
+\item $1/4\le t\le4$, where
+\[
+e^{C_0r\log(2r)}r^{12}\log^3(n+3)=o(n); \tag{3.4}
+\]
+\item $t\ge4$, with $\kappa=(n-1)/t$, where
+\[
+\frac{\kappa}{r^6\log^3(2r+\kappa)}\longrightarrow\infty
+\tag{3.5}
+\]
+and (3.4) holds.
+\end{enumerate}
+
+For hyperplanes separated from the critical ratio $(r-1)/r$, the right
+side is $o(1/r)$ after summation over all such hyperplanes.  At most one
+effective hyperplane can lie in the critical window.
+
+\end{mdstatement}
+
+\begin{proof}
+
+
+The content transfer matrix at $x=-t^r$ has two maximal-modulus Fourier
+eigenvalues and $r-2$ subordinate eigenvalues.  On $1/4\le t\le4$, the
+third singular value $S_3$ and the two dominant phases satisfy
+
+\[
+ 1-(S_3/R_r)^2\ge c/r^2,
+ \qquad |\tau_+-\tau_-|\ge c/r. \tag{3.6}
+\]
+
+If $u=e^{i\theta}$ is the coefficient-extraction variable, the rank-one
+diagonal perturbation and projection onto the dominant two-dimensional
+Fourier space give
+
+\[
+ \frac{\operatorname{spr}M(u)}{R_r}
+ \le1-c\min\{\theta^2/r^3,r^{-4}\}. \tag{3.7}
+\]
+
+Schur triangularization then yields
+
+\[
+ \left\|\left(M(u)/R_r\right)^m\right\|
+ \le\exp\{Cr\log(m+r)-cm\min(\theta^2/r^3,r^{-4})\}. \tag{3.8}
+\]
+
+In a $c/r^2$ neighborhood of $u=1$, disjoint root circles and the
+resolvent formula bound the first three logarithmic derivatives of the two
+principal branches and their residual amplitudes by
+
+\[
+ Q_r\le(Cr)^{Cr}. \tag{3.9}
+\]
+
+Using the inward contour
+$u=\exp((-h+iy)/\sqrt m)$, completing the quadratic exponent, and using
+(3.8) off the central arc gives (3.1).  The argument of
+$-\xi/\sqrt{2v_r(t)}$ lies in the positive-kernel sector, which proves
+(3.3).
+
+For $0<t\le1/4$, the corresponding estimates are
+
+\[
+ 1-(S_3/R_r)^2\ge ct/r^2,
+ \qquad |\tau_+-\tau_-|\ge ct/r, \tag{3.10}
+\]
+
+and hence
+
+\[
+ \operatorname{spr}(M(e^{i\theta}))/R_r
+ \le1-c\min\{t\theta^2/r^3,t^3/r^4\}. \tag{3.11}
+\]
+
+The analytic envelope is at most $(Cr/t)^{Cr}$.  Taking
+$t\ge n^{-1/(K_0r)}$ with $K_0$ sufficiently large makes the central
+Taylor error and the outer-arc loss uniform, proving the first region.
+
+For $t\ge4$, scale the characteristic polynomial by
+$\lambda=t^{r-1}\mu$, $\varepsilon=1/t$.  It becomes
+
+\[
+ Q_{r,t}(\mu,u)
+ =(\varepsilon\mu-a_0)(\varepsilon\mu-ua_0)^{r-1}+\mu^r,
+ \qquad a_0=1+t^{-r}. \tag{3.12}
+\]
+
+Its limiting roots satisfy
+$\nu_j^r=(-1)^{r+1}u^{r-1}$.  Rouché circles of radius $c/r$ and one
+step of perturbation theory give
+
+\[
+ \mu_j=\nu_j-\frac1t\frac{\nu_j^2}{r}
+ \left(1+\frac{r-1}{u}\right)+O(Q_r/t^2), \tag{3.13}
+\]
+
+with the same bound after three logarithmic derivatives.  Consequently the
+principal modulus loss is at least $c\theta^2/(rt)$ near zero and
+$c/(tr^3)$ away from zero.  The contour scale
+$r\sqrt{B\log(2r+\kappa)}/\sqrt\kappa$, for a fixed profile constant
+$B$, and (3.5) now give (3.1).
+
+Finally, (2.8) implies that hyperplanes above a fixed density have cardinality
+at most $(Cr)^r$.  Two hyperplanes cannot both meet the critical density
+window, because their intersection would exceed $r-2$.  The retained
+Gaussian left-tail factor for every noncritical term absorbs this count.
+Small hyperplanes are summed before normalization, using (2.8), rather than by
+multiplying a pointwise $o(1)$ estimate.  This proves the proposition.
+
+\end{proof}
+
+
+\begin{mdstatement}{Proposition 3.2 (low-Euler suppression)}
+
+
+Under the hypotheses of each of the three regions in Proposition 3.1,
+
+\[
+ \frac{L_M(-t^r)}{R_r(t)^n}=o(1/r) \tag{3.14}
+\]
+
+uniformly over the indicated paving matroids.
+
+\end{mdstatement}
+
+\begin{proof}
+
+
+The layer of Euler index $r-h$ has spectral-radius ratio
+
+\[
+ \frac{R_{r-h}}{R_r}\le
+ \begin{cases}
+  \exp(-ct/r^3),&0<t\le1/4,\\
+  \exp(-c/r^3),&1/4\le t\le4,\\
+  \exp(-c/(tr^3)),&4\le t\le T_r,\\
+  \exp(-c\log t/r),&t\ge T_r,
+ \end{cases} \tag{3.15}
+\]
+
+for an exponential threshold $T_r$.  The finite-band, inclusion--exclusion,
+and hyperplane-packing factors contribute at most
+
+\[
+ \exp\{Cr\log n+Cr^2\log(2r)+Cr^2\log^+t\}. \tag{3.16}
+\]
+
+The assumptions in the respective regions make the $n$-fold loss from
+(3.15) dominate (3.16).  The isolated one-color term has the stronger bound
+$\exp(Cr\log n+Cr^2\log t-cnr\log t)$ in the large-$t$ region.
+Thus all lower-Euler layers sum to (3.14).
+\end{proof}
+
+
+\begin{mdstatement}{Corollary 3.3 (alternating grid signs)}
+
+
+Whenever the hypotheses of Propositions 3.1 and 3.2 hold at a phase-grid
+point $t_j$,
+
+\[
+ (-1)^j\frac{h_M^*(-t_j^r)}{R_r(t_j)^n}\ge\frac1{2r} \tag{3.17}
+\]
+
+for all sufficiently large parameters.
+
+\end{mdstatement}
+
+\begin{proof}
+
+
+The uniform pair contributes $2/r$.  The unique possible critical
+hyperplane contributes at most $1/r+o(1/r)$, while all noncritical
+hyperplanes and all lower-Euler layers contribute $o(1/r)$.
+\end{proof}
+
+
+\begin{mdstatement}{Proposition 3.3A (bounded critical-excess middle signs)}
+
+
+Fix $r\ge4$ and $C\ge0$.  Put
+
+\[
+ D_u=n-\left\lceil\frac nr\right\rceil,
+ \qquad s=D_u+\delta,
+ \qquad 0\le\delta\le C. \tag{3.17a}
+\]
+
+For all sufficiently large $n$, every connected rank-$r$ paving matroid
+with largest effective hyperplane of size $s$ has the alternating sign
+(3.17) at every phase-grid point between the fixed direct and reciprocal
+endpoint circles.  The threshold is uniform in the matroid and in
+$\delta\in\{0,\ldots,C\}$.
+
+\end{mdstatement}
+
+\begin{proof}
+
+
+Write
+
+\[
+ \begin{aligned}
+ b_u&=r\lceil n/r\rceil-n,\\
+ \ell&=\left\lceil\frac{\delta+1-b_u}{r-1}\right\rceil,\\
+ c&=\lceil n/r\rceil+\ell,\qquad b=b_u+r\ell,
+ \end{aligned}
+ \qquad
+ a=(r-1)\ell+b_u-\delta-1. \tag{3.17b}
+\]
+
+Thus $a\in\{0,\ldots,r-2\}$, while $a,b,\ell$ range over a finite set
+depending only on $r,C$.  Insert the shifted highest cutoff into the exact
+finite-band formula (2.5)--(2.7).  Relative to the central cutoff in
+Proposition 3.1, the two-moving local expansion is multiplied by
+$\exp(O(\sigma))=1+o(1)$, uniformly because the shift is bounded.  The
+central Gaussian parameter still satisfies $\xi\to0$.  The packing estimate
+for every additional hyperplane and the complete lower-Euler estimate are
+unchanged, and hence their sum is $o(1/r)$.  The uniform pair therefore
+contributes $2/r+o(1/r)$, the unique possible critical hyperplane at most
+$1/r+o(1/r)$, and all remaining terms $o(1/r)$.  This yields the strict
+margin $1/(2r)$ on the whole middle grid.
+
+This is an independent bounded-increment estimate, not an application of
+Proposition 3.1 outside its stated range.  The complete Taylor bounds,
+including the two-moving remainder and lower-Euler sum, are in proof-dossier
+D2 under S59 and S91.  Since only finitely many $(a,b,\ell)$ occur, their
+thresholds have a common maximum.
+\end{proof}
+
+
+\begin{mdstatement}{Proposition 3.4 (the giant-profile middle sign)}
+
+
+Fix $r\ge5$, put $d=r-1$, and suppose the largest effective hyperplane is
+$H_0$ of size $n-q$, where $2\le q<n/r$.  Set
+$p=q/n$, $a_0=1-rp$, and let
+$W=h e^{i\theta}$, $\pi/r<\theta<\pi/d$, be the leading solution of
+
+\[
+ (1-p)W^r+a_0t^rW+dp\,t^r=0. \tag{3.18}
+\]
+
+In the separated subcritical range $p\le p_{\max}<1/r$, define
+
+\[
+ \chi_n(t)=n[-\arg(1-W)+p\arg(dp+a_0W)]
+ -\frac\theta2-\frac12\arg(rp+a_0W). \tag{3.19}
+\]
+
+There is a fixed-rank threshold $L=L(r,p_{\max})$ such that, whenever
+
+\[
+ q,\qquad n-rq,\qquad nh,\qquad n/h\ge L, \tag{3.20}
+\]
+
+every point satisfying $\chi_n(t)=\ell\pi$ has
+$\operatorname{sign}h_M^*(-t^r)=(-1)^\ell$.  The statement includes every
+legal collection of additional hyperplanes.
+
+In the moving critical range $p\to1/r$, $n-rq\to\infty$, put
+
+\[
+ U_n(t)=n[-\arg(1-W)+p\arg(dp+a_0W)]. \tag{3.21}
+\]
+
+There is a threshold $L_r$ such that the same four inequalities (3.20) and
+$U_n(t)=\ell\pi$ imply the same sign.  No hypothesis that
+$n(1-rp)^2\to\infty$ is required.
+
+\end{mdstatement}
+
+\begin{proof}
+
+
+Put
+
+\[
+ K=\frac{a_0h}{dp},\qquad
+ V=p(1-p)\left(a_0+\frac{rp}{W}\right),
+ \qquad \Sigma=K\sqrt{n\operatorname{Re}V}. \tag{3.21a}
+\]
+
+The exact contour obtained from (2.5)--(2.7) is split into the two leading
+saddle basins, their bounded connecting arc, and the remaining arcs.  The
+full estimates in proof-dossier D4 give, uniformly over every legal family of
+additional hyperplanes,
+
+\[
+ h_M^*(-t^r)=2\mathcal M\cos\chi_n+E,\qquad
+ \frac{|E|}{\mathcal M}\le
+ \varepsilon_r(q,n-rq,nh,n/h,\Sigma), \tag{3.21b}
+\]
+
+where $\mathcal M>0$, and $\varepsilon_r\to0$ whenever its five displayed
+arguments tend to infinity.  This is a full-contour estimate: the central arc
+uses the quadratic spectral gap, the bounded connecting arc uses the exact
+cumulative integral, and the far arcs use the strict full-circle minimum-modulus
+gap.  Packing is applied before summing the additional-hyperplane corrections,
+so no factor equal to their number remains.  In the subcritical range,
+$\Sigma^2\ge c_{r,p_{\max}}nh$; hence the four inequalities (3.20) make
+the right side of (3.21b) smaller than the fixed positive grid margin.  This
+proves the first clause.
+
+For the moving critical range, a sequence violating the statement has a
+subsequence on which $\Sigma$ either diverges or stays bounded.  The first
+case again follows from (3.21b).  In the bounded case, the exact moving-saddle
+relations imply $a_0\to0$, $h/t\to1$,
+$na_0^2t=O(1)$, and $a_0(1+t)\to0$.  Taylor expansion of the Legendre
+exponent, uniformly on the real parameter segment, gives
+
+\[
+ n\{S(p)-S(1/r)\}
+ =-\frac{n(1-rp)^2W_0}{2d}
+  +O\!\left(n(1-rp)^3t(1+t)\right),
+ \qquad W_0=t e^{\pi i/r}. \tag{3.22}
+\]
+
+With
+
+\[
+ z=-\frac{\xi}{\sqrt{2v_r(t)}},\qquad
+ \xi=-\frac{na_0+d}{r}\sqrt{\frac{t}{n-1}}, \tag{3.22a}
+\]
+
+this is equivalent to
+
+\[
+ U_n(t)=n\phi_r(t)-\operatorname{Im}z^2+o(1). \tag{3.22b}
+\]
+
+The remaining scaled complementary-error factor is
+$E(z)=e^{z^2}\operatorname{erfc}(z)$, with
+$\arg z=\pi/(2r)$.  Its exact integral representation
+
+\[
+ E(z)=\frac2\pi\int_0^\infty
+ \frac{z e^{-u^2}}{u^2+z^2}\,du \tag{3.22c}
+\]
+
+puts every integrand in the sector
+$[ -\pi/(2r),\pi/(2r)]$.  Thus
+$\operatorname{Re}E(z)\ge\cos(\pi/(2r))|E(z)|>0$, uniformly on each bounded
+separation window.  At $U_n=\ell\pi$, (3.22b)--(3.22c) therefore give sign
+$(-1)^\ell$.  Divergent and bounded $\Sigma$ exhaust every failure
+sequence, so the sequential estimate is equivalent to one finite threshold
+$L_r$ for the four quantities in (3.20).
+\end{proof}
+
+
+\begin{mdstatement}{Proposition 3.5 (rank-four giant-profile middle signs)}
+
+
+Let $r=4$, $d=3$, and let the largest effective hyperplane have size
+$n-q$.  Define $p=q/n$, $a_0=1-4p$, the leading solution
+$W=h e^{i\theta}$ by (3.18), and the phases $\chi_n$ and $U_n$ by
+(3.19) and (3.21).  There are finite gates with the following properties.
+
+\begin{enumerate}
+\item For each $p_{\max}<1/4$, if $q$, $nh$, and $n/h$ exceed the gate,
+then every $\chi_n(t)=\ell\pi$ between the endpoint circles has sign
+$(-1)^\ell$.
+\item If $q$, $n-4q$, $nh$, and $n/h$ exceed the critical gate, then
+every $U_n(t)=\ell\pi$ between the endpoint circles has sign
+$(-1)^\ell$.
+\end{enumerate}
+
+Consequently these signs hold for every actual connected sequence in one of
+the three ranges
+
+\[
+ q\to\infty,\ q/n\to0,\qquad q/n\to p_0\in(0,1/4),\qquad
+ q/n\to1/4\text{ with }n-4q\to\infty, \tag{3.23}
+\]
+
+uniformly over all additional hyperplanes.
+
+\end{mdstatement}
+
+\begin{proof}
+
+
+For the separated regime, the exact four-state transfer matrix has a simple
+leading conjugate pair on the full contour.  After normalizing by its leading
+modulus, the other two eigenvalues and every attached-hyperplane correction
+satisfy
+
+\[
+ \frac{|E|}{\mathcal M}
+ \le \varepsilon_4(q,n-4q,nh,n/h), \tag{3.24}
+\]
+
+where the right side tends to zero when the displayed active arguments do.
+This estimate is obtained by the same basin/connecting-arc/far-arc partition
+as (3.21b), but with the quartic characteristic polynomial retained exactly;
+the full-circle spectral gap and the resolvent bounds are in proof-dossier D5,
+S50--S54.  At a $\chi_n$-grid point the normalized leading pair is
+$2\cos\chi_n$, so (3.24) proves the first clause.
+
+When $p\to1/4$, write again
+$z=-\xi/\sqrt{2v_4(t)}$.  The exact rank-four Legendre calculation gives
+
+\[
+ U_n(t)=n\phi_4(t)-\operatorname{Im}z^2+o(1), \tag{3.25}
+\]
+
+uniformly in the bounded separation window; the remainder is controlled by
+the four quantities in the second clause, without an additional $\Sigma$
+gate.  The scaled factor is $e^{z^2}\operatorname{erfc}z$, and the sector
+argument (3.22c) gives its strictly positive real part.  This proves the
+critical clause.  If $q/n\to0$ with $q\to\infty$, use the separated
+clause after the sparse-outside rescaling; bounded $q$ is handled separately
+by Proposition 4.4.  The paving intersection bound is imposed before summing
+the exact corrections, so (3.24)--(3.25) concern the complete polynomial.
+
+\end{proof}
+
+
+\section{Endpoint root blocks}
+
+
+The sign grid does not by itself reach either endpoint.  We use reciprocal
+scalings and Rouché transfer.
+
+\begin{mdstatement}{Proposition 4.0 (fixed-rank direct endpoint)}
+
+
+Fix $r\ge4$, put $p=(r-1)/r$, and let
+$\boldsymbol\alpha=(\alpha_1,\alpha_2,\ldots)$ be a finite or countable
+sequence with $\alpha_i\ge0$, $\sum_i\alpha_i\le1$, and
+$\max_i\alpha_i\le p$.  If
+$(N_1,N_2,\ldots,N_0)$ has multinomial distribution with $rj$ trials and
+cell probabilities $(\alpha_1,\alpha_2,\ldots,1-\sum_i\alpha_i)$, define
+
+\[
+ F_{\boldsymbol\alpha}(z)=\sum_{j\ge0}
+ \Pr\{N_i\le(r-1)j\text{ for every }i\}\frac{z^j}{(rj)!}. \tag{4.0}
+\]
+
+Every $F_{\boldsymbol\alpha}$ has infinitely many simple strictly negative
+zeros.  For every sufficiently large fixed $j$, the circle
+
+\[
+ |z|=T_j^r,\qquad T_j=\frac{\pi j}{\sin(\pi/r)}, \tag{4.0a}
+\]
+
+contains exactly $j$ zeros and has no boundary zero, uniformly over all
+such spectra.  If $M_n$ is any connected fixed-rank paving sequence whose
+effective-hyperplane densities converge to $\boldsymbol\alpha$, then
+$h_{M_n}^*(z/n^r)\to F_{\boldsymbol\alpha}(z)$ locally uniformly.  Hence,
+uniformly over the actual objects in Lemma 5.1, the interval
+$0<t<t_{n,j}$, where $n\phi_r(t_{n,j})=j\pi$, contains exactly $j$
+simple negative roots and the boundary value has sign $(-1)^j$.
+
+\end{mdstatement}
+
+\begin{proof}
+
+
+Formula (2.5) gives the coefficient probability in (4.0), and factorial
+domination gives compact convergence, including countable spectra.  We first
+prove the root statement without using the circles.  Put $d=r-1$, order the
+positive $\alpha_i$, and set
+
+\[
+ h(y)=\frac{y}{ry-d},\qquad f(t)=\frac{t}{d-rt},
+ \qquad N(t)=\#\{i:\alpha_i>t\}. \tag{4.0b}
+\]
+
+Root-of-unity filtering and the common two-branch change of variables transform
+the normalized coefficient series into a cosine transform with signed weight
+$H$.  Its downward variation is exactly
+
+\[
+ V_-=\sum_{i\ge2}f(\alpha_i)-h(p_b)+1,
+ \qquad b=\alpha_2, \tag{4.0c}
+\]
+
+with the empty or one-atom cases obtained by deletion.  Here
+$p_b\in(d/r,1)$ is the unique high-branch point paired with the
+low-branch point $b$, namely
+$b^d(1-b)=p_b^d(1-p_b)$.  Thus $h(p_b)>1$ for $b>0$.
+Since $\sum_{i\ge2}\alpha_i\le1-b$ and $\alpha_i\le b\le1/2$,
+
+\[
+ V_-<\frac{1-b}{d-rb}\le\frac1{r-2}\le\frac12. \tag{4.0d}
+\]
+
+All jumps of $H$ are upward, $H(0)=1$, and the possible terminal
+inverse-square-root singularity is integrable.  Truncating that singularity
+does not increase $V_-$.  Hence the signed-cosine rectangle argument has
+strict vertical and horizontal margins and puts the normalized entire function
+$C$ in the Laguerre--Pólya class.  The exact gamma multiplier
+
+\[
+ \gamma_j=\frac{(2j)!}{(dj)!j!} \tag{4.0e}
+\]
+
+takes $C$ to $F_{\boldsymbol\alpha}$; its multiplier-sequence
+strictification makes every zero simple and negative.  The coefficient is
+strictly positive, the order is at most $1/r<1$, and the function is not a
+polynomial, so there are infinitely many zeros.  The countable case follows
+by truncation: $tN(t)\to0$, the total jump mass is finite, and the kernel
+integrals are dominated by $\sum_i\alpha_i^{1+d/2}<\infty$.
+
+Now all zeros are already known to be simple and negative.  The explicit
+root-of-unity formula for the unperturbed kernel gives the sign $(-1)^j$ at
+$-T_j^r$.  The same rectangle margins and (4.0d) make that sign uniform over
+the compact spectrum space for all sufficiently large fixed $j$.  Thus the
+circle $|z|=T_j^r$ is zero-free: any boundary zero would have to be the
+negative point already excluded by the strict sign.  The negative-axis sign
+changes provide $j$ real zeros inside, and the argument principle gives the
+same count.  Local uniform convergence of actual rescaled polynomials and
+small disjoint Rouché disks transfer the count and simplicity.  A failure
+sequence has a convergent spectrum subsequence and contradicts this zero-free
+circle.  The full cosine-transform calculation and the uniform rectangle
+estimates are proof-dossier D4.
+\end{proof}
+
+
+\begin{mdstatement}{Proposition 4.1 (fixed-rank endpoint transfer)}
+
+
+Fix $r\ge4$, let $b=r\lceil n/r\rceil-n$, and suppose first that the
+largest effective hyperplane has size $s\le D_u-1$, where
+$D_u=n-\lceil n/r\rceil$.  Put $g=D_u-s\ge1$.  The reciprocal endpoint
+kernel is
+
+\[
+ F_{r,b,g}(z)=\sum_{j\ge0}
+ \Pr\!\left\{\operatorname{Bin}
+   \left(rj+b,\frac{r-1}{r}\right)
+   \le(r-1)j+b+g-1\right\}\frac{z^j}{(rj+b)!}. \tag{4.1}
+\]
+
+For every $b\in\{0,\ldots,r-1\}$ and $g\ge1$, this entire function has
+infinitely many simple strictly negative zeros.  As $g\to\infty$, it
+converges locally uniformly to
+
+\[
+ V_{r,b}(z)=\sum_{j\ge0}\frac{z^j}{(rj+b)!}, \tag{4.2}
+\]
+
+which has the same zero property.  This limiting function is the residue
+function $E_b$ of Adiprasito--Zhang [1, Section 3.3], with $k=r$; its
+simple negative zeros are prior work.  Here the additional assertions concern
+the corrected kernels $F_{r,b,g}$ and counts uniform in $g$.
+For every sufficiently large fixed $k$,
+the circles
+
+\[
+ |z|=T_{k,b}^r,
+ \qquad T_{k,b}=\frac{\pi(k+b/r)}{\sin(\pi/r)}, \tag{4.3}
+\]
+
+contain exactly $k$ zeros, have no boundary zero, and work uniformly in
+$g$, including the limit $g=\infty$.
+
+If instead $0\le s-D_u\le C$, the actual codegree differs from
+$\lceil n/r\rceil$ by a bounded integer.  For fixed $r,C$, the residue
+$b$ and the additional endpoint index $a$ range over a finite set.  Denote
+by $E_{r;b,a}$ the entire function obtained as the locally uniform limit of
+the exact reciprocal polynomial (2.5) in that fixed $(b,a)$-subsequence.
+Every such $E_{r;b,a}$ has infinitely many simple strictly negative zeros
+and zero-free counting circles of the form (4.3).  Consequently every fixed
+finite block of direct and reciprocal endpoint zeros transfers uniformly to
+simple negative zeros of $h_M^*$.
+
+\end{mdstatement}
+
+\begin{proof}
+
+
+Coefficientwise convergence follows from (2.3)--(2.7), and uniform factorial
+tails make it locally uniform at the origin.  The sign of
+$F_{r,b,g}(-T_{k,b}^r)$ is $(-1)^k$.  A full-circle argument-principle
+count gives exactly $k$ zeros inside (4.3); hence the alternating real zeros
+already supplied by the signs exhaust the disk and are simple.  The estimates
+are uniform in $g$: if a common transfer threshold failed, a failure sequence
+would have, after fixing the finite residue $b$, either a constant subsequence
+$g=g_0$ or a subsequence $g\to\infty$.  The corresponding locally uniform
+limit is respectively $F_{r,b,g_0}$ or $V_{r,b}$, and the same zero-free
+circle contradicts failure by Rouché's theorem.  Thus no maximum over infinitely
+many individual $g$-thresholds is taken.  The bounded-excess kernels form a
+genuinely finite $(b,a)$-family, so the same argument takes a finite maximum
+there.
+\end{proof}
+
+
+\begin{mdstatement}{Proposition 4.2 (growing-rank reciprocal block)}
+
+
+Under (1.1), let
+
+\[
+ K=\left\lceil r^5A^4\right\rceil,
+ \qquad K_{\max}=\left\lfloor\frac r{16}L\right\rfloor. \tag{4.4}
+\]
+
+Set $b=r\lceil n/r\rceil-n$ and define
+
+\[
+ Q_n(z)=n^{-b}\left(\frac z{n^r}\right)^D h_M^*(n^r/z). \tag{4.5}
+\]
+
+Then $K/K_{\max}\to0$, and $Q_n$ has exactly $K-1$
+simple strictly negative zeros in $|z|<T_{K-1,b}^r$, with no zero on the
+boundary and boundary sign $(-1)^{K-1}$.  Under (4.5), these correspond to
+$K-1$ zeros of $h_M^*$ in
+$x<-n^r/T_{K-1,b}^r$.
+
+\end{mdstatement}
+
+\begin{proof}
+
+
+For the first $2K$ reciprocal coefficients, the paving correction formula
+has the same leading factorial kernel as the uniform polynomial, with a
+relative error tending to zero uniformly in the hyperplane family.  On the
+circle of radius $T_{K-1,b}^r$, with $T_{k,b}$ as in (4.3), the coefficient
+tail is split at the central
+index.  Below it, the factorial ratio is geometric after the $K$-scale;
+above it, the reciprocal factorial tail is dominated by its first omitted
+term.  Condition (1.1) implies $K=o(rL)$, so the two estimates overlap.
+More precisely, if
+
+\[
+ G_{r,b,K}(z)=\sum_{j=0}^{2K}\frac{z^j}{(rj+b)!},
+ \qquad \Gamma_K=\{|z|=T_{K-1,b}^r\}, \tag{4.5a}
+\]
+
+then the two coefficient ranges and their tails give
+
+\[
+ \sup_{z\in\Gamma_K}|Q_n(z)-G_{r,b,K}(z)|
+ \le \eta_n
+ \inf_{z\in\Gamma_K}|G_{r,b,K}(z)|,
+ \qquad \eta_n\longrightarrow0. \tag{4.5b}
+\]
+
+The denominator in (4.5b) is positive by the full root-of-unity circle
+estimate, not by a negative-axis test.  The coefficient-ratio derivation of
+(4.5b), including the uniform paving correction and both factorial tails, is
+proof-dossier D6.  Rouché's theorem now gives the exact root count and boundary
+sign for $Q_n$.
+Multiplication by the monomial used in (4.5) changes the boundary sign by the
+known parity $(-1)^D$, which is the conversion used in (6.7).
+\end{proof}
+
+
+\begin{mdstatement}{Proposition 4.3 (fixed-rank giant-profile endpoint blocks)}
+
+
+Fix $r\ge4$, put $d=r-1$, and suppose the largest effective hyperplane
+has size $n-q$, where $2\le q<n/r$.  With
+$p=q/n$, $a_0=1-rp$, and the leading solution $W=h e^{i\theta}$ of
+(3.18), put
+
+\[
+ c=\left\lceil\frac{n-q+1}{r-1}\right\rceil,\qquad
+ b=rc-n,\qquad a=(r-1)c-(n-q)-1,\qquad D=n-c. \tag{4.6}
+\]
+
+Then $a\in\{0,\ldots,r-2\}$, the codegree is exactly $c$, and the degree
+is exactly $D$.  In the subcritical range $q\to\infty$,
+$q/n\le p_{\max}<1/r$, every sufficiently large fixed $j,k$ admits
+disjoint boundaries
+
+\[
+ x_L=-\frac{Y_j}{p(1-p)^{r-1}n^r},\qquad
+ x_U=-\frac{\Lambda}{T_{a,k}^{r-1}},\qquad
+ \Lambda=\frac{(n-q)^{r-1}(q+b)}b, \tag{4.7}
+\]
+
+such that the disk ending at $x_L$ contains exactly $j$ simple negative
+roots and has sign $(-1)^j$, while the exterior beyond $x_U$ contains
+exactly $k$ simple negative roots and has sign $(-1)^{D-k}$.  Here
+$Y_j$ is the fixed Wright-phase radius with its phase equal to $j\pi$, and
+$T_{a,k}=\pi(k+a/(r-1))/\sin(\pi/(r-1))$.
+
+In the critical range $q/n\to1/r$, $n-rq\to\infty$, the same conclusion
+holds with the direct boundary
+$x_L=-R_{p,j}/n^r$, where the fixed macroscopic circle $R_{p,j}$ contains
+exactly $j$ roots, and with the same reciprocal boundary (4.7).  At these
+boundaries,
+
+\[
+ U_n(t_L)=j\pi+o(1),\qquad
+ U_n(t_U)=(D-k)\pi+\frac{\pi}{r-1}+o(1). \tag{4.8}
+\]
+
+\end{mdstatement}
+
+\begin{proof}
+
+
+In the subcritical range, multiplication of the exact saddle equation by
+$n^r$ at the scale
+$t^r=Y/[p(1-p)^{r-1}n^r]$ gives
+
+\[
+ nW\longrightarrow
+ \frac{d^{1/r}Y^{1/r}}{1-p_0}e^{\pi i/r}. \tag{4.8a}
+\]
+
+The exact coefficient formula and factorial domination therefore give local
+uniform convergence of the direct polynomial to the Wright kernel whose
+continuous phase $\Psi$ satisfies $\Psi(Y_j)=j\pi$.  Its full Hankel-circle
+estimate has one strictly dominant conjugate pair on the boundary and hence
+exactly $j$ simple negative zeros inside.  The remaining macroscopic
+hyperplanes contribute an integrable signed weight whose downward variation is
+strictly below one half; thus the same boundary is zero-free for the complete
+kernel.  The convergence is uniform in all legal spectra, so Rouché transfers
+the count to the actual polynomial.
+
+At the reciprocal scale, after fixing
+$a\in\{0,\ldots,d-1\}$, the normalized polynomial converges locally
+uniformly to
+
+\[
+ V_{d,a}(z)=\sum_{m\ge0}\frac{z^m}{(dm+a)!}. \tag{4.8b}
+\]
+
+The function (4.8b) is likewise the residue function of [1, Section 3.3],
+with $k=d$.  We use its known simple negative zeros as the uniform endpoint
+baseline, rather than claim a new zero theorem for that function.
+The root-of-unity filter shows that the circle
+$|z|=T_{a,k}^{d}$ has one dominant conjugate pair and is zero-free, with
+exactly $k$ simple negative zeros inside.  The complete correction is
+uniformly smaller on that whole circle, not merely at its negative point.
+Rouché therefore gives the reciprocal count and sign in (4.7).
+
+In the critical range, the direct limit is the macroscopic Beta kernel.  Its
+signed-weight representation has positive initial mass, upward jumps, and
+negative variation below one half, so the same cosine-transform rectangle
+argument gives only simple negative zeros and zero-free counting circles.  The
+reciprocal limit remains (4.8b).  The local-uniform transfers at both circles
+are uniform when $q,n-rq,nh,n/h$ exceed their finite gate.  The explicit
+Hankel, Beta, and reciprocal boundary estimates are proof-dossier D4.
+
+For the degree, every interior point must have dilation
+at least both $\lceil n/r\rceil$ and $\lceil(n-q+1)/(r-1)\rceil=c$.
+At dilation $c$, put one in every coordinate and distribute the additional
+$b$ units among the $q$ coordinates outside $H_0$, never exceeding
+$c-2$ extra units per coordinate.  The capacity inequality
+$q(c-2)\ge b$ holds for large $n$.  Then $x(H_0)=n-q<(r-1)c$; every
+other effective hyperplane has size at most $q+r-2$, and hence has sum at
+most $q+r-2+b<(r-1)c$.  This is a relative interior lattice point, proving
+the codegree and degree assertions.  The phase labels in (4.8) follow by
+expanding the exact saddle equation (3.18); notably the finite
+$\pi/(r-1)$-offset is retained.
+\end{proof}
+
+
+\begin{mdstatement}{Proposition 4.4 (fixed-complement theorem)}
+
+
+Fix integers $r\ge3$ and $q\ge2$.  For all sufficiently large $n$,
+every connected rank-$r$ paving matroid having an effective hyperplane of
+size $n-q$ has only simple strictly negative $h^*$-zeros, with no
+restriction on the remaining legal effective hyperplanes.
+
+\end{mdstatement}
+
+\begin{proof}
+
+
+Put $k=r-1$, $m=q-1$, and $N=n-q+1$.  For the one-hyperplane model,
+split the outside-coordinate sum into the intervals
+$s=(b+1)t+y$, $0\le y\le t$, and inclusion--exclude the upper bounds.
+The outside fibre is
+
+\[
+ F_b(t,y)=\sum_{v=0}^{b+1}(-1)^v\binom qv
+ \binom{(b+1-v)t+y+q-1-v}{q-1}. \tag{4.9}
+\]
+
+Expanding in $\binom yj$, the required uniform-slice moments are
+
+\[
+\begin{aligned}
+ M_{a,N,j}(t)
+ &=\sum_{i=0}^{a-1}(-1)^i\binom{N-1}{i}
+   \binom{(a-i)t+N-1-i}{N+j-1}\\
+ &\quad-
+ \sum_{i=0}^{a-2}\sum_{\ell=0}^{j}(-1)^i\binom{N-1}{i}
+ \binom{t+1}{\ell}
+ \binom{(a-i-1)t+N-2-i}{N+j-\ell-1}.
+\end{aligned}
+\tag{4.10}
+\]
+
+Equations (4.9)--(4.10), with the common-endpoint subtraction, are an exact
+finite expression for the Ehrhart polynomial.  Its highest-slope part is
+obtained from the uniform rank-$k$ numerator by $m$ operators
+
+\[
+ T_{w,M}(f)=wx(1-x)f'+[1+(wM-1)x]f, \tag{4.11}
+\]
+
+where the parameters are positive and converge to $1,1/2,\ldots,1/m$.
+The remaining terms have smaller slope and the signed size bounds recorded in
+proof-dossier D3.  On the middle annulus $Y/N\le y\le N/Y$, root-of-unity
+filtering gives a conjugate leading pair $2\mathcal M\cos\Phi/k$ and
+
+\[
+ \left|\frac{E}{\mathcal M}\right|
+ +\left|\partial_\Phi\frac{E}{\mathcal M}\right|
+ \le C_{r,q}e^{-c_{r,q}Y}+o_N(1). \tag{4.12}
+\]
+
+At the two endpoints, after the scalings $x=z/N^k$ and reciprocal
+normalization, the error and its first two derivatives tend to zero on compact
+sets.  The limiting numerators are obtained from the uniform kernels by the
+positive operators (4.11), and their negative roots are simple.  Thus the
+homotopy from the leading model to the exact one-hyperplane polynomial has no
+negative multiple root in any of the three regions.  Its constant and leading
+coefficients stay positive, so roots cannot escape through zero or infinity;
+all roots remain simple and negative.
+
+For $r=3$, the same finite moment formula holds, but (4.12) is replaced by
+the two-saddle identity
+
+\[
+ J_{0,N}(-y^2)=\mathcal M_N(y)\cos\Phi_N(y),\qquad
+ \Phi_N'(y)\ge cN/(1+y^2), \tag{4.13}
+\]
+
+and the direct and reciprocal limits are respectively products of
+$1+(z\,d/dz)/j$ applied to $\cosh\sqrt z$, and the two parity kernels
+$\cosh\sqrt z$ and $\sinh(\sqrt z)/\sqrt z$.  Their function and
+derivative never vanish simultaneously on the negative axis, so the same
+three-region homotopy closes rank three.
+
+Finally, every additional hyperplane meets the distinguished one in at most
+$r-2$ elements.  Because $q$ is fixed, packing gives only
+$O_{r,q}(n^{r-3})$ such corrections; after the normalizations above their
+coefficients satisfy the same strict output-box bounds as the error in
+(4.12).  They therefore enter the same homotopy without changing the argument.
+The full derivation of (4.9)--(4.13), including the endpoint two-jet estimates,
+is proof-dossier D3.
+\end{proof}
+
+
+\begin{mdstatement}{Proposition 4.5 (rank-three giant-hyperplane theorem)}
+
+
+There is an integer $N_{\mathrm{giant}}$ such that, for every
+$n\ge N_{\mathrm{giant}}$, every connected rank-three paving matroid whose
+largest effective hyperplane has size
+$s\ge\lceil2n/3\rceil-1$ has only simple strictly negative $h^*$-zeros.
+All legal attached hyperplanes are included.
+
+\end{mdstatement}
+
+\begin{proof}
+
+
+Put $q=n-s$, $N=s+1$, and $m=q-1$.  The one-hyperplane numerator has a
+simple negative spectrum by the exact rank-two slice representation.  Write
+the complete numerator as
+
+\[
+ p_\tau=p_{\mathrm{single}}-\tau\Delta,
+ \qquad 0\le\tau\le1. \tag{4.14}
+\]
+
+where $\Delta$ is the sum of all legal attached-hyperplane corrections.
+If $m/N\to0$, the sublinear-complement theorem recorded as \texttt{S9} together
+with its dependency revision \texttt{S9R1} in proof-dossier D3 applies uniformly; it
+covers both fixed and divergent $q$.  It therefore remains to work on an
+arbitrary compact interval of positive values of $m/N\subset(0,1/2]$.
+
+On that compact interval, root-of-unity filtering writes
+
+\[
+ p_{\mathrm{single}}=J+R_{\mathrm{single}},
+ \qquad J(-y^2)=\mathcal M\cos\Phi,
+ \qquad \Phi'>0. \tag{4.14a}
+\]
+
+The exact parent-remainder, packing, and contour estimates give, for a fixed
+sufficiently large threshold $B$,
+
+\[
+ \frac{|R_{\mathrm{single}}-\tau\Delta|}{\mathcal M}<\frac12,
+ \qquad 0\le\tau\le1, \tag{4.15}
+\]
+
+at every phase-grid point with $ny^{2/3}\ge B$.  The estimate is uniform in
+the compact ratio interval and in every attached family; its proof combines
+the parent remainder with the full attached correction and splits the zero,
+finite-positive, and far-end scales, as recorded in proof-dossier D3.  On the
+remaining compact endpoint, the weighted kernel of (4.14) has initial value
+one, downward variation below one third, and only upward jumps.  Consequently
+the function and derivative are uniformly separated from simultaneous zero
+for every $\tau\in[0,1]$.
+
+The constant term, degree, and positive leading coefficient of (4.14) are
+independent of $\tau$.  A root therefore cannot escape through zero or
+infinity.  At the first parameter where the simple negative spectrum could
+fail, a negative multiple root would occur.  The compact endpoint separation
+excludes it below $B$, and (4.15), together with $\Phi'>0$, excludes it
+above $B$.  Thus the homotopy reaches the complete polynomial at $\tau=1$
+with all roots simple and negative.  A failure sequence and compactness of
+$m/N\in[0,1/2]$ convert the sequential statement into one common threshold.
+
+\end{proof}
+
+
+\section{Fixed-rank exhaustion}
+
+
+We now assemble the fixed-rank result.  The following three lemmas are the
+uniform regime statements supplied by Sections 3--4 and the endpoint kernels.
+
+\begin{mdstatement}{Lemma 5.1 (bounded critical excess)}
+
+
+Fix $r\ge4$ and $C\ge0$.  Let
+
+\[
+ D_u=n-\left\lceil\frac nr\right\rceil,
+ \qquad
+ s=\begin{cases}
+ \max_{H\in\mathcal H(M)}|H|,&\mathcal H(M)\ne\varnothing,\\
+ r-1,&\mathcal H(M)=\varnothing.
+ \end{cases}
+\]
+
+For all sufficiently large $n$, every connected rank-$r$ paving matroid
+with $s\le D_u+C$ has a simple strictly negative $h^*$-spectrum.
+
+\end{mdstatement}
+
+\begin{proof}
+
+
+There are two different endpoint problems.  If $s\le D_u-1$, put
+$g=D_u-s\ge1$.  This is the infinite family $F_{r,b,g}$, not a finite
+collection.  Fix sufficiently large endpoint counts $j,k$.  If the transfer
+were not uniform over all $g$, choose a failure sequence.  After fixing the
+finite residue $b$, either $g$ is constant on a subsequence or
+$g\to\infty$; Proposition 4.1 then gives the limiting kernel
+$F_{r,b,g}$ or $V_{r,b}$, respectively, on the same zero-free counting
+circle.  Rouché's theorem contradicts failure.  The direct endpoint has the
+same failure-sequence compactness, so both endpoint blocks have common
+thresholds without taking a maximum over all $g$.
+
+If $\delta=s-D_u\in\{0,\ldots,C\}$, write
+
+\[
+ \begin{aligned}
+ b_u&=r\lceil n/r\rceil-n,\\
+ \ell&=\left\lceil\frac{\delta+1-b_u}{r-1}\right\rceil,\\
+ c&=\lceil n/r\rceil+\ell,\qquad
+ b=b_u+r\ell,\qquad
+ a=(r-1)\ell+b_u-\delta-1.
+ \end{aligned} \tag{5.1}
+\]
+
+For fixed $r,C$, only finitely many $(b,a)$ occur, and the
+$E_{r;b,a}$-kernels in Proposition 4.1 give common endpoint thresholds.
+In the first subdomain, the phase grid (2.12) is ordered and Corollary 3.3
+gives alternating strict signs.  In the bounded-excess subdomain the required
+signs instead come from Proposition 3.3A.  The intrinsic degree is
+
+\[
+ n-\max\left\{\left\lceil\frac nr\right\rceil,
+ \left\lceil\frac{s+1}{r-1}\right\rceil\right\}; \tag{5.2}
+\]
+
+Indeed, in the first subdomain take $c=\lceil n/r\rceil$ and
+$b=rc-n$.  At dilation $c$, assign one to every coordinate and add one to
+any $b$ coordinates.  Every effective hyperplane then has sum at most
+
+\[
+ s+b\le D_u-1+b=(r-1)c-1,
+\]
+
+so this is a relative interior lattice point.  In the bounded-excess domain,
+use the parameters in (5.1).  The largest hyperplane is unique for large
+$n$, and the exact identities give $q\ge b$; assign the $b$ extra units
+to distinct coordinates outside it.  Its sum is
+$s=(r-1)c-a-1<(r-1)c$.  Every other effective hyperplane has size at most
+$q+r-2$, and its total is at most
+$q+r-2+b=c+a+r-1<(r-1)c$.  Conversely, positivity of all coordinates and
+the largest-hyperplane inequality force both lower bounds in (5.2).  Thus the
+codegree and degree are exact.  The endpoint counts plus the intermediate
+sign changes equal this degree.
+Local Rouché disks at the endpoints and strict sign separation in the middle
+also exclude multiplicity.
+\end{proof}
+
+
+\begin{mdstatement}{Lemma 5.2 (subcritical giant hyperplane)}
+
+
+Fix $r\ge5$ and $0<p_{\max}<1/r$.  For all sufficiently large $n$, every
+connected rank-$r$ paving matroid whose largest effective hyperplane has
+complement size $q$ satisfying
+
+\[
+ 2\le q\le p_{\max}n \tag{5.3}
+\]
+
+has a simple strictly negative $h^*$-spectrum.
+
+\end{mdstatement}
+
+\begin{proof}
+
+
+Choose $Q=Q(r,p_{\max})$ from the uniform divergent-complement estimate.
+For $Q\le q\le p_{\max}n$, distinct effective hyperplanes meet in at most
+$r-2$ elements, so every other hyperplane has size at most $q+r-2$.
+Proposition 4.3 treats both endpoint blocks and gives the exact degree.  The
+complete middle sign is Proposition 3.4, not Proposition 3.1: the largest
+hyperplane lies beyond the latter proposition's central-density domain.
+The paving intersection bound places every other hyperplane in the separated
+error term already included in Proposition 3.4.  Ordered first hits of the
+levels between the two endpoint phases yield every remaining root.
+
+Only the finite set $q=2,\ldots,Q-1$ remains.  For each fixed $q$, the
+fixed-complement theorem, Proposition 4.4, supplies a threshold $N_q$, including all
+legally attached hyperplanes.  Taking the maximum of these finitely many
+thresholds and the uniform $q\ge Q$ threshold proves the lemma.  Equivalently,
+any failing sequence has either a divergent-$q$ subsequence or a constant-
+$q$ subsequence, and both are excluded.
+\end{proof}
+
+
+\begin{mdstatement}{Lemma 5.3 (critical moving giant hyperplane)}
+
+
+Fix $r\ge5$.  Suppose a sequence of connected rank-$r$ paving matroids has
+largest-hyperplane complement $q$ with
+
+\[
+ \frac qn\longrightarrow\frac1r,
+ \qquad n-rq\longrightarrow\infty. \tag{5.4}
+\]
+
+Then its $h^*$-polynomials eventually have only simple strictly negative
+zeros.
+
+\end{mdstatement}
+
+\begin{proof}
+
+
+Fix large integers $J,k$ before sending $n\to\infty$.  At the direct
+endpoint, the disk ending at $x_L=-R_{p,J}/n^r$ contains exactly $J$
+simple negative roots and has boundary sign $(-1)^J$.  At the reciprocal
+endpoint, after fixing the finite residue parameter, the exterior of
+$x_U=-\Lambda/T_{a,k}^d$ contains exactly $k$ simple negative roots and
+has boundary sign $(-1)^{D-k}$.
+
+The four quantities
+
+\[
+ q,\qquad n-rq,\qquad nh,\qquad n/h \tag{5.5}
+\]
+
+exceed a common fixed-rank threshold throughout the interval between these
+endpoint boundaries.  Here $h$ is the increasing phase-scale parameter:
+along the leading branch,
+
+\[
+ K=\frac{a_0h}{dp}
+ \quad\text{and}\quad
+ a_s=\frac{a_0t^r}{1-p}
+   =h^{r-1}\frac{-\sin(r\theta)}{\sin\theta}
+\]
+
+are strictly increasing with $\theta\in(\pi/r,\pi/(r-1))$; the saddle
+equation then makes $h$ strictly increasing with $t$.
+The first two quantities tend to infinity by (5.4), and the latter two are
+made large by choosing $J,k$ first.  Proposition 3.4 then gives the complete
+actual sign at every intermediate $U_n$-phase level.  Taking the first
+point at which each level $(J+1)\pi,\ldots,(D-k-1)\pi$ is reached gives an
+ordered grid without assuming a stronger global monotonicity statement.
+The endpoints and grid supply $J+(D-J-k)+k=D$ distinct negative roots, so
+degree exhaustion makes them all simple.  Finite residue classes are handled
+by a finite subsequence maximum.
+\end{proof}
+
+
+\begin{mdstatement}{Lemma 5.4 (the complete rank-three class)}
+
+
+There is an integer $N_3$ such that every connected rank-three paving
+matroid on at least $N_3$ elements has a simple strictly negative
+$h^*$-spectrum.
+
+\end{mdstatement}
+
+\begin{proof}
+
+
+For $b\in\{0,1,2\}$ and $g\ge1$, its reciprocal kernels are
+
+\[
+ F_{b,g}(z)=\sum_{j\ge0}
+ \Pr\{\operatorname{Bin}(3j+b,2/3)\le2j+b+g-1\}
+ \frac{z^j}{(3j+b)!}. \tag{5.6}
+\]
+
+At
+$T_{i,b}=2\pi(i+b/3)/\sqrt3$, exact negative-axis signs give
+$(-1)^iF_{b,g}(-T_{i,b}^3)>0$, uniformly in $g$.  Full complex-circle
+counts give exactly $i$ roots inside $|z|=T_{i,b}^3$; hence all zeros of
+every $F_{b,g}$ are simple and negative.
+
+For completeness, the sign is not a numerical extrapolation.  Writing the
+kernel as the three-pole sum plus its fixed-radius remainder, the normalized
+remainder $Q_R(T)$ and the positive comparison $d(T)$ satisfy
+
+\[
+ Q_R(T)<d(T)\qquad(T\ge3). \tag{5.6a}
+\]
+
+On $[3,10^6]$, (5.6a) follows from 36 adjacent rational intervals: for
+each fixed rational radius, $Q_R$ is convex and $d$ is concave, so the two
+endpoint inequalities certify the whole interval.  For $T\ge10^6$, the
+analytic tail bound is (Q\_R/d<0.975).  Since every $T_{i,b}>3$, this proves
+all signs.  The independent full-circle estimate has the same dominant
+three-pole sum and a strict uniform boundary margin; the argument principle
+therefore gives exactly $i$ roots.  The rational interval certificate and
+the infinite-tail inequality are included in proof-dossier D3.
+
+The direct endpoint limits are indexed by legal macroscopic spectra
+$\boldsymbol\alpha=(\alpha_j)$, $\sum\alpha_j\le1$, $\max\alpha_j<1$:
+
+\[
+ F_{\boldsymbol\alpha}^{(3)}(z)=
+ \sum_{\ell\ge0}\left[1-
+ \sum_j\Pr\{\operatorname{Bin}(3\ell,\alpha_j)\ge2\ell+1\}\right]
+ \frac{z^\ell}{(3\ell)!}. \tag{5.6b}
+\]
+
+Every function in (5.6b) has infinitely many simple negative zeros.  The proof
+splits at the largest two masses.  Small spectra satisfy a direct Beta--Rouché
+bound; otherwise the common signed weight has downward variation
+
+\[
+ V_-=\sum_{j\ge3}\frac{\alpha_j}{2-3\alpha_j}+1-g(\alpha_2)<\frac12, \tag{5.6c}
+\]
+
+where, if $p_b\in(2/3,1)$ is determined by
+$b^2(1-b)=p_b^2(1-p_b)$,
+
+\[
+ g(b)=\frac{p_b}{3p_b-2}-\frac{b}{2-3b}. \tag{5.6c'}
+\]
+
+The three possible ranges of $\alpha_2$ reduce to the explicit
+Bernstein-positive rational inequalities in proof-dossier D3.  Upward jumps,
+finite total variation, and the gamma multiplier then give the asserted simple
+negative spectrum.  This also pays countable spectra by dominated truncation.
+
+Suppose a common threshold fails and choose a failing sequence.  If
+$s\ge\lceil2n/3\rceil-1$ along an infinite subsequence, Proposition 4.5
+excludes that subsequence; this includes both fixed and divergent complements
+of the largest hyperplane.  We may therefore pass to a subsequence with
+$s<\lceil2n/3\rceil-1$.  If $s/n\le a<2/3$ for some fixed $a$, packing
+gives a limiting spectrum for (5.6b); the exact contour formula converges
+uniformly on the direct circle, while the same size-layer estimate gives
+
+\[
+ \frac{|E|}{R^n}\le C_a(1+t^3)e^{-c_at} \tag{5.6d}
+\]
+
+on the moving middle axis.  Thus the direct roots from (5.6b), the alternating
+middle grid, and the reciprocal kernel roots transfer uniformly.
+
+The only remaining possibility is $s/n\to2/3$ from below.  Put
+$c=\lceil n/3\rceil$, $D=n-c$, $b=3c-n$, and $g=D-s$.
+If $g\to\infty$, the reciprocal limit is $V_{3,b}$; if $g$ is bounded,
+fix the finite pair $(b,g)$ and use $F_{b,g}$.  The zero-free circles proved
+above transfer the exact reciprocal block.  Independently, compactness of the
+hyperplane densities gives a direct limit (5.6b), so a fixed direct block also
+transfers.  Between them, the exact double-moving formula satisfies (5.6d) in
+the separated part and the complementary-error estimate (3.22c) in the
+bounded critical window.  Hence every integer phase has its alternating
+complete-polynomial sign.  Ordered first hits give (D-j-k) middle roots;
+together with the (j) direct and (k) reciprocal roots, they exhaust the
+actual degree (D).  All roots are therefore simple and negative, contradicting
+the chosen sequence.
+\end{proof}
+
+
+\begin{mdstatement}{Lemma 5.5 (the complete rank-four class)}
+
+
+There is an integer $N_4$ such that every connected rank-four paving
+matroid on at least $N_4$ elements has a simple strictly negative
+$h^*$-spectrum.
+
+\end{mdstatement}
+
+\begin{proof}
+
+
+Let $D_u=n-\lceil n/4\rceil$, $s=s(M)$, and $q=n-s$.  The exact
+regime theorems needed here are:
+
+\[
+ \begin{array}{c|l}
+ I_0&s\le D_u:\ \text{Lemma 5.1 with }C=0,\\
+ I_1&D_u<s\le D_u+C:\ \text{Lemma 5.1 for fixed }C,\\
+ I_2&q/n\to0:\ \text{fixed }q\text{ or }q\to\infty\text{ subcritical},\\
+ I_3&q/n\to p_0\in(0,1/4):\ \text{subcritical giant profile},\\
+ I_4&q/n\to1/4, n-4q\to\infty:\ \text{critical giant profile}.
+ \end{array} \tag{5.7}
+\]
+
+In $I_2$, a bounded $q$ subsequence is fixed and uses the exact
+fixed-complement theorem, Proposition 4.4; a divergent $q$ subsequence uses
+Propositions 3.5 and 4.3.  Regimes $I_3$ and $I_4$ use the corresponding
+interior and moving-critical clauses of Proposition 3.5 together with the
+endpoint counts of Proposition 4.3.  In every case, the endpoint circles contain exact fixed
+root counts, the appropriate phase grid has complete-polynomial signs, and
+the codegree construction in Proposition 4.3 gives the actual degree; ordered
+first hits therefore exhaust all roots.
+
+It remains only to see that this finite regime list is exhaustive.  Put
+$c=\lceil(s+1)/3\rceil$,
+$a_n=3c-s-1\in\{0,1,2\}$, and $b=4c-n$.  If $b$ is bounded along a
+failing subsequence, then $s-D_u$ is bounded and $I_1$ applies.  If
+$b\to\infty$, then $n-4q=3b-4a_n-4\to\infty$, and a subsequential limit
+of $q/n\in[0,1/4]$ lies in exactly one of $I_2,I_3,I_4$.  Hence no failing
+rank-four sequence exists.
+\end{proof}
+
+
+\begin{proof}[Proof of Theorem 1.1]
+
+
+First assume $M$ is connected.  Ranks three and four are Lemmas 5.4 and 5.5.
+
+Now fix $r\ge5$, and suppose no common threshold exists.
+Choose a failing sequence with $n\to\infty$.
+For each member write $s=s(M)$ and
+$D_u=n-\lceil n/r\rceil$, in accordance with (1.0).
+
+If $s\le D_u$ infinitely often, Lemma 5.1 with $C=0$ is a contradiction.
+Otherwise put $\delta=s-D_u>0$.  If $\delta$ is bounded on a subsequence,
+Lemma 5.1 with one fixed bound $C$ is again a contradiction.  Thus we may
+assume $\delta\to\infty$.  With $q=n-s$ and
+$b_u=r\lceil n/r\rceil-n\in\{0,\ldots,r-1\}$,
+
+\[
+ n-rq=r\delta-b_u\longrightarrow\infty. \tag{5.8}
+\]
+
+After taking a subsequence, $q/n\to p_0\in[0,1/r]$.  If $p_0<1/r$,
+choose one fixed $p_{\max}\in(p_0,1/r)$ and apply Lemma 5.2.  If
+$p_0=1/r$, apply Lemma 5.3 using (5.8).  Every possible bad sequence has
+been contradicted, so there is a common connected threshold.
+
+It remains to classify disconnected paving matroids for fixed $r$ and
+$n>r$.  A component containing a circuit has rank at least $r-1$, and
+$2(r-1)>r$, so there is at most one such component.  Every other connected
+component is a one-element coloop.  Disconnectedness and the total rank force
+
+\[
+ M=U_{r-1,n-1}\oplus U_{1,1}. \tag{5.9}
+\]
+
+Deleting the fixed coloop coordinate is an integral affine isomorphism of
+base polytopes and preserves the Ehrhart polynomial.  The fixed-rank uniform
+hypersimplex theorem for rank $r-1$ supplies a threshold for (5.9) when
+$r-1\ge3$, by Adiprasito--Zhang [1, Theorem 3.1].
+For $r=3$, put $m=n-1$.  The rank-two numerator formula [2] is
+$P_m(x)=\sum_j\binom m{2j}x^j-mx$.  At $x=-\tan^2\theta$,
+$0\le\theta<\pi/2$, it gives
+
+\[
+ \cos^m\theta\,P_m(-\tan^2\theta)
+ =\cos(m\theta)+m\sin^2\theta\cos^{m-2}\theta.
+\]
+
+For $m\ge5$, the nonnegative second term has maximum
+$2(1-2/m)^{(m-2)/2}<1$: the maximum decreases with $m$, and its
+square at $m=5$ is $108/125<1$.  Hence the values at
+$\theta=j\pi/m$ have sign $(-1)^j$.  If $m$ is odd, this gives
+$\lfloor m/2\rfloor$ disjoint sign-changing intervals.  If $m$ is
+even, the endpoint limit has sign $(-1)^{m/2}$ and supplies the last
+interval.  Since $\deg P_m=\lfloor m/2\rfloor$, all roots are distinct
+and strictly negative.  Thus $n\ge6$ suffices for this disconnected
+rank-three subcase; simplicity is justified by this argument, not by an
+unstated simplicity assertion in [2].  Taking
+the maximum of the connected and disconnected thresholds proves the theorem.
+
+\end{proof}
+
+
+\section{The growing-rank root-density theorem}
+
+
+We prove Theorem 1.2.  Suppress the index $\nu$, and define
+
+\[
+ J=\lceil r^7A^4\rceil,
+ \qquad K=\lceil r^5A^4\rceil. \tag{6.1}
+\]
+
+Condition (1.1) implies
+
+\[
+ X\to\infty,\qquad \frac{r^4}{n}\to0,\qquad
+ \log n\gg r^4A^4\gg r^3\log(2r). \tag{6.2}
+\]
+
+At the $J$-th direct-end grid point,
+
+\[
+ (n-1)t_J=rJ(1+o(1))=r^8A^4(1+o(1)). \tag{6.3}
+\]
+
+At $t_J$, the first two quantities in Proposition 3.0 are paid by
+(6.2)--(6.3).  On $[t_J,t_-]$, $\kappa=(n-1)t$ increases, whereas the
+logarithmic-separation and the two factors containing $t$ are weakest at the
+right endpoint.  There,
+
+\[
+ \log\!\left[(C_1r)^rC_*^r t_-\log(1+\kappa)\right]
+ \le-\frac{\log n}{K_0r}+O(r\log(2r)+A)\longrightarrow-\infty, \tag{6.3a}
+\]
+
+and the same estimate without $(C_1r)^r$ is stronger.  Moreover
+$\log(1/t_-)=\log n/(K_0r)$ dominates
+$r^2+r\log(2r)$ by (6.2).  Since
+$t\log(1+(n-1)t)$ increases with $t$, these right-end estimates and the
+left-end $\kappa$-estimates pay all five gates throughout
+$[t_J,t_-]$.  Proposition 3.0, not merely a one-hyperplane central limit,
+gives the complete $h_M^*$-sign on this ultra-small interval.  Proposition
+3.1 then covers
+$[t_-,1/4]$, $[1/4,4]$, and the large-$t$ interval down to the reciprocal
+$K$-scale.  Corollary 3.3 gives
+
+\[
+ (-1)^jh_M^*(-t_j^r)>0,
+ \qquad J\le j\le D-K. \tag{6.4}
+\]
+
+Thus the intervals between consecutive grid points contain
+
+\[
+ D-K-J \tag{6.5}
+\]
+
+distinct strictly negative zeros.
+
+By Proposition 4.2, the reciprocal endpoint contributes $K-1$ additional
+simple strictly negative zeros beyond its boundary radius.  One last zero is
+forced between that boundary and the last phase-grid point.  Indeed, if
+$b=r\lceil n/r\rceil-n$, the phase expansion (2.14) gives
+
+\[
+ \frac n{T_{K,b}}<t_{D-K}<\frac n{T_{K-1,b}}, \tag{6.6}
+\]
+
+while the reciprocal boundary sign is
+
+\[
+ \operatorname{sign}h_M^*(-n^r/T_{K-1,b}^r)=(-1)^{D+K-1}, \tag{6.7}
+\]
+
+opposite to the grid sign $(-1)^{D-K}=(-1)^{D+K}$.  The reciprocal block
+therefore contributes $K$ zeros disjoint from (6.5).  The total is $D-J$.
+
+It remains to justify the degree.  Put $c=\lceil n/r\rceil$ and
+$b=rc-n\in\{0,\ldots,r-1\}$.  Every interior lattice point of $kP(M)$
+has all coordinates at least one and coordinate sum $rk$, so necessarily
+$k\ge c$.  At $k=c$, start with all $n$ coordinates equal to one and
+increase any $b$ coordinates to two.  Since (1.1) implies $c>2$ eventually,
+all coordinate inequalities are strict.  For every effective hyperplane,
+
+\[
+ x(H)\le |H|+b\le D-1+b=(r-1)c-1<(r-1)c, \tag{6.8}
+\]
+
+so every hyperplane inequality is also strict; lower-rank flat inequalities
+follow from paving and the coordinate bounds.  Thus the codegree is exactly
+$c$.  Since connectivity gives $\dim P(M)=n-1$,
+
+\[
+ \deg h_M^*=n-\left\lceil\frac nr\right\rceil=D. \tag{6.9}
+\]
+
+Finally, (1.1) and (6.2) imply $J/D\to0$.  This proves Theorem 1.2.
+
+\hfill$\square$
+
+
+\section{Scope, prior work, and limitations}
+
+
+The paving Ehrhart formula and the object-level hyperplane decomposition are
+prior work.  Results for rank-two sparse paving matroids and the recent
+fixed-rank hypersimplex theorem are also prior work.  In particular, the
+uniform subfamily of Theorem 1.1 is not claimed as new.
+
+Adiprasito and Zhang [1, Theorem 3.1] prove that, for each fixed $k\ge3$,
+the ordinary hypersimplex $\Delta(k,n)$ has a numerator with only distinct
+negative real zeros for all sufficiently large $n$.  Their Theorem 1.1
+gives negative real-rootedness for rank three and $n\ge6$, with simplicity
+asserted for $n\ge32$.  Theorem 1.1 here extends the object scope of their
+eventual fixed-rank theorem from uniform to all paving matroids; it does not
+improve their small-order rank-three range.
+
+They also remark that their threshold can be quantified as
+$N(k)=k^{O(k^2)}$.  With that growth bound, the uniform specialization in
+the regime (1.1) is already covered by their stronger full-root conclusion.
+Rank growth alone is therefore not the new part of Theorem 1.2: its increment
+is the nonuniform paving range and the explicit root-density window, with the
+stated hyperplane restriction.  Theorem 1.2 is not a strengthening of their
+full-root theorem on uniform matroids.
+
+The residue entire functions in [1, Section 3.3] and the phase-grid,
+endpoint-transfer, and degree-exhaustion architecture in its Sections
+3.4--3.5 are prior analytic mechanisms used here.  The full text of version
+v1 was checked; it contains no theorem covering all nonuniform paving
+matroids or the nonuniform conclusion of Theorem 1.2.  This source comparison
+does not establish global priority over every other or unindexed work.
+
+Theorem 1.1 supplies no explicit $N_r$ and no threshold uniform in $r$.
+Theorem 1.2 assumes connectivity, (1.1), and the effective-hyperplane size
+bound; it leaves $o(D)$ zeros unclassified.  Neither theorem resolves a
+general real-rootedness conjecture for arbitrary matroid base polytopes.
+
+\section{Reproducibility}
+
+
+The frozen prewrite package contains 216 source, proof, and certificate files.
+Their ordered path-and-SHA-256 manifest is
+
+loops/PAVING-HSTAR-PUBLICATION-PREP-0001/A1-{\cjkfont 证\allowbreak{}明\allowbreak{}依\allowbreak{}赖\allowbreak{}闭\allowbreak{}包}.sha256.
+
+The finite certificates in the package check only explicitly stated rational
+inequalities and finite continuous covers.  They do not replace the analytic
+proofs above.  The manuscript and any public artifact must be rebuilt if a
+file in the frozen manifest changes.
+
+For auditability, the principal manuscript assertions map to the frozen proof
+groups as follows; the manifest fixes the exact bytes of every named file and
+its bound revisions.
+
+\begin{itemize}
+\item Equations (2.1)--(2.9): \texttt{S10}, \texttt{S10R1}, and \texttt{S11} in
+\texttt{PAVING-\allowbreak{}HSTAR-\allowbreak{}HIGHER-\allowbreak{}RANK-\allowbreak{}CRITICAL-\allowbreak{}KERNEL-\allowbreak{}GATE-\allowbreak{}0001}.
+\item Proposition 3.0: \texttt{S17} and \texttt{S20-\allowbreak{}S17{\cjkfont 门\allowbreak{}下\allowbreak{}的\allowbreak{}完\allowbreak{}整\allowbreak{}原\allowbreak{}端\allowbreak{}保\allowbreak{}号}} in
+\texttt{PAVING-\allowbreak{}HSTAR-\allowbreak{}CROSS-\allowbreak{}RANK-\allowbreak{}FACT-\allowbreak{}GATE-\allowbreak{}0001}, together with that gate's \texttt{S13}.
+\item Propositions 3.1--3.2: \texttt{S18}, \texttt{S14}, and \texttt{S15} in
+\texttt{PAVING-\allowbreak{}HSTAR-\allowbreak{}CROSS-\allowbreak{}RANK-\allowbreak{}FACT-\allowbreak{}GATE-\allowbreak{}0001}, plus the full low-Euler estimate
+in \texttt{S11}.
+\item Proposition 3.3A: \texttt{S59} and \texttt{S91} in
+\texttt{PAVING-\allowbreak{}HSTAR-\allowbreak{}HIGHER-\allowbreak{}RANK-\allowbreak{}CRITICAL-\allowbreak{}KERNEL-\allowbreak{}GATE-\allowbreak{}0001}.
+\item Proposition 3.4: the full geometry, moving, actual-correction, endpoint, and
+critical-moving groups listed in proof-dossier D4.
+\item Proposition 3.5: \texttt{S50}--\texttt{S56} in
+\texttt{PAVING-\allowbreak{}HSTAR-\allowbreak{}HIGHER-\allowbreak{}RANK-\allowbreak{}CRITICAL-\allowbreak{}KERNEL-\allowbreak{}GATE-\allowbreak{}0001}, as itemized in
+proof-dossier D5.
+\item Proposition 4.0: the complete macro-spectrum theorem in
+\texttt{PAVING-\allowbreak{}HSTAR-\allowbreak{}TWO-\allowbreak{}MACRO-\allowbreak{}GATE-\allowbreak{}0001/\allowbreak{}S3}, with its frozen analytic dependencies.
+\item Proposition 4.1 and Lemma 5.1: \texttt{S90} and \texttt{S91} in
+\texttt{PAVING-\allowbreak{}HSTAR-\allowbreak{}HIGHER-\allowbreak{}RANK-\allowbreak{}CRITICAL-\allowbreak{}KERNEL-\allowbreak{}GATE-\allowbreak{}0001}.
+\item Proposition 4.3: the Wright, reciprocal, phase-joining, and critical endpoint
+groups in proof-dossier D4.
+\item Proposition 4.4: \texttt{S1} and \texttt{S2} in
+\texttt{PAVING-\allowbreak{}HSTAR-\allowbreak{}FIXED-\allowbreak{}OUTSIDE-\allowbreak{}GATE-\allowbreak{}0001}.
+\item Proposition 4.5: \texttt{S20-\allowbreak{}{\cjkfont 全\allowbreak{}部\allowbreak{}巨}H{\cjkfont 依\allowbreak{}赖\allowbreak{}整\allowbreak{}类\allowbreak{}统\allowbreak{}一\allowbreak{}实\allowbreak{}际\allowbreak{}全\allowbreak{}轴\allowbreak{}候\allowbreak{}选}} in
+\texttt{PAVING-\allowbreak{}HSTAR-\allowbreak{}GIANT-\allowbreak{}H-\allowbreak{}DEPENDENCIES-\allowbreak{}GATE-\allowbreak{}0001}, together with the giant-
+hyperplane moving and endpoint groups itemized in proof-dossier D4.
+\item Lemma 5.2: \texttt{S8} in \texttt{PAVING-\allowbreak{}HSTAR-\allowbreak{}GENERAL-\allowbreak{}RANK-\allowbreak{}GIANT-\allowbreak{}ENDPOINT-\allowbreak{}GATE-\allowbreak{}0001}
+and the fixed-complement theorem in \texttt{PAVING-\allowbreak{}HSTAR-\allowbreak{}FIXED-\allowbreak{}OUTSIDE-\allowbreak{}GATE-\allowbreak{}0001}.
+\item Lemma 5.3: \texttt{S4} in
+\texttt{PAVING-\allowbreak{}HSTAR-\allowbreak{}GENERAL-\allowbreak{}RANK-\allowbreak{}GIANT-\allowbreak{}CRITICAL-\allowbreak{}MOVING-\allowbreak{}GATE-\allowbreak{}0001}.
+\item The rank-three and rank-four joins in Theorem 1.1: \texttt{S22}, \texttt{S22R1}, \texttt{S23},
+and \texttt{S24} in \texttt{PAVING-\allowbreak{}HSTAR-\allowbreak{}MOVING-\allowbreak{}CRITICAL-\allowbreak{}GATE-\allowbreak{}0001}, and \texttt{S57}
+with its audited interfaces in
+\texttt{PAVING-\allowbreak{}HSTAR-\allowbreak{}HIGHER-\allowbreak{}RANK-\allowbreak{}CRITICAL-\allowbreak{}KERNEL-\allowbreak{}GATE-\allowbreak{}0001}.
+\item Proposition 4.2 and Section 6: \texttt{S15}, \texttt{S19}, and \texttt{S20} in
+\texttt{PAVING-\allowbreak{}HSTAR-\allowbreak{}CROSS-\allowbreak{}RANK-\allowbreak{}FACT-\allowbreak{}GATE-\allowbreak{}0001}.
+\end{itemize}
+
+These are proof dependencies, not separate novelty claims.  Novelty and source
+coverage are recorded outside the 216-file proof closure in the publication
+preparation package.
+
+\section*{References}
+
+
+\begin{enumerate}
+\item K. Adiprasito and M. Zhang, \emph{Eventual unimodality of the hypersimplex}, HAL preprint hal-05747878v1, submitted 12 September 2026; Theorems 1.1 and 3.1 and Sections 3.3--3.5.
+\item L. Ferroni, K. Jochemko, and B. Schröter, \emph{Ehrhart polynomials of rank two matroids}, arXiv:2106.08183v3.
+\item H. Fu, \emph{Real-rootedness and ultra log-concavity of rank-two matroid Ehrhart h*-polynomials}, arXiv:2609.37439v1.
+\item D. Hanely, J. Martin, J. McGinnis, D. Miyata, G. Nasr, A. Vindas-Meléndez, and M. Yin, \emph{Ehrhart Theory of Paving and Panhandle Matroids}, arXiv:2201.12442v3.
+\item S. Li, \emph{Magic positivity of Snapper polynomials for matroids}, arXiv:2609.24917v1.
+\end{enumerate}
+
+\section*{AI-assisted research disclosure}
+
+
+The research, proof development, checking, and writing were conducted with
+substantial AI assistance.  Carptopus is the human author and assumes
+responsibility for the mathematical claims and any released version.
+\end{document}

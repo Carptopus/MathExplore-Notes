@@ -1,0 +1,11 @@
+# Reproduction and frozen-source boundary
+
+Run `python -X utf8 check_package.py` from this entry directory with Python 3.13 (standard library only). This portable, read-only command verifies every distributed SHA-256 value, the exact 216-file closure, and rejects missing or extra files. It checks packaging integrity, not mathematical correctness.
+
+The accepted main PDF SHA-256 is `1094784BCB7865D130A2A98A9CD0AB68C4F34E3468A33EB6A20ADED40A6C5334`; supplement PDF SHA-256 is `3CC4F5AF9CAA29D9C2F3BE6A1C4B7DB21E7D2428575B0C6486A21EC023B86A7D`.
+
+`manuscript.md`, `proof-dossier.md`, and the supplied TeX/PDF files are byte-frozen. `proof-dossier/` preserves the original repository-relative paths of all 216 declared dependencies and their manifest at `loops/PAVING-HSTAR-PUBLICATION-PREP-0001/A1-证明依赖闭包.sha256`. A manuscript or dossier reference beginning `loops/` is resolved relative to `proof-dossier/`, not to this entry directory. These selected records are required proof dependencies; their historical candidate labels do not replace the final statements or independent review.
+
+To regenerate the PDFs, run a standard installed XeLaTeX environment from `paper`: `xelatex main.tex` twice, then `xelatex supplement.tex` twice. The frozen sources require `fontspec`, `amsmath`, `amsthm`, `hyperref`, and the Microsoft YaHei font for Chinese path labels. The font is not redistributed; use an environment where it is already licensed and installed. This is a stated TeX build requirement, not a promise that the font is available on every operating system. Compiler/font versions can change regenerated PDF bytes. The accepted PDFs need no font installation to read.
+
+No machine-specific artifact build script, private third-party PDF, research state, rendered page, or auxiliary log is shipped. The checksum checker is portable; that does not imply every frozen mathematical guard is portable. Guard runtime dependencies and resource limits remain those declared in their source and adjoining records. Do not bulk-run or run guards concurrently. No 216-program rerun is needed for package integrity. Finite certificates support their stated finite boundaries and do not replace analytic proofs or external mathematical review.
