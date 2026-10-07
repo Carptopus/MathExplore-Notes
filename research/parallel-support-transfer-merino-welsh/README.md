@@ -2,6 +2,8 @@
 
 Author: Carptopus · Version v0.1-beta (7 October 2026)
 
+Archived version: [10.5281/zenodo.23212705](https://doi.org/10.5281/zenodo.23212705). The Zenodo reproducibility ZIP preserves the initial public package at Git commit `2a6a12f2b681f1f73a8d832fb0c0b01fe77bbdb5`; subsequent DOI backfill changes only citation and index metadata, not the manuscript, PDF, TeX or verification files.
+
 This manuscript combines a conditional transfer mechanism, an all-parameter sparse paving quotient application, and a complementary strict corank-two theorem. It does not resolve the full Merino–Welsh conjecture.
 
 - [Manuscript](manuscript.md)
