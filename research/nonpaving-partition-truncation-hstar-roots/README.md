@@ -2,6 +2,8 @@
 
 Carptopus · carptopus@163.com · v0.1-beta · 7 October 2026
 
+Version DOI: [10.5281/zenodo.23210508](https://doi.org/10.5281/zenodo.23210508) · [All versions](https://doi.org/10.5281/zenodo.23210507)
+
 [Manuscript PDF](paper/main.pdf) · [LaTeX](paper/main.tex) · [Frozen Markdown](manuscript.md) · [BibTeX](CITATION.bib) · [Reproduction](REPRODUCE.md)
 
 For every fixed 0 < alpha < 1/2, all sufficiently large partitions of n with largest block at most alpha*n have a rank-four capacity-two partition-truncation base polytope whose Ehrhart h-star polynomial has degree n-ceil(n/4) and distinct strictly negative real roots. The threshold is uniform over the number of blocks and the partition; blocks of sizes one and two and a growing number of blocks are allowed.

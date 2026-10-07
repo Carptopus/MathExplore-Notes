@@ -2,6 +2,8 @@
 
 Carptopus · carptopus@163.com · v0.1-beta · 7 October 2026
 
+Version DOI: [10.5281/zenodo.23210477](https://doi.org/10.5281/zenodo.23210477) · [All versions](https://doi.org/10.5281/zenodo.23210476)
+
 [Manuscript PDF](paper/main.pdf) · [LaTeX](paper/main.tex) · [Integral supplement PDF](paper/supplement.pdf) · [Proof dossier](proof-dossier.md) · [BibTeX](CITATION.bib) · [Reproduction](REPRODUCE.md)
 
 For every fixed rank r >= 3, all zeros of the Ehrhart h-star polynomial of every sufficiently large n-element rank-r paving matroid are simple and strictly negative, without a connectivity assumption. A separate growing-rank theorem gives D-o(D) distinct strictly negative zeros for connected paving matroids in the explicit regime of Theorem 1.2, with an upper bound on effective hyperplane sizes; the remaining o(D) zeros are not classified. The fixed-rank thresholds are not explicit. Neither asymptotic theorem implies the other.
