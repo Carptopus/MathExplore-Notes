@@ -1,0 +1,475 @@
+{
+  "status": "PASS",
+  "pdf_sha256": "447215DD0050175ECD583EBCD95AF9E0E1C639170C4689F6F53A91CE08F470E8",
+  "page_count": 9,
+  "page_size_points": [
+    595.280029296875,
+    841.8900146484375
+  ],
+  "pymupdf_version": "1.28.2",
+  "pillow_version": "12.3.0",
+  "pages": [
+    {
+      "page": 1,
+      "mediabox": [
+        0.0,
+        0.0,
+        595.280029296875,
+        841.8900146484375
+      ],
+      "text_characters": 2439,
+      "replacement_characters": 0,
+      "outside_text_blocks": [],
+      "uri_links": [
+        "mailto:carptopus@163.com"
+      ],
+      "internal_links": 3,
+      "render": "build\\rendered-pages\\page-01.png",
+      "render_sha256": "D77428649927666E53A2295AD7A14B2C6C9A9BC8FA256F50B9131C93191A75E7",
+      "render_pixels": [
+        1072,
+        1516
+      ],
+      "grayscale_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "page": 2,
+      "mediabox": [
+        0.0,
+        0.0,
+        595.280029296875,
+        841.8900146484375
+      ],
+      "text_characters": 1516,
+      "replacement_characters": 0,
+      "outside_text_blocks": [],
+      "uri_links": [],
+      "internal_links": 2,
+      "render": "build\\rendered-pages\\page-02.png",
+      "render_sha256": "568774A121F9B5B160966998D752145B8536B88B45AA2672869E7495BACD94C0",
+      "render_pixels": [
+        1072,
+        1516
+      ],
+      "grayscale_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "page": 3,
+      "mediabox": [
+        0.0,
+        0.0,
+        595.280029296875,
+        841.8900146484375
+      ],
+      "text_characters": 1576,
+      "replacement_characters": 0,
+      "outside_text_blocks": [],
+      "uri_links": [],
+      "internal_links": 1,
+      "render": "build\\rendered-pages\\page-03.png",
+      "render_sha256": "48BF871863FC524FC397C0FB54FC9601E9B4BCED6B86E298F8B5BC10D11E764B",
+      "render_pixels": [
+        1072,
+        1516
+      ],
+      "grayscale_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "page": 4,
+      "mediabox": [
+        0.0,
+        0.0,
+        595.280029296875,
+        841.8900146484375
+      ],
+      "text_characters": 1141,
+      "replacement_characters": 0,
+      "outside_text_blocks": [],
+      "uri_links": [],
+      "internal_links": 0,
+      "render": "build\\rendered-pages\\page-04.png",
+      "render_sha256": "BBC7FF6418D4B1934993EB250DEA0ED432DEFEA037CE43C20A2668A3A0141541",
+      "render_pixels": [
+        1072,
+        1516
+      ],
+      "grayscale_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "page": 5,
+      "mediabox": [
+        0.0,
+        0.0,
+        595.280029296875,
+        841.8900146484375
+      ],
+      "text_characters": 1378,
+      "replacement_characters": 0,
+      "outside_text_blocks": [],
+      "uri_links": [],
+      "internal_links": 0,
+      "render": "build\\rendered-pages\\page-05.png",
+      "render_sha256": "E1445E9A2A408292ACE3477EF6290AAD6E21E7513075CD3715BEEDBC987A66FA",
+      "render_pixels": [
+        1072,
+        1516
+      ],
+      "grayscale_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "page": 6,
+      "mediabox": [
+        0.0,
+        0.0,
+        595.280029296875,
+        841.8900146484375
+      ],
+      "text_characters": 1513,
+      "replacement_characters": 0,
+      "outside_text_blocks": [],
+      "uri_links": [],
+      "internal_links": 0,
+      "render": "build\\rendered-pages\\page-06.png",
+      "render_sha256": "9907F846D355859316E065C670FE564509BB9B6D15235159D04F2765E452257C",
+      "render_pixels": [
+        1072,
+        1516
+      ],
+      "grayscale_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "page": 7,
+      "mediabox": [
+        0.0,
+        0.0,
+        595.280029296875,
+        841.8900146484375
+      ],
+      "text_characters": 1202,
+      "replacement_characters": 0,
+      "outside_text_blocks": [],
+      "uri_links": [],
+      "internal_links": 0,
+      "render": "build\\rendered-pages\\page-07.png",
+      "render_sha256": "17AC2AD76F48DE81E039F5951C1D919B9ACDD32CECAF3A1D0DB805F88F2FF1D0",
+      "render_pixels": [
+        1072,
+        1516
+      ],
+      "grayscale_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "page": 8,
+      "mediabox": [
+        0.0,
+        0.0,
+        595.280029296875,
+        841.8900146484375
+      ],
+      "text_characters": 2081,
+      "replacement_characters": 0,
+      "outside_text_blocks": [],
+      "uri_links": [],
+      "internal_links": 0,
+      "render": "build\\rendered-pages\\page-08.png",
+      "render_sha256": "4FB9C06399B9014B2D62E671E09EB55B306928BEFEA15ED97D61BE6D04C853CB",
+      "render_pixels": [
+        1072,
+        1516
+      ],
+      "grayscale_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "page": 9,
+      "mediabox": [
+        0.0,
+        0.0,
+        595.280029296875,
+        841.8900146484375
+      ],
+      "text_characters": 1632,
+      "replacement_characters": 0,
+      "outside_text_blocks": [],
+      "uri_links": [
+        "https://doi.org/10.1080/03081087.2016.1164660",
+        "https://doi.org/10.30757/ALEA.v22-29",
+        "https://doi.org/10.1007/s10208-014-9194-z",
+        "https://doi.org/10.1016/j.aim.2012.05.006",
+        "https://github.com/ajt60gaibb/OpenProblemsInNLA/tree/main/tensor-computations/TR-16",
+        "https://github.com/openai/math"
+      ],
+      "internal_links": 0,
+      "render": "build\\rendered-pages\\page-09.png",
+      "render_sha256": "E18AA612C38D41D6FC1D26D8F8E0ABFFAD57A6055D4BA0F2607398EB71A5AFBC",
+      "render_pixels": [
+        1072,
+        1516
+      ],
+      "grayscale_extrema": [
+        0,
+        255
+      ]
+    }
+  ],
+  "fonts": [
+    {
+      "xref": 4,
+      "extension": "cff",
+      "type": "Type1",
+      "base_font": "IHAIZV+LMRoman17-Regular",
+      "name": "F0",
+      "encoding": "WinAnsiEncoding",
+      "embedded_bytes": 2558
+    },
+    {
+      "xref": 5,
+      "extension": "cff",
+      "type": "Type1",
+      "base_font": "BZIVMZ+LMRoman17-Regular",
+      "name": "F1",
+      "encoding": "WinAnsiEncoding",
+      "embedded_bytes": 617
+    },
+    {
+      "xref": 6,
+      "extension": "cff",
+      "type": "Type1",
+      "base_font": "IXFAWU+LMMathItalic12-Regular",
+      "name": "F2",
+      "encoding": "WinAnsiEncoding",
+      "embedded_bytes": 669
+    },
+    {
+      "xref": 7,
+      "extension": "cff",
+      "type": "Type1",
+      "base_font": "TQTHRL+LMRoman12-Regular",
+      "name": "F3",
+      "encoding": "WinAnsiEncoding",
+      "embedded_bytes": 3041
+    },
+    {
+      "xref": 10,
+      "extension": "cff",
+      "type": "Type1",
+      "base_font": "YEUUOC+LMRoman10-Regular",
+      "name": "F4",
+      "encoding": "WinAnsiEncoding",
+      "embedded_bytes": 9729
+    },
+    {
+      "xref": 11,
+      "extension": "cff",
+      "type": "Type1",
+      "base_font": "AKHCZK+LMRoman10-Bold",
+      "name": "F5",
+      "encoding": "WinAnsiEncoding",
+      "embedded_bytes": 2590
+    },
+    {
+      "xref": 12,
+      "extension": "cff",
+      "type": "Type1",
+      "base_font": "VDVGTR+LMMathItalic10-Regular",
+      "name": "F6",
+      "encoding": "WinAnsiEncoding",
+      "embedded_bytes": 8255
+    },
+    {
+      "xref": 13,
+      "extension": "cff",
+      "type": "Type1",
+      "base_font": "CAFSZL+LMRoman10-Regular",
+      "name": "F7",
+      "encoding": "WinAnsiEncoding",
+      "embedded_bytes": 3689
+    },
+    {
+      "xref": 14,
+      "extension": "cff",
+      "type": "Type1",
+      "base_font": "DDIEWW+LMRoman7-Regular",
+      "name": "F8",
+      "encoding": "WinAnsiEncoding",
+      "embedded_bytes": 965
+    },
+    {
+      "xref": 15,
+      "extension": "cff",
+      "type": "Type1",
+      "base_font": "FKPJSN+LMMathItalic7-Regular",
+      "name": "F9",
+      "encoding": "WinAnsiEncoding",
+      "embedded_bytes": 591
+    },
+    {
+      "xref": 16,
+      "extension": "cff",
+      "type": "Type1",
+      "base_font": "PVTTLK+LMMathSymbols10-Regular",
+      "name": "F10",
+      "encoding": "WinAnsiEncoding",
+      "embedded_bytes": 1662
+    },
+    {
+      "xref": 17,
+      "extension": "cff",
+      "type": "Type1",
+      "base_font": "JAGKKY+LMMathSymbols7-Regular",
+      "name": "F11",
+      "encoding": "WinAnsiEncoding",
+      "embedded_bytes": 356
+    },
+    {
+      "xref": 18,
+      "extension": "cff",
+      "type": "Type1",
+      "base_font": "NOMARO+LMRoman12-Bold",
+      "name": "F12",
+      "encoding": "WinAnsiEncoding",
+      "embedded_bytes": 6321
+    },
+    {
+      "xref": 20,
+      "extension": "cff",
+      "type": "Type1",
+      "base_font": "KPXLOM+LMMathItalic8-Regular",
+      "name": "F13",
+      "encoding": "WinAnsiEncoding",
+      "embedded_bytes": 3593
+    },
+    {
+      "xref": 21,
+      "extension": "cff",
+      "type": "Type1",
+      "base_font": "UTACNV+LMMathSymbols8-Regular",
+      "name": "F14",
+      "encoding": "WinAnsiEncoding",
+      "embedded_bytes": 1093
+    },
+    {
+      "xref": 22,
+      "extension": "cff",
+      "type": "Type1",
+      "base_font": "FZDNHS+LMRoman8-Regular",
+      "name": "F15",
+      "encoding": "WinAnsiEncoding",
+      "embedded_bytes": 2448
+    },
+    {
+      "xref": 23,
+      "extension": "cff",
+      "type": "Type1",
+      "base_font": "DZGKAF+LMMathExtension10-Regular",
+      "name": "F16",
+      "encoding": "WinAnsiEncoding",
+      "embedded_bytes": 2797
+    },
+    {
+      "xref": 30,
+      "extension": "cff",
+      "type": "Type1",
+      "base_font": "GJMHKB+LMRoman10-Italic",
+      "name": "F17",
+      "encoding": "WinAnsiEncoding",
+      "embedded_bytes": 7125
+    },
+    {
+      "xref": 31,
+      "extension": "cff",
+      "type": "Type1",
+      "base_font": "NITCSQ+LMSans8-Regular",
+      "name": "F18",
+      "encoding": "WinAnsiEncoding",
+      "embedded_bytes": 353
+    },
+    {
+      "xref": 32,
+      "extension": "cff",
+      "type": "Type1",
+      "base_font": "UBBQTN+MSBM10",
+      "name": "F19",
+      "encoding": "",
+      "embedded_bytes": 813
+    },
+    {
+      "xref": 41,
+      "extension": "cff",
+      "type": "Type1",
+      "base_font": "LPOGEQ+LMMathItalic6-Regular",
+      "name": "F20",
+      "encoding": "WinAnsiEncoding",
+      "embedded_bytes": 537
+    },
+    {
+      "xref": 45,
+      "extension": "cff",
+      "type": "Type1",
+      "base_font": "GQYLQL+LMRoman6-Regular",
+      "name": "F21",
+      "encoding": "WinAnsiEncoding",
+      "embedded_bytes": 850
+    },
+    {
+      "xref": 55,
+      "extension": "cff",
+      "type": "Type1",
+      "base_font": "WXMALW+MSAM10",
+      "name": "F22",
+      "encoding": "",
+      "embedded_bytes": 337
+    },
+    {
+      "xref": 56,
+      "extension": "cff",
+      "type": "Type1",
+      "base_font": "XKCNTN+LMMono10-Regular",
+      "name": "F23",
+      "encoding": "WinAnsiEncoding",
+      "embedded_bytes": 4805
+    }
+  ],
+  "uri_inventory": [
+    "https://doi.org/10.1007/s10208-014-9194-z",
+    "https://doi.org/10.1016/j.aim.2012.05.006",
+    "https://doi.org/10.1080/03081087.2016.1164660",
+    "https://doi.org/10.30757/ALEA.v22-29",
+    "https://github.com/ajt60gaibb/OpenProblemsInNLA/tree/main/tensor-computations/TR-16",
+    "https://github.com/openai/math",
+    "mailto:carptopus@163.com"
+  ],
+  "text_sha256": "13135CB6F02DCB1AB9E824722B4CB2FD2EAE22267F79534B3FCFCDA7D8C6C1C3",
+  "failures": {
+    "missing_required_text": [],
+    "missing_expected_uris": [],
+    "missing_internal_citation_links": [],
+    "pages_with_replacement_characters": [],
+    "pages_with_outside_text_blocks": [],
+    "blank_pages": [],
+    "fonts_without_embedded_program": []
+  }
+}
