@@ -2,7 +2,7 @@
 
 Author: Carptopus · Version 0.1-beta · 14 October 2026
 
-DOI: pending. This README and the BibTeX record will be updated after the independent Zenodo record is published; the accepted manuscript, TeX, PDF, verification sources and analytic supplements will remain byte-identical.
+Published preprint: [Version DOI](https://doi.org/10.5281/zenodo.23353313) · [Concept DOI](https://doi.org/10.5281/zenodo.23353312). The Zenodo archive preserves the first fixed public package at Git commit `12ba9e48fd64e6721588b4db4f1972b8af118674`; this repository additionally backfills the DOI in the README and BibTeX without changing the accepted manuscript, TeX, PDF, verification sources or analytic supplements.
 
 - [Manuscript](manuscript.md)
 - [PDF](paper/main.pdf) · [LaTeX source](paper/main.tex) · [BibTeX](CITATION.bib)
