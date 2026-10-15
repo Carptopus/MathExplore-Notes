@@ -2,8 +2,11 @@
 
 Author: Carptopus · Version 0.1-beta · 15 October 2026
 
-Zenodo DOI: pending. The archive will preserve the first fixed public Git commit;
-the DOI will be backfilled without changing the accepted manuscript, TeX, PDF or
+Published preprint: [Version DOI](https://doi.org/10.5281/zenodo.23395582) ·
+[Concept DOI](https://doi.org/10.5281/zenodo.23395581). The Zenodo archive
+preserves the first fixed public package at Git commit
+`c133e6ffda7bf652e375a43bce77b09a5e35e7cb`; this repository additionally
+backfills the DOI without changing the accepted manuscript, TeX, PDF or
 verification sources.
 
 - [Manuscript](manuscript.md)
