@@ -2,6 +2,13 @@
 
 Author: Carptopus · Version 0.1-beta · 18 October 2026
 
+Published preprint: [Version DOI](https://doi.org/10.5281/zenodo.23448200) ·
+[Concept DOI](https://doi.org/10.5281/zenodo.23448199). The Zenodo archive
+preserves the first fixed public package at Git commit
+`e420e3d93e2e30bbc4dc156c23608ee37bddab13`; this repository additionally
+backfills the DOI without changing the accepted manuscript, TeX, PDF or
+verification sources.
+
 - [Manuscript](manuscript.md)
 - [PDF](paper/main.pdf) · [LaTeX source](paper/main.tex) · [BibTeX](CITATION.bib)
 - [Verification instructions](loops/MATH-DIR-0128/verification/README.md)
