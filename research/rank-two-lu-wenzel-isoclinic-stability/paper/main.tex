@@ -1,0 +1,660 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=30mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,tabularx,array}
+\usepackage{microtype}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{fancyvrb}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  hypertexnames=false,
+  linkcolor=blue!55!black,
+  citecolor=blue!55!black,
+  urlcolor=blue!65!black,
+  pdftitle={Coordered alignment and isoclinic stability in the rank-two complex Lu--Wenzel problem},
+  pdfauthor={Carptopus}
+}
+\setlength{\emergencystretch}{3em}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+
+\title{Coordered alignment and isoclinic stability\\
+in the rank-two complex Lu--Wenzel problem}
+\author{Carptopus\\\href{mailto:carptopus@163.com}{\texttt{carptopus@163.com}}}
+\date{}
+
+\begin{document}
+\maketitle
+
+Internal manuscript, 18 October 2026. The theorem package has passed separate internal prewriting proof review, bounded prior-art review, and manuscript-level zero-trust review. External mathematical review and formal peer review have not been completed.
+
+\begin{abstract}
+For a complex matrix $X$, let
+
+\[
+T_X(Y)=[X^*,[X,Y]]
+\]
+
+act on the Frobenius Hilbert space of matrices. The complex Lu--Wenzel spectral conjecture predicts a family of weak-majorization bounds for the eigenvalues of $T_X$. We study its rank-two stratum. First, every rank-two matrix in arbitrary dimension reduces exactly to a core of size at most four; the only new core inequality is
+
+\[
+\lambda_1(T_X)+\lambda_3(T_X)\le 3
+\]
+
+under the normalization $\|X\|_F=1$. For the four-dimensional core we prove this inequality on two natural infinite layers. The first is a coordered one-sided alignment layer between the singular directions and the principal-angle directions. The second is the complete isoclinic layer, with arbitrary singular values and arbitrary relative unitary direction. We further prove stability of the isoclinic result: after fixing any positive lower bound on the smaller singular value, a full-direction collar of nearly equal principal angles also satisfies the conjectured inequality. Finally, on the isoclinic layer we give an explicit two-component lower bound for the decisive characteristic-polynomial margin. The proofs combine exact spectral reduction with rational tensor-product Bernstein certificates. These results do not cover the oppositely ordered alignment branch, do not give a collar uniform down to rank one, and do not prove the full rank-two or full Lu--Wenzel conjecture.
+
+\textbf{Keywords:} Lu--Wenzel conjecture; commutator spectrum; rank-two matrix; principal angles; isoclinic subspaces; weak majorization; Bernstein certificate; computer-assisted proof.
+
+\end{abstract}
+
+\section{Introduction}
+
+Let $M_n(\mathbb C)$ carry the Frobenius inner product $\langle A,B\rangle=\operatorname{Tr}(A^*B)$. For $X\in M_n(\mathbb C)$ define
+
+\begin{equation}
+\operatorname{ad}_X(Y)=[X,Y],\qquad
+T_X=\operatorname{ad}_X^*\operatorname{ad}_X,
+\tag{1.1}
+\end{equation}
+
+so that $T_X(Y)=[X^*,[X,Y]]$ is positive semidefinite. Write its eigenvalues in decreasing order as
+
+\[
+\lambda_1(T_X)\ge\lambda_2(T_X)\ge\cdots\ge0.
+\]
+
+For $\|X\|_F=1$, the complex Lu--Wenzel spectral conjecture asks for
+
+\begin{equation}
+\sum_{j=1}^{2k}\lambda_j(T_X)\le 2k+2
+\qquad (1\le k\le \lfloor n^2/2\rfloor).
+\tag{1.2}
+\end{equation}
+
+The case $k=1$ is the Böttcher--Wenzel inequality. Ge, Li, Lu, and Zhou proved the conjecture for several important classes, including rank-one matrices, and the later DDVV survey records the known normal and low-dimensional cases [1,2]. A square-zero result gives another substantial layer [3]. The general problem remains sensitive to the relative geometry of the left and right singular subspaces.
+
+Our first observation is that rank two removes all genuinely high-dimensional geometry. If $\operatorname{rank}X\le2$, then $\operatorname{Ran}X+\operatorname{Ran}X^*$ has dimension at most four and reduces $X$. The additional commutator spectrum produced by adjoining a zero block is explicitly controlled. Thus the only new rank-two inequality is a four-dimensional $k=2$ inequality.
+
+To state our main results, consider a normalized rank-two core written in the principal-angle form
+
+\begin{equation}
+Z=\begin{pmatrix}MD&MS\\0&0\end{pmatrix},
+\qquad
+D=\operatorname{diag}(c,d),\quad
+S=(I_2-D^2)^{1/2},
+\tag{1.3}
+\end{equation}
+
+where
+
+\begin{equation}
+1\ge c\ge d\ge0,qquad
+\sigma_1(M)=p\ge q=\sigma_2(M)\ge0,qquad
+p^2+q^2=1.
+\tag{1.4}
+\end{equation}
+
+The two singular values of $D$ are the cosines of the two principal angles between the left and right singular subspaces. The matrix $M$ contains the remaining singular-direction data.
+
+Our first theorem treats a one-sided alignment condition. The order matters.
+
+\textbf{Theorem 1.1 (coordered alignment).} Suppose that $Z$ has the form (1.3)--(1.4) and, in the ordered basis in which $D=\operatorname{diag}(c,d)$,
+
+\begin{equation}
+M^*M=\operatorname{diag}(p^2,q^2).
+\tag{1.5}
+\end{equation}
+
+Then
+
+\begin{equation}
+\lambda_1(T_Z)+\lambda_3(T_Z)\le3.
+\tag{1.6}
+\end{equation}
+
+The conclusion includes the degenerate closures $p=q$ and $c=d$. Condition $[M^*M,D]=0$ by itself is insufficient for our proof: when both spectra are strictly ordered it also permits the opposite pairing $M^*M=\operatorname{diag}(q^2,p^2)$, which is not covered here.
+
+The complete isoclinic layer has no alignment restriction.
+
+\textbf{Theorem 1.2 (complete isoclinic layer).} Suppose that $Z$ has the form (1.3) with
+
+\begin{equation}
+D=tI_2,\qquad 0\le t\le1,
+\tag{1.7}
+\end{equation}
+
+and let $M$ be arbitrary subject to (1.4). Then (1.6) holds.
+
+Theorem 1.2 is stable under a full-direction perturbation away from the isoclinic layer, provided the smaller singular value stays away from zero.
+
+\textbf{Theorem 1.3 (fixed-$\epsilon$ collar).} For every $0<\epsilon\le1/\sqrt2$ there is a rational number $z_*(\epsilon)<1$ such that every core (1.3)--(1.4) satisfying
+
+\begin{equation}
+q\ge\epsilon,\qquad c>0,\qquad \frac dc\in[z_*(\epsilon),1]
+\tag{1.8}
+\end{equation}
+
+obeys (1.6). No alignment condition is imposed on $M$.
+
+The threshold in Theorem 1.3 is existential. We neither compute it explicitly nor claim that it can be chosen independently of $\epsilon$.
+
+There is also an explicit quantitative statement on the isoclinic layer. Its form is most naturally expressed through the five paired nonnegative roots of $T_Z$. Let $\mu_1,\ldots,\mu_5\ge0$ be those roots, padded by zeros if necessary, and define
+
+\begin{equation}
+B_0=\prod_{1\le i<j\le5}(3-\mu_i-\mu_j).
+\tag{1.9}
+\end{equation}
+
+In the isoclinic normal form of Section 5 put
+
+\begin{equation}
+s=2pq,\qquad r=t^2,\qquad m=x^2,
+\tag{1.10}
+\end{equation}
+
+where $x$ is the diagonal modulus of the relative $2\times2$ unitary.
+
+\textbf{Theorem 1.4 (explicit isoclinic margins).} On the complete isoclinic layer,
+
+\begin{equation}
+B_0\ge
+(1-pq)^8\,48(rm)^2(1+rm)^2+3(2pq)^4.
+\tag{1.11}
+\end{equation}
+
+A companion rank-one-preserving variant
+
+\begin{equation}
+B_0\ge
+(1-pq)^7\,48(rm)^2(1+rm)^2+\frac52(2pq)^4
+\tag{1.12}
+\end{equation}
+
+also holds. In the natural Bernstein representation, exponent six fails by the single coefficient $-13/210$.
+
+The factor $48(rm)^2(1+rm)^2$ is not presented as a new rank-one result. It is a direct specialization of the known rank-one commutator spectrum in [1]. Our new claim is the combined isoclinic margin (1.11)--(1.12).
+
+Theorems 1.1--1.3 extend to arbitrary ambient dimension through the exact rank-two compression in Section 2, while retaining their corresponding four-dimensional core hypotheses. Theorem 1.4 is a quantitative certificate for that four-dimensional core; it is not asserted for the enlarged spectrum of a zero extension. None of these statements proves the complete rank-two conjecture.
+
+The paper is organized as follows. Section 2 gives the compression and the paired-root reduction. Section 3 isolates the single scalar sign gate. Section 4 proves Theorem 1.1. Sections 5 and 6 prove Theorems 1.2--1.4. Section 7 describes the exact certificate and reproducibility boundary, and Section 8 records the relation to prior work and the unresolved region.
+
+\section{Rank-two compression and paired spectrum}
+
+We first remove the ambient dimension.
+
+\textbf{Proposition 2.1 (exact compression).} Let $X\in M_n(\mathbb C)$ have rank at most two and let
+
+\[
+\mathcal S=\operatorname{Ran}X+\operatorname{Ran}X^*.
+\]
+
+Then $\dim\mathcal S\le4$, the subspace $\mathcal S$ reduces $X$, and in a unitary basis
+
+\begin{equation}
+X=Z\oplus0_\ell,\qquad Z\in M_s(\mathbb C),\quad s\le4,
+\quad \ell=n-s.
+\tag{2.1}
+\end{equation}
+
+Moreover,
+
+\begin{equation}
+\operatorname{spec}(T_X)=\operatorname{spec}(T_Z)
+\sqcup\bigsqcup_{j=1}^{\ell}\{\sigma_i(Z)^2:1\le i\le s\}
+\sqcup\bigsqcup_{j=1}^{\ell}\{\sigma_i(Z)^2:1\le i\le s\}
+\sqcup\{0^{\ell^2}\}.
+\tag{2.2}
+\end{equation}
+
+\textbf{Proof.} Since
+
+\[
+\mathcal S^\perp\subseteq(\operatorname{Ran}X^*)^\perp=\ker X,
+\qquad
+\mathcal S^\perp\subseteq(\operatorname{Ran}X)^\perp=\ker X^*,
+\]
+
+the claimed reduction and (2.1) follow. Write a matrix in matching blocks as $Y=\left(\begin{smallmatrix}A&B\\C&D\end{smallmatrix}\right)$. Then
+
+\[
+[X,Y]=\begin{pmatrix}[Z,A]&ZB\\-CZ&0\end{pmatrix}.
+\]
+
+The four blocks are orthogonal in the Frobenius inner product. The singular values of $B\mapsto ZB$ and $C\mapsto CZ$ are the singular values of $Z$, each repeated once for every zero-block coordinate. Squaring gives (2.2). $\square$
+
+The four-dimensional cores admit exactly the normal form used in the main theorems.
+
+\textbf{Proposition 2.2 (principal-angle normal form).} Every normalized matrix $Z\in M_4(\mathbb C)$ of rank at most two is unitarily similar, up to deleting zero singular directions and taking limits, to (1.3)--(1.4).
+
+\textbf{Proof.} Take a compact singular-value decomposition $Z=U\Sigma V^*$, where $U,V$ have two orthonormal columns and $\Sigma=\operatorname{diag}(p,q)$. A unitary similarity first identifies $\operatorname{Ran}U$ with the first coordinate plane. In the resulting basis write
+
+\[
+V=\begin{pmatrix}C\\P\end{pmatrix},\qquad C^*C+P^*P=I_2.
+\]
+
+A unitary change confined to the orthogonal complement makes $P=(I_2-C^*C)^{1/2}$. Take a singular-value decomposition $C=W_1DW_2^*$ with $D=\operatorname{diag}(c,d)$ and put $S=(I_2-D^2)^{1/2}$. Then
+
+\[
+Z=\begin{pmatrix}
+\Sigma W_2DW_1^*&\Sigma W_2SW_2^*\\0&0
+\end{pmatrix}.
+\]
+
+Conjugation by $\operatorname{diag}(W_1,W_2)$ gives (1.3) with $M=W_1^*\Sigma W_2$. The singular values of $M$ are $p,q$. Reordering the two principal directions gives $c\ge d$, and reordering the singular values gives $p\ge q$. $\square$
+
+For normalized $Z$, every inserted value in (2.2) is at most one, and each zero-block coordinate inserts total mass $2\sum_i\sigma_i(Z)^2=2$. Hence the inserted vector is weakly majorized by $(1,1,0,\ldots)$. Consequently, whenever a core satisfies the Lu--Wenzel bounds, so does every zero extension of that core.
+
+The cases $s\le3$ are known [1,2]. For $s=4$, the cases $k=1$ and $k\ge3$ are automatic: $k=1$ is Böttcher--Wenzel, while
+
+\begin{equation}
+\operatorname{Tr}T_Z=8-2|\operatorname{Tr}Z|^2\le8\le2k+2
+\qquad(k\ge3).
+\tag{2.3}
+\end{equation}
+
+It remains to understand $k=2$.
+
+\textbf{Corollary 2.3 (ambient-dimensional return).} Let $X\in M_n(\mathbb C)$ have rank at most two and let $Z$ be its compressed core from Proposition 2.1. If $Z$ satisfies the hypotheses of Theorem 1.1, 1.2, or 1.3, then $X$ satisfies all inequalities (1.2).
+
+\textbf{Proof.} The core inequalities for $k=1$, $k=2$, and $k\ge3$ are covered by Böttcher--Wenzel, the indicated theorem, and (2.3), respectively. Formula (2.2) adds, for each zero coordinate, a spectral vector weakly majorized by $(1,1,0,\ldots)$, exactly the increment allowed on the right side of (1.2). $\square$
+
+The relevant spectrum is paired. Let
+
+\begin{equation}
+\mathcal A_Z=I_4\otimes Z-Z^T\otimes I_4.
+\tag{2.4}
+\end{equation}
+
+The commutation matrix $K$ makes $K\mathcal A_Z$ complex skew-symmetric. Its nonzero singular values therefore have even multiplicity. We also need a rank bound. The kernel of $\mathcal A_Z$ is the centralizer of $Z$. Let the Jordan partition for the eigenvalue zero have total size $m_0$ and $k_0$ blocks. Since $\operatorname{rank}Z=4-k_0\le2$, one has $k_0\ge2$. The standard centralizer dimension formula assigns to a partition $\alpha$ the contribution $\sum_j(\alpha'_j)^2$. If $m_0=2$, the zero contribution is at least $4$ and the two-dimensional nonzero generalized eigenspace contributes at least $2$. If $m_0=3$, the respective lower bounds are $5$ and $1$. If $m_0=4$, every partition with at least two blocks contributes at least $6$ (the minimum is attained by $(3,1)$). Thus the centralizer always has dimension at least six, so $\operatorname{rank}\mathcal A_Z\le10$. Hence the nonzero eigenvalues of $T_Z$ can be written, with zero padding, as
+
+\begin{equation}
+\mu_1,\mu_1,\mu_2,\mu_2,\ldots,\mu_5,\mu_5,
+\qquad \mu_1\ge\cdots\ge\mu_5\ge0.
+\tag{2.5}
+\end{equation}
+
+In particular,
+
+\begin{equation}
+\lambda_1(T_Z)+\lambda_3(T_Z)=\mu_1+\mu_2.
+\tag{2.6}
+\end{equation}
+
+The trace identity and Böttcher--Wenzel bound give
+
+\begin{equation}
+0\le\mu_i\le2,qquad
+\sum_{i=1}^5\mu_i=4-|\operatorname{Tr}Z|^2\le4.
+\tag{2.7}
+\end{equation}
+
+\section{The single characteristic-polynomial gate}
+
+Define the ten pair gaps and the pair-sum polynomial by
+
+\begin{equation}
+g_{ij}=3-\mu_i-\mu_j,qquad
+R(w)=\prod_{1\le i<j\le5}(w-\mu_i-\mu_j).
+\tag{3.1}
+\end{equation}
+
+Then $B_0=R(3)=\prod_{i<j}g_{ij}$.
+
+\textbf{Lemma 3.1 (one-negative-gap lemma).} Under (2.7), at most one pair gap is negative, and
+
+\begin{equation}
+\mu_1+\mu_2\le3\quad\Longleftrightarrow\quad B_0\ge0.
+\tag{3.2}
+\end{equation}
+
+\textbf{Proof.} Suppose $g_{12}=-a<0$. Then $0<a\le1$ and $\mu_1+\mu_2=3+a$. Since the five roots sum to at most four, the remaining three sum to at most $1-a$. Since $\mu_1\le2$, one has $\mu_2\ge1+a$. It follows that every gap involving one of $\mu_1,\mu_2$ and one of $\mu_3,\mu_4,\mu_5$ is at least $a$, while every gap among the final three roots is at least $2+a$. Thus $g_{12}$ is the only negative gap and all other gaps are strictly positive. The sign of their product is therefore the sign asserted in (3.2). $\square$
+
+For later computation, put
+
+\begin{equation}
+R(3+\zeta)=\prod_{i<j}(\zeta+g_{ij})
+=\sum_{k=0}^{10}B_k\zeta^k.
+\tag{3.3}
+\end{equation}
+
+Only $B_0$ is needed for (3.2). The later isoclinic certificate proves the stronger statement that all coefficients in (3.3) are nonnegative on that special layer; no such coefficientwise assertion is used in the general case.
+
+\section{The coordered alignment layer}
+
+We first dispose of a large singular-value region without any principal-angle assumption.
+
+\textbf{Lemma 4.1 (balanced singular-value range).} Let $Z\in M_4(\mathbb C)$ have rank at most two and $\|Z\|_F=1$. If its larger squared singular value $a=p^2$ satisfies $a\le9/13$, then (1.6) holds.
+
+\textbf{Proof.} Write $T_Z=K_1+K_2$, where
+
+\[
+K_1=I\otimes Z^*Z+(ZZ^*)^T\otimes I,qquad
+K_2=-\bigl(Z^T\otimes Z^*+\overline Z\otimes Z\bigr).
+\]
+
+The nonzero eigenvalues of both $Z^*Z$ and $ZZ^*$ are $a$ and $1-a$. Ordering all pairwise sums therefore gives
+
+\[
+S_4(K_1)=
+\begin{cases}
+4,&1/2\le a\le2/3,\\
+3a+2,&2/3\le a\le1.
+\end{cases}
+\]
+
+Let $A=Z^T\otimes Z^*$, so $K_2=-(A+A^*)$ and $\operatorname{rank}A\le4$. If the positive spectral subspace of $K_2$ had dimension greater than $\operatorname{rank}A$, it would contain a nonzero vector in $\ker A$; the quadratic form of $-(A+A^*)$ would vanish on that vector, a contradiction. Hence the positive inertia of $K_2$ is at most four. Moreover,
+
+\begin{equation}
+\begin{aligned}
+\operatorname{Tr}(K_2)_+
+&=\frac{\|A+A^*\|_*-\operatorname{Tr}(A+A^*)}{2}\\
+&\le \|A\|_*-\operatorname{Re}\operatorname{Tr}A\\
+&=(p+q)^2-|\operatorname{Tr}Z|^2.
+\end{aligned}
+\tag{4.1}
+\end{equation}
+
+Here $\|A+A^*\|_*\le2\|A\|_*$, $\|A\|_*=\|Z\|_*^2=(p+q)^2$, and $\operatorname{Tr}A=|\operatorname{Tr}Z|^2$.
+
+Ky Fan's inequality therefore gives a bound of six for the four largest eigenvalues of $T_Z$ when $a\le2/3$, and for $2/3\le a\le9/13$ reduces to
+
+\[
+3a+2\sqrt{a(1-a)}\le3,
+\]
+
+which is equivalent to $13a\le9$. The paired spectrum (2.5) converts this to (1.6). $\square$
+
+For the remaining range $p^2\ge9/13$, one has $pq\le6/13$. Under the coordered condition (1.5), the decisive polynomial admits a finite exact positivity certificate. We record enough structure to make the certificate independently checkable.
+
+It remains to connect the theorem's normal form to the certificate coordinates. Under (1.5), the polar decomposition gives $M=U\Sigma$ with $\Sigma=\operatorname{diag}(p,q)$, extending the partial isometry at a rank-one boundary. Conjugating (1.3) by $\operatorname{diag}(U,I_2)$ gives
+
+\begin{equation}
+\begin{pmatrix}
+\Sigma D U&\Sigma S\\0&0
+\end{pmatrix}
+=
+\begin{pmatrix}
+\Sigma D W^*&\Sigma S\\0&0
+\end{pmatrix},
+\qquad W^*=U,
+\tag{4.2}
+\end{equation}
+
+which is exactly the coordered certificate normal form. Set
+
+\begin{equation}
+b=pq,\quad e=p^2-q^2,\quad u=cd,\quad
+v=\sqrt{(1-c^2)(1-d^2)},\quad f=c^2-d^2,
+\tag{4.3}
+\end{equation}
+
+and let $m\in[0,1]$ and $h\in[0,1]$ be the squared modulus and squared phase cosine in the standard relative-unitary parametrization. These variables obey
+
+\begin{equation}
+e^2=1-4b^2,qquad
+f^2=\bigl(1-(u+v)^2\bigr)\bigl(1-(u-v)^2\bigr).
+\tag{4.4}
+\end{equation}
+
+Twice applying Newton identities to the half power traces of $T_Z$, followed by the staircase Schur identity for $\xi_i=3/2-\mu_i$, gives in the quotient ring defined by (4.4)
+
+\begin{equation}
+B_0=E(b,u,v,m,h)+efm\,O(b,u,v,m,h).
+\tag{4.5}
+\end{equation}
+
+Parameterize the complete domain by
+
+\begin{equation}
+b=\frac6{13}\beta,qquad
+u=\rho\tau,qquad v=\rho(1-\tau),
+\qquad (\beta,\rho,\tau,m,h)\in[0,1]^5.
+\tag{4.6}
+\end{equation}
+
+In their natural tensor-product Bernstein bases, the exact rational coefficient tables have the following sizes.
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}Y Y R R R@{}}
+\toprule
+polynomial & multidegree & number of coefficients & minimum & negative count \\
+\midrule
+$O$ & $(9,11,9,3,4)$ & 22,800 & $0$ & $0$ \\
+$E$ & $(10,13,10,4,4)$ & 37,730 & $0$ & $0$ \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+Every tensor-product Bernstein basis function is nonnegative on the unit cube; hence $E,O\ge0$. Since $e,f,m\ge0$, equation (4.5) gives $B_0\ge0$. Lemma 3.1 then proves (1.6) for $pq\le6/13$. Lemma 4.1 covers the complementary singular-value range. This proves Theorem 1.1.
+
+The order restriction in (1.5) is essential to the certificate domain: the factor $ef$ was taken nonnegative. The opposite singular-value/principal-angle pairing is a distinct branch and is not certified by (4.5).
+
+\section{The complete isoclinic layer}
+
+On the isoclinic layer $D=tI_2$, write $M=U\Sigma V^*$ and conjugate (1.3) by $\operatorname{diag}(U,V)$. This gives (5.2) with $W^*=V^*U$. Phase normalization reduces this relative unitary to
+
+\begin{equation}
+W=\begin{pmatrix}e^{i\phi}x&y\\-y&e^{-i\phi}x\end{pmatrix},
+\qquad x,y\ge0,\quad x^2+y^2=1,
+\tag{5.1}
+\end{equation}
+
+and the core may be written
+
+\begin{equation}
+Z=\begin{pmatrix}
+t\Sigma W^*&\sqrt{1-t^2}\,\Sigma\\0&0
+\end{pmatrix},qquad
+\Sigma=\operatorname{diag}(p,q).
+\tag{5.2}
+\end{equation}
+
+The half traces
+
+\begin{equation}
+s_j=\frac12\operatorname{Tr}(T_Z^j)=\sum_{i=1}^5\mu_i^j,
+\qquad1\le j\le5,
+\tag{5.3}
+\end{equation}
+
+recover $\prod_i(z-\mu_i)$ by Newton identities. A second Newton pass recovers the pair-sum polynomial $R$ in (3.1). Its coefficients depend only on
+
+\begin{equation}
+s=2pq,\qquad r=t^2,\qquad m=x^2,\qquad h=\cos^2\phi,
+\tag{5.4}
+\end{equation}
+
+all in the unit interval. The exact expansion
+
+\begin{equation}
+R(3+\zeta)=\sum_{k=0}^{10}B_k(s,r,m,h)\zeta^k
+\tag{5.5}
+\end{equation}
+
+has the following tensor-product Bernstein certificate.
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}Y Y R R R@{}}
+\toprule
+$k$ & multidegree & coefficient count & minimum & negative count \\
+\midrule
+0 & $(10,10,4,4)$ & 3,025 & 0 & 0 \\
+1 & $(9,9,4,4)$ & 2,500 & 0 & 0 \\
+2 & $(8,8,4,4)$ & 2,025 & 48 & 0 \\
+3 & $(7,7,4,4)$ & 1,600 & 256 & 0 \\
+4 & $(6,6,4,4)$ & 1,225 & 584 & 0 \\
+5 & $(5,5,4,4)$ & 900 & 744 & 0 \\
+6 & $(4,4,4,4)$ & 625 & 579 & 0 \\
+7 & $(3,3,3,3)$ & 256 & 282 & 0 \\
+8 & $(2,2,2,2)$ & 81 & 84 & 0 \\
+9 & $(1,1,1,1)$ & 16 & 14 & 0 \\
+10 & $(0,0,0,0)$ & 1 & 1 & 0 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+There are 12,254 exact rational coefficients in total and none is negative. Therefore every $B_k\ge0$ and, because $B_{10}=1$, $R(3+\zeta)>0$ for every $\zeta>0$. All roots of $R$ are the real pair sums $\mu_i+\mu_j$, so no pair sum exceeds three. This proves Theorem 1.2.
+
+The zero set of the constant coefficient is also exact. Enumeration of all coordinate faces of the four-dimensional Bernstein box gives
+
+\begin{equation}
+B_0^{\mathrm{iso}}=0
+\quad\Longleftrightarrow\quad
+(s=0\text{ and }m=0)\ \text{or}\ (s=0\text{ and }r=0).
+\tag{5.6}
+\end{equation}
+
+This is not a grid inference. On the relative interior of a coordinate face, the compatible Bernstein basis functions are strictly positive. A polynomial with nonnegative Bernstein coefficients vanishes identically there exactly when all compatible coefficients vanish. Checking all $3^4=81$ coordinate faces and taking the maximal zero faces yields (5.6).
+
+\section{Stability and explicit margins}
+
+We first prove the full-direction collar.
+
+\textbf{Proof of Theorem 1.3.} Write
+
+\begin{equation}
+D=c\operatorname{diag}(1,z),\qquad 0\le c\le1,\quad0\le z\le1,
+\tag{6.1}
+\end{equation}
+
+including $c=0$ as a continuous boundary. Fix $\epsilon>0$ and restrict to $q\ge\epsilon$. The singular values and all residual unitary parameters range over a compact set. At $z=1$, equation (5.6) and $q\ge\epsilon$ imply $s=2pq>0$, hence $B_0$ is strictly positive at every point of that compact isoclinic parameter set. It therefore has a uniform positive minimum $\gamma(\epsilon)$ there.
+
+The entries of $T_Z$, its half power traces, and consequently $B_0$ are continuous functions of the full normal-form parameters. Uniform continuity gives $z_0<1$ such that $B_0\ge0$ whenever $z\in[z_0,1]$. Choose a rational $z_*(\epsilon)\in[z_0,1)$. Lemma 3.1 proves (1.6). The argument uses the full compact set of residual unitary directions and hence imposes no alignment condition. $\square$
+
+We now quantify the isoclinic base margin. At rank one, [1, Theorem 5.9] specializes in the four-dimensional core to the paired roots
+
+\[
+2-\tau,\quad1,\quad1,\quad0,\quad0,
+\qquad \tau=|\operatorname{Tr}Z|^2,
+\]
+
+and therefore
+
+\begin{equation}
+B_0=48\tau^2(1+\tau)^2.
+\tag{6.2}
+\end{equation}
+
+In the isoclinic coordinates, $\tau=rm$ at the rank-one face. Put
+
+\begin{equation}
+R_1(r,m)=48(rm)^2(1+rm)^2.
+\tag{6.3}
+\end{equation}
+
+Exact coefficient comparison in the same multidegree $(10,10,4,4)$ as the $B_0$ certificate gives
+
+\begin{equation}
+B_0^{\mathrm{iso}}-3s^4\ge0,
+\tag{6.4}
+\end{equation}
+
+and, with $v=pq=s/2$,
+
+\begin{equation}
+B_0^{\mathrm{iso}}-(1-v)^7R_1(r,m)-\frac52s^4\ge0,
+\tag{6.5}
+\end{equation}
+
+\begin{equation}
+B_0^{\mathrm{iso}}-(1-v)^8R_1(r,m)-3s^4\ge0.
+\tag{6.6}
+\end{equation}
+
+Each inequality means that every exact rational tensor-product Bernstein coefficient of the left-hand side is nonnegative. For exponent six, the analogous comparison has exactly one negative coefficient, equal to $-13/210$; this is a destructive control on the claimed threshold within this natural representation. Equations (6.5)--(6.6) are exactly (1.12)--(1.11), proving Theorem 1.4.
+
+The estimates in this section live on the isoclinic base layer and do not provide an explicit collar width. The compactness proof of Theorem 1.3 is independent of any claim about the sign of transverse derivatives.
+
+\section{Exact certificate and reproducibility}
+
+The computer-assisted portions use only exact integer and rational polynomial arithmetic. Floating-point diagonalization is used solely as an implementation cross-check and is not part of the proof.
+
+The main verification entry points are:
+
+\begin{samepage}
+\begin{Verbatim}[fontsize=\small]
+.\.venv\Scripts\python.exe -X utf8 `
+  loops\MATH-DIR-0128\verification\mi14_isoclinic_pair_sum_certificate.py
+
+.\.venv\Scripts\python.exe -X utf8 `
+  loops\MATH-DIR-0128\verification\mi14_general_b0_reduction.py --stage b0
+
+.\.venv\Scripts\python.exe -X utf8 `
+  loops\MATH-DIR-0128\verification\mi14_b0_parts_certificate.py --part both
+
+.\.venv\Scripts\python.exe -X utf8 `
+  loops\MATH-DIR-0128\verification\mi14_isoclinic_b0_zero_faces.py
+
+.\.venv\Scripts\python.exe -X utf8 `
+  loops\MATH-DIR-0128\verification\mi14_rank_one_b0_factor.py
+\end{Verbatim}
+\end{samepage}
+
+The isoclinic margin guard records the source hash, coefficient counts, maximal zero faces, positive lower-bound constants, and the exponent-six negative control in
+
+\begin{samepage}
+\begin{Verbatim}[fontsize=\small]
+loops/MATH-DIR-0128/verification/results/
+  isoclinic_b0_zero_faces_guard_v1.json
+\end{Verbatim}
+\end{samepage}
+
+The guard was generated from a clean, no-cache exact run. The source hash of \texttt{\detokenize{mi14_isoclinic_b0_zero_faces.py}} is
+
+\begin{samepage}
+\begin{Verbatim}[fontsize=\small]
+BBD24A209F125F49A7D792F0ACD94B98648431B44015A46CA107696C31D45CE0
+\end{Verbatim}
+\end{samepage}
+
+and the imported isoclinic certificate has hash
+
+\begin{samepage}
+\begin{Verbatim}[fontsize=\small]
+A01853220F6F769A20C19C06D0D409AD132B8CFFA80DC970D52EEC6275B64994
+\end{Verbatim}
+\end{samepage}
+
+The coordered reduction and Bernstein certificate scripts have hashes
+
+\begin{samepage}
+\begin{Verbatim}[fontsize=\small]
+7FD6CC612E54AA05DB01D9015902BCD4E88B41FAB0A350F49E5A8E3A6A28163F
+  mi14_general_b0_reduction.py
+7AE21C98F8EFAD02DA50413FE2D2549EA687FB4767B3BB2564E0CA933D69B6D1
+  mi14_b0_parts_certificate.py
+\end{Verbatim}
+\end{samepage}
+
+The certificate scripts include positive controls and destructive controls for the Bernstein transformation. The proof claim is the exact nonnegativity of the listed rational coefficient arrays together with the displayed algebraic reductions; a successful script exit by itself is not treated as a mathematical argument.
+
+\section{Prior work, scope, and open region}
+
+Ge, Li, Lu, and Zhou established the complete rank-one characteristic polynomial and several other Lu--Wenzel cases [1]. Their rank-one formula directly implies (6.2), so that formula is used only as a boundary calibration here. The DDVV survey [2] records the normal, rank-one, and low-dimensional landscape. The square-zero result [3] covers another boundary family. None of those results is represented here as ours.
+
+Within the primary sources and current result catalogs checked during preparation, we found no statement directly covering Theorems 1.1--1.4. This is a bounded literature conclusion, not a claim of global priority.
+
+The main unresolved part is substantial. Theorem 1.1 does not cover the strictly oppositely ordered alignment branch. Theorem 1.3 requires a fixed positive lower bound on $q$ and supplies no threshold uniform as $q\to0$. More generally, the full mixed principal-angle and singular-direction region remains open. Therefore the present paper proves neither the complete rank-two Lu--Wenzel conjecture nor the full conjecture.
+
+\section*{Acknowledgment and AI-assisted research disclosure}
+
+The author used OpenAI Codex extensively for symbolic experimentation, exact certificate generation, literature organization, proof drafting, adversarial internal review, and manuscript preparation. The named human author selected the problem and claims, reviewed the retained arguments and evidence, and assumes responsibility for the manuscript. Codex is not an author and does not bear responsibility for the results.
+
+\section*{References}
+\begin{enumerate}
+
+\item J. Ge, Z. Li, Z. Lu, and Y. Zhou, \emph{On some conjectures by Lu and Wenzel}, Linear Algebra and its Applications \textbf{592} (2020), 134--164; \href{https://arxiv.org/abs/1908.06624}{arXiv:1908.06624}.
+
+\item J. Ge, Z. Li, Z. Tang, and Y. Zhou, \emph{A survey on the DDVV-type inequalities}, \href{https://arxiv.org/abs/2402.01085}{arXiv:2402.01085}, 2024.
+
+\item Z. Liu, \emph{The Lu--Wenzel Spectral Conjecture for Square-Zero Matrices}, Zenodo, 2025, DOI \href{https://doi.org/10.5281/zenodo.21693383}{10.5281/zenodo.21693383}.
+
+\end{enumerate}
+\section*{License}
+
+This manuscript is prepared for release under the Creative Commons Attribution 4.0 International license (CC BY 4.0). The accompanying verification code is prepared for release under the MIT License.
+
+\end{document}

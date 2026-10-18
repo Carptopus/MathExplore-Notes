@@ -1,0 +1,42 @@
+{
+  "result": "PASS",
+  "verified_at": "2026-10-18",
+  "script": "loops/MATH-DIR-0128/verification/mi14_isoclinic_b0_zero_faces.py",
+  "script_sha256": "BBD24A209F125F49A7D792F0ACD94B98648431B44015A46CA107696C31D45CE0",
+  "imported_certificate": "loops/MATH-DIR-0128/verification/mi14_isoclinic_pair_sum_certificate.py",
+  "imported_certificate_sha256": "A01853220F6F769A20C19C06D0D409AD132B8CFFA80DC970D52EEC6275B64994",
+  "bernstein_degrees": [10, 10, 4, 4],
+  "coefficient_count": 3025,
+  "zero_coefficient_count": 430,
+  "positive_coefficient_count": 2595,
+  "maximal_zero_faces": [
+    {
+      "scaled_product": 0,
+      "mixing": 0
+    },
+    {
+      "scaled_product": 0,
+      "radius": 0
+    }
+  ],
+  "scaled_product_four_lower_bound": "3",
+  "damped_bounds": {
+    "K6": {
+      "residual_minimum": "-13/210",
+      "residual_negative_count": 1
+    },
+    "K7": {
+      "residual_negative_count": 0,
+      "scaled_product_four_lower_bound": "5/2"
+    },
+    "K8": {
+      "residual_negative_count": 0,
+      "scaled_product_four_lower_bound": "3"
+    }
+  },
+  "controls": {
+    "direct_rank_one_subtraction_minimum": "-188",
+    "direct_rank_one_subtraction_negative_count": 337
+  },
+  "note": "The script raises on drift in the theorem-facing coefficient, zero-face, and K6/K7/K8 data. The direct-rank-one-subtraction controls are recorded diagnostics rather than hard assertions. This compact receipt does not replace the exact certificate."
+}
