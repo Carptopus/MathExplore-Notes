@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "column_profile_checks": 108,
+  "controls": {
+    "conjugate_omission_detected": true,
+    "nonzero_auxiliary_mean": true,
+    "unselected_bad_column_detected": true
+  },
+  "arithmetic": "exact Gaussian rationals; no numerical integration",
+  "scope": "finite identities, support localization and constants only; not a proof or memory certification",
+  "elapsed_seconds": 0.1287,
+  "script_sha256": "b956499bef727482ff9486a570e3b3f9e4f03b166f952de667a846a14cf7c996"
+}
