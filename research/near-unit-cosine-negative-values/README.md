@@ -2,6 +2,11 @@
 
 Carptopus · v0.1-beta · First public date: 2026-10-23.
 
+Version DOI: [10.5281/zenodo.23592006](https://doi.org/10.5281/zenodo.23592006).
+Concept DOI: [10.5281/zenodo.23592005](https://doi.org/10.5281/zenodo.23592005).
+The Zenodo supplement freezes the initial public package; citation/DOI navigation
+and byte-preservation attributes were completed subsequently in Git.
+
 [PDF](paper/main.pdf) · [Manuscript](manuscript.md) · [TeX](paper/main.tex) · [Citation](CITATION.bib) · [Checksums](SHA256SUMS)
 
 For arbitrary distinct positive integer frequencies and complex coefficients satisfying
@@ -38,7 +43,8 @@ elapsed time and local paths may differ. Finite controls check identities and co
 not the universal analytic proof or novelty. `paper/build_tex.py` regenerates TeX from
 the hash-gated manuscript; compile `paper/main.tex` with a LaTeX installation providing
 the packages in its preamble. `paper/check_pdf.py` requires PyMuPDF and Pillow for
-PDF inspection. The supplied PDF and TeX are frozen accepted artifacts.
+PDF inspection (its historical Windows cache directory must exist or be adjusted).
+The supplied PDF and TeX are frozen accepted artifacts.
 
 The manuscript and documentation use CC BY 4.0; executable code uses MIT.
 See [licenses](LICENSE.md) and [MIT text](verification/LICENSE-CODE-MIT.txt).
